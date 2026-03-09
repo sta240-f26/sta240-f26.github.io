@@ -24,5 +24,6 @@ The path of least resistance to using `R` in this class is to reserve a *contain
 Of course, you won't have containers after you graduate, so maybe it's a good idea to hike up your big girl pants and actually install something. It's pretty easy:
 
 1. Download `R`: <https://cran.r-project.org>
-2. Download `RStudio`: <https://posit.co/download/rstudio-desktop/>
-3. (optional) Install `tinytex`: <https://yihui.org/tinytex/>
+1. Download `RStudio`: <https://posit.co/download/rstudio-desktop/>
+1. Download Quarto: <https://quarto.org/docs/download/> 
+1. (optional) Install `tinytex`: <https://yihui.org/tinytex/>
