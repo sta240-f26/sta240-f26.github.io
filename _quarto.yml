@@ -38,7 +38,7 @@ website:
   #draft-mode: unlinked
 
   sidebar:
-    background: "#FFFB71"
+    background: "#ffb07c"
     logo: "img/logo.png"
     pinned: true
     align: center
@@ -132,7 +132,7 @@ website:
   page-footer:
     right: 'This page is built with [Quarto](https://quarto.org/).'
     left: "&copy; Copyright 2026 John Zito, Anya Katsevich"
-    background: "#FFFB71"
+    background: "#ffb07c"
 
 format: 
   html:
