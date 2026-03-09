@@ -1,0 +1,152 @@
+project:
+  type: website
+  #resources:
+  #  - readings/dawid-clark-statement.pdf
+  #  - readings/westreich-iliinsky-2014-aje.pdf
+  #  - readings/diaconis-holmes-montgomery-2007-siamreview.pdf
+  #  - readings/matthews-2025-significance.pdf
+  #  - readings/meng-2023-nejsds.pdf
+  #  - readings/detsky-gutekunst-kopac-2025-significance.pdf
+  #  - lecture-notes/sta240-notes-00-set-theory.pdf
+  #  - lecture-notes/sta240-notes-01-probability-spaces.pdf
+  #  - lecture-notes/sta240-notes-02-counting-theory.pdf
+  #  - lecture-notes/sta240-notes-03-counting-examples.pdf
+  #  - lecture-notes/sta240-notes-04-conditional-probability.pdf
+  #  - lecture-notes/sta240-notes-05-random-variables.pdf
+  #  - lecture-notes/sta240-notes-06-discrete-families.pdf
+  #  - lecture-notes/sta240-notes-07-expectation.pdf
+  #  - lecture-notes/sta240-notes-08-variance.pdf
+  #  - lecture-notes/sta240-notes-09-cdf.pdf
+  #  - lecture-notes/sta240-notes-10-absolutely-continuous.pdf
+  #  - lecture-notes/sta240-notes-11-moments.pdf
+  #  - lecture-notes/sta240-notes-12-joint-discrete.pdf
+  #  - lecture-notes/sta240-notes-13-joint-continuous.pdf
+  #  - lecture-notes/sta240-notes-14-sums-and-averages.pdf
+  #  - lecture-notes/sta240-notes-19-bayes.pdf
+  #  - lecture-notes/sta240-notes-ex-mle-1.pdf
+  #  - lecture-notes/sta240-notes-ex-mle-2.pdf
+  #  - lecture-notes/sta240-notes-ex-ap-stats.pdf
+
+website:
+  page-navigation: true
+  title: "STA 240 Fall 2026"
+  description: "Homepage for STA 240 Probability for Statistical Inference, Modeling, and Data Analysis at Duke University, Fall 2026."
+  site-url: "https://sta240-f26.github.io/"
+
+  open-graph: true
+
+  #draft-mode: unlinked
+
+  sidebar:
+    background: "#FFFB71"
+    logo: "img/logo.png"
+    pinned: true
+    align: center
+    tools:
+      - icon: code-square
+        href: https://cmgr.oit.duke.edu/containers
+        text: "RStudio Containers"
+      - icon: megaphone
+        href: https://go.canvas.duke.edu/
+        text: "Canvas"
+      - icon: people
+        href: https://edstem.org/
+        text: "Ed Discussion"
+      - icon: file-arrow-up
+        href: https://www.gradescope.com/
+        text: "Gradescope"
+
+    style: docked
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "Syllabus"
+        contents:
+          - href: syllabus/syllabus_overview.qmd
+            text: Overview
+          - href: syllabus/syllabus_team.qmd
+            text: Teaching team
+          - href: syllabus/syllabus_materials.qmd
+            text: Materials
+          - href: syllabus/syllabus_assignments.qmd
+            text: Assignments and grading
+          - href: syllabus/syllabus_policies.qmd
+            text: Policies
+          - href: syllabus/syllabus_resources.qmd
+            text: University resources
+          - href: index.qmd
+            text: Schedule
+      - section: "Math Helpers"
+        contents:
+          - href: math/greeks.qmd
+            text: Greek alphabet
+          - href: math/logexp.qmd
+            text: Exponents and logarithms
+          - href: math/differentiation.qmd
+            text: Differentiation
+          - href: math/integration.qmd
+            text: Integration
+          - href: math/limits.qmd
+            text: Limits and continuity
+          - href: math/series.qmd
+            text: Infinite series
+          - href: math/gamma-function.qmd
+            text: Gamma function
+          - href: math/massage-and-squint.qmd
+            text: Massage and squint
+      - section: "`R` Helpers"
+        contents:
+          - href: explainers/setup.qmd
+            text: Getting started
+          - href: explainers/hello-rstudio.qmd
+            text: The lay of the land
+          - href: explainers/quarto.qmd
+            text: Quarto
+          - href: explainers/latex.qmd
+            text: Typing math
+          - href: explainers/math.qmd
+            text: Basic math
+          - href: explainers/vectors.qmd
+            text: Vectors
+          - href: explainers/lineplot.qmd
+            text: Plotting lines
+          - href: explainers/sample.qmd
+            text: "`sample`"
+          - href: explainers/if-else.qmd
+            text: if-else and logic
+          - href: explainers/loops.qmd
+            text: for loops
+          - href: explainers/vectorization.qmd
+            text: Vectorization
+          - href: explainers/rng-seed.qmd
+            text: Setting a seed
+          - href: explainers/probabilities.qmd
+            text: Computing probabilities
+          - href: explainers/plot.qmd
+            text: Plotting points
+          - href: explainers/summary-statistics.qmd
+            text: Summary statistics
+          - href: explainers/histogram.qmd
+            text: Histograms
+            
+  page-footer:
+    right: 'This page is built with [Quarto](https://quarto.org/).'
+    left: "&copy; Copyright 2026 John Zito, Anya Katsevich"
+    background: "#FFFB71"
+
+format: 
+  html:
+    mainfont: Atkinson Hyperlegible
+    highlight-style: a11y-light
+
+theme:
+  light: [cosmo, style/sta199.scss]
+#  dark: [cosmo, style/sta199.scss, style/dark.scss]
+linkcolor: "#798b93"
+toc: true
+code-copy: hover
+code-link: true
+code-overflow: wrap
+
+execute:
+  freeze: auto
