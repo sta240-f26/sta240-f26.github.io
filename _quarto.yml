@@ -30,7 +30,7 @@ project:
 website:
   page-navigation: true
   title: "STA 240 Fall 2026"
-  description: "Homepage for STA 240 Probability for Statistical Inference, Modeling, and Data Analysis at Duke University, Fall 2026."
+  description: "Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)"
   site-url: "https://sta240-f26.github.io/"
 
   open-graph: true
