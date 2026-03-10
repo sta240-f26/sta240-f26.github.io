@@ -20,7 +20,6 @@ library(gt)
 library(tidyverse)
 gs4_deauth()
 d <- read_sheet("https://docs.google.com/spreadsheets/d/1b1RSKXhM0-AjcK8UYgzWnYNtGtwnIa1Y7yhzSQJnY5U/edit?usp=sharing", sheet = "240")
-prepare_cutoff_date <- as.Date("2026-12-15")
 ```
 
 ```{r}
@@ -31,7 +30,6 @@ d |>
   select(-dow, -admin_notes, -number, -session) |>
   mutate(
     date = as.Date(date),
-    prepare = if_else(date > prepare_cutoff_date, "*To be posted*", prepare)
     ) |>
   relocate(due, .after = materials) |>
   gt() |>
