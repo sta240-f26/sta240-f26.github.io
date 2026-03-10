@@ -6,7 +6,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/explainers/setup.html</loc>
-    <lastmod>2026-03-09T19:40:31.968Z</lastmod>
+    <lastmod>2026-03-09T19:51:12.696Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/explainers/math.html</loc>
@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/syllabus/syllabus_team.html</loc>
-    <lastmod>2026-03-09T19:40:32.160Z</lastmod>
+    <lastmod>2026-03-09T23:54:43.086Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/syllabus/syllabus_policies.html</loc>
@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/math/integration.html</loc>
-    <lastmod>2026-03-09T19:40:31.976Z</lastmod>
+    <lastmod>2026-03-10T00:27:44.566Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/math/limits.html</loc>
@@ -58,7 +58,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/math/gamma-function.html</loc>
-    <lastmod>2026-03-09T19:40:31.970Z</lastmod>
+    <lastmod>2026-03-10T00:25:44.895Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/math/series.html</loc>
@@ -66,7 +66,27 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/index.html</loc>
-    <lastmod>2026-03-09T19:40:31.970Z</lastmod>
+    <lastmod>2026-03-10T00:13:48.999Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/lecture-notes/04-conditional-probability.html</loc>
+    <lastmod>2026-03-09T22:47:31.255Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/lecture-notes/02-probability-spaces.html</loc>
+    <lastmod>2026-03-09T22:46:06.942Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/lecture-notes/01-set-theory-to-probability.html</loc>
+    <lastmod>2026-03-09T22:45:39.051Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/lecture-notes/00-set-theory.html</loc>
+    <lastmod>2026-03-09T22:44:41.729Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/lecture-notes/03-counting.html</loc>
+    <lastmod>2026-03-09T22:46:54.438Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/math/massage-and-squint.html</loc>
@@ -74,7 +94,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/math/greeks.html</loc>
-    <lastmod>2026-03-09T19:40:31.971Z</lastmod>
+    <lastmod>2026-03-10T00:27:20.194Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/math/differentiation.html</loc>

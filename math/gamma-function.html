@@ -60,8 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../math/massage-and-squint.html" rel="next">
-<link href="../math/series.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -71,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7ad8df1012cc34949a7a0ac4d54234c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-266aaafc31a669e17face162c8bbcf98.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-2f0674e11afffcc780a56266a983a8a1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -124,7 +122,7 @@ window.Quarto = {
 };
 </script>
 <meta property="og:title" content="The gamma function – STA 240 Fall 2026">
-<meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference, Modeling, and Data Analysis at Duke University, Fall 2026.">
+<meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
 <meta property="og:image" content="https://sta240-f26.github.io/math/gamma-function_files/figure-html/fig-gamma-1.png">
 <meta property="og:site_name" content="STA 240 Fall 2026">
 <meta property="og:image:height" content="1075">
@@ -137,7 +135,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../math/greeks.html">Math Helpers</a></li><li class="breadcrumb-item"><a href="../math/gamma-function.html">Gamma function</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">The gamma function</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -218,13 +216,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Math Helpers</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../math/greeks.html" class="sidebar-item-text sidebar-link">
@@ -259,18 +257,6 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../math/series.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Infinite series</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../math/gamma-function.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Gamma function</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../math/massage-and-squint.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Massage and squint</span></a>
   </div>
 </li>
       </ul>
@@ -395,7 +381,7 @@ window.Quarto = {
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../math/greeks.html">Math Helpers</a></li><li class="breadcrumb-item"><a href="../math/gamma-function.html">Gamma function</a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">The gamma function</h1>
 </div>
 
@@ -449,7 +435,7 @@ Figure&nbsp;1
 </div>
 </div>
 </section><section id="properties" class="level1"><h1>Properties</h1>
-<p>You first met the gamma function on <a href="https://sta240-f25.github.io/problems/pset-0.html#problem-5">Problem Set 0</a>, where you showed that it satisfies the following <em>recursion</em>:</p>
+<p>You first met the gamma function on Problem Set 0, where you showed that it satisfies the following <em>recursion</em>:</p>
 <p><span class="math display">\[
 \Gamma(x+1) = x\Gamma(x).
 \]</span></p>
@@ -466,8 +452,8 @@ Figure&nbsp;1
 &amp;=(n-1)!
 \end{aligned}
 \]</span></p>
-<p>The last line follows because <span class="math inline">\(\Gamma(1)=\int_0^\infty \exp(-x)\,\textrm{d}x=1\)</span> (shown <a href="https://sta240-f25.github.io/math/integration.html#improper-integration-we-will-do-this-a-lot">here</a>, but make sure you can do it yourself). The punchline is that the gamma function is a continuous function that <em>interpolates</em> the factorials. That is, it’s a smooth curve that “connects the dots,” like you see in <a href="#fig-gamma" class="quarto-xref">Figure&nbsp;1</a>.</p>
-<p>The gamma function has many funky properties that have kept mathematicians busy for a long time. For instance, <span class="math inline">\(\Gamma(1/2)=\sqrt{\pi}\)</span>, which you showed on <a href="https://sta240-f25.github.io/problems/pset-5.html#problem-4">Problem Set 5</a>. If you’re interested, <a href="https://en.wikipedia.org/wiki/Particular_values_of_the_gamma_function">there’s more where that came from</a>.</p>
+<p>The last line follows because <span class="math inline">\(\Gamma(1)=\int_0^\infty \exp(-x)\,\textrm{d}x=1\)</span> (shown <a href="../math/integration.html#improper-integration-we-will-do-this-a-lot">here</a>, but make sure you can do it yourself). The punchline is that the gamma function is a continuous function that <em>interpolates</em> the factorials. That is, it’s a smooth curve that “connects the dots,” like you see in <a href="#fig-gamma" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<p>The gamma function has many funky properties that have kept mathematicians busy for a long time. For instance, <span class="math inline">\(\Gamma(1/2)=\sqrt{\pi}\)</span>, which you showed on Problem Set 5. If you’re interested, <a href="https://en.wikipedia.org/wiki/Particular_values_of_the_gamma_function">there’s more where that came from</a>.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -868,17 +854,7 @@ Figure&nbsp;1
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../math/series.html" class="pagination-link" aria-label="Infinite series">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Infinite series</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../math/massage-and-squint.html" class="pagination-link" aria-label="Massage and squint">
-        <span class="nav-page-text">Massage and squint</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
+  </script>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
