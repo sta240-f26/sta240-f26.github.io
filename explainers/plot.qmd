@@ -26,6 +26,6 @@ pmf <- dbinom(x, n, p)
 plot(x, pmf, pch = 19)
 ```
 
-Notice that we made use of the fact that the `dbinom` command is [*vectorized*](https://sta240-f25.github.io/explainers/vectorization.html) in its first argument; if you give it a vector with multiple values, it returns a vector with the probabilities for each one.
+Notice that we made use of the fact that the `dbinom` command is [*vectorized*](/explainers/vectorization.html) in its first argument; if you give it a vector with multiple values, it returns a vector with the probabilities for each one.
 
 

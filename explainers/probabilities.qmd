@@ -5,9 +5,9 @@ format: html
 
 `R` provides basic commands that compute probabilities for our special families of distributions:
 
-- [Binomial](https://sta240-f25.github.io/distributions/discrete-binomial.html);
-- [Geometric](https://sta240-f25.github.io/distributions/discrete-geometric.html);
-- [Poisson](https://sta240-f25.github.io/distributions/discrete-poisson.html);
+- Binomial;
+- Geometric;
+- Poisson;
 - (we will add more as the semester wears on)
 
 Each family has its own commands, but the pattern is the same.
@@ -43,7 +43,7 @@ dpois(0:6, 5)
 ```
 
 
-Notice that these `d-` commands are [*vectorized*](https://sta240-f25.github.io/explainers/vectorization.html).
+Notice that these `d-` commands are [*vectorized*](/explainers/vectorization.html).
 
 ## Evaluating the CDF
 

@@ -35,7 +35,7 @@ log( abs( (2 * A) / ( 1 - sin(A) ) ) ) ^ 2
 
 Dumb!
 
-All of the basic [arithmetic operations](https://sta240-f25.github.io/explainers/math.html) are vectorized like this:
+All of the basic [arithmetic operations](/explainers/math.html) are vectorized like this:
 
 ```{r}
 c(1, 2, 3) + 2

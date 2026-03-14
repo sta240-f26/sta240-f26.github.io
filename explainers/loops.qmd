@@ -45,7 +45,7 @@ six_count
 
 ## Example: plotting many lines
 
-In [this explainer](https://sta240-f25.github.io/explainers/lineplot.html), we saw how to use the `curve` function to plot lines. If you want a plot with many lines, you can just call the `curve` function many times with the `add = TRUE` argument to layer things. In that explainer, we just hard-coded the multiple calls to `curve`. A for loop can clean that up:
+In [this explainer](/explainers/lineplot.html), we saw how to use the `curve` function to plot lines. If you want a plot with many lines, you can just call the `curve` function many times with the `add = TRUE` argument to layer things. In that explainer, we just hard-coded the multiple calls to `curve`. A for loop can clean that up:
 
 ```{r}
 curve(1*x^2, from = -5, to = 5, n = 500, col = "red", ylab = "")
