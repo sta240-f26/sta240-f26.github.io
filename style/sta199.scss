@@ -79,3 +79,49 @@ div.sourceCode pre.sourceCode {
   margin-left: auto;
   margin-right: auto;
 }
+
+
+
+
+
+
+/* Make sidebar section headers white even when they are not links (e.g., empty sections) */
+.sidebar a.sidebar-item-text,
+.sidebar span.sidebar-item-text,
+.sidebar .sidebar-item-text {
+  color: #fff !important;
+}
+
+/* Optional: keep it white on hover/focus as well */
+.sidebar a.sidebar-item-text:hover,
+.sidebar a.sidebar-item-text:focus,
+.sidebar a.sidebar-item-text:visited {
+  color: #fff !important;
+}
+
+/* Sidebar header tool icons (the links under the logo) */
+#quarto-sidebar .sidebar-header a.quarto-navigation-tool,
+#quarto-sidebar .sidebar-header a.quarto-navigation-tool .bi {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+#quarto-sidebar .sidebar-header a.quarto-navigation-tool:hover,
+#quarto-sidebar .sidebar-header a.quarto-navigation-tool:hover .bi {
+  color: rgba(255, 255, 255, 0.80) !important;
+}
+
+#quarto-sidebar .sidebar-header a.quarto-navigation-tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  margin: 0 0.2rem;
+}
+
+#quarto-sidebar .sidebar-header a.quarto-navigation-tool:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
