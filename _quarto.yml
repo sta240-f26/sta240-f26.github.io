@@ -38,7 +38,7 @@ website:
   #draft-mode: unlinked
 
   sidebar:
-    background: "#ffb07c"
+    background: "#FF2400"
     logo: "img/logo.png"
     pinned: true
     align: center
@@ -94,7 +94,7 @@ website:
           #  text: Gamma function
           #- href: math/massage-and-squint.qmd
           #  text: Massage and squint
-      - section: "`R` Helpers"
+      - section: "Code Helpers"
         contents:
           - href: explainers/setup.qmd
             text: Getting started
@@ -111,7 +111,7 @@ website:
           - href: explainers/lineplot.qmd
             text: Plotting lines
           - href: explainers/sample.qmd
-            text: "`sample`"
+            text: sample
           - href: explainers/if-else.qmd
             text: if-else and logic
           - href: explainers/loops.qmd
@@ -132,7 +132,7 @@ website:
   page-footer:
     right: 'This page is built with [Quarto](https://quarto.org/).'
     left: "&copy; Copyright 2026 John Zito, Anya Katsevich"
-    background: "#ffb07c"
+    background: "#FF2400"
 
 format: 
   html:
