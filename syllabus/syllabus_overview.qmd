@@ -21,6 +21,6 @@ Aside from the concrete topics, the course emphasizes four generic intellectual 
 
 | Meeting  | Location                       | Time                   | Staff  |
 |----------|--------------------------------|------------------------|--------|
-| Lectures | Old Chem 201                   | MoWe 3:05 PM - 4:20 PM | John   |
+| Lectures | Old Chem 201                   | MoWe 3:05 PM - 4:20 PM | JZ   |
 | Lab 01   | Perkins LINK 060 (Classroom 1) | Th 1:25 PM - 2:40 PM   | TBD |
 | Lab 02   | Perkins LINK 060 (Classroom 1) | Th 3:05 PM - 4:20 PM   | TBD |
