@@ -574,11 +574,144 @@
     "href": "index.html",
     "title": "STA 240 Probability for Statistical Inference",
     "section": "",
-    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 24\n\nDS: 1.1 - 1.2\n🧑‍🏫 Welcome!\n\n\n\n\n\nWed, Aug 26\n\nDS: 1.3 - 1.4\n🧑‍🏫 Set Theory\n\n\n\n\n\nThu, Aug 27\n\n💻 Lab 0 (calculus review)\n\n\n\n\n2\nMon, Aug 31\n\nDS: 1.5\n🧑‍🏫 Probability spaces\n\n\n\n\n\nWed, Sep 2\n\nDS: 1.6 - 1.8\n🧑‍🏫 Counting\n\n\n\n\n\nThu, Sep 3\n\n💻 Lab 1 (hello R)\n\nLab 1 @ 11:59PM\n\n\n\nFri, Sep 4\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 7\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 9\n\nDS: 1.6 - 1.8\n🧑‍🏫 Counting\n\n\n\n\n\nThu, Sep 10\n\n💻 Lab 2 (counting)\n\nLab 2 @ 11:59PM\n\n\n4\nMon, Sep 14\n\nDS: 2\n🧑‍🏫 Conditional probability\n\nPSET 1 @ 3PM\n\n\n\nWed, Sep 16\n\nDS: 2\n🧑‍🏫 Conditional probability\n\n\n\n\n\nThu, Sep 17\n\n💻 Lab 3 (conditional)\n\nLab 3 @ 11:59PM\n\n\n5\nMon, Sep 21\n\n🧑‍🏫\n\nPSET 2 @ 3PM\n\n\n\nWed, Sep 23\n\n🧑‍🏫\n\n\n\n\n\nThu, Sep 24\n\n💻 Lab 4 (discrete)\n\nLab 4 @ 11:59PM\n\n\n6\nMon, Sep 28\n\n🧑‍🏫\n\nPSET 3 @ 3PM\n\n\n\nWed, Sep 30\n\n🧑‍🏫\n\n\n\n\n\nThu, Oct 1\n\n💻 Lab 5 (discrete)\n\nLab 5 @ 11:59PM\n\n\n7\nMon, Oct 5\n\n🧑‍🏫\n\nPSET 4 @ 3PM\n\n\n\nWed, Oct 7\n\n🧑‍🏫\n\n\n\n\n\nThu, Oct 8\n\n📝 Midterm 1\n\n\n\n\n\n8\nMon, Oct 12\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 14\n\n🧑‍🏫\n\n\n\n\n\nThu, Oct 15\n\n💻 Lab 6 (continuous)\n\nLab 6 @ 11:59PM\n\n\n9\nMon, Oct 19\n\n🧑‍🏫\n\nPSET 5 @ 3PM\n\n\n\nWed, Oct 21\n\n🧑‍🏫\n\n\n\n\n\nThu, Oct 22\n\n💻 Lab 7 (transformations)\n\nLab 7 @ 11:59PM\n\n\n10\nMon, Oct 26\n\n🧑‍🏫\n\nPSET 6 @ 3PM\n\n\n\nWed, Oct 28\n\n🧑‍🏫\n\n\n\n\n\nThu, Oct 29\n\n💻 Lab 8 (simulation)\n\nLab 8 @ 11:59PM\n\n\n11\nMon, Nov 2\n\n🧑‍🏫\n\nPSET 7 @ 3PM\n\n\n\nWed, Nov 4\n\n🧑‍🏫\n\n\n\n\n\nThu, Nov 5\n\n💻 Lab 9 (joint)\n\nLab 9 @ 11:59PM\n\n\n12\nMon, Nov 9\n\n🧑‍🏫\n\nPSET 8 @ 3PM\n\n\n\nWed, Nov 11\n\n🧑‍🏫\n\n\n\n\n\nThu, Nov 12\n\n📝 Midterm 2\n\n\n\n\n\n13\nMon, Nov 16\n\n🧑‍🏫\n\n\n\n\n\nWed, Nov 18\n\n🧑‍🏫\n\n\n\n\n\nThu, Nov 19\n\n💻 Lab 10 (mle)\n\nLab 10 @ 11:59PM\n\n\n14\nMon, Nov 23\n\n🧑‍🏫\n\nPSET 9 @ 3PM\n\n\n\nWed, Nov 25\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n\nThu, Nov 26\n\n❌ Thanksgiving - No Lab\n\n\n\n\n\n15\nMon, Nov 30\n\nDS: 7.2 - 7.4\n🧑‍🏫 Bayesian statistics\n\n\n\n\n\nWed, Dec 2\n\nDS: 7.2 - 7.4\n🧑‍🏫 Bayesian statistics\n\n\n\n\n\nThu, Dec 3\n\n💻 Lab 11 (bayes)\n\nLab 11 @ 11:59PM\n\n\n16\nMon, Dec 7\n\n\n\nPSET 10 @ 3PM",
+    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 24\n\nDS: 1.1 - 1.2\n🧑‍🏫 Welcome!\n\n\n\n\n\nWed, Aug 26\n\nDS: 1.3 - 1.4\n🧑‍🏫 Set Theory\n\n\n\n\n\nThu, Aug 27\n\n💻 Lab 0 (calculus review)\n\n\n\n\n2\nMon, Aug 31\n\nDS: 1.5\n🧑‍🏫 Probability spaces\n\n\n\n\n\nWed, Sep 2\n\nDS: 1.6 - 1.8\n🧑‍🏫 Counting\n\n\n\n\n\nThu, Sep 3\n\n💻 Lab 1 (hello R)\n\nLab 1 @ 11:59PM\n\n\n\nFri, Sep 4\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 7\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 9\n\nDS: 1.6 - 1.8\n🧑‍🏫 Counting\n\n\n\n\n\nThu, Sep 10\n\n💻 Lab 2 (counting)\n\nLab 2 @ 11:59PM\n\n\n4\nMon, Sep 14\n\nDS: 2\n🧑‍🏫 Conditional probability\n\nPSET 1 @ 3PM\n\n\n\nWed, Sep 16\n\nDS: 2\n🧑‍🏫 Conditional probability\n\n\n\n\n\nThu, Sep 17\n\n💻 Lab 3 (conditional)\n\nLab 3 @ 11:59PM\n\n\n5\nMon, Sep 21\n\n🧑‍🏫\n\nPSET 2 @ 3PM\n\n\n\nWed, Sep 23\n\n🧑‍🏫\n\n\n\n\n\nThu, Sep 24\n\n💻 Lab 4 (discrete)\n\nLab 4 @ 11:59PM\n\n\n6\nMon, Sep 28\n\n🧑‍🏫\n\nPSET 3 @ 3PM\n\n\n\nWed, Sep 30\n\n🧑‍🏫\n\n\n\n\n\nThu, Oct 1\n\n💻 Lab 5 (discrete)\n\nLab 5 @ 11:59PM\n\n\n7\nMon, Oct 5\n\n🧑‍🏫\n\nPSET 4 @ 3PM\n\n\n\nWed, Oct 7\n\n🧑‍🏫\n\n\n\n\n\nThu, Oct 8\n\n📝 Midterm 1\n\n\n\n\n\n8\nMon, Oct 12\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 14\n\n🧑‍🏫\n\n\n\n\n\nThu, Oct 15\n\n💻 Lab 6 (continuous)\n\nLab 6 @ 11:59PM\n\n\n9\nMon, Oct 19\n\n🧑‍🏫\n\nPSET 5 @ 3PM\n\n\n\nWed, Oct 21\n\n🧑‍🏫\n\n\n\n\n\nThu, Oct 22\n\n💻 Lab 7 (transformations)\n\nLab 7 @ 11:59PM\n\n\n10\nMon, Oct 26\n\n🧑‍🏫\n\nPSET 6 @ 3PM\n\n\n\nWed, Oct 28\n\n🧑‍🏫\n\n\n\n\n\nThu, Oct 29\n\n💻 Lab 8 (simulation)\n\nLab 8 @ 11:59PM\n\n\n11\nMon, Nov 2\n\n🧑‍🏫\n\nPSET 7 @ 3PM\n\n\n\nWed, Nov 4\n\n🧑‍🏫\n\n\n\n\n\nThu, Nov 5\n\n💻 Lab 9 (joint)\n\nLab 9 @ 11:59PM\n\n\n12\nMon, Nov 9\n\n🧑‍🏫\n\nPSET 8 @ 3PM\n\n\n\nWed, Nov 11\n\n🧑‍🏫\n\n\n\n\n\nThu, Nov 12\n\n📝 Midterm 2\n\n\n\n\n\n13\nMon, Nov 16\n\n🧑‍🏫\n\n\n\n\n\nWed, Nov 18\n\n🧑‍🏫\n\n\n\n\n\nThu, Nov 19\n\n💻 Lab 10 (mle)\n\nLab 10 @ 11:59PM\n\n\n14\nMon, Nov 23\n\n🧑‍🏫\n\nPSET 9 @ 3PM\n\n\n\nWed, Nov 25\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n\nThu, Nov 26\n\n❌ Thanksgiving - No Lab\n\n\n\n\n\n15\nMon, Nov 30\n\nDS: 7.2 - 7.4\n🧑‍🏫 Bayesian statistics\n\n\n\n\n\nWed, Dec 2\n\nDS: 7.2 - 7.4\n🧑‍🏫 Bayesian statistics\n\n\n\n\n\nThu, Dec 3\n\n💻 Lab 11 (bayes)\n\nLab 11 @ 11:59PM\n\n\n16\nMon, Dec 7\n\n\n\nPSET 10 @ 3PM\n\n\n17\nMon, Dec 14\n\n📝 Final (2PM - 5PM)",
     "crumbs": [
       "Syllabus",
       "Schedule"
     ]
+  },
+  {
+    "objectID": "problems/bank/math-review/bad-notation.html",
+    "href": "problems/bank/math-review/bad-notation.html",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "Explain why this is horrific notation:\n\\[\n    \\int_0^x f(x)\\,\\textrm{d} x.\n\\]\nHow should it be fixed?"
+  },
+  {
+    "objectID": "problems/bank/math-review/logexp.html",
+    "href": "problems/bank/math-review/logexp.html",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "Simplify this:\n\\[\n\\ln\\left(e^{a_1}e^{a_2}e^{a_3}\\cdots e^{a_n}\\right).\n\\]"
+  },
+  {
+    "objectID": "problems/bank/math-review/limit.html",
+    "href": "problems/bank/math-review/limit.html",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "Let \\(f\\) be any function with the following properties:\nAssume \\(t\\) is a constant and compute\n\\[\n    \\lim_{x\\to\\infty} xf\\left(\\frac{t}{\\sqrt{x}}\\right)\n    .\n\\]"
+  },
+  {
+    "objectID": "problems/bank/math-review/limit.html#footnotes",
+    "href": "problems/bank/math-review/limit.html#footnotes",
+    "title": "STA 240 Fall 2026",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis means that \\(f\\) and its first two derivatives are all continuous functions at and around zero.↩︎"
+  },
+  {
+    "objectID": "problems/bank/math-review/bell-curve.html",
+    "href": "problems/bank/math-review/bell-curve.html",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "Here is a very silly function:\n\\[\nh(x)\n=\n\\exp\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right)\n,\\quad\n-\\infty&lt;x&lt;\\infty\n.\n\\]\nTreat \\(-\\infty&lt;\\mu&lt;\\infty\\) and \\(\\sigma&gt;0\\) as constants and compute the value(s) of \\(x\\) at which \\(h\\) has inflection points.\n\n\n\n\n\n\nHint\n\n\n\n\n\nHere is an example of what \\(h\\) might look like in the special case where \\(\\mu = 1\\) and \\(\\sigma=2\\):\n\nCodem = 1\ns = 2\npar(mar = c(4, 4, 0.1, 4))\ncurve(exp(-0.5 * ((x - m) / s)^2), \n      from = -6, to = 8, n = 500,\n      xlab = \"x\", ylab = \"h(x)\",\n      xaxt = \"n\")\naxis(1, at = -6:8)\n\n\n\n\n\n\n\nBefore you start doing any math, can you use the picture to guess what the answer will be?"
+  },
+  {
+    "objectID": "problems/bank/math-review/poisson.html",
+    "href": "problems/bank/math-review/poisson.html",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "Assume \\(\\lambda&gt;0\\) is a constant and compute\n\\[\n    \\sum\\limits_{n=0}^\\infty n \\frac{\\lambda^n}{n!}e^{-\\lambda}\n    .\n\\]"
+  },
+  {
+    "objectID": "problems/bank/math-review/gamma.html",
+    "href": "problems/bank/math-review/gamma.html",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "Here is another inordinately silly function:\n\\[\n\\Gamma(x)=\\int_0^\\infty y^{x-1}e^{-y}\\,\\textrm{d} y,\\quad x&gt;0.\n\\]\nProve that \\(\\Gamma(x+1)=x\\Gamma(x)\\).\n\n\n\n\n\n\nHint\n\n\n\n\n\nStart on the left-hand side by writing out \\(\\Gamma(x+1)\\) and evaluating the integral by parts."
+  },
+  {
+    "objectID": "problems/bank/math-review/pareto-ish.html",
+    "href": "problems/bank/math-review/pareto-ish.html",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "Consider this integral:\n\\[\n    \\int_2^\\infty\n    \\frac{1}{x(\\ln x)^p}\\textrm{d} x\n    .\n\\]\n\nUse R to create a single plot with many lines, each graphing the integrand for a different value of \\(p\\). Consider \\(p\\) equal to -2, -1.5, -1, 0, 1, and 5, and make the \\(x\\)-axis of your plot run from 2 to 15.\nShow that \\(\\lim_{x\\to\\infty}\\frac{1}{x(\\ln x)^p}=0\\) for all values of \\(-\\infty&lt;p&lt;\\infty\\).\nFor what values of \\(p\\) does the integral converge? When it does converge, what is its value?\nConsult the picture you created in part (a), and write a few sentences explaining conceptually why the integral converges for some values of \\(p\\) but not others.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nWhen taking the limit or evaluating the integral, can you use the same technique for all values of \\(p\\), or do you need a different technique depending on what \\(p\\) is?"
+  },
+  {
+    "objectID": "problems/pset-0.html",
+    "href": "problems/pset-0.html",
+    "title": "Problem Set 0",
+    "section": "",
+    "text": "Nature laughs at the difficulties of integration.\nThis is ostensibly calculus review, but each problem is a piece of probability in disguise. We will illuminate these connections throughout the semester, and I will refer to Problem Set 0 often. Stay tuned!"
+  },
+  {
+    "objectID": "problems/pset-0.html#problem-0",
+    "href": "problems/pset-0.html#problem-0",
+    "title": "Problem Set 0",
+    "section": "Problem 0",
+    "text": "Problem 0\nRecommend some music for us to listen to while we grade this."
+  },
+  {
+    "objectID": "problems/pset-0.html#problem-1",
+    "href": "problems/pset-0.html#problem-1",
+    "title": "Problem Set 0",
+    "section": "Problem 1",
+    "text": "Problem 1\nExplain why this is horrific notation:\n\\[\n    \\int_0^x f(x)\\,\\textrm{d} x.\n\\]\nHow should it be fixed?"
+  },
+  {
+    "objectID": "problems/pset-0.html#problem-2",
+    "href": "problems/pset-0.html#problem-2",
+    "title": "Problem Set 0",
+    "section": "Problem 2",
+    "text": "Problem 2\nSimplify this:\n\\[\n\\ln\\left(e^{a_1}e^{a_2}e^{a_3}\\cdots e^{a_n}\\right).\n\\]"
+  },
+  {
+    "objectID": "problems/pset-0.html#problem-3",
+    "href": "problems/pset-0.html#problem-3",
+    "title": "Problem Set 0",
+    "section": "Problem 3",
+    "text": "Problem 3\nAssume \\(\\lambda&gt;0\\) is a constant and compute\n\\[\n    \\sum\\limits_{n=0}^\\infty n \\frac{\\lambda^n}{n!}e^{-\\lambda}\n    .\n\\]"
+  },
+  {
+    "objectID": "problems/pset-0.html#problem-4",
+    "href": "problems/pset-0.html#problem-4",
+    "title": "Problem Set 0",
+    "section": "Problem 4",
+    "text": "Problem 4\nHere is a very silly function:\n\\[\nh(x)\n=\n\\exp\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right)\n,\\quad\n-\\infty&lt;x&lt;\\infty\n.\n\\]\nTreat \\(-\\infty&lt;\\mu&lt;\\infty\\) and \\(\\sigma&gt;0\\) as constants and compute the value(s) of \\(x\\) at which \\(h\\) has inflection points.\n\n\n\n\n\n\nHint\n\n\n\n\n\nHere is an example of what \\(h\\) might look like in the special case where \\(\\mu = 1\\) and \\(\\sigma=2\\):\n\nCodem = 1\ns = 2\npar(mar = c(4, 4, 0.1, 4))\ncurve(exp(-0.5 * ((x - m) / s)^2), \n      from = -6, to = 8, n = 500,\n      xlab = \"x\", ylab = \"h(x)\",\n      xaxt = \"n\")\naxis(1, at = -6:8)\n\n\n\n\n\n\n\nBefore you start doing any math, can you use the picture to guess what the answer will be?"
+  },
+  {
+    "objectID": "problems/pset-0.html#problem-5",
+    "href": "problems/pset-0.html#problem-5",
+    "title": "Problem Set 0",
+    "section": "Problem 5",
+    "text": "Problem 5\nHere is another inordinately silly function:\n\\[\n\\Gamma(x)=\\int_0^\\infty y^{x-1}e^{-y}\\,\\textrm{d} y,\\quad x&gt;0.\n\\]\nProve that \\(\\Gamma(x+1)=x\\Gamma(x)\\).\n\n\n\n\n\n\nHint\n\n\n\n\n\nStart on the left-hand side by writing out \\(\\Gamma(x+1)\\) and evaluating the integral by parts."
+  },
+  {
+    "objectID": "problems/pset-0.html#problem-6",
+    "href": "problems/pset-0.html#problem-6",
+    "title": "Problem Set 0",
+    "section": "Problem 6",
+    "text": "Problem 6\nLet \\(f\\) be any function with the following properties:\n\n\n\\(f\\) is twice continuously differentiable in a neighborhood of zero1;\n\n\\(f(0) = 0\\);\n\n\\(f'(0) = 0\\);\n\n\\(f''(0) = 1\\).\n\nAssume \\(t\\) is a constant and compute\n\\[\n    \\lim_{x\\to\\infty} xf\\left(\\frac{t}{\\sqrt{x}}\\right)\n    .\n\\]\n\n\n\n\n\n\nContinuity?\n\n\n\nA full credit solution must clearly explain how and why continuity is being used along the way."
+  },
+  {
+    "objectID": "problems/pset-0.html#problem-7",
+    "href": "problems/pset-0.html#problem-7",
+    "title": "Problem Set 0",
+    "section": "Problem 7",
+    "text": "Problem 7\nConsider this integral:\n\\[\n    \\int_2^\\infty\n    \\frac{1}{x(\\ln x)^p}\\textrm{d} x\n    .\n\\]\n\n\nUse R to create a single plot with many lines, each graphing the integrand for a different value of \\(p\\). Consider \\(p\\) equal to -2, -1.5, -1, 0, 1, and 5, and make the \\(x\\)-axis of your plot run from 2 to 15.\nShow that \\(\\lim_{x\\to\\infty}\\frac{1}{x(\\ln x)^p}=0\\) for all values of \\(-\\infty&lt;p&lt;\\infty\\).\nFor what values of \\(p\\) does the integral converge? When it does converge, what is its value?\nConsult the picture you created in part (a), and write a few sentences explaining conceptually why the integral converges for some values of \\(p\\) but not others.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nWhen taking the limit or evaluating the integral, can you use the same technique for all values of \\(p\\), or do you need a different technique depending on what \\(p\\) is?"
+  },
+  {
+    "objectID": "problems/pset-0.html#submission",
+    "href": "problems/pset-0.html#submission",
+    "title": "Problem Set 0",
+    "section": "Submission",
+    "text": "Submission\nYou are free to compose your solutions for this problem set however you wish (scan or photograph written work, handwriting capture on a tablet device, LaTeX, Quarto, whatever) as long as the final product is a single PDF file. You must upload this to Gradescope and mark the pages associated with each problem.\nDo not forget to include the following:\n\nFor each problem, please acknowledge your collaborators;\nIf a problem required you to code something, please include both the code and the output. “Including the code” can be as crude as a screenshot, but you might also use Quarto to get a nice lil’ pdf that you can merge with the rest of your submission."
+  },
+  {
+    "objectID": "problems/pset-0.html#footnotes",
+    "href": "problems/pset-0.html#footnotes",
+    "title": "Problem Set 0",
+    "section": "Footnotes",
+    "text": "Footnotes\n\nThis means that \\(f\\) and its first two derivatives are all continuous functions at and around zero.↩︎"
   },
   {
     "objectID": "math/massage-and-squint.html",
@@ -1086,7 +1219,7 @@
     "href": "syllabus/syllabus_overview.html",
     "title": "Course overview",
     "section": "",
-    "text": "This is a course on the mathematics of probability and statistics. In probability, we describe the distribution of a random phenomenon and then study how the realizations of that phenomenon typically behave. In statistics, we do the reverse; we observe realizations of a random phenomenon with unknown distribution, and then use the data to figure out what the distribution is. We will spend twelve weeks on the first, and then three weeks on the second. Topics include set theory, probability spaces, counting methods, conditional probability, discrete and (absolutely) continuous random variables, transformations of random variables, (pseudo)random number generation, bivariate distributions, concentration inequalities, limit theorems, maximum likelihood estimation, and Bayesian inference with conjugate priors.\nAside from the concrete topics, the course emphasizes four generic intellectual themes:\n\nStudents in this class will improve their mathematical maturity. They will deepen their experience with all of the main ideas and techniques of univariate calculus, they will encounter topics like set theory and combinatorics, which may be new to them, and they will get a taste of rigorous mathematical proof;\nProbability and statistics weasel their way into pretty much everything these days, and students will study a wide variety of famous and obscure applications coming from the natural and social sciences, technology and industry, and even arts and culture;\nProbability and statistics are often counterintuitive, and humans frequently make silly and harmful mistakes in reasoning. Students will use their mathematical knowledge to identify and critique these errors…and hopefully avoid them themselves;\nThis is a course about doing the math, but in the modern era, this has a symbiotic relationship with computer simulation. Simulation is used both to verify and probe mathematical results, as well as to substitute for them when a proof remains beyond the frontier. Students will learn the basics of the R programming language and use it to simulate probabilistic environments and reinforce their mathematical reasoning.\n\nPrerequisites: single-variable calculus.",
+    "text": "This is a course on the mathematics of probability and statistics. In probability, we describe the distribution of a random phenomenon and then study how the realizations of that phenomenon typically behave. In statistics, we do the reverse; we observe realizations of a random phenomenon with unknown distribution, and then use the data to figure out what the distribution is. We will spend twelve weeks on the first, and then three weeks on the second. Topics include set theory, probability spaces, counting methods, conditional probability, discrete and (absolutely) continuous random variables, transformations of random variables, (pseudo)random number generation, bivariate distributions, concentration inequalities, limit theorems, maximum likelihood estimation, and Bayesian inference with conjugate priors.\nAside from the concrete topics, the course emphasizes four generic intellectual themes:\n\nStudents in this class will deepen their mathematical maturity. They will get a workout with all of the main ideas and techniques of univariate calculus, they will encounter topics like set theory and combinatorics which may be new to them, and they will get a taste of rigorous mathematical proof;\nProbability and statistics weasel their way into pretty much everything these days, and students will study a wide variety of famous and obscure applications coming from the natural and social sciences, technology and industry, and even arts and culture;\nProbability and statistics are often counterintuitive, and humans frequently make silly and harmful mistakes in reasoning. Students will use their mathematical knowledge to identify and critique these errors…and hopefully avoid making them themselves;\nThis is a course about doing the math, but in the modern era, this has a symbiotic relationship with computer simulation. Simulation is used both to verify and probe mathematical results, as well as to substitute for them when a proof remains beyond the frontier. Students will learn the basics of the R programming language and use it to simulate probabilistic environments and reinforce their mathematical reasoning.\n\nPrerequisites: single-variable calculus.",
     "crumbs": [
       "Syllabus",
       "Overview"
@@ -1097,7 +1230,7 @@
     "href": "syllabus/syllabus_overview.html#description",
     "title": "Course overview",
     "section": "",
-    "text": "This is a course on the mathematics of probability and statistics. In probability, we describe the distribution of a random phenomenon and then study how the realizations of that phenomenon typically behave. In statistics, we do the reverse; we observe realizations of a random phenomenon with unknown distribution, and then use the data to figure out what the distribution is. We will spend twelve weeks on the first, and then three weeks on the second. Topics include set theory, probability spaces, counting methods, conditional probability, discrete and (absolutely) continuous random variables, transformations of random variables, (pseudo)random number generation, bivariate distributions, concentration inequalities, limit theorems, maximum likelihood estimation, and Bayesian inference with conjugate priors.\nAside from the concrete topics, the course emphasizes four generic intellectual themes:\n\nStudents in this class will improve their mathematical maturity. They will deepen their experience with all of the main ideas and techniques of univariate calculus, they will encounter topics like set theory and combinatorics, which may be new to them, and they will get a taste of rigorous mathematical proof;\nProbability and statistics weasel their way into pretty much everything these days, and students will study a wide variety of famous and obscure applications coming from the natural and social sciences, technology and industry, and even arts and culture;\nProbability and statistics are often counterintuitive, and humans frequently make silly and harmful mistakes in reasoning. Students will use their mathematical knowledge to identify and critique these errors…and hopefully avoid them themselves;\nThis is a course about doing the math, but in the modern era, this has a symbiotic relationship with computer simulation. Simulation is used both to verify and probe mathematical results, as well as to substitute for them when a proof remains beyond the frontier. Students will learn the basics of the R programming language and use it to simulate probabilistic environments and reinforce their mathematical reasoning.\n\nPrerequisites: single-variable calculus.",
+    "text": "This is a course on the mathematics of probability and statistics. In probability, we describe the distribution of a random phenomenon and then study how the realizations of that phenomenon typically behave. In statistics, we do the reverse; we observe realizations of a random phenomenon with unknown distribution, and then use the data to figure out what the distribution is. We will spend twelve weeks on the first, and then three weeks on the second. Topics include set theory, probability spaces, counting methods, conditional probability, discrete and (absolutely) continuous random variables, transformations of random variables, (pseudo)random number generation, bivariate distributions, concentration inequalities, limit theorems, maximum likelihood estimation, and Bayesian inference with conjugate priors.\nAside from the concrete topics, the course emphasizes four generic intellectual themes:\n\nStudents in this class will deepen their mathematical maturity. They will get a workout with all of the main ideas and techniques of univariate calculus, they will encounter topics like set theory and combinatorics which may be new to them, and they will get a taste of rigorous mathematical proof;\nProbability and statistics weasel their way into pretty much everything these days, and students will study a wide variety of famous and obscure applications coming from the natural and social sciences, technology and industry, and even arts and culture;\nProbability and statistics are often counterintuitive, and humans frequently make silly and harmful mistakes in reasoning. Students will use their mathematical knowledge to identify and critique these errors…and hopefully avoid making them themselves;\nThis is a course about doing the math, but in the modern era, this has a symbiotic relationship with computer simulation. Simulation is used both to verify and probe mathematical results, as well as to substitute for them when a proof remains beyond the frontier. Students will learn the basics of the R programming language and use it to simulate probabilistic environments and reinforce their mathematical reasoning.\n\nPrerequisites: single-variable calculus.",
     "crumbs": [
       "Syllabus",
       "Overview"
@@ -1108,7 +1241,7 @@
     "href": "syllabus/syllabus_overview.html#meetings",
     "title": "Course overview",
     "section": "Meetings",
-    "text": "Meetings\n\n\n\n\n\n\n\n\n\nMeeting\nLocation\nTime\nStaff\n\n\n\n\nLectures\nOld Chem 201\nMoWe 3:05 PM - 4:20 PM\nJohn\n\n\nLab 01\nPerkins LINK 060 (Classroom 1)\nTh 1:25 PM - 2:40 PM\nTBD\n\n\nLab 02\nPerkins LINK 060 (Classroom 1)\nTh 3:05 PM - 4:20 PM\nTBD",
+    "text": "Meetings\n\n\n\n\n\n\n\n\n\nMeeting\nLocation\nTime\nStaff\n\n\n\n\nLectures\nOld Chem 201\nMoWe 3:05 PM - 4:20 PM\nJZ\n\n\nLab 01\nPerkins LINK 060 (Classroom 1)\nTh 1:25 PM - 2:40 PM\nTBD\n\n\nLab 02\nPerkins LINK 060 (Classroom 1)\nTh 3:05 PM - 4:20 PM\nTBD",
     "crumbs": [
       "Syllabus",
       "Overview"
@@ -1207,7 +1340,7 @@
     "href": "syllabus/syllabus_assignments.html#problem-sets-30",
     "title": "Assignments and grading",
     "section": "Problem Sets (30%)",
-    "text": "Problem Sets (30%)\nMathematics is like everything else in life; if you practice, you improve. As such, the problem sets are really the heart of the course. They will mostly consist of pencil-and-paper math problems, but sometimes you will be asked to do some coding. You may compose you solutions however you like (scan or photograph written work, LaTeX, Quarto, handwriting capture on a tablet, whatever) so long as you ultimately upload a single .pdf file to Gradescope.\n\n\n\n\n\n\nGrace\n\n\n\nYour lowest problem set score will be dropped at the end of the semester.",
+    "text": "Problem Sets (30%)\nMathematics is like everything else in life; if you practice, you improve. As such, the problem sets are really the heart of the course. They will mostly consist of pencil-and-paper math problems, but you will also practice the coding skills developed in lab. You may compose your solutions however you like (scan or photograph written work, LaTeX, Quarto, handwriting capture on a tablet, whatever) so long as you ultimately upload a single .pdf file to Gradescope.\n\n\n\n\n\n\nGrace\n\n\n\nYour lowest problem set score will be dropped at the end of the semester.",
     "crumbs": [
       "Syllabus",
       "Assignments and grading"
@@ -1218,7 +1351,7 @@
     "href": "syllabus/syllabus_assignments.html#exams-20-each",
     "title": "Assignments and grading",
     "section": "Exams (20% each)",
-    "text": "Exams (20% each)\nThere will be three exams. The dates, times, and locations are firm, so mark your calendar now:\n\nMidterm 1: Thursday October 9 during your lab;\nMidterm 2: Thursday November 13 during your lab;\nFinal: Friday December 12 from 9 AM - 12 PM in Old Chem 116.\n\nThese will be old school, pencil-and-paper, in-class exams. You are allowed only two resources:\n\na “dumb” calculator (no wi-fi). You will not actually need it, but if you want it as a security blanket, be my guest;\nboth sides of one 8.5” x 11” sheet of notes, prepared by you and you alone. You can create it however you wish: handwritten, on a computer, etc.\n\nIf you seek testing accommodations, make sure the Student Disability Access Office sends me a letter, and then please make your appointments in the Testing Center as soon as possible.\n\n\n\n\n\n\nGrace\n\n\n\nIf you do better on the final exam than you did on one of the midterms, we will replace your lowest midterm exam score with your final exam score.\n\n\n\n\n\n\n\n\nNo make-up exams\n\n\n\nIf you are absent from one of the midterms for whatever reason, there will not be a make-up. Pursuant to the above policy, we will simply replace the missed midterm score with the final exam score. If you miss the final exam, you get a zero unless you have a Dean’s Excuse.",
+    "text": "Exams (20% each)\nThere will be three exams. The dates, times, and locations are firm, so mark your calendar now:\n\nMidterm 1: Thursday October 8 during your lab;\nMidterm 2: Thursday November 12 during your lab;\nFinal: Monday December 14 from 2pm to 5pm in Old Chem 201.\n\nThese will be old school, pencil-and-paper, in-class exams. You are allowed only two resources:\n\na “dumb” calculator (no wi-fi). You will not actually need it, but if you want it as a security blanket, be my guest;\nboth sides of one 8.5” x 11” sheet of notes, prepared by you and you alone. You can create it however you wish: handwritten, on a computer, on a tablet device, etc.\n\nIf you seek testing accommodations, make sure the Student Disability Access Office sends me a letter, and then please make your appointments in the Testing Center as soon as possible.\n\n\n\n\n\n\nGrace\n\n\n\nIf you do better on the final exam than you did on one of the midterms, we will replace your lowest midterm exam score with your final exam score.\n\n\n\n\n\n\n\n\nNo make-up exams\n\n\n\nIf you are absent from one of the midterms for whatever reason, there will not be a make-up. Pursuant to the above policy, we will simply replace the missed midterm score with the final exam score. If you miss the final exam, you get a zero unless you have a Dean’s Excuse.",
     "crumbs": [
       "Syllabus",
       "Assignments and grading"
