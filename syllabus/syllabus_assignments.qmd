@@ -10,10 +10,10 @@ Your final course grade will be calculated as follows:
 | Category       | Percentage |
 |----------------|------------|
 | Labs           | 10%        |
-| Problem Sets   | 30%        |
+| Problem Sets   | 20%        |
 | Midterm Exam 1 | 20%        |
 | Midterm Exam 2 | 20%        |
-| Final exam     | 20%        |
+| Final exam     | 30%        |
 :::
 
 Your final letter grade will be determined based on the usual thresholds:
@@ -55,7 +55,7 @@ Each lab assignment will be graded on the following scale:
 Your two lowest lab scores will be dropped at the end of the semester.
 :::
 
-## Problem Sets (30%)
+## Problem Sets (20%)
 
 Mathematics is like everything else in life; if you practice, you improve. As such, the problem sets are really the heart of the course. They will mostly consist of pencil-and-paper math problems, but you will also practice the coding skills developed in lab. You may compose your solutions however you like (scan or photograph written work, LaTeX, Quarto, handwriting capture on a tablet, whatever) so long as you ultimately upload a single `.pdf` file to Gradescope.
 
@@ -65,13 +65,13 @@ Mathematics is like everything else in life; if you practice, you improve. As su
 Your lowest problem set score will be dropped at the end of the semester.
 :::
 
-## Exams (20% each)
+## Exams (70%)
 
 There will be three exams. The dates, times, and locations are firm, so mark your calendar now:
 
--   **Midterm 1**: Thursday October 8 during your lab;
--   **Midterm 2**: Thursday November 12 during your lab;
--   **Final**: Monday December 14 from 2pm to 5pm in Old Chem 201.
+-   **Midterm 1** (20%): Thursday October 8 during your lab;
+-   **Midterm 2** (20%): Thursday November 12 during your lab;
+-   **Final** (30%): Monday December 14 from 2pm to 5pm in Old Chem 201.
 
 These will be old school, pencil-and-paper, in-class exams. You are allowed only two resources:
 
