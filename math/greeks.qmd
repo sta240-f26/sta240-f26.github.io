@@ -32,6 +32,6 @@ editor:
 | $Y, \upsilon$      | upsilon      |
 | $\Phi, \phi$       | phi          |
 | $X, \chi$          | chi ("kai")  |
-| $\Psi, \psi$       | psi          |
+| $\Psi, \psi$       | psi ("sigh") |
 | $\Omega, \omega$   | omega        |
 :::
