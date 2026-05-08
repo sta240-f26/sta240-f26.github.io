@@ -172,37 +172,37 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../syllabus/syllabus_overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/syllabus-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../syllabus/syllabus_team.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/syllabus-team.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teaching team</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../syllabus/syllabus_materials.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/syllabus-materials.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Materials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../syllabus/syllabus_assignments.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/syllabus-assignments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assignments and grading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../syllabus/syllabus_policies.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/syllabus-policies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Policies</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../syllabus/syllabus_resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/syllabus-resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">University resources</span></a>
   </div>
 </li>
@@ -417,9 +417,26 @@ window.Quarto = {
 \]</span></p>
 <p>How should it be fixed?</p>
 </section><section id="problem-2" class="level2"><h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
-<p>Simplify this:</p>
+<p>If we have a bunch of real numbers <span class="math inline">\(a_1\)</span>, <span class="math inline">\(a_2\)</span>, …, <span class="math inline">\(a_{n-1}\)</span>, <span class="math inline">\(a_n\)</span> and we want to add them all up, we can do that concisely with the familiar “big sigma” notation:</p>
 <p><span class="math display">\[
-\ln\left(e^{a_1}e^{a_2}e^{a_3}\cdots e^{a_n}\right).
+\sum\limits_{i=1}^n a_i = a_1+a_2+...+a_{n-1}+a_n.
+\]</span></p>
+<p>Turns out there’s nothing special about adding. If instead we wish to <em>multiply</em> all of the numbers together, we can do that with “big pi” notation, which may be new to you:</p>
+<p><span class="math display">\[
+\prod\limits_{i=1}^na_i=a_1\times a_2\times ...\times a_{n-1}\times a_n.
+\]</span></p>
+<p>This notation gets used a lot in statistics, so let’s practice.</p>
+<ol type="a">
+<li>Simplify this expression as much as possible:</li>
+</ol>
+<p><span class="math display">\[
+\prod\limits_{i=1}^nc\cdot a_i.
+\]</span></p>
+<ol start="2" type="a">
+<li>Simplify this expression as much as possible:</li>
+</ol>
+<p><span class="math display">\[
+\ln\left(\prod\limits_{i=1}^ne^{a_i}\right).
 \]</span></p>
 </section><section id="problem-3" class="level2"><h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
 <p>Assume <span class="math inline">\(\lambda&gt;0\)</span> is a constant and compute</p>
