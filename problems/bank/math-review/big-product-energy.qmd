@@ -1,18 +1,18 @@
-If we have a bunch of real numbers $a_1$, $a_2$, ..., $a_{n-1}$, $a_n$ and we want to add them all up, we can do that concisely with the familiar "big sigma" notation:
+If we have a bunch of real numbers $a_1$, $a_2$, ..., $a_{n-1}$, $a_n$ and we want to add them all up, we can write that concisely with the familiar "big sigma" notation:
 
 $$
-\sum\limits_{i=1}^n a_i = a_1+a_2+...+a_{n-1}+a_n.
+\sum\limits_{i=1}^n a_i = a_1 + a_2 + ... + a_{n-1} + a_n.
 $$
 
-Turns out there's nothing special about adding. If instead we wish to *multiply* all of the numbers together, we can do that with "big pi" notation, which may be new to you:
+If instead we wish to *multiply* all of the numbers together, we can write that concisely with "big pi" notation, which is similar, but may be new to you:
 
 $$
-\prod\limits_{i=1}^na_i=a_1\times a_2\times ...\times a_{n-1}\times a_n.
+\prod\limits_{i=1}^na_i=a_1 \times a_2 \times ... \times a_{n-1} \times a_n.
 $$
 
-This notation gets used a lot in statistics, so let's practice.
+We use this a lot in statistics, so let's practice.
 
-a. Simplify this expression as much as possible:
+a. Let $c\in\mathbb{R}$ be any constant, and simplify this expression as much as possible:
 
 $$
 \prod\limits_{i=1}^nc\cdot a_i.
