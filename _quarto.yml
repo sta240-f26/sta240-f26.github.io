@@ -60,6 +60,8 @@ website:
     search: true
     collapse-level: 1
     contents:
+      - href: syllabus/student-news.qmd
+        text: Student news!
       - section: "Syllabus"
         contents:
           - href: syllabus/syllabus-overview.qmd
