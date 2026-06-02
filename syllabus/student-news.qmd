@@ -1,0 +1,11 @@
+---
+title: "Student news"
+subtitle: "Support your classmates!"
+format: html
+---
+
+{{< include student-news/fall-vocal-showcase.qmd >}}
+
+{{< include student-news/fall-dance-showcase.qmd >}}
+
+{{< include student-news/sigler-house.qmd >}}
