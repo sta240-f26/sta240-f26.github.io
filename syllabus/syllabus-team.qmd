@@ -7,14 +7,14 @@ editor:
 +---------------------------+----------------+---------------+--------------------------------+
 | Mug                       | Name           | Role          | Office Hours                   |
 +===========================+================+===============+================================+
-| ![](images/yh.jpg){.circ} | Huang, Claire  | TA            | **Mon 7:30 PM - 9:30 PM**\     |
-|                           |                |               | remote (Zoom link on Canvas)   |
+|                           | Huang, Claire  | TA            | **Time TBD**\                  |
+|                           |                |               | Location TBD                   |
 +---------------------------+----------------+---------------+--------------------------------+
-| ![](images/al.jpg){.circ} | Kakkad, Dwija  | Head TA       | **Wed 4:30 PM - 5:30 PM**\     |
-|                           |                |               | Old Chem 203B\                 |
+|                           | Kakkad, Dwija  | Head TA       | **Time TBD**\                  |
+|                           |                |               | Location TBD                   |
 +---------------------------+----------------+---------------+--------------------------------+
-| ![](images/lm.png){.circ} | Urena, Ricardo | TA            | **Sun 10:00 AM - 12:00 PM**\   |
-|                           |                |               | remote (Zoom link on Canvas)   |
+|                           | Urena, Ricardo | TA            | **Time TBD**\                  |
+|                           |                |               | Location TBD                   |
 +---------------------------+----------------+---------------+--------------------------------+
 | ![](images/jz.jpg){.circ} | Zito, John     | Instructor    | **F 1:00 PM - 3:30 PM**\       |
 |                           |                |               | *or by appointment*\           |
