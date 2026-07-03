@@ -197,3 +197,9 @@ A point like $x^\star$ in this example is called a **critical point**. A critica
 - if $f'(x^\star)=0$ and $f''(x^\star)>0$, then $x^\star$ is a minimizer;
 - if $f'(x^\star)=0$ and $f''(x^\star)=0$, then the test is inconclusive.
 
+::: callout-tip 
+## Example: 
+
+example with local min, local max, and saddle
+
+:::
