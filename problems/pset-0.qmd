@@ -7,7 +7,13 @@ editor:
 
 > [Nature laughs at the difficulties of integration.](https://en.wikiquote.org/wiki/Pierre-Simon_Laplace)
 
-This is ostensibly calculus review, but each problem is a piece of probability in disguise. We will illuminate these connections throughout the semester, and I will refer to Problem Set 0 often. Stay tuned!
+This assignment is intended to introduce you to the level of mathematics that is expected in STA 240. A few remarks:
+
+- These problems touch on all of the main ideas from univariate calculus: derivatives, integrals, optimization, limits, continuity, sequences, series, etc. If you seek a refresher on anything, you can begin with the various [math helpers](/math/differentiation.html) here on the course page. Otherwise, these [videos](https://youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr&si=_CT2up60btlpGw86) might help;
+- If you can figure out these problems, you are ready for STA 240. On the mathematics difficulty scale in this class, Problem Set 0 is about an 8/10;
+- If you struggle with these problems, then you have a month and a half to review before I start turning up the heat. We won't do much calculus before Midterm 1, but it looms large afterward;
+- The purpose of this assignment is to prepare you, not to haze you. As such, it is worth fewer points than subsequent problem sets. I encourage you to chill out and make a serious, no-AI attempt at everything so that you can honestly assess your actual level of understanding;
+- While this is ostensibly calculus review, each problem is actually a piece of probability in disguise. These connections will be revealed throughout the semester, and I will refer to Problem Set 0 often. Stay tuned!
 
 ## Problem 0
 
