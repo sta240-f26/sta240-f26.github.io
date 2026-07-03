@@ -55,6 +55,8 @@ Each lab assignment will be graded on the following scale:
 Your two lowest lab scores will be dropped at the end of the semester.
 :::
 
+THESE SHOULD BE PROPERLY GRADED FOR CORRECTNESS, AND WE SHOULD ENFORCE GOOD PRACTICES AROUND LATEX, QUARTO, AND CODING.
+
 ## Problem Sets (20%)
 
 Mathematics is like everything else in life; if you practice, you improve. As such, the problem sets are really the heart of the course. They will mostly consist of pencil-and-paper math problems, but you will also practice the coding skills developed in lab. You may compose your solutions however you like (scan or photograph written work, LaTeX, Quarto, handwriting capture on a tablet, whatever) so long as you ultimately upload a single `.pdf` file to Gradescope.
