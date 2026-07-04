@@ -15,38 +15,83 @@ This assignment is intended to introduce you to the level of mathematics that is
 - The purpose of this assignment is to prepare you, not to haze you. As such, it is worth fewer points than subsequent problem sets. I encourage you to chill out and make a serious, no-AI attempt at everything so that you can honestly assess your actual level of understanding;
 - While this is ostensibly calculus review, each problem is actually a piece of probability in disguise. These connections will be revealed throughout the semester, and I will refer to Problem Set 0 often. Stay tuned!
 
-## Problem 0
+```{r}
+#| echo: false
+q_no <- 0
+```
+
+# Problem `{r} q_no`
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
 
 {{< include bank/_music-rec.qmd >}}
 
-## Problem 1
+# Problem `{r} q_no`
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
 
 {{< include bank/math-review/bad-integral-notation.qmd >}}
 
-## Problem 2
+# Problem `{r} q_no`
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
 
 {{< include bank/math-review/big-product-energy.qmd >}}
 
-## Problem 3
+# Problem `{r} q_no`
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
 
 {{< include bank/math-review/poisson-mean.qmd >}}
 
-## Problem 4
+# Problem `{r} q_no`
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
 
 {{< include bank/math-review/bell-curve-inflection.qmd >}}
 
-## Problem 5
+# Problem `{r} q_no`
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
 
 {{< include bank/math-review/gamma-recursion.qmd >}}
 
-## Problem 6
+# Problem `{r} q_no`
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
 
 {{< include bank/math-review/lhopital-2x.qmd >}}
 
-## Problem 7
+# Problem `{r} q_no`
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
 
 {{< include bank/math-review/pareto-ish.qmd >}}
 
-## Submission
+# Submission
 
 {{< include bank/_submission.qmd >}}
