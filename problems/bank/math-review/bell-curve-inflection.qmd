@@ -31,6 +31,6 @@ curve(exp(-0.5 * ((x - m) / s)^2),
 axis(1, at = -6:8)
 ```
 
-Before you start doing any math, can you use the picture to guess what the answer will be?
+Before you start doing any calculations, can you use the picture to guess what the answer will be?
 :::
 

@@ -1,4 +1,4 @@
-Assume $\lambda>0$ is a constant and compute
+Assume $\lambda>0$ is a constant and evaluate this sum:
 
 $$
     \sum\limits_{n=0}^\infty n \frac{\lambda^n}{n!}e^{-\lambda}
