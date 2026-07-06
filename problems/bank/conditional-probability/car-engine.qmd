@@ -1,0 +1,10 @@
+![](images/jenkins.gif){fig-align="center" width="50%"}
+
+I know nothing about cars, and they do not interest me at all. I purchased my current vehicle in August 2019 when it had about 33,000 miles on it. Today, it has a little over 50,000 miles on it. Did I mention that I'm not a car guy? Having said that, I hate when I take my car to the shop and get manipulated into paying through the nose for some service that I don't even understand. So let's say that one day I pop the hood of my car and try to teach myself how the engine works. Inside, I see three components that seem important: a fan that can blow or not, a spiggot that can go up, down, or remain neutral, and a belt that can wiggle or thump. After long hours of study, I realize that the components behave as follows:
+
+- the fan blows with probability 1/2;
+- The spiggot goes up with probability 1/2 if the fan blows. The spiggot cannot go down if the fan blows. Otherwise, the spiggot goes up, down, or remains neutral with equal probabilities;
+- The belt wiggles if the spiggot goes up, otherwise it wiggles with probability 1/6;
+- The engine starts provided the belt is thumping.
+
+What is the probability that the engine starts?
