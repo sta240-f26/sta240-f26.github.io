@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>poisson – STA 240 Fall 2026</title>
+<title>car-engine – STA 240 Fall 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,38 +67,10 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <meta property="og:title" content="STA 240 Fall 2026">
 <meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
+<meta property="og:image" content="https://sta240-f26.github.io/problems/bank/conditional-probability/images/jenkins.gif">
 <meta property="og:site_name" content="STA 240 Fall 2026">
 </head>
 
@@ -142,6 +114,12 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../syllabus/student-news.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Student news!</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
@@ -153,37 +131,37 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/syllabus_overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../syllabus/syllabus-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/syllabus_team.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../syllabus/syllabus-team.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teaching team</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/syllabus_materials.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../syllabus/syllabus-materials.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Materials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/syllabus_assignments.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../syllabus/syllabus-assignments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assignments and grading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/syllabus_policies.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../syllabus/syllabus-policies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Policies</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/syllabus_resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../syllabus/syllabus-resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">University resources</span></a>
   </div>
 </li>
@@ -363,11 +341,19 @@ window.Quarto = {
 
 
 
-<p>Assume <span class="math inline">\(\lambda&gt;0\)</span> is a constant and compute</p>
-<p><span class="math display">\[
-    \sum\limits_{n=0}^\infty n \frac{\lambda^n}{n!}e^{-\lambda}
-    .
-\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/jenkins.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>I know nothing about cars, and they do not interest me at all. I purchased my current vehicle in August 2019 when it had about 33,000 miles on it. Today, it has a little over 50,000 miles on it. Did I mention that I’m not a car guy? Having said that, I hate when I take my car to the shop and get manipulated into paying through the nose for some service that I don’t even understand. So let’s say that one day I pop the hood of my car and try to teach myself how the engine works. Inside, I see three components that seem important: a fan that can blow or not, a spiggot that can go up, down, or remain neutral, and a belt that can wiggle or thump. After long hours of study, I realize that the components behave as follows:</p>
+<ul>
+<li>the fan blows with probability 1/2;</li>
+<li>The spiggot goes up with probability 1/2 if the fan blows. The spiggot cannot go down if the fan blows. Otherwise, the spiggot goes up, down, or remains neutral with equal probabilities;</li>
+<li>The belt wiggles if the spiggot goes up, otherwise it wiggles with probability 1/6;</li>
+<li>The engine starts provided the belt is thumping.</li>
+</ul>
+<p>What is the probability that the engine starts?</p>
 
 
 

@@ -37,12 +37,24 @@
     <lastmod>2026-03-24T06:43:53.159Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/syllabus-resources.html</loc>
-    <lastmod>2026-03-09T19:40:32.160Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/student-news.html</loc>
+    <lastmod>2026-06-02T14:20:07.138Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/syllabus/syllabus-team.html</loc>
+    <lastmod>2026-07-03T19:20:51.200Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/syllabus/student-news/chronicle.html</loc>
+    <lastmod>2026-06-02T20:14:34.362Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/syllabus/student-news/muse-magazine.html</loc>
+    <lastmod>2026-06-03T23:39:08.376Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/syllabus/syllabus-assignments.html</loc>
-    <lastmod>2026-04-11T19:28:46.615Z</lastmod>
+    <lastmod>2026-07-03T21:34:25.726Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/slides/2025-09-03-set2prob.html</loc>
@@ -69,56 +81,60 @@
     <lastmod>2026-03-10T00:13:48.999Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/math-review/big-product-energy.html</loc>
-    <lastmod>2026-05-08T00:11:09.912Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/car-engine.html</loc>
+    <lastmod>2026-07-06T14:05:11.526Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/math-review/bell-curve-inflection.html</loc>
-    <lastmod>2026-03-14T19:36:54.822Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/math-review/pareto-ish.html</loc>
+    <lastmod>2026-07-04T16:12:34.292Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/math-review/lhopital-2x.html</loc>
-    <lastmod>2026-02-21T02:26:06.981Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/math-review/bad-integral-notation.html</loc>
-    <lastmod>2026-02-21T02:26:06.981Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/lecture-notes/04-conditional-probability.html</loc>
-    <lastmod>2026-03-09T22:47:31.255Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/lecture-notes/02-probability-spaces.html</loc>
-    <lastmod>2026-03-09T22:46:06.942Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/lecture-notes/01-set-theory-to-probability.html</loc>
-    <lastmod>2026-03-09T22:45:39.051Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/lecture-notes/00-set-theory.html</loc>
-    <lastmod>2026-03-09T22:44:41.729Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/lecture-notes/03-counting.html</loc>
-    <lastmod>2026-03-09T22:46:54.438Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/math-review/poisson-mean.html</loc>
+    <lastmod>2026-07-06T13:35:42.197Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/math-review/gamma-recursion.html</loc>
     <lastmod>2026-03-14T19:39:52.666Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/math-review/poisson-mean.html</loc>
+    <loc>https://sta240-f26.github.io/lecture-notes/03-counting.html</loc>
+    <lastmod>2026-03-09T22:46:54.438Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/lecture-notes/00-set-theory.html</loc>
+    <lastmod>2026-03-09T22:44:41.729Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/lecture-notes/01-set-theory-to-probability.html</loc>
+    <lastmod>2026-03-09T22:45:39.051Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/lecture-notes/02-probability-spaces.html</loc>
+    <lastmod>2026-03-09T22:46:06.942Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/lecture-notes/04-conditional-probability.html</loc>
+    <lastmod>2026-03-09T22:47:31.255Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/math-review/bad-integral-notation.html</loc>
     <lastmod>2026-02-21T02:26:06.981Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/math-review/pareto-ish.html</loc>
-    <lastmod>2026-02-21T02:26:06.981Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/math-review/lhopital-2x.html</loc>
+    <lastmod>2026-07-03T19:03:08.493Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/math-review/bell-curve-inflection.html</loc>
+    <lastmod>2026-07-04T16:09:21.793Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/math-review/big-product-energy.html</loc>
+    <lastmod>2026-05-08T00:11:09.912Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/pset-0.html</loc>
-    <lastmod>2026-05-07T19:04:46.854Z</lastmod>
+    <lastmod>2026-07-03T21:40:31.103Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/math/massage-and-squint.html</loc>
@@ -130,7 +146,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/math/differentiation.html</loc>
-    <lastmod>2026-03-14T05:07:58.009Z</lastmod>
+    <lastmod>2026-06-04T21:29:11.328Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/math/logexp.html</loc>
@@ -145,8 +161,20 @@
     <lastmod>2026-03-09T19:40:32.159Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/syllabus-team.html</loc>
-    <lastmod>2026-03-09T23:54:43.086Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/student-news/fall-dance-showcase.html</loc>
+    <lastmod>2026-06-02T14:21:31.044Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/syllabus/student-news/sigler-house.html</loc>
+    <lastmod>2026-06-02T14:18:03.413Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/syllabus/student-news/fall-vocal-showcase.html</loc>
+    <lastmod>2026-06-02T14:23:17.677Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/syllabus/syllabus-resources.html</loc>
+    <lastmod>2026-03-09T19:40:32.160Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/syllabus/syllabus-policies.html</loc>
