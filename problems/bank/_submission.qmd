@@ -2,5 +2,5 @@ You are free to compose your solutions for this problem set however you wish (sc
 
 Do not forget to include the following:
 
-- For each problem, please [acknowledge your collaborators](/syllabus/syllabus_policies.html#collaboration);
+- For each problem, please [acknowledge your collaborators](/syllabus/syllabus-policies.html#collaboration);
 - If a problem required you to code something, please include both the code and the output. "Including the code" can be as crude as a screenshot, but you might also use [Quarto](/explainers/quarto.html) to get a nice lil' pdf that you can merge with the rest of your submission.
