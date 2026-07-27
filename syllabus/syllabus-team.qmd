@@ -10,7 +10,7 @@ editor:
 | ![](images/ch.jpg){.circ} | Huang, Claire  | TA            | **Time TBD**\                  |
 |                           |                |               | Location TBD                   |
 +---------------------------+----------------+---------------+--------------------------------+
-| ![](images/dk.jpg){.circ} | Kakkad, Dwija  | Head TA       | **Time TBD**\                  |
+| ![](images/dk.jpg){.circ} | Kakkad, Dwija  | Lab TA        | **Time TBD**\                  |
 |                           |                |               | Location TBD                   |
 +---------------------------+----------------+---------------+--------------------------------+
 | ![](images/ru.jpg){.circ} | Urena, Ricardo | TA            | **Time TBD**\                  |
