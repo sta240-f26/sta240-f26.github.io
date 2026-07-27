@@ -6,7 +6,7 @@ editor:
 
 ## Description
 
-This is a course on the mathematics of probability and statistics. In **probability**, we describe the distribution of a random phenomenon and then study how the realizations of that phenomenon typically behave. In **statistics**, we do the reverse; we observe realizations of a random phenomenon with *unknown* distribution, and then use the data to figure out what the distribution is. We will spend twelve weeks on the first, and then three weeks on the second. Topics include set theory, probability spaces, counting methods, conditional probability, discrete and (absolutely) continuous random variables, transformations of random variables, (pseudo)random number generation, bivariate distributions, concentration inequalities, limit theorems, maximum likelihood estimation, and Bayesian inference with conjugate priors. 
+This is a course on the mathematics of probability and statistics. In **probability**, we describe the distribution of a random phenomenon and then study how the realizations of that phenomenon typically behave. In **statistics**, we do the reverse; we observe realizations of a random phenomenon with *unknown* distribution, and then use the data to figure out what the distribution is. We will spend twelve weeks on the first, and then three weeks on the second. Topics include set theory, probability spaces, counting methods, conditional probability, discrete and (absolutely) continuous random variables, transformations of random variables, (pseudo)random number generation, bivariate distributions, concentration inequalities, limit theorems, the fundamentals of classical statistics, and maximum likelihood estimation.
 
 Aside from the concrete topics, the course emphasizes four generic intellectual themes:
 
@@ -22,5 +22,5 @@ Aside from the concrete topics, the course emphasizes four generic intellectual 
 | Meeting  | Location                       | Time                   | Staff  |
 |----------|--------------------------------|------------------------|--------|
 | Lectures | Old Chem 201                   | MoWe 3:05 PM - 4:20 PM | JZ   |
-| Lab 01   | Perkins LINK 060 (Classroom 1) | Th 1:25 PM - 2:40 PM   | TBD |
-| Lab 02   | Perkins LINK 060 (Classroom 1) | Th 3:05 PM - 4:20 PM   | TBD |
+| Lab 01   | Perkins LINK 060 (Classroom 1) | Th 1:25 PM - 2:40 PM   | Dwija |
+| Lab 02   | Perkins LINK 060 (Classroom 1) | Th 3:05 PM - 4:20 PM   | Dwija |
