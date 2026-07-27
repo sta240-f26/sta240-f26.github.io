@@ -5,7 +5,7 @@ editor:
   mode: source
 ---
 
-> [Nature laughs at the difficulties of integration.](https://en.wikiquote.org/wiki/Pierre-Simon_Laplace)
+> [If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is.](https://en.wikiquote.org/wiki/John_von_Neumann)
 
 This assignment is intended to introduce you to the level of mathematics that is expected in STA 240. A few remarks:
 
