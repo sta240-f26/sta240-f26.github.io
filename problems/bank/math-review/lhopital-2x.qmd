@@ -9,7 +9,7 @@ Assume $t$ is a constant and compute
 
 $$
     \lim_{x\to\infty} xf\left(\frac{t}{\sqrt{x}}\right)
-    ;
+    .
 $$
 
-In your response, explain why it was necessary to assume that $f$ and its derivatives were *continuous*.
+In your response, explain why it was necessary to assume that $f$ and its derivatives were [*continuous*](/math/limits.html).
