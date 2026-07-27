@@ -9,6 +9,12 @@ editor:
   mode: source
 ---
 
+::: callout-caution
+## Under construction!
+
+This course begins at 3:05 PM on Monday August 24, 2026. Until then, everything on this course page is subject to change.
+:::
+
 Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.
 
 ```{r}
