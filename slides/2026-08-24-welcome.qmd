@@ -47,43 +47,11 @@ While you wait, please complete this brief questionnaire:
 
 | Mug                   | Name        | Role       | Office Hours  |
 |-----------------------|-------------|------------|---------------|
-| ![](images/yh.jpg){.c} | Hu, Yuang   | TA         | Mon 7:30 PM - 9:30 PM           |
-| ![](images/al.jpg){.c} | Liu, Aurora | Head TA    | WeTh 4:30 pm - 5:30 pm |
-| ![](images/lm.png){.c} | Ma, Liane   | TA         | Sun 10:00 am - 12:00 pm |
-| ![](images/z.jpg){.c} | Zito, John  | Instructor | Tue 3:00 pm - 6:00 pm |
-: {tbl-colwidths="[20,20,20,40]"}
-
-## Statistical Science Majors Union {.medium}
-
-::::: {.columns }
-
-::: {.column width="50%"}
-
-![](images/ssmu.png)
-
-:::
-
-::: {.column width="50%"}
-
-[**Welcome First-Years Event!**]{style="color:blue;"}
-
-- 9/4 at 7 PM
-- East Duke 108
-
-[**GBM #1 & Research Panel**]{style="color:blue;"}
-
-- 9/18 7 PM
-- Old Chem 116
-
-::: {layout-ncol=2}
-
-{{< qrcode https://lists.duke.edu/sympa/subscribe/stat-majors-union? listserv width=150 height=150 >}}listserv
-
-{{< qrcode https://duke.campusgroups.com/SSMU/club_signup DukeGroups width=150 height=150 >}}DukeGroups
-:::
-
-:::
-:::::
+| ![](images/ch.jpg){.c} | Huang, Claire   | TA         | XXX           |
+| ![](images/dk.jpg){.c} | Kakkad, Dwija | Lab TA    | XXX |
+| ![](images/ru.jpg){.c} | Urena, Ricardo   | TA         | XXX |
+| ![](images/z.jpg){.c} | Zito, John  | Instructor | F 1:00 pm - 3:30 pm |
+: {tbl-colwidths="[20,25,20,35]"}
 
 # Why should you study the mathematics of probability and statistics?
 
