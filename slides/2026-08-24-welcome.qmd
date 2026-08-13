@@ -47,9 +47,9 @@ While you wait, please complete this brief questionnaire:
 
 | Mug                   | Name        | Role       | Office Hours  |
 |-----------------------|-------------|------------|---------------|
-| ![](images/ch.jpg){.c} | Huang, Claire   | TA         | XXX           |
-| ![](images/dk.jpg){.c} | Kakkad, Dwija | Lab TA    | XXX |
-| ![](images/ru.jpg){.c} | Urena, Ricardo   | TA         | XXX |
+| ![](images/ch.jpg){.c} | Huang, Claire   | TA         | Th 10 am - 12 pm           |
+| ![](images/dk.jpg){.c} | Kakkad, Dwija | Lab TA    | Wed 10 am - 12 pm |
+| ![](images/ru.jpg){.c} | Urena, Ricardo   | TA         | Sun 7:30 pm - 9:30 pm |
 | ![](images/z.jpg){.c} | Zito, John  | Instructor | F 1:00 pm - 3:30 pm |
 : {tbl-colwidths="[20,25,20,35]"}
 
@@ -705,11 +705,11 @@ Sound good?
 
 ::::: {.columns .v-center-container}
 ::: {.column width="30%"}
-{{< qrcode https://sta240-f25.github.io/ width=300 height=300 >}}
+{{< qrcode https://sta240-f26.github.io/ width=300 height=300 >}}
 :::
 
 ::: {.column width="70%"}
-<https://sta240-f25.github.io/>
+<https://sta240-f26.github.io/>
 :::
 :::::
 
@@ -720,13 +720,13 @@ Your final course grade will be calculated as follows:
 | Category       | Percentage |
 |----------------|------------|
 | Labs           | 10%        |
-| Problem Sets   | 30%        |
+| Problem Sets   | 20%        |
 | Midterm Exam 1 | 20%        |
 | Midterm Exam 2 | 20%        |
-| Final exam     | 20%        |
+| Final exam     | 30%        |
 
 ::: callout-warning
-The final letter grade will be based on the usual thresholds, which will not change and will be applied exactly. So no curve and no rounding.
+The final letter grade will be based on the usual thresholds, which will not change and will be applied exactly. So no curve, no rounding, no extra credit.
 :::
 
 ## So...where's the wiggle room?
@@ -737,7 +737,7 @@ The final letter grade will be based on the usual thresholds, which will not cha
 
 ## Labs (10%)
 
-Lead by Aurora in Perkins LINK 087 (Classroom 3):
+Lead by Dwija in Perkins LINK 060 (Classroom 1):
 
 -   Thursday 1:25 PM - 2:40 PM;
 -   Thursday 3:05 PM - 4:20 PM.
@@ -750,9 +750,9 @@ Guided activities introducing you to special topics, extensions, applications, a
 Designed to be complete-able during the lab period, but due by 11:59 PM that same day.
 :::
 
-## Problem Sets (30%)
+## Problem Sets (20%)
 
--   Mostly pencil-and-paper math problems, with some coding thrown in occasionally;
+-   Pencil-and-paper math problems and simulation exercises;
 -   Compose solutions however you want: scan or photograph written work, handwriting capture, LaTeX, Quarto, whatever;
 -   Submit a single PDF in Gradescope (and mark your pages!)
 
@@ -762,13 +762,13 @@ Designed to be complete-able during the lab period, but due by 11:59 PM that sam
 No late work will be accepted unless you request an extension in advance by e-mailing JZ. All reasonable requests will be entertained, but extensions will not be long.
 :::
 
-## Exams (20% each) {.scrollable}
+## Exams (70%) {.scrollable}
 
 Traditional, in-class, written exams:
 
--   **Midterm 1**: Thursday October 9 *in your lab*;
--   **Midterm 2**: Thursday November 13 *in your lab*;
--   **Final Exam**: Friday December 12.
+-   **Midterm 1**: Thursday October 8 *in your lab*;
+-   **Midterm 2**: Thursday November 12 *in your lab*;
+-   **Final Exam**: Monday December 14.
 
 . . .
 
