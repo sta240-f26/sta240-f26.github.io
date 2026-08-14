@@ -47,13 +47,13 @@ website:
         href: https://cmgr.oit.duke.edu/containers
         text: "RStudio Containers"
       - icon: megaphone
-        href: https://go.canvas.duke.edu/
+        href: https://canvas.duke.edu/courses/84105
         text: "Canvas"
       - icon: people
-        href: https://edstem.org/
+        href: https://edstem.org/us/courses/96707/discussion
         text: "Ed Discussion"
       - icon: file-arrow-up
-        href: https://www.gradescope.com/
+        href: https://www.gradescope.com/courses/1351871
         text: "Gradescope"
 
     style: docked
@@ -133,7 +133,7 @@ website:
             
   page-footer:
     right: 'This page is built with [Quarto](https://quarto.org/).'
-    left: "&copy; Copyright 2026 John Zito, Anya Katsevich"
+    left: "&copy; Copyright 2026 John Zito"
     background: "#FF2400"
 
 format: 
