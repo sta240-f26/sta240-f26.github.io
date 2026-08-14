@@ -19,9 +19,9 @@ Lecture will largely be a low tech affair: pencil and paper should be sufficient
 
 -   [This course page](https://sta240-f26.github.io/) that you are on right now;
 -   `R`/`RStudio` via the [Duke Container Manager](https://cmgr.oit.duke.edu/containers);
--   [Canvas](https://go.canvas.duke.edu/), through which you can access...
-    -   [Gradescope](https://www.gradescope.com/courses/1071176);
-    -   [Ed Discussion](https://edstem.org/us/courses/80868/discussion);
+-   [Canvas](https://canvas.duke.edu/courses/84105), through which you can access...
+    -   [Gradescope](https://www.gradescope.com/courses/1351871);
+    -   [Ed Discussion](https://edstem.org/us/courses/96707/discussion);
 -   [Zoom](https://duke.zoom.us/) (e.g. for remote office hours).
 
 If access to technology becomes a concern for you during the semester, contact the instructor immediately to discuss options.
