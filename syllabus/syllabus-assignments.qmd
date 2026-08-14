@@ -43,19 +43,13 @@ These thresholds will not change, and they will be applied exactly. This means t
 
 In lab every Thursday, you will complete a guided activity that introduces you to special topics, extensions, or applications of the latest course material. Along the way, we will teach you how to implement some of the ideas from the course in the `R` programming language. Ideally you should be able to finish the activity by the end of your lab period, but in any case, you must submit your lab work by 11:59 ET PM that same day.
 
-Each lab assignment will be graded on the following scale:
-
--   1.0: a complete, good faith attempt at every part of every problem;
--   0.5: partially complete;
--   0.0: no submission, or mostly incomplete.
-
 ::: callout-note
 ## Grace
 
 Your two lowest lab scores will be dropped at the end of the semester.
 :::
 
-THESE SHOULD BE PROPERLY GRADED FOR CORRECTNESS, AND WE SHOULD ENFORCE GOOD PRACTICES AROUND LATEX, QUARTO, AND CODING.
+
 
 ## Problem Sets (20%)
 
@@ -69,16 +63,13 @@ Your lowest problem set score will be dropped at the end of the semester.
 
 ## Exams (70%)
 
-There will be three exams. The dates, times, and locations are firm, so mark your calendar now:
+There will be three exams. The dates and times are firm, so mark your calendar now:
 
 -   **Midterm 1** (20%): Thursday October 8 during your lab;
 -   **Midterm 2** (20%): Thursday November 12 during your lab;
--   **Final** (30%): Monday December 14 from 2pm to 5pm in Old Chem 201.
+-   **Final** (30%): Monday December 14 from 2pm to 5pm Location TBD.
 
-These will be old school, pencil-and-paper, in-class exams. You are allowed only two resources:
-
-- a "dumb" calculator (no wi-fi). You will not actually need it, but if you want it as a security blanket, be my guest;
-- both sides of one 8.5" x 11" sheet of notes, prepared by you and you alone. You can create it however you wish: handwritten, on a computer, on a tablet device, etc.
+These will be old school, pencil-and-paper, in-class exams. The only resource you are allowed is both sides of one 8.5" x 11" sheet of notes, prepared by you and you alone. You can create it however you wish: handwritten, on a computer, on a tablet device, etc.
 
 If you seek testing accommodations, make sure the Student Disability Access Office sends me a letter, and then please make your appointments in the [Testing Center](https://testingcenter.duke.edu) as soon as possible.
 
