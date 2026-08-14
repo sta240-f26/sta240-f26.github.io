@@ -130,6 +130,10 @@ website:
             text: Summary statistics
           - href: explainers/histogram.qmd
             text: Histograms
+      - section: "Problem Sets"
+        contents:
+          - href: problems/pset-0.qmd
+            text: Problem Set 0
             
   page-footer:
     right: 'This page is built with [Quarto](https://quarto.org/).'
