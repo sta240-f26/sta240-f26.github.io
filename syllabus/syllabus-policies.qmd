@@ -6,7 +6,7 @@ editor:
 
 ## Collaboration
 
-You are *enthusiastically encouraged* to work together and help one another on labs and problem sets. I would much rather you consult your peers than some daft language model. What I ask is that you *acknowledge* your collaborators. So, at the end of each problem in your write-up, leave a comment like "Ursula, Ignatius and I worked together on this problem," or "Ethel explained to me how to do part b." You are not being judged based on your acknowledgements, and there is no penalty for getting "too much" help from others. If you omit acknowledgements, I will assume you did your work solo. If your classmates tell a different story, I will have questions. But otherwise, so long as you are thorough and honest, there will be no problems.
+You are *enthusiastically encouraged* to work together and help one another on labs and problem sets. I would much rather you consult your peers than some daft language model. What I ask is that you *acknowledge* your collaborators. So, at the top of your write-up, leave a bulleted list of comments like like "Ursula, Ignatius and I worked together on this problem," or "Ethel explained to me how to do part b." You are not being judged based on your acknowledgements, and there is no penalty for getting "too much" help from others. If you omit acknowledgements, I will assume you did your work solo. If your classmates tell a different story, I will have questions. But otherwise, so long as you are thorough and honest, there will be no problems.
 
 Having said all of that, you should not be crassly handing your solutions to others for them to brainlessly copy. This is plagiarism, and all involved will earn a zero on the assignment and be referred to the conduct office, both sharers and recipients alike. The write-up you submit must be your own work.
 
@@ -21,7 +21,7 @@ There are at least two reasons you might seek outside resources:
 
 ## Communication
 
-If you wish to ask content-related questions in writing, please do not do so via e-mail. Instead, please use the course discussion forum [Ed Discussion](https://edstem.org/us/courses/80868/discussion). That way all members of the teaching team can see your question, and all students can benefit from the ensuing discussion. You are also encouraged to answer one another’s questions.
+If you wish to ask content-related questions in writing, please do not do so via e-mail. Instead, please use the course discussion forum [Ed Discussion](https://edstem.org/us/courses/96707/discussion). That way all members of the teaching team can see your question, and all students can benefit from the ensuing discussion. You are also encouraged to answer one another’s questions.
 
 If you have questions about personal matters that may not be appropriate for the public course forum (e.g. illness, accommodations, etc), then please e-mail the instructor directly (john.zito\@duke.edu).
 
@@ -49,7 +49,7 @@ If you receive a graded assignment back, and you believe that some part of it wa
 
 ## Attendance
 
-Attendance in lecture is not required. It counts for nothing, and I am not recording it in any way. In fact, lecture attendance is actively *discouraged* if all you will do is putz around on your laptop. Show up and lock in, or go do something better with your time. There are many such things. Lab attendance is not required either, but each lab has a graded assignment that is due at midnight the same day. These assignments are designed to be completable by the end of the lab meeting, so showing up and banging it out is probably the easiest way to earn full credit for the lab component of your grade.
+Attendance in lecture is not required. It counts for nothing, and I am not recording it in any way. In fact, lecture attendance is actively *discouraged* if all you will do is putz around on your laptop. Show up and lock in, or go do something more enjoyable with your time. There are many such things. Lab attendance is not required either, but each lab has a graded assignment that is due at midnight the same day. These assignments are designed to be completable by the end of the lab meeting, so showing up and banging it out is probably the easiest way to earn full credit for the lab component of your grade.
 
 ## Accommodations
 
