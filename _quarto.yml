@@ -36,8 +36,6 @@ website:
 
   open-graph: true
 
-  #draft-mode: unlinked
-
   sidebar:
     background: "#FF2400"
     logo: "img/logo.png"
