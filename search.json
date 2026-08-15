@@ -554,7 +554,7 @@
     "href": "slides/2026-08-24-welcome.html#exams-70",
     "title": "Welcome to STA 240!",
     "section": "Exams (70%)",
-    "text": "Exams (70%)\nTraditional, in-class, written exams:\n\n\nMidterm 1: Thursday October 8 in your lab;\n\nMidterm 2: Thursday November 12 in your lab;\n\nFinal Exam: Monday December 14.\n\n\nYou are allowed only two resources:\n\nA “dumb” calculator (no wi-fi), which you won’t need;\nBoth sides of one 8.5” x 11” note sheet created by you.\n\n\n\n\n\n\n\n\n\nIf you need testing accommodations…\n\n\nMake sure I get an SDAO letter, and make your appointments in the Testing Center now."
+    "text": "Exams (70%)\nTraditional, in-class, no-tech exams:\n\n\nMidterm 1: Thursday October 8 in your lab;\n\nMidterm 2: Thursday November 12 in your lab;\n\nFinal Exam: Monday December 14 from 2 PM to 5 PM.\n\n\nYou are only allowed both sides of one 8.5” x 11” note sheet created by you.\n\n\n\n\n\n\n\n\nIf you seek testing accommodations…\n\n\nMake sure I get an SDAO letter, and make your appointments in the Testing Center now."
   },
   {
     "objectID": "slides/2026-08-24-welcome.html#attendance",
@@ -589,7 +589,14 @@
     "href": "slides/2026-08-24-welcome.html#whats-the-level-of-math-here",
     "title": "Welcome to STA 240!",
     "section": "What’s the level of math here?",
-    "text": "What’s the level of math here?\nThis is essentially a pencil-and-paper math class. We will use all of the basic skills taught in Calc I and II:\n\ndifferentiation (power rule, chain rule, all that)\nintegration (FTOC, improper integrals, substitution, by parts…)\nlimits and continuity (L’Hôpital’s rule, etc)\ninfinite series (Taylor series for \\(e^x\\), anyone?)\n\n\nREVIEW: Problem Set 0 is due 5PM Friday September 5.\n\n\n\n\n\n\n\n\nThis is not sink-or-swim.\n\n\n\nLab on Thursday August 28 is a review session and work period for this assignment;\nThe course page has a math review section you can refer to."
+    "text": "What’s the level of math here?\nThis is essentially a pencil-and-paper math class. We will use all of the basic skills taught in Calc I and II:\n\ndifferentiation (power rule, chain rule, all that)\nintegration (FTOC, improper integrals, substitution, by parts…)\nlimits and continuity (L’Hôpital’s rule, etc)\ninfinite series (Taylor series for \\(e^x\\), anyone?)\n\n\nREVIEW: Problem Set 0 is due 5PM Friday September 4.\n\n\n\n\n\n\n\n\nThis is not sink-or-swim.\n\n\n\nLab on Thursday August 27 is a review session and work period for this assignment;\nThe course page has a math review section you can refer to."
+  },
+  {
+    "objectID": "slides/2026-08-24-welcome.html#why",
+    "href": "slides/2026-08-24-welcome.html#why",
+    "title": "Welcome to STA 240!",
+    "section": "Why?",
+    "text": "Why?\nexplain why we need all that math\nstats is a mathematical discipline, as mathematical as physics. this is the first in a three-course theory sequence required for stats majors. we have all these methods: linear regression. Do they actually work? What does that even mean? These are mathematical questions, and you need some serious tools to answer them."
   },
   {
     "objectID": "slides/2026-08-24-welcome.html#probability",
@@ -823,60 +830,46 @@
     "href": "index.html",
     "title": "STA 240 Probability for Statistical Inference",
     "section": "",
-    "text": "Under construction!\n\n\n\nThis course begins at 3:05 PM on Monday August 24, 2026. Until then, everything on this course page is subject to change.\n\n\nBelow is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 24\n\nDS: 1.1 - 1.2\n🧑‍🏫 Welcome!\n\n\n\n\n\nWed, Aug 26\n\nDS: 1.3 - 1.4\n🧑‍🏫 Set Theory\n\n\n\n\n\nThu, Aug 27\n\n💻 Lab 0 (calculus review)\n\n\n\n\n2\nMon, Aug 31\n\nDS: 1.5\n🧑‍🏫 Probability spaces\n\n\n\n\n\nWed, Sep 2\n\nDS: 1.6 - 1.8\n🧑‍🏫 Counting\n\n\n\n\n\nThu, Sep 3\n\n💻 Lab 1 (hello R)\n\nLab 1 @ 11:59PM\n\n\n\nFri, Sep 4\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 7\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 9\n\nDS: 1.6 - 1.8\n🧑‍🏫 Counting\n\n\n\n\n\nThu, Sep 10\n\n💻 Lab 2\n\nLab 2 @ 11:59PM\n\n\n4\nMon, Sep 14\n\nDS: 2\n🧑‍🏫 Conditional probability\n\nPSET 1 @ 3PM\n\n\n\nWed, Sep 16\n\nDS: 2\n🧑‍🏫 Conditional probability\n\n\n\n\n\nThu, Sep 17\n\n💻 Lab 3\n\nLab 3 @ 11:59PM\n\n\n5\nMon, Sep 21\n\n🧑‍🏫 Random variables\n\nPSET 2 @ 3PM\n\n\n\nWed, Sep 23\n\n🧑‍🏫 Discrete random variables\n\n\n\n\n\nThu, Sep 24\n\n💻 Lab 4\n\nLab 4 @ 11:59PM\n\n\n6\nMon, Sep 28\n\n🧑‍🏫 Expected value\n\nPSET 3 @ 3PM\n\n\n\nWed, Sep 30\n\n🧑‍🏫 Variance\n\n\n\n\n\nThu, Oct 1\n\n💻 Lab 5\n\nLab 5 @ 11:59PM\n\n\n7\nMon, Oct 5\n\n🧑‍🏫 The CDF\n\nPSET 4 @ 3PM\n\n\n\nWed, Oct 7\n\n🧑‍🏫 Continuous random variables\n\n\n\n\n\nThu, Oct 8\n\n📝 Midterm 1\n\n\n\n\n\n8\nMon, Oct 12\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 14\n\n🧑‍🏫 Normal, gamma\n\n\n\n\n\nThu, Oct 15\n\n💻 Lab 6\n\nLab 6 @ 11:59PM\n\n\n9\nMon, Oct 19\n\n🧑‍🏫 Moments and quantiles\n\nPSET 5 @ 3PM\n\n\n\nWed, Oct 21\n\n🧑‍🏫 The MGF\n\n\n\n\n\nThu, Oct 22\n\n💻 Lab 7\n\nLab 7 @ 11:59PM\n\n\n10\nMon, Oct 26\n\n🧑‍🏫 Joint distributions\n\nPSET 6 @ 3PM\n\n\n\nWed, Oct 28\n\n🧑‍🏫 Joint distributions\n\n\n\n\n\nThu, Oct 29\n\n💻 Lab 8\n\nLab 8 @ 11:59PM\n\n\n11\nMon, Nov 2\n\n🧑‍🏫 Joint distributions\n\nPSET 7 @ 3PM\n\n\n\nWed, Nov 4\n\n🧑‍🏫 Sums and averages\n\n\n\n\n\nThu, Nov 5\n\n💻 Lab 9\n\nLab 9 @ 11:59PM\n\n\n12\nMon, Nov 9\n\n🧑‍🏫 Limit theorems\n\nPSET 8 @ 3PM\n\n\n\nWed, Nov 11\n\n🧑‍🏫 Limit theorems\n\n\n\n\n\nThu, Nov 12\n\n📝 Midterm 2\n\n\n\n\n\n13\nMon, Nov 16\n\n🧑‍🏫 What is statistics?\n\n\n\n\n\nWed, Nov 18\n\n🧑‍🏫 Interval estimation\n\n\n\n\n\nThu, Nov 19\n\n💻 Lab 10\n\nLab 10 @ 11:59PM\n\n\n14\nMon, Nov 23\n\n🧑‍🏫 Hypothesis testing\n\nPSET 9 @ 3PM\n\n\n\nWed, Nov 25\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n\nThu, Nov 26\n\n❌ Thanksgiving - No Lab\n\n\n\n\n\n15\nMon, Nov 30\n\n🧑‍🏫 Maximum likelihood\n\n\n\n\n\nWed, Dec 2\n\n🧑‍🏫 Maximum likelihood\n\n\n\n\n\nThu, Dec 3\n\n💻 Lab 11\n\nLab 11 @ 11:59PM\n\n\n16\nMon, Dec 7\n\n\n\nPSET 10 @ 3PM\n\n\n17\nMon, Dec 14\n\n📝 Final (2PM - 5PM)",
+    "text": "Under construction!\n\n\n\nThis course begins at 3:05 PM on Monday August 24, 2026. Until then, everything on this course page is subject to change.\n\n\nBelow is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 24\n\nDS: 1.1 - 1.2\n🧑‍🏫 Welcome!\n\n\n\n\n\nWed, Aug 26\n\nDS: 1.3 - 1.4\n🧑‍🏫 Set Theory\n\n\n\n\n\nThu, Aug 27\n\n💻 Lab 0 (calculus review)\n\n\n\n\n2\nMon, Aug 31\n\nDS: 1.5\n🧑‍🏫 Probability spaces\n\n\nIntro survey @ 3PM\n\n\n\nWed, Sep 2\n\nDS: 1.6 - 1.8\n🧑‍🏫 Counting\n\n\n\n\n\nThu, Sep 3\n\n💻 Lab 1 (hello R)\n\nLab 1 @ 11:59PM\n\n\n\nFri, Sep 4\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 7\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 9\n\nDS: 1.6 - 1.8\n🧑‍🏫 Counting\n\n\n\n\n\nThu, Sep 10\n\n💻 Lab 2\n\nLab 2 @ 11:59PM\n\n\n4\nMon, Sep 14\n\nDS: 2\n🧑‍🏫 Conditional probability\n\nPSET 1 @ 3PM\n\n\n\nWed, Sep 16\n\nDS: 2\n🧑‍🏫 Conditional probability\n\n\n\n\n\nThu, Sep 17\n\n💻 Lab 3\n\nLab 3 @ 11:59PM\n\n\n5\nMon, Sep 21\n\n🧑‍🏫 Random variables\n\nPSET 2 @ 3PM\n\n\n\nWed, Sep 23\n\n🧑‍🏫 Discrete random variables\n\n\n\n\n\nThu, Sep 24\n\n💻 Lab 4\n\nLab 4 @ 11:59PM\n\n\n6\nMon, Sep 28\n\n🧑‍🏫 Expected value\n\nPSET 3 @ 3PM\n\n\n\nWed, Sep 30\n\n🧑‍🏫 Variance\n\n\n\n\n\nThu, Oct 1\n\n💻 Lab 5\n\nLab 5 @ 11:59PM\n\n\n7\nMon, Oct 5\n\n🧑‍🏫 The CDF\n\nPSET 4 @ 3PM\n\n\n\nWed, Oct 7\n\n🧑‍🏫 Continuous random variables\n\n\n\n\n\nThu, Oct 8\n\n📝 Midterm 1\n\n\n\n\n\n8\nMon, Oct 12\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 14\n\n🧑‍🏫 Normal, gamma\n\n\n\n\n\nThu, Oct 15\n\n💻 Lab 6\n\nLab 6 @ 11:59PM\n\n\n9\nMon, Oct 19\n\n🧑‍🏫 Moments and quantiles\n\nPSET 5 @ 3PM\n\n\n\nWed, Oct 21\n\n🧑‍🏫 The MGF\n\n\n\n\n\nThu, Oct 22\n\n💻 Lab 7\n\nLab 7 @ 11:59PM\n\n\n10\nMon, Oct 26\n\n🧑‍🏫 Joint distributions\n\nPSET 6 @ 3PM\n\n\n\nWed, Oct 28\n\n🧑‍🏫 Joint distributions\n\n\n\n\n\nThu, Oct 29\n\n💻 Lab 8\n\nLab 8 @ 11:59PM\n\n\n11\nMon, Nov 2\n\n🧑‍🏫 Joint distributions\n\nPSET 7 @ 3PM\n\n\n\nWed, Nov 4\n\n🧑‍🏫 Sums and averages\n\n\n\n\n\nThu, Nov 5\n\n💻 Lab 9\n\nLab 9 @ 11:59PM\n\n\n12\nMon, Nov 9\n\n🧑‍🏫 Limit theorems\n\nPSET 8 @ 3PM\n\n\n\nWed, Nov 11\n\n🧑‍🏫 Limit theorems\n\n\n\n\n\nThu, Nov 12\n\n📝 Midterm 2\n\n\n\n\n\n13\nMon, Nov 16\n\n🧑‍🏫 What is statistics?\n\n\n\n\n\nWed, Nov 18\n\n🧑‍🏫 Interval estimation\n\n\n\n\n\nThu, Nov 19\n\n💻 Lab 10\n\nLab 10 @ 11:59PM\n\n\n14\nMon, Nov 23\n\n🧑‍🏫 Hypothesis testing\n\nPSET 9 @ 3PM\n\n\n\nWed, Nov 25\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n\nThu, Nov 26\n\n❌ Thanksgiving - No Lab\n\n\n\n\n\n15\nMon, Nov 30\n\n🧑‍🏫 Maximum likelihood\n\n\n\n\n\nWed, Dec 2\n\n🧑‍🏫 Maximum likelihood\n\n\n\n\n\nThu, Dec 3\n\n💻 Lab 11\n\nLab 11 @ 11:59PM\n\n\n16\nMon, Dec 7\n\n\n\nPSET 10 @ 3PM\n\n\n17\nMon, Dec 14\n\n📝 Final (2PM - 5PM)",
     "crumbs": [
       "Syllabus",
       "Schedule"
     ]
   },
   {
-    "objectID": "problems/bank/conditional-probability/car-engine.html",
-    "href": "problems/bank/conditional-probability/car-engine.html",
-    "title": "STA 240 Fall 2026",
+    "objectID": "problems/pset-1.html",
+    "href": "problems/pset-1.html",
+    "title": "Problem Set 1",
     "section": "",
-    "text": "I know nothing about cars, and they do not interest me at all. I purchased my current vehicle in August 2019 when it had about 33,000 miles on it. Today, it has a little over 50,000 miles on it. Did I mention that I’m not a car guy? Having said that, I hate when I take my car to the shop and get manipulated into paying through the nose for some service that I don’t even understand. So let’s say that one day I pop the hood of my car and try to teach myself how the engine works. Inside, I see three components that seem important: a fan that can blow or not, a spiggot that can go up, down, or remain neutral, and a belt that can wiggle or thump. After long hours of study, I realize that the components behave as follows:\n\nthe fan blows with probability 1/2;\nThe spiggot goes up with probability 1/2 if the fan blows. The spiggot cannot go down if the fan blows. Otherwise, the spiggot goes up, down, or remains neutral with equal probabilities;\nThe belt wiggles if the spiggot goes up, otherwise it wiggles with probability 1/6;\nThe engine starts provided the belt is thumping.\n\nWhat is the probability that the engine starts?"
+    "text": "QUOTE\nSome of these problems ask you to prove new probability rules using a small set of raw materials: set theory, the axioms, and the basic rules we saw in lecture. The purpose of these problems is to demonstrate that you understand every step in the reasoning, even if it seems trivial and obvious. So, don’t leave anything out! Every step of the argument should be explicit, and you should clearly indicate which axioms/results you are invoking when you move from point A to point B. After you’ve paid your dues, we’ll give you some latitude to hand wave and yada-yada your way through certain basic arguments. But not yet."
   },
   {
-    "objectID": "problems/bank/math-review/pareto-ish.html",
-    "href": "problems/bank/math-review/pareto-ish.html",
-    "title": "STA 240 Fall 2026",
-    "section": "",
-    "text": "Consider this integral:\n\\[\n    \\int_2^\\infty\n    \\frac{1}{x(\\ln x)^p}\\textrm{d} x\n    .\n\\]\n\nUse R to create a single plot with many lines, each graphing the integrand for a different value of \\(p\\). Consider \\(p\\) equal to -2, -1.5, -1, 0, 1, and 5, and make the \\(x\\)-axis of your plot run from 2 to 15.\nShow that \\(\\lim_{x\\to\\infty}\\frac{1}{x(\\ln x)^p}=0\\) for all values of \\(-\\infty&lt;p&lt;\\infty\\).\nFor what values of \\(p\\) does the integral converge? When it does converge, what is its value?\nConsult the picture you created in part (a), and write a few sentences explaining conceptually why the integral converges for some values of \\(p\\) but not others.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nWhen taking the limit or evaluating the integral, can you use the same technique for all values of \\(p\\), or do you need a different technique depending on what \\(p\\) is?"
+    "objectID": "problems/pset-1.html#problem-0",
+    "href": "problems/pset-1.html#problem-0",
+    "title": "Problem Set 1",
+    "section": "Problem 0",
+    "text": "Problem 0\nRecommend some music for us to listen to while we grade this."
   },
   {
-    "objectID": "problems/bank/math-review/poisson-mean.html",
-    "href": "problems/bank/math-review/poisson-mean.html",
-    "title": "STA 240 Fall 2026",
-    "section": "",
-    "text": "Assume \\(\\lambda&gt;0\\) is a constant and simplify this sum as much as possible:\n\\[\n    \\sum\\limits_{n=0}^\\infty n \\frac{\\lambda^n}{n!}e^{-\\lambda}\n    .\n\\]"
+    "objectID": "problems/pset-1.html#problem-1",
+    "href": "problems/pset-1.html#problem-1",
+    "title": "Problem Set 1",
+    "section": "Problem 1",
+    "text": "Problem 1"
   },
   {
-    "objectID": "problems/bank/math-review/lhopital-2x.html",
-    "href": "problems/bank/math-review/lhopital-2x.html",
-    "title": "STA 240 Fall 2026",
-    "section": "",
-    "text": "Let \\(f\\) be any function with the following properties:\n\n\\(f\\) is “twice continuously differentiable in a neighborhood of zero,” meaning that \\(f\\) and its first two derivatives are all continuous functions at and around zero;\n\\(f(0) = 0\\);\n\\(f'(0) = 0\\);\n\\(f''(0) = 1\\).\n\nAssume \\(t\\) is a constant and compute\n\\[\n    \\lim_{x\\to\\infty} xf\\left(\\frac{t}{\\sqrt{x}}\\right)\n    .\n\\]\nIn your response, explain why it was necessary to assume that \\(f\\) and its derivatives were continuous."
+    "objectID": "problems/pset-1.html#submission",
+    "href": "problems/pset-1.html#submission",
+    "title": "Problem Set 1",
+    "section": "Submission",
+    "text": "Submission\nYou are free to compose your solutions for this problem set however you wish (scan or photograph written work, handwriting capture on a tablet device, LaTeX, Quarto, whatever) as long as the final product is a single PDF file. You must upload this to Gradescope and mark the pages associated with each problem.\nDo not forget to include the following:\n\nFor each problem, please acknowledge your collaborators;\nIf a problem required you to code something, please include both the code and the output. “Including the code” can be as crude as a screenshot, but you might also use Quarto to get a nice lil’ pdf that you can merge with the rest of your submission."
   },
   {
-    "objectID": "problems/bank/math-review/bad-integral-notation.html",
-    "href": "problems/bank/math-review/bad-integral-notation.html",
+    "objectID": "problems/bank/math-review/big-product-energy.html",
+    "href": "problems/bank/math-review/big-product-energy.html",
     "title": "STA 240 Fall 2026",
     "section": "",
-    "text": "Explain why this is horrific notation:\n\\[\n    \\int_0^x f(x)\\,\\textrm{d} x.\n\\]\nHow should it be fixed?"
-  },
-  {
-    "objectID": "problems/bank/math-review/gamma-recursion.html",
-    "href": "problems/bank/math-review/gamma-recursion.html",
-    "title": "STA 240 Fall 2026",
-    "section": "",
-    "text": "Here is one of the goofiest functions I know:\n\\[\n\\Gamma(x)=\\int_0^\\infty y^{x-1}e^{-y}\\,\\textrm{d} y,\\quad x&gt;0.\n\\]\nProve that \\(\\Gamma(x+1)=x\\Gamma(x)\\).\n\n\n\n\n\n\nHint\n\n\n\n\n\nStart on the left-hand side by writing out \\(\\Gamma(x+1)\\) and evaluating the integral by parts."
-  },
-  {
-    "objectID": "problems/bank/math-review/disguised-mle.html",
-    "href": "problems/bank/math-review/disguised-mle.html",
-    "title": "STA 240 Fall 2026",
-    "section": "",
-    "text": "Compute the maximizer of the function \\(g(x)=x\\cdot 4^{-x}\\).\n\n\n\n\n\n\nHint\n\n\n\n\n\nThere are a few ways to do this, but they all require you to understand your log and exponent properties."
+    "text": "If we have a bunch of real numbers \\(a_1\\), \\(a_2\\), …, \\(a_{n-1}\\), \\(a_n\\) and we want to add them all up, we can write that concisely with the familiar “big sigma” notation:\n\\[\n\\sum\\limits_{i=1}^n a_i = a_1 + a_2 + ... + a_{n-1} + a_n.\n\\]\nIf instead we wish to multiply all of the numbers together, we can write that concisely with “big pi” notation, which is similar, but may be new to you:\n\\[\n\\prod\\limits_{i=1}^na_i=a_1 \\times a_2 \\times ... \\times a_{n-1} \\times a_n.\n\\]\nWe use this a lot in statistics, so let’s practice.\n\nLet \\(c\\in\\mathbb{R}\\) be any constant, and simplify this expression as much as possible:\n\n\\[\n\\prod\\limits_{i=1}^nc\\cdot a_i.\n\\]\n\nSimplify this expression as much as possible:\n\n\\[\n\\ln\\left(\\prod\\limits_{i=1}^ne^{a_i}\\right).\n\\]"
   },
   {
     "objectID": "problems/bank/math-review/bell-curve-inflection.html",
@@ -886,11 +879,53 @@
     "text": "Here is a very silly function:\n\\[\nh(x)\n=\n\\exp\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right)\n,\\quad\n-\\infty&lt;x&lt;\\infty\n.\n\\]\nTreat \\(-\\infty&lt;\\mu&lt;\\infty\\) and \\(\\sigma&gt;0\\) as constants and compute the value(s) of \\(x\\) at which \\(h\\) has inflection points.\n\n\n\n\n\n\nHint\n\n\n\n\n\nHere is an example of what \\(h\\) might look like in the special case where \\(\\mu = 1\\) and \\(\\sigma=2\\):\n\nCodem = 1\ns = 2\npar(mar = c(4, 4, 0.1, 4))\ncurve(exp(-0.5 * ((x - m) / s)^2), \n      from = -6, to = 8, n = 500,\n      xlab = \"x\", ylab = \"h(x)\",\n      xaxt = \"n\")\naxis(1, at = -6:8)\n\n\n\n\n\n\n\nBefore you start doing any calculations, can you use the picture to guess what the answer will be?"
   },
   {
-    "objectID": "problems/bank/math-review/big-product-energy.html",
-    "href": "problems/bank/math-review/big-product-energy.html",
+    "objectID": "problems/bank/math-review/disguised-mle.html",
+    "href": "problems/bank/math-review/disguised-mle.html",
     "title": "STA 240 Fall 2026",
     "section": "",
-    "text": "If we have a bunch of real numbers \\(a_1\\), \\(a_2\\), …, \\(a_{n-1}\\), \\(a_n\\) and we want to add them all up, we can write that concisely with the familiar “big sigma” notation:\n\\[\n\\sum\\limits_{i=1}^n a_i = a_1 + a_2 + ... + a_{n-1} + a_n.\n\\]\nIf instead we wish to multiply all of the numbers together, we can write that concisely with “big pi” notation, which is similar, but may be new to you:\n\\[\n\\prod\\limits_{i=1}^na_i=a_1 \\times a_2 \\times ... \\times a_{n-1} \\times a_n.\n\\]\nWe use this a lot in statistics, so let’s practice.\n\nLet \\(c\\in\\mathbb{R}\\) be any constant, and simplify this expression as much as possible:\n\n\\[\n\\prod\\limits_{i=1}^nc\\cdot a_i.\n\\]\n\nSimplify this expression as much as possible:\n\n\\[\n\\ln\\left(\\prod\\limits_{i=1}^ne^{a_i}\\right).\n\\]"
+    "text": "Compute the maximizer of the function \\(g(x)=x\\cdot 4^{-x}\\).\n\n\n\n\n\n\nHint\n\n\n\n\n\nThere are a few ways to do this, but they all require you to understand your log and exponent properties."
+  },
+  {
+    "objectID": "problems/bank/math-review/gamma-recursion.html",
+    "href": "problems/bank/math-review/gamma-recursion.html",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "Here is one of the goofiest functions I know:\n\\[\n\\Gamma(x)=\\int_0^\\infty y^{x-1}e^{-y}\\,\\textrm{d} y,\\quad x&gt;0.\n\\]\nProve that \\(\\Gamma(x+1)=x\\Gamma(x)\\).\n\n\n\n\n\n\nHint\n\n\n\n\n\nStart on the left-hand side by writing out \\(\\Gamma(x+1)\\) and evaluating the integral by parts."
+  },
+  {
+    "objectID": "problems/bank/math-review/bad-integral-notation.html",
+    "href": "problems/bank/math-review/bad-integral-notation.html",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "Explain why this is horrific notation:\n\\[\n    \\int_0^x f(x)\\,\\textrm{d} x.\n\\]\nHow should it be fixed?"
+  },
+  {
+    "objectID": "problems/bank/math-review/lhopital-2x.html",
+    "href": "problems/bank/math-review/lhopital-2x.html",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "Let \\(f\\) be any function with the following properties:\n\n\\(f\\) is “twice continuously differentiable in a neighborhood of zero,” meaning that \\(f\\) and its first two derivatives are all continuous functions at and around zero;\n\\(f(0) = 0\\);\n\\(f'(0) = 0\\);\n\\(f''(0) = 1\\).\n\nAssume \\(t\\) is a constant and compute\n\\[\n    \\lim_{x\\to\\infty} xf\\left(\\frac{t}{\\sqrt{x}}\\right)\n    .\n\\]\nIn your response, explain why it was necessary to assume that \\(f\\) and its derivatives were continuous."
+  },
+  {
+    "objectID": "problems/bank/math-review/poisson-mean.html",
+    "href": "problems/bank/math-review/poisson-mean.html",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "Assume \\(\\lambda&gt;0\\) is a constant and simplify this sum as much as possible:\n\\[\n    \\sum\\limits_{n=0}^\\infty n \\frac{\\lambda^n}{n!}e^{-\\lambda}\n    .\n\\]"
+  },
+  {
+    "objectID": "problems/bank/math-review/pareto-ish.html",
+    "href": "problems/bank/math-review/pareto-ish.html",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "Consider this integral:\n\\[\n    \\int_2^\\infty\n    \\frac{1}{x(\\ln x)^p}\\textrm{d} x\n    .\n\\]\n\nUse R to create a single plot with many lines, each graphing the integrand for a different value of \\(p\\). Consider \\(p\\) equal to -2, -1.5, -1, 0, 1, and 5, and make the \\(x\\)-axis of your plot run from 2 to 15.\nShow that \\(\\lim_{x\\to\\infty}\\frac{1}{x(\\ln x)^p}=0\\) for all values of \\(-\\infty&lt;p&lt;\\infty\\).\nFor what values of \\(p\\) does the integral converge? When it does converge, what is its value?\nConsult the picture you created in part (a), and write a few sentences explaining conceptually why the integral converges for some values of \\(p\\) but not others.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nWhen taking the limit or evaluating the integral, can you use the same technique for all values of \\(p\\), or do you need a different technique depending on what \\(p\\) is?"
+  },
+  {
+    "objectID": "problems/bank/conditional-probability/car-engine.html",
+    "href": "problems/bank/conditional-probability/car-engine.html",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "I know nothing about cars, and they do not interest me at all. I purchased my current vehicle in August 2019 when it had about 33,000 miles on it. Today, it has a little over 50,000 miles on it. Did I mention that I’m not a car guy? Having said that, I hate when I take my car to the shop and get manipulated into paying through the nose for some service that I don’t even understand. So let’s say that one day I pop the hood of my car and try to teach myself how the engine works. Inside, I see three components that seem important: a fan that can blow or not, a spiggot that can go up, down, or remain neutral, and a belt that can wiggle or thump. After long hours of study, I realize that the components behave as follows:\n\nthe fan blows with probability 1/2;\nThe spiggot goes up with probability 1/2 if the fan blows. The spiggot cannot go down if the fan blows. Otherwise, the spiggot goes up, down, or remains neutral with equal probabilities;\nThe belt wiggles if the spiggot goes up, otherwise it wiggles with probability 1/6;\nThe engine starts provided the belt is thumping.\n\nWhat is the probability that the engine starts?"
   },
   {
     "objectID": "problems/pset-0.html",

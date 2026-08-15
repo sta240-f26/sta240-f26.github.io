@@ -58,7 +58,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/slides/2026-08-24-welcome.html</loc>
-    <lastmod>2026-08-13T23:11:06.818Z</lastmod>
+    <lastmod>2026-08-15T01:43:27.427Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/math/integration.html</loc>
@@ -81,60 +81,44 @@
     <lastmod>2026-07-27T13:19:13.564Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/car-engine.html</loc>
-    <lastmod>2026-07-06T14:05:11.526Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/pset-1.html</loc>
+    <lastmod>2026-08-15T19:21:41.975Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/math-review/pareto-ish.html</loc>
-    <lastmod>2026-07-04T16:12:34.292Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/math-review/poisson-mean.html</loc>
-    <lastmod>2026-07-06T13:35:42.197Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/math-review/lhopital-2x.html</loc>
-    <lastmod>2026-07-27T19:05:28.786Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/math-review/bad-integral-notation.html</loc>
-    <lastmod>2026-02-21T02:26:06.981Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/lecture-notes/04-conditional-probability.html</loc>
-    <lastmod>2026-03-09T22:47:31.255Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/lecture-notes/02-probability-spaces.html</loc>
-    <lastmod>2026-03-09T22:46:06.942Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/lecture-notes/01-set-theory-to-probability.html</loc>
-    <lastmod>2026-03-09T22:45:39.051Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/lecture-notes/00-set-theory.html</loc>
-    <lastmod>2026-03-09T22:44:41.729Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/lecture-notes/03-counting.html</loc>
-    <lastmod>2026-03-09T22:46:54.438Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/math-review/gamma-recursion.html</loc>
-    <lastmod>2026-08-15T00:04:17.553Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/math-review/disguised-mle.html</loc>
-    <lastmod>2026-08-15T00:19:31.474Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/math-review/big-product-energy.html</loc>
+    <lastmod>2026-05-08T00:11:09.912Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/math-review/bell-curve-inflection.html</loc>
     <lastmod>2026-07-04T16:09:21.793Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/math-review/big-product-energy.html</loc>
-    <lastmod>2026-05-08T00:11:09.912Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/math-review/disguised-mle.html</loc>
+    <lastmod>2026-08-15T00:19:31.474Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/math-review/gamma-recursion.html</loc>
+    <lastmod>2026-08-15T00:04:17.553Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/math-review/bad-integral-notation.html</loc>
+    <lastmod>2026-02-21T02:26:06.981Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/math-review/lhopital-2x.html</loc>
+    <lastmod>2026-07-27T19:05:28.786Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/math-review/poisson-mean.html</loc>
+    <lastmod>2026-07-06T13:35:42.197Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/math-review/pareto-ish.html</loc>
+    <lastmod>2026-07-04T16:12:34.292Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/car-engine.html</loc>
+    <lastmod>2026-07-06T14:05:11.526Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/pset-0.html</loc>
