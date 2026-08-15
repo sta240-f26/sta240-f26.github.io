@@ -9,18 +9,22 @@ editor:
 
 This assignment is intended to introduce you to the level of mathematics that is expected in STA 240. A few remarks:
 
-- These problems touch on all of the main ideas from univariate calculus: derivatives, integrals, optimization, limits, continuity, sequences, series, etc. If you seek a refresher on anything, you can begin with the various [math helpers](/math/differentiation.html) here on the course page. Otherwise, these [videos](https://youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr&si=_CT2up60btlpGw86) might help;
+- These problems touch on all of the main ideas from univariate calculus: derivatives, integrals, optimization, limits, continuity, sequences, series. If you seek a refresher on anything, you can begin with the [math helpers](/math/differentiation.html) here on the course page. Otherwise, these [videos](https://youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr&si=_CT2up60btlpGw86) might help;
 - If you can figure out these problems, you are ready for STA 240. On the mathematics difficulty scale in this class, Problem Set 0 is about an 8/10;
 - If you struggle with these problems, then you have a month and a half to review before I start turning up the heat. We won't do much calculus before Midterm 1, but it looms large afterward;
 - The purpose of this assignment is to prepare you, not to haze you. As such, it is worth fewer points than subsequent problem sets. I encourage you to chill out and make a serious, no-AI attempt at everything so that you can honestly assess your actual level of understanding;
 - While this is ostensibly calculus review, each problem is actually a piece of probability in disguise. These connections will be revealed throughout the semester, and I will refer to Problem Set 0 often. Stay tuned!
+
+Alright, now get crackin'.
+
+![John ~~Wayne~~ Zito gives ~~swimming~~ calculus lessons.](images/swimming-lesson.gif){#fig-lesson fig-align="center"}
 
 ```{r}
 #| echo: false
 q_no <- 0
 ```
 
-# Problem `{r} q_no`
+## Problem `{r} q_no`
 
 ```{r}
 #| echo: false
@@ -29,7 +33,7 @@ q_no <- q_no + 1
 
 {{< include bank/_music-rec.qmd >}}
 
-# Problem `{r} q_no`
+## Problem `{r} q_no`
 
 ```{r}
 #| echo: false
@@ -38,7 +42,7 @@ q_no <- q_no + 1
 
 {{< include bank/math-review/bad-integral-notation.qmd >}}
 
-# Problem `{r} q_no`
+## Problem `{r} q_no`
 
 ```{r}
 #| echo: false
@@ -47,16 +51,16 @@ q_no <- q_no + 1
 
 {{< include bank/math-review/big-product-energy.qmd >}}
 
-# Problem `{r} q_no`
+## Problem `{r} q_no`
 
 ```{r}
 #| echo: false
 q_no <- q_no + 1
 ```
 
-{{< include bank/math-review/poisson-mean.qmd >}}
+{{< include bank/math-review/disguised-mle.qmd >}}
 
-# Problem `{r} q_no`
+## Problem `{r} q_no`
 
 ```{r}
 #| echo: false
@@ -65,16 +69,7 @@ q_no <- q_no + 1
 
 {{< include bank/math-review/bell-curve-inflection.qmd >}}
 
-# Problem `{r} q_no`
-
-```{r}
-#| echo: false
-q_no <- q_no + 1
-```
-
-{{< include bank/math-review/gamma-recursion.qmd >}}
-
-# Problem `{r} q_no`
+## Problem `{r} q_no`
 
 ```{r}
 #| echo: false
@@ -83,7 +78,25 @@ q_no <- q_no + 1
 
 {{< include bank/math-review/lhopital-2x.qmd >}}
 
-# Problem `{r} q_no`
+## Problem `{r} q_no`
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+{{< include bank/math-review/poisson-mean.qmd >}}
+
+## Problem `{r} q_no`
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+{{< include bank/math-review/gamma-recursion.qmd >}}
+
+## Problem `{r} q_no`
 
 ```{r}
 #| echo: false
@@ -92,6 +105,6 @@ q_no <- q_no + 1
 
 {{< include bank/math-review/pareto-ish.qmd >}}
 
-# Submission
+## Submission
 
 {{< include bank/_submission.qmd >}}
