@@ -1,0 +1,6 @@
+Compute the [*maximizer*](/math/differentiation.html#optimization) of the function $g(x)=x\cdot 4^{-x}$. 
+
+::: {.callout-tip collapse="true"}
+## Hint
+There are a few ways to do this, but they all require you to understand your [log and exponent properties](/math/logexp.html).
+:::
