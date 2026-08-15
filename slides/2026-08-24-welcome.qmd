@@ -39,7 +39,7 @@ While you wait, please complete this brief questionnaire:
 :::
 
 ::: {.column width="50%"}
-{{< qrcode https://docs.google.com/forms/d/e/1FAIpQLSfjaBcAwYmq8Ynxl9CqjI9k-aXIXW9t9_t1wLg8_tS7G8gnWw/viewform?usp=dialog width=300 height=300 >}}
+{{< qrcode https://docs.google.com/forms/d/e/1FAIpQLSeaS7A98OGoPQKvsOKHk4IQjZyYMfirvb7a-SgfGEcIUMPsfg/viewform?usp=dialog width=300 height=300 >}}
 :::
 :::::
 
@@ -764,23 +764,20 @@ No late work will be accepted unless you request an extension in advance by e-ma
 
 ## Exams (70%) {.scrollable}
 
-Traditional, in-class, written exams:
+Traditional, in-class, no-tech exams:
 
 -   **Midterm 1**: Thursday October 8 *in your lab*;
 -   **Midterm 2**: Thursday November 12 *in your lab*;
--   **Final Exam**: Monday December 14.
+-   **Final Exam**: Monday December 14 from 2 PM to 5 PM.
 
 . . .
 
-You are allowed only two resources:
-
-- A "dumb" calculator (no wi-fi), which you won't need;
-- Both sides of one 8.5" x 11" note sheet created by you.
+You are only allowed both sides of one 8.5" x 11" note sheet created by you.
 
 . . .
 
 ::: callout-note
-## If you need testing accommodations...
+## If you seek testing accommodations...
 
 Make sure I get an SDAO letter, and make your appointments in the [Testing Center](https://testingcenter.duke.edu/) now.
 :::
@@ -829,16 +826,22 @@ This is essentially a pencil-and-paper math class. We will use all of the basic 
 
 . . .
 
-**REVIEW**: [Problem Set 0](https://sta240-f25.github.io/problems/pset-0.html) is due 5PM Friday September 5.
+**REVIEW**: [Problem Set 0](/problems/pset-0.html) is due 5PM Friday September 4.
 
 . . .
 
 ::: callout-note
 ## This is not sink-or-swim.
 
-- Lab on Thursday August 28 is a review session and work period for this assignment;
-- The course page has a [math review section](https://sta240-f25.github.io/math/differentiation.html) you can refer to.
+- Lab on Thursday August 27 is a review session and work period for this assignment;
+- The course page has a [math review section](/math/differentiation.html) you can refer to.
 :::
+
+## Why?
+
+explain why we need all that math
+
+stats is a mathematical discipline, as mathematical as physics. this is the first in a three-course theory sequence required for stats majors. we have all these methods: linear regression. Do they actually work? What does that even mean? These are mathematical questions, and you need some serious tools to answer them.
 
 # So, what are we studying, anyway?
 
@@ -1006,3 +1009,5 @@ Like the wave-particle duality of light, both are true and useful, but their coe
 
 Regardless your interpretation, the mathematics of probability is the same.
 :::
+
+
