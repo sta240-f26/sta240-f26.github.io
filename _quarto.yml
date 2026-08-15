@@ -1,6 +1,7 @@
 project:
   type: website
-  #resources:
+  resources:
+   - lecture-notes/00-set-theory.pdf
   #  - readings/dawid-clark-statement.pdf
   #  - readings/westreich-iliinsky-2014-aje.pdf
   #  - readings/diaconis-holmes-montgomery-2007-siamreview.pdf
