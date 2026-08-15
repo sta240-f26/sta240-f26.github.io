@@ -1,4 +1,4 @@
-Here is another inordinately silly function:
+Here is one of the goofiest functions I know:
 
 $$
 \Gamma(x)=\int_0^\infty y^{x-1}e^{-y}\,\textrm{d} y,\quad x>0.
