@@ -15,8 +15,6 @@ This assignment is intended to introduce you to the level of mathematics that is
 - The purpose of this assignment is to prepare you, not to haze you. As such, it is worth fewer points than subsequent problem sets. I encourage you to chill out and make a serious, no-AI attempt at everything so that you can honestly assess your actual level of understanding;
 - While this is ostensibly calculus review, each problem is actually a piece of probability in disguise. These connections will be revealed throughout the semester, and I will refer to Problem Set 0 often. Stay tuned!
 
-Alright, now get crackin'.
-
 ![John ~~Wayne~~ Zito gives ~~swimming~~ calculus lessons.](images/swimming-lesson.gif){#fig-lesson fig-align="center"}
 
 ```{r}
