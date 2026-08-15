@@ -124,10 +124,8 @@ window.Quarto = {
 </script>
 <meta property="og:title" content="Problem Set 0 – STA 240 Fall 2026">
 <meta property="og:description" content="Due Friday September 4 at 5PM">
-<meta property="og:image" content="https://sta240-f26.github.io/problems/pset-0_files/figure-html/silly-1.png">
+<meta property="og:image" content="https://sta240-f26.github.io/problems/images/swimming-lesson.gif">
 <meta property="og:site_name" content="STA 240 Fall 2026">
-<meta property="og:image:height" content="672">
-<meta property="og:image:width" content="1344">
 </head>
 <body class="nav-sidebar docked quarto-light">
 
@@ -408,6 +406,7 @@ window.Quarto = {
   <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
   <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
   <li><a href="#problem-7" id="toc-problem-7" class="nav-link" data-scroll-target="#problem-7">Problem 7</a></li>
+  <li><a href="#problem-8" id="toc-problem-8" class="nav-link" data-scroll-target="#problem-8">Problem 8</a></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul></nav>
     </div>
@@ -439,15 +438,24 @@ window.Quarto = {
 <li>The purpose of this assignment is to prepare you, not to haze you. As such, it is worth fewer points than subsequent problem sets. I encourage you to chill out and make a serious, no-AI attempt at everything so that you can honestly assess your actual level of understanding;</li>
 <li>While this is ostensibly calculus review, each problem is actually a piece of probability in disguise. These connections will be revealed throughout the semester, and I will refer to Problem Set 0 often. Stay tuned!</li>
 </ul>
-<section id="problem-0" class="level1"><h1>Problem 0</h1>
+<p>Alright, now get crackin’.</p>
+<div id="fig-lesson" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-lesson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/swimming-lesson.gif" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lesson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: John <del>Wayne</del> Zito gives <del>swimming</del> calculus lessons.
+</figcaption></figure>
+</div>
+<section id="problem-0" class="level2"><h2 class="anchored" data-anchor-id="problem-0">Problem 0</h2>
 <p>Recommend some music for us to listen to while we grade this.</p>
-</section><section id="problem-1" class="level1"><h1>Problem 1</h1>
+</section><section id="problem-1" class="level2"><h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
 <p>Explain why this is horrific notation:</p>
 <p><span class="math display">\[
     \int_0^x f(x)\,\textrm{d} x.
 \]</span></p>
 <p>How should it be fixed?</p>
-</section><section id="problem-2" class="level1"><h1>Problem 2</h1>
+</section><section id="problem-2" class="level2"><h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
 <p>If we have a bunch of real numbers <span class="math inline">\(a_1\)</span>, <span class="math inline">\(a_2\)</span>, …, <span class="math inline">\(a_{n-1}\)</span>, <span class="math inline">\(a_n\)</span> and we want to add them all up, we can write that concisely with the familiar “big sigma” notation:</p>
 <p><span class="math display">\[
 \sum\limits_{i=1}^n a_i = a_1 + a_2 + ... + a_{n-1} + a_n.
@@ -469,23 +477,8 @@ window.Quarto = {
 <p><span class="math display">\[
 \ln\left(\prod\limits_{i=1}^ne^{a_i}\right).
 \]</span></p>
-</section><section id="problem-3" class="level1"><h1>Problem 3</h1>
-<p>Assume <span class="math inline">\(\lambda&gt;0\)</span> is a constant and simplify this sum as much as possible:</p>
-<p><span class="math display">\[
-    \sum\limits_{n=0}^\infty n \frac{\lambda^n}{n!}e^{-\lambda}
-    .
-\]</span></p>
-</section><section id="problem-4" class="level1"><h1>Problem 4</h1>
-<p>Here is a very silly function:</p>
-<p><span class="math display">\[
-h(x)
-=
-\exp\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)
-,\quad
--\infty&lt;x&lt;\infty
-.
-\]</span></p>
-<p>Treat <span class="math inline">\(-\infty&lt;\mu&lt;\infty\)</span> and <span class="math inline">\(\sigma&gt;0\)</span> as constants and compute the value(s) of <span class="math inline">\(x\)</span> at which <span class="math inline">\(h\)</span> has <a href="../math/differentiation.html#curvature"><em>inflection points</em></a>.</p>
+</section><section id="problem-3" class="level2"><h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<p>Compute the <a href="../math/differentiation.html#optimization"><em>maximizer</em></a> of the function <span class="math inline">\(g(x)=x\cdot 4^{-x}\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -497,6 +490,33 @@ Hint
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>There are a few ways to do this, but they all require you to understand your <a href="../math/logexp.html">log and exponent properties</a>.</p>
+</div>
+</div>
+</div>
+</section><section id="problem-4" class="level2"><h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<p>Here is a very silly function:</p>
+<p><span class="math display">\[
+h(x)
+=
+\exp\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)
+,\quad
+-\infty&lt;x&lt;\infty
+.
+\]</span></p>
+<p>Treat <span class="math inline">\(-\infty&lt;\mu&lt;\infty\)</span> and <span class="math inline">\(\sigma&gt;0\)</span> as constants and compute the value(s) of <span class="math inline">\(x\)</span> at which <span class="math inline">\(h\)</span> has <a href="../math/differentiation.html#curvature"><em>inflection points</em></a>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Here is an example of what <span class="math inline">\(h\)</span> might look like in the special case where <span class="math inline">\(\mu = 1\)</span> and <span class="math inline">\(\sigma=2\)</span>:</p>
 <div class="cell" data-layout-align="center">
@@ -519,29 +539,7 @@ Hint
 </div>
 </div>
 </div>
-</section><section id="problem-5" class="level1"><h1>Problem 5</h1>
-<p>Here is another inordinately silly function:</p>
-<p><span class="math display">\[
-\Gamma(x)=\int_0^\infty y^{x-1}e^{-y}\,\textrm{d} y,\quad x&gt;0.
-\]</span></p>
-<p>Prove that <span class="math inline">\(\Gamma(x+1)=x\Gamma(x)\)</span>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Start on the left-hand side by writing out <span class="math inline">\(\Gamma(x+1)\)</span> and evaluating the integral <a href="../math/integration.html#integration-by-parts"><em>by parts</em></a>.</p>
-</div>
-</div>
-</div>
-</section><section id="problem-6" class="level1"><h1>Problem 6</h1>
+</section><section id="problem-5" class="level2"><h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
 <p>Let <span class="math inline">\(f\)</span> be any function with the following properties:</p>
 <ul>
 <li>
@@ -559,7 +557,35 @@ Hint
     .
 \]</span></p>
 <p>In your response, explain why it was necessary to assume that <span class="math inline">\(f\)</span> and its derivatives were <a href="../math/limits.html"><em>continuous</em></a>.</p>
-</section><section id="problem-7" class="level1"><h1>Problem 7</h1>
+</section><section id="problem-6" class="level2"><h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
+<p>Assume <span class="math inline">\(\lambda&gt;0\)</span> is a constant and simplify this sum as much as possible:</p>
+<p><span class="math display">\[
+    \sum\limits_{n=0}^\infty n \frac{\lambda^n}{n!}e^{-\lambda}
+    .
+\]</span></p>
+</section><section id="problem-7" class="level2"><h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
+<p>Here is one of the goofiest functions I know:</p>
+<p><span class="math display">\[
+\Gamma(x)=\int_0^\infty y^{x-1}e^{-y}\,\textrm{d} y,\quad x&gt;0.
+\]</span></p>
+<p>Prove that <span class="math inline">\(\Gamma(x+1)=x\Gamma(x)\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Start on the left-hand side by writing out <span class="math inline">\(\Gamma(x+1)\)</span> and evaluating the integral <a href="../math/integration.html#integration-by-parts"><em>by parts</em></a>.</p>
+</div>
+</div>
+</div>
+</section><section id="problem-8" class="level2"><h2 class="anchored" data-anchor-id="problem-8">Problem 8</h2>
 <p>Consider this integral:</p>
 <p><span class="math display">\[
     \int_2^\infty
@@ -574,7 +600,7 @@ Hint
 <li>Consult the picture you created in part (a), and write a few sentences explaining conceptually why the integral converges for some values of <span class="math inline">\(p\)</span> but not others.</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -583,13 +609,13 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>When taking the limit or evaluating the integral, can you use the same technique for all values of <span class="math inline">\(p\)</span>, or do you need a different technique depending on what <span class="math inline">\(p\)</span> is?</p>
 </div>
 </div>
 </div>
-</section><section id="submission" class="level1"><h1>Submission</h1>
+</section><section id="submission" class="level2"><h2 class="anchored" data-anchor-id="submission">Submission</h2>
 <p>You are free to compose your solutions for this problem set however you wish (scan or photograph written work, handwriting capture on a tablet device, LaTeX, Quarto, whatever) as long as the final product is a single PDF file. You must upload this to Gradescope and mark the pages associated with each problem.</p>
 <p>Do not forget to include the following:</p>
 <ul>
