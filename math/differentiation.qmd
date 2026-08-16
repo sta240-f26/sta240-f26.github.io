@@ -177,7 +177,7 @@ mtext("max f(x)", side = 2, at = 5, las = 1, line = 1, col = "blue")
 mtext("argmax f(x)", side = 1, at = 3, col = "blue")
 ```
 
-Inspecting this picture, we notice that the maximum corresponds to a point where the derivative (slope of the tangent line) is zero. In order for the function to "top out," it must at some point have switched from being increasing (positive derivative) to decreasing (negative derivative). When we ask where the maximum occurs, that's the same as asking where the first derivative switched sign (ie crossed the $x$-axis). So to optimize $f$, perhaps we can compute its first derivative, set it equal to 0, and solve.
+Inspecting this picture, we notice that the maximum corresponds to a point where the derivative (slope of the tangent line) is zero. In order for the function to "top out," it must at some point have switched from being increasing (positive derivative) to decreasing (negative derivative). When we ask where the maximum occurs, that's the same as asking where the first derivative switched sign (ie crossed the $x$-axis). So to optimize $f$, perhaps we can compute its first derivative, set it equal to 0, and solve:
 
 $$
 \begin{aligned}
@@ -197,9 +197,105 @@ A point like $x^\star$ in this example is called a **critical point**. A critica
 - if $f'(x^\star)=0$ and $f''(x^\star)>0$, then $x^\star$ is a minimizer;
 - if $f'(x^\star)=0$ and $f''(x^\star)=0$, then the test is inconclusive.
 
-::: callout-tip 
-## Example: 
+In the simple example above, the second derivative is always negative: $f''(x)=-2<0$. So $x^\star=3$ is indeed a maximizer.
 
-example with local min, local max, and saddle
+::: callout-tip 
+## Example: all possibilities in one
+
+Consider this function:
+
+$$
+f(x)=x^3 e^{-x^2}.
+$$
+
+Applying the product, power, chain, and exponential rules (plus some algebra) gives you the first and second derivatives:
+
+$$
+\begin{aligned}
+f'(x)
+&=
+x^3(-2x)e^{-x^2}
++
+3x^2e^{-x^2}
+\\
+&=
+e^{-x^2}(3x^2-2x^4)
+\\
+&=
+x^2e^{-x^2}(3-2x^2)
+\\
+&\\
+f''(x)
+&=
+e^{-x^2}(6x-8x^3)+(3x^2-2x^4)(-2x)e^{-x^2}
+\\
+&=
+e^{-x^2}(6x-8x^3)+(4x^5-6x^3)e^{-x^2}
+\\
+&=
+2xe^{-x^2}(3-4x^2+2x^4-3x^2)
+\\
+&=
+2xe^{-x^2}(3-7x^2+2x^4)
+,
+\end{aligned}
+$$
+
+Pics or it didn't happen:
+
+```{r}
+#| label: fig-saddle
+#| echo: false
+#| fig-align: center
+#| fig-asp: 1
+#| fig-cap: The function $f$ has three critical points at $-\sqrt{3/2}$, 0, and $\sqrt{3/2}$ corresponding to a minimum, a saddle point, and a maximum.
+
+ticks = seq(-3, 3, by = 0.5)
+labs = c(NA, ticks[-c(1, length(ticks))], NA)
+par(mfrow = c(3, 1), mar = c(0, 5, 0, 0.5))
+curve(x^3 * exp(-x^2), from = -3, to = 3, n = 1000,
+      xaxt = "n", xaxs = "i", col = "red", 
+      yaxt = "n", yaxs = "i",
+      lwd = 2, xlim = c(-3, 3), ylim = c(-0.5, 0.5),
+      ylab = "original function"
+)
+box(lwd = 3)
+abline(v = c(0, -sqrt(3/2), sqrt(3/2)), lty = 2)
+axis(1, pos = 0, at = ticks, labels = labs)
+curve(exp(-x^2) * (3*x^2-2*x^4), from = -3, to = 3, n = 1000,
+      xaxt = "n", xaxs = "i", col = "red", 
+      yaxt = "n", yaxs = "i",
+      lwd = 2, , xlim = c(-3, 3), ylim = c(-1, 1),
+      ylab  = "first derivative")
+abline(v = c(0, -sqrt(3/2), sqrt(3/2)), lty = 2)
+axis(1, pos = 0, at = ticks, labels = labs)
+points(c(-sqrt(3/2), sqrt(3/2), 0), c(0, 0, 0), pch = 19, cex = 2, col = "red")
+box(lwd = 3)
+curve(2*x*exp(-x^2)*(3-7*x^2+2*x^4), from = -3, to = 3, n = 1000,
+      xaxt = "n", xaxs = "i", col = "red", 
+      yaxt = "n", yaxs = "i",
+      lwd = 2, , xlim = c(-3, 3), ylim = c(-2, 2),
+      ylab = "second derivative"
+)
+box(lwd = 3)
+abline(v = c(0, -sqrt(3/2), sqrt(3/2)), lty = 2)
+axis(1, pos = 0, at = ticks, labels = labs)
+```
+
+The first derivative is the product of three factors: $x^2$, $\exp(-x^2)$, and $3-2x^2$, and the derivative is zero if any of these are. The first factor is zero at $x^\star=0$, the second factor is never zero, and the third factor is zero at $x^\star=\pm\sqrt{3/2}$. So those are our critical points:
+
+$$
+x^\star=-\sqrt{3/2},\,0,\,\sqrt{3/2}.
+$$
+
+From the picture, we see that each one corresponds to a different feature of $f$, and they are not all optimizers: 
+
+- $x^\star=-\sqrt{3/2}$ lies in a concave *up* region where the curvature is positive, and so the second derivative test tells us this is a minimizer, which the picture bears out;
+- $x^\star=\sqrt{3/2}$ lies in a concave *down* region where the curvature is negative, and so the second derivative test tells us this is a maximizer, which the picture bears out;
+- $x^\star=0$ is what's called a **saddle point**. Yes, the first derivative is zero there, but so is the second derivative. In general that tells you nothing. We could still have a local optimum there, but in this case we inspect the picture and can clearly see that it's a false alarm.
+
+When we optimize (smooth) functions by finding the roots of their derivative, the main idea we are relying on is that in order for a function to achieve a max (or a min), it must switch from increasing to decreasing (or decreasing to increasing). As such, the max (or min) must occur in a place where the function is not changing at all (ie. $f'=0$). But as we see in this example, "not changing at all" doesn't necessarily signify that the function is about to switch behavior altogether. It might just be...taking a lil' break, as it does at zero here. So, using that language we saw before, $f'=0$ is **necessary but not sufficient** for the presence of extrema. The only way to tell is to check *something*: the pictures, the second derivative, etc. 
+
+Always classify your critical points!
 
 :::
