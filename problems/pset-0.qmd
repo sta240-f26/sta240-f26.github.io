@@ -5,7 +5,7 @@ editor:
   mode: source
 ---
 
-> ["If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is.](https://en.wikiquote.org/wiki/John_von_Neumann)" - John von Neumann
+> [John von Neumann](https://en.wikiquote.org/wiki/John_von_Neumann): "If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is."
 
 This assignment is intended to introduce you to the level of mathematics that is expected in STA 240. A few remarks:
 

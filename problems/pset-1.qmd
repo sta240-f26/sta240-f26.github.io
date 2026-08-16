@@ -5,7 +5,7 @@ editor:
   mode: source
 ---
 
-> "[PROBABILITY DOES NOT EXIST](https://en.wikiquote.org/wiki/Bruno_de_Finetti)" - Bruno de Finetti
+> [Bruno de Finetti](https://en.wikiquote.org/wiki/Bruno_de_Finetti): "PROBABILITY DOES NOT EXIST"
 
 Some of these problems ask you to prove new probability rules using a small set of raw materials: set theory, the axioms, and the basic rules we saw in lecture. The purpose of these problems is to demonstrate that you understand every step in the reasoning, even if it seems trivial and obvious. So, don’t leave anything out! Every step of the argument should be explicit, and you should clearly indicate which axioms/results you are invoking when you move from point A to point B. [After you’ve paid your dues](https://terrytao.wordpress.com/career-advice/theres-more-to-mathematics-than-rigour-and-proofs/), we’ll give you some latitude to hand wave and yada-yada your way through certain basic arguments. But not yet.
 
