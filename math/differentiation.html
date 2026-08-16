@@ -519,7 +519,7 @@ Figure&nbsp;2
 </div>
 </div>
 </div>
-<p>Inspecting this picture, we notice that the maximum corresponds to a point where the derivative (slope of the tangent line) is zero. In order for the function to “top out,” it must at some point have switched from being increasing (positive derivative) to decreasing (negative derivative). When we ask where the maximum occurs, that’s the same as asking where the first derivative switched sign (ie crossed the <span class="math inline">\(x\)</span>-axis). So to optimize <span class="math inline">\(f\)</span>, perhaps we can compute its first derivative, set it equal to 0, and solve.</p>
+<p>Inspecting this picture, we notice that the maximum corresponds to a point where the derivative (slope of the tangent line) is zero. In order for the function to “top out,” it must at some point have switched from being increasing (positive derivative) to decreasing (negative derivative). When we ask where the maximum occurs, that’s the same as asking where the first derivative switched sign (ie crossed the <span class="math inline">\(x\)</span>-axis). So to optimize <span class="math inline">\(f\)</span>, perhaps we can compute its first derivative, set it equal to 0, and solve:</p>
 <p><span class="math display">\[
 \begin{aligned}
 f'(x)
@@ -537,17 +537,80 @@ x^\star=3.
 <li>if <span class="math inline">\(f'(x^\star)=0\)</span> and <span class="math inline">\(f''(x^\star)&gt;0\)</span>, then <span class="math inline">\(x^\star\)</span> is a minimizer;</li>
 <li>if <span class="math inline">\(f'(x^\star)=0\)</span> and <span class="math inline">\(f''(x^\star)=0\)</span>, then the test is inconclusive.</li>
 </ul>
+<p>In the simple example above, the second derivative is always negative: <span class="math inline">\(f''(x)=-2&lt;0\)</span>. So <span class="math inline">\(x^\star=3\)</span> is indeed a maximizer.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Example:
+Example: all possibilities in one
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>example with local min, local max, and saddle</p>
+<p>Consider this function:</p>
+<p><span class="math display">\[
+f(x)=x^3 e^{-x^2}.
+\]</span></p>
+<p>Applying the product, power, chain, and exponential rules (plus some algebra) gives you the first and second derivatives:</p>
+<p><span class="math display">\[
+\begin{aligned}
+f'(x)
+&amp;=
+x^3(-2x)e^{-x^2}
++
+3x^2e^{-x^2}
+\\
+&amp;=
+e^{-x^2}(3x^2-2x^4)
+\\
+&amp;=
+x^2e^{-x^2}(3-2x^2)
+\\
+&amp;\\
+f''(x)
+&amp;=
+e^{-x^2}(6x-8x^3)+(3x^2-2x^4)(-2x)e^{-x^2}
+\\
+&amp;=
+e^{-x^2}(6x-8x^3)+(4x^5-6x^3)e^{-x^2}
+\\
+&amp;=
+2xe^{-x^2}(3-4x^2+2x^4-3x^2)
+\\
+&amp;=
+2xe^{-x^2}(3-7x^2+2x^4)
+,
+\end{aligned}
+\]</span></p>
+<p>Pics or it didn’t happen:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-saddle" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-saddle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="differentiation_files/figure-html/fig-saddle-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-saddle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: The function <span class="math inline">\(f\)</span> has three critical points at <span class="math inline">\(-\sqrt{3/2}\)</span>, 0, and <span class="math inline">\(\sqrt{3/2}\)</span> corresponding to a minimum, a saddle point, and a maximum.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>The first derivative is the product of three factors: <span class="math inline">\(x^2\)</span>, <span class="math inline">\(\exp(-x^2)\)</span>, and <span class="math inline">\(3-2x^2\)</span>, and the derivative is zero if any of these are. The first factor is zero at <span class="math inline">\(x^\star=0\)</span>, the second factor is never zero, and the third factor is zero at <span class="math inline">\(x^\star=\pm\sqrt{3/2}\)</span>. So those are our critical points:</p>
+<p><span class="math display">\[
+x^\star=-\sqrt{3/2},\,0,\,\sqrt{3/2}.
+\]</span></p>
+<p>From the picture, we see that each one corresponds to a different feature of <span class="math inline">\(f\)</span>, and they are not all optimizers:</p>
+<ul>
+<li>
+<span class="math inline">\(x^\star=-\sqrt{3/2}\)</span> lies in a concave <em>up</em> region where the curvature is positive, and so the second derivative test tells us this is a minimizer, which the picture bears out;</li>
+<li>
+<span class="math inline">\(x^\star=\sqrt{3/2}\)</span> lies in a concave <em>down</em> region where the curvature is negative, and so the second derivative test tells us this is a maximizer, which the picture bears out;</li>
+<li>
+<span class="math inline">\(x^\star=0\)</span> is what’s called a <strong>saddle point</strong>. Yes, the first derivative is zero there, but so is the second derivative. In general that tells you nothing. We could still have a local optimum there, but in this case we inspect the picture and can clearly see that it’s a false alarm.</li>
+</ul>
+<p>When we optimize (smooth) functions by finding the roots of their derivative, the main idea we are relying on is that in order for a function to achieve a max (or a min), it must switch from increasing to decreasing (or decreasing to increasing). As such, the max (or min) must occur in a place where the function is not changing at all (ie. <span class="math inline">\(f'=0\)</span>). But as we see in this example, “not changing at all” doesn’t necessarily signify that the function is about to switch behavior altogether. It might just be…taking a lil’ break, as it does at zero here. So, using that language we saw before, <span class="math inline">\(f'=0\)</span> is <strong>necessary but not sufficient</strong> for the presence of extrema. The only way to tell is to check <em>something</em>: the pictures, the second derivative, etc.</p>
+<p>Always classify your critical points!</p>
 </div>
 </div>
 
