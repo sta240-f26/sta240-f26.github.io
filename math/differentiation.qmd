@@ -191,7 +191,7 @@ x^\star=3.
 \end{aligned}
 $$
 
-A point like $x^\star$ in this example is called a **critical point**. A critical point *may* be the location of a maximum, but you have to check. If you recall the example in @fig-derivatives, there are two critical points $x^\star = \pm 1/\sqrt{3}$, but they correspond to different things: one is a minimum and one is a maximum. In order to classify the critical points as maximizers or minimizers, you perform the **second derivative test**: 
+A point like $x^\star$ in this example is called a **critical point**. A critical point *may* be the location of a maximum, but you have to check. If you recall the example in @fig-derivatives, there are two critical points $x^\star = \pm 1/\sqrt{3}$, but they correspond to different things: one is a minimum and one is a maximum. In order to classify the critical points as maximizers or minimizers (or neither!), you can perform the **second derivative test**: 
 
 - if $f'(x^\star)=0$ and $f''(x^\star)<0$, then $x^\star$ is a maximizer;
 - if $f'(x^\star)=0$ and $f''(x^\star)>0$, then $x^\star$ is a minimizer;
