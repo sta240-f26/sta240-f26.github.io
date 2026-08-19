@@ -4,6 +4,18 @@ editor:
   mode: source
 ---
 
+## Attendance
+
+Lecture attendance is not required. It counts for nothing, and I am not recording it in any way. Detailed lecture notes are always promptly posted here on the course page, and I expect you to keep up with them if you are absent.
+
+Lab attendance on the other hand *is* required in order to receive credit for the assignments. Since lab work is always completed in teams, you can't get credit if you leave your team hanging by not attending. There are eleven graded labs in total, and we drop your two lowest scores at the end of the semester. We will use this policy to automatically absorb the effect of one-off absences due to brief illness, travel, job interviews, etc. If more challenging or protracted circumstances arise (e.g. bereavement or serious illness) that affect your lab attendance, please secure a [Dean's Excuse](https://trinity.duke.edu/undergraduate/academic-policies/class-attendance-and-missed-work) and then reach out to the instructor directly (john.zito\@duke.edu) to discuss special arrangements.
+
+::: callout-caution
+## Go on. Cut the umbilical cord.
+
+This is an old-school, chalk-and-talk math class. If the power went out, we wouldn't skip a beat. As such, your laptop is probably a massively unnecessary distraction. Unless you have an approved accommodation that requires it, **please put your laptop and phone away during lecture**. Tablet devices for note-taking are fine.
+:::
+
 ## Collaboration
 
 You are *enthusiastically encouraged* to work together and help one another on labs and problem sets. I would much rather you consult your peers than some daft language model. What I ask is that you *acknowledge* your collaborators. So, at the top of your write-up, leave a bulleted list of comments like like "Ursula, Ignatius and I worked together on this problem," or "Ethel explained to me how to do part b." You are not being judged based on your acknowledgements, and there is no penalty for getting "too much" help from others. If you omit acknowledgements, I will assume you did your work solo. If your classmates tell a different story, I will have questions. But otherwise, so long as you are thorough and honest, there will be no problems.
@@ -46,10 +58,6 @@ If you receive a graded assignment back, and you believe that some part of it wa
 -   Requests will be considered if there was an error in the grade calculation or if a correct answer was mistakenly marked as incorrect;
 -   Requests to dispute the number of points deducted for an incorrect response will not be considered;
 -   **No grades will be changed after the final exam has been administered on Monday December 14**.
-
-## Attendance
-
-Attendance in lecture is not required. It counts for nothing, and I am not recording it in any way. In fact, lecture attendance is actively *discouraged* if all you will do is putz around on your laptop. Show up and lock in, or go do something more enjoyable with your time. There are many such things. Lab attendance is not required either, but each lab has a graded assignment that is due at midnight the same day. These assignments are designed to be completable by the end of the lab meeting, so showing up and banging it out is probably the easiest way to earn full credit for the lab component of your grade.
 
 ## Accommodations
 
