@@ -1,4 +1,4 @@
-## Interesting house course
+## House Course
 
 This [house course](https://trinity.duke.edu/house-courses/courses) may interest you:
 
@@ -10,4 +10,4 @@ This [house course](https://trinity.duke.edu/house-courses/courses) may interest
 - **Description**: Why keep trying? Why get out of bed? Why exert effort in a finite and often painful life? This course will analyze the philosophical, sociological, and psychological frameworks outlined by thinkers such as Confucius, Aristotle, Durkheim, Nietzsche, Freud, Camus, and more — as well as less developed but equally valid contemporary ideas — to answer one fundamental question: why do humans try so hard? Students will develop a deep understanding of hedonism, nihilism, existentialism, and absurdism, applying these perspectives to real-world situations. This course investigates how different cultures and thinkers have answered the question of whether (and why) life is worth the effort.
 
 
-![](student-news/images/sigler-house.jpeg){width="50%"}
+![](announcements/images/house-course.jpeg){width="50%"}

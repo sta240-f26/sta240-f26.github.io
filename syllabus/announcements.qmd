@@ -8,4 +8,4 @@ format: html
 
 {{< include announcements/fall-dance-showcase.qmd >}}
 
-{{< include announcements/sigler-house.qmd >}}
+{{< include announcements/house-course.qmd >}}
