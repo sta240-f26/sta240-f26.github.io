@@ -41,14 +41,13 @@ These thresholds will not change, and they will be applied exactly. This means t
 
 ## Labs (10%)
 
-In lab every Thursday, you will complete a guided activity that introduces you to special topics, extensions, or applications of the latest course material. Along the way, we will teach you how to implement some of the ideas from the course in the `R` programming language. Ideally you should be able to finish the activity by the end of your lab period, but in any case, you must submit your lab work by 11:59 ET PM that same day.
+In your lab section each Thursday, you will get into randomly assigned groups and complete a guided activity that shows you how computer simulation complements the mathematics we are studying. We will implement these simulations using the base functionality of the `R` programming language. Your lab write-up is due at the end of your lab section, and late work will not be accepted. 
 
 ::: callout-note
 ## Grace
 
-Your two lowest lab scores will be dropped at the end of the semester.
+Your two lowest lab scores will be dropped at the end of the semester. 
 :::
-
 
 
 ## Problem Sets (20%)
