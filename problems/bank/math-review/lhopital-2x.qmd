@@ -12,4 +12,4 @@ $$
     .
 $$
 
-In your response, explain why it was necessary to assume that $f$ and its derivatives were [*continuous*](/math/limits.html).
+In your response, make sure you explain how you used the assumptions, in particular differentiability and/or continuity.
