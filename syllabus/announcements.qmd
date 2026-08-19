@@ -1,6 +1,5 @@
 ---
-title: "Student news"
-subtitle: "Support your classmates!"
+title: "Support your fellow students!"
 format: html
 ---
 
