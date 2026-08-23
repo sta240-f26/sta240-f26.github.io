@@ -1,9 +1,18 @@
 ---
-title: "Infinite series"
+title: "Sequences and series"
 format: html
 filters:
   - shinylive
 ---
+
+::: callout-caution
+## Under construction
+JZ's still working on this one!
+:::
+
+## Sequences
+
+## Infinite series
 
 Roughly speaking, an **infinite series** is the sum of infinitely many numbers:
 
@@ -19,7 +28,7 @@ $$
 
 This limit may or may not be finite, and there are many famous examples of this. 
 
-## Geometric series
+### Geometric series
 
 Don't you love this:
 
@@ -38,7 +47,7 @@ a\left(\frac{1-r^{k+1}}{1-r}\right) & \text{else}.
 \end{cases}
 $$
 
-## $p$-series
+### $p$-series
 
 If $p>1$, this converges:
 
@@ -56,25 +65,10 @@ $$
 \end{aligned}
 $$
 
-## Taylor series
+## Taylor's theorem
 
-If a function $f$ is infinitely differentiable at 0, then we can rewrite it using the **Taylor expansion**:
 
-$$
-f(x)
-=
-\sum\limits_{n=0}^\infty \frac{f^{(n)}(0)}{n!}x^n,\quad \text{for some  }x.
-$$
-
-The set of $x$-values for which the Taylor expansion is valid is called the **radius of convergence**. Here are examples for specific functions:
-
-$$
-\begin{aligned}
-\frac{1}{1-x}&=\sum\limits_{n=0}^\infty x^n,&&-1<x<1\\
-e^x&=\sum\limits_{n=0}^\infty\frac{x^n}{n!},&&-\infty < x < \infty\\
-\ln(1-x)&=-\sum\limits_{n=1}^\infty\frac{x^n}{n},&&-1\leq x < 1.
-\end{aligned}
-$$
+State the theorem with the Peano version of the remainder.
 
 ```{shinylive-r}
 #| standalone: true
@@ -158,3 +152,24 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 
 ```
+
+## Taylor series
+
+If a function $f$ is *infinitely* differentiable at 0, then we can rewrite it using the **Taylor expansion**:
+
+$$
+f(x)
+=
+\sum\limits_{n=0}^\infty \frac{f^{(n)}(0)}{n!}x^n,\quad \text{for some  }x.
+$$
+
+The set of $x$-values for which the Taylor expansion is valid is called the **radius of convergence**. Here are examples for specific functions:
+
+$$
+\begin{aligned}
+\frac{1}{1-x}&=\sum\limits_{n=0}^\infty x^n,&&-1<x<1\\
+e^x&=\sum\limits_{n=0}^\infty\frac{x^n}{n!},&&-\infty < x < \infty\\
+\ln(1-x)&=-\sum\limits_{n=1}^\infty\frac{x^n}{n},&&-1\leq x < 1.
+\end{aligned}
+$$
+
