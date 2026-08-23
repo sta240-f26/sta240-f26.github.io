@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Infinite series – STA 240 Fall 2026</title>
+<title>Sequences and series – STA 240 Fall 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,7 +104,7 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="Infinite series – STA 240 Fall 2026">
+<meta property="og:title" content="Sequences and series – STA 240 Fall 2026">
 <meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
 <meta property="og:site_name" content="STA 240 Fall 2026">
 </head>
@@ -118,7 +118,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../math/greeks.html">Math Helpers</a></li><li class="breadcrumb-item"><a href="../math/series.html">Infinite series</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../math/greeks.html">Math Helpers</a></li><li class="breadcrumb-item"><a href="../math/series.html">Sequences and series</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -250,7 +250,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../math/series.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Infinite series</span></a>
+ <span class="menu-text">Sequences and series</span></a>
   </div>
 </li>
       </ul>
@@ -389,8 +389,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#geometric-series" id="toc-geometric-series" class="nav-link active" data-scroll-target="#geometric-series">Geometric series</a></li>
+  <li><a href="#sequences" id="toc-sequences" class="nav-link active" data-scroll-target="#sequences">Sequences</a></li>
+  <li><a href="#infinite-series" id="toc-infinite-series" class="nav-link" data-scroll-target="#infinite-series">Infinite series</a>
+  <ul class="collapse">
+  <li><a href="#geometric-series" id="toc-geometric-series" class="nav-link" data-scroll-target="#geometric-series">Geometric series</a></li>
   <li><a href="#p-series" id="toc-p-series" class="nav-link" data-scroll-target="#p-series"><span class="math inline">\(p\)</span>-series</a></li>
+  </ul></li>
+  <li><a href="#taylors-theorem" id="toc-taylors-theorem" class="nav-link" data-scroll-target="#taylors-theorem">Taylor’s theorem</a></li>
   <li><a href="#taylor-series" id="toc-taylor-series" class="nav-link" data-scroll-target="#taylor-series">Taylor series</a></li>
   </ul>
 </nav>
@@ -398,9 +403,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../math/greeks.html">Math Helpers</a></li><li class="breadcrumb-item"><a href="../math/series.html">Infinite series</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../math/greeks.html">Math Helpers</a></li><li class="breadcrumb-item"><a href="../math/series.html">Sequences and series</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Infinite series</h1>
+<h1 class="title">Sequences and series</h1>
 </div>
 
 
@@ -417,6 +422,24 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Under construction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>JZ’s still working on this one!</p>
+</div>
+</div>
+<section id="sequences" class="level2">
+<h2 class="anchored" data-anchor-id="sequences">Sequences</h2>
+</section>
+<section id="infinite-series" class="level2">
+<h2 class="anchored" data-anchor-id="infinite-series">Infinite series</h2>
 <p>Roughly speaking, an <strong>infinite series</strong> is the sum of infinitely many numbers:</p>
 <p><span class="math display">\[
 \sum\limits_{n=0}^\infty a_n=a_0+a_1+a_2+a_3+\cdots
@@ -426,8 +449,8 @@ window.Quarto = {
 \sum\limits_{n=0}^\infty a_n=\lim_{k\to\infty}\sum\limits_{n=0}^ka_n.
 \]</span></p>
 <p>This limit may or may not be finite, and there are many famous examples of this.</p>
-<section id="geometric-series" class="level2">
-<h2 class="anchored" data-anchor-id="geometric-series">Geometric series</h2>
+<section id="geometric-series" class="level3">
+<h3 class="anchored" data-anchor-id="geometric-series">Geometric series</h3>
 <p>Don’t you love this:</p>
 <p><span class="math display">\[
 \frac{a}{1-r}=\sum\limits_{n=0}^\infty ar^n,\quad |r|&lt;1.
@@ -442,8 +465,8 @@ a\left(\frac{1-r^{k+1}}{1-r}\right) &amp; \text{else}.
 \end{cases}
 \]</span></p>
 </section>
-<section id="p-series" class="level2">
-<h2 class="anchored" data-anchor-id="p-series"><span class="math inline">\(p\)</span>-series</h2>
+<section id="p-series" class="level3">
+<h3 class="anchored" data-anchor-id="p-series"><span class="math inline">\(p\)</span>-series</h3>
 <p>If <span class="math inline">\(p&gt;1\)</span>, this converges:</p>
 <p><span class="math display">\[
 \sum\limits_{n=1}^\infty\frac{1}{n^p}.
@@ -457,22 +480,10 @@ a\left(\frac{1-r^{k+1}}{1-r}\right) &amp; \text{else}.
 \end{aligned}
 \]</span></p>
 </section>
-<section id="taylor-series" class="level2">
-<h2 class="anchored" data-anchor-id="taylor-series">Taylor series</h2>
-<p>If a function <span class="math inline">\(f\)</span> is infinitely differentiable at 0, then we can rewrite it using the <strong>Taylor expansion</strong>:</p>
-<p><span class="math display">\[
-f(x)
-=
-\sum\limits_{n=0}^\infty \frac{f^{(n)}(0)}{n!}x^n,\quad \text{for some  }x.
-\]</span></p>
-<p>The set of <span class="math inline">\(x\)</span>-values for which the Taylor expansion is valid is called the <strong>radius of convergence</strong>. Here are examples for specific functions:</p>
-<p><span class="math display">\[
-\begin{aligned}
-\frac{1}{1-x}&amp;=\sum\limits_{n=0}^\infty x^n,&amp;&amp;-1&lt;x&lt;1\\
-e^x&amp;=\sum\limits_{n=0}^\infty\frac{x^n}{n!},&amp;&amp;-\infty &lt; x &lt; \infty\\
-\ln(1-x)&amp;=-\sum\limits_{n=1}^\infty\frac{x^n}{n},&amp;&amp;-1\leq x &lt; 1.
-\end{aligned}
-\]</span></p>
+</section>
+<section id="taylors-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="taylors-theorem">Taylor’s theorem</h2>
+<p>State the theorem with the Peano version of the remainder.</p>
 <pre class="shinylive-r" data-engine="r"><code>#| '!! shinylive warning !!': |
 #|   shinylive does not work in self-contained HTML documents.
 #|   Please set `embed-resources: false` in your metadata.
@@ -556,6 +567,23 @@ server &lt;- function(input, output) {
 
 shinyApp(ui = ui, server = server)
 </code></pre>
+</section>
+<section id="taylor-series" class="level2">
+<h2 class="anchored" data-anchor-id="taylor-series">Taylor series</h2>
+<p>If a function <span class="math inline">\(f\)</span> is <em>infinitely</em> differentiable at 0, then we can rewrite it using the <strong>Taylor expansion</strong>:</p>
+<p><span class="math display">\[
+f(x)
+=
+\sum\limits_{n=0}^\infty \frac{f^{(n)}(0)}{n!}x^n,\quad \text{for some  }x.
+\]</span></p>
+<p>The set of <span class="math inline">\(x\)</span>-values for which the Taylor expansion is valid is called the <strong>radius of convergence</strong>. Here are examples for specific functions:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{1}{1-x}&amp;=\sum\limits_{n=0}^\infty x^n,&amp;&amp;-1&lt;x&lt;1\\
+e^x&amp;=\sum\limits_{n=0}^\infty\frac{x^n}{n!},&amp;&amp;-\infty &lt; x &lt; \infty\\
+\ln(1-x)&amp;=-\sum\limits_{n=1}^\infty\frac{x^n}{n},&amp;&amp;-1\leq x &lt; 1.
+\end{aligned}
+\]</span></p>
 
 
 </section>
