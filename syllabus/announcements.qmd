@@ -1,5 +1,5 @@
 ---
-title: "Support your fellow students!"
+title: "Support your classmates!"
 format: html
 ---
 
