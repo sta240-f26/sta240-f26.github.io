@@ -509,9 +509,9 @@ What method does ChatGPT use to generate the next word in one of its responses?
 
 . . .
 
-Let's ask!
+[Let's ask!](https://chatgpt.com)
 
-<https://chatgpt.com/share/677ef289-9564-8008-a662-9f8c2cfb04fc>
+
 
 ## Example: the mathematics of insurance
 
@@ -532,20 +532,21 @@ Let's ask!
 :::
 :::::
 
-## Example: the mathematics of insurance {.medium}
+## Example: the mathematics of insurance {.small}
 
 ::::: {.columns }
 ::: {.column width="50%"}
 1. Nurse practitioner
-2. IT Manager
-3. Physician Assistant
-4. Financial Manager
-5. Software Developer
-6. Information Security Analyst
-7. Health Services Manager
-8. [***Data Scientist***]{style="color:red;"}
-9. Speech-Language Pathologist
-10. [***Actuary***]{style="color:red;"}
+1. Financial Manager
+1. IT Manager
+1. Information Security Analyst
+1. Physician Assistant
+1. Medical and Health Services Manager
+1. Software Developer
+1. [***Data Scientist***]{style="color:red;"}
+1. Speech-Language Pathologist
+1. Pilot
+1. [***Actuary***]{style="color:red;"}
 :::
 
 ::: {.column width="50%"}
@@ -742,13 +743,7 @@ Lead by Dwija in Perkins LINK 060 (Classroom 1):
 -   Thursday 1:25 PM - 2:40 PM;
 -   Thursday 3:05 PM - 4:20 PM.
 
-Guided activities introducing you to special topics, extensions, applications, and case studies. We will also introduce some basic `R` stuff, and we will use Quarto for the lab write-ups.
-
-::: callout-note
-## Plan to attend regularly
-
-Designed to be complete-able during the lab period, but due by 11:59 PM that same day.
-:::
+Guided R activities about the interplay between math and *computer simulation*. Completed in randomly-assigned groups and due at the end of the period. No late work accepted, and you must be in attendance to earn credit.
 
 ## Problem Sets (20%)
 
@@ -784,7 +779,16 @@ Make sure I get an SDAO letter, and make your appointments in the [Testing Cente
 
 ## Attendance
 
-Not required. Live your life.
+- **Lecture**: not required. Live your life;
+
+- **Lab**: required if you want credit for the graded assignments. You can't abandon your group after all. I let our "drop 2" policy automatically handle most attendance issues.
+
+. . .
+
+:::callout-warning
+## Go on. Cut the umbilical chord.
+If you choose to attend lecture, please put your laptop away.
+:::
 
 ## Communication
 
@@ -837,11 +841,27 @@ This is essentially a pencil-and-paper math class. We will use all of the basic 
 - The course page has a [math review section](/math/differentiation.html) you can refer to.
 :::
 
-## Why?
+## Whence all the math?
 
-explain why we need all that math
+Statistics is a mathematical discipline. In its way, it's as mathematical as physics. Why?
 
-stats is a mathematical discipline, as mathematical as physics. this is the first in a three-course theory sequence required for stats majors. we have all these methods: linear regression. Do they actually work? What does that even mean? These are mathematical questions, and you need some serious tools to answer them.
+::: incremental
+- In more applied courses, we teach you all sorts of methods for analyzing data: linear and logistic regression, the bootstrap, hypothesis testing, and so on;
+- Academic statisticians zoom out from the applications and ask:
+    - do these methods actually *work*?
+    - what does it even *mean* for a method to "work"?
+- These are *theoretical* questions, and they require serious mathematics to answer.
+:::
+
+## Whence all the math?
+
+For those of you considering a statistical science major, STA 240 is the first in a "Theory Trilogy:"
+
+- STA 240 on probability theory;
+- STA 332 on classical mathematical statistics;
+- STA 402 on Bayesian statistics.
+
+It all builds. 240 lays the technical foundations, and you must master them to succeed in the major.
 
 # So, what are we studying, anyway?
 
@@ -1009,5 +1029,21 @@ Like the wave-particle duality of light, both are true and useful, but their coe
 
 Regardless your interpretation, the mathematics of probability is the same.
 :::
+
+## Coming up
+
+- **Wednesday lecture**: set theory;
+- **Thursday lab**: calculus review;
+- **First OH**: Friday 1:00 pm - 3:30 pm with JZ.
+
+
+Also, please complete the [Getting To Know You Survey](https://docs.google.com/forms/d/e/1FAIpQLSfWu2TkoG8_4vskZzoUng4FbvvFC1aqGWtm2l7IjJ-FGch8fQ/viewform).
+
+# Questions?
+
+
+
+
+
 
 
