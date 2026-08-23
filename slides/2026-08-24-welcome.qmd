@@ -14,20 +14,14 @@ editor:
 library(googlesheets4)
 library(tidyverse)
 gs4_deauth()
-d <- read_sheet("https://docs.google.com/spreadsheets/d/1JLiRSsFDVJgTK1NJRUr6xU092NeVZvL5H4jsUdCBa8w/edit?usp=sharing") |>
+d <- read_sheet("https://docs.google.com/spreadsheets/d/1fVJ7sQ1HmV90Q2yQEPxyA8zhK6WhOqMi8W90ihRvh14/edit?usp=sharing") |>
   rename(birthday = `What is your birthday?`,
          bday_prob = `How many people need to attend a party for there to be a 50% chance that at least two share a birthday?`,
          potato = `There is a sack of potatoes at the front of the classroom. Without touching it, guess how much it weighs in pounds.`,
-         price = `As of this morning, what is the price (USD) of this product from the vendor?`,
+         price = `If you go to The Regulator Bookshop on 9th Street, what is the after-tax price (in USD) of this newly released hardcover book?`,
          age = `How old was this person (in years) when the photo was taken?`,
          monty = `On a game show, you are presented with three doors. Behind one of the doors is the grand prize, and behind each of the other two doors is a goat. If you select the door that has the prize, you win. The game proceeds as follows:\n\n1. You select one of the doors to open;\n2. The host does not open the door you selected. Instead, he opens one of the doors you did not select to reveal a goat;\n3. The host asks you if you would like to change your selection to the remaining door (the one you did not select initially and the host did not open). \n\nWhat should you do?`,
          pinker = `Consider the two scatterplots. One is pure random noise, and the other has been manipulated. Which is which?`)
-
-#bday_prob
-#monty
-#potato
-#price
-#age
 ```
 
 
@@ -1034,7 +1028,7 @@ Regardless your interpretation, the mathematics of probability is the same.
 
 - **Wednesday lecture**: set theory;
 - **Thursday lab**: calculus review;
-- **First OH**: Friday 1:00 pm - 3:30 pm with JZ.
+- **First OHs**: Friday 1:00 pm - 3:30 pm with JZ.
 
 
 Also, please complete the [Getting To Know You Survey](https://docs.google.com/forms/d/e/1FAIpQLSfWu2TkoG8_4vskZzoUng4FbvvFC1aqGWtm2l7IjJ-FGch8fQ/viewform).
