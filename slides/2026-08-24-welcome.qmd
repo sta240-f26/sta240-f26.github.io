@@ -322,7 +322,7 @@ ggplot(d, aes(x = potato)) +
 
 ::::: {.columns .v-center-container}
 ::: {.column width="30%"}
-![](images/chocolate.png)
+  ![](images/kitten.jpg)
 :::
 
 ::: {.column width="70%"}
@@ -338,10 +338,10 @@ ggplot(d, aes(x = potato)) +
 ggplot(d, aes(x = price)) + 
   geom_histogram() + 
   labs(
-    title = "How much does the stupid chocolate cost?",
-    x = "Price ($)"
+    title = "How much does this new, hardcover book cost\nat The Regulator Bookshop on 9th Street?",
+    x = "After-tax price ($)"
   ) + 
-  geom_vline(xintercept = 14.99, col = "red", size = 2) + 
+  geom_vline(xintercept = 31.18, col = "red", size = 2) + 
   theme_minimal(base_size = 24)
 ```
 
@@ -551,7 +551,7 @@ What method does ChatGPT use to generate the next word in one of its responses?
 
 ::: {.column width="50%"}
 
-![](images/badge-jobs-year.svg){fig-align="center" width="50%"}
+[![](images/usnews.png){fig-align="center" width="50%"}](https://careers.usnews.com/best-jobs/rankings/the-100-best-jobs)
 
 - Future prospects (30%)
 - Wage potential (25%) 
