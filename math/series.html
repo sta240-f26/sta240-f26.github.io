@@ -389,14 +389,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sequences" id="toc-sequences" class="nav-link active" data-scroll-target="#sequences">Sequences</a></li>
-  <li><a href="#infinite-series" id="toc-infinite-series" class="nav-link" data-scroll-target="#infinite-series">Infinite series</a>
+  <li><a href="#sequences" id="toc-sequences" class="nav-link active" data-scroll-target="#sequences">Sequences</a>
   <ul class="collapse">
-  <li><a href="#geometric-series" id="toc-geometric-series" class="nav-link" data-scroll-target="#geometric-series">Geometric series</a></li>
-  <li><a href="#p-series" id="toc-p-series" class="nav-link" data-scroll-target="#p-series"><span class="math inline">\(p\)</span>-series</a></li>
+  <li><a href="#convergence" id="toc-convergence" class="nav-link" data-scroll-target="#convergence">Convergence</a></li>
   </ul></li>
+  <li><a href="#infinite-series" id="toc-infinite-series" class="nav-link" data-scroll-target="#infinite-series">Infinite series</a></li>
   <li><a href="#taylors-theorem" id="toc-taylors-theorem" class="nav-link" data-scroll-target="#taylors-theorem">Taylor’s theorem</a></li>
-  <li><a href="#taylor-series" id="toc-taylor-series" class="nav-link" data-scroll-target="#taylor-series">Taylor series</a></li>
+  <li><a href="#taylor-series-todo" id="toc-taylor-series-todo" class="nav-link" data-scroll-target="#taylor-series-todo">Taylor series TODO</a></li>
   </ul>
 </nav>
     </div>
@@ -437,20 +436,128 @@ Under construction
 </div>
 <section id="sequences" class="level2">
 <h2 class="anchored" data-anchor-id="sequences">Sequences</h2>
+<p>A <strong>sequence</strong> is an ordered list of objects. For us, a sequence will typically consist of real numbers, and it will typically be infinite, but these are not requirements. We will also see sequences of functions and sets and other cute things. An infinite sequence of real numbers will typically be denoted</p>
+<p><span class="math display">\[
+a_0,\,a_1,\,a_2,\,a_3,\,...,\,a_{n-1},\,a_n,\,a_{n+1},\,...
+\]</span></p>
+<p>More concisely, we might say <span class="math inline">\(\{a_n\}_{n=0}^\infty\)</span> or simply <span class="math inline">\(\{a_n\}\)</span>. Here <span class="math inline">\(a_n\)</span> refers to the <span class="math inline">\(n\)</span>th <strong>term</strong> in the sequence. Here are some examples of sequences:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;0,\,1,\,2,\,3,\,4,\,5,\,6,\,7,\,8,\,... &amp;&amp;(\text{natural numbers})\\
+&amp;0,\,2,\,4,\,6,\,8,\,10,\,12,\,14,\,... &amp;&amp;(\text{even numbers})\\
+&amp;1,\,3,\,5,\,7,\,9,\,11,\,13,\,15,\,... &amp;&amp;(\text{odd numbers})\\
+&amp;0,\,1,\,4,\,9,\,16,\,25,\,36,\,49,\,... &amp;&amp;(\text{squares})\\
+&amp;1,\,\frac{1}{2},\,\frac{1}{3},\,\frac{1}{4},\,\frac{1}{5},\,\frac{1}{6},\,\frac{1}{7},\,... &amp;&amp;(\text{harmonic sequence})\\
+&amp;1,\,1,\,2,\,6,\,24,\,120,\,720,\,... &amp;&amp;(\text{factorials})\\
+&amp;0,\,1,\,1,\,2,\,3,\,5,\,8,\,13,\,21,\,... &amp;&amp;(\text{Fibonacci})\\
+&amp;1,\,-1,\,1,\,-1,\,1,\,-1,\,1,\,-1,\,1,\,... &amp;&amp;(\text{alternating})
+\end{aligned}
+\]</span></p>
+<p>In those examples, we wrote the sequence down by just sorta faking it. We list out a few terms, get tired, and then yadayada the rest. A more precise way to write down a sequence is to give an explicit formula for its <span class="math inline">\(n\)</span>th term. The <span class="math inline">\(n\)</span>th term may simply be a function of its position <span class="math inline">\(n\)</span> in the sequence, or we might write a <strong>recurrence relation</strong> that shows how the current term of the sequence depends on previous terms.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 50%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>sequence</th>
+<th>formula</th>
+<th>recurrence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>naturals</td>
+<td><span class="math inline">\(a_n=n\)</span></td>
+<td><span class="math inline">\(\begin{aligned}a_0&amp;=0\\a_n&amp;=a_{n-1}+1\end{aligned}\)</span></td>
+</tr>
+<tr class="even">
+<td>evens</td>
+<td><span class="math inline">\(a_n=2n\)</span></td>
+<td><span class="math inline">\(\begin{aligned}a_0&amp;=0\\a_n&amp;=a_{n-1}+2\end{aligned}\)</span></td>
+</tr>
+<tr class="odd">
+<td>odds</td>
+<td><span class="math inline">\(a_n=2n+1\)</span></td>
+<td><span class="math inline">\(\begin{aligned}a_0&amp;=1\\a_n&amp;=a_{n-1}+2\end{aligned}\)</span></td>
+</tr>
+<tr class="even">
+<td>squares</td>
+<td><span class="math inline">\(a_n=a_{n-1}+2n-1\)</span></td>
+<td><span class="math inline">\(\begin{aligned}a_0&amp;=0\\a_n&amp;=a_{n-1}+1\end{aligned}\)</span></td>
+</tr>
+<tr class="odd">
+<td>harmonic</td>
+<td><span class="math inline">\(a_n=\frac{1}{n}\)</span></td>
+<td><span class="math inline">\(\begin{aligned}a_1&amp;=1\\a_n&amp;=\frac{n-1}{n}a_{n-1}\end{aligned}\)</span></td>
+</tr>
+<tr class="even">
+<td>factorials</td>
+<td><span class="math inline">\(a_n=n!\)</span></td>
+<td><span class="math inline">\(\begin{aligned}a_0&amp;=1\\a_n&amp;=a_{n-1}\times n\end{aligned}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Fibonacci</td>
+<td><span class="math inline">\(a_n=\frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n-\left(\frac{1-\sqrt{5}}{2}\right)^n\right]\)</span></td>
+<td><span class="math inline">\(\begin{aligned}a_0&amp;=0\\a_1&amp;=1\\a_n&amp;=a_{n-1}+a_{n-2}\end{aligned}\)</span></td>
+</tr>
+<tr class="even">
+<td>alternating</td>
+<td><span class="math inline">\(a_n=(-1)^n\)</span></td>
+<td><span class="math inline">\(\begin{aligned}a_0&amp;=1\\a_n&amp;=-a_{n-1}\end{aligned}\)</span></td>
+</tr>
+</tbody>
+</table>
+<section id="convergence" class="level3">
+<h3 class="anchored" data-anchor-id="convergence">Convergence</h3>
+<p>TODO</p>
+</section>
 </section>
 <section id="infinite-series" class="level2">
 <h2 class="anchored" data-anchor-id="infinite-series">Infinite series</h2>
-<p>Roughly speaking, an <strong>infinite series</strong> is the sum of infinitely many numbers:</p>
+<p>Crudely, an <strong>infinite series</strong> is what you get when you take an infinite sequence and “add up all the terms:”</p>
 <p><span class="math display">\[
-\sum\limits_{n=0}^\infty a_n=a_0+a_1+a_2+a_3+\cdots
+\sum\limits_{i=0}^\infty a_i=a_0+a_1+a_2+a_3+\cdots.
 \]</span></p>
-<p>Strictly speaking, it is the limit of the sequence of <strong>partial sums</strong>:</p>
+<p>But let’s be more careful. When we say “add up all the terms,” what we’re really referring to is the <em>limit</em> of this process:</p>
 <p><span class="math display">\[
-\sum\limits_{n=0}^\infty a_n=\lim_{k\to\infty}\sum\limits_{n=0}^ka_n.
+\begin{aligned}
+&amp;a_0\\
+&amp;a_0+a_1\\
+&amp;a_0+a_1+a_2\\
+&amp;a_0+a_1+a_2+a_3\\
+&amp;\vdots\\
+\end{aligned}
 \]</span></p>
-<p>This limit may or may not be finite, and there are many famous examples of this.</p>
-<section id="geometric-series" class="level3">
-<h3 class="anchored" data-anchor-id="geometric-series">Geometric series</h3>
+<p>So, starting from the original sequence <span class="math inline">\(a_0\)</span>, <span class="math inline">\(a_1\)</span>, <span class="math inline">\(a_2\)</span>, …, we are constructing a <em>new</em> sequence called the <strong>sequence of partial sums</strong>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+S_0&amp;=a_0\\
+S_1&amp;=a_0+a_1\\
+S_2&amp;=a_0+a_1+a_2\\
+S_3&amp;=a_0+a_1+a_2+a_3\\
+&amp;\vdots\\
+S_n&amp;=\sum\limits_{i=0}^n a_i\\
+&amp;\vdots\\
+\end{aligned}
+\]</span></p>
+<p>What we call an infinite series is really just the limit of this new sequence:</p>
+<p><span class="math display">\[
+\sum\limits_{i=0}^\infty a_i=\lim_{n\to\infty}S_n=\lim_{n\to\infty}\sum\limits_{i=0}^n a_i.
+\]</span></p>
+<p>As such, we’re essentially right back where we started. Conceptually, there’s very little difference between sequence convergence and series convergence. A series converges precisely when the sequence of partial sums converges. Period.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: geometric series TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Don’t you love this:</p>
 <p><span class="math display">\[
 \frac{a}{1-r}=\sum\limits_{n=0}^\infty ar^n,\quad |r|&lt;1.
@@ -464,9 +571,32 @@ a(k+1) &amp; r=1\\
 a\left(\frac{1-r^{k+1}}{1-r}\right) &amp; \text{else}.
 \end{cases}
 \]</span></p>
-</section>
-<section id="p-series" class="level3">
-<h3 class="anchored" data-anchor-id="p-series"><span class="math inline">\(p\)</span>-series</h3>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: the harmonic series TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Harmonic sequence you get the harmonic series.</p>
+<p>The terms decaying to zero is necessary but not sufficient (there’s that phrase again) for the series to converge.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: <span class="math inline">\(p\)</span>-series
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>If <span class="math inline">\(p&gt;1\)</span>, this converges:</p>
 <p><span class="math display">\[
 \sum\limits_{n=1}^\infty\frac{1}{n^p}.
@@ -479,11 +609,51 @@ a\left(\frac{1-r^{k+1}}{1-r}\right) &amp; \text{else}.
 \sum\limits_{n=1}^\infty\frac{1}{n^3}&amp;\approx 1.202057.
 \end{aligned}
 \]</span></p>
-</section>
+</div>
+</div>
 </section>
 <section id="taylors-theorem" class="level2">
 <h2 class="anchored" data-anchor-id="taylors-theorem">Taylor’s theorem</h2>
-<p>State the theorem with the Peano version of the remainder.</p>
+<p>Taylor theory is about approximating functions with polynomials. We like to do this because polynomials are well-behaved and easy to work with. It is easy to add, subtract, multiply, differentiate, and integrate polynomials, and when we do, we’re still left with a polynomial at the end. Super convenient!</p>
+<p>The following theorem takes us to the promised land:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Taylor’s theorem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If a function <span class="math inline">\(f\)</span> is differentiable <span class="math inline">\(k\)</span> times at a point <span class="math inline">\(a\)</span>, then there exists a function <span class="math inline">\(h_k\)</span> such that</p>
+<p><span class="math display">\[
+\begin{aligned}
+f(x)
+&amp;=
+T_k(x)+R_k(x)
+\\
+&amp;=
+\underbrace{\sum\limits_{i=0}^k\frac{f^{(i)}(a)}{i!}(x-a)^i}_{\text{Taylor polynomial}}+\underbrace{h_k(x)(x-a)^k}_{\text{remainder}},
+\end{aligned}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\lim_{x\to a}h_k(x)=0.
+\]</span></p>
+</div>
+</div>
+<p>Again, the practical upshot of this theorem is that it grants us permission to approximate functions <span class="math inline">\(f\)</span> by chopping off the remainder and using the polynomial part:</p>
+<p><span class="math display">\[
+\begin{aligned}
+f(x)&amp;\approx T_0(x)=f(a) &amp;&amp;(\text{constant approximation})\\
+f(x)&amp;\approx T_1(x)=f(a)+f'(a)(x-a) &amp;&amp;(\text{linear approximation})\\
+f(x)&amp;\approx T_2(x)=f(a)+f'(a)(x-a)+\frac{f''(a)}{2}(x-a)^2 &amp;&amp;(\text{quadratic approximation})\\
+f(x)&amp;\approx T_3(x)=f(a)+f'(a)(x-a)+\frac{f''(a)}{2}(x-a)^2+\frac{f'''(a)}{6}(x-a)^3 &amp;&amp;(\text{cubic approximation})\\
+&amp;\vdots
+\end{aligned}
+\]</span></p>
+<p>Typically, the closer you are to <span class="math inline">\(a\)</span> and/or the more terms you include in the polynomial (if you have enough derivatives to keep going!), the better the approximation will be. See that at work in these examples:</p>
 <pre class="shinylive-r" data-engine="r"><code>#| '!! shinylive warning !!': |
 #|   shinylive does not work in self-contained HTML documents.
 #|   Please set `embed-resources: false` in your metadata.
@@ -494,7 +664,7 @@ a\left(\frac{1-r^{k+1}}{1-r}\right) &amp; \text{else}.
 library(shiny)
 
 ui &lt;- fluidPage(
-  titlePanel("Taylor Polynomial Approximation"),
+  titlePanel("Taylor Polynomial Approximation TODO"),
   
   sidebarLayout(
     sidebarPanel(
@@ -568,15 +738,22 @@ server &lt;- function(input, output) {
 shinyApp(ui = ui, server = server)
 </code></pre>
 </section>
-<section id="taylor-series" class="level2">
-<h2 class="anchored" data-anchor-id="taylor-series">Taylor series</h2>
-<p>If a function <span class="math inline">\(f\)</span> is <em>infinitely</em> differentiable at 0, then we can rewrite it using the <strong>Taylor expansion</strong>:</p>
+<section id="taylor-series-todo" class="level2">
+<h2 class="anchored" data-anchor-id="taylor-series-todo">Taylor series TODO</h2>
+<p>Taylor’s theorem tells us what happens if our function <span class="math inline">\(f\)</span> has <span class="math inline">\(k\)</span> derivatives at a point <span class="math inline">\(a\)</span>. So what happens if <span class="math inline">\(f\)</span> is <em>infinitely</em> differentiable at <span class="math inline">\(a\)</span>? What if we have every derivative <span class="math inline">\(f'(a)\)</span>, <span class="math inline">\(f''(a)\)</span>, <span class="math inline">\(f'''(a)\)</span>, <span class="math inline">\(f''''(a)\)</span>, … all the way down the line? Can we immediately jump to this:</p>
 <p><span class="math display">\[
-f(x)
-=
-\sum\limits_{n=0}^\infty \frac{f^{(n)}(0)}{n!}x^n,\quad \text{for some  }x.
+f(x)\overset{?}{=}\sum\limits_{i=1}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i\quad?
 \]</span></p>
-<p>The set of <span class="math inline">\(x\)</span>-values for which the Taylor expansion is valid is called the <strong>radius of convergence</strong>. Here are examples for specific functions:</p>
+<p>No! Sometimes you can and sometimes you cannot. And as before, it all comes back to sequence convergence. When we write the infinite series on the right-hand side, what we mean is:</p>
+<p><span class="math display">\[
+\sum\limits_{i=1}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i=\lim_{k\to\infty}\sum\limits_{i=0}^k\frac{f^{(i)}(a)}{i!}(x-a)^i=\lim_{k\to\infty}T_k(x).
+\]</span></p>
+<p>It’s a sequence of partial sums again! I realize the notation has gotten hairy, but at the end of the day, this is just a sequence of real numbers:</p>
+<p>Does it converge or not? If it does converge as <span class="math inline">\(k\to\infty\)</span>, then you get a <strong>Taylor series</strong> expansion of the function <span class="math inline">\(f\)</span>:</p>
+<p><span class="math display">\[
+f(x)=\sum\limits_{i=1}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i\quad \text{for some }x.
+\]</span></p>
+<p>If the Taylor polynomials <span class="math inline">\(T_k(x)\)</span> at <span class="math inline">\(x\)</span> <em>do not</em> converge to some limit, then you don’t get a Taylor series, <em>even though you have infinite derivatives</em>. We will not agonize over these details too much, but you are expected to be sensitive to the fact that the Taylor series of a function may converge for some values of the input <span class="math inline">\(x\)</span> and it may not converge for others. The set of <span class="math inline">\(x\)</span>-values for which the Taylor series converges is called its <strong>radius of convergence</strong>, and here are some famous examples:</p>
 <p><span class="math display">\[
 \begin{aligned}
 \frac{1}{1-x}&amp;=\sum\limits_{n=0}^\infty x^n,&amp;&amp;-1&lt;x&lt;1\\
