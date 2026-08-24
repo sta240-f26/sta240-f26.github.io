@@ -6,5 +6,5 @@ Deja Blue and more!
 - Page Auditorium;
 - [`@dukeacappella`](https://www.instagram.com/dukeacappella/).
 
-![](announcements/images/fall-vocal-showcase.png){width="50%"}
+![](announcements/images/fall-vocal-showcase.png){width="40%"}
 
