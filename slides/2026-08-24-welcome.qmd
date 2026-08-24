@@ -721,6 +721,7 @@ Your final course grade will be calculated as follows:
 | Final exam     | 30%        |
 
 ::: callout-warning
+## What you see is what you get
 The final letter grade will be based on the usual thresholds, which will not change and will be applied exactly. So no curve, no rounding, no extra credit.
 :::
 
