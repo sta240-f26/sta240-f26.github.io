@@ -258,7 +258,7 @@ The following theorem takes us to the promised land:
 ::: callout-note
 ## Taylor's theorem
 
-If a function $f$ is differentiable $k$ times at a point $a$, then there exists a function $h_k$ such that 
+If a function $f$ has $k$ derivatives in a neighborhood of some point $a\in\mathbb{R}$, then there exists a function $h_k$ such that 
 
 $$
 \begin{aligned}
@@ -377,16 +377,16 @@ shinyApp(ui = ui, server = server)
 
 ## Taylor series
 
-Taylor's theorem tells us what happens if our function $f$ has $k$ derivatives at a point $a$. So what happens if $f$ is *infinitely* differentiable at $a$? What if we have every derivative $f'(a)$, $f''(a)$, $f'''(a)$, $f''''(a)$, ... all the way down the line? Can we immediately jump to this:
+Taylor's theorem tells us what happens if our function $f$ has $k$ derivatives in a neighborhood of some $a$. So what happens if $f$ is *infinitely* differentiable in a neighborhood of $a$? What if we have every derivative $f'(a)$, $f''(a)$, $f'''(a)$, $f''''(a)$, ... all the way down the line? Can we immediately jump to this:
 
 $$
-f(x)\overset{?}{=}\sum\limits_{i=1}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i\quad?
+f(x)\overset{?}{=}\sum\limits_{i=0}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i\quad?
 $$
 
 Sometimes! But not always. And as before, it all comes back to convergence of sequences of real numbers. When we write the infinite series on the right-hand side, what we mean is the limit of the Taylor polynomials at $x$:
 
 $$
-\sum\limits_{i=1}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i=\lim_{k\to\infty}\sum\limits_{i=0}^k\frac{f^{(i)}(a)}{i!}(x-a)^i=\lim_{k\to\infty}T_k(x).
+\sum\limits_{i=0}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i=\lim_{k\to\infty}\sum\limits_{i=0}^k\frac{f^{(i)}(a)}{i!}(x-a)^i=\lim_{k\to\infty}T_k(x).
 $$
 
 Taylor's Theorem already guarantees that
@@ -415,7 +415,7 @@ f(x)
 \\
 &=\lim_{k\to\infty}T_k(x)
 \\
-&=\sum\limits_{i=1}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i.
+&=\sum\limits_{i=0}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i.
 \end{aligned}
 $$
 
