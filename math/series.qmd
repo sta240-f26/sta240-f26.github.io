@@ -433,6 +433,6 @@ e^x&=\sum\limits_{n=0}^\infty\frac{x^n}{n!},&&-\infty < x < \infty\\
 \end{aligned}
 $$
 
-In each of these examples, it is a Taylor series constructed around $a=0$, which is known as a **Maclaurin series**.
+Specifically, these are all examples of **Maclaurin series** because we are expanding around $a=0$. 
 
 
