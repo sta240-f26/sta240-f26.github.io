@@ -684,7 +684,7 @@ a(n+1) &amp; r=1\\
 \left(1-\lim_{n\to\infty}r^{n+1}\right)
 \end{aligned}
 \]</span></p>
-<p>So whether or not the series converges hinges on the behavior of <span class="math inline">\(\lim_{n\to\infty}r^{n+1}\)</span>. If <span class="math inline">\(|r|\geq 1\)</span>, this blows up to <span class="math inline">\(\pm\infty\)</span> and the series does not converge. If <span class="math inline">\(|r|&lt;1\)</span>, it goes to zero, giving us the famous formula:</p>
+<p>So whether or not the series converges hinges on the behavior of <span class="math inline">\(\lim_{n\to\infty}r^{n+1}\)</span>. If <span class="math inline">\(|r|\geq 1\)</span>, this does not converge, and so neither does the series. If <span class="math inline">\(|r|&lt;1\)</span>, it goes to zero, giving us the famous formula:</p>
 <p><span class="math display">\[
 \frac{a}{1-r}=\sum\limits_{i=0}^\infty ar^i,\quad |r|&lt;1.
 \]</span></p>
@@ -702,7 +702,7 @@ Example: the harmonic series
 <div class="callout-body-container callout-body">
 <p>If we add up the terms of the harmonic sequence, we get the <strong>harmonic series</strong>, which <em>does not</em> converge:</p>
 <p><span class="math display">\[
-\sum_{n=0}^\infty\frac{1}{n}=\infty.
+\sum_{n=1}^\infty\frac{1}{n}=\infty.
 \]</span></p>
 <p>But this might feel funny, because we know the individual terms converge to zero:</p>
 <p><span class="math display">\[
@@ -896,7 +896,7 @@ f(x)
 \end{aligned}
 \]</span></p>
 <p>Otherwise, you’re in the wilderness.</p>
-<p>We will not agonize over these details too much, but you are expected to be sensitive to the fact that the Taylor series of a function may converge for some values of the input <span class="math inline">\(x\)</span> and it may not converge for others. The set of <span class="math inline">\(x\)</span>-values for which the Taylor series converges is called its <strong>radius of convergence</strong>, and here are some famous examples:</p>
+<p>We will not agonize over these details too much, but you are expected to be sensitive to the fact that a function may have a Taylor series representation for some values of the input <span class="math inline">\(x\)</span> but not for others. The set of <span class="math inline">\(x\)</span>-values for which the representation holds is called its <strong>interval of convergence</strong>, and here are some famous examples:</p>
 <p><span class="math display">\[
 \begin{aligned}
 \frac{1}{1-x}&amp;=\sum\limits_{n=0}^\infty x^n,&amp;&amp;-1&lt;x&lt;1\\
