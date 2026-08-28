@@ -198,7 +198,7 @@ $$
 \end{aligned}
 $$
 
-So whether or not the series converges hinges on the behavior of $\lim_{n\to\infty}r^{n+1}$. If $|r|\geq 1$, this blows up to $\pm\infty$ and the series does not converge. If $|r|<1$, it goes to zero, giving us the famous formula:
+So whether or not the series converges hinges on the behavior of $\lim_{n\to\infty}r^{n+1}$. If $|r|\geq 1$, this does not converge, and so neither does the series. If $|r|<1$, it goes to zero, giving us the famous formula:
 
 $$
 \frac{a}{1-r}=\sum\limits_{i=0}^\infty ar^i,\quad |r|<1.
@@ -212,7 +212,7 @@ $$
 If we add up the terms of the harmonic sequence, we get the **harmonic series**, which *does not* converge:
 
 $$
-\sum_{n=0}^\infty\frac{1}{n}=\infty.
+\sum_{n=1}^\infty\frac{1}{n}=\infty.
 $$
 
 But this might feel funny, because we know the individual terms converge to zero:
@@ -422,7 +422,7 @@ $$
 
 Otherwise, you're in the wilderness. 
 
-We will not agonize over these details too much, but you are expected to be sensitive to the fact that a function may have a Taylor series representation for some values of the input $x$ but not for others. The set of $x$-values for which the representation holds is called its **radius of convergence**, and here are some famous examples:
+We will not agonize over these details too much, but you are expected to be sensitive to the fact that a function may have a Taylor series representation for some values of the input $x$ but not for others. The set of $x$-values for which the representation holds is called its **interval of convergence**, and here are some famous examples:
 
 
 $$
