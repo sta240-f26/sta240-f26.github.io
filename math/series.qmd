@@ -422,7 +422,7 @@ $$
 
 Otherwise, you're in the wilderness. 
 
-We will not agonize over these details too much, but you are expected to be sensitive to the fact that the Taylor series of a function may converge for some values of the input $x$ and it may not converge for others. The set of $x$-values for which the Taylor series converges is called its **radius of convergence**, and here are some famous examples:
+We will not agonize over these details too much, but you are expected to be sensitive to the fact that a function may have a Taylor series representation for some values of the input $x$ but not for others. The set of $x$-values for which the representation holds is called its **radius of convergence**, and here are some famous examples:
 
 
 $$
