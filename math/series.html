@@ -393,9 +393,10 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#convergence" id="toc-convergence" class="nav-link" data-scroll-target="#convergence">Convergence</a></li>
   </ul></li>
+  <li><a href="#limit-rules" id="toc-limit-rules" class="nav-link" data-scroll-target="#limit-rules">Limit rules</a></li>
   <li><a href="#infinite-series" id="toc-infinite-series" class="nav-link" data-scroll-target="#infinite-series">Infinite series</a></li>
   <li><a href="#taylors-theorem" id="toc-taylors-theorem" class="nav-link" data-scroll-target="#taylors-theorem">Taylor’s theorem</a></li>
-  <li><a href="#taylor-series-todo" id="toc-taylor-series-todo" class="nav-link" data-scroll-target="#taylor-series-todo">Taylor series TODO</a></li>
+  <li><a href="#taylor-series" id="toc-taylor-series" class="nav-link" data-scroll-target="#taylor-series">Taylor series</a></li>
   </ul>
 </nav>
     </div>
@@ -421,28 +422,16 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Under construction
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>JZ’s still working on this one!</p>
-</div>
-</div>
 <section id="sequences" class="level2">
 <h2 class="anchored" data-anchor-id="sequences">Sequences</h2>
-<p>A <strong>sequence</strong> is an ordered list of objects. For us, a sequence will typically consist of real numbers, and it will typically be infinite, but these are not requirements. We will also see sequences of functions and sets and other cute things. An infinite sequence of real numbers will typically be denoted</p>
+<p>A <strong>sequence</strong> is an <em>ordered</em> list of objects. For us, a sequence will typically consist of real numbers, and it will typically be infinite, but these are not requirements. We will also see sequences of functions and sets and other cute things. An infinite sequence of real numbers will typically be denoted</p>
 <p><span class="math display">\[
 a_0,\,a_1,\,a_2,\,a_3,\,...,\,a_{n-1},\,a_n,\,a_{n+1},\,...
 \]</span></p>
 <p>More concisely, we might say <span class="math inline">\(\{a_n\}_{n=0}^\infty\)</span> or simply <span class="math inline">\(\{a_n\}\)</span>. Here <span class="math inline">\(a_n\)</span> refers to the <span class="math inline">\(n\)</span>th <strong>term</strong> in the sequence. Here are some examples of sequences:</p>
 <p><span class="math display">\[
 \begin{aligned}
+&amp;0,\,0,\,0,\,0,\,0,\,0,\,0,\,0,\,0,\,... &amp;&amp;(\text{a constant sequence})\\
 &amp;0,\,1,\,2,\,3,\,4,\,5,\,6,\,7,\,8,\,... &amp;&amp;(\text{natural numbers})\\
 &amp;0,\,2,\,4,\,6,\,8,\,10,\,12,\,14,\,... &amp;&amp;(\text{even numbers})\\
 &amp;1,\,3,\,5,\,7,\,9,\,11,\,13,\,15,\,... &amp;&amp;(\text{odd numbers})\\
@@ -469,41 +458,46 @@ a_0,\,a_1,\,a_2,\,a_3,\,...,\,a_{n-1},\,a_n,\,a_{n+1},\,...
 </thead>
 <tbody>
 <tr class="odd">
+<td>constant</td>
+<td><span class="math inline">\(a_n=0\)</span></td>
+<td><span class="math inline">\(\begin{aligned}a_0&amp;=0\\a_n&amp;=a_{n-1}\end{aligned}\)</span></td>
+</tr>
+<tr class="even">
 <td>naturals</td>
 <td><span class="math inline">\(a_n=n\)</span></td>
 <td><span class="math inline">\(\begin{aligned}a_0&amp;=0\\a_n&amp;=a_{n-1}+1\end{aligned}\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>evens</td>
 <td><span class="math inline">\(a_n=2n\)</span></td>
 <td><span class="math inline">\(\begin{aligned}a_0&amp;=0\\a_n&amp;=a_{n-1}+2\end{aligned}\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>odds</td>
 <td><span class="math inline">\(a_n=2n+1\)</span></td>
 <td><span class="math inline">\(\begin{aligned}a_0&amp;=1\\a_n&amp;=a_{n-1}+2\end{aligned}\)</span></td>
 </tr>
-<tr class="even">
-<td>squares</td>
-<td><span class="math inline">\(a_n=a_{n-1}+2n-1\)</span></td>
-<td><span class="math inline">\(\begin{aligned}a_0&amp;=0\\a_n&amp;=a_{n-1}+1\end{aligned}\)</span></td>
-</tr>
 <tr class="odd">
+<td>squares</td>
+<td><span class="math inline">\(a_n=n^2\)</span></td>
+<td><span class="math inline">\(\begin{aligned}a_0&amp;=0\\a_n&amp;=a_{n-1}+2n-1\end{aligned}\)</span></td>
+</tr>
+<tr class="even">
 <td>harmonic</td>
 <td><span class="math inline">\(a_n=\frac{1}{n}\)</span></td>
 <td><span class="math inline">\(\begin{aligned}a_1&amp;=1\\a_n&amp;=\frac{n-1}{n}a_{n-1}\end{aligned}\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>factorials</td>
 <td><span class="math inline">\(a_n=n!\)</span></td>
 <td><span class="math inline">\(\begin{aligned}a_0&amp;=1\\a_n&amp;=a_{n-1}\times n\end{aligned}\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Fibonacci</td>
 <td><span class="math inline">\(a_n=\frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n-\left(\frac{1-\sqrt{5}}{2}\right)^n\right]\)</span></td>
 <td><span class="math inline">\(\begin{aligned}a_0&amp;=0\\a_1&amp;=1\\a_n&amp;=a_{n-1}+a_{n-2}\end{aligned}\)</span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>alternating</td>
 <td><span class="math inline">\(a_n=(-1)^n\)</span></td>
 <td><span class="math inline">\(\begin{aligned}a_0&amp;=1\\a_n&amp;=-a_{n-1}\end{aligned}\)</span></td>
@@ -512,8 +506,99 @@ a_0,\,a_1,\,a_2,\,a_3,\,...,\,a_{n-1},\,a_n,\,a_{n+1},\,...
 </table>
 <section id="convergence" class="level3">
 <h3 class="anchored" data-anchor-id="convergence">Convergence</h3>
-<p>TODO</p>
+<p>One of our main concerns with sequences is whether or not they <strong>converge</strong> to some finite <strong>limit</strong>. Informally, we want to know whether or not the terms in the sequence get “closer and closer” to some fixed value (and remain there!) as <span class="math inline">\(n\to\infty\)</span>.</p>
+<p>Here is the formal definition, which may be new to you, but we won’t really need it in this class:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: sequence convergence
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A sequence of real numbers <span class="math inline">\(\{a_n\}\)</span> <strong>converges</strong> to some <strong>limit</strong> <span class="math inline">\(L\in\mathbb{R}\)</span> if, for any <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists a natural number <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(|a_n-L|&lt;\varepsilon\)</span> for all <span class="math inline">\(n\geq N\)</span>. In words, the definition requires that for any <em>error tolerance</em> you give me (<span class="math inline">\(\varepsilon&gt;0\)</span>), I can go far enough out in the sequence (<span class="math inline">\(n\geq N\)</span> for some <span class="math inline">\(N\)</span>) such that I am always within that tolerance of the limit (<span class="math inline">\(|a_n-L|&lt;\varepsilon\)</span>) forever after.</p>
+</div>
+</div>
+<p>If there exists an <span class="math inline">\(L\in\mathbb{R}\)</span> satisfying this definition, then we write:</p>
+<p><span class="math display">\[
+\lim_{n\to\infty} a_n=L.
+\]</span></p>
+<p>As we know, some sequences converge and some sequences do not. In our examples above, the naturals, evens, odds, squares, factorials, and Fibonacci sequence all <em>blow up</em>. That is, <span class="math inline">\(\lim_{n\to\infty}a_n=\infty\)</span>. The alternating sequence just alternates forever. It never settles down anywhere. The constant sequence and the <em>harmonic sequence</em> both converge:</p>
+<p><span class="math display">\[
+\lim_{n\to\infty}0=0,\quad\lim_{n\to\infty}\frac{1}{n}=0.
+\]</span></p>
+<p>For another example, consider the sequence</p>
+<p><span class="math display">\[
+0,\,\frac{1}{2},\,\frac{2}{3},\,\frac{3}{4},\,\frac{4}{5},\,\frac{5}{6},\,...,
+\]</span></p>
+<p>which we can write explicitly as</p>
+<p><span class="math display">\[
+a_n=\frac{n}{n+1}=\frac{n+1-1}{n+1}=\frac{n+1}{n+1}-\frac{1}{n+1}=1-\frac{1}{n+1}.
+\]</span></p>
+<p>This converges:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{n\to\infty}\frac{n}{n+1}=\lim_{n\to\infty}\left[1-\frac{1}{n+1}\right]=\lim_{n\to\infty}1-\lim_{n\to\infty}\frac{1}{n+1}=1-0=1.
+\end{aligned}
+\]</span></p>
+<p>That last lil’ string of equalities suggests that the limit <em>as an operator</em> has certain properties that we can take advantage of in calculations.</p>
 </section>
+</section>
+<section id="limit-rules" class="level2">
+<h2 class="anchored" data-anchor-id="limit-rules">Limit rules</h2>
+<p>Let <span class="math inline">\(\{a_n\}\)</span>, <span class="math inline">\(\{b_n\}\)</span> be convergent sequences of real numbers, let <span class="math inline">\(u,\,v\in\mathbb{R}\)</span> be constants, and let <span class="math inline">\(\{c_n\}\)</span> be another sequence that may or may not converge. Then:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>rule</th>
+<th>details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>constant</td>
+<td><span class="math display">\[\lim_{n\to\infty}u=u\]</span></td>
+</tr>
+<tr class="even">
+<td>scaling</td>
+<td><span class="math display">\[\lim_{n\to\infty}(u\cdot a_n)=u\lim_{n\to\infty}a_n\]</span></td>
+</tr>
+<tr class="odd">
+<td>sum/difference</td>
+<td><span class="math display">\[\lim_{n\to\infty}(a_n\pm b_n)=\lim_{n\to\infty}a_n\pm\lim_{n\to\infty}b_n\]</span></td>
+</tr>
+<tr class="even">
+<td>linearity</td>
+<td><span class="math display">\[\lim_{n\to\infty}(u\cdot a_n\pm v\cdot b_n)=u\lim_{n\to\infty}a_n\pm v\lim_{n\to\infty}b_n\]</span></td>
+</tr>
+<tr class="odd">
+<td>product</td>
+<td><span class="math display">\[\lim_{n\to\infty}(a_n\cdot b_n)=\left(\lim_{n\to\infty}a_n\right)\left(\lim_{n\to\infty}b_n\right)\]</span></td>
+</tr>
+<tr class="even">
+<td>quotient</td>
+<td><span class="math display">\[\lim_{n\to\infty}\frac{a_n}{b_n}=\frac{\lim_{n\to\infty} a_n}{\lim_{n\to\infty} b_n},\quad \text{if }\lim_{n\to\infty} b_n\neq0\]</span></td>
+</tr>
+<tr class="odd">
+<td>power</td>
+<td><span class="math display">\[\lim_{n\to\infty}a_n^r=\left[\lim_{n\to\infty}a_n\right]^r,\quad \text{if }r,\,a_n&gt;0\]</span></td>
+</tr>
+<tr class="even">
+<td>order</td>
+<td>If there exists <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(a_n\leq b_n\)</span> for all <span class="math inline">\(n\geq N\)</span>, then <span class="math inline">\(\lim_{n\to\infty}a_n\leq \lim_{n\to\infty}b_n\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>squeeze</td>
+<td>If there exists <span class="math inline">\(N\in\mathbb{N}\)</span> such that <span class="math inline">\(a_n\leq c_n\leq b_n\)</span> for all <span class="math inline">\(n\geq N\)</span> and <span class="math inline">\(\lim_{n\to\infty}a_n= \lim_{n\to\infty}b_n=L\)</span>, then <span class="math inline">\(\{c_n\}\)</span> converges and <span class="math inline">\(\lim_{n\to\infty}c_n=L\)</span>.</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="infinite-series" class="level2">
 <h2 class="anchored" data-anchor-id="infinite-series">Infinite series</h2>
@@ -554,22 +639,54 @@ S_n&amp;=\sum\limits_{i=0}^n a_i\\
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Example: geometric series TODO
+Example: geometric series
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Don’t you love this:</p>
+<p>Consider the <strong>geometric series</strong> for some <span class="math inline">\(a\in\mathbb{R}\)</span>:</p>
 <p><span class="math display">\[
-\frac{a}{1-r}=\sum\limits_{n=0}^\infty ar^n,\quad |r|&lt;1.
+\begin{aligned}
+\sum\limits_{i=0}^\infty ar^i
+&amp;=
+a+ar+ar^2+ar^3+\cdots
+\end{aligned}
 \]</span></p>
-<p>The partial sums are also well-behaved:</p>
+<p>This converges for some values of <span class="math inline">\(r\in\mathbb{R}\)</span> and not others. But let’s back up. Regardless the value of <span class="math inline">\(r\)</span>, we have a nice formula for the partial sums:</p>
 <p><span class="math display">\[
-\sum\limits_{n=0}^k ar^n
+S_n
+=
+\sum\limits_{i=0}^n ar^i
 =
 \begin{cases}
-a(k+1) &amp; r=1\\
-a\left(\frac{1-r^{k+1}}{1-r}\right) &amp; \text{else}.
+a(n+1) &amp; r=1\\
+\frac{a}{1-r}(1-r^{n+1}) &amp; \text{else}.
 \end{cases}
+\]</span></p>
+<p>If <span class="math inline">\(r=1\)</span>, then the sequence of partial sums explodes (it’s basically just <span class="math inline">\(n\)</span>). So consider <span class="math inline">\(r\neq 1\)</span>. Using rules from above:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum\limits_{i=0}^\infty ar^i
+&amp;=
+\lim_{n\to\infty}
+\sum\limits_{i=0}^n ar^i
+\\
+&amp;=
+\lim_{n\to\infty}
+\frac{a}{1-r}(1-r^{n+1})
+\\
+&amp;=
+\frac{a}{1-r}
+\lim_{n\to\infty}
+(1-r^{n+1})
+\\
+&amp;=
+\frac{a}{1-r}
+\left(1-\lim_{n\to\infty}r^{n+1}\right)
+\end{aligned}
+\]</span></p>
+<p>So whether or not the series converges hinges on the behavior of <span class="math inline">\(\lim_{n\to\infty}r^{n+1}\)</span>. If <span class="math inline">\(|r|\geq 1\)</span>, this blows up to <span class="math inline">\(\pm\infty\)</span> and the series does not converge. If <span class="math inline">\(|r|&lt;1\)</span>, it goes to zero, giving us the famous formula:</p>
+<p><span class="math display">\[
+\frac{a}{1-r}=\sum\limits_{i=0}^\infty ar^i,\quad |r|&lt;1.
 \]</span></p>
 </div>
 </div>
@@ -579,12 +696,19 @@ a\left(\frac{1-r^{k+1}}{1-r}\right) &amp; \text{else}.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Example: the harmonic series TODO
+Example: the harmonic series
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Harmonic sequence you get the harmonic series.</p>
-<p>The terms decaying to zero is necessary but not sufficient (there’s that phrase again) for the series to converge.</p>
+<p>If we add up the terms of the harmonic sequence, we get the <strong>harmonic series</strong>, which <em>does not</em> converge:</p>
+<p><span class="math display">\[
+\sum_{n=0}^\infty\frac{1}{n}=\infty.
+\]</span></p>
+<p>But this might feel funny, because we know the individual terms converge to zero:</p>
+<p><span class="math display">\[
+\lim_{n\to\infty}\frac{1}{n}=0.
+\]</span></p>
+<p>So what gives? It turns out that “the terms going to zero” is <strong>necessary but not sufficient</strong> for the series to converge. If the separate terms you’re adding up <em>don’t</em> go to zero, then certainly you’re screwed. But even if the terms go to zero, that’s not enough. What matters is <em>how fast</em> the terms go to zero. If they go to zero fast enough, maybe series converges. If they decay to zero too slowly, then the series is doomed.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -597,14 +721,13 @@ Example: <span class="math inline">\(p\)</span>-series
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(p&gt;1\)</span>, this converges:</p>
+<p>This is a <span class="math inline">\(p\)</span><strong>-series</strong>:</p>
 <p><span class="math display">\[
 \sum\limits_{n=1}^\infty\frac{1}{n^p}.
 \]</span></p>
-<p>Here are concrete examples:</p>
+<p>The <span class="math inline">\(p=1\)</span> special case is the harmonic series, which we know does not converge. If <span class="math inline">\(p&gt;1\)</span>, it turns out the <span class="math inline">\(p\)</span>-series does converge, and here are some specific examples:</p>
 <p><span class="math display">\[
 \begin{aligned}
-\sum\limits_{n=1}^\infty\frac{1}{n}&amp;=\infty &amp;&amp;\text{(harmonic series)}\\
 \sum\limits_{n=1}^\infty\frac{1}{n^2}&amp;=\frac{\pi^2}{6}\\
 \sum\limits_{n=1}^\infty\frac{1}{n^3}&amp;\approx 1.202057.
 \end{aligned}
@@ -664,7 +787,7 @@ f(x)&amp;\approx T_3(x)=f(a)+f'(a)(x-a)+\frac{f''(a)}{2}(x-a)^2+\frac{f'''(a)}{6
 library(shiny)
 
 ui &lt;- fluidPage(
-  titlePanel("Taylor Polynomial Approximation TODO"),
+  titlePanel("Taylor Polynomial Approximation"),
   
   sidebarLayout(
     sidebarPanel(
@@ -738,22 +861,42 @@ server &lt;- function(input, output) {
 shinyApp(ui = ui, server = server)
 </code></pre>
 </section>
-<section id="taylor-series-todo" class="level2">
-<h2 class="anchored" data-anchor-id="taylor-series-todo">Taylor series TODO</h2>
+<section id="taylor-series" class="level2">
+<h2 class="anchored" data-anchor-id="taylor-series">Taylor series</h2>
 <p>Taylor’s theorem tells us what happens if our function <span class="math inline">\(f\)</span> has <span class="math inline">\(k\)</span> derivatives at a point <span class="math inline">\(a\)</span>. So what happens if <span class="math inline">\(f\)</span> is <em>infinitely</em> differentiable at <span class="math inline">\(a\)</span>? What if we have every derivative <span class="math inline">\(f'(a)\)</span>, <span class="math inline">\(f''(a)\)</span>, <span class="math inline">\(f'''(a)\)</span>, <span class="math inline">\(f''''(a)\)</span>, … all the way down the line? Can we immediately jump to this:</p>
 <p><span class="math display">\[
 f(x)\overset{?}{=}\sum\limits_{i=1}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i\quad?
 \]</span></p>
-<p>No! Sometimes you can and sometimes you cannot. And as before, it all comes back to sequence convergence. When we write the infinite series on the right-hand side, what we mean is:</p>
+<p>Sometimes! But not always. And as before, it all comes back to convergence of sequences of real numbers. When we write the infinite series on the right-hand side, what we mean is the limit of the Taylor polynomials at <span class="math inline">\(x\)</span>:</p>
 <p><span class="math display">\[
 \sum\limits_{i=1}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i=\lim_{k\to\infty}\sum\limits_{i=0}^k\frac{f^{(i)}(a)}{i!}(x-a)^i=\lim_{k\to\infty}T_k(x).
 \]</span></p>
-<p>It’s a sequence of partial sums again! I realize the notation has gotten hairy, but at the end of the day, this is just a sequence of real numbers:</p>
-<p>Does it converge or not? If it does converge as <span class="math inline">\(k\to\infty\)</span>, then you get a <strong>Taylor series</strong> expansion of the function <span class="math inline">\(f\)</span>:</p>
+<p>Taylor’s Theorem already guarantees that</p>
 <p><span class="math display">\[
-f(x)=\sum\limits_{i=1}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i\quad \text{for some }x.
+f(x)=T_k(x)+R_k(x)=\text{Taylor polynomial} + \text{Remainder},
 \]</span></p>
-<p>If the Taylor polynomials <span class="math inline">\(T_k(x)\)</span> at <span class="math inline">\(x\)</span> <em>do not</em> converge to some limit, then you don’t get a Taylor series, <em>even though you have infinite derivatives</em>. We will not agonize over these details too much, but you are expected to be sensitive to the fact that the Taylor series of a function may converge for some values of the input <span class="math inline">\(x\)</span> and it may not converge for others. The set of <span class="math inline">\(x\)</span>-values for which the Taylor series converges is called its <strong>radius of convergence</strong>, and here are some famous examples:</p>
+<p>and because we are assuming <span class="math inline">\(f\)</span> is infinitely differentiable, this equality holds <strong>for all</strong> <span class="math inline">\(k\in\mathbb{N}\)</span>. So, in order for <span class="math inline">\(f\)</span> to have a <strong>Taylor series</strong> representation at <span class="math inline">\(x\)</span>, we need</p>
+<p><span class="math display">\[
+\lim_{k\to\infty}R_k(x)=0.
+\]</span></p>
+<p>If it does, then you can say</p>
+<p><span class="math display">\[
+\begin{aligned}
+f(x)
+&amp;=
+\lim_{k\to\infty}[T_k(x)+R_k(x)]
+\\
+&amp;=\lim_{k\to\infty}T_k(x)+\lim_{k\to\infty}R_k(x)
+\\
+&amp;=\lim_{k\to\infty}T_k(x)+0
+\\
+&amp;=\lim_{k\to\infty}T_k(x)
+\\
+&amp;=\sum\limits_{i=1}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i.
+\end{aligned}
+\]</span></p>
+<p>Otherwise, you’re in the wilderness.</p>
+<p>We will not agonize over these details too much, but you are expected to be sensitive to the fact that the Taylor series of a function may converge for some values of the input <span class="math inline">\(x\)</span> and it may not converge for others. The set of <span class="math inline">\(x\)</span>-values for which the Taylor series converges is called its <strong>radius of convergence</strong>, and here are some famous examples:</p>
 <p><span class="math display">\[
 \begin{aligned}
 \frac{1}{1-x}&amp;=\sum\limits_{n=0}^\infty x^n,&amp;&amp;-1&lt;x&lt;1\\
@@ -761,6 +904,7 @@ e^x&amp;=\sum\limits_{n=0}^\infty\frac{x^n}{n!},&amp;&amp;-\infty &lt; x &lt; \i
 \ln(1-x)&amp;=-\sum\limits_{n=1}^\infty\frac{x^n}{n},&amp;&amp;-1\leq x &lt; 1.
 \end{aligned}
 \]</span></p>
+<p>In each of these examples, it is a Taylor series constructed around <span class="math inline">\(a=0\)</span>, which is known as a <strong>Maclaurin series</strong>.</p>
 
 
 </section>
