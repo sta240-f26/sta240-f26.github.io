@@ -4,10 +4,6 @@ editor:
   mode: source
 ---
 
-::: callout-note
-Office hours will begin on Friday August 28.
-:::
-
 +---------------------------+----------------+---------------+--------------------------------+
 | Mug                       | Name           | Role          | Office Hours                   |
 +===========================+================+===============+================================+
@@ -26,6 +22,10 @@ Office hours will begin on Friday August 28.
 +---------------------------+----------------+---------------+--------------------------------+
 : {tbl-colwidths="[20,20,20,40]"}
 
+::: callout-note
+## JZ's office hours
+They're set to end at 3:30 PM on Fridays because that's when our department seminar begins. In weeks where we don't have a seminar, or where I'm not planning on going, I'm happy to stay longer.
+:::
 
 
 
