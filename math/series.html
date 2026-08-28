@@ -749,7 +749,7 @@ Taylor’s theorem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If a function <span class="math inline">\(f\)</span> is differentiable <span class="math inline">\(k\)</span> times at a point <span class="math inline">\(a\)</span>, then there exists a function <span class="math inline">\(h_k\)</span> such that</p>
+<p>If a function <span class="math inline">\(f\)</span> has <span class="math inline">\(k\)</span> derivatives in a neighborhood of some point <span class="math inline">\(a\in\mathbb{R}\)</span>, then there exists a function <span class="math inline">\(h_k\)</span> such that</p>
 <p><span class="math display">\[
 \begin{aligned}
 f(x)
@@ -863,13 +863,13 @@ shinyApp(ui = ui, server = server)
 </section>
 <section id="taylor-series" class="level2">
 <h2 class="anchored" data-anchor-id="taylor-series">Taylor series</h2>
-<p>Taylor’s theorem tells us what happens if our function <span class="math inline">\(f\)</span> has <span class="math inline">\(k\)</span> derivatives at a point <span class="math inline">\(a\)</span>. So what happens if <span class="math inline">\(f\)</span> is <em>infinitely</em> differentiable at <span class="math inline">\(a\)</span>? What if we have every derivative <span class="math inline">\(f'(a)\)</span>, <span class="math inline">\(f''(a)\)</span>, <span class="math inline">\(f'''(a)\)</span>, <span class="math inline">\(f''''(a)\)</span>, … all the way down the line? Can we immediately jump to this:</p>
+<p>Taylor’s theorem tells us what happens if our function <span class="math inline">\(f\)</span> has <span class="math inline">\(k\)</span> derivatives in a neighborhood of some <span class="math inline">\(a\)</span>. So what happens if <span class="math inline">\(f\)</span> is <em>infinitely</em> differentiable in a neighborhood of <span class="math inline">\(a\)</span>? What if we have every derivative <span class="math inline">\(f'(a)\)</span>, <span class="math inline">\(f''(a)\)</span>, <span class="math inline">\(f'''(a)\)</span>, <span class="math inline">\(f''''(a)\)</span>, … all the way down the line? Can we immediately jump to this:</p>
 <p><span class="math display">\[
-f(x)\overset{?}{=}\sum\limits_{i=1}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i\quad?
+f(x)\overset{?}{=}\sum\limits_{i=0}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i\quad?
 \]</span></p>
 <p>Sometimes! But not always. And as before, it all comes back to convergence of sequences of real numbers. When we write the infinite series on the right-hand side, what we mean is the limit of the Taylor polynomials at <span class="math inline">\(x\)</span>:</p>
 <p><span class="math display">\[
-\sum\limits_{i=1}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i=\lim_{k\to\infty}\sum\limits_{i=0}^k\frac{f^{(i)}(a)}{i!}(x-a)^i=\lim_{k\to\infty}T_k(x).
+\sum\limits_{i=0}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i=\lim_{k\to\infty}\sum\limits_{i=0}^k\frac{f^{(i)}(a)}{i!}(x-a)^i=\lim_{k\to\infty}T_k(x).
 \]</span></p>
 <p>Taylor’s Theorem already guarantees that</p>
 <p><span class="math display">\[
@@ -892,7 +892,7 @@ f(x)
 \\
 &amp;=\lim_{k\to\infty}T_k(x)
 \\
-&amp;=\sum\limits_{i=1}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i.
+&amp;=\sum\limits_{i=0}^\infty\frac{f^{(i)}(a)}{i!}(x-a)^i.
 \end{aligned}
 \]</span></p>
 <p>Otherwise, you’re in the wilderness.</p>
@@ -904,7 +904,7 @@ e^x&amp;=\sum\limits_{n=0}^\infty\frac{x^n}{n!},&amp;&amp;-\infty &lt; x &lt; \i
 \ln(1-x)&amp;=-\sum\limits_{n=1}^\infty\frac{x^n}{n},&amp;&amp;-1\leq x &lt; 1.
 \end{aligned}
 \]</span></p>
-<p>In each of these examples, it is a Taylor series constructed around <span class="math inline">\(a=0\)</span>, which is known as a <strong>Maclaurin series</strong>.</p>
+<p>Specifically, these are all examples of <strong>Maclaurin series</strong> because we are expanding around <span class="math inline">\(a=0\)</span>.</p>
 
 
 </section>
