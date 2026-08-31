@@ -98,7 +98,7 @@ $$
 $$
 
 
-## A theorem
+## A theorem we will use often
 
 If $A,\,B\subseteq S$, then 
 
