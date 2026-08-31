@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Limits and continuity – STA 240 Fall 2026</title>
+<title>From set theory to probability – STA 240 Fall 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../math/series.html" rel="next">
-<link href="../math/integration.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -99,12 +97,11 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="Limits and continuity – STA 240 Fall 2026">
-<meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
-<meta property="og:image" content="https://sta240-f26.github.io/math/images/continuity-types.png">
+<meta property="og:title" content="From set theory to probability – STA 240 Fall 2026">
+<meta property="og:image" content="https://sta240-f26.github.io/lecture-notes/images/union.png">
 <meta property="og:site_name" content="STA 240 Fall 2026">
-<meta property="og:image:height" content="540">
-<meta property="og:image:width" content="960">
+<meta property="og:image:height" content="625">
+<meta property="og:image:width" content="920">
 </head>
 
 <body class="nav-sidebar docked quarto-light">
@@ -116,7 +113,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../math/greeks.html">Math Helpers</a></li><li class="breadcrumb-item"><a href="../math/limits.html">Limits and continuity</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">From set theory to probability</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -208,13 +205,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Math Helpers</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../math/greeks.html" class="sidebar-item-text sidebar-link">
@@ -241,7 +238,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../math/limits.html" class="sidebar-item-text sidebar-link active">
+  <a href="../math/limits.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Limits and continuity</span></a>
   </div>
 </li>
@@ -387,17 +384,53 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#limit-rules" id="toc-limit-rules" class="nav-link active" data-scroll-target="#limit-rules">Limit rules</a></li>
-  <li><a href="#indeterminate-forms-and-lhôpitals-rule" id="toc-indeterminate-forms-and-lhôpitals-rule" class="nav-link" data-scroll-target="#indeterminate-forms-and-lhôpitals-rule">Indeterminate forms and L’Hôpital’s rule</a></li>
+  <li><a href="#lets-talk-about-our-calculus-needs" id="toc-lets-talk-about-our-calculus-needs" class="nav-link active" data-scroll-target="#lets-talk-about-our-calculus-needs">Let’s talk about our (calculus) needs</a>
+  <ul class="collapse">
+  <li><a href="#what-we-need" id="toc-what-we-need" class="nav-link" data-scroll-target="#what-we-need">What we need</a></li>
+  <li><a href="#what-we-wont-need" id="toc-what-we-wont-need" class="nav-link" data-scroll-target="#what-we-wont-need">What we <em>won’t</em> need</a></li>
+  <li><a href="#the-math-helpers" id="toc-the-math-helpers" class="nav-link" data-scroll-target="#the-math-helpers">The math helpers</a></li>
+  <li><a href="#calc-iii" id="toc-calc-iii" class="nav-link" data-scroll-target="#calc-iii">Calc III?</a></li>
+  </ul></li>
+  <li><a href="#last-time" id="toc-last-time" class="nav-link" data-scroll-target="#last-time">Last time</a>
+  <ul class="collapse">
+  <li><a href="#set-operations" id="toc-set-operations" class="nav-link" data-scroll-target="#set-operations">Set operations</a></li>
+  <li><a href="#algebraic-properties" id="toc-algebraic-properties" class="nav-link" data-scroll-target="#algebraic-properties">Algebraic properties</a></li>
+  <li><a href="#a-theorem" id="toc-a-theorem" class="nav-link" data-scroll-target="#a-theorem">A theorem</a></li>
+  <li><a href="#start-with-the-sample-space" id="toc-start-with-the-sample-space" class="nav-link" data-scroll-target="#start-with-the-sample-space">Start with the sample space</a></li>
+  <li><a href="#introduce-b" id="toc-introduce-b" class="nav-link" data-scroll-target="#introduce-b">Introduce <span class="math inline">\(B\)</span></a></li>
+  <li><a href="#introduce-bc" id="toc-introduce-bc" class="nav-link" data-scroll-target="#introduce-bc">Introduce <span class="math inline">\(B^c\)</span></a></li>
+  <li><a href="#b-and-bc-form-a-partition-of-s" id="toc-b-and-bc-form-a-partition-of-s" class="nav-link" data-scroll-target="#b-and-bc-form-a-partition-of-s"><span class="math inline">\(B\)</span> and <span class="math inline">\(B^c\)</span> form a <em>partition</em> of <span class="math inline">\(S\)</span></a></li>
+  <li><a href="#introduce-a" id="toc-introduce-a" class="nav-link" data-scroll-target="#introduce-a">Introduce <span class="math inline">\(A\)</span></a></li>
+  <li><a href="#notice-the-decomposition" id="toc-notice-the-decomposition" class="nav-link" data-scroll-target="#notice-the-decomposition">Notice the decomposition</a></li>
+  </ul></li>
+  <li><a href="#probability-time" id="toc-probability-time" class="nav-link" data-scroll-target="#probability-time">Probability time</a>
+  <ul class="collapse">
+  <li><a href="#random-phenomena" id="toc-random-phenomena" class="nav-link" data-scroll-target="#random-phenomena">Random phenomena</a></li>
+  <li><a href="#our-main-object-of-study" id="toc-our-main-object-of-study" class="nav-link" data-scroll-target="#our-main-object-of-study">Our main object of study</a></li>
+  <li><a href="#the-simplest-example" id="toc-the-simplest-example" class="nav-link" data-scroll-target="#the-simplest-example">The simplest example</a></li>
+  <li><a href="#that-word-space" id="toc-that-word-space" class="nav-link" data-scroll-target="#that-word-space">That word “space”</a></li>
+  <li><a href="#sample-spaces" id="toc-sample-spaces" class="nav-link" data-scroll-target="#sample-spaces">Sample spaces</a></li>
+  <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events">Events</a></li>
+  </ul></li>
+  <li><a href="#translating-set-theory-into-probability" id="toc-translating-set-theory-into-probability" class="nav-link" data-scroll-target="#translating-set-theory-into-probability">Translating set theory into probability</a>
+  <ul class="collapse">
+  <li><a href="#running-example-where-will-the-meteor-land" id="toc-running-example-where-will-the-meteor-land" class="nav-link" data-scroll-target="#running-example-where-will-the-meteor-land">Running example: where will the meteor land?</a></li>
+  <li><a href="#example-events" id="toc-example-events" class="nav-link" data-scroll-target="#example-events">Example events</a></li>
+  <li><a href="#or-events-union" id="toc-or-events-union" class="nav-link" data-scroll-target="#or-events-union">“OR” events (union)</a></li>
+  <li><a href="#and-events-intersection" id="toc-and-events-intersection" class="nav-link" data-scroll-target="#and-events-intersection">“AND” events (intersection)</a></li>
+  <li><a href="#not-events-complement" id="toc-not-events-complement" class="nav-link" data-scroll-target="#not-events-complement">“NOT” events (complement)</a></li>
+  <li><a href="#implication" id="toc-implication" class="nav-link" data-scroll-target="#implication">Implication</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="01-set2prob-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../math/greeks.html">Math Helpers</a></li><li class="breadcrumb-item"><a href="../math/limits.html">Limits and continuity</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Limits and continuity</h1>
+<h1 class="title">From set theory to probability</h1>
 </div>
 
 
@@ -414,126 +447,665 @@ window.Quarto = {
 </header>
 
 
-<p>The limit of a function <span class="math inline">\(f(x)\)</span> at a point <span class="math inline">\(c\)</span> is the value that the function approaches as <span class="math inline">\(x\)</span> approaches <span class="math inline">\(c\)</span>. We denote this:</p>
-<p><span class="math display">\[
-\lim_{x\to c}f(x).
-\]</span></p>
-<p>If the limit of the function and the actual <em>value</em> of the function agree, then the function is <strong>continuous</strong>:</p>
-<p><span class="math display">\[
-\lim_{x\to c}f(x)=f(c)
-\]</span> If a function is continuous, that makes it especially convenient to evaluate limits because it means you can just plug-in and evaluate the darn function. But as <a href="#fig-continuity" class="quarto-xref">Figure&nbsp;1</a> illustrates, not all functions are continuous. Some functions have breaks and jumps and holes that make them <strong>discontinuous</strong>.</p>
-<div id="fig-continuity" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="60%">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-continuity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/continuity-types.png" id="fig-continuity" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:60.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-continuity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1
-</figcaption>
-</figure>
-</div>
-<p>But not all discontinuities are created equal:</p>
+<section id="lets-talk-about-our-calculus-needs" class="level1">
+<h1>Let’s talk about our (calculus) needs</h1>
+<section id="what-we-need" class="level2 scrollable">
+<h2 class="scrollable anchored" data-anchor-id="what-we-need">What we need</h2>
 <ul>
-<li>(upper right) the function has a <em>hole</em>. The limit the function approaches (the hole), and the value of the function (the point) are different;</li>
-<li>(lower right) this function is <strong>left continuous</strong>. The value of the function and the limit <em>as you approach from the left</em> are in agreement. But there’s a jump, and the limit <em>as you approach from the right</em> is different;</li>
-<li>(lower left) this function is <strong>right continuous</strong>. The value of the function and the limit <em>as you approach from the right</em> are in agreement. But there’s a jump, and the limit <em>as you approach from the left</em> is different;</li>
-<li>(upper left) this function is just straight-up continuous. The left and the right limits both agree with the function value.</li>
+<li>First and foremost, integration. <em>Especially</em> <a href="../math/integration.html#improper-integration-we-will-do-this-a-lot">improper integration</a>. Stuff like this will become our daily bread:</li>
 </ul>
-<section id="limit-rules" class="level2">
-<h2 class="anchored" data-anchor-id="limit-rules">Limit rules</h2>
-<p>Assume <span class="math inline">\(\lim_{x\to c}f(x)\)</span> and <span class="math inline">\(\lim_{x\to c}g(x)\)</span> exist, let <span class="math inline">\(a,\,b\in\mathbb{R}\)</span> be arbitrary constants, and let <span class="math inline">\(r&gt;0\)</span>. Then:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int_0^\infty F'(x)\,\text{d}x
+&amp;=
+\lim_{b\to\infty}\int_{0}^bF'(x)\,\text{d}x
+\\
+&amp;=\lim_{b\to\infty}[F(x)]_0^b\\
+&amp;=\lim_{b\to\infty}F(b) - F(0);
+\end{aligned}
+\]</span></p>
+<ul>
+<li><p>In order to <em>anti</em>differentiate, you need to be able to <em>differentiate</em>, and in order to evaluate an <em>improper</em> integral, you need to be able to take limits. Hence, all of Calc I and II is on the table for us;</p></li>
+<li><p>Our use of infinite series will be relatively modest. You will mainly have to <em>recognize</em> the famous ones (eg. geometric series, Taylor series of <span class="math inline">\(e^x\)</span>, etc). However, sometimes these otherwise friendly faces will be very cleverly disguised (you’ve already seen that <a href="../problems/pset-0.html#problem-6">here</a>), and so “recognition on steroids” is a new skill you must cultivate. JZ calls it “massage and squint,” but more on that later.</p></li>
+</ul>
+</section>
+<section id="what-we-wont-need" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-wont-need">What we <em>won’t</em> need</h2>
+<p>It’s not that these things are irrelevant in probability, but I already know they will not appear on any of the assignments, so let’s not waste our <a href="https://youtu.be/sXrq2j5OudU?si=EY1lGqItByOEvoUO">precious divine energy</a> reviewing:</p>
+<div class="incremental">
+<ul class="incremental">
+<li>volumes of revolution (eg. washer method, etc);</li>
+<li>related rates;</li>
+<li>implicit differentiation;</li>
+<li>the method of partial fractions;</li>
+<li>convergence tests for series;</li>
+<li>trig identities and derivatives (only an <em>itty</em> bit).</li>
+</ul>
+</div>
+</section>
+<section id="the-math-helpers" class="level2">
+<h2 class="anchored" data-anchor-id="the-math-helpers">The math helpers</h2>
+<p>The inclusions and omissions were deliberate on my part:</p>
+<ul>
+<li><a href="../math/logexp.html">log and exponent properties</a>;</li>
+<li><a href="../math/differentiation.html">derivatives</a>;</li>
+<li><a href="../math/integration.html">integrals</a>;</li>
+<li><a href="../math/limits.html">limits and continuity</a>;</li>
+<li><a href="../math/series.html">sequences and series</a>.</li>
+</ul>
+<p>If it’s not mentioned there, you probably don’t need it this semester.</p>
+</section>
+<section id="calc-iii" class="level2">
+<h2 class="anchored" data-anchor-id="calc-iii">Calc III?</h2>
+<div class="incremental">
+<ul class="incremental">
+<li>Not a prerequisite for this class, but it is a prerequisite for STA 332 (the next class in the theory sequence);</li>
+<li>In STA 240, we typically stick to one or two random quantities at a time. Univariate calculus is enough;</li>
+<li>If you want to study large collections of interrelated random quantities, you need Calc III and Linear Algebra;</li>
+<li>If you go all the way and break into <a href="https://webapps.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.html"><em>high-dimensional</em> probability</a>, things get fun and funky and totally gorgeous. And more mathematical!</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="last-time" class="level1">
+<h1>Last time</h1>
+<section id="set-operations" class="level2">
+<h2 class="anchored" data-anchor-id="set-operations">Set operations</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 31%">
+<col style="width: 36%">
+<col style="width: 31%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>rule</th>
-<th>formula</th>
+<th>Set</th>
+<th>Picture</th>
+<th>Logic</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>scaling</td>
-<td><span class="math display">\[\lim_{x\to c}[a\cdot f(x)]=a\lim_{x\to c}f(x)\]</span></td>
+<td><span class="math inline">\(A\cup B\)</span></td>
+<td><img src="images/union.png" class="img-fluid" style="width:60.0%"></td>
+<td>(inclusive) OR</td>
 </tr>
 <tr class="even">
-<td>sum/difference</td>
-<td><span class="math display">\[\lim_{x\to c}[f(x)\pm g(x)]=\lim_{x\to c}f(x)\pm\lim_{x\to c}g(x)\]</span></td>
+<td><span class="math inline">\(A\cap B\)</span></td>
+<td><img src="images/intersection.png" class="img-fluid" style="width:70.0%"></td>
+<td>AND</td>
 </tr>
 <tr class="odd">
-<td>linearity</td>
-<td><span class="math display">\[\lim_{x\to c}[a\cdot f(x)\pm b\cdot g(x)]=a\lim_{x\to c}f(x)\pm b\lim_{x\to c}g(x)\]</span></td>
-</tr>
-<tr class="even">
-<td>product</td>
-<td><span class="math display">\[\lim_{x\to c}f(x)g(x)=\left[\lim_{x\to c}f(x)\right]\left[\lim_{x\to c}g(x)\right]\]</span></td>
-</tr>
-<tr class="odd">
-<td>quotient</td>
-<td><span class="math display">\[\lim_{x\to c}\frac{f(x)}{g(x)}=\frac{\lim_{x\to c} f(x)}{\lim_{x\to c} g(x)},\quad \text{if }\lim_{x\to c} g(x)\neq0\]</span></td>
-</tr>
-<tr class="even">
-<td>power</td>
-<td><span class="math display">\[\lim_{x\to c}f(x)^r=\left[\lim_{x\to c}f(x)\right]^r,\quad \text{if }c&gt;0,\, \lim_{x\to c} f(x)\geq0\]</span></td>
+<td><span class="math inline">\(A^c\)</span></td>
+<td><img src="images/complement.png" class="img-fluid" style="width:60.0%"></td>
+<td>NOT</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="indeterminate-forms-and-lhôpitals-rule" class="level2">
-<h2 class="anchored" data-anchor-id="indeterminate-forms-and-lhôpitals-rule">Indeterminate forms and L’Hôpital’s rule</h2>
-<p>Most of the time, we hope that we can appeal to continuity and evaluate limits by simply “plugging-in.” But sometimes plugging in gives loony stuff:</p>
+<section id="algebraic-properties" class="level2 medium">
+<h2 class="medium anchored" data-anchor-id="algebraic-properties">Algebraic properties</h2>
 <p><span class="math display">\[
-\begin{aligned}
-\lim_{x\to 0}\frac{\sin x}{x}=1, &amp;\text{ but }\frac{\sin(0)}{0}=\frac{0}{0};\\
-\lim_{x\to \infty}\frac{\ln x}{x}=0, &amp;\text{ but }\frac{\ln\infty}{\infty}=\frac{\infty}{\infty}.\\
-\end{aligned}
+\begin{matrix}
+    \text{Commutative} &amp; A\cup B=B\cup A\\
+    &amp; A\cap B=B\cap A\\
+    &amp;\\
+    \text{Associative} &amp; (A\cup B)\cup C = A\cup (B\cup C)\\
+    &amp; (A\cap B)\cap C = A\cap (B\cap C)\\
+    &amp;\\
+    \text{Distributive} &amp; (A\cup B)\cap C = (A\cap C)\cup (B\cap C)\\
+    &amp;(A\cap B)\cup C = (A\cup C)\cap (B\cup C)\\
+    &amp;\\
+    \text{De Morgan's Laws} &amp; (A\cup B)^c=A^c\cap B^c\\
+    &amp; (A\cap B)^c=A^c\cup B^c.
+\end{matrix}
 \]</span></p>
-<p>Things like <span class="math inline">\(0/0\)</span>, <span class="math inline">\(\infty/\infty\)</span>, and <span class="math inline">\(0\times\infty\)</span> are examples of <strong>indeterminate forms</strong>. If you get one, it doesn’t necessarily mean that <a href="https://youtu.be/oDAKKQuBtDo?si=K_FrQDi0n2cnxDXr">the limit does not exist</a>. It just means that the jury is still out; it’s <em>indeterminate</em>. To continue investigating, you can use a tool called <strong>L’Hôpital’s rule</strong>. Whenever <span class="math inline">\(\lim_{x\to c}f(x)=\lim_{x\to c}g(x)=0\)</span> or <span class="math inline">\(\pm\infty\)</span>, the rule says that</p>
-<p><span class="math display">\[
-\lim_{x\to c}\frac{f(x)}{g(x)}=\lim_{x\to c}\frac{f'(x)}{g'(x)}.
-\]</span> The hope is that the new function <span class="math inline">\(f'(x)/g'(x)\)</span> will be well-behaved at <span class="math inline">\(c\)</span>, meaning you can simplify by just plugging in. However, after applying L’Hôpital’s rule once and <em>trying</em> to plug-in, you may still get an indeterminate form. In that case, you’ll have to take another round of derivatives, and maybe another after that, until the clouds finally part and the <a href="https://youtu.be/SSBWiFGzsyU?si=GKmf7QAhjyvAAK0d">sun shines upon you</a>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+</section>
+<section id="a-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="a-theorem">A theorem</h2>
+<p>If <span class="math inline">\(A,\,B\subseteq S\)</span>, then</p>
+<ul>
+<li><span class="math inline">\(A = (A\cap B)\cup (A\cap B^c)\)</span>;</li>
+<li><span class="math inline">\((A\cap B)\cap (A\cap B^c)=\varnothing\)</span>.</li>
+</ul>
+<p>In words</p>
+<blockquote class="blockquote">
+<p>A set can always be <em>decomposed</em> into the union of disjoint pieces by intersecting the set with the members of a <em>partition</em>.</p>
+</blockquote>
+</section>
+<section id="start-with-the-sample-space" class="level2">
+<h2 class="anchored" data-anchor-id="start-with-the-sample-space">Start with the sample space</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/set-decomp-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="introduce-b" class="level2">
+<h2 class="anchored" data-anchor-id="introduce-b">Introduce <span class="math inline">\(B\)</span></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/set-decomp-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="introduce-bc" class="level2">
+<h2 class="anchored" data-anchor-id="introduce-bc">Introduce <span class="math inline">\(B^c\)</span></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/set-decomp-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="b-and-bc-form-a-partition-of-s" class="level2">
+<h2 class="anchored" data-anchor-id="b-and-bc-form-a-partition-of-s"><span class="math inline">\(B\)</span> and <span class="math inline">\(B^c\)</span> form a <em>partition</em> of <span class="math inline">\(S\)</span></h2>
+<p><span class="math inline">\(B\)</span> and <span class="math inline">\(B^c\)</span> together form the simplest example of a <strong>partition</strong> of <span class="math inline">\(S\)</span>:</p>
+<ul>
+<li>They cover everything: <span class="math inline">\(B\cup B^c=S\)</span>;</li>
+<li>They don’t overlap: <span class="math inline">\(B\cap B^c=\varnothing\)</span>.</li>
+</ul>
+</section>
+<section id="introduce-a" class="level2">
+<h2 class="anchored" data-anchor-id="introduce-a">Introduce <span class="math inline">\(A\)</span></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/set-decomp-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="notice-the-decomposition" class="level2">
+<h2 class="anchored" data-anchor-id="notice-the-decomposition">Notice the decomposition</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/set-decomp-5.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="probability-time" class="level1">
+<h1>Probability time</h1>
+<section id="random-phenomena" class="level2 scrollable">
+<h2 class="scrollable anchored" data-anchor-id="random-phenomena">Random phenomena</h2>
+<p>In this course, we are studying <strong>random phenomena</strong>: things whose outcome cannot be known with certainty. Examples of random phenomenon include:</p>
+<div class="incremental">
+<ul class="incremental">
+<li>the outcome of a coin flip;</li>
+<li>the outcome of a die roll;</li>
+<li>the Poker hand dealt to you from a shuffled deck;</li>
+<li>the outcome of a presidential election;</li>
+<li>whether or not a basketball player makes a free throw shot;</li>
+<li>whether or not my soufflé falls in the oven;</li>
+<li>whether or not the opera singer hits the high note;</li>
+<li>the next song in your Spotify shuffle;</li>
+<li>the next word generated by ChatGPT;</li>
+<li>the birth weight of a newborn child;</li>
+<li>the number of costumers that will arrive at a store or restaurant on a given day;</li>
+<li>when and where a hurricane will make landfall;</li>
+<li>the time until an unstable particle will decay;</li>
+<li>the number of claims an insurance company receives in a month;</li>
+<li>the bid-ask spread of Google stock at 2:37 pm ET next Wednesday.</li>
+</ul>
+</div>
+<p>These are all things that, for one reason or another (physical reality, lack of information, imperfect measurement), we do not believe we can perfectly predict.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Example: multiple rounds of L’Hôpital’s
+Philosophy alert!
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consider:</p>
-<p><span class="math display">\[
-\lim_{x\to\infty}\frac{(\ln x)^2}{x}.
-\]</span></p>
-<p><span class="math inline">\(\lim_{x\to\infty}(\ln x)^2=\infty\)</span> and <span class="math inline">\(\lim_{x\to\infty}x=\infty\)</span>, so let’s take some derivatives:</p>
-<p><span class="math display">\[
-\begin{aligned}
-\frac{\text{d}}{\text{d}x}(\ln x)^2&amp;=\frac{2\ln x}{x}\\
-\frac{\text{d}}{\text{d}x}x&amp;=1.
-\end{aligned}
-\]</span> The ratio of derivatives is thus <span class="math inline">\(2(\ln x)/x\)</span>, but this still gives an indeterminate form because <span class="math inline">\(\lim_{x\to\infty}2\ln x=\infty\)</span> and <span class="math inline">\(\lim_{x\to\infty}x=\infty\)</span>, so we have to go again:</p>
-<p><span class="math display">\[
-\begin{aligned}
-\frac{\text{d}}{\text{d}x}2\ln x&amp;=\frac{2}{x}\\
-\frac{\text{d}}{\text{d}x}x&amp;=1.
-\end{aligned}
-\]</span> The ratio of these derivatives is just <span class="math inline">\(2/x\)</span>, and that goes to 0 as <span class="math inline">\(x\to \infty\)</span>. In sum,</p>
-<p><span class="math display">\[
-\lim_{x\to\infty}\frac{(\ln x)^2}{x}
-\overset{\text{L'H}}{=}
-\lim_{x\to\infty}\frac{2\ln x}{x}
-\overset{\text{L'H}}{=}
-\lim_{x\to\infty}\frac{2}{x}
-=
-0.
-\]</span></p>
+<p>This is a course on the mathematics of probability, not the philosophy. As such, we will not quibble about what it means for a phenomenon to <em>truly</em> be random. We will simply take the pragmatic view that there exist phenomena that human beings find sufficiently surprising and unpredictable that it pays to model them <em>as if</em> they are random.</p>
 </div>
 </div>
+</section>
+<section id="our-main-object-of-study" class="level2">
+<h2 class="anchored" data-anchor-id="our-main-object-of-study">Our main object of study</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: probability space
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>probability space</strong> is a triple <span class="math inline">\((S,\, A\subseteq S,\, P)\)</span>:</p>
+<ul>
+<li>(<strong>sample space</strong>) A nonempty set <span class="math inline">\(S\)</span> containing all of the possible outcomes of the phenomenon;</li>
+<li>(<strong>events</strong>) Subsets <span class="math inline">\(A\subseteq S\)</span> of the sample space – sets of possible outcomes;</li>
+<li>(<strong>probability measure</strong>) A function <span class="math inline">\(P\)</span> that takes an event <span class="math inline">\(A\)</span> and assigns to it a real number called <span class="math inline">\(P(A)\)</span>. This number is the probability that the ultimate outcome of the random phenomenon is an element of the subset <span class="math inline">\(A\)</span>.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="the-simplest-example" class="level2">
+<h2 class="anchored" data-anchor-id="the-simplest-example">The simplest example</h2>
+<p>Imagine we are studying the outcome of a fair coin flip. Then:</p>
+<ul>
+<li><strong>sample space</strong>: <span class="math inline">\(S=\{H,\,T\}\)</span>;</li>
+<li><strong>events</strong>: <span class="math inline">\(\varnothing\)</span>, <span class="math inline">\(\{H\}\)</span>, <span class="math inline">\(\{T\}\)</span>, <span class="math inline">\(S\)</span>;</li>
+<li><strong>probability measure</strong>:</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+P(\varnothing)&amp;=0 &amp;&amp; \text{(chance nothing happens)}\\
+P(\{H\})&amp;=1 / 2\\
+P(\{T\})&amp;=1 / 2\\
+P(S)&amp;=1.&amp;&amp; \text{(chance something happens)}\\
+\end{aligned}
+\]</span></p>
+</section>
+<section id="that-word-space" class="level2 scrollable">
+<h2 class="scrollable anchored" data-anchor-id="that-word-space">That word “space”</h2>
+<p>In mathematics, a <strong>space</strong> is a set together with some extra structure. Once you define the structure, you can spend a whole career proving theorems about the downstream consequences of that definition.</p>
+<ul>
+<li>most of your mathematical career has focused on <strong>Euclidean space</strong>: the sets <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\mathbb{R}^2\)</span>, <span class="math inline">\(\mathbb{R}^3\)</span>, etc together with the familiar geometry of lengths, distances, and angles;</li>
+<li>If you’ve taken linear algebra, you saw <strong>vector spaces</strong>: a set together with addition and scalar multiplication.</li>
+</ul>
+<p>If you keep going, you’ll see rings, fields, <em>measure spaces</em>, topological spaces, metric spaces, normed spaces, Banach spaces, inner product spaces, Hilbert spaces, function spaces, and many more.</p>
+</section>
+<section id="sample-spaces" class="level2">
+<h2 class="anchored" data-anchor-id="sample-spaces">Sample spaces</h2>
+<p>The set of possible outcomes of a random phenomenon:</p>
+<table>
+<thead>
+<tr>
+<th>
+Phenomenon
+</th>
+<th>
+Sample space <span class="math inline">\(S\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fragment">
+<td>
+Flip two coins in order
+</td>
+<td>
+<span class="math inline">\(\{HH,\:HT,\:TT,\:TH\}\)</span>
+</td>
+</tr>
+<tr class="fragment">
+<td>
+Roll a single die
+</td>
+<td>
+<span class="math inline">\(\{1,\:2,\:3,\:4,\:5,\:6\}\)</span>
+</td>
+</tr>
+<tr class="fragment">
+<td>
+Card dealt from a shuffled deck
+</td>
+<td>
+<span class="math inline">\(\{2\clubsuit,\,3\clubsuit,\,4\clubsuit,\,\ldots\}\)</span>
+</td>
+</tr>
+<tr class="fragment">
+<td>
+Winning party in US election
+</td>
+<td>
+<span class="math inline">\(\{\text{R}, \text{D}, \text{L}, \text{G}, ..., \text{DSA}\}\)</span>
+</td>
+</tr>
+<tr class="fragment">
+<td>
+Your blood sodium level in mEq/L
+</td>
+<td>
+<span class="math inline">\(\mathbb{R}_+=(0,\infty)\)</span>
+</td>
+</tr>
+<tr class="fragment">
+<td>
+# of insurance claims in a week?
+</td>
+<td>
+<span class="math inline">\(\mathbb{N}\)</span>
+</td>
+</tr>
+<tr class="fragment">
+<td>
+Return on a risky asset
+</td>
+<td>
+<span class="math inline">\(\mathbb{R}\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="events" class="level2 scrollable">
+<h2 class="scrollable anchored" data-anchor-id="events">Events</h2>
+<p>An event is a set of possible outcomes – a subset of the sample space. We assign probabilities to events. You may have thought that we would be assigning probabilities to individual outcomes, and we are doing that too. You can have an event <span class="math inline">\(A = \{s\}\)</span> containing a single outcome. But we are going further than that.</p>
+<p>When talking informally about a “random event,” we usually describe it in words. But this qualitative description can always be written as a subset of the sample space:</p>
+<table>
+<thead>
+<tr>
+<th>
+Description
+</th>
+<th>
+Event <span class="math inline">\(A\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fragment">
+<td>
+“the first of two coin flips is a head”
+</td>
+<td>
+<span class="math inline">\(\{HH,\:HT\}\)</span>
+</td>
+</tr>
+<tr class="fragment">
+<td>
+“the die is even”
+</td>
+<td>
+<span class="math inline">\(\{2,\:4,\:6\}\)</span>
+</td>
+</tr>
+<tr class="fragment">
+<td>
+“dealt a four”
+</td>
+<td>
+<span class="math inline">\(\{4\clubsuit,\,4\heartsuit,\,4\spadesuit,\,4\diamondsuit\}\)</span>
+</td>
+</tr>
+<tr class="fragment">
+<td>
+“right-wing party wins”
+</td>
+<td>
+<span class="math inline">\(\{\text{R},\,\text{L},\,...\}\)</span>
+</td>
+</tr>
+<tr class="fragment">
+<td>
+“blood sodium in healthy range”
+</td>
+<td>
+<span class="math inline">\([133,\:145]\)</span>
+</td>
+</tr>
+<tr class="fragment">
+<td>
+“over a thousand claims”
+</td>
+<td>
+<span class="math inline">\(\{1001,\,1002,\,1003,\,\ldots\}\)</span>
+</td>
+</tr>
+<tr class="fragment">
+<td>
+“your investment loses money”
+</td>
+<td>
+<span class="math inline">\((-\infty,\:0)\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Useful skill: translating the verbal description into the actual set.</p>
+</section>
+</section>
+<section id="translating-set-theory-into-probability" class="level1">
+<h1>Translating set theory into probability</h1>
+<section id="running-example-where-will-the-meteor-land" class="level2 scrollable">
+<h2 class="scrollable anchored" data-anchor-id="running-example-where-will-the-meteor-land">Running example: where will the meteor land?</h2>
+<p>The sample space is the set of all (long, lat) coordinates in this spatial region:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/map.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</section>
+<section id="example-events" class="level2">
+<h2 class="anchored" data-anchor-id="example-events">Example events</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(A\)</span></td>
+<td>“Meteor lands in the United States”</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(B\)</span></td>
+<td>“Meteor lands in Canada”</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C\)</span></td>
+<td>“Meteor lands in Mexico”</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(D\)</span></td>
+<td>“Meteor lands in adjacent waters”</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(E\)</span></td>
+<td>“Meteor lands in the Rocky Mountains”</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="or-events-union" class="level2">
+<h2 class="anchored" data-anchor-id="or-events-union">“OR” events (union)</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(A\)</span></td>
+<td>“Meteor lands in the United States”</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(B\)</span></td>
+<td>“Meteor lands in Canada”</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C\)</span></td>
+<td>“Meteor lands in Mexico”</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(D\)</span></td>
+<td>“Meteor lands in adjacent waters”</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(E\)</span></td>
+<td>“Meteor lands in the Rocky Mountains”</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><span class="fragment">“Meteor lands in the US <strong>or</strong> Canada”</span><br>
+<span class="fragment fade-in">→ <span class="math inline">\(A \cup B\)</span></span></p></li>
+<li><p><span class="fragment">“Meteor lands in Mexico <strong>or</strong> adjacent waters”</span><br>
+<span class="fragment fade-in">→ <span class="math inline">\(C \cup D\)</span></span></p></li>
+<li><p><span class="fragment">“Meteor lands in the Rocky Mountains <strong>or</strong> Canada”</span><br>
+<span class="fragment fade-in">→ <span class="math inline">\(E \cup B\)</span></span></p></li>
+<li><p><span class="fragment">“Meteor lands in North America”</span><br>
+<span class="fragment fade-in">→ <span class="math inline">\(A\cup B\cup C\)</span></span></p></li>
+</ul>
+</section>
+<section id="and-events-intersection" class="level2">
+<h2 class="anchored" data-anchor-id="and-events-intersection">“AND” events (intersection)</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(A\)</span></td>
+<td>“Meteor lands in the United States”</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(B\)</span></td>
+<td>“Meteor lands in Canada”</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C\)</span></td>
+<td>“Meteor lands in Mexico”</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(D\)</span></td>
+<td>“Meteor lands in adjacent waters”</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(E\)</span></td>
+<td>“Meteor lands in the Rocky Mountains”</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><span class="fragment">“Meteor lands in the Rocky Mountains <strong>and</strong> the US”</span><br>
+<span class="fragment fade-in">→ <span class="math inline">\(E \cap A\)</span></span></p></li>
+<li><p><span class="fragment">“Meteor lands in the US <strong>and</strong> Mexico”</span><br>
+<span class="fragment fade-in">→ <span class="math inline">\(A \cap C = \varnothing\)</span></span></p></li>
+<li><p><span class="fragment">“Meteor lands in North America <strong>and</strong> adjacent waters”</span><br>
+<span class="fragment fade-in">→ <span class="math inline">\((A \cup B \cup C) \cap D = \varnothing\)</span></span></p></li>
+</ul>
+</section>
+<section id="not-events-complement" class="level2">
+<h2 class="anchored" data-anchor-id="not-events-complement">“NOT” events (complement)</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(A\)</span></td>
+<td>“Meteor lands in the United States”</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(B\)</span></td>
+<td>“Meteor lands in Canada”</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C\)</span></td>
+<td>“Meteor lands in Mexico”</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(D\)</span></td>
+<td>“Meteor lands in adjacent waters”</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(E\)</span></td>
+<td>“Meteor lands in the Rocky Mountains”</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><span class="fragment">“Meteor does <strong>not</strong> land in the US”</span><br>
+<span class="fragment fade-in">→ <span class="math inline">\(A^c\)</span></span></p></li>
+<li><p><span class="fragment">“Meteor does <strong>not</strong> land in the Rocky Mountains”</span><br>
+<span class="fragment fade-in">→ <span class="math inline">\(E^c\)</span></span></p></li>
+<li><p><span class="fragment">“Meteor does <strong>not</strong> land on land at all”</span><br>
+<span class="fragment fade-in">→ <span class="math inline">\((A \cup B \cup C)^c = D\)</span></span></p></li>
+</ul>
+</section>
+<section id="implication" class="level2">
+<h2 class="anchored" data-anchor-id="implication">Implication</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(G\)</span></td>
+<td>“Meteor lands in Georgia”</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(S\)</span></td>
+<td>“Meteor lands in The South”</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(U\)</span></td>
+<td>“Meteor lands in the United States”</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(N\)</span></td>
+<td>“Meteor lands in North America”</td>
+</tr>
+</tbody>
+</table>
+<p>Notice:</p>
+<p><span class="math display">\[
+G\subseteq S\subseteq U\subseteq N.
+\]</span></p>
+<div class="incremental">
+<ul class="incremental">
+<li>If we learn that the meteor landed in The South, that implies that it landed in the USA, which implies that it landed in North America;</li>
+<li>It may or may not have landed in Georgia.</li>
+</ul>
+</div>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 58%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Probability</strong></th>
+<th><strong>Set theory</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> occur</td>
+<td><span class="math inline">\(A\cup B\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> occur</td>
+<td><span class="math inline">\(A\cap B\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(A\)</span> does not occur</td>
+<td><span class="math inline">\(A^c\)</span>, with <span class="math inline">\(S\)</span> as the reference</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(A\)</span> occuring implies <span class="math inline">\(B\)</span> also occurs</td>
+<td><span class="math inline">\(A\subseteq B\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> mutually exclusive</td>
+<td><span class="math inline">\(A\cap B=\varnothing\)</span></td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -936,18 +1508,6 @@ Example: multiple rounds of L’Hôpital’s
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../math/integration.html" class="pagination-link" aria-label="Integration">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Integration</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../math/series.html" class="pagination-link" aria-label="Sequences and series">
-        <span class="nav-page-text">Sequences and series</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
