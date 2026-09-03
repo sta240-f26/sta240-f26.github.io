@@ -10,7 +10,7 @@ editor:
 | ![](images/ch.jpg){.circ} | Huang, Claire  | TA            | **Th 10:00 AM - 12:00 PM**\    |
 |                           |                |               | Old Chem 203B                  |
 +---------------------------+----------------+---------------+--------------------------------+
-| ![](images/dk.jpg){.circ} | Kakkad, Dwija  | Lab TA        | **Wed 10:00 AM - 12:00 PM**\   |
+| ![](images/dk.jpg){.circ} | Kakkad, Dwija  | Lab TA        | **Wed 9:00 AM - 11:00 AM**\   |
 |                           |                |               | Old Chem 203B                  |
 +---------------------------+----------------+---------------+--------------------------------+
 | ![](images/ru.jpg){.circ} | Urena, Ricardo | TA            | **Sun 7:30 PM - 9:30 PM**\     |
