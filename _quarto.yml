@@ -134,6 +134,10 @@ website:
         contents:
           - href: problems/pset-0.qmd
             text: Problem Set 0
+      - section: "Labs"
+        contents:
+          - href: lab/lab-1.qmd
+            text: Lab 1
             
   page-footer:
     right: 'This page is built with [Quarto](https://quarto.org/).'
