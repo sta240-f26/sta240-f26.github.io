@@ -16,19 +16,100 @@ q_no <- 0
 
 ## Problem `{r} q_no`
 
+{{< include bank/_music-rec.qmd >}}
+
 ```{r}
 #| echo: false
 q_no <- q_no + 1
 ```
-
-{{< include bank/_music-rec.qmd >}}
 
 ## Problem `{r} q_no`
 
+{{< include bank/conceptual/diaconis.qmd >}}
+
 ```{r}
 #| echo: false
 q_no <- q_no + 1
 ```
+
+## Problem `{r} q_no`
+
+{{< include bank/set-theory/basic-set-practice.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/set-theory/picture-proofs.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/basic-rules/blood-type.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/basic-rules/weather-app.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/basic-rules/xor.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/basic-rules/incl-excl-3.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/basic-rules/poisson-measure.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+
+{{< include bank/counting/ross-balls.qmd >}}
+
+
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/counting/ht-receipt.qmd >}}
 
 
 
