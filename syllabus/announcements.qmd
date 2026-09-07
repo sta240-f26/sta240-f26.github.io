@@ -3,10 +3,14 @@ title: "Support your classmates!"
 format: html
 ---
 
+{{< include announcements/ssmu-dsci.qmd >}}
+
 {{< include announcements/tazns-arch-sing.qmd >}}
 
 {{< include announcements/fall-vocal-showcase.qmd >}}
 
 {{< include announcements/fall-dance-showcase.qmd >}}
+
+{{< include announcements/chronicle.qmd >}}
 
 {{< include announcements/house-course.qmd >}}
