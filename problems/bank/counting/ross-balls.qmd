@@ -1,0 +1,11 @@
+Imagine seven balls are randomly withdrawn from an urn that contains 12 red, 16 blue, and 18 green balls. For each of the events described in words below, compute the probability in two ways:
+
+i. **with math**: use the probability rules and counting methods to calculate the exact probability;
+i. **with simulation**: taking inspo from Labs 1 and 2, use a [for loop](/explainers/loops.html), the [`sample` function](/explainers/sample.html), and [`if-else`](/explainers/if-else.html) to simulate the scenario 10,000 times and compute the fraction of the time the event occurs.
+
+For each event, verify that the theoretical and simulated probabilities are in rough agreement.
+
+a.  3 red, 2 blue, and 2 green balls are withdrawn;
+a.  at least 2 red balls are withdrawn;
+a.  all withdrawn balls are the same color;
+a.  either exactly 3 red balls or exactly 3 blue balls are withdrawn.

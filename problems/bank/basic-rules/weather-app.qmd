@@ -1,0 +1,9 @@
+A few years ago I looked down at my phone and saw this screen:
+
+![](images/apple-weather.jpg){fig-align="center" width="40%"}
+
+Do these numbers make sense? Explain what each probability means, and explain how they fit together. You can assume that for every other time that day, it was guaranteed not to rain.
+
+::: callout-note
+I'm not asking you to do research on how Apple's weather app works or where it gets its numbers from. As a mere reader of the app, what do the 55%, 35%, and 70% refer to? Are they compatible with one another, or do they contradict one another?
+:::
