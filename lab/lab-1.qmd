@@ -64,7 +64,7 @@ Do you see why?
 
 ## Task 2
 
-Imagine you roll two *fair* dice. What is the probability that the sum of the two numbers you roll is even? To approximate this, work together with Aurora to complete the following steps:
+Imagine you roll two *fair* dice. What is the probability that the sum of the two numbers you roll is even? To approximate this, work together with your fearless lab leader to complete the following steps:
 
 - Use a `for` loop to repeat the experiment 1,000 times:  
    - Roll two dice using `sample()`;  
