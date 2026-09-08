@@ -301,7 +301,14 @@
     "href": "syllabus/announcements/chronicle.html",
     "title": "STA 240 Fall 2026",
     "section": "",
-    "text": "Morgan Kay covers sports."
+    "text": "“Late-game comeback grants No. 2 Duke women’s soccer 2-1 win at Old Dominion” (8/28/2026);"
+  },
+  {
+    "objectID": "syllabus/announcements/chronicle.html#articles-in-the-chronicle",
+    "href": "syllabus/announcements/chronicle.html#articles-in-the-chronicle",
+    "title": "STA 240 Fall 2026",
+    "section": "",
+    "text": "“Late-game comeback grants No. 2 Duke women’s soccer 2-1 win at Old Dominion” (8/28/2026);"
   },
   {
     "objectID": "syllabus/announcements/fall-dance-showcase.html",
@@ -336,7 +343,7 @@
     "href": "syllabus/syllabus-team.html",
     "title": "Teaching team",
     "section": "",
-    "text": "Mug\nName\nRole\nOffice Hours\n\n\n\n\n\nHuang, Claire\nTA\nTh 10:00 AM - 12:00 PM\nOld Chem 203B\n\n\n\nKakkad, Dwija\nLab TA\nWed 9:00 AM - 11:00 AM\nOld Chem 203B\n\n\n\nUrena, Ricardo\nTA\nSun 7:30 PM - 9:30 PM\nOld Chem 203B\n\n\n\nZito, John\nInstructor\nF 1:00 PM - 3:30 PM\nor by appointment\nOld Chem 207\n\n\n\n\n\n\n\n\n\nJZ’s office hours\n\n\n\nThey’re set to end at 3:30 PM on Fridays because that’s when our department seminar begins. In weeks where we don’t have a seminar, or where I’m not planning on going, I’m happy to stay longer.",
+    "text": "Mug\nName\nRole\nOffice Hours\n\n\n\n\n\nHuang, Claire\nTA\nTh 10:00 AM - 12:00 PM\nOld Chem 203B\n\n\n\nKakkad, Dwija\nLab TA\nWed 9:00 AM - 11:00 AM\nOld Chem 203B\n\n\n\nUrena, Ricardo\nTA\nSun 7:30 PM - 9:30 PM\nPerkins Link Group Study 1\n\n\n\nZito, John\nInstructor\nF 1:00 PM - 3:30 PM\nor by appointment\nOld Chem 207\n\n\n\n\n\n\n\n\n\nJZ’s office hours\n\n\n\nThey’re set to end at 3:30 PM on Fridays because that’s when our department seminar begins. In weeks where we don’t have a seminar, or where I’m not planning on going, I’m happy to stay longer.",
     "crumbs": [
       "Syllabus",
       "Teaching team"
@@ -2228,7 +2235,17 @@
     "href": "syllabus/announcements.html",
     "title": "Support your classmates!",
     "section": "",
-    "text": "Featuring the Temptasians and other dance and vocal groups:\n\nMonday September 7 at 7:30 PM;\nBlackwell Archway;\n@duketazns.",
+    "text": "The Statistical Science Majors Union (SSMU) has started a statistical consulting branch called DSCI. Check out these links if you’re interested in getting involved:\n\ninterest form to stay updated: http://tinyurl.com/dsci-interest;\nlearn about the fall projects: http://tinyurl.com/dsci-projects;\npreview application questions: http://tinyurl.com/dsci-project-qs;\napply ideally by Thursday 9/10, at latest by the weekend: http://tinyurl.com/dsci-projects-apply.",
+    "crumbs": [
+      "Check it out!"
+    ]
+  },
+  {
+    "objectID": "syllabus/announcements.html#pro-bono-statistical-consulting-opportunities",
+    "href": "syllabus/announcements.html#pro-bono-statistical-consulting-opportunities",
+    "title": "Support your classmates!",
+    "section": "",
+    "text": "The Statistical Science Majors Union (SSMU) has started a statistical consulting branch called DSCI. Check out these links if you’re interested in getting involved:\n\ninterest form to stay updated: http://tinyurl.com/dsci-interest;\nlearn about the fall projects: http://tinyurl.com/dsci-projects;\npreview application questions: http://tinyurl.com/dsci-project-qs;\napply ideally by Thursday 9/10, at latest by the weekend: http://tinyurl.com/dsci-projects-apply.",
     "crumbs": [
       "Check it out!"
     ]
@@ -2237,8 +2254,8 @@
     "objectID": "syllabus/announcements.html#arch-sing",
     "href": "syllabus/announcements.html#arch-sing",
     "title": "Support your classmates!",
-    "section": "",
-    "text": "Featuring the Temptasians and other dance and vocal groups:\n\nMonday September 7 at 7:30 PM;\nBlackwell Archway;\n@duketazns.",
+    "section": "Arch Sing",
+    "text": "Arch Sing\nFeaturing the Temptasians and other dance and vocal groups:\n\nMonday September 7 at 7:30 PM;\nBlackwell Archway;\n@duketazns.",
     "crumbs": [
       "Check it out!"
     ]
@@ -2259,6 +2276,16 @@
     "title": "Support your classmates!",
     "section": "Fall Dance Showcase",
     "text": "Fall Dance Showcase\nDuke Chinese Dance, Devils en Pointe, Lasya, Momentum, and more!\n\nSaturday August 29 at 7:00;\nPage Auditorium;\n@dukedancecouncil.",
+    "crumbs": [
+      "Check it out!"
+    ]
+  },
+  {
+    "objectID": "syllabus/announcements.html#articles-in-the-chronicle",
+    "href": "syllabus/announcements.html#articles-in-the-chronicle",
+    "title": "Support your classmates!",
+    "section": "Articles in The Chronicle",
+    "text": "Articles in The Chronicle\n\n“Late-game comeback grants No. 2 Duke women’s soccer 2-1 win at Old Dominion” (8/28/2026);",
     "crumbs": [
       "Check it out!"
     ]
