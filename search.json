@@ -911,6 +911,188 @@
     ]
   },
   {
+    "objectID": "lecture-notes/01-set2prob-slides.html#what-we-need",
+    "href": "lecture-notes/01-set2prob-slides.html#what-we-need",
+    "title": "From set theory to probability",
+    "section": "What we need",
+    "text": "What we need\n\nFirst and foremost, integration. Especially improper integration. Stuff like this will become our daily bread:\n\n\\[\n\\begin{aligned}\n\\int_0^\\infty F'(x)\\,\\text{d}x\n&=\n\\lim_{b\\to\\infty}\\int_{0}^bF'(x)\\,\\text{d}x\n\\\\\n&=\\lim_{b\\to\\infty}[F(x)]_0^b\\\\\n&=\\lim_{b\\to\\infty}F(b) - F(0);\n\\end{aligned}\n\\]\n\nIn order to antidifferentiate, you need to be able to differentiate, and in order to evaluate an improper integral, you need to be able to take limits. Hence, all of Calc I and II is on the table for us;\nOur use of infinite series will be relatively modest. You will mainly have to recognize the famous ones (eg. geometric series, Taylor series of \\(e^x\\), etc). However, sometimes these otherwise friendly faces will be very cleverly disguised (you’ve already seen that here), and so “recognition on steroids” is a new skill you must cultivate. JZ calls it “massage and squint,” but more on that later."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#what-we-wont-need",
+    "href": "lecture-notes/01-set2prob-slides.html#what-we-wont-need",
+    "title": "From set theory to probability",
+    "section": "What we won’t need",
+    "text": "What we won’t need\nIt’s not that these things are irrelevant in probability, but I already know they will not appear on any of the assignments, so let’s not waste our precious divine energy reviewing:\n\nvolumes of revolution (eg. washer method, etc);\nrelated rates;\nimplicit differentiation;\nthe method of partial fractions;\nconvergence tests for series;\ntrig identities and derivatives (only an itty bit)."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#the-math-helpers",
+    "href": "lecture-notes/01-set2prob-slides.html#the-math-helpers",
+    "title": "From set theory to probability",
+    "section": "The math helpers",
+    "text": "The math helpers\nThe inclusions and omissions were deliberate on my part:\n\nlog and exponent properties;\nderivatives;\nintegrals;\nlimits and continuity;\nsequences and series.\n\nIf it’s not mentioned there, you probably don’t need it this semester."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#calc-iii",
+    "href": "lecture-notes/01-set2prob-slides.html#calc-iii",
+    "title": "From set theory to probability",
+    "section": "Calc III?",
+    "text": "Calc III?\n\nNot a prerequisite for this class, but it is a prerequisite for STA 332 (the next class in the theory sequence);\nIn STA 240, we typically stick to one or two random quantities at a time. Univariate calculus is enough;\nIf you want to study large collections of interrelated random quantities, you need Calc III and Linear Algebra;\nIf you go all the way and break into high-dimensional probability, things get fun and funky and totally gorgeous. And more mathematical!"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#set-operations",
+    "href": "lecture-notes/01-set2prob-slides.html#set-operations",
+    "title": "From set theory to probability",
+    "section": "Set operations",
+    "text": "Set operations\n\n\n\n\n\n\n\n\nSet\nPicture\nLogic\n\n\n\n\n\\(A\\cup B\\)\n\n(inclusive) OR\n\n\n\\(A\\cap B\\)\n\nAND\n\n\n\\(A^c\\)\n\nNOT"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#algebraic-properties",
+    "href": "lecture-notes/01-set2prob-slides.html#algebraic-properties",
+    "title": "From set theory to probability",
+    "section": "Algebraic properties",
+    "text": "Algebraic properties\n\\[\n\\begin{matrix}\n    \\text{Commutative} & A\\cup B=B\\cup A\\\\\n    & A\\cap B=B\\cap A\\\\\n    &\\\\\n    \\text{Associative} & (A\\cup B)\\cup C = A\\cup (B\\cup C)\\\\\n    & (A\\cap B)\\cap C = A\\cap (B\\cap C)\\\\\n    &\\\\\n    \\text{Distributive} & (A\\cup B)\\cap C = (A\\cap C)\\cup (B\\cap C)\\\\\n    &(A\\cap B)\\cup C = (A\\cup C)\\cap (B\\cup C)\\\\\n    &\\\\\n    \\text{De Morgan's Laws} & (A\\cup B)^c=A^c\\cap B^c\\\\\n    & (A\\cap B)^c=A^c\\cup B^c.\n\\end{matrix}\n\\]"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#a-theorem-we-will-use-often",
+    "href": "lecture-notes/01-set2prob-slides.html#a-theorem-we-will-use-often",
+    "title": "From set theory to probability",
+    "section": "A theorem we will use often",
+    "text": "A theorem we will use often\nIf \\(A,\\,B\\subseteq S\\), then\n\n\\(A = (A\\cap B)\\cup (A\\cap B^c)\\);\n\\((A\\cap B)\\cap (A\\cap B^c)=\\varnothing\\).\n\nIn words\n\nA set can always be decomposed into the union of disjoint pieces by intersecting the set with the members of a partition."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#start-with-the-sample-space",
+    "href": "lecture-notes/01-set2prob-slides.html#start-with-the-sample-space",
+    "title": "From set theory to probability",
+    "section": "Start with the sample space",
+    "text": "Start with the sample space"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-b",
+    "href": "lecture-notes/01-set2prob-slides.html#introduce-b",
+    "title": "From set theory to probability",
+    "section": "Introduce \\(B\\)",
+    "text": "Introduce \\(B\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-bc",
+    "href": "lecture-notes/01-set2prob-slides.html#introduce-bc",
+    "title": "From set theory to probability",
+    "section": "Introduce \\(B^c\\)",
+    "text": "Introduce \\(B^c\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#b-and-bc-form-a-partition-of-s",
+    "href": "lecture-notes/01-set2prob-slides.html#b-and-bc-form-a-partition-of-s",
+    "title": "From set theory to probability",
+    "section": "\\(B\\) and \\(B^c\\) form a partition of \\(S\\)",
+    "text": "\\(B\\) and \\(B^c\\) form a partition of \\(S\\)\n\\(B\\) and \\(B^c\\) together form the simplest example of a partition of \\(S\\):\n\nThey cover everything: \\(B\\cup B^c=S\\);\nThey don’t overlap: \\(B\\cap B^c=\\varnothing\\)."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-a",
+    "href": "lecture-notes/01-set2prob-slides.html#introduce-a",
+    "title": "From set theory to probability",
+    "section": "Introduce \\(A\\)",
+    "text": "Introduce \\(A\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#notice-the-decomposition",
+    "href": "lecture-notes/01-set2prob-slides.html#notice-the-decomposition",
+    "title": "From set theory to probability",
+    "section": "Notice the decomposition",
+    "text": "Notice the decomposition"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#random-phenomena",
+    "href": "lecture-notes/01-set2prob-slides.html#random-phenomena",
+    "title": "From set theory to probability",
+    "section": "Random phenomena",
+    "text": "Random phenomena\nIn this course, we are studying random phenomena: things whose outcome cannot be known with certainty. Examples of random phenomenon include:\n\nthe outcome of a coin flip;\nthe outcome of a die roll;\nthe Poker hand dealt to you from a shuffled deck;\nthe outcome of a presidential election;\nwhether or not a basketball player makes a free throw shot;\nwhether or not my soufflé falls in the oven;\nwhether or not the opera singer hits the high note;\nthe next song in your Spotify shuffle;\nthe next word generated by ChatGPT;\nthe birth weight of a newborn child;\nthe number of costumers that will arrive at a store or restaurant on a given day;\nwhen and where a hurricane will make landfall;\nthe time until an unstable particle will decay;\nthe number of claims an insurance company receives in a month;\nthe bid-ask spread of Google stock at 2:37 pm ET next Wednesday.\n\nThese are all things that, for one reason or another (physical reality, lack of information, imperfect measurement), we do not believe we can perfectly predict.\n\n\n\n\n\n\nPhilosophy alert!\n\n\nThis is a course on the mathematics of probability, not the philosophy. As such, we will not quibble about what it means for a phenomenon to truly be random. We will simply take the pragmatic view that there exist phenomena that human beings find sufficiently surprising and unpredictable that it pays to model them as if they are random."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#our-main-object-of-study",
+    "href": "lecture-notes/01-set2prob-slides.html#our-main-object-of-study",
+    "title": "From set theory to probability",
+    "section": "Our main object of study",
+    "text": "Our main object of study\n\n\n\n\n\n\nDefinition: probability space\n\n\nA probability space is a triple \\((S,\\, A\\subseteq S,\\, P)\\):\n\n(sample space) A nonempty set \\(S\\) containing all of the possible outcomes of the phenomenon;\n(events) Subsets \\(A\\subseteq S\\) of the sample space – sets of possible outcomes;\n(probability measure) A function \\(P\\) that takes an event \\(A\\) and assigns to it a real number called \\(P(A)\\). This number is the probability that the ultimate outcome of the random phenomenon is an element of the subset \\(A\\)."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#the-simplest-example",
+    "href": "lecture-notes/01-set2prob-slides.html#the-simplest-example",
+    "title": "From set theory to probability",
+    "section": "The simplest example",
+    "text": "The simplest example\nImagine we are studying the outcome of a fair coin flip. Then:\n\nsample space: \\(S=\\{H,\\,T\\}\\);\nevents: \\(\\varnothing\\), \\(\\{H\\}\\), \\(\\{T\\}\\), \\(S\\);\nprobability measure:\n\n\\[\n\\begin{aligned}\nP(\\varnothing)&=0 && \\text{(chance nothing happens)}\\\\\nP(\\{H\\})&=1 / 2\\\\\nP(\\{T\\})&=1 / 2\\\\\nP(S)&=1.&& \\text{(chance something happens)}\\\\\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#that-word-space",
+    "href": "lecture-notes/01-set2prob-slides.html#that-word-space",
+    "title": "From set theory to probability",
+    "section": "That word “space”",
+    "text": "That word “space”\nIn mathematics, a space is a set together with some extra structure. Once you define the structure, you can spend a whole career proving theorems about the downstream consequences of that definition.\n\nmost of your mathematical career has focused on Euclidean space: the sets \\(\\mathbb{R}\\), \\(\\mathbb{R}^2\\), \\(\\mathbb{R}^3\\), etc together with the familiar geometry of lengths, distances, and angles;\nIf you’ve taken linear algebra, you saw vector spaces: a set together with addition and scalar multiplication.\n\nIf you keep going, you’ll see rings, fields, measure spaces, topological spaces, metric spaces, normed spaces, Banach spaces, inner product spaces, Hilbert spaces, function spaces, and many more."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#sample-spaces",
+    "href": "lecture-notes/01-set2prob-slides.html#sample-spaces",
+    "title": "From set theory to probability",
+    "section": "Sample spaces",
+    "text": "Sample spaces\nThe set of possible outcomes of a random phenomenon:\n\n\n\n\nPhenomenon\n\n\nSample space \\(S\\)\n\n\n\n\n\n\nFlip two coins in order\n\n\n\\(\\{HH,\\:HT,\\:TT,\\:TH\\}\\)\n\n\n\n\nRoll a single die\n\n\n\\(\\{1,\\:2,\\:3,\\:4,\\:5,\\:6\\}\\)\n\n\n\n\nCard dealt from a shuffled deck\n\n\n\\(\\{2\\clubsuit,\\,3\\clubsuit,\\,4\\clubsuit,\\,\\ldots\\}\\)\n\n\n\n\nWinning party in US election\n\n\n\\(\\{\\text{R}, \\text{D}, \\text{L}, \\text{G}, ..., \\text{DSA}\\}\\)\n\n\n\n\nYour blood sodium level in mEq/L\n\n\n\\(\\mathbb{R}_+=(0,\\infty)\\)\n\n\n\n\n# of insurance claims in a week?\n\n\n\\(\\mathbb{N}\\)\n\n\n\n\nReturn on a risky asset\n\n\n\\(\\mathbb{R}\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#events",
+    "href": "lecture-notes/01-set2prob-slides.html#events",
+    "title": "From set theory to probability",
+    "section": "Events",
+    "text": "Events\nAn event is a set of possible outcomes – a subset of the sample space. We assign probabilities to events. You may have thought that we would be assigning probabilities to individual outcomes, and we are doing that too. You can have an event \\(A = \\{s\\}\\) containing a single outcome. But we are going further than that.\nWhen talking informally about a “random event,” we usually describe it in words. But this qualitative description can always be written as a subset of the sample space:\n\n\n\n\nDescription\n\n\nEvent \\(A\\)\n\n\n\n\n\n\n“the first of two coin flips is a head”\n\n\n\\(\\{HH,\\:HT\\}\\)\n\n\n\n\n“the die is even”\n\n\n\\(\\{2,\\:4,\\:6\\}\\)\n\n\n\n\n“dealt a four”\n\n\n\\(\\{4\\clubsuit,\\,4\\heartsuit,\\,4\\spadesuit,\\,4\\diamondsuit\\}\\)\n\n\n\n\n“right-wing party wins”\n\n\n\\(\\{\\text{R},\\,\\text{L},\\,...\\}\\)\n\n\n\n\n“blood sodium in healthy range”\n\n\n\\([133,\\:145]\\)\n\n\n\n\n“over a thousand claims”\n\n\n\\(\\{1001,\\,1002,\\,1003,\\,\\ldots\\}\\)\n\n\n\n\n“your investment loses money”\n\n\n\\((-\\infty,\\:0)\\)\n\n\n\n\nUseful skill: translating the verbal description into the actual set."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#running-example-where-will-the-meteor-land",
+    "href": "lecture-notes/01-set2prob-slides.html#running-example-where-will-the-meteor-land",
+    "title": "From set theory to probability",
+    "section": "Running example: where will the meteor land?",
+    "text": "Running example: where will the meteor land?\nThe sample space is the set of all (long, lat) coordinates in this spatial region:"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#example-events",
+    "href": "lecture-notes/01-set2prob-slides.html#example-events",
+    "title": "From set theory to probability",
+    "section": "Example events",
+    "text": "Example events\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#or-events-union",
+    "href": "lecture-notes/01-set2prob-slides.html#or-events-union",
+    "title": "From set theory to probability",
+    "section": "“OR” events (union)",
+    "text": "“OR” events (union)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor lands in the US or Canada”\n→ \\(A \\cup B\\)\n“Meteor lands in Mexico or adjacent waters”\n→ \\(C \\cup D\\)\n“Meteor lands in the Rocky Mountains or Canada”\n→ \\(E \\cup B\\)\n“Meteor lands in North America”\n→ \\(A\\cup B\\cup C\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#and-events-intersection",
+    "href": "lecture-notes/01-set2prob-slides.html#and-events-intersection",
+    "title": "From set theory to probability",
+    "section": "“AND” events (intersection)",
+    "text": "“AND” events (intersection)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor lands in the Rocky Mountains and the US”\n→ \\(E \\cap A\\)\n“Meteor lands in the US and Mexico”\n→ \\(A \\cap C = \\varnothing\\)\n“Meteor lands in North America and adjacent waters”\n→ \\((A \\cup B \\cup C) \\cap D = \\varnothing\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#not-events-complement",
+    "href": "lecture-notes/01-set2prob-slides.html#not-events-complement",
+    "title": "From set theory to probability",
+    "section": "“NOT” events (complement)",
+    "text": "“NOT” events (complement)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor does not land in the US”\n→ \\(A^c\\)\n“Meteor does not land in the Rocky Mountains”\n→ \\(E^c\\)\n“Meteor does not land on land at all”\n→ \\((A \\cup B \\cup C)^c = D\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#implication",
+    "href": "lecture-notes/01-set2prob-slides.html#implication",
+    "title": "From set theory to probability",
+    "section": "Implication",
+    "text": "Implication\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(G\\)\n“Meteor lands in Georgia”\n\n\n\\(S\\)\n“Meteor lands in The South”\n\n\n\\(U\\)\n“Meteor lands in the United States”\n\n\n\\(N\\)\n“Meteor lands in North America”\n\n\n\nNotice:\n\\[\nG\\subseteq S\\subseteq U\\subseteq N.\n\\]\n\nIf we learn that the meteor landed in The South, that implies that it landed in the USA, which implies that it landed in North America;\nIt may or may not have landed in Georgia."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#summary",
+    "href": "lecture-notes/01-set2prob-slides.html#summary",
+    "title": "From set theory to probability",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\nProbability\nSet theory\n\n\n\n\n\\(A\\) or \\(B\\) occur\n\\(A\\cup B\\)\n\n\n\\(A\\) and \\(B\\) occur\n\\(A\\cap B\\)\n\n\n\\(A\\) does not occur\n\\(A^c\\), with \\(S\\) as the reference\n\n\n\\(A\\) occuring implies \\(B\\) also occurs\n\\(A\\subseteq B\\)\n\n\n\\(A\\) and \\(B\\) mutually exclusive\n\\(A\\cap B=\\varnothing\\)"
+  },
+  {
     "objectID": "lecture-notes/01-set2prob.html",
     "href": "lecture-notes/01-set2prob.html",
     "title": "From set theory to probability",
@@ -1100,186 +1282,46 @@
     "text": "Summary\n\n\n\n\n\n\n\nProbability\nSet theory\n\n\n\n\n\\(A\\) or \\(B\\) occur\n\\(A\\cup B\\)\n\n\n\\(A\\) and \\(B\\) occur\n\\(A\\cap B\\)\n\n\n\\(A\\) does not occur\n\\(A^c\\), with \\(S\\) as the reference\n\n\n\\(A\\) occuring implies \\(B\\) also occurs\n\\(A\\subseteq B\\)\n\n\n\\(A\\) and \\(B\\) mutually exclusive\n\\(A\\cap B=\\varnothing\\)"
   },
   {
-    "objectID": "lecture-notes/01-set2prob-slides.html#what-we-need",
-    "href": "lecture-notes/01-set2prob-slides.html#what-we-need",
-    "title": "From set theory to probability",
-    "section": "What we need",
-    "text": "What we need\n\nFirst and foremost, integration. Especially improper integration. Stuff like this will become our daily bread:\n\n\\[\n\\begin{aligned}\n\\int_0^\\infty F'(x)\\,\\text{d}x\n&=\n\\lim_{b\\to\\infty}\\int_{0}^bF'(x)\\,\\text{d}x\n\\\\\n&=\\lim_{b\\to\\infty}[F(x)]_0^b\\\\\n&=\\lim_{b\\to\\infty}F(b) - F(0);\n\\end{aligned}\n\\]\n\nIn order to antidifferentiate, you need to be able to differentiate, and in order to evaluate an improper integral, you need to be able to take limits. Hence, all of Calc I and II is on the table for us;\nOur use of infinite series will be relatively modest. You will mainly have to recognize the famous ones (eg. geometric series, Taylor series of \\(e^x\\), etc). However, sometimes these otherwise friendly faces will be very cleverly disguised (you’ve already seen that here), and so “recognition on steroids” is a new skill you must cultivate. JZ calls it “massage and squint,” but more on that later."
+    "objectID": "lab/lab-2.html",
+    "href": "lab/lab-2.html",
+    "title": "Lab 2",
+    "section": "",
+    "text": "Last week, you used the sample function to simulate random phenomena that had a finite sample space with equally-likely outcomes: coin flips, die rolls, playing cards. Using a loop, you repeated an experiment many many times, calculated the proportion of the time some event happened, and used that proportion as an approximation of the probability. In class this week, we began talking about counting methods for actually doing the math to compute these probabilities exactly.\nIn this lab, you will do both of these things, the math and the simulation, and verify that they agree. The examples today are small potatoes, but these generic skills are important. Being able to whip up computer simulations of random systems is one of the main skills that will empower you to continue self-studying probability and statistics after you leave the classroom. Hardly a day goes by when myself and my colleagues don’t run a simulation of some kind."
   },
   {
-    "objectID": "lecture-notes/01-set2prob-slides.html#what-we-wont-need",
-    "href": "lecture-notes/01-set2prob-slides.html#what-we-wont-need",
-    "title": "From set theory to probability",
-    "section": "What we won’t need",
-    "text": "What we won’t need\nIt’s not that these things are irrelevant in probability, but I already know they will not appear on any of the assignments, so let’s not waste our precious divine energy reviewing:\n\nvolumes of revolution (eg. washer method, etc);\nrelated rates;\nimplicit differentiation;\nthe method of partial fractions;\nconvergence tests for series;\ntrig identities and derivatives (only an itty bit)."
+    "objectID": "lab/lab-2.html#background",
+    "href": "lab/lab-2.html#background",
+    "title": "Lab 2",
+    "section": "Background",
+    "text": "Background\nTo model a random phenomenon, we write down a probability space: the non-empty set \\(S\\) containing all possible outcomes called the sample space, the events \\(A\\subseteq S\\), and the probability measure \\(P\\) that assigns probabilities to the events. In order to be considered valid, we place the following requirements on \\(P\\), the so-called probability axioms:\n\n(total measure 1) \\(P(S)=1\\);\n(nonnegativity) \\(P(A)\\geq 0\\);\n(countable additivity) If \\(A_1,\\,A_2,\\,A_3,\\,...\\subseteq S\\) are pairwise disjoint, then\n\n\\[\nP\\left(\\bigcup_{i=1}^\\infty A_i\\right)=\\sum\\limits_{i=1}^\\infty P(A_i).\n\\]\nOnce you assume those three things, you can deduce various downstream consequences about how probability behaves in general:\n\n\n\n\n\n\nRule\nStatement\n\n\n\nProbability of empty set\n\\(P(\\varnothing)=0\\)\n\n\nFinite additivity\n\n\\(A_1,\\,A_2,\\,...,\\,A_n\\subseteq S\\) pairwise disjoint implies \\(P\\left(\\bigcup_{i=1}^n A_i\\right)=\\sum\\limits_{i=1}^n P(A_i)\\)\n\n\n\nComplement rule\n\\(P(A)=1-P(A^c)\\)\n\n\nMonotonicity\n\\(A\\subseteq B \\,\\implies\\,P(A)\\leq P(B)\\)\n\n\nInclusion/exclusion\n\\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\)\n\n\nLaw of total probability\n\n\\(P(A)=\\sum\\limits_{i=1}^\\infty P(A\\cap B_i)\\) if \\(B_1,\\,B_2,\\,B_3,\\,...\\subseteq S\\) is a partition\n\n\n\n\nAs Mrs. Lovett said, that’s all very well, but how do you actually use this machinery to compute probabilities in concrete examples? In other words, how do you actually specify a probability measure that satisfies the axioms? Lots of ways. But let’s start simple and make two extra assumptions:\n\n(finite sample space) \\(S=\\{s_1,\\,s_2,\\,...,\\,s_n\\}\\);\n(equally likely outcomes) \\(P(\\{s_i\\})=1/n\\) for every outcome in \\(S\\).\n\nThis is already a suffient model to analyze classic examples like flipping coins, rolling dice, and playing cards. If you have a finite sample space where every individual outcome has the same probability, then finite additivity tells you that probability collapses to a counting problem:\n\\[\nP(A)=\\frac{\\#(A)}{\\#(S)}=\\frac{\\text{the number of ways }A\\text{ could happen}}{\\text{the number of ways anything could happen}}.\n\\]\nSo, in order to compute probabilities in this simplified environment, you need to be able to count the number of elements contained inside sets. Sounds straightforward, but for better or worse, it turns out that there is more to this than meets the eye.\nThe main engine for counting methods is the following principle:\n\n\n\n\n\n\nThe counting principle\n\n\n\nIf each element in your set is determined by \\(p\\) traits, and each of these traits has \\(n_1\\), \\(n_2\\), …, \\(n_p\\) options, respectively, then the total number of ways that you can mix-and-match the \\(p\\) traits is:\n\\[\nn_1\\times n_2\\times n_3\\times ...\\times n_p.\n\\]\nExample: Imagine your set consists of the individual cards in a standard deck of playing cards. Each card is determined by two traits: its suit and its rank. There are four options for the suit (♠, ♥, ♦, ♣) and 13 options for the rank (A, 2, 3, …, J, Q, K), so in total there are \\(4\\times 13=52\\) cards.\n\n\nWhen we set out to count the number of elements in a set, we will usually frame the task as a “selecting \\(k\\) from \\(n\\)” problem:\n\n\n\n\nWe have \\(n\\) balls in a jar. We withdraw balls from the jar and use them to fill \\(k\\) slots. How many ways can we draw balls from the jar of \\(n\\) to fill the \\(k\\) slots? This question does not have a unique answer, because it depends on two things:\n\n(are we drawing with or without replacement?) after I draw a ball from the jar to fill a slot, do I put it back in the jar so that I can potentially draw it again to fill another slot? Or after I draw a ball, is it “out of play” forevermore?\n(does order matter?) Say \\(k = 2\\). I could draw (Ball 1, Ball 3) or (Ball 3, Ball 1). Do I count these as two separate outcomes because the order is different, or do I consider them the same outcome because the contents are identical? So, do I ignore or acknowledge the ordering of the draws when I count?\n\nDepending on how you mix-and-match those two things, you get different answers to the question “how many ways can you select \\(k\\) from \\(n\\)” Here is a summary:\n\n\nHow many ways can you select \\(k\\) from \\(n\\)?\n\n\n\n\n\n\n\nOrder matters\nOrder does not matter\n\n\n\nwith replacement\n\\(\\frac{n!}{(n-k)!}\\)\n\\(\\binom{n}{k}=\\frac{n!}{k!(n-k)!}\\)\n\n\nwithout replacement\n\\(n^k\\)\n\\(\\binom{n+k-1}{k}\\)"
   },
   {
-    "objectID": "lecture-notes/01-set2prob-slides.html#the-math-helpers",
-    "href": "lecture-notes/01-set2prob-slides.html#the-math-helpers",
-    "title": "From set theory to probability",
-    "section": "The math helpers",
-    "text": "The math helpers\nThe inclusions and omissions were deliberate on my part:\n\nlog and exponent properties;\nderivatives;\nintegrals;\nlimits and continuity;\nsequences and series.\n\nIf it’s not mentioned there, you probably don’t need it this semester."
+    "objectID": "lab/lab-2.html#task-0-review",
+    "href": "lab/lab-2.html#task-0-review",
+    "title": "Lab 2",
+    "section": "Task 0 (review)",
+    "text": "Task 0 (review)\nConsider this question from Lab 1:\n\na five-card hand is randomly dealt to you from a well-shuffled deck. What is the probability that the hand contains at least one ace?\n\nLast week, we didn’t have the tools to do the math, but we could program a computer to approximate:\n\ndeck_of_cards &lt;- c(\"AH\", \"2H\", \"3H\", \"4H\", \"5H\", \"6H\", \"7H\", \"8H\", \"9H\", \"10H\", \"JH\", \"QH\", \"KH\",\n                   \"AD\", \"2D\", \"3D\", \"4D\", \"5D\", \"6D\", \"7D\", \"8D\", \"9D\", \"10D\", \"JD\", \"QD\", \"KD\",\n                   \"AC\", \"2C\", \"3C\", \"4C\", \"5C\", \"6C\", \"7C\", \"8C\", \"9C\", \"10C\", \"JC\", \"QC\", \"KC\",\n                   \"AS\", \"2S\", \"3S\", \"4S\", \"5S\", \"6S\", \"7S\", \"8S\", \"9S\", \"10S\", \"JS\", \"QS\", \"KS\")\n\nset.seed(123)\n\nn_rep &lt;- 10000\ncounter &lt;- 0\n\nfor (i in 1:n_rep) {\n  \n  hand &lt;- sample(deck_of_cards, size = 5, replace = FALSE)\n  \n  if (any(hand %in% c(\"AH\",\"AD\",\"AC\",\"AS\"))) {\n    counter &lt;- counter + 1\n  }\n}\n\ncounter / n_rep\n\n[1] 0.3473\n\n\nNow let’s see how the math goes. The complement of the target event \\(A =\\) “at least one ace” is \\(A^c =\\) “no aces at all.” This is simpler and may be easier to count, so we will apply the complement rule:\n\\[\nP(A)=1-P(A^c)=1-\\frac{\\#(A^c)}{\\#(S)}.\n\\]\nThe sample space \\(S\\) is the set of all five-card hands you could be dealt. We are selecting \\(k=5\\) from \\(n=52\\). How?\n\n\nwithout replacement: once a card is dealt to you, it stays in your hand and is not available to be dealt again;\n\nignoring order: the order in which cards are dealt to you is irrelevant. All that matters is the raw contents.\n\nTherefore, the total number of hands that could be dealt is \\(\\#(S)=\\binom{52}{5}\\). The event \\(A^c\\) is the set of all five-card hands that do not include an ace. There are 48 non-ace cards, and so \\(\\#(A^c)=\\binom{48}{5}\\). As such\n\\[\nP(A)=1-\\frac{\\binom{48}{5}}{\\binom{52}{5}}\\approx 0.34.\n\\]\nTo get the actual number, we can use the choose function in R. Try typing this into the console:\n\n1 - choose(48, 5) / choose(52, 5)\n\n[1] 0.341158\n\n\nThis is close to the number we approximated via simulation. Phew!"
   },
   {
-    "objectID": "lecture-notes/01-set2prob-slides.html#calc-iii",
-    "href": "lecture-notes/01-set2prob-slides.html#calc-iii",
-    "title": "From set theory to probability",
-    "section": "Calc III?",
-    "text": "Calc III?\n\nNot a prerequisite for this class, but it is a prerequisite for STA 332 (the next class in the theory sequence);\nIn STA 240, we typically stick to one or two random quantities at a time. Univariate calculus is enough;\nIf you want to study large collections of interrelated random quantities, you need Calc III and Linear Algebra;\nIf you go all the way and break into high-dimensional probability, things get fun and funky and totally gorgeous. And more mathematical!"
+    "objectID": "lab/lab-2.html#task-1",
+    "href": "lab/lab-2.html#task-1",
+    "title": "Lab 2",
+    "section": "Task 1",
+    "text": "Task 1\n\n\nScenario: roll three fair dice;\n\nEvent: all three dice show different numbers."
   },
   {
-    "objectID": "lecture-notes/01-set2prob-slides.html#set-operations",
-    "href": "lecture-notes/01-set2prob-slides.html#set-operations",
-    "title": "From set theory to probability",
-    "section": "Set operations",
-    "text": "Set operations\n\n\n\n\n\n\n\n\nSet\nPicture\nLogic\n\n\n\n\n\\(A\\cup B\\)\n\n(inclusive) OR\n\n\n\\(A\\cap B\\)\n\nAND\n\n\n\\(A^c\\)\n\nNOT"
+    "objectID": "lab/lab-2.html#task-2",
+    "href": "lab/lab-2.html#task-2",
+    "title": "Lab 2",
+    "section": "Task 2",
+    "text": "Task 2\n\n\nScenario: 6 balls are randomly drawn from a jar containing 5 red, 4 blue, 3 green;\n\nEvent: you draw exactly 3 red or exactly 2 green.\n\nHere is a representation of the contents of the jar that you can sample from:\n\njar &lt;- c(rep(\"R\", 5), rep(\"B\", 4), rep(\"G\", 3))\njar\n\n [1] \"R\" \"R\" \"R\" \"R\" \"R\" \"B\" \"B\" \"B\" \"B\" \"G\" \"G\" \"G\""
   },
   {
-    "objectID": "lecture-notes/01-set2prob-slides.html#algebraic-properties",
-    "href": "lecture-notes/01-set2prob-slides.html#algebraic-properties",
-    "title": "From set theory to probability",
-    "section": "Algebraic properties",
-    "text": "Algebraic properties\n\\[\n\\begin{matrix}\n    \\text{Commutative} & A\\cup B=B\\cup A\\\\\n    & A\\cap B=B\\cap A\\\\\n    &\\\\\n    \\text{Associative} & (A\\cup B)\\cup C = A\\cup (B\\cup C)\\\\\n    & (A\\cap B)\\cap C = A\\cap (B\\cap C)\\\\\n    &\\\\\n    \\text{Distributive} & (A\\cup B)\\cap C = (A\\cap C)\\cup (B\\cap C)\\\\\n    &(A\\cap B)\\cup C = (A\\cup C)\\cap (B\\cup C)\\\\\n    &\\\\\n    \\text{De Morgan's Laws} & (A\\cup B)^c=A^c\\cap B^c\\\\\n    & (A\\cap B)^c=A^c\\cup B^c.\n\\end{matrix}\n\\]"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#a-theorem-we-will-use-often",
-    "href": "lecture-notes/01-set2prob-slides.html#a-theorem-we-will-use-often",
-    "title": "From set theory to probability",
-    "section": "A theorem we will use often",
-    "text": "A theorem we will use often\nIf \\(A,\\,B\\subseteq S\\), then\n\n\\(A = (A\\cap B)\\cup (A\\cap B^c)\\);\n\\((A\\cap B)\\cap (A\\cap B^c)=\\varnothing\\).\n\nIn words\n\nA set can always be decomposed into the union of disjoint pieces by intersecting the set with the members of a partition."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#start-with-the-sample-space",
-    "href": "lecture-notes/01-set2prob-slides.html#start-with-the-sample-space",
-    "title": "From set theory to probability",
-    "section": "Start with the sample space",
-    "text": "Start with the sample space"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-b",
-    "href": "lecture-notes/01-set2prob-slides.html#introduce-b",
-    "title": "From set theory to probability",
-    "section": "Introduce \\(B\\)",
-    "text": "Introduce \\(B\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-bc",
-    "href": "lecture-notes/01-set2prob-slides.html#introduce-bc",
-    "title": "From set theory to probability",
-    "section": "Introduce \\(B^c\\)",
-    "text": "Introduce \\(B^c\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#b-and-bc-form-a-partition-of-s",
-    "href": "lecture-notes/01-set2prob-slides.html#b-and-bc-form-a-partition-of-s",
-    "title": "From set theory to probability",
-    "section": "\\(B\\) and \\(B^c\\) form a partition of \\(S\\)",
-    "text": "\\(B\\) and \\(B^c\\) form a partition of \\(S\\)\n\\(B\\) and \\(B^c\\) together form the simplest example of a partition of \\(S\\):\n\nThey cover everything: \\(B\\cup B^c=S\\);\nThey don’t overlap: \\(B\\cap B^c=\\varnothing\\)."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-a",
-    "href": "lecture-notes/01-set2prob-slides.html#introduce-a",
-    "title": "From set theory to probability",
-    "section": "Introduce \\(A\\)",
-    "text": "Introduce \\(A\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#notice-the-decomposition",
-    "href": "lecture-notes/01-set2prob-slides.html#notice-the-decomposition",
-    "title": "From set theory to probability",
-    "section": "Notice the decomposition",
-    "text": "Notice the decomposition"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#random-phenomena",
-    "href": "lecture-notes/01-set2prob-slides.html#random-phenomena",
-    "title": "From set theory to probability",
-    "section": "Random phenomena",
-    "text": "Random phenomena\nIn this course, we are studying random phenomena: things whose outcome cannot be known with certainty. Examples of random phenomenon include:\n\nthe outcome of a coin flip;\nthe outcome of a die roll;\nthe Poker hand dealt to you from a shuffled deck;\nthe outcome of a presidential election;\nwhether or not a basketball player makes a free throw shot;\nwhether or not my soufflé falls in the oven;\nwhether or not the opera singer hits the high note;\nthe next song in your Spotify shuffle;\nthe next word generated by ChatGPT;\nthe birth weight of a newborn child;\nthe number of costumers that will arrive at a store or restaurant on a given day;\nwhen and where a hurricane will make landfall;\nthe time until an unstable particle will decay;\nthe number of claims an insurance company receives in a month;\nthe bid-ask spread of Google stock at 2:37 pm ET next Wednesday.\n\nThese are all things that, for one reason or another (physical reality, lack of information, imperfect measurement), we do not believe we can perfectly predict.\n\n\n\n\n\n\nPhilosophy alert!\n\n\nThis is a course on the mathematics of probability, not the philosophy. As such, we will not quibble about what it means for a phenomenon to truly be random. We will simply take the pragmatic view that there exist phenomena that human beings find sufficiently surprising and unpredictable that it pays to model them as if they are random."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#our-main-object-of-study",
-    "href": "lecture-notes/01-set2prob-slides.html#our-main-object-of-study",
-    "title": "From set theory to probability",
-    "section": "Our main object of study",
-    "text": "Our main object of study\n\n\n\n\n\n\nDefinition: probability space\n\n\nA probability space is a triple \\((S,\\, A\\subseteq S,\\, P)\\):\n\n(sample space) A nonempty set \\(S\\) containing all of the possible outcomes of the phenomenon;\n(events) Subsets \\(A\\subseteq S\\) of the sample space – sets of possible outcomes;\n(probability measure) A function \\(P\\) that takes an event \\(A\\) and assigns to it a real number called \\(P(A)\\). This number is the probability that the ultimate outcome of the random phenomenon is an element of the subset \\(A\\)."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#the-simplest-example",
-    "href": "lecture-notes/01-set2prob-slides.html#the-simplest-example",
-    "title": "From set theory to probability",
-    "section": "The simplest example",
-    "text": "The simplest example\nImagine we are studying the outcome of a fair coin flip. Then:\n\nsample space: \\(S=\\{H,\\,T\\}\\);\nevents: \\(\\varnothing\\), \\(\\{H\\}\\), \\(\\{T\\}\\), \\(S\\);\nprobability measure:\n\n\\[\n\\begin{aligned}\nP(\\varnothing)&=0 && \\text{(chance nothing happens)}\\\\\nP(\\{H\\})&=1 / 2\\\\\nP(\\{T\\})&=1 / 2\\\\\nP(S)&=1.&& \\text{(chance something happens)}\\\\\n\\end{aligned}\n\\]"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#that-word-space",
-    "href": "lecture-notes/01-set2prob-slides.html#that-word-space",
-    "title": "From set theory to probability",
-    "section": "That word “space”",
-    "text": "That word “space”\nIn mathematics, a space is a set together with some extra structure. Once you define the structure, you can spend a whole career proving theorems about the downstream consequences of that definition.\n\nmost of your mathematical career has focused on Euclidean space: the sets \\(\\mathbb{R}\\), \\(\\mathbb{R}^2\\), \\(\\mathbb{R}^3\\), etc together with the familiar geometry of lengths, distances, and angles;\nIf you’ve taken linear algebra, you saw vector spaces: a set together with addition and scalar multiplication.\n\nIf you keep going, you’ll see rings, fields, measure spaces, topological spaces, metric spaces, normed spaces, Banach spaces, inner product spaces, Hilbert spaces, function spaces, and many more."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#sample-spaces",
-    "href": "lecture-notes/01-set2prob-slides.html#sample-spaces",
-    "title": "From set theory to probability",
-    "section": "Sample spaces",
-    "text": "Sample spaces\nThe set of possible outcomes of a random phenomenon:\n\n\n\n\nPhenomenon\n\n\nSample space \\(S\\)\n\n\n\n\n\n\nFlip two coins in order\n\n\n\\(\\{HH,\\:HT,\\:TT,\\:TH\\}\\)\n\n\n\n\nRoll a single die\n\n\n\\(\\{1,\\:2,\\:3,\\:4,\\:5,\\:6\\}\\)\n\n\n\n\nCard dealt from a shuffled deck\n\n\n\\(\\{2\\clubsuit,\\,3\\clubsuit,\\,4\\clubsuit,\\,\\ldots\\}\\)\n\n\n\n\nWinning party in US election\n\n\n\\(\\{\\text{R}, \\text{D}, \\text{L}, \\text{G}, ..., \\text{DSA}\\}\\)\n\n\n\n\nYour blood sodium level in mEq/L\n\n\n\\(\\mathbb{R}_+=(0,\\infty)\\)\n\n\n\n\n# of insurance claims in a week?\n\n\n\\(\\mathbb{N}\\)\n\n\n\n\nReturn on a risky asset\n\n\n\\(\\mathbb{R}\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#events",
-    "href": "lecture-notes/01-set2prob-slides.html#events",
-    "title": "From set theory to probability",
-    "section": "Events",
-    "text": "Events\nAn event is a set of possible outcomes – a subset of the sample space. We assign probabilities to events. You may have thought that we would be assigning probabilities to individual outcomes, and we are doing that too. You can have an event \\(A = \\{s\\}\\) containing a single outcome. But we are going further than that.\nWhen talking informally about a “random event,” we usually describe it in words. But this qualitative description can always be written as a subset of the sample space:\n\n\n\n\nDescription\n\n\nEvent \\(A\\)\n\n\n\n\n\n\n“the first of two coin flips is a head”\n\n\n\\(\\{HH,\\:HT\\}\\)\n\n\n\n\n“the die is even”\n\n\n\\(\\{2,\\:4,\\:6\\}\\)\n\n\n\n\n“dealt a four”\n\n\n\\(\\{4\\clubsuit,\\,4\\heartsuit,\\,4\\spadesuit,\\,4\\diamondsuit\\}\\)\n\n\n\n\n“right-wing party wins”\n\n\n\\(\\{\\text{R},\\,\\text{L},\\,...\\}\\)\n\n\n\n\n“blood sodium in healthy range”\n\n\n\\([133,\\:145]\\)\n\n\n\n\n“over a thousand claims”\n\n\n\\(\\{1001,\\,1002,\\,1003,\\,\\ldots\\}\\)\n\n\n\n\n“your investment loses money”\n\n\n\\((-\\infty,\\:0)\\)\n\n\n\n\nUseful skill: translating the verbal description into the actual set."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#running-example-where-will-the-meteor-land",
-    "href": "lecture-notes/01-set2prob-slides.html#running-example-where-will-the-meteor-land",
-    "title": "From set theory to probability",
-    "section": "Running example: where will the meteor land?",
-    "text": "Running example: where will the meteor land?\nThe sample space is the set of all (long, lat) coordinates in this spatial region:"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#example-events",
-    "href": "lecture-notes/01-set2prob-slides.html#example-events",
-    "title": "From set theory to probability",
-    "section": "Example events",
-    "text": "Example events\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#or-events-union",
-    "href": "lecture-notes/01-set2prob-slides.html#or-events-union",
-    "title": "From set theory to probability",
-    "section": "“OR” events (union)",
-    "text": "“OR” events (union)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor lands in the US or Canada”\n→ \\(A \\cup B\\)\n“Meteor lands in Mexico or adjacent waters”\n→ \\(C \\cup D\\)\n“Meteor lands in the Rocky Mountains or Canada”\n→ \\(E \\cup B\\)\n“Meteor lands in North America”\n→ \\(A\\cup B\\cup C\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#and-events-intersection",
-    "href": "lecture-notes/01-set2prob-slides.html#and-events-intersection",
-    "title": "From set theory to probability",
-    "section": "“AND” events (intersection)",
-    "text": "“AND” events (intersection)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor lands in the Rocky Mountains and the US”\n→ \\(E \\cap A\\)\n“Meteor lands in the US and Mexico”\n→ \\(A \\cap C = \\varnothing\\)\n“Meteor lands in North America and adjacent waters”\n→ \\((A \\cup B \\cup C) \\cap D = \\varnothing\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#not-events-complement",
-    "href": "lecture-notes/01-set2prob-slides.html#not-events-complement",
-    "title": "From set theory to probability",
-    "section": "“NOT” events (complement)",
-    "text": "“NOT” events (complement)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor does not land in the US”\n→ \\(A^c\\)\n“Meteor does not land in the Rocky Mountains”\n→ \\(E^c\\)\n“Meteor does not land on land at all”\n→ \\((A \\cup B \\cup C)^c = D\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#implication",
-    "href": "lecture-notes/01-set2prob-slides.html#implication",
-    "title": "From set theory to probability",
-    "section": "Implication",
-    "text": "Implication\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(G\\)\n“Meteor lands in Georgia”\n\n\n\\(S\\)\n“Meteor lands in The South”\n\n\n\\(U\\)\n“Meteor lands in the United States”\n\n\n\\(N\\)\n“Meteor lands in North America”\n\n\n\nNotice:\n\\[\nG\\subseteq S\\subseteq U\\subseteq N.\n\\]\n\nIf we learn that the meteor landed in The South, that implies that it landed in the USA, which implies that it landed in North America;\nIt may or may not have landed in Georgia."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#summary",
-    "href": "lecture-notes/01-set2prob-slides.html#summary",
-    "title": "From set theory to probability",
-    "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\n\nProbability\nSet theory\n\n\n\n\n\\(A\\) or \\(B\\) occur\n\\(A\\cup B\\)\n\n\n\\(A\\) and \\(B\\) occur\n\\(A\\cap B\\)\n\n\n\\(A\\) does not occur\n\\(A^c\\), with \\(S\\) as the reference\n\n\n\\(A\\) occuring implies \\(B\\) also occurs\n\\(A\\subseteq B\\)\n\n\n\\(A\\) and \\(B\\) mutually exclusive\n\\(A\\cap B=\\varnothing\\)"
+    "objectID": "lab/lab-2.html#task-3",
+    "href": "lab/lab-2.html#task-3",
+    "title": "Lab 2",
+    "section": "Task 3",
+    "text": "Task 3\n\n\n\n\n\nFigure 1: 8 safe rooks\n\n\n\n\nScenario: you randomly place 8 rooks on distinct squares of a chess board;\n\nEvent: all 8 rooks are safe from one another.\n\nFigure 1 displays an example of a safe position. In chess, rooks are permitted to move up-and-down or side-to-side as far as they want, but not diagonally or anything else.\nThis code creates a matrix representing the chess board, from which you can sample the random positions:\n\nboard &lt;- outer(letters[1:8], 1:8, paste0)\nboard\n\n     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]\n[1,] \"a1\" \"a2\" \"a3\" \"a4\" \"a5\" \"a6\" \"a7\" \"a8\"\n[2,] \"b1\" \"b2\" \"b3\" \"b4\" \"b5\" \"b6\" \"b7\" \"b8\"\n[3,] \"c1\" \"c2\" \"c3\" \"c4\" \"c5\" \"c6\" \"c7\" \"c8\"\n[4,] \"d1\" \"d2\" \"d3\" \"d4\" \"d5\" \"d6\" \"d7\" \"d8\"\n[5,] \"e1\" \"e2\" \"e3\" \"e4\" \"e5\" \"e6\" \"e7\" \"e8\"\n[6,] \"f1\" \"f2\" \"f3\" \"f4\" \"f5\" \"f6\" \"f7\" \"f8\"\n[7,] \"g1\" \"g2\" \"g3\" \"g4\" \"g5\" \"g6\" \"g7\" \"g8\"\n[8,] \"h1\" \"h2\" \"h3\" \"h4\" \"h5\" \"h6\" \"h7\" \"h8\"\n\n\nHere’s an example of 8 random squares chosen for the rooks:\n\nrandom_position\n\n[1] \"g6\" \"h4\" \"h6\" \"f4\" \"d1\" \"c6\" \"d7\" \"d6\"\n\n\nSo that’s where your 8 rooks live. In order to check whether or not they are safe from one another, you might find it helpful to separate out the row information and the column information of the placement using the substring command:\n\nsubstring(random_position, 1, 1)\n\n[1] \"g\" \"h\" \"h\" \"f\" \"d\" \"c\" \"d\" \"d\"\n\nsubstring(random_position, 2, 2)\n\n[1] \"6\" \"4\" \"6\" \"4\" \"1\" \"6\" \"7\" \"6\""
   },
   {
     "objectID": "problems/bank/counting/license-plates.html",
