@@ -86,8 +86,8 @@ Depending on how you mix-and-match those two things, you get different answers t
 ::: {.center-table}
 |        | Order matters |   Order does not matter   |
 |----------------|------------|------|
-| **with replacement**           |   $\frac{n!}{(n-k)!}$      |  $\binom{n}{k}=\frac{n!}{k!(n-k)!}$    |
-| **without replacement**   |    $n^k$     |   $\binom{n+k-1}{k}$   |
+| **without replacement**           |   $\frac{n!}{(n-k)!}$      |  $\binom{n}{k}=\frac{n!}{k!(n-k)!}$    |
+| **with replacement**   |    $n^k$     |   $\binom{n+k-1}{k}$   |
 
 : How many ways can you select $k$ from $n$?
 :::
