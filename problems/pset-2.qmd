@@ -56,6 +56,15 @@ q_no <- q_no + 1
 
 ## Problem `{r} q_no`
 
+{{< include bank/counting/poker-dice.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
 {{< include bank/counting/license-plates.qmd >}}
 
 ```{r}
@@ -84,15 +93,6 @@ q_no <- q_no + 1
 ## Problem `{r} q_no`
 
 {{< include bank/counting/random-inner-product.qmd >}}
-
-```{r}
-#| echo: false
-q_no <- q_no + 1
-```
-
-## Problem `{r} q_no`
-
-{{< include bank/counting/poker-dice.qmd >}}
 
 ```{r}
 #| echo: false
