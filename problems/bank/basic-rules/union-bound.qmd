@@ -16,7 +16,7 @@ $$
 P\left(\bigcup_{i=1}^\infty A_i\right)\leq\sum\limits_{i=1}^\infty P(A_i).
 $$
 
-e. 
+e. You just did several technical things, but it's important that you not lose the forest for the trees. Write a paragraph explaining the main ideas of this problem in words. What did the $B_i$ represent? Why was it necessary to construct them? What does the final result mean? Why is it an inequality and not an equality?
 
 ::: callout-warning
 ## Real talk: this is hard!
