@@ -1,0 +1,25 @@
+Let $A_1,\,A_2,\,A_3,\,...\subseteq S$ be an infinite sequence of *possibly overlapping* events in some probability space. Based on this arbitrary sequence, define a new sequence of events that starts with $B_1 = A_1$ and then has $B_i=A_i\cap \left(\bigcup_{j=1}^{i-1}A_j\right)^c$ for all $i>1$.
+
+a.  What the hell are these $B_i$, anyway? To build some intuition, let's draw blobs. *For this part only*, imagine that the $A_i$ are increasing and nested: $A_1\subseteq A_2\subseteq A_3\subseteq...$ In this special case, draw two Venn diagrams illustrating the $A_i$ and the $B_i$.
+
+b.  Show that the $B_i$ are pairwise disjoint. This means that $B_j\cap B_k=\varnothing$ for all distinct $j,\,k=1,\,2,\,3,\,4,\,...$
+
+c.  Show that
+
+$$
+\bigcup_{i=1}^\infty A_i=\bigcup_{i=1}^\infty B_i.
+$$
+
+d.  Use the previous parts to show that
+
+$$
+P\left(\bigcup_{i=1}^\infty A_i\right)\leq\sum\limits_{i=1}^\infty P(A_i).
+$$
+
+e. 
+
+::: callout-warning
+## This is hard!
+This is definitely one of the most mathematically sophisticated problems you will work this semester. It's the sort of thing you would prove at the beginning of a graduate class in probability or analysis, and I want you to get a sense of what that might be like. Otherwise, it's a good workout in set theory and all of our rules (which ones, if you had to guess from the statement), and the final result is surprisingly powerful. Have fun!
+:::
+
