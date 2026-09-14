@@ -3,12 +3,12 @@ project:
   resources:
    - lecture-notes/00-set-theory.pdf
    - lecture-notes/02-probability-spaces.pdf
+   - readings/detsky-gutekunst-kopac-2025-significance.pdf
   #  - readings/dawid-clark-statement.pdf
   #  - readings/westreich-iliinsky-2014-aje.pdf
   #  - readings/diaconis-holmes-montgomery-2007-siamreview.pdf
   #  - readings/matthews-2025-significance.pdf
   #  - readings/meng-2023-nejsds.pdf
-  #  - readings/detsky-gutekunst-kopac-2025-significance.pdf
   #  - lecture-notes/sta240-notes-00-set-theory.pdf
   #  - lecture-notes/sta240-notes-01-probability-spaces.pdf
   #  - lecture-notes/sta240-notes-02-counting-theory.pdf
