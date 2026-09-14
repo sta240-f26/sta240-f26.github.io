@@ -1,0 +1,125 @@
+---
+title: "Problem Set 2"
+subtitle: Due Monday September 21 at 3PM
+editor: 
+  mode: source
+---
+
+> [Agathon](https://en.wikiquote.org/wiki/Agathon): "One might perhaps say that this very thing is probable, that many things happen to men that are not probable."
+
+
+As with Problem Set 1, this problem set asks you to prove new results about how probability measures behave. You are being evaluated on your reasoning and the fluency with which you make use of set theory, the probability axioms, and the various rules we've seen (complement, inclusion/exclusion, etc). Please be thorough and explain all of the steps in your logic. The lecture notes on [set theory](/lecture-notes/00-set-theory.pdf) and the [probability rules](/lecture-notes/02-probability-spaces.pdf) provide a model for how the proofs should look. If you emulate the structure, level of detail, and amount of discussion featured in those examples, you should be good.
+
+
+```{r}
+#| echo: false
+q_no <- 0
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/_music-rec.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+
+
+{{< include bank/conceptual/lousy-forecasting.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/basic-rules/intersection-bound.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/basic-rules/union-bound.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/counting/license-plates.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/counting/20-balls-4-colors.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/counting/exactly-two-suits.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/counting/random-inner-product.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/counting/poker-dice.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+
+{{< include bank/conditional-probability/target-practice.qmd >}}
+
+
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+
+{{< include bank/conditional-probability/independent-complements.qmd >}}
+
+
+## Submission
+
+{{< include bank/_submission.qmd >}}
+
+
+
