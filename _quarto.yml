@@ -92,8 +92,8 @@ website:
             text: Limits and continuity
           - href: math/series.qmd
             text: Sequences and series
-          #- href: math/gamma-function.qmd
-          #  text: Gamma function
+          - href: math/gamma-function.qmd
+            text: Gamma function
           #- href: math/massage-and-squint.qmd
           #  text: Massage and squint
       - section: "Code Helpers"
