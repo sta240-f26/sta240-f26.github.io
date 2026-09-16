@@ -3,6 +3,8 @@ project:
   resources:
    - lecture-notes/00-set-theory.pdf
    - lecture-notes/02-probability-spaces.pdf
+   - lecture-notes/03-counting.pdf
+   - lecture-notes/04-conditional-probability.pdf
    - readings/detsky-gutekunst-kopac-2025-significance.pdf
   #  - readings/dawid-clark-statement.pdf
   #  - readings/westreich-iliinsky-2014-aje.pdf
