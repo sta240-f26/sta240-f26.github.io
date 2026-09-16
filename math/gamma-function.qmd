@@ -5,7 +5,7 @@ format: html
 
 The **gamma function** is a continuous function that *interpolates the factorials*. It is an interesting mathematical object in its own right, but for students of probability, it appears in the normalizing constant of the gamma density, and recognizing the gamma function is a useful technique for simplifying certain integrals.
 
-# Definition
+## Definition
 
 Here it is:
 
@@ -53,7 +53,7 @@ gamma(4)   # 3!
 gamma(8)   # 7!
 ```
 
-# Properties
+## Properties
 
 You first met the gamma function on [Problem Set 0](/problems/pset-0.html#problem-7), where you showed that it satisfies the following *recursion*:
 
