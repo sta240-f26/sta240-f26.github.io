@@ -1515,11 +1515,252 @@
     ]
   },
   {
-    "objectID": "lecture-notes/05-disease-testing.html",
-    "href": "lecture-notes/05-disease-testing.html",
-    "title": "You tested positive. Now what?",
+    "objectID": "lab/lab-2.html",
+    "href": "lab/lab-2.html",
+    "title": "Lab 2",
     "section": "",
-    "text": "Testing positive for a disease is not exactly good news, but how alarmed you should be ultimately depends on a few factors: the accuracy of the test and the overall rarity of the disease (the so-called base rate). Before you walk into the doctor’s office, the probability that you are sick is \\(P(D=+)\\), the prevalence. This is the unconditional (or marginal) probability that a random member of the population (ie you in that moment) is sick. After you test positive, the revised or conditional probability that you have the disease is given by Bayes’ theorem:\n\\[\n\\begin{aligned}\nP(D = +\\,|\\,T=+)\n&=\n\\frac{{\\color{blue}{P(T=+\\,|\\,D=+)}}{\\color{red}{P(D=+)}}}{P(T=+)}\n\\\\\n&=\n\\frac{{\\color{blue}{P(T=+\\,|\\,D=+)}}{\\color{red}{P(D=+)}}}{{\\color{blue}{P(T=+\\,|\\,D=+)}}{\\color{red}{P(D=+)}}+[1-{\\color{green}{P(T=-\\,|\\,D=-)}}][1-{\\color{red}{P(D=+)}}]}\n\\\\\n&=\n\\frac{{\\color{blue}{\\text{TPR}}}\\times{\\color{red}{\\text{PREV}}}}{{\\color{blue}{\\text{TPR}}}\\times{\\color{red}{\\text{PREV}}}+(1-{\\color{green}{\\text{TNR}}})(1-{\\color{red}{\\text{PREV}}})}.\n\\end{aligned}\n\\]\n\\(P(T=+\\,|\\,D=+)\\) is the true positive rate or sensitivity: the probability that a sick person is correctly diagnosed. \\(P(T=-\\,|\\,D=-)\\) is the true negative rate or specificity: the probability that a well person is correctly diagnosed. It is the nonlinear interaction of three numbers (prevalence, TPR, and TNR) that determines the revised likelihood that you have the disease. Two numbers interacting linearly is about all a regular human can handle off the dome, hence people are generally bad at reasoning about this stuff.\nThe application below visualizes the sample space for our simple model of disease testing. We have \\(D\\in\\{-,\\,+\\}\\) and \\(T\\in\\{-,\\,+\\}\\), and so there are four individual outcomes:\n\n\\(P(T = +\\cap D=+)=P(T=+\\,|\\,D=+)P(D=+)=\\text{TPR}\\times P(D=+)\\);\n\\(P(T = +\\cap D=-)=P(T=+\\,|\\,D=-)P(D=-)=\\text{FPR}\\times P(D=-)\\);\n\\(P(T = -\\cap D=-)=P(T=-\\,|\\,D=-)P(D=-)=\\text{TNR}\\times P(D=-)\\);\n\\(P(T = -\\cap D=+)=P(T=-\\,|\\,D=+)P(D=+)=\\text{FNR}\\times P(D=+)\\).\n\nThe application plots the \\([0,\\,1]\\times[0,\\,1]\\) unit square, partitioned into four rectangles representing the outcomes listed above. The area of each rectangle is equal to the probability of that outcome.\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 650\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  \n  # Application title\n  titlePanel(\"The sample space of a simple diagnostic test\"),\n  \n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"TPR\",\n                  \"Sensitivity (TPR):\",\n                  min = 0,\n                  max = 1,\n                  value = 0.5),\n      sliderInput(\"TNR\",\n                  \"Specificity (TNR):\",\n                  min = 0,\n                  max = 1,\n                  value = 0.5),\n      sliderInput(\"p\",\n                  \"Prevalence:\",\n                  min = 0,\n                  max = 1,\n                  value = 0.5)\n    ),\n    \n    mainPanel(\n      plotOutput(\"distPlot\"),\n      \n      # ---- Legend goes here ----\n      tags$div(\n        style = \"margin-top:20px;\",\n        tags$h4(\"Legend\"),\n        tags$div(style=\"display:flex; align-items:center; margin-bottom:5px;\",\n                 tags$div(style=\"width:20px; height:20px; background-color:rgba(255,0,0,0.25); margin-right:10px;\"),\n                 \"True Positive (T=+, D=+)\"\n        ),\n        tags$div(style=\"display:flex; align-items:center; margin-bottom:5px;\",\n                 tags$div(style=\"width:20px; height:20px; background-color:rgba(0,255,0,0.25); margin-right:10px;\"),\n                 \"False Negative (T=-, D=+)\"\n        ),\n        tags$div(style=\"display:flex; align-items:center; margin-bottom:5px;\",\n                 tags$div(style=\"width:20px; height:20px; background-color:rgba(0,0,255,0.25); margin-right:10px;\"),\n                 \"True Negative (T=-, D=-)\"\n        ),\n        tags$div(style=\"display:flex; align-items:center; margin-bottom:5px;\",\n                 tags$div(style=\"width:20px; height:20px; background-color:rgba(255,165,0,0.25); margin-right:10px;\"),\n                 \"False Positive (T=+, D=-)\"\n        )\n      )\n    )\n  )\n)\n\nserver &lt;- function(input, output) {\n  \n  output$distPlot &lt;- renderPlot({\n    \n    p &lt;- input$p\n    TNR &lt;-input$TNR\n    TPR &lt;- input$TPR\n    \n    FNR &lt;- 1 - TPR\n    FPR &lt;- 1 - TNR\n    \n    par(mar = c(8, 8, 1, 8))\n    \n    plot(0, col = \"white\", xlim = c(0, 1), ylim = c(0, 1),\n         xaxt = \"n\", yaxt = \"n\", bty = \"n\", xlab = \"\", ylab = \"\")\n    \n    polygon(c(0, p, p, 0), c(FNR, FNR, 1.0, 1.0), col = rgb(1, 0, 0, alpha = 0.25), border = NA)\n    polygon(c(0, p, p, 0), c(0, 0, FNR, FNR), col = rgb(0, 1, 0, alpha = 0.25), border = NA)\n    polygon(c(p, 1, 1, p), c(0, 0, TNR, TNR), col = rgb(0, 0, 1, alpha = 0.25), border = NA)\n    polygon(c(p, 1, 1, p), c(TNR, TNR, 1, 1), col = rgb(1, 0.647, 0, alpha = 0.25), border = NA)\n    \n    mtext(\"TNR\", side = 4, at = TNR / 2, las = 1)\n    mtext(\"FPR\", side = 4, at = (1 + TNR) / 2, las = 1)\n    \n    mtext(\"TPR\", side = 2, at = (1 + FNR) / 2, las = 1, line = 2)\n    mtext(\"FNR\", side = 2, at = FNR / 2, las = 1, line = 2)\n    \n    mtext(\"p(D = +)\", side = 1, at = p / 2, las = 1, line = 2)\n    mtext(\"p(D = -)\", side = 1, at = (1 + p) / 2, las = 1, line = 2)\n    \n    mtext(c(\"0\", \"1\"), side = 1, at = c(0, 1), las = 1)\n    mtext(c(\"0\", \"1\"), side = 2, at = c(0, 1), las = 1)\n  })\n}\n\nshinyApp(ui = ui, server = server)\n\n\nThe application below displays how testing positive shifts the probability of disease from \\(P(D=+)\\) to \\(P(D = +\\,|\\,T=+)\\). The size of the revision ultimately depends on how big \\(P(D=+)\\) was to begin with, and how good the test is (TPR and TNR). Play around with different values and see what happens:\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 500\n\nlibrary(shiny)\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"What can a diagnostic test teach you?\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n        sidebarPanel(\n            sliderInput(\"TPR\",\n                        \"Sensitivity (TPR):\",\n                        min = 0,\n                        max = 1,\n                        value = 0.5),\n            sliderInput(\"TNR\",\n                        \"Specificity (TNR):\",\n                        min = 0,\n                        max = 1,\n                        value = 0.5)\n        ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"distPlot\")\n        )\n    )\n)\n\n# Define server logic required to draw a histogram\nserver &lt;- function(input, output) {\n\n    output$distPlot &lt;- renderPlot({\n      TPR &lt;- input$TPR\n      TNR &lt;- input$TNR\n      P &lt;- seq(0, 1, length.out = 1000)\n      B &lt;- TPR * P / (TPR * P + (1 - TNR) * (1 - P))\n\n      # draw the histogram with the specified number of bins\n      par(mar = c(5, 5, 5, 0.5))\n      plot(P, B, type = \"l\", xlim = c(0, 1), ylim = c(0, 1),\n           xlab = \"P(D = +)\", ylab = \"P(D = + | T = +)\",\n           lwd = 2, cex.lab = 2,\n           panel.first = abline(a = 0, b = 1, lty = 2, lwd = 2, col = \"grey\"))\n    })\n}\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+    "text": "Last week, you used the sample function to simulate random phenomena that had a finite sample space with equally-likely outcomes: coin flips, die rolls, playing cards. Using a loop, you repeated an experiment many many times, calculated the proportion of the time some event happened, and used that proportion as an approximation of the probability. In class this week, we began talking about counting methods for actually doing the math to compute these probabilities exactly.\nIn this lab, you will do both of these things, the math and the simulation, and verify that they agree. The examples today are small potatoes, but these generic skills are important. Being able to whip up computer simulations of random systems is one of the main skills that will empower you to continue self-studying probability and statistics after you leave the classroom. Hardly a day goes by when myself and my colleagues don’t run a simulation of some kind.",
+    "crumbs": [
+      "Labs",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "lab/lab-2.html#background",
+    "href": "lab/lab-2.html#background",
+    "title": "Lab 2",
+    "section": "Background",
+    "text": "Background\nTo model a random phenomenon, we write down a probability space: the non-empty set \\(S\\) containing all possible outcomes called the sample space, the events \\(A\\subseteq S\\), and the probability measure \\(P\\) that assigns probabilities to the events. In order to be considered valid, we place the following requirements on \\(P\\), the so-called probability axioms:\n\n(total measure 1) \\(P(S)=1\\);\n(nonnegativity) \\(P(A)\\geq 0\\);\n(countable additivity) If \\(A_1,\\,A_2,\\,A_3,\\,...\\subseteq S\\) are pairwise disjoint, then\n\n\\[\nP\\left(\\bigcup_{i=1}^\\infty A_i\\right)=\\sum\\limits_{i=1}^\\infty P(A_i).\n\\]\nOnce you assume those three things, you can deduce various downstream consequences about how probability behaves in general:\n\n\n\n\n\n\nRule\nStatement\n\n\n\nProbability of empty set\n\\(P(\\varnothing)=0\\)\n\n\nFinite additivity\n\n\\(A_1,\\,A_2,\\,...,\\,A_n\\subseteq S\\) pairwise disjoint implies \\(P\\left(\\bigcup_{i=1}^n A_i\\right)=\\sum\\limits_{i=1}^n P(A_i)\\)\n\n\n\nComplement rule\n\\(P(A)=1-P(A^c)\\)\n\n\nMonotonicity\n\\(A\\subseteq B \\,\\implies\\,P(A)\\leq P(B)\\)\n\n\nInclusion/exclusion\n\\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\)\n\n\nLaw of total probability\n\n\\(P(A)=\\sum\\limits_{i=1}^\\infty P(A\\cap B_i)\\) if \\(B_1,\\,B_2,\\,B_3,\\,...\\subseteq S\\) is a partition\n\n\n\n\nAs Mrs. Lovett said, that’s all very well, but how do you actually use this machinery to compute probabilities in concrete examples? In other words, how do you actually specify a probability measure that satisfies the axioms? Lots of ways. But let’s start simple and make two extra assumptions:\n\n(finite sample space) \\(S=\\{s_1,\\,s_2,\\,...,\\,s_n\\}\\);\n(equally likely outcomes) \\(P(\\{s_i\\})=1/n\\) for every outcome in \\(S\\).\n\nThis is already a suffient model to analyze classic examples like flipping coins, rolling dice, and playing cards. If you have a finite sample space where every individual outcome has the same probability, then finite additivity tells you that probability collapses to a counting problem:\n\\[\nP(A)=\\frac{\\#(A)}{\\#(S)}=\\frac{\\text{the number of ways }A\\text{ could happen}}{\\text{the number of ways anything could happen}}.\n\\]\nSo, in order to compute probabilities in this simplified environment, you need to be able to count the number of elements contained inside sets. Sounds straightforward, but for better or worse, it turns out that there is more to this than meets the eye.\nThe main engine for counting methods is the following principle:\n\n\n\n\n\n\nThe counting principle\n\n\n\nIf each element in your set is determined by \\(p\\) traits, and each of these traits has \\(n_1\\), \\(n_2\\), …, \\(n_p\\) options, respectively, then the total number of ways that you can mix-and-match the \\(p\\) traits is:\n\\[\nn_1\\times n_2\\times n_3\\times ...\\times n_p.\n\\]\nExample: Imagine your set consists of the individual cards in a standard deck of playing cards. Each card is determined by two traits: its suit and its rank. There are four options for the suit (♠, ♥, ♦, ♣) and 13 options for the rank (A, 2, 3, …, J, Q, K), so in total there are \\(4\\times 13=52\\) cards.\n\n\nWhen we set out to count the number of elements in a set, we will usually frame the task as a “selecting \\(k\\) from \\(n\\)” problem:\n\n\n\n\nWe have \\(n\\) balls in a jar. We withdraw balls from the jar and use them to fill \\(k\\) slots. How many ways can we draw balls from the jar of \\(n\\) to fill the \\(k\\) slots? This question does not have a unique answer, because it depends on two things:\n\n(are we drawing with or without replacement?) after I draw a ball from the jar to fill a slot, do I put it back in the jar so that I can potentially draw it again to fill another slot? Or after I draw a ball, is it “out of play” forevermore?\n(does order matter?) Say \\(k = 2\\). I could draw (Ball 1, Ball 3) or (Ball 3, Ball 1). Do I count these as two separate outcomes because the order is different, or do I consider them the same outcome because the contents are identical? So, do I ignore or acknowledge the ordering of the draws when I count?\n\nDepending on how you mix-and-match those two things, you get different answers to the question “how many ways can you select \\(k\\) from \\(n\\)” Here is a summary:\n\n\nHow many ways can you select \\(k\\) from \\(n\\)?\n\n\n\n\n\n\n\norder yes\n\norder no\n\n\n\n\nreplace no\n\\(\\frac{n!}{(n-k)!}\\)\n\\(\\binom{n}{k}=\\frac{n!}{k!(n-k)!}\\)\n\n\nreplace yes\n\\(n^k\\)\n\\(\\binom{n+k-1}{k}\\)",
+    "crumbs": [
+      "Labs",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "lab/lab-2.html#task-0-review",
+    "href": "lab/lab-2.html#task-0-review",
+    "title": "Lab 2",
+    "section": "Task 0 (review)",
+    "text": "Task 0 (review)\nConsider this question from Lab 1:\n\na five-card hand is randomly dealt to you from a well-shuffled deck. What is the probability that the hand contains at least one ace?\n\nLast week, we didn’t have the tools to do the math, but we could program a computer to approximate:\n\ndeck_of_cards &lt;- c(\"AH\", \"2H\", \"3H\", \"4H\", \"5H\", \"6H\", \"7H\", \"8H\", \"9H\", \"10H\", \"JH\", \"QH\", \"KH\",\n                   \"AD\", \"2D\", \"3D\", \"4D\", \"5D\", \"6D\", \"7D\", \"8D\", \"9D\", \"10D\", \"JD\", \"QD\", \"KD\",\n                   \"AC\", \"2C\", \"3C\", \"4C\", \"5C\", \"6C\", \"7C\", \"8C\", \"9C\", \"10C\", \"JC\", \"QC\", \"KC\",\n                   \"AS\", \"2S\", \"3S\", \"4S\", \"5S\", \"6S\", \"7S\", \"8S\", \"9S\", \"10S\", \"JS\", \"QS\", \"KS\")\n\nset.seed(123)\n\nn_rep &lt;- 10000\ncounter &lt;- 0\n\nfor (i in 1:n_rep) {\n  \n  hand &lt;- sample(deck_of_cards, size = 5, replace = FALSE)\n  \n  if (any(hand %in% c(\"AH\",\"AD\",\"AC\",\"AS\"))) {\n    counter &lt;- counter + 1\n  }\n}\n\ncounter / n_rep\n\n[1] 0.3473\n\n\nNow let’s see how the math goes. The complement of the target event \\(A =\\) “at least one ace” is \\(A^c =\\) “no aces at all.” This is simpler and may be easier to count, so we will apply the complement rule:\n\\[\nP(A)=1-P(A^c)=1-\\frac{\\#(A^c)}{\\#(S)}.\n\\]\nThe sample space \\(S\\) is the set of all five-card hands you could be dealt. We are selecting \\(k=5\\) from \\(n=52\\). How?\n\n\nwithout replacement: once a card is dealt to you, it stays in your hand and is not available to be dealt again;\n\nignoring order: the order in which cards are dealt to you is irrelevant. All that matters is the raw contents.\n\nTherefore, the total number of hands that could be dealt is \\(\\#(S)=\\binom{52}{5}\\). The event \\(A^c\\) is the set of all five-card hands that do not include an ace. There are 48 non-ace cards, and so \\(\\#(A^c)=\\binom{48}{5}\\). As such\n\\[\nP(A)=1-\\frac{\\binom{48}{5}}{\\binom{52}{5}}\\approx 0.34.\n\\]\nTo get the actual number, we can use the choose function in R. Try typing this into the console:\n\n1 - choose(48, 5) / choose(52, 5)\n\n[1] 0.341158\n\n\nThis is close to the number we approximated via simulation. Phew!",
+    "crumbs": [
+      "Labs",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "lab/lab-2.html#task-1",
+    "href": "lab/lab-2.html#task-1",
+    "title": "Lab 2",
+    "section": "Task 1",
+    "text": "Task 1\n\n\nScenario: roll three fair dice;\n\nEvent: all three dice show different numbers.\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThis code simulates 7,500 trials and computes the proportion of the time the event occurs:\n\nset.seed(37367)\n\nnreps &lt;- 7500\ncounter &lt;- 0\n\nfor(i in 1:nreps){\n  \n  rolls &lt;- sample(1:6, 3, replace = TRUE)\n  \n  if( length(unique(rolls)) == 3 ){\n    counter &lt;- counter + 1\n  }\n  \n}\n\ncounter / nreps # proportion\n\n[1] 0.558\n\n\nIn order to do the math, we apply \\(P(A)=\\#(A)/\\#(S)\\) directly. The sample space \\(S\\) is the set of all three-dice rolls. Each die is like a trait in the sense of the counting principle, so the number of ways we could mix and match the rolls is \\(\\#(S)=6\\times6\\times6=6^3=216\\). The target event \\(A\\) is the set of all three-dice rolls where all numbers are different (ie. sampling without replacement), and so \\(\\#(A)=6\\times 5\\times 4=120\\). Putting it into R gives:\n\n120 / 216\n\n[1] 0.5555556\n\n\nWe conclude then that\n\\[\nP(A) = \\frac{6\\times 5\\times 4}{6^3} = \\frac{120}{216} \\approx 0.555,\n\\]\nwhich agrees with our simulation.",
+    "crumbs": [
+      "Labs",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "lab/lab-2.html#task-2",
+    "href": "lab/lab-2.html#task-2",
+    "title": "Lab 2",
+    "section": "Task 2",
+    "text": "Task 2\n\n\nScenario: 6 balls are randomly drawn from a jar containing 5 red, 4 blue, 3 green;\n\nEvent: you draw exactly 3 red or exactly 2 green.\n\nHere is a representation of the contents of the jar that you can sample from:\n\njar &lt;- c(rep(\"R\", 5), rep(\"B\", 4), rep(\"G\", 3))\njar\n\n [1] \"R\" \"R\" \"R\" \"R\" \"R\" \"B\" \"B\" \"B\" \"B\" \"G\" \"G\" \"G\"\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nset.seed(2025)\nnsim &lt;- 20000\ncount_event &lt;- 0\n\njar &lt;- c(rep(\"R\", 5), rep(\"B\", 4), rep(\"G\", 3))\n\nfor (i in 1:nsim) {\n  hand &lt;- sample(jar, 6, replace = FALSE)\n  n_red &lt;- sum(hand == \"R\")\n  n_green &lt;- sum(hand == \"G\")\n  \n  if (n_red == 3 | n_green == 2) {\n    count_event &lt;- count_event + 1\n  }\n}\n\ncount_event / nsim\n\n[1] 0.6606\n\n\n\n\n\\(A\\) = exactly 3 red, \\(B\\) = exactly 2 green\nBoth could happen so \\(A\\cap B\\) is non-empty;\n\n\\(\\#(S)=\\binom{12}{6}\\);\n\n\\(\\#(A) = \\binom{5}{3}\\binom{7}{3}\\);\n\n\\(\\#(B) = \\binom{3}{2}\\binom{9}{4}\\);\n\n\\(\\#(A\\cap B)=\\binom{5}{3}\\binom{3}{2}4\\);\nSo inclusion/exclusion says that:\n\n\\[\nP(A\\cup B)=P(A)+P(B)-P(A\\cap B)=\\frac{\\binom{5}{3}\\binom{7}{3}}{\\binom{12}{6}}+\\frac{\\binom{3}{2}\\binom{9}{4}}{\\binom{12}{6}}-\\frac{\\binom{5}{3}\\binom{3}{2}4}{\\binom{12}{6}}.\n\\]\nCalculate:\n\nPA &lt;- choose(5, 3) * choose(7, 3) / choose(12, 6)\nPB &lt;- choose(3, 2) * choose(9, 4) / choose(12, 6)\nPAB &lt;- choose(5, 3) * choose(3, 2) * 4 / choose(12, 6)\n\nPA + PB - PAB\n\n[1] 0.6580087",
+    "crumbs": [
+      "Labs",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "lab/lab-2.html#task-3",
+    "href": "lab/lab-2.html#task-3",
+    "title": "Lab 2",
+    "section": "Task 3",
+    "text": "Task 3\n\n\n\n\n\nFigure 1: 8 safe rooks\n\n\n\n\nScenario: you randomly place 8 rooks on distinct squares of a chess board;\n\nEvent: all 8 rooks are safe from one another.\n\nFigure 1 displays an example of a safe position. In chess, rooks are permitted to move up-and-down or side-to-side as far as they want, but not diagonally or anything else.\nThis code creates a matrix representing the chess board, from which you can sample the random positions:\n\nboard &lt;- outer(letters[1:8], 1:8, paste0)\nboard\n\n     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]\n[1,] \"a1\" \"a2\" \"a3\" \"a4\" \"a5\" \"a6\" \"a7\" \"a8\"\n[2,] \"b1\" \"b2\" \"b3\" \"b4\" \"b5\" \"b6\" \"b7\" \"b8\"\n[3,] \"c1\" \"c2\" \"c3\" \"c4\" \"c5\" \"c6\" \"c7\" \"c8\"\n[4,] \"d1\" \"d2\" \"d3\" \"d4\" \"d5\" \"d6\" \"d7\" \"d8\"\n[5,] \"e1\" \"e2\" \"e3\" \"e4\" \"e5\" \"e6\" \"e7\" \"e8\"\n[6,] \"f1\" \"f2\" \"f3\" \"f4\" \"f5\" \"f6\" \"f7\" \"f8\"\n[7,] \"g1\" \"g2\" \"g3\" \"g4\" \"g5\" \"g6\" \"g7\" \"g8\"\n[8,] \"h1\" \"h2\" \"h3\" \"h4\" \"h5\" \"h6\" \"h7\" \"h8\"\n\n\nHere’s an example of 8 random squares chosen for the rooks:\n\nrandom_position\n\n[1] \"g6\" \"h4\" \"h6\" \"f4\" \"d1\" \"c6\" \"d7\" \"d6\"\n\n\nSo that’s where your 8 rooks live. In order to check whether or not they are safe from one another, you might find it helpful to separate out the row information and the column information of the placement using the substring command:\n\nsubstring(random_position, 1, 1)\n\n[1] \"g\" \"h\" \"h\" \"f\" \"d\" \"c\" \"d\" \"d\"\n\nsubstring(random_position, 2, 2)\n\n[1] \"6\" \"4\" \"6\" \"4\" \"1\" \"6\" \"7\" \"6\"\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nboard &lt;- outer(letters[1:8], 1:8, paste0)\n\nset.seed(2025)\nnsim &lt;- 100000\ncount_safe &lt;- 0\n\nfor (i in 1:nsim) {\n  rooks &lt;- sample(board, 8)\n  \n  # split into rows (numbers) and cols (letters)\n  r &lt;- substring(rooks, 2, 2) # row = the number part\n  c &lt;- substring(rooks, 1, 1) # col = the letter part\n  \n  # safe if all 8 rows are different AND all 8 cols are different\n  if (length(unique(r)) == 8 & length(unique(c)) == 8) {\n    count_safe &lt;- count_safe + 1\n  }\n}\n\ncount_safe / nsim\n\n[1] 1e-05\n\n\n\nRecall that rooks can move up and down or side-to-side, but not diagonally. In order to be safe from one another, two rooks therefore need to occupy different rows and columns of the board. For the eight rooks to be mutually safe, they all must be in different columns and different rows from one another;\nThere are \\(n=8\\cdot 8=64\\) squares on the board, and we are selecting \\(k=8\\) of them at which to place the rooks. The rooks are identical, so order doesn’t matter, and it’s without replacement since the squares need to be distinct, and so the total number of possible outcomes is \\(\\#(S)=\\binom{64}{8}\\);\nThe event \\(A\\) we care about is “the rooks are safe from one another,” and this can happen \\(\\#(A)=8!\\) ways;\nWe know that a safe placement will have every row and column occupied by exactly one rook, so let us imagine building up a safe placement row-wise, starting from the bottom and working upward. There are 8 ways to place a single rook on the bottom row. No other rooks can go there, so we move to the next row. There are only 7 ways to place the next rook in the next row, because we must avoid the column occupied by the first rook. Similarly, there are only 6 ways to place the next rook in the next row, because we must avoid the two columns occupied by the first two rooks. And so on. As a consequence of the counting principle, where we regard each row as a trait, we see that \\(\\#(A)=8\\times7\\times6\\times\\cdots\\times2\\times1=8!\\).\nSo\n\n\\[\nP(A)=\\frac{\\#(A)}{\\#(S)}=\\frac{8!}{\\binom{64}{8}}\\approx0.0000091095.\n\\].\n\nfactorial(8) / choose(64, 8)\n\n[1] 9.109465e-06",
+    "crumbs": [
+      "Labs",
+      "Lab 2"
+    ]
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#what-we-need",
+    "href": "lecture-notes/01-set2prob-slides.html#what-we-need",
+    "title": "From set theory to probability",
+    "section": "What we need",
+    "text": "What we need\n\nFirst and foremost, integration. Especially improper integration. Stuff like this will become our daily bread:\n\n\\[\n\\begin{aligned}\n\\int_0^\\infty F'(x)\\,\\text{d}x\n&=\n\\lim_{b\\to\\infty}\\int_{0}^bF'(x)\\,\\text{d}x\n\\\\\n&=\\lim_{b\\to\\infty}[F(x)]_0^b\\\\\n&=\\lim_{b\\to\\infty}F(b) - F(0);\n\\end{aligned}\n\\]\n\nIn order to antidifferentiate, you need to be able to differentiate, and in order to evaluate an improper integral, you need to be able to take limits. Hence, all of Calc I and II is on the table for us;\nOur use of infinite series will be relatively modest. You will mainly have to recognize the famous ones (eg. geometric series, Taylor series of \\(e^x\\), etc). However, sometimes these otherwise friendly faces will be very cleverly disguised (you’ve already seen that here), and so “recognition on steroids” is a new skill you must cultivate. JZ calls it “massage and squint,” but more on that later."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#what-we-wont-need",
+    "href": "lecture-notes/01-set2prob-slides.html#what-we-wont-need",
+    "title": "From set theory to probability",
+    "section": "What we won’t need",
+    "text": "What we won’t need\nIt’s not that these things are irrelevant in probability, but I already know they will not appear on any of the assignments, so let’s not waste our precious divine energy reviewing:\n\nvolumes of revolution (eg. washer method, etc);\nrelated rates;\nimplicit differentiation;\nthe method of partial fractions;\nconvergence tests for series;\ntrig identities and derivatives (only an itty bit)."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#the-math-helpers",
+    "href": "lecture-notes/01-set2prob-slides.html#the-math-helpers",
+    "title": "From set theory to probability",
+    "section": "The math helpers",
+    "text": "The math helpers\nThe inclusions and omissions were deliberate on my part:\n\nlog and exponent properties;\nderivatives;\nintegrals;\nlimits and continuity;\nsequences and series.\n\nIf it’s not mentioned there, you probably don’t need it this semester."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#calc-iii",
+    "href": "lecture-notes/01-set2prob-slides.html#calc-iii",
+    "title": "From set theory to probability",
+    "section": "Calc III?",
+    "text": "Calc III?\n\nNot a prerequisite for this class, but it is a prerequisite for STA 332 (the next class in the theory sequence);\nIn STA 240, we typically stick to one or two random quantities at a time. Univariate calculus is enough;\nIf you want to study large collections of interrelated random quantities, you need Calc III and Linear Algebra;\nIf you go all the way and break into high-dimensional probability, things get fun and funky and totally gorgeous. And more mathematical!"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#set-operations",
+    "href": "lecture-notes/01-set2prob-slides.html#set-operations",
+    "title": "From set theory to probability",
+    "section": "Set operations",
+    "text": "Set operations\n\n\n\n\n\n\n\n\nSet\nPicture\nLogic\n\n\n\n\n\\(A\\cup B\\)\n\n(inclusive) OR\n\n\n\\(A\\cap B\\)\n\nAND\n\n\n\\(A^c\\)\n\nNOT"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#algebraic-properties",
+    "href": "lecture-notes/01-set2prob-slides.html#algebraic-properties",
+    "title": "From set theory to probability",
+    "section": "Algebraic properties",
+    "text": "Algebraic properties\n\\[\n\\begin{matrix}\n    \\text{Commutative} & A\\cup B=B\\cup A\\\\\n    & A\\cap B=B\\cap A\\\\\n    &\\\\\n    \\text{Associative} & (A\\cup B)\\cup C = A\\cup (B\\cup C)\\\\\n    & (A\\cap B)\\cap C = A\\cap (B\\cap C)\\\\\n    &\\\\\n    \\text{Distributive} & (A\\cup B)\\cap C = (A\\cap C)\\cup (B\\cap C)\\\\\n    &(A\\cap B)\\cup C = (A\\cup C)\\cap (B\\cup C)\\\\\n    &\\\\\n    \\text{De Morgan's Laws} & (A\\cup B)^c=A^c\\cap B^c\\\\\n    & (A\\cap B)^c=A^c\\cup B^c.\n\\end{matrix}\n\\]"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#a-theorem-we-will-use-often",
+    "href": "lecture-notes/01-set2prob-slides.html#a-theorem-we-will-use-often",
+    "title": "From set theory to probability",
+    "section": "A theorem we will use often",
+    "text": "A theorem we will use often\nIf \\(A,\\,B\\subseteq S\\), then\n\n\\(A = (A\\cap B)\\cup (A\\cap B^c)\\);\n\\((A\\cap B)\\cap (A\\cap B^c)=\\varnothing\\).\n\nIn words\n\nA set can always be decomposed into the union of disjoint pieces by intersecting the set with the members of a partition."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#start-with-the-sample-space",
+    "href": "lecture-notes/01-set2prob-slides.html#start-with-the-sample-space",
+    "title": "From set theory to probability",
+    "section": "Start with the sample space",
+    "text": "Start with the sample space"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-b",
+    "href": "lecture-notes/01-set2prob-slides.html#introduce-b",
+    "title": "From set theory to probability",
+    "section": "Introduce \\(B\\)",
+    "text": "Introduce \\(B\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-bc",
+    "href": "lecture-notes/01-set2prob-slides.html#introduce-bc",
+    "title": "From set theory to probability",
+    "section": "Introduce \\(B^c\\)",
+    "text": "Introduce \\(B^c\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#b-and-bc-form-a-partition-of-s",
+    "href": "lecture-notes/01-set2prob-slides.html#b-and-bc-form-a-partition-of-s",
+    "title": "From set theory to probability",
+    "section": "\\(B\\) and \\(B^c\\) form a partition of \\(S\\)",
+    "text": "\\(B\\) and \\(B^c\\) form a partition of \\(S\\)\n\\(B\\) and \\(B^c\\) together form the simplest example of a partition of \\(S\\):\n\nThey cover everything: \\(B\\cup B^c=S\\);\nThey don’t overlap: \\(B\\cap B^c=\\varnothing\\)."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-a",
+    "href": "lecture-notes/01-set2prob-slides.html#introduce-a",
+    "title": "From set theory to probability",
+    "section": "Introduce \\(A\\)",
+    "text": "Introduce \\(A\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#notice-the-decomposition",
+    "href": "lecture-notes/01-set2prob-slides.html#notice-the-decomposition",
+    "title": "From set theory to probability",
+    "section": "Notice the decomposition",
+    "text": "Notice the decomposition"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#random-phenomena",
+    "href": "lecture-notes/01-set2prob-slides.html#random-phenomena",
+    "title": "From set theory to probability",
+    "section": "Random phenomena",
+    "text": "Random phenomena\nIn this course, we are studying random phenomena: things whose outcome cannot be known with certainty. Examples of random phenomenon include:\n\nthe outcome of a coin flip;\nthe outcome of a die roll;\nthe Poker hand dealt to you from a shuffled deck;\nthe outcome of a presidential election;\nwhether or not a basketball player makes a free throw shot;\nwhether or not my soufflé falls in the oven;\nwhether or not the opera singer hits the high note;\nthe next song in your Spotify shuffle;\nthe next word generated by ChatGPT;\nthe birth weight of a newborn child;\nthe number of costumers that will arrive at a store or restaurant on a given day;\nwhen and where a hurricane will make landfall;\nthe time until an unstable particle will decay;\nthe number of claims an insurance company receives in a month;\nthe bid-ask spread of Google stock at 2:37 pm ET next Wednesday.\n\nThese are all things that, for one reason or another (physical reality, lack of information, imperfect measurement), we do not believe we can perfectly predict.\n\n\n\n\n\n\nPhilosophy alert!\n\n\nThis is a course on the mathematics of probability, not the philosophy. As such, we will not quibble about what it means for a phenomenon to truly be random. We will simply take the pragmatic view that there exist phenomena that human beings find sufficiently surprising and unpredictable that it pays to model them as if they are random."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#our-main-object-of-study",
+    "href": "lecture-notes/01-set2prob-slides.html#our-main-object-of-study",
+    "title": "From set theory to probability",
+    "section": "Our main object of study",
+    "text": "Our main object of study\n\n\n\n\n\n\nDefinition: probability space\n\n\nA probability space is a triple \\((S,\\, A\\subseteq S,\\, P)\\):\n\n(sample space) A nonempty set \\(S\\) containing all of the possible outcomes of the phenomenon;\n(events) Subsets \\(A\\subseteq S\\) of the sample space – sets of possible outcomes;\n(probability measure) A function \\(P\\) that takes an event \\(A\\) and assigns to it a real number called \\(P(A)\\). This number is the probability that the ultimate outcome of the random phenomenon is an element of the subset \\(A\\)."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#the-simplest-example",
+    "href": "lecture-notes/01-set2prob-slides.html#the-simplest-example",
+    "title": "From set theory to probability",
+    "section": "The simplest example",
+    "text": "The simplest example\nImagine we are studying the outcome of a fair coin flip. Then:\n\nsample space: \\(S=\\{H,\\,T\\}\\);\nevents: \\(\\varnothing\\), \\(\\{H\\}\\), \\(\\{T\\}\\), \\(S\\);\nprobability measure:\n\n\\[\n\\begin{aligned}\nP(\\varnothing)&=0 && \\text{(chance nothing happens)}\\\\\nP(\\{H\\})&=1 / 2\\\\\nP(\\{T\\})&=1 / 2\\\\\nP(S)&=1.&& \\text{(chance something happens)}\\\\\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#that-word-space",
+    "href": "lecture-notes/01-set2prob-slides.html#that-word-space",
+    "title": "From set theory to probability",
+    "section": "That word “space”",
+    "text": "That word “space”\nIn mathematics, a space is a set together with some extra structure. Once you define the structure, you can spend a whole career proving theorems about the downstream consequences of that definition.\n\nmost of your mathematical career has focused on Euclidean space: the sets \\(\\mathbb{R}\\), \\(\\mathbb{R}^2\\), \\(\\mathbb{R}^3\\), etc together with the familiar geometry of lengths, distances, and angles;\nIf you’ve taken linear algebra, you saw vector spaces: a set together with addition and scalar multiplication.\n\nIf you keep going, you’ll see rings, fields, measure spaces, topological spaces, metric spaces, normed spaces, Banach spaces, inner product spaces, Hilbert spaces, function spaces, and many more."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#sample-spaces",
+    "href": "lecture-notes/01-set2prob-slides.html#sample-spaces",
+    "title": "From set theory to probability",
+    "section": "Sample spaces",
+    "text": "Sample spaces\nThe set of possible outcomes of a random phenomenon:\n\n\n\n\nPhenomenon\n\n\nSample space \\(S\\)\n\n\n\n\n\n\nFlip two coins in order\n\n\n\\(\\{HH,\\:HT,\\:TT,\\:TH\\}\\)\n\n\n\n\nRoll a single die\n\n\n\\(\\{1,\\:2,\\:3,\\:4,\\:5,\\:6\\}\\)\n\n\n\n\nCard dealt from a shuffled deck\n\n\n\\(\\{2\\clubsuit,\\,3\\clubsuit,\\,4\\clubsuit,\\,\\ldots\\}\\)\n\n\n\n\nWinning party in US election\n\n\n\\(\\{\\text{R}, \\text{D}, \\text{L}, \\text{G}, ..., \\text{DSA}\\}\\)\n\n\n\n\nYour blood sodium level in mEq/L\n\n\n\\(\\mathbb{R}_+=(0,\\infty)\\)\n\n\n\n\n# of insurance claims in a week?\n\n\n\\(\\mathbb{N}\\)\n\n\n\n\nReturn on a risky asset\n\n\n\\(\\mathbb{R}\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#events",
+    "href": "lecture-notes/01-set2prob-slides.html#events",
+    "title": "From set theory to probability",
+    "section": "Events",
+    "text": "Events\nAn event is a set of possible outcomes – a subset of the sample space. We assign probabilities to events. You may have thought that we would be assigning probabilities to individual outcomes, and we are doing that too. You can have an event \\(A = \\{s\\}\\) containing a single outcome. But we are going further than that.\nWhen talking informally about a “random event,” we usually describe it in words. But this qualitative description can always be written as a subset of the sample space:\n\n\n\n\nDescription\n\n\nEvent \\(A\\)\n\n\n\n\n\n\n“the first of two coin flips is a head”\n\n\n\\(\\{HH,\\:HT\\}\\)\n\n\n\n\n“the die is even”\n\n\n\\(\\{2,\\:4,\\:6\\}\\)\n\n\n\n\n“dealt a four”\n\n\n\\(\\{4\\clubsuit,\\,4\\heartsuit,\\,4\\spadesuit,\\,4\\diamondsuit\\}\\)\n\n\n\n\n“right-wing party wins”\n\n\n\\(\\{\\text{R},\\,\\text{L},\\,...\\}\\)\n\n\n\n\n“blood sodium in healthy range”\n\n\n\\([133,\\:145]\\)\n\n\n\n\n“over a thousand claims”\n\n\n\\(\\{1001,\\,1002,\\,1003,\\,\\ldots\\}\\)\n\n\n\n\n“your investment loses money”\n\n\n\\((-\\infty,\\:0)\\)\n\n\n\n\nUseful skill: translating the verbal description into the actual set."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#running-example-where-will-the-meteor-land",
+    "href": "lecture-notes/01-set2prob-slides.html#running-example-where-will-the-meteor-land",
+    "title": "From set theory to probability",
+    "section": "Running example: where will the meteor land?",
+    "text": "Running example: where will the meteor land?\nThe sample space is the set of all (long, lat) coordinates in this spatial region:"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#example-events",
+    "href": "lecture-notes/01-set2prob-slides.html#example-events",
+    "title": "From set theory to probability",
+    "section": "Example events",
+    "text": "Example events\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#or-events-union",
+    "href": "lecture-notes/01-set2prob-slides.html#or-events-union",
+    "title": "From set theory to probability",
+    "section": "“OR” events (union)",
+    "text": "“OR” events (union)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor lands in the US or Canada”\n→ \\(A \\cup B\\)\n“Meteor lands in Mexico or adjacent waters”\n→ \\(C \\cup D\\)\n“Meteor lands in the Rocky Mountains or Canada”\n→ \\(E \\cup B\\)\n“Meteor lands in North America”\n→ \\(A\\cup B\\cup C\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#and-events-intersection",
+    "href": "lecture-notes/01-set2prob-slides.html#and-events-intersection",
+    "title": "From set theory to probability",
+    "section": "“AND” events (intersection)",
+    "text": "“AND” events (intersection)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor lands in the Rocky Mountains and the US”\n→ \\(E \\cap A\\)\n“Meteor lands in the US and Mexico”\n→ \\(A \\cap C = \\varnothing\\)\n“Meteor lands in North America and adjacent waters”\n→ \\((A \\cup B \\cup C) \\cap D = \\varnothing\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#not-events-complement",
+    "href": "lecture-notes/01-set2prob-slides.html#not-events-complement",
+    "title": "From set theory to probability",
+    "section": "“NOT” events (complement)",
+    "text": "“NOT” events (complement)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor does not land in the US”\n→ \\(A^c\\)\n“Meteor does not land in the Rocky Mountains”\n→ \\(E^c\\)\n“Meteor does not land on land at all”\n→ \\((A \\cup B \\cup C)^c = D\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#implication",
+    "href": "lecture-notes/01-set2prob-slides.html#implication",
+    "title": "From set theory to probability",
+    "section": "Implication",
+    "text": "Implication\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(G\\)\n“Meteor lands in Georgia”\n\n\n\\(S\\)\n“Meteor lands in The South”\n\n\n\\(U\\)\n“Meteor lands in the United States”\n\n\n\\(N\\)\n“Meteor lands in North America”\n\n\n\nNotice:\n\\[\nG\\subseteq S\\subseteq U\\subseteq N.\n\\]\n\nIf we learn that the meteor landed in The South, that implies that it landed in the USA, which implies that it landed in North America;\nIt may or may not have landed in Georgia."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#summary",
+    "href": "lecture-notes/01-set2prob-slides.html#summary",
+    "title": "From set theory to probability",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\nProbability\nSet theory\n\n\n\n\n\\(A\\) or \\(B\\) occur\n\\(A\\cup B\\)\n\n\n\\(A\\) and \\(B\\) occur\n\\(A\\cap B\\)\n\n\n\\(A\\) does not occur\n\\(A^c\\), with \\(S\\) as the reference\n\n\n\\(A\\) occuring implies \\(B\\) also occurs\n\\(A\\subseteq B\\)\n\n\n\\(A\\) and \\(B\\) mutually exclusive\n\\(A\\cap B=\\varnothing\\)"
   },
   {
     "objectID": "lecture-notes/01-set2prob.html",
@@ -1711,251 +1952,65 @@
     "text": "Summary\n\n\n\n\n\n\n\nProbability\nSet theory\n\n\n\n\n\\(A\\) or \\(B\\) occur\n\\(A\\cup B\\)\n\n\n\\(A\\) and \\(B\\) occur\n\\(A\\cap B\\)\n\n\n\\(A\\) does not occur\n\\(A^c\\), with \\(S\\) as the reference\n\n\n\\(A\\) occuring implies \\(B\\) also occurs\n\\(A\\subseteq B\\)\n\n\n\\(A\\) and \\(B\\) mutually exclusive\n\\(A\\cap B=\\varnothing\\)"
   },
   {
-    "objectID": "lecture-notes/01-set2prob-slides.html#what-we-need",
-    "href": "lecture-notes/01-set2prob-slides.html#what-we-need",
-    "title": "From set theory to probability",
-    "section": "What we need",
-    "text": "What we need\n\nFirst and foremost, integration. Especially improper integration. Stuff like this will become our daily bread:\n\n\\[\n\\begin{aligned}\n\\int_0^\\infty F'(x)\\,\\text{d}x\n&=\n\\lim_{b\\to\\infty}\\int_{0}^bF'(x)\\,\\text{d}x\n\\\\\n&=\\lim_{b\\to\\infty}[F(x)]_0^b\\\\\n&=\\lim_{b\\to\\infty}F(b) - F(0);\n\\end{aligned}\n\\]\n\nIn order to antidifferentiate, you need to be able to differentiate, and in order to evaluate an improper integral, you need to be able to take limits. Hence, all of Calc I and II is on the table for us;\nOur use of infinite series will be relatively modest. You will mainly have to recognize the famous ones (eg. geometric series, Taylor series of \\(e^x\\), etc). However, sometimes these otherwise friendly faces will be very cleverly disguised (you’ve already seen that here), and so “recognition on steroids” is a new skill you must cultivate. JZ calls it “massage and squint,” but more on that later."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#what-we-wont-need",
-    "href": "lecture-notes/01-set2prob-slides.html#what-we-wont-need",
-    "title": "From set theory to probability",
-    "section": "What we won’t need",
-    "text": "What we won’t need\nIt’s not that these things are irrelevant in probability, but I already know they will not appear on any of the assignments, so let’s not waste our precious divine energy reviewing:\n\nvolumes of revolution (eg. washer method, etc);\nrelated rates;\nimplicit differentiation;\nthe method of partial fractions;\nconvergence tests for series;\ntrig identities and derivatives (only an itty bit)."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#the-math-helpers",
-    "href": "lecture-notes/01-set2prob-slides.html#the-math-helpers",
-    "title": "From set theory to probability",
-    "section": "The math helpers",
-    "text": "The math helpers\nThe inclusions and omissions were deliberate on my part:\n\nlog and exponent properties;\nderivatives;\nintegrals;\nlimits and continuity;\nsequences and series.\n\nIf it’s not mentioned there, you probably don’t need it this semester."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#calc-iii",
-    "href": "lecture-notes/01-set2prob-slides.html#calc-iii",
-    "title": "From set theory to probability",
-    "section": "Calc III?",
-    "text": "Calc III?\n\nNot a prerequisite for this class, but it is a prerequisite for STA 332 (the next class in the theory sequence);\nIn STA 240, we typically stick to one or two random quantities at a time. Univariate calculus is enough;\nIf you want to study large collections of interrelated random quantities, you need Calc III and Linear Algebra;\nIf you go all the way and break into high-dimensional probability, things get fun and funky and totally gorgeous. And more mathematical!"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#set-operations",
-    "href": "lecture-notes/01-set2prob-slides.html#set-operations",
-    "title": "From set theory to probability",
-    "section": "Set operations",
-    "text": "Set operations\n\n\n\n\n\n\n\n\nSet\nPicture\nLogic\n\n\n\n\n\\(A\\cup B\\)\n\n(inclusive) OR\n\n\n\\(A\\cap B\\)\n\nAND\n\n\n\\(A^c\\)\n\nNOT"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#algebraic-properties",
-    "href": "lecture-notes/01-set2prob-slides.html#algebraic-properties",
-    "title": "From set theory to probability",
-    "section": "Algebraic properties",
-    "text": "Algebraic properties\n\\[\n\\begin{matrix}\n    \\text{Commutative} & A\\cup B=B\\cup A\\\\\n    & A\\cap B=B\\cap A\\\\\n    &\\\\\n    \\text{Associative} & (A\\cup B)\\cup C = A\\cup (B\\cup C)\\\\\n    & (A\\cap B)\\cap C = A\\cap (B\\cap C)\\\\\n    &\\\\\n    \\text{Distributive} & (A\\cup B)\\cap C = (A\\cap C)\\cup (B\\cap C)\\\\\n    &(A\\cap B)\\cup C = (A\\cup C)\\cap (B\\cup C)\\\\\n    &\\\\\n    \\text{De Morgan's Laws} & (A\\cup B)^c=A^c\\cap B^c\\\\\n    & (A\\cap B)^c=A^c\\cup B^c.\n\\end{matrix}\n\\]"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#a-theorem-we-will-use-often",
-    "href": "lecture-notes/01-set2prob-slides.html#a-theorem-we-will-use-often",
-    "title": "From set theory to probability",
-    "section": "A theorem we will use often",
-    "text": "A theorem we will use often\nIf \\(A,\\,B\\subseteq S\\), then\n\n\\(A = (A\\cap B)\\cup (A\\cap B^c)\\);\n\\((A\\cap B)\\cap (A\\cap B^c)=\\varnothing\\).\n\nIn words\n\nA set can always be decomposed into the union of disjoint pieces by intersecting the set with the members of a partition."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#start-with-the-sample-space",
-    "href": "lecture-notes/01-set2prob-slides.html#start-with-the-sample-space",
-    "title": "From set theory to probability",
-    "section": "Start with the sample space",
-    "text": "Start with the sample space"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-b",
-    "href": "lecture-notes/01-set2prob-slides.html#introduce-b",
-    "title": "From set theory to probability",
-    "section": "Introduce \\(B\\)",
-    "text": "Introduce \\(B\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-bc",
-    "href": "lecture-notes/01-set2prob-slides.html#introduce-bc",
-    "title": "From set theory to probability",
-    "section": "Introduce \\(B^c\\)",
-    "text": "Introduce \\(B^c\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#b-and-bc-form-a-partition-of-s",
-    "href": "lecture-notes/01-set2prob-slides.html#b-and-bc-form-a-partition-of-s",
-    "title": "From set theory to probability",
-    "section": "\\(B\\) and \\(B^c\\) form a partition of \\(S\\)",
-    "text": "\\(B\\) and \\(B^c\\) form a partition of \\(S\\)\n\\(B\\) and \\(B^c\\) together form the simplest example of a partition of \\(S\\):\n\nThey cover everything: \\(B\\cup B^c=S\\);\nThey don’t overlap: \\(B\\cap B^c=\\varnothing\\)."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-a",
-    "href": "lecture-notes/01-set2prob-slides.html#introduce-a",
-    "title": "From set theory to probability",
-    "section": "Introduce \\(A\\)",
-    "text": "Introduce \\(A\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#notice-the-decomposition",
-    "href": "lecture-notes/01-set2prob-slides.html#notice-the-decomposition",
-    "title": "From set theory to probability",
-    "section": "Notice the decomposition",
-    "text": "Notice the decomposition"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#random-phenomena",
-    "href": "lecture-notes/01-set2prob-slides.html#random-phenomena",
-    "title": "From set theory to probability",
-    "section": "Random phenomena",
-    "text": "Random phenomena\nIn this course, we are studying random phenomena: things whose outcome cannot be known with certainty. Examples of random phenomenon include:\n\nthe outcome of a coin flip;\nthe outcome of a die roll;\nthe Poker hand dealt to you from a shuffled deck;\nthe outcome of a presidential election;\nwhether or not a basketball player makes a free throw shot;\nwhether or not my soufflé falls in the oven;\nwhether or not the opera singer hits the high note;\nthe next song in your Spotify shuffle;\nthe next word generated by ChatGPT;\nthe birth weight of a newborn child;\nthe number of costumers that will arrive at a store or restaurant on a given day;\nwhen and where a hurricane will make landfall;\nthe time until an unstable particle will decay;\nthe number of claims an insurance company receives in a month;\nthe bid-ask spread of Google stock at 2:37 pm ET next Wednesday.\n\nThese are all things that, for one reason or another (physical reality, lack of information, imperfect measurement), we do not believe we can perfectly predict.\n\n\n\n\n\n\nPhilosophy alert!\n\n\nThis is a course on the mathematics of probability, not the philosophy. As such, we will not quibble about what it means for a phenomenon to truly be random. We will simply take the pragmatic view that there exist phenomena that human beings find sufficiently surprising and unpredictable that it pays to model them as if they are random."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#our-main-object-of-study",
-    "href": "lecture-notes/01-set2prob-slides.html#our-main-object-of-study",
-    "title": "From set theory to probability",
-    "section": "Our main object of study",
-    "text": "Our main object of study\n\n\n\n\n\n\nDefinition: probability space\n\n\nA probability space is a triple \\((S,\\, A\\subseteq S,\\, P)\\):\n\n(sample space) A nonempty set \\(S\\) containing all of the possible outcomes of the phenomenon;\n(events) Subsets \\(A\\subseteq S\\) of the sample space – sets of possible outcomes;\n(probability measure) A function \\(P\\) that takes an event \\(A\\) and assigns to it a real number called \\(P(A)\\). This number is the probability that the ultimate outcome of the random phenomenon is an element of the subset \\(A\\)."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#the-simplest-example",
-    "href": "lecture-notes/01-set2prob-slides.html#the-simplest-example",
-    "title": "From set theory to probability",
-    "section": "The simplest example",
-    "text": "The simplest example\nImagine we are studying the outcome of a fair coin flip. Then:\n\nsample space: \\(S=\\{H,\\,T\\}\\);\nevents: \\(\\varnothing\\), \\(\\{H\\}\\), \\(\\{T\\}\\), \\(S\\);\nprobability measure:\n\n\\[\n\\begin{aligned}\nP(\\varnothing)&=0 && \\text{(chance nothing happens)}\\\\\nP(\\{H\\})&=1 / 2\\\\\nP(\\{T\\})&=1 / 2\\\\\nP(S)&=1.&& \\text{(chance something happens)}\\\\\n\\end{aligned}\n\\]"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#that-word-space",
-    "href": "lecture-notes/01-set2prob-slides.html#that-word-space",
-    "title": "From set theory to probability",
-    "section": "That word “space”",
-    "text": "That word “space”\nIn mathematics, a space is a set together with some extra structure. Once you define the structure, you can spend a whole career proving theorems about the downstream consequences of that definition.\n\nmost of your mathematical career has focused on Euclidean space: the sets \\(\\mathbb{R}\\), \\(\\mathbb{R}^2\\), \\(\\mathbb{R}^3\\), etc together with the familiar geometry of lengths, distances, and angles;\nIf you’ve taken linear algebra, you saw vector spaces: a set together with addition and scalar multiplication.\n\nIf you keep going, you’ll see rings, fields, measure spaces, topological spaces, metric spaces, normed spaces, Banach spaces, inner product spaces, Hilbert spaces, function spaces, and many more."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#sample-spaces",
-    "href": "lecture-notes/01-set2prob-slides.html#sample-spaces",
-    "title": "From set theory to probability",
-    "section": "Sample spaces",
-    "text": "Sample spaces\nThe set of possible outcomes of a random phenomenon:\n\n\n\n\nPhenomenon\n\n\nSample space \\(S\\)\n\n\n\n\n\n\nFlip two coins in order\n\n\n\\(\\{HH,\\:HT,\\:TT,\\:TH\\}\\)\n\n\n\n\nRoll a single die\n\n\n\\(\\{1,\\:2,\\:3,\\:4,\\:5,\\:6\\}\\)\n\n\n\n\nCard dealt from a shuffled deck\n\n\n\\(\\{2\\clubsuit,\\,3\\clubsuit,\\,4\\clubsuit,\\,\\ldots\\}\\)\n\n\n\n\nWinning party in US election\n\n\n\\(\\{\\text{R}, \\text{D}, \\text{L}, \\text{G}, ..., \\text{DSA}\\}\\)\n\n\n\n\nYour blood sodium level in mEq/L\n\n\n\\(\\mathbb{R}_+=(0,\\infty)\\)\n\n\n\n\n# of insurance claims in a week?\n\n\n\\(\\mathbb{N}\\)\n\n\n\n\nReturn on a risky asset\n\n\n\\(\\mathbb{R}\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#events",
-    "href": "lecture-notes/01-set2prob-slides.html#events",
-    "title": "From set theory to probability",
-    "section": "Events",
-    "text": "Events\nAn event is a set of possible outcomes – a subset of the sample space. We assign probabilities to events. You may have thought that we would be assigning probabilities to individual outcomes, and we are doing that too. You can have an event \\(A = \\{s\\}\\) containing a single outcome. But we are going further than that.\nWhen talking informally about a “random event,” we usually describe it in words. But this qualitative description can always be written as a subset of the sample space:\n\n\n\n\nDescription\n\n\nEvent \\(A\\)\n\n\n\n\n\n\n“the first of two coin flips is a head”\n\n\n\\(\\{HH,\\:HT\\}\\)\n\n\n\n\n“the die is even”\n\n\n\\(\\{2,\\:4,\\:6\\}\\)\n\n\n\n\n“dealt a four”\n\n\n\\(\\{4\\clubsuit,\\,4\\heartsuit,\\,4\\spadesuit,\\,4\\diamondsuit\\}\\)\n\n\n\n\n“right-wing party wins”\n\n\n\\(\\{\\text{R},\\,\\text{L},\\,...\\}\\)\n\n\n\n\n“blood sodium in healthy range”\n\n\n\\([133,\\:145]\\)\n\n\n\n\n“over a thousand claims”\n\n\n\\(\\{1001,\\,1002,\\,1003,\\,\\ldots\\}\\)\n\n\n\n\n“your investment loses money”\n\n\n\\((-\\infty,\\:0)\\)\n\n\n\n\nUseful skill: translating the verbal description into the actual set."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#running-example-where-will-the-meteor-land",
-    "href": "lecture-notes/01-set2prob-slides.html#running-example-where-will-the-meteor-land",
-    "title": "From set theory to probability",
-    "section": "Running example: where will the meteor land?",
-    "text": "Running example: where will the meteor land?\nThe sample space is the set of all (long, lat) coordinates in this spatial region:"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#example-events",
-    "href": "lecture-notes/01-set2prob-slides.html#example-events",
-    "title": "From set theory to probability",
-    "section": "Example events",
-    "text": "Example events\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#or-events-union",
-    "href": "lecture-notes/01-set2prob-slides.html#or-events-union",
-    "title": "From set theory to probability",
-    "section": "“OR” events (union)",
-    "text": "“OR” events (union)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor lands in the US or Canada”\n→ \\(A \\cup B\\)\n“Meteor lands in Mexico or adjacent waters”\n→ \\(C \\cup D\\)\n“Meteor lands in the Rocky Mountains or Canada”\n→ \\(E \\cup B\\)\n“Meteor lands in North America”\n→ \\(A\\cup B\\cup C\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#and-events-intersection",
-    "href": "lecture-notes/01-set2prob-slides.html#and-events-intersection",
-    "title": "From set theory to probability",
-    "section": "“AND” events (intersection)",
-    "text": "“AND” events (intersection)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor lands in the Rocky Mountains and the US”\n→ \\(E \\cap A\\)\n“Meteor lands in the US and Mexico”\n→ \\(A \\cap C = \\varnothing\\)\n“Meteor lands in North America and adjacent waters”\n→ \\((A \\cup B \\cup C) \\cap D = \\varnothing\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#not-events-complement",
-    "href": "lecture-notes/01-set2prob-slides.html#not-events-complement",
-    "title": "From set theory to probability",
-    "section": "“NOT” events (complement)",
-    "text": "“NOT” events (complement)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor does not land in the US”\n→ \\(A^c\\)\n“Meteor does not land in the Rocky Mountains”\n→ \\(E^c\\)\n“Meteor does not land on land at all”\n→ \\((A \\cup B \\cup C)^c = D\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#implication",
-    "href": "lecture-notes/01-set2prob-slides.html#implication",
-    "title": "From set theory to probability",
-    "section": "Implication",
-    "text": "Implication\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(G\\)\n“Meteor lands in Georgia”\n\n\n\\(S\\)\n“Meteor lands in The South”\n\n\n\\(U\\)\n“Meteor lands in the United States”\n\n\n\\(N\\)\n“Meteor lands in North America”\n\n\n\nNotice:\n\\[\nG\\subseteq S\\subseteq U\\subseteq N.\n\\]\n\nIf we learn that the meteor landed in The South, that implies that it landed in the USA, which implies that it landed in North America;\nIt may or may not have landed in Georgia."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#summary",
-    "href": "lecture-notes/01-set2prob-slides.html#summary",
-    "title": "From set theory to probability",
-    "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\n\nProbability\nSet theory\n\n\n\n\n\\(A\\) or \\(B\\) occur\n\\(A\\cup B\\)\n\n\n\\(A\\) and \\(B\\) occur\n\\(A\\cap B\\)\n\n\n\\(A\\) does not occur\n\\(A^c\\), with \\(S\\) as the reference\n\n\n\\(A\\) occuring implies \\(B\\) also occurs\n\\(A\\subseteq B\\)\n\n\n\\(A\\) and \\(B\\) mutually exclusive\n\\(A\\cap B=\\varnothing\\)"
-  },
-  {
-    "objectID": "lab/lab-2.html",
-    "href": "lab/lab-2.html",
-    "title": "Lab 2",
+    "objectID": "lecture-notes/05-disease-testing.html",
+    "href": "lecture-notes/05-disease-testing.html",
+    "title": "You tested positive. Now what?",
     "section": "",
-    "text": "Last week, you used the sample function to simulate random phenomena that had a finite sample space with equally-likely outcomes: coin flips, die rolls, playing cards. Using a loop, you repeated an experiment many many times, calculated the proportion of the time some event happened, and used that proportion as an approximation of the probability. In class this week, we began talking about counting methods for actually doing the math to compute these probabilities exactly.\nIn this lab, you will do both of these things, the math and the simulation, and verify that they agree. The examples today are small potatoes, but these generic skills are important. Being able to whip up computer simulations of random systems is one of the main skills that will empower you to continue self-studying probability and statistics after you leave the classroom. Hardly a day goes by when myself and my colleagues don’t run a simulation of some kind.",
+    "text": "Testing positive for a disease is not exactly good news, but how alarmed you should be ultimately depends on a few factors: the accuracy of the test and the overall rarity of the disease (the so-called base rate). Before you walk into the doctor’s office, the probability that you are sick is \\(P(D=+)\\), the prevalence. This is the unconditional (or marginal) probability that a random member of the population (ie you in that moment) is sick. After you test positive, the revised or conditional probability that you have the disease is given by Bayes’ theorem:\n\\[\n\\begin{aligned}\nP(D = +\\,|\\,T=+)\n&=\n\\frac{{\\color{blue}{P(T=+\\,|\\,D=+)}}{\\color{red}{P(D=+)}}}{P(T=+)}\n\\\\\n&=\n\\frac{{\\color{blue}{P(T=+\\,|\\,D=+)}}{\\color{red}{P(D=+)}}}{{\\color{blue}{P(T=+\\,|\\,D=+)}}{\\color{red}{P(D=+)}}+[1-{\\color{green}{P(T=-\\,|\\,D=-)}}][1-{\\color{red}{P(D=+)}}]}\n\\\\\n&=\n\\frac{{\\color{blue}{\\text{TPR}}}\\times{\\color{red}{\\text{PREV}}}}{{\\color{blue}{\\text{TPR}}}\\times{\\color{red}{\\text{PREV}}}+(1-{\\color{green}{\\text{TNR}}})(1-{\\color{red}{\\text{PREV}}})}.\n\\end{aligned}\n\\]\n\\(P(T=+\\,|\\,D=+)\\) is the true positive rate or sensitivity: the probability that a sick person is correctly diagnosed. \\(P(T=-\\,|\\,D=-)\\) is the true negative rate or specificity: the probability that a well person is correctly diagnosed. It is the nonlinear interaction of three numbers (prevalence, TPR, and TNR) that determines the revised likelihood that you have the disease. Two numbers interacting linearly is about all a regular human can handle off the dome, hence people are generally bad at reasoning about this stuff.\nThe application below visualizes the sample space for our simple model of disease testing. We have \\(D\\in\\{-,\\,+\\}\\) and \\(T\\in\\{-,\\,+\\}\\), and so there are four individual outcomes:\n\n\\(P(T = +\\cap D=+)=P(T=+\\,|\\,D=+)P(D=+)=\\text{TPR}\\times P(D=+)\\);\n\\(P(T = +\\cap D=-)=P(T=+\\,|\\,D=-)P(D=-)=\\text{FPR}\\times P(D=-)\\);\n\\(P(T = -\\cap D=-)=P(T=-\\,|\\,D=-)P(D=-)=\\text{TNR}\\times P(D=-)\\);\n\\(P(T = -\\cap D=+)=P(T=-\\,|\\,D=+)P(D=+)=\\text{FNR}\\times P(D=+)\\).\n\nThe application plots the \\([0,\\,1]\\times[0,\\,1]\\) unit square, partitioned into four rectangles representing the outcomes listed above. The area of each rectangle is equal to the probability of that outcome.\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 650\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  \n  # Application title\n  titlePanel(\"The sample space of a simple diagnostic test\"),\n  \n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"TPR\",\n                  \"Sensitivity (TPR):\",\n                  min = 0,\n                  max = 1,\n                  value = 0.5),\n      sliderInput(\"TNR\",\n                  \"Specificity (TNR):\",\n                  min = 0,\n                  max = 1,\n                  value = 0.5),\n      sliderInput(\"p\",\n                  \"Prevalence:\",\n                  min = 0,\n                  max = 1,\n                  value = 0.5)\n    ),\n    \n    mainPanel(\n      plotOutput(\"distPlot\"),\n      \n      # ---- Legend goes here ----\n      tags$div(\n        style = \"margin-top:20px;\",\n        tags$h4(\"Legend\"),\n        tags$div(style=\"display:flex; align-items:center; margin-bottom:5px;\",\n                 tags$div(style=\"width:20px; height:20px; background-color:rgba(255,0,0,0.25); margin-right:10px;\"),\n                 \"True Positive (T=+, D=+)\"\n        ),\n        tags$div(style=\"display:flex; align-items:center; margin-bottom:5px;\",\n                 tags$div(style=\"width:20px; height:20px; background-color:rgba(0,255,0,0.25); margin-right:10px;\"),\n                 \"False Negative (T=-, D=+)\"\n        ),\n        tags$div(style=\"display:flex; align-items:center; margin-bottom:5px;\",\n                 tags$div(style=\"width:20px; height:20px; background-color:rgba(0,0,255,0.25); margin-right:10px;\"),\n                 \"True Negative (T=-, D=-)\"\n        ),\n        tags$div(style=\"display:flex; align-items:center; margin-bottom:5px;\",\n                 tags$div(style=\"width:20px; height:20px; background-color:rgba(255,165,0,0.25); margin-right:10px;\"),\n                 \"False Positive (T=+, D=-)\"\n        )\n      )\n    )\n  )\n)\n\nserver &lt;- function(input, output) {\n  \n  output$distPlot &lt;- renderPlot({\n    \n    p &lt;- input$p\n    TNR &lt;-input$TNR\n    TPR &lt;- input$TPR\n    \n    FNR &lt;- 1 - TPR\n    FPR &lt;- 1 - TNR\n    \n    par(mar = c(8, 8, 1, 8))\n    \n    plot(0, col = \"white\", xlim = c(0, 1), ylim = c(0, 1),\n         xaxt = \"n\", yaxt = \"n\", bty = \"n\", xlab = \"\", ylab = \"\")\n    \n    polygon(c(0, p, p, 0), c(FNR, FNR, 1.0, 1.0), col = rgb(1, 0, 0, alpha = 0.25), border = NA)\n    polygon(c(0, p, p, 0), c(0, 0, FNR, FNR), col = rgb(0, 1, 0, alpha = 0.25), border = NA)\n    polygon(c(p, 1, 1, p), c(0, 0, TNR, TNR), col = rgb(0, 0, 1, alpha = 0.25), border = NA)\n    polygon(c(p, 1, 1, p), c(TNR, TNR, 1, 1), col = rgb(1, 0.647, 0, alpha = 0.25), border = NA)\n    \n    mtext(\"TNR\", side = 4, at = TNR / 2, las = 1)\n    mtext(\"FPR\", side = 4, at = (1 + TNR) / 2, las = 1)\n    \n    mtext(\"TPR\", side = 2, at = (1 + FNR) / 2, las = 1, line = 2)\n    mtext(\"FNR\", side = 2, at = FNR / 2, las = 1, line = 2)\n    \n    mtext(\"p(D = +)\", side = 1, at = p / 2, las = 1, line = 2)\n    mtext(\"p(D = -)\", side = 1, at = (1 + p) / 2, las = 1, line = 2)\n    \n    mtext(c(\"0\", \"1\"), side = 1, at = c(0, 1), las = 1)\n    mtext(c(\"0\", \"1\"), side = 2, at = c(0, 1), las = 1)\n  })\n}\n\nshinyApp(ui = ui, server = server)\n\n\nThe application below displays how testing positive shifts the probability of disease from \\(P(D=+)\\) to \\(P(D = +\\,|\\,T=+)\\). The size of the revision ultimately depends on how big \\(P(D=+)\\) was to begin with, and how good the test is (TPR and TNR). Play around with different values and see what happens:\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 500\n\nlibrary(shiny)\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"What can a diagnostic test teach you?\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n        sidebarPanel(\n            sliderInput(\"TPR\",\n                        \"Sensitivity (TPR):\",\n                        min = 0,\n                        max = 1,\n                        value = 0.5),\n            sliderInput(\"TNR\",\n                        \"Specificity (TNR):\",\n                        min = 0,\n                        max = 1,\n                        value = 0.5)\n        ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"distPlot\")\n        )\n    )\n)\n\n# Define server logic required to draw a histogram\nserver &lt;- function(input, output) {\n\n    output$distPlot &lt;- renderPlot({\n      TPR &lt;- input$TPR\n      TNR &lt;- input$TNR\n      P &lt;- seq(0, 1, length.out = 1000)\n      B &lt;- TPR * P / (TPR * P + (1 - TNR) * (1 - P))\n\n      # draw the histogram with the specified number of bins\n      par(mar = c(5, 5, 5, 0.5))\n      plot(P, B, type = \"l\", xlim = c(0, 1), ylim = c(0, 1),\n           xlab = \"P(D = +)\", ylab = \"P(D = + | T = +)\",\n           lwd = 2, cex.lab = 2,\n           panel.first = abline(a = 0, b = 1, lty = 2, lwd = 2, col = \"grey\"))\n    })\n}\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "lab/lab-3.html",
+    "href": "lab/lab-3.html",
+    "title": "Lab 3",
+    "section": "",
+    "text": "Alright. So you’ve seen this workflow where you use for loop + sample + if() {...} else {...} to simulate a random phenomenon, tally up how many times some event occurs, and then approximate the probability using the sample proportion. You practiced this on Lab 1, Lab 2, Problem Set 1, and Problem Set 2. I think you get the idea at this point, but don’t sleep on this skill. Whipping up a quick simulation to verify that it agrees with a mathematical calculation is a standard part of the modern practitioner’s toolkit.\nToday, we’ll give the simulation a brief rest and focus on further practice with counting techniques for computing exact probabilities in situations where the sample space is finite and all outcomes are equally-likely. Along the way, you will also practice using Quarto and LaTeX to write-up full solutions for each task.",
     "crumbs": [
       "Labs",
-      "Lab 2"
+      "Lab 3"
     ]
   },
   {
-    "objectID": "lab/lab-2.html#background",
-    "href": "lab/lab-2.html#background",
-    "title": "Lab 2",
-    "section": "Background",
-    "text": "Background\nTo model a random phenomenon, we write down a probability space: the non-empty set \\(S\\) containing all possible outcomes called the sample space, the events \\(A\\subseteq S\\), and the probability measure \\(P\\) that assigns probabilities to the events. In order to be considered valid, we place the following requirements on \\(P\\), the so-called probability axioms:\n\n(total measure 1) \\(P(S)=1\\);\n(nonnegativity) \\(P(A)\\geq 0\\);\n(countable additivity) If \\(A_1,\\,A_2,\\,A_3,\\,...\\subseteq S\\) are pairwise disjoint, then\n\n\\[\nP\\left(\\bigcup_{i=1}^\\infty A_i\\right)=\\sum\\limits_{i=1}^\\infty P(A_i).\n\\]\nOnce you assume those three things, you can deduce various downstream consequences about how probability behaves in general:\n\n\n\n\n\n\nRule\nStatement\n\n\n\nProbability of empty set\n\\(P(\\varnothing)=0\\)\n\n\nFinite additivity\n\n\\(A_1,\\,A_2,\\,...,\\,A_n\\subseteq S\\) pairwise disjoint implies \\(P\\left(\\bigcup_{i=1}^n A_i\\right)=\\sum\\limits_{i=1}^n P(A_i)\\)\n\n\n\nComplement rule\n\\(P(A)=1-P(A^c)\\)\n\n\nMonotonicity\n\\(A\\subseteq B \\,\\implies\\,P(A)\\leq P(B)\\)\n\n\nInclusion/exclusion\n\\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\)\n\n\nLaw of total probability\n\n\\(P(A)=\\sum\\limits_{i=1}^\\infty P(A\\cap B_i)\\) if \\(B_1,\\,B_2,\\,B_3,\\,...\\subseteq S\\) is a partition\n\n\n\n\nAs Mrs. Lovett said, that’s all very well, but how do you actually use this machinery to compute probabilities in concrete examples? In other words, how do you actually specify a probability measure that satisfies the axioms? Lots of ways. But let’s start simple and make two extra assumptions:\n\n(finite sample space) \\(S=\\{s_1,\\,s_2,\\,...,\\,s_n\\}\\);\n(equally likely outcomes) \\(P(\\{s_i\\})=1/n\\) for every outcome in \\(S\\).\n\nThis is already a suffient model to analyze classic examples like flipping coins, rolling dice, and playing cards. If you have a finite sample space where every individual outcome has the same probability, then finite additivity tells you that probability collapses to a counting problem:\n\\[\nP(A)=\\frac{\\#(A)}{\\#(S)}=\\frac{\\text{the number of ways }A\\text{ could happen}}{\\text{the number of ways anything could happen}}.\n\\]\nSo, in order to compute probabilities in this simplified environment, you need to be able to count the number of elements contained inside sets. Sounds straightforward, but for better or worse, it turns out that there is more to this than meets the eye.\nThe main engine for counting methods is the following principle:\n\n\n\n\n\n\nThe counting principle\n\n\n\nIf each element in your set is determined by \\(p\\) traits, and each of these traits has \\(n_1\\), \\(n_2\\), …, \\(n_p\\) options, respectively, then the total number of ways that you can mix-and-match the \\(p\\) traits is:\n\\[\nn_1\\times n_2\\times n_3\\times ...\\times n_p.\n\\]\nExample: Imagine your set consists of the individual cards in a standard deck of playing cards. Each card is determined by two traits: its suit and its rank. There are four options for the suit (♠, ♥, ♦, ♣) and 13 options for the rank (A, 2, 3, …, J, Q, K), so in total there are \\(4\\times 13=52\\) cards.\n\n\nWhen we set out to count the number of elements in a set, we will usually frame the task as a “selecting \\(k\\) from \\(n\\)” problem:\n\n\n\n\nWe have \\(n\\) balls in a jar. We withdraw balls from the jar and use them to fill \\(k\\) slots. How many ways can we draw balls from the jar of \\(n\\) to fill the \\(k\\) slots? This question does not have a unique answer, because it depends on two things:\n\n(are we drawing with or without replacement?) after I draw a ball from the jar to fill a slot, do I put it back in the jar so that I can potentially draw it again to fill another slot? Or after I draw a ball, is it “out of play” forevermore?\n(does order matter?) Say \\(k = 2\\). I could draw (Ball 1, Ball 3) or (Ball 3, Ball 1). Do I count these as two separate outcomes because the order is different, or do I consider them the same outcome because the contents are identical? So, do I ignore or acknowledge the ordering of the draws when I count?\n\nDepending on how you mix-and-match those two things, you get different answers to the question “how many ways can you select \\(k\\) from \\(n\\)” Here is a summary:\n\n\nHow many ways can you select \\(k\\) from \\(n\\)?\n\n\n\n\n\n\n\norder yes\n\norder no\n\n\n\n\nreplace no\n\\(\\frac{n!}{(n-k)!}\\)\n\\(\\binom{n}{k}=\\frac{n!}{k!(n-k)!}\\)\n\n\nreplace yes\n\\(n^k\\)\n\\(\\binom{n+k-1}{k}\\)",
+    "objectID": "lab/lab-3.html#advice-for-counting-problems",
+    "href": "lab/lab-3.html#advice-for-counting-problems",
+    "title": "Lab 3",
+    "section": "Advice for counting problems",
+    "text": "Advice for counting problems\nAs with writing proofs, there is no bullet-proof recipe or algorithm for solving a counting problem in probability, but here are some tips to get you on track:\n\n(do as little counting as possible) Let’s face it: counting, like integration, is a huge pain in the ass. So we don’t want to do any more than we have to. Your first step should always be to simplify the problem as far as you possibly can using set theory and the probability rules: is this event the union of other events? are those events disjoint? might the complement be easier to work with? is there a partition that could help me? Only after you have exhausted all of those options should you count;\n(clarify what a single outcome consists of) If I am studying the result of four coin flips, a single outcome is not H versus T. It’s a string like HHTH or TTTH. Once you’re clear on what an outcome consists of, decompose it into its distinct traits. In this example, each of the four flips is a trait. Once you’ve decomposed an outcome into traits, you can invoke the counting principle: count the traits separately and multiply. At a very high level, that’s “all we are doing,” but things can get elaborate;\n(clarify the role of order and replacement) You will probably do this in tandem with the item above, but until you’ve answered the questions “does order matter” and “am I replacing or not” for yourself, you have no clue what tool you need to use;\n(count \\(S\\) first) In all of these counting problems, at some point you must apply \\(P(A)=\\#(A)/\\#(S)\\). I typically recommend that you start at the bottom and work your way up. So figure out \\(\\#(S)\\), and then move on to \\(\\#(A)\\). \\(\\#(S)\\) will often be easier to compute, and the process of doing so will give you hints about how to compute \\(\\#(A)\\), especially where order and replacement are concerned.",
     "crumbs": [
       "Labs",
-      "Lab 2"
+      "Lab 3"
     ]
   },
   {
-    "objectID": "lab/lab-2.html#task-0-review",
-    "href": "lab/lab-2.html#task-0-review",
-    "title": "Lab 2",
-    "section": "Task 0 (review)",
-    "text": "Task 0 (review)\nConsider this question from Lab 1:\n\na five-card hand is randomly dealt to you from a well-shuffled deck. What is the probability that the hand contains at least one ace?\n\nLast week, we didn’t have the tools to do the math, but we could program a computer to approximate:\n\ndeck_of_cards &lt;- c(\"AH\", \"2H\", \"3H\", \"4H\", \"5H\", \"6H\", \"7H\", \"8H\", \"9H\", \"10H\", \"JH\", \"QH\", \"KH\",\n                   \"AD\", \"2D\", \"3D\", \"4D\", \"5D\", \"6D\", \"7D\", \"8D\", \"9D\", \"10D\", \"JD\", \"QD\", \"KD\",\n                   \"AC\", \"2C\", \"3C\", \"4C\", \"5C\", \"6C\", \"7C\", \"8C\", \"9C\", \"10C\", \"JC\", \"QC\", \"KC\",\n                   \"AS\", \"2S\", \"3S\", \"4S\", \"5S\", \"6S\", \"7S\", \"8S\", \"9S\", \"10S\", \"JS\", \"QS\", \"KS\")\n\nset.seed(123)\n\nn_rep &lt;- 10000\ncounter &lt;- 0\n\nfor (i in 1:n_rep) {\n  \n  hand &lt;- sample(deck_of_cards, size = 5, replace = FALSE)\n  \n  if (any(hand %in% c(\"AH\",\"AD\",\"AC\",\"AS\"))) {\n    counter &lt;- counter + 1\n  }\n}\n\ncounter / n_rep\n\n[1] 0.3473\n\n\nNow let’s see how the math goes. The complement of the target event \\(A =\\) “at least one ace” is \\(A^c =\\) “no aces at all.” This is simpler and may be easier to count, so we will apply the complement rule:\n\\[\nP(A)=1-P(A^c)=1-\\frac{\\#(A^c)}{\\#(S)}.\n\\]\nThe sample space \\(S\\) is the set of all five-card hands you could be dealt. We are selecting \\(k=5\\) from \\(n=52\\). How?\n\n\nwithout replacement: once a card is dealt to you, it stays in your hand and is not available to be dealt again;\n\nignoring order: the order in which cards are dealt to you is irrelevant. All that matters is the raw contents.\n\nTherefore, the total number of hands that could be dealt is \\(\\#(S)=\\binom{52}{5}\\). The event \\(A^c\\) is the set of all five-card hands that do not include an ace. There are 48 non-ace cards, and so \\(\\#(A^c)=\\binom{48}{5}\\). As such\n\\[\nP(A)=1-\\frac{\\binom{48}{5}}{\\binom{52}{5}}\\approx 0.34.\n\\]\nTo get the actual number, we can use the choose function in R. Try typing this into the console:\n\n1 - choose(48, 5) / choose(52, 5)\n\n[1] 0.341158\n\n\nThis is close to the number we approximated via simulation. Phew!",
-    "crumbs": [
-      "Labs",
-      "Lab 2"
-    ]
-  },
-  {
-    "objectID": "lab/lab-2.html#task-1",
-    "href": "lab/lab-2.html#task-1",
-    "title": "Lab 2",
+    "objectID": "lab/lab-3.html#task-1",
+    "href": "lab/lab-3.html#task-1",
+    "title": "Lab 3",
     "section": "Task 1",
-    "text": "Task 1\n\n\nScenario: roll three fair dice;\n\nEvent: all three dice show different numbers.\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThis code simulates 7,500 trials and computes the proportion of the time the event occurs:\n\nset.seed(37367)\n\nnreps &lt;- 7500\ncounter &lt;- 0\n\nfor(i in 1:nreps){\n  \n  rolls &lt;- sample(1:6, 3, replace = TRUE)\n  \n  if( length(unique(rolls)) == 3 ){\n    counter &lt;- counter + 1\n  }\n  \n}\n\ncounter / nreps # proportion\n\n[1] 0.558\n\n\nIn order to do the math, we apply \\(P(A)=\\#(A)/\\#(S)\\) directly. The sample space \\(S\\) is the set of all three-dice rolls. Each die is like a trait in the sense of the counting principle, so the number of ways we could mix and match the rolls is \\(\\#(S)=6\\times6\\times6=6^3=216\\). The target event \\(A\\) is the set of all three-dice rolls where all numbers are different (ie. sampling without replacement), and so \\(\\#(A)=6\\times 5\\times 4=120\\). Putting it into R gives:\n\n120 / 216\n\n[1] 0.5555556\n\n\nWe conclude then that\n\\[\nP(A) = \\frac{6\\times 5\\times 4}{6^3} = \\frac{120}{216} \\approx 0.555,\n\\]\nwhich agrees with our simulation.",
+    "text": "Task 1\nImagine that \\(k\\) random people convene for a birthday party, and answer the following questions:\n\nWhat is the probability that at least 2 of the attendees share a birthday?\nHow large does the party need to be for the above probability to be at least 50%?\n\nYou can make the following assumptions:\n\nThere are 365 days in the year (so we ignore leap day);\nA random attendee is equally likely to have any of the 365 days as their birthday (this is empirically false, but oh well);\nThe party is not being held at a popular restaurant or a laser tag venue or any other such place where you would expect many birthday guys and gals to descend at the same time. Imagine it is one of those field soirées you people are so fond of. It’s just \\(k\\) random people frolicking around the maypole on some blasted heath;\nThe attendees are independent. If two folks have the same birthday, it is pure coincidence.",
     "crumbs": [
       "Labs",
-      "Lab 2"
+      "Lab 3"
     ]
   },
   {
-    "objectID": "lab/lab-2.html#task-2",
-    "href": "lab/lab-2.html#task-2",
-    "title": "Lab 2",
+    "objectID": "lab/lab-3.html#task-2",
+    "href": "lab/lab-3.html#task-2",
+    "title": "Lab 3",
     "section": "Task 2",
-    "text": "Task 2\n\n\nScenario: 6 balls are randomly drawn from a jar containing 5 red, 4 blue, 3 green;\n\nEvent: you draw exactly 3 red or exactly 2 green.\n\nHere is a representation of the contents of the jar that you can sample from:\n\njar &lt;- c(rep(\"R\", 5), rep(\"B\", 4), rep(\"G\", 3))\njar\n\n [1] \"R\" \"R\" \"R\" \"R\" \"R\" \"B\" \"B\" \"B\" \"B\" \"G\" \"G\" \"G\"\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nset.seed(2025)\nnsim &lt;- 20000\ncount_event &lt;- 0\n\njar &lt;- c(rep(\"R\", 5), rep(\"B\", 4), rep(\"G\", 3))\n\nfor (i in 1:nsim) {\n  hand &lt;- sample(jar, 6, replace = FALSE)\n  n_red &lt;- sum(hand == \"R\")\n  n_green &lt;- sum(hand == \"G\")\n  \n  if (n_red == 3 | n_green == 2) {\n    count_event &lt;- count_event + 1\n  }\n}\n\ncount_event / nsim\n\n[1] 0.6606\n\n\n\n\n\\(A\\) = exactly 3 red, \\(B\\) = exactly 2 green\nBoth could happen so \\(A\\cap B\\) is non-empty;\n\n\\(\\#(S)=\\binom{12}{6}\\);\n\n\\(\\#(A) = \\binom{5}{3}\\binom{7}{3}\\);\n\n\\(\\#(B) = \\binom{3}{2}\\binom{9}{4}\\);\n\n\\(\\#(A\\cap B)=\\binom{5}{3}\\binom{3}{2}4\\);\nSo inclusion/exclusion says that:\n\n\\[\nP(A\\cup B)=P(A)+P(B)-P(A\\cap B)=\\frac{\\binom{5}{3}\\binom{7}{3}}{\\binom{12}{6}}+\\frac{\\binom{3}{2}\\binom{9}{4}}{\\binom{12}{6}}-\\frac{\\binom{5}{3}\\binom{3}{2}4}{\\binom{12}{6}}.\n\\]\nCalculate:\n\nPA &lt;- choose(5, 3) * choose(7, 3) / choose(12, 6)\nPB &lt;- choose(3, 2) * choose(9, 4) / choose(12, 6)\nPAB &lt;- choose(5, 3) * choose(3, 2) * 4 / choose(12, 6)\n\nPA + PB - PAB\n\n[1] 0.6580087",
+    "text": "Task 2\nIf a five-card hand is randomly dealt to you from a standard deck of 52 playing cards, what is the probability that you are dealt a full house: 3 cards of one rank and 2 cards of another rank?",
     "crumbs": [
       "Labs",
-      "Lab 2"
+      "Lab 3"
     ]
   },
   {
-    "objectID": "lab/lab-2.html#task-3",
-    "href": "lab/lab-2.html#task-3",
-    "title": "Lab 2",
+    "objectID": "lab/lab-3.html#task-3",
+    "href": "lab/lab-3.html#task-3",
+    "title": "Lab 3",
     "section": "Task 3",
-    "text": "Task 3\n\n\n\n\n\nFigure 1: 8 safe rooks\n\n\n\n\nScenario: you randomly place 8 rooks on distinct squares of a chess board;\n\nEvent: all 8 rooks are safe from one another.\n\nFigure 1 displays an example of a safe position. In chess, rooks are permitted to move up-and-down or side-to-side as far as they want, but not diagonally or anything else.\nThis code creates a matrix representing the chess board, from which you can sample the random positions:\n\nboard &lt;- outer(letters[1:8], 1:8, paste0)\nboard\n\n     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]\n[1,] \"a1\" \"a2\" \"a3\" \"a4\" \"a5\" \"a6\" \"a7\" \"a8\"\n[2,] \"b1\" \"b2\" \"b3\" \"b4\" \"b5\" \"b6\" \"b7\" \"b8\"\n[3,] \"c1\" \"c2\" \"c3\" \"c4\" \"c5\" \"c6\" \"c7\" \"c8\"\n[4,] \"d1\" \"d2\" \"d3\" \"d4\" \"d5\" \"d6\" \"d7\" \"d8\"\n[5,] \"e1\" \"e2\" \"e3\" \"e4\" \"e5\" \"e6\" \"e7\" \"e8\"\n[6,] \"f1\" \"f2\" \"f3\" \"f4\" \"f5\" \"f6\" \"f7\" \"f8\"\n[7,] \"g1\" \"g2\" \"g3\" \"g4\" \"g5\" \"g6\" \"g7\" \"g8\"\n[8,] \"h1\" \"h2\" \"h3\" \"h4\" \"h5\" \"h6\" \"h7\" \"h8\"\n\n\nHere’s an example of 8 random squares chosen for the rooks:\n\nrandom_position\n\n[1] \"g6\" \"h4\" \"h6\" \"f4\" \"d1\" \"c6\" \"d7\" \"d6\"\n\n\nSo that’s where your 8 rooks live. In order to check whether or not they are safe from one another, you might find it helpful to separate out the row information and the column information of the placement using the substring command:\n\nsubstring(random_position, 1, 1)\n\n[1] \"g\" \"h\" \"h\" \"f\" \"d\" \"c\" \"d\" \"d\"\n\nsubstring(random_position, 2, 2)\n\n[1] \"6\" \"4\" \"6\" \"4\" \"1\" \"6\" \"7\" \"6\"\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nboard &lt;- outer(letters[1:8], 1:8, paste0)\n\nset.seed(2025)\nnsim &lt;- 100000\ncount_safe &lt;- 0\n\nfor (i in 1:nsim) {\n  rooks &lt;- sample(board, 8)\n  \n  # split into rows (numbers) and cols (letters)\n  r &lt;- substring(rooks, 2, 2) # row = the number part\n  c &lt;- substring(rooks, 1, 1) # col = the letter part\n  \n  # safe if all 8 rows are different AND all 8 cols are different\n  if (length(unique(r)) == 8 & length(unique(c)) == 8) {\n    count_safe &lt;- count_safe + 1\n  }\n}\n\ncount_safe / nsim\n\n[1] 1e-05\n\n\n\nRecall that rooks can move up and down or side-to-side, but not diagonally. In order to be safe from one another, two rooks therefore need to occupy different rows and columns of the board. For the eight rooks to be mutually safe, they all must be in different columns and different rows from one another;\nThere are \\(n=8\\cdot 8=64\\) squares on the board, and we are selecting \\(k=8\\) of them at which to place the rooks. The rooks are identical, so order doesn’t matter, and it’s without replacement since the squares need to be distinct, and so the total number of possible outcomes is \\(\\#(S)=\\binom{64}{8}\\);\nThe event \\(A\\) we care about is “the rooks are safe from one another,” and this can happen \\(\\#(A)=8!\\) ways;\nWe know that a safe placement will have every row and column occupied by exactly one rook, so let us imagine building up a safe placement row-wise, starting from the bottom and working upward. There are 8 ways to place a single rook on the bottom row. No other rooks can go there, so we move to the next row. There are only 7 ways to place the next rook in the next row, because we must avoid the column occupied by the first rook. Similarly, there are only 6 ways to place the next rook in the next row, because we must avoid the two columns occupied by the first two rooks. And so on. As a consequence of the counting principle, where we regard each row as a trait, we see that \\(\\#(A)=8\\times7\\times6\\times\\cdots\\times2\\times1=8!\\).\nSo\n\n\\[\nP(A)=\\frac{\\#(A)}{\\#(S)}=\\frac{8!}{\\binom{64}{8}}\\approx0.0000091095.\n\\].\n\nfactorial(8) / choose(64, 8)\n\n[1] 9.109465e-06",
+    "text": "Task 3\nNow suppose a four-card hand is randomly dealt to you from a standard deck of 52 playing cards, and we define “full house” to mean that 2 cards are of one rank and 2 cards are of the other rank. What is the probability of a full house in this case?",
     "crumbs": [
       "Labs",
-      "Lab 2"
+      "Lab 3"
     ]
   },
   {
@@ -2294,7 +2349,7 @@
     "href": "index.html",
     "title": "STA 240 Probability for Statistical Inference",
     "section": "",
-    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 24\n\nDS: 1.1 - 1.2\n🧑‍🏫 Welcome!\n🛝 slides\n\n\n\n\n\nWed, Aug 26\n\nDS: 1.3 - 1.4\n🧑‍🏫 Set Theory\n🎶 notes\n\n\n\n\n\nThu, Aug 27\n\n💻 Lab 0 (calculus review)\n🛝 slides\n\n\nIntro survey @ 5PM\n\n\n2\nMon, Aug 31\n\nDS: 1.5\n🧑‍🏫 Probability spaces\n🛝 slides\n\n\n\n\n\nWed, Sep 2\n\nDS: 1.5\n🧑‍🏫 Probability spaces\n🎶 notes\n\n\n\n\n\nThu, Sep 3\n\n💻 Lab 1 (hello R)\n\n\nLab 1 @ end-of-lab\n\n\n\nFri, Sep 4\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 7\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 9\n\nDS: 1.6 - 1.8\n🧑‍🏫 Counting\n🎶 notes (draft)\n\n\n\n\n\nThu, Sep 10\n\n💻 Lab 2 (counting)\n\n\nLab 2 @ end-of-lab\n\n\n4\nMon, Sep 14\n\nDS: 2\n🧑‍🏫 Conditional probability\n🎶 notes (draft)  🤮 play!  🙄 play more!  📚 read!\n\n\nPSET 1 @ 3PM\n\n\n\nWed, Sep 16\n\nDS: 2\n🧑‍🏫 Independence\n🎶 notes  🐐 play!\n\n\n\n\n\nThu, Sep 17\n\n💻 Lab 3\n\nLab 3 @ end-of-lab\n\n\n5\nMon, Sep 21\n\n🧑‍🏫 Random variables\n\n\nPSET 2 @ 3PM\n\n\n\nWed, Sep 23\n\n🧑‍🏫 Discrete random variables\n\n\n\n\n\nThu, Sep 24\n\n💻 Lab 4\n\nLab 4 @ end-of-lab\n\n\n6\nMon, Sep 28\n\n🧑‍🏫 Expected value\n\nPSET 3 @ 3PM\n\n\n\nWed, Sep 30\n\n🧑‍🏫 Variance\n\n\n\n\n\nThu, Oct 1\n\n💻 Lab 5\n\nLab 5 @ end-of-lab\n\n\n7\nMon, Oct 5\n\n🧑‍🏫 The CDF\n\nPSET 4 @ 3PM\n\n\n\nWed, Oct 7\n\n🧑‍🏫 Continuous random variables\n\n\n\n\n\nThu, Oct 8\n\n📝 Midterm 1\n\n\n\n\n\n8\nMon, Oct 12\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 14\n\n🧑‍🏫 Normal, gamma\n\n\n\n\n\nThu, Oct 15\n\n💻 Lab 6\n\nLab 6 @ end-of-lab\n\n\n9\nMon, Oct 19\n\n🧑‍🏫 Moments and quantiles\n\nPSET 5 @ 3PM\n\n\n\nWed, Oct 21\n\n🧑‍🏫 The MGF\n\n\n\n\n\nThu, Oct 22\n\n💻 Lab 7\n\nLab 7 @ end-of-lab\n\n\n10\nMon, Oct 26\n\n🧑‍🏫 Joint distributions\n\nPSET 6 @ 3PM\n\n\n\nWed, Oct 28\n\n🧑‍🏫 Joint distributions\n\n\n\n\n\nThu, Oct 29\n\n💻 Lab 8\n\nLab 8 @ end-of-lab\n\n\n11\nMon, Nov 2\n\n🧑‍🏫 Joint distributions\n\nPSET 7 @ 3PM\n\n\n\nWed, Nov 4\n\n🧑‍🏫 Sums and averages\n\n\n\n\n\nThu, Nov 5\n\n💻 Lab 9\n\nLab 9 @ end-of-lab\n\n\n12\nMon, Nov 9\n\n🧑‍🏫 Limit theorems\n\nPSET 8 @ 3PM\n\n\n\nWed, Nov 11\n\n🧑‍🏫 Limit theorems\n\n\n\n\n\nThu, Nov 12\n\n📝 Midterm 2\n\n\n\n\n\n13\nMon, Nov 16\n\n🧑‍🏫 What is statistics?\n\n\n\n\n\nWed, Nov 18\n\n🧑‍🏫 Interval estimation\n\n\n\n\n\nThu, Nov 19\n\n💻 Lab 10\n\nLab 10 @ end-of-lab\n\n\n14\nMon, Nov 23\n\n🧑‍🏫 Hypothesis testing\n\nPSET 9 @ 3PM\n\n\n\nWed, Nov 25\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n\nThu, Nov 26\n\n❌ Thanksgiving - No Lab\n\n\n\n\n\n15\nMon, Nov 30\n\n🧑‍🏫 Maximum likelihood\n\n\n\n\n\nWed, Dec 2\n\n🧑‍🏫 Maximum likelihood\n\n\n\n\n\nThu, Dec 3\n\n💻 Lab 11\n\nLab 11 @ end-of-lab\n\n\n16\nMon, Dec 7\n\n\n\nPSET 10 @ 3PM\n\n\n17\nMon, Dec 14\n\n📝 Final (2PM - 5PM)",
+    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 24\n\nDS: 1.1 - 1.2\n🧑‍🏫 Welcome!\n🛝 slides\n\n\n\n\n\nWed, Aug 26\n\nDS: 1.3 - 1.4\n🧑‍🏫 Set Theory\n🎶 notes\n\n\n\n\n\nThu, Aug 27\n\n💻 Lab 0 (calculus review)\n🛝 slides\n\n\nIntro survey @ 5PM\n\n\n2\nMon, Aug 31\n\nDS: 1.5\n🧑‍🏫 Probability spaces\n🛝 slides\n\n\n\n\n\nWed, Sep 2\n\nDS: 1.5\n🧑‍🏫 Probability spaces\n🎶 notes\n\n\n\n\n\nThu, Sep 3\n\n💻 Lab 1 (hello R)\n\n\nLab 1 @ end-of-lab\n\n\n\nFri, Sep 4\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 7\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 9\n\nDS: 1.6 - 1.8\n🧑‍🏫 Counting\n🎶 notes (draft)\n\n\n\n\n\nThu, Sep 10\n\n💻 Lab 2 (counting)\n\n\nLab 2 @ end-of-lab\n\n\n4\nMon, Sep 14\n\nDS: 2\n🧑‍🏫 Conditional probability\n🎶 notes (draft)  🤮 play!  🙄 play more!  📚 read!\n\n\nPSET 1 @ 3PM\n\n\n\nWed, Sep 16\n\nDS: 2\n🧑‍🏫 Independence\n🎶 notes  🐐 play!\n\n\n\n\n\nThu, Sep 17\n\n💻 Lab 3\n\n\nLab 3 @ end-of-lab\n\n\n5\nMon, Sep 21\n\n🧑‍🏫 Random variables\n\n\nPSET 2 @ 3PM\n\n\n\nWed, Sep 23\n\n🧑‍🏫 Discrete random variables\n\n\n\n\n\nThu, Sep 24\n\n💻 Lab 4\n\nLab 4 @ end-of-lab\n\n\n6\nMon, Sep 28\n\n🧑‍🏫 Expected value\n\nPSET 3 @ 3PM\n\n\n\nWed, Sep 30\n\n🧑‍🏫 Variance\n\n\n\n\n\nThu, Oct 1\n\n💻 Lab 5\n\nLab 5 @ end-of-lab\n\n\n7\nMon, Oct 5\n\n🧑‍🏫 The CDF\n\nPSET 4 @ 3PM\n\n\n\nWed, Oct 7\n\n🧑‍🏫 Continuous random variables\n\n\n\n\n\nThu, Oct 8\n\n📝 Midterm 1\n\n\n\n\n\n8\nMon, Oct 12\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 14\n\n🧑‍🏫 Normal, gamma\n\n\n\n\n\nThu, Oct 15\n\n💻 Lab 6\n\nLab 6 @ end-of-lab\n\n\n9\nMon, Oct 19\n\n🧑‍🏫 Moments and quantiles\n\nPSET 5 @ 3PM\n\n\n\nWed, Oct 21\n\n🧑‍🏫 The MGF\n\n\n\n\n\nThu, Oct 22\n\n💻 Lab 7\n\nLab 7 @ end-of-lab\n\n\n10\nMon, Oct 26\n\n🧑‍🏫 Joint distributions\n\nPSET 6 @ 3PM\n\n\n\nWed, Oct 28\n\n🧑‍🏫 Joint distributions\n\n\n\n\n\nThu, Oct 29\n\n💻 Lab 8\n\nLab 8 @ end-of-lab\n\n\n11\nMon, Nov 2\n\n🧑‍🏫 Joint distributions\n\nPSET 7 @ 3PM\n\n\n\nWed, Nov 4\n\n🧑‍🏫 Sums and averages\n\n\n\n\n\nThu, Nov 5\n\n💻 Lab 9\n\nLab 9 @ end-of-lab\n\n\n12\nMon, Nov 9\n\n🧑‍🏫 Limit theorems\n\nPSET 8 @ 3PM\n\n\n\nWed, Nov 11\n\n🧑‍🏫 Limit theorems\n\n\n\n\n\nThu, Nov 12\n\n📝 Midterm 2\n\n\n\n\n\n13\nMon, Nov 16\n\n🧑‍🏫 What is statistics?\n\n\n\n\n\nWed, Nov 18\n\n🧑‍🏫 Interval estimation\n\n\n\n\n\nThu, Nov 19\n\n💻 Lab 10\n\nLab 10 @ end-of-lab\n\n\n14\nMon, Nov 23\n\n🧑‍🏫 Hypothesis testing\n\nPSET 9 @ 3PM\n\n\n\nWed, Nov 25\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n\nThu, Nov 26\n\n❌ Thanksgiving - No Lab\n\n\n\n\n\n15\nMon, Nov 30\n\n🧑‍🏫 Maximum likelihood\n\n\n\n\n\nWed, Dec 2\n\n🧑‍🏫 Maximum likelihood\n\n\n\n\n\nThu, Dec 3\n\n💻 Lab 11\n\nLab 11 @ end-of-lab\n\n\n16\nMon, Dec 7\n\n\n\nPSET 10 @ 3PM\n\n\n17\nMon, Dec 14\n\n📝 Final (2PM - 5PM)",
     "crumbs": [
       "Syllabus",
       "Schedule"
