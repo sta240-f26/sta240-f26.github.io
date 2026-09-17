@@ -1,0 +1,46 @@
+---
+title: "Lab 3"
+subtitle: "Due: end-of-lab Thursday September 17"
+editor: 
+  mode: source
+---
+
+Alright. So you've seen this workflow where you use `for` loop + `sample` + `if() {...} else {...}` to simulate a random phenomenon, tally up how many times some event occurs, and then approximate the probability using the sample proportion. You practiced this on [Lab 1](/lab/lab-1.html), [Lab 2](/lab/lab-2.html), [Problem Set 1](/problems/pset-1.html#problem-9), and [Problem Set 2](/problems/pset-2.html#problem-8). I think you get the idea at this point, but don't sleep on this skill. Whipping up a quick simulation to verify that it agrees with a mathematical calculation is a standard part of the modern practitioner's toolkit.
+
+Today, we'll give the simulation a brief rest and focus on further practice with *counting techniques* for computing exact probabilities in situations where the sample space is finite and all outcomes are equally-likely. Along the way, you will also practice using Quarto and LaTeX to write-up *full solutions* for each task.
+
+## Advice for counting problems
+
+As with writing proofs, there is no bullet-proof recipe or algorithm for solving a counting problem in probability, but here are some tips to get you on track:
+
+1. (**do as little counting as possible**) Let's face it: counting, like integration, is a huge pain in the ass. So we don't want to do any more than we have to. Your first step should always be to simplify the problem as far as you possibly can using set theory and the probability rules: is this event the union of other events? are those events disjoint? might the complement be *easier* to work with? is there a *partition* that could help me? Only after you have exhausted all of those options should you count;
+1. (**clarify what a single outcome consists of**) If I am studying the result of four coin flips, a single outcome is not H versus T. It's a string like HHTH or TTTH. Once you're clear on what an outcome consists of, decompose it into its distinct traits. In this example, each of the four flips is a trait. Once you've decomposed an outcome into traits, you can invoke the *counting principle*: count the traits separately and multiply. At a very high level, that's "all we are doing," but things can get elaborate;
+1. (**clarify the role of order and replacement**) You will probably do this in tandem with the item above, but until you've answered the questions "does order matter" and "am I replacing or not" for yourself, you have no clue what tool you need to use;
+1. (**count $S$ first**) In all of these counting problems, at some point you must apply $P(A)=\#(A)/\#(S)$. I typically recommend that you start at the bottom and work your way up. So figure out $\#(S)$, and then move on to $\#(A)$. $\#(S)$ will often be easier to compute, and the process of doing so will give you hints about how to compute $\#(A)$, especially where order and replacement are concerned.
+
+## Task 1
+
+Imagine that $k$ random people convene for a birthday party, and answer the following questions:
+
+- What is the probability that at least 2 of the attendees share a birthday?
+- How large does the party need to be for the above probability to be at least 50%?
+
+You can make the following assumptions:
+
+- There are 365 days in the year (so we ignore leap day);
+- A random attendee is equally likely to have any of the 365 days as their birthday (this is
+empirically false, but oh well);
+- The party is not being held at a popular restaurant or a laser tag venue or any other such place
+where you would expect many birthday guys and gals to descend at the same time. Imagine it is one of those field soirées you people are so fond of. It's just $k$ random people frolicking around the maypole on some blasted heath;
+- The attendees are independent. If two folks have the same birthday, it is pure coincidence.
+
+
+## Task 2
+
+If a five-card hand is randomly dealt to you from a standard deck of 52 playing cards, what is the probability that you are dealt a *full house*: 3 cards of one rank and 2 cards of another rank?
+
+## Task 3
+
+Now suppose a four-card hand is randomly dealt to you from a standard deck of 52 playing cards, and we define "full house" to mean that 2 cards are of one rank and 2 cards are of the other rank. What is the probability of a full house in this case?
+
+
