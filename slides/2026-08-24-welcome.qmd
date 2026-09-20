@@ -65,7 +65,21 @@ Most people guess that you need, like, a lot.
 
 ## Your guesses
 
-. . .
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+ggplot(d, aes(x = bday_prob)) + 
+  geom_histogram() + 
+  labs(
+    title = "How many people must attend for a \n50% chance of a birthday match?",
+    x = "Number of people"
+  ) + 
+  geom_vline(xintercept = 23, col = "red", size = 2) + 
+  theme_minimal(base_size = 16)
+```
+
+## Your guesses
 
 ```{r}
 #| echo: false
@@ -74,11 +88,12 @@ Most people guess that you need, like, a lot.
 ggplot(d, aes(x = bday_prob)) + 
   geom_histogram() + 
   labs(
-    title = "How many people must attend for a 50% chance of a birthday match?",
+    title = "How many people must attend for a \n50% chance of a birthday match?",
     x = "Number of people"
   ) + 
   geom_vline(xintercept = 23, col = "red", size = 2) + 
-  theme_minimal(base_size = 16)
+  theme_minimal(base_size = 16) + 
+  xlim(0, 1000)
 ```
 
 ## Example: the birthday problem {.medium}
