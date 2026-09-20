@@ -96,6 +96,23 @@ ggplot(d, aes(x = bday_prob)) +
   xlim(0, 1000)
 ```
 
+## Your guesses
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+ggplot(d, aes(x = bday_prob)) + 
+  geom_histogram() + 
+  labs(
+    title = "How many people must attend for a \n50% chance of a birthday match?",
+    x = "Number of people"
+  ) + 
+  geom_vline(xintercept = 23, col = "red", size = 2) + 
+  theme_minimal(base_size = 16) + 
+  xlim(0, 100)
+```
+
 ## Example: the birthday problem {.medium}
 
 | no. of attendees (k) | Prob(at least one bday match) |
