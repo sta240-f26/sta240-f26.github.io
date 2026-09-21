@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>sally-clark – STA 240 Fall 2026</title>
+<title>gandalf-test – STA 240 Fall 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -404,32 +404,23 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Here are some short readings about <a href="https://sta240-f25.github.io/slides/2025-08-25-welcome.html#/sally-clark-1964---2007">the case of Sally Clark and Roy Meadow</a>, as well as something called the <em>prosecutor’s fallacy</em>:</p>
+<p>King Elessar summons the wizard Gandalf to court, seeking his counsel. A foul plague has been incapacitating the soldiers. King Elessar asks Gandalf if there exists a test for the disease that is 100% sensitive <em>and</em> 100% specific (ie perfect). Gandalf says that a perfect blood test does exist, but it is very expensive, requiring the venom of a special lizard found only in the Morgul Vale. Each blood test would cost one gold piece, but the Royal Purse only has 500 gold pieces to spare, and there are 1000 soldiers that need to be tested. Gandalf sleeps on it and returns the next day with a plan for testing all of them that won’t break the bank:</p>
+<ol type="1">
+<li>Take a blood sample from each of the 1000 soldiers;</li>
+<li>Split each of these samples into two parts;</li>
+<li>Take one part of each sample and mix batches of ten of the samples together to create 100 mixed samples.</li>
+<li>Test each of those mixed samples;</li>
+<li>A few things could happen:
 <ul>
-<li>Grimes (2023): “<a href="https://www.scientificamerican.com/article/bad-science-and-bad-statistics-in-the-courtroom-convict-innocent-people/">Bad Science and Bad Statistics in the Courtroom Convict Innocent People</a>,” <em>Scientific American</em>;</li>
-<li>Carriquiry (2018): “<a href="https://forensicstats.org/blog/misuse-of-statistics-in-the-courtroom-the-sally-clark-case">Misuse of statistics in the courtroom: the Sally Clark case</a>,” CSAFE;</li>
-<li>Westreich &amp; Iliinsky (2014): “<a href="../../../readings/westreich-iliinsky-2014-aje.pdf">Epidemiology visualized: the prosecutor’s fallacy</a>,” <em>American Journal of Epidemiology</em>;</li>
-<li><a href="https://en.wikipedia.org/wiki/Philip_Dawid">AP Dawid</a>’s <a href="../../../readings/dawid-clark-statement.pdf">statement</a> during the Clark appeal.</li>
-</ul>
-<p>Please do the following:</p>
-<ol type="a">
-<li>Read the articles;</li>
-<li>Using the ideas of conditional probability and independence that we have studied, write a paragraph or two describing what the prosecutor’s fallacy is and how it applies to the Clark case;</li>
-<li>If you were an attorney for the defense and had the chance to cross-examine Roy Meadow, what would you ask him about his statistical testimony? What are the most incisive questions you could ask? How would you ensure that the cross-examination would “land” with the members of the jury, who most likely know absolutely nothing about probability and statistics?</li>
+<li>If the test gives a negative result, we know all of the original ten samples are clear, and we can move on;</li>
+<li>If the test gives a positive result, then we know at least one of the original ten samples is positive. In that case we test the second part of the sample for each of the ten soldiers. We can then identify which soldiers are positive.</li>
+</ul></li>
 </ol>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Please don’t break my heart
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>I’m not asking you to read <em>Moby-Dick</em> here.</p>
-</div>
-</div>
+<p>Gandalf finishes by saying “I expect sixty of the mixed batches to be negative. For the other forty batches, I expect the results to be positive, and hence we will have to test all four hundred of the original samples. This gives a total expected cost of 500 gold pieces.”</p>
+<ol type="a">
+<li>What disease prevalence is Gandalf implicitly assuming here?</li>
+<li>Can Gandalf revise his scheme to reduce the expected cost even more?</li>
+</ol>
 
 
 

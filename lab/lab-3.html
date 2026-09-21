@@ -480,7 +480,7 @@ window.Quarto = {
 <li>(<strong>clarify the role of order and replacement</strong>) You will probably do this in tandem with the surrounding items, but until you’ve answered the questions “does order matter” and “am I replacing or not” for yourself, you have no clue what tool you need to use;
 <ul>
 <li>
-<strong>Pro-tip</strong>: “order” may not really mean “order.” When we ask “does order matter or not,” really what we are often asking is: “does it matter who gets what?” In other words, when we draw balls from the jar to fill our <span class="math inline">\(k\)</span> slots, are those slots <em>distinguishable</em> or not? Are they named? Are they labeled? Do they have distinct identities? If so, then the order in which the balls are drawn corresponds to “who got what.” If “who gets what” is relevant in your application (eg. if Ethel getting red and Seamus getting blue counts as a distinct outcome from Ethel getting blue and Seamus getting red), then order matters. The birthday problem below is a classic example of this;</li>
+<strong>Pro-tip</strong>: “order” may not really mean “order.” When we ask “does order matter or not,” really what we are often asking is: “does it matter who gets what?” In other words, when we draw balls from the jar to fill our <span class="math inline">\(k\)</span> slots, are those slots <em>distinguishable</em> or not? Are they named? Are they labeled? Do they have distinct identities or <em>roles</em>? If so, then the order in which the balls are drawn corresponds to “who got what.” If “who gets what” is relevant in your application (eg. if Ethel getting red and Seamus getting blue counts as a distinct outcome from Ethel getting blue and Seamus getting red), then order matters. The birthday problem below is a classic example of this;</li>
 </ul>
 </li>
 <li>(<strong>count <span class="math inline">\(S\)</span> first</strong>) In all of these counting problems, at some point you must apply <span class="math inline">\(P(A)=\#(A)/\#(S)\)</span>. I typically recommend that you start at the bottom and work your way up. So figure out <span class="math inline">\(\#(S)\)</span>, and then move on to <span class="math inline">\(\#(A)\)</span>. <span class="math inline">\(\#(S)\)</span> will often be easier to compute, and the process of doing so will force you to clarify what you need to clarify from above, which will help with <span class="math inline">\(\#(A)\)</span> later.</li>
@@ -509,7 +509,7 @@ Solution
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="fig-birthday-draw" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%" data-fig-align="center">
+<div id="fig-birthday-draw" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="60%">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-birthday-draw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/birthday-draw.png" id="fig-birthday-draw" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:60.0%">
 </div>
@@ -531,7 +531,7 @@ P(A)=1-P(A^c)=1-\frac{\#(A^c)}{\#(S)}=1-\frac{\#(A^c)}{365^k}.
 <p><span class="math display">\[
 P(A)=1-P(A^c)=1-\frac{365!}{365^k(365-k)!}.
 \]</span></p>
-<p>Done. Except this formula is not super illuminating on its face. So let’s plug in values of <span class="math inline">\(k\)</span> and see what these numbers are. Because the counts in the numerator or the denominator are so huge, you’ll get numerical problems if you naively try to use R as a calculator:</p>
+<p>Done. Except this formula is not super illuminating on its face, so let’s plug in values of <span class="math inline">\(k\)</span> and see what these numbers are. Because the counts in the numerator or the denominator are so huge, you’ll get numerical problems if you naively try to use R as a calculator:</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Special.html">factorial</a></span><span class="op">(</span><span class="fl">365</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Special.html">factorial</a></span><span class="op">(</span><span class="fl">365</span> <span class="op">-</span> <span class="va">k</span><span class="op">)</span> <span class="op">*</span> <span class="fl">365</span> <span class="op">^</span> <span class="va">k</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -625,8 +625,8 @@ P(A)=1-P(A^c)=1-\frac{365!}{365^k(365-k)!}.
 </div><div class="column" style="width:48%;">
 <p><img src="images/birthday.png" class="img-fluid"></p>
 </div>
-<p>When <span class="math inline">\(k=1\)</span>, then <span class="math inline">\(P(A)=0\)</span> because that one person has no one they could match with. By the time <span class="math inline">\(k=366\)</span> attend, at least one match is guaranteed as a consequence of the <em>pigeonhole principle</em>. Imagine 365 people are in attendance, and by some miracle there are no birthday matches already; every person has a unique birthday. As soon as a 366th person arrives at the party, their birthday <em>must</em> match with someone. Every day of the year is already represented in the room.</p>
-<p>So those are the extreme cases of <span class="math inline">\(k=1\)</span> and <span class="math inline">\(k=366\)</span>. But newcomers tend to be surprised by what happens in between. It only takes <span class="math inline">\(k=23\)</span> for a 50% chance of at least one match, and by the time <span class="math inline">\(k=60\)</span>, it’s all but guaranteed. Folks often guess that you need a large number of attendees (on the order of hundreds) for the probability of a match to be high, but what they fail to realize is that every unique pair of people is a fresh opportunity for a match. The table shows the number of unique pairs for each <span class="math inline">\(k\)</span>, and while <span class="math inline">\(k\)</span> may be small, the number of pairs gets large pretty quickly, making at least one match more and more likely.</p>
+<p>When <span class="math inline">\(k=1\)</span>, then <span class="math inline">\(P(A)=0\)</span> because that one person has nobody to match with. By the time <span class="math inline">\(k=366\)</span> attend, at least one match is guaranteed as a consequence of the <em>pigeonhole principle</em>. Imagine 365 people are in attendance, and by some miracle there has not already been a birthday match; every person has a unique birthday. As soon as a 366th person arrives at the party, their birthday <em>must</em> match with someone. Every day of the year is already represented in the room.</p>
+<p>So those are the extreme cases of <span class="math inline">\(k=1\)</span> and <span class="math inline">\(k=366\)</span>. But newcomers tend to be surprised by what happens in between. It only takes <span class="math inline">\(k=23\)</span> for a 50% chance of at least one match, and by the time <span class="math inline">\(k=60\)</span>, it’s all but guaranteed. <a href="../slides/2026-08-24-welcome.html#/your-guesses-1">Folks often guess</a> that you need a large number of attendees (on the order of hundreds) for the probability of a match to be high, but what they fail to realize is that every unique pair of people is a fresh opportunity for a match. The table shows the number of unique pairs for each <span class="math inline">\(k\)</span>, and while <span class="math inline">\(k\)</span> may be small, the number of pairs gets large pretty quickly, making at least one match more and more likely.</p>
 </div>
 </div>
 </div>
@@ -645,7 +645,7 @@ Solution
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="fig-full-house" class="quarto-float quarto-figure quarto-figure-center anchored" width="50%" data-fig-align="center">
+<div id="fig-full-house" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="50%">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-full-house-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/full_house.png" id="fig-full-house" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:50.0%">
 </div>

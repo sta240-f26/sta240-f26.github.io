@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.34">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>sally-clark – STA 240 Fall 2026</title>
+<title>contested-election – STA 240 Fall 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,8 +17,42 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
@@ -38,8 +69,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7ad8df1012cc34949a7a0ac4d54234c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-ab2af8015911caaedd078aba9a047385.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../../site_libs/bootstrap/bootstrap-ab2af8015911caaedd078aba9a047385.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -65,20 +95,43 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 <meta property="og:title" content="STA 240 Fall 2026">
 <meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
+<meta property="og:image" content="https://sta240-f26.github.io/problems/bank/random-variables-discrete/contested-election_files/figure-html/fig-elections-1.png">
 <meta property="og:site_name" content="STA 240 Fall 2026">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
 </head>
-
 <body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -89,16 +142,11 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../../index.html" class="sidebar-logo-link">
-      <img src="../../../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+      <img src="../../../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://cmgr.oit.duke.edu/containers" title="RStudio Containers" class="quarto-navigation-tool px-1" aria-label="RStudio Containers"><i class="bi bi-code-square"></i></a>
     <a href="https://canvas.duke.edu/courses/84105" title="Canvas" class="quarto-navigation-tool px-1" aria-label="Canvas"><i class="bi bi-megaphone"></i></a>
@@ -113,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../syllabus/announcements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Check it out!</span></a>
@@ -127,8 +175,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../syllabus/syllabus-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -171,7 +219,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -180,8 +228,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../math/greeks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Greek alphabet</span></a>
@@ -224,7 +272,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
@@ -233,8 +281,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../explainers/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting started</span></a>
@@ -331,7 +379,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
@@ -340,8 +388,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../problems/pset-0.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Problem Set 0</span></a>
@@ -360,7 +408,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
@@ -369,8 +417,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../lab/lab-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1</span></a>
@@ -389,52 +437,203 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
-
-
-
-
-<p>Here are some short readings about <a href="https://sta240-f25.github.io/slides/2025-08-25-welcome.html#/sally-clark-1964---2007">the case of Sally Clark and Roy Meadow</a>, as well as something called the <em>prosecutor’s fallacy</em>:</p>
-<ul>
-<li>Grimes (2023): “<a href="https://www.scientificamerican.com/article/bad-science-and-bad-statistics-in-the-courtroom-convict-innocent-people/">Bad Science and Bad Statistics in the Courtroom Convict Innocent People</a>,” <em>Scientific American</em>;</li>
-<li>Carriquiry (2018): “<a href="https://forensicstats.org/blog/misuse-of-statistics-in-the-courtroom-the-sally-clark-case">Misuse of statistics in the courtroom: the Sally Clark case</a>,” CSAFE;</li>
-<li>Westreich &amp; Iliinsky (2014): “<a href="../../../readings/westreich-iliinsky-2014-aje.pdf">Epidemiology visualized: the prosecutor’s fallacy</a>,” <em>American Journal of Epidemiology</em>;</li>
-<li><a href="https://en.wikipedia.org/wiki/Philip_Dawid">AP Dawid</a>’s <a href="../../../readings/dawid-clark-statement.pdf">statement</a> during the Clark appeal.</li>
-</ul>
-<p>Please do the following:</p>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header><p>Not all election challenges are frivolous and cynical. Sometimes there are illegal/ineligible ballots in a close election, and if a candidate raises a legal challenge, a court must make a decision: certify the original results? adjust the vote totals somehow, possibly reversing the election? void the results entirely and order a new election? The concern of course is that the presence of the bad ballots might have swung the outcome, but how likely is this? Let’s model it.</p>
+<p>Imagine an election where Angela Lansbury receives <span class="math inline">\(a\)</span> votes, Bernadette Peters receives <span class="math inline">\(b\)</span> votes, and Angela provisionally wins with a margin of victory <span class="math inline">\(a-b&gt;0\)</span>. However, of the total <span class="math inline">\(a+b\)</span> votes, we learn that <span class="math inline">\(k&gt;a-b\)</span> were invalid or illegal. But we know nothing else. We do not know who these folks are, where they came from, or who they voted for. We just know that they exist. If the <span class="math inline">\(k\)</span> invalid ballots were removed from the total, what is the probability that it would flip the result of the election? If this probability is “too big,” we might start to worry.</p>
+<p>To model this, think of the original <span class="math inline">\(a+b\)</span> ballots as balls in the proverbial urn. <span class="math inline">\(a\)</span> of these balls are red, and <span class="math inline">\(b\)</span> of these balls are blue, and assume that <span class="math inline">\(a,\, b&gt;k\)</span>. Removing the <span class="math inline">\(k\)</span> invalid ballots is like drawing <span class="math inline">\(k\)</span> balls out of the urn without replacement. Since we know nothing about the illegal ballots apart from the fact that they exist, assume that each of the <span class="math inline">\(a+b\)</span> original ballots is <em>equally likely</em> to have been invalid. Next, imagine we randomly remove <span class="math inline">\(k\)</span> balls from the urn, and let <span class="math inline">\(X\)</span> be a random variable that counts the number of the removed/invalid ballots that belong to Angela. In other words, the number of red balls removed. If <span class="math inline">\(X\)</span> is large enough, it will swing the election in Bernadette’s favor.</p>
 <ol type="a">
-<li>Read the articles;</li>
-<li>Using the ideas of conditional probability and independence that we have studied, write a paragraph or two describing what the prosecutor’s fallacy is and how it applies to the Clark case;</li>
-<li>If you were an attorney for the defense and had the chance to cross-examine Roy Meadow, what would you ask him about his statistical testimony? What are the most incisive questions you could ask? How would you ensure that the cross-examination would “land” with the members of the jury, who most likely know absolutely nothing about probability and statistics?</li>
+<li>What are the range and the pmf of the random variable <span class="math inline">\(X\)</span>?</li>
+<li>For what values of <span class="math inline">\(X\)</span> does removing <span class="math inline">\(k\)</span> ballots reverse the outcome of the election?</li>
+<li>Based on your answers to the previous parts, what is the probability that the election result is reversed when the <span class="math inline">\(k\)</span> bad ballots are removed? Give a general formula for this probability, and then compute the probability for each of the real elections listed in <a href="#tbl-elections" class="quarto-xref">Table&nbsp;1</a>;</li>
+<li>The random variable <span class="math inline">\(X\)</span> that you derived in the first part can be approximated by <span class="math inline">\(\text{Binom}(k,\,1/2)\)</span>. Explain why this approximation might be “good enough,” and verify that it’s not too bad by computing the <em>approximate</em> probability of reversal for the elections in <a href="#tbl-elections" class="quarto-xref">Table&nbsp;1</a>. Compare the approximate probabilities to the actual ones from the previous part;</li>
+<li>Let’s say that we consider the probability of reversal “too big” if it is greater than 5%. Create a plot in <code>R</code> like <a href="#fig-elections" class="quarto-xref">Figure&nbsp;1</a> with the following features:
+<ul>
+<li>the margin of victory <span class="math inline">\(a-b\)</span> on the horizontal axis;</li>
+<li>the number of bad ballots <span class="math inline">\(k\)</span> on the vertical axis;</li>
+<li>scatterplot where each point represents an election in <a href="#tbl-elections" class="quarto-xref">Table&nbsp;1</a>, with the points colored according to the decision that was made in the case;</li>
+<li>divide the plane into two regions, one where the <em>approximate</em> probability of reversal is less than 0.05 and one where it is greater.</li>
+</ul>
+</li>
+<li>Write a few pithy paragraphs commenting on the following:
+<ul>
+<li>the assumptions of our lil’ model. Do you think they are innocuous? What might you change, and how?</li>
+<li>the match or lack thereof between our model and the decisions that were actually made in the real cases;</li>
+<li>How do you think a court should handle a legitimate election challenge? What are their responsibilities to the electorate, and what should they prioritize? Should they err on the side of upholding or voiding results? Should they think probabilistically? Should they consult this model, or one like it?</li>
+</ul>
+</li>
 </ol>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div id="tbl-elections" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-elections-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Close elections
+</figcaption><div aria-describedby="tbl-elections-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead><tr class="header">
+<th>election</th>
+<th>year</th>
+<th>win</th>
+<th>loss</th>
+<th>total</th>
+<th>margin</th>
+<th>invalid</th>
+<th>decision</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><em>Ippolito v. Power</em></td>
+<td>1968</td>
+<td>1,422</td>
+<td>1,405</td>
+<td>2,827</td>
+<td>17</td>
+<td>101</td>
+<td>void</td>
+</tr>
+<tr class="even">
+<td><em>Santucci v. Power</em></td>
+<td>1969</td>
+<td>58,076</td>
+<td>57,981</td>
+<td>116,057</td>
+<td>95</td>
+<td>448</td>
+<td>void</td>
+</tr>
+<tr class="odd">
+<td><em>DeMartini v. Power</em></td>
+<td>1970</td>
+<td>2,656</td>
+<td>2,594</td>
+<td>5,250</td>
+<td>62</td>
+<td>136</td>
+<td>upheld</td>
+</tr>
+<tr class="even">
+<td>Maine House</td>
+<td>1976</td>
+<td>1,193</td>
+<td>1,060</td>
+<td>2,253</td>
+<td>133</td>
+<td>208</td>
+<td>void</td>
+</tr>
+<tr class="odd">
+<td>Ann Arbor mayor</td>
+<td>1977</td>
+<td>10,660</td>
+<td>10,659</td>
+<td>21,319</td>
+<td>1</td>
+<td>20</td>
+<td>void</td>
+</tr>
+<tr class="even">
+<td>Brunswick ME town council</td>
+<td>1980</td>
+<td>2,390</td>
+<td>2,383</td>
+<td>4,773</td>
+<td>7</td>
+<td>16</td>
+<td>upheld</td>
+</tr>
+<tr class="odd">
+<td>Washington governor</td>
+<td>2004</td>
+<td>1,373,357</td>
+<td>1,373,228</td>
+<td>2,746,585</td>
+<td>129</td>
+<td>1,439</td>
+<td>upheld</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="callout-title-container flex-fill">
-Please don’t break my heart
+</figure>
 </div>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">elections</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  election <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ippolito"</span>, <span class="st">"Santucci"</span>, <span class="st">"DeMartini"</span>, <span class="st">"Maine"</span>, <span class="st">"Ann Arbor"</span>, <span class="st">"Brunswick"</span>, <span class="st">"Washington"</span><span class="op">)</span>,</span>
+<span>  a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1422</span>, <span class="fl">58076</span>, <span class="fl">2656</span>, <span class="fl">1193</span>, <span class="fl">10660</span>, <span class="fl">2390</span>, <span class="fl">1373357</span><span class="op">)</span>,</span>
+<span>  b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1405</span>, <span class="fl">57981</span>, <span class="fl">2594</span>, <span class="fl">1060</span>, <span class="fl">10659</span>, <span class="fl">2383</span>, <span class="fl">1373228</span><span class="op">)</span>,</span>
+<span>  k <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">101</span>, <span class="fl">448</span>, <span class="fl">136</span>, <span class="fl">208</span>, <span class="fl">20</span>, <span class="fl">16</span>, <span class="fl">1439</span><span class="op">)</span>,</span>
+<span>  decision <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"void"</span>, <span class="st">"void"</span>, <span class="st">"upheld"</span>, <span class="st">"void"</span>, <span class="st">"void"</span>, <span class="st">"upheld"</span>, <span class="st">"upheld"</span><span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">reversal_prob_binom</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span>, <span class="va">k</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">cutoff</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="fl">0.5</span> <span class="op">*</span> <span class="op">(</span><span class="va">k</span> <span class="op">+</span> <span class="va">a</span> <span class="op">-</span> <span class="va">b</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="va">cutoff</span> <span class="op">-</span> <span class="fl">1</span>, <span class="va">k</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">margin_grid</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">150</span></span>
+<span><span class="va">k_grid</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">450</span></span>
+<span><span class="va">n_points</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">margin_grid</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">k_grid</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">n_points</span><span class="op">)</span>,</span>
+<span>  k <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">n_points</span><span class="op">)</span>,</span>
+<span>  color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"lightblue"</span>, <span class="va">n_points</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">row</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">x</span> <span class="kw">in</span> <span class="va">margin_grid</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw">for</span><span class="op">(</span><span class="va">y</span> <span class="kw">in</span> <span class="va">k_grid</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">row</span> <span class="op">&lt;-</span> <span class="va">row</span> <span class="op">+</span> <span class="fl">1</span></span>
+<span>    <span class="va">grid</span><span class="op">[</span><span class="va">row</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">x</span></span>
+<span>    <span class="va">grid</span><span class="op">[</span><span class="va">row</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">y</span></span>
+<span>    <span class="kw">if</span><span class="op">(</span><span class="fu">reversal_prob_binom</span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">x</span>, <span class="fl">1</span>, <span class="va">y</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">{</span></span>
+<span>      <span class="va">grid</span><span class="op">[</span><span class="va">row</span>, <span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"pink"</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">grid</span><span class="op">$</span><span class="va">margin</span>, <span class="va">grid</span><span class="op">$</span><span class="va">k</span>, col <span class="op">=</span> <span class="va">grid</span><span class="op">$</span><span class="va">color</span>, </span>
+<span>     pch <span class="op">=</span> <span class="fl">19</span>, cex <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">"margin of victory (a - b)"</span>, </span>
+<span>     ylab <span class="op">=</span> <span class="st">"number of invalid ballots (k)"</span>,</span>
+<span>     main <span class="op">=</span> <span class="st">"Approximate probability of election reversal"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">elections</span><span class="op">$</span><span class="va">a</span> <span class="op">-</span> <span class="va">elections</span><span class="op">$</span><span class="va">b</span>, <span class="va">elections</span><span class="op">$</span><span class="va">k</span>, </span>
+<span>       pch <span class="op">=</span> <span class="fl">19</span>, col <span class="op">=</span> <span class="va">elections</span><span class="op">$</span><span class="va">col</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="op">-</span><span class="fl">7</span>, <span class="fl">450</span>, <span class="st">"&gt; 0.05"</span>, text.col <span class="op">=</span> <span class="st">"salmon"</span>, bty <span class="op">=</span> <span class="st">"n"</span>, cex <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="fl">115</span>, <span class="fl">450</span>, <span class="st">"&lt; 0.05"</span>, text.col <span class="op">=</span> <span class="st">"blue"</span>, bty <span class="op">=</span> <span class="st">"n"</span>, cex <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="fl">125</span>, <span class="fl">85</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Voided"</span>, <span class="st">"Upheld"</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">19</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span>, bty <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div id="fig-elections" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="672">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-elections-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="contested-election_files/figure-html/fig-elections-1.png" id="fig-elections" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" width="672">
 </div>
-<div class="callout-body-container callout-body">
-<p>I’m not asking you to read <em>Moby-Dick</em> here.</p>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-elections-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption></figure>
+</div>
 </div>
 </div>
 
 
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -834,8 +1033,7 @@ Please don’t break my heart
   });
   </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2026 John Zito</p>
 </div>   
@@ -847,8 +1045,6 @@ Please don’t break my heart
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

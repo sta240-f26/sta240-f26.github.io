@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>sally-clark – STA 240 Fall 2026</title>
+<title>geometric-mgf – STA 240 Fall 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,9 +67,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="STA 240 Fall 2026">
-<meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
 <meta property="og:site_name" content="STA 240 Fall 2026">
 </head>
 
@@ -404,32 +432,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Here are some short readings about <a href="https://sta240-f25.github.io/slides/2025-08-25-welcome.html#/sally-clark-1964---2007">the case of Sally Clark and Roy Meadow</a>, as well as something called the <em>prosecutor’s fallacy</em>:</p>
-<ul>
-<li>Grimes (2023): “<a href="https://www.scientificamerican.com/article/bad-science-and-bad-statistics-in-the-courtroom-convict-innocent-people/">Bad Science and Bad Statistics in the Courtroom Convict Innocent People</a>,” <em>Scientific American</em>;</li>
-<li>Carriquiry (2018): “<a href="https://forensicstats.org/blog/misuse-of-statistics-in-the-courtroom-the-sally-clark-case">Misuse of statistics in the courtroom: the Sally Clark case</a>,” CSAFE;</li>
-<li>Westreich &amp; Iliinsky (2014): “<a href="../../../readings/westreich-iliinsky-2014-aje.pdf">Epidemiology visualized: the prosecutor’s fallacy</a>,” <em>American Journal of Epidemiology</em>;</li>
-<li><a href="https://en.wikipedia.org/wiki/Philip_Dawid">AP Dawid</a>’s <a href="../../../readings/dawid-clark-statement.pdf">statement</a> during the Clark appeal.</li>
-</ul>
-<p>Please do the following:</p>
 <ol type="a">
-<li>Read the articles;</li>
-<li>Using the ideas of conditional probability and independence that we have studied, write a paragraph or two describing what the prosecutor’s fallacy is and how it applies to the Clark case;</li>
-<li>If you were an attorney for the defense and had the chance to cross-examine Roy Meadow, what would you ask him about his statistical testimony? What are the most incisive questions you could ask? How would you ensure that the cross-examination would “land” with the members of the jury, who most likely know absolutely nothing about probability and statistics?</li>
+<li>Compute the moment generating function of the geometric distribution. For what values of <span class="math inline">\(t\)</span> is it defined?</li>
+<li>Use the mgf to compute the mean and variance of the geometric distribution.</li>
 </ol>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Please don’t break my heart
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>I’m not asking you to read <em>Moby-Dick</em> here.</p>
-</div>
-</div>
 
 
 

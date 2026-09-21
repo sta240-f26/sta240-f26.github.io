@@ -60,10 +60,38 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 <meta property="og:title" content="Problem Set 3 – STA 240 Fall 2026">
 <meta property="og:description" content="Due Monday September 28 at 3PM">
+<meta property="og:image" content="https://sta240-f26.github.io/problems/pset-3_files/figure-html/unnamed-chunk-5-1.png">
 <meta property="og:site_name" content="STA 240 Fall 2026">
+<meta property="og:image:height" content="672">
+<meta property="og:image:width" content="1344">
 </head>
 <body class="nav-sidebar docked quarto-light">
 
@@ -420,16 +448,208 @@ ul.task-list li input[type="checkbox"] {
 <section id="problem-0" class="level2"><h2 class="anchored" data-anchor-id="problem-0">Problem 0</h2>
 <p>Recommend some music for us to listen to while we grade this.</p>
 </section><section id="problem-1" class="level2"><h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p>Here are some short readings about <a href="https://sta240-f25.github.io/slides/2025-08-25-welcome.html#/sally-clark-1964---2007">the case of Sally Clark and Roy Meadow</a>, as well as something called the <em>prosecutor’s fallacy</em>:</p>
+<ul>
+<li>Grimes (2023): “<a href="https://www.scientificamerican.com/article/bad-science-and-bad-statistics-in-the-courtroom-convict-innocent-people/?utm_source=chatgpt.com">Bad Science and Bad Statistics in the Courtroom Convict Innocent People</a>,” <em>Scientific American</em>;</li>
+<li>Carriquiry (2018): “<a href="https://forensicstats.org/blog/2018/02/16/misuse-statistics-courtroom-sally-clark-case/?utm_source=chatgpt.com">Misuse of statistics in the courtroom: the Sally Clark case</a>,” CSAFE;</li>
+<li>Westreich &amp; Iliinsky (2014): “<a href="https://sta240-f25.github.io/readings/westreich-iliinsky-2014-aje.pdf">Epidemiology visualized: the prosecutor’s fallacy</a>,” <em>American Journal of Epidemiology</em>;</li>
+<li>
+<a href="https://en.wikipedia.org/wiki/Philip_Dawid">AP Dawid</a>’s <a href="https://sta240-f25.github.io/readings/dawid-clark-statement.pdf">statement</a> during the Clark appeal.</li>
+</ul>
+<p>Please do the following:</p>
+<ol type="a">
+<li>Read the articles;</li>
+<li>Using the ideas of conditional probability and independence that we have studied, write a paragraph or two describing what the prosecutor’s fallacy is and how it applies to the Clark case;</li>
+<li>If you were an attorney for the defense and had the chance to cross-examine Roy Meadow, what would you ask him about his statistical testimony? What are the most incisive questions you could ask? How would you ensure that the cross-examination would “land” with the members of the jury, who most likely know absolutely nothing about probability and statistics?</li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Please don’t break my heart
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I’m not asking you to read <em>Moby-Dick</em> here.</p>
+</div>
+</div>
 </section><section id="problem-2" class="level2"><h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<p>Four people are going to play bridge, which begins with an entire 52-card deck being dealt at random, 13 cards per player. What is the probability that each player is dealt <em>exactly one ace</em>?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Still confused about ordered versus unordered sampling?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There are several ways to do this calculation. You should try it on your own, but then, go read Example 1.8.9 and the subsequent discussion on pages 37 - 39 of DeGroot &amp; Schervish.</p>
+</div>
+</div>
 </section><section id="problem-3" class="level2"><h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
-</section><section id="problem-4" class="level2"><h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
-</section><section id="problem-5" class="level2"><h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
-</section><section id="problem-6" class="level2"><h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OdLyKETk5o0?si=lhObAYK_8fRjltLi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+<p>As you may have noticed, Spotify shuffle is not a <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">perfectly random shuffle</a>. If you have a playlist with <span class="math inline">\(n\)</span> songs, Spotify’s shuffle algorithm definitely does not make all <span class="math inline">\(n!\)</span> permutations equally likely. Why not? Because people don’t actually want that. Spotify used to implement a pure random shuffle, but users complained that it was too <em>patternful.</em> For better or worse, the human brain is wired to detect meaningless patterns in random noise. For instance, the picture on the left is a “truly” random scatter of points; the one on the right is manipulated so the points don’t “clump”:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="pset-3_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>When you survey people that don’t know any better, they often <em>feel</em> like the second picture is “more random” than the first because it lacks clumps, but this is a misunderstanding. A truly random playlist shuffle will often have clumps: clumps of artists, clumps of genres, etc. So when people <em>say</em> that they want “random,” what they really mean is just “variety” in some vague sense, and this is what Spotify shuffle tries to deliver. I could not find a good source for what Spotify shuffle currently does, but whatever it is, I personally dislike it.</p>
+<ol type="a">
+<li>Imagine your playlist of <span class="math inline">\(n\geq 3\)</span> unique tracks contains <span class="math inline">\(2\leq k\leq \lceil n/2\rceil\)</span> songs by the same artist. What is the probability that a random permutation of the tracks will contain at least one streak of songs by that artist? A streak is two or more of their songs in a row;</li>
+<li>
+<a href="https://open.spotify.com/playlist/7ohKbwFo2VB92oSn3JTrPZ?si=eaaf988ec3d24b73">This</a> is the playlist I use when I grade exams (something I enjoy doing, btw). It contains <span class="math inline">\(n = 14\)</span> songs. There are 11 artists with one song apiece<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, and then Chaka Khan has <span class="math inline">\(k=3\)</span> songs, because, why wouldn’t she? Shuffle this playlist at least twenty times<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and compute the proportion of the time the shuffle contained a “Chaka streak.” Using the previous part, compare this empirical proportion to the theoretical probability that would prevail if the shuffle was truly random.</li>
+</ol></section><section id="problem-4" class="level2"><h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<p>Let <span class="math inline">\(S\)</span> be a sample space with probability measure <span class="math inline">\(P\)</span>, and let <span class="math inline">\(B\subseteq S\)</span> be some event with <span class="math inline">\(P(B)&gt;0\)</span>. Show that the function <span class="math inline">\(G(A)=P(A\,|\, B)\)</span> is a <em>new</em> probability measure on <span class="math inline">\(S\)</span>. That is, show that <span class="math inline">\(G\)</span> satisfies the axioms:</p>
+<ol type="a">
+<li>total measure 1;</li>
+<li>nonnegativity;</li>
+<li>countable additivity.</li>
+</ol></section><section id="problem-5" class="level2"><h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p>We studied disease testing in class, and in our stylized example, a patient had only two attributes: their true disease status <span class="math inline">\(D\)</span> and their test result <span class="math inline">\(T\)</span>. In reality of course, patients have many more relevant attributes: genetics, prior medical history, lifestyle, charm and good looks, etc. So in an attempt to be slightly more realistic, we shall extend our little model to include a third attribute: whether or not you have symptoms <span class="math inline">\(S\)</span>.</p>
+<p><a href="#tbl-disease" class="quarto-xref">Table&nbsp;1</a> enumerates all of the possible states of the world together with their individual probabilities. These numbers come from a small COVID-19 study of undergraduates in Fall 2020. The test in question is an antigen test. Patients’ “true” disease status was determined by a PCR test that we assume is hella accurate.</p>
+<div class="center-table">
+<div id="tbl-disease" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25, 25, 25, 25]">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-disease-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Some COVID-19 numbers. Source: <a href="https://www.cdc.gov/mmwr/volumes/69/wr/mm695152a3.htm">CDC</a>
+</figcaption><div aria-describedby="tbl-disease-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead><tr class="header">
+<th><span class="math inline">\(D\)</span></th>
+<th><span class="math inline">\(S\)</span></th>
+<th><span class="math inline">\(T\)</span></th>
+<th><span class="math inline">\(P(D\cap S\cap T)\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>0.7650</td>
+</tr>
+<tr class="even">
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>0.0128</td>
+</tr>
+<tr class="odd">
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>0.1685</td>
+</tr>
+<tr class="even">
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>0.0018</td>
+</tr>
+<tr class="odd">
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>0.0091</td>
+</tr>
+<tr class="even">
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>0.0064</td>
+</tr>
+<tr class="odd">
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>0.0073</td>
+</tr>
+<tr class="even">
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>0.0291</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+<ol type="a">
+<li><p>What is the overall disease prevalence?</p></li>
+<li><p>What is the sensitivity of the test?</p></li>
+<li><p>What is the specificity of the test?</p></li>
+<li><p>Imagine you develop symptoms. So you visit <a href="https://youtu.be/Bg36PU96U0w?si=3rmlqIYRpsXbAH1L">Dr.&nbsp;Vinnie Boombatz</a> to get tested, and the test comes back positive. Given everything we now know about you, what is the probability that you are truly infected?</p></li>
+<li><p>What is the overall probability that the test is wrong?</p></li>
+</ol></section><section id="problem-6" class="level2"><h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
+<div id="fig-dart" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="40%">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-dart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/dart-board.png" id="fig-dart" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-dart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption></figure>
+</div>
+<p>Jerry Lewis is throwing darts at the board pictured in <a href="#fig-dart" class="quarto-xref">Figure&nbsp;1</a>. It has the following properties:</p>
+<ul>
+<li>The board has radius <span class="math inline">\(r\)</span>;</li>
+<li>The board is partitioned into five rings, each with the same “thickness” <span class="math inline">\(r/5\)</span>;</li>
+<li>The board is mounted on a wall of area <span class="math inline">\(A\)</span>.</li>
+</ul>
+<p>Jerry is not very skilled. His dart is guaranteed to reach the wall and stick someplace, but beyond that, the probability that it lands in any given region is just proportional to that region’s area.</p>
+<p><strong>Task</strong>: Derive a general formula for the <em>conditional</em> probability that a dart lands in ring <span class="math inline">\(i\)</span> given that it hits the board and not the wall. Your formula should be a function of <span class="math inline">\(i=1,\,2,\,3,\,4,\,5\)</span>. Check that these probabilities are nonnegative and sum to one.</p>
 </section><section id="problem-7" class="level2"><h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
-</section><section id="problem-8" class="level2"><h2 class="anchored" data-anchor-id="problem-8">Problem 8</h2>
+<p>An encryption algorithm generates a seed value <span class="math inline">\(z\)</span> in the following way:</p>
+<ul>
+<li><p>A binary operator is chosen at random from <span class="math inline">\(\{+,\,\cdot\}\)</span>;</p></li>
+<li><p>Two <em>distinct</em> numbers <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are chosen at random from the set <span class="math inline">\(\{1,\,2,\,...,\,9\}\)</span> and the binary operation chosen above acts on <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> to produce <span class="math inline">\(z\)</span>.</p></li>
+</ul>
+<ol type="a">
+<li>What is the probability that <span class="math inline">\(z\)</span> is an even number?</li>
+<li>You notice that the algorithm generates an even <span class="math inline">\(z\)</span> value. Given this, what is the probability that the <span class="math inline">\(+\)</span> operator was used to generate it?</li>
+</ol></section><section id="problem-8" class="level2"><h2 class="anchored" data-anchor-id="problem-8">Problem 8</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/circuit.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>The figure above displays a circuit. Switch <span class="math inline">\(S_i\)</span> closes with probability <span class="math inline">\(p_i\)</span>, and the switches close independently of one another. What is the probability that electricity can flow from <span class="math inline">\(A\)</span> to <span class="math inline">\(G\)</span>?</p>
 </section><section id="problem-9" class="level2"><h2 class="anchored" data-anchor-id="problem-9">Problem 9</h2>
-</section><section id="problem-10" class="level2"><h2 class="anchored" data-anchor-id="problem-10">Problem 10</h2>
-</section><section id="submission" class="level2"><h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p>Two balls are chosen randomly from an urn containing 8 green, 4 black, and 2 orange balls. Suppose that we win $2 for each black ball selected, we lose $1 for each green ball selected, and we earn nothing for each orange ball selected. Let <span class="math inline">\(X\)</span> denote our winnings.</p>
+<ol type="a">
+<li><p>Make a table with the possible values of <span class="math inline">\(X\)</span> and the probabilities of each value.</p></li>
+<li><p>Sketch the pmf of <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Sketch the cdf of <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Compute the expected value of <span class="math inline">\(X\)</span>.</p></li>
+</ol></section><section id="problem-10" class="level2"><h2 class="anchored" data-anchor-id="problem-10">Problem 10</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/morpheus.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>I dreamed last night I got on the boat to heaven<br>And by some chance I had brought my dice along</p>
+<p><a href="https://youtu.be/6-ICTHg4Pw8?si=tNaFiMrkv4I5txKl"><em>Guys and Dolls</em></a></p>
+</blockquote>
+<p>Alas. You settle in for what you think will be a good night’s beauty sleep, and you end up having one of those awful dreams where you must take a test you haven’t studied for. It’s a multiple choice test, each question has five options with only one correct answer, there are fifty questions in total, and each is worth one point. The god Morpheus has kindly seen fit to leave a fair, five-sided die in your dream pocket, and so your dream self decides to do the only thing you can do: use the die to answer each of the exam questions completely at random.</p>
+<ol type="a">
+<li>Let <span class="math inline">\(X\)</span> be the number of questions you answer correctly. What is the distribution of <span class="math inline">\(X\)</span>?</li>
+<li>Plot the probability mass function of <span class="math inline">\(X\)</span>;</li>
+<li>What is the expected number of questions you will answer correctly?</li>
+<li>What is the probability that you get at least a C- on the exam?</li>
+</ol></section><section id="submission" class="level2"><h2 class="anchored" data-anchor-id="submission">Submission</h2>
 <p>You are free to compose your solutions for this problem set however you wish (scan or photograph written work, handwriting capture on a tablet device, LaTeX, Quarto, whatever) as long as the final product is a single PDF file. You must upload this to Gradescope and mark the pages associated with each problem.</p>
 <p>Do not forget to include the following:</p>
 <ul>
@@ -438,7 +658,11 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<ol>
+<li id="fn1"><p>Martha Wash is technically heard twice, once in a solo capacity and once as a member of The Weather Girls, but let’s please not quibble;<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>If you don’t have a Spotify account, collaborate with a classmate who does and please acknowledge them.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
