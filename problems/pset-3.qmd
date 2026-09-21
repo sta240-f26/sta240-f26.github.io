@@ -1,0 +1,126 @@
+---
+title: "Problem Set 3"
+subtitle: Due Monday September 28 at 3PM
+editor: 
+  mode: source
+---
+
+> [Bruno de Finetti](https://doi.org/10.1002/9781119286387): "We have all at times insisted on making clear the fact that every prevision and, in particular, **every evaluation of probability, is conditional**; not only on the mentality or psychology of the individual involved, at the time in question, but also, and especially, on the state of information in which he finds himself at that moment."
+
+
+
+
+```{r}
+#| echo: false
+q_no <- 0
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/_music-rec.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conceptual/sally-clark.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+
+
+{{< include bank/counting/elevator-2.qmd >}}
+
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+
+{{< include bank/counting/spotify-shuffle.qmd >}}
+
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conditional-probability/axioms-conditional.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conditional-probability/testing-symptoms.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conditional-probability/darts.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conditional-probability/bdj-encryption.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conditional-probability/bdj-circuit.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-discrete/ross-rv.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-discrete/random-exam.qmd >}}
+
+
+
+
+
+## Submission
+
+{{< include bank/_submission.qmd >}}
+
+
+
