@@ -44,7 +44,7 @@ q_no <- q_no + 1
 
 ## Problem `{r} q_no`
 
-SIGNIFICANCE MAGAZINE PROBLEM
+{{< include bank/conditional-probability/car-engine.qmd >}}
 
 ```{r}
 #| echo: false
