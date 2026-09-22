@@ -55,8 +55,6 @@ rbinom(n, size, prob) # random numbers
 
 ## Play around!
 
-Notice that, for all values of $p\in(0,\,1)$, the shape of the PMF becomes more like the bell curve as $n$ grows: 
-
 ```{shinylive-r}
 #| standalone: true
 #| viewerHeight: 500
@@ -158,6 +156,12 @@ server <- function(input, output) {
 # Run the application 
 shinyApp(ui = ui, server = server)
 ```
+
+::: callout-important
+## Magic is happening!
+
+Notice that, for all values of $p\in(0,\,1)$, the shape of the PMF becomes more like the bell curve as $n$ grows. This is not an accident. It is a consequence of a deep result known as **the central limit theorem**.
+:::
 
 ## Derivations
 
