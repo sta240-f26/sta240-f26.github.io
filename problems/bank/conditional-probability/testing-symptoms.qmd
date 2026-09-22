@@ -44,11 +44,7 @@ pDnSnTn + pDnSnTy + pDnSyTn + pDnSyTy + pDySnTn + pDySnTy + pDySyTn + pDySyTy
 :::
 
 a.  What is the overall disease prevalence?
-
-b.  What is the sensitivity of the test?
-
-c.  What is the specificity of the test?
-
-d.  Imagine you develop symptoms. So you visit [Dr. Vinnie Boombatz](https://youtu.be/Bg36PU96U0w?si=3rmlqIYRpsXbAH1L) to get tested, and the test comes back positive. Given everything we now know about you, what is the probability that you are truly infected?
-
-e.  What is the overall probability that the test is wrong?
+a.  What is the sensitivity of the test?
+a.  What is the specificity of the test?
+a.  Imagine you develop symptoms. So you visit [Dr. Vinnie Boombatz](https://youtu.be/Bg36PU96U0w?si=3rmlqIYRpsXbAH1L) to get tested, and the test comes back positive. Given everything we now know about you, what is the probability that you are truly infected?
+a.  What is the overall probability that the test is wrong?
