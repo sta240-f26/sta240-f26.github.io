@@ -1,0 +1,122 @@
+---
+title: "Problem Set 4"
+subtitle: Due Monday October 5 at 3PM
+editor: 
+  mode: source
+---
+
+> [Larry Wasserman](https://doi.org/10.1007/978-0-387-21736-9): "At a certain point in most probability courses, the sample space is rarely mentioned anymore and we work directly with random variables. But you should keep in mind that the sample space is really there, lurking in the background."
+
+
+
+
+```{r}
+#| echo: false
+q_no <- 0
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/_music-rec.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+CONCEPTUAL
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conditional-probability/dgs-exercise-2-3-1.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+SIGNIFICANCE MAGAZINE PROBLEM
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-discrete/bdj-rv.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-discrete/gandalf-test.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+
+{{< include bank/random-variables-discrete/mak-rv.qmd >}}
+
+
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-discrete/binomial-lotus.qmd >}}
+
+
+
+## Submission
+
+{{< include bank/_submission.qmd >}}
+
+
+
