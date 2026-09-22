@@ -409,6 +409,12 @@ window.Quarto = {
  <span class="menu-text">Problem Set 2</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 3</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -449,8 +455,10 @@ window.Quarto = {
    
   <ul>
 <li><a href="#basic-properties" id="toc-basic-properties" class="nav-link active" data-scroll-target="#basic-properties">Basic properties</a></li>
+  <li><a href="#special-case" id="toc-special-case" class="nav-link" data-scroll-target="#special-case">Special case</a></li>
   <li><a href="#r-commands" id="toc-r-commands" class="nav-link" data-scroll-target="#r-commands"><code>R</code> commands</a></li>
   <li><a href="#play-around" id="toc-play-around" class="nav-link" data-scroll-target="#play-around">Play around!</a></li>
+  <li><a href="#derivations" id="toc-derivations" class="nav-link" data-scroll-target="#derivations">Derivations</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -470,6 +478,7 @@ window.Quarto = {
 
 
 </header><p>The binomial distribution is our model for the total number of successes in <span class="math inline">\(n\)</span> independent binary trials, each with identical probability of success <span class="math inline">\(p\in[0,\,1]\)</span>.</p>
+<p>REPRODUCE THE CONSTRUCTION</p>
 <section id="basic-properties" class="level2"><h2 class="anchored" data-anchor-id="basic-properties">Basic properties</h2>
 <table class="caption-top table"><tbody>
 <tr class="odd">
@@ -496,7 +505,23 @@ window.Quarto = {
 <td><strong>Variance</strong></td>
 <td><span class="math inline">\(np(1-p)\)</span></td>
 </tr>
-</tbody></table></section><section id="r-commands" class="level2"><h2 class="anchored" data-anchor-id="r-commands">
+</tbody></table></section><section id="special-case" class="level2"><h2 class="anchored" data-anchor-id="special-case">Special case</h2>
+<p>If <span class="math inline">\(n=1\)</span> (ie. there is only one trial), then <span class="math inline">\(\text{Range}(X)=\{0,\,1\}\)</span> and we say that <span class="math inline">\(X\)</span> has the <strong>Bernoulli distribution</strong>, denoted <span class="math inline">\(X\sim\text{Bernoulli}(p)\)</span>. This is the distribution for an <em>indicator</em> random variable that flags whether something happened (0) or did not happen (1). In this case the PMF simplifies to:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(X=k)
+&amp;=
+\begin{cases}
+p &amp; k = 1\\
+1-p &amp; k = 0
+\end{cases}
+\\
+&amp;=p^k(1-p)^{1-k}
+.
+\end{aligned}
+\]</span></p>
+<p>The mean is <span class="math inline">\(E(X)=p\)</span>, and the variance is <span class="math inline">\(\text{var}(X)=p(1-p)=p-p^2\)</span>.</p>
+</section><section id="r-commands" class="level2"><h2 class="anchored" data-anchor-id="r-commands">
 <code>R</code> commands</h2>
 <p><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Binomial.html">Here</a> is the documentation for the suite of commands that let you work with the binomial distribution in <code>R</code>:</p>
 <div class="cell">
@@ -609,6 +634,71 @@ server &lt;- function(input, output) {
 
 # Run the application 
 shinyApp(ui = ui, server = server)</a></code></pre>
+</section><section id="derivations" class="level2"><h2 class="anchored" data-anchor-id="derivations">Derivations</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Check that the probabilities actually sum to 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The mean (via the definition)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The mean again (via linearity)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The variance
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

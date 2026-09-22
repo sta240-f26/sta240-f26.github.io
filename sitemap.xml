@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sta240-f26.github.io/distributions/discrete-binomial.html</loc>
-    <lastmod>2026-09-21T18:54:17.085Z</lastmod>
+    <lastmod>2026-09-22T01:23:30.966Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/explainers/vectorization.html</loc>
@@ -93,28 +93,32 @@
     <lastmod>2026-03-09T19:40:31.977Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/pset-3.html</loc>
-    <lastmod>2026-09-21T22:31:42.123Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/exam-midterm-1.html</loc>
+    <lastmod>2026-09-22T01:36:27.524Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/pset-0.html</loc>
-    <lastmod>2026-08-16T02:33:23.299Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/pset-2.html</loc>
+    <lastmod>2026-09-14T17:59:54.520Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/pset-5.html</loc>
-    <lastmod>2026-09-20T16:48:20.752Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/pset-1.html</loc>
+    <lastmod>2026-09-07T17:33:47.257Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/darts.html</loc>
-    <lastmod>2026-02-21T02:26:06.983Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/pset-4.html</loc>
+    <lastmod>2026-09-21T23:57:03.990Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/conditional-independence.html</loc>
-    <lastmod>2026-02-21T02:26:06.982Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/recruiter.html</loc>
+    <lastmod>2026-02-21T02:26:06.984Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/target-practice.html</loc>
     <lastmod>2026-02-21T02:26:06.984Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/first-ace.html</loc>
+    <lastmod>2026-09-22T01:35:57.992Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/conditional-inequality.html</loc>
@@ -125,79 +129,87 @@
     <lastmod>2026-02-21T02:26:06.982Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/bdj-white-balls.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/anya-lightbulb-factory.html</loc>
+    <lastmod>2026-09-22T00:37:34.058Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/axioms-conditional.html</loc>
     <lastmod>2026-02-21T02:26:06.982Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/dgs-exercise-2-3-1.html</loc>
-    <lastmod>2026-02-21T02:26:06.983Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/bdj-circuit.html</loc>
+    <lastmod>2026-02-21T02:26:06.982Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/testing-symptoms.html</loc>
-    <lastmod>2026-02-21T02:26:06.984Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/set-theory/picture-proofs.html</loc>
+    <lastmod>2026-02-21T02:26:06.992Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/set-theory/basic-set-practice.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/memoryless-geometric.html</loc>
     <lastmod>2026-02-21T02:26:06.991Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/binomial-birthdays.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/mak-rv.html</loc>
+    <lastmod>2026-02-21T02:26:06.991Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/binomial-lotus.html</loc>
     <lastmod>2026-02-21T02:26:06.990Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/indicator-party.html</loc>
-    <lastmod>2026-02-21T02:26:06.991Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/random-exam.html</loc>
-    <lastmod>2026-02-21T02:26:06.991Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/exponential-ceiling.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/contested-election.html</loc>
     <lastmod>2026-02-21T02:26:06.990Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/bdj-rv.html</loc>
-    <lastmod>2026-02-21T02:26:06.989Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/zero-truncated-poisson.html</loc>
+    <lastmod>2026-02-21T02:26:06.991Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/waiting-for-five-or-seven.html</loc>
-    <lastmod>2026-02-21T02:26:06.991Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/gandalf-test.html</loc>
+    <lastmod>2026-02-21T02:26:06.990Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/anya-printing-office.html</loc>
+    <lastmod>2026-09-22T00:40:11.902Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/ross-rv.html</loc>
-    <lastmod>2026-02-21T02:26:06.991Z</lastmod>
+    <lastmod>2026-09-21T23:35:36.937Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/geometric-mgf.html</loc>
-    <lastmod>2026-02-21T02:26:06.991Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/anya-rv.html</loc>
+    <lastmod>2026-09-22T00:42:51.746Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/conceptual/sally-clark.html</loc>
-    <lastmod>2026-09-21T22:32:46.576Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/conceptual/lousy-forecasting.html</loc>
+    <lastmod>2026-09-14T21:11:13.723Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/set-minus.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/conceptual/diaconis.html</loc>
+    <lastmod>2026-02-21T02:26:06.981Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/bonferroni-1.html</loc>
+    <lastmod>2026-09-22T00:33:40.364Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/union-bound.html</loc>
+    <lastmod>2026-09-14T22:23:16.325Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/blood-type.html</loc>
     <lastmod>2026-02-21T02:26:06.979Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/basic-mutually-exclusive-practice.html</loc>
-    <lastmod>2026-02-21T02:26:06.978Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/incl-excl-3.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/poisson-measure.html</loc>
     <lastmod>2026-02-21T02:26:06.979Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/intersection-bound.html</loc>
-    <lastmod>2026-02-21T02:26:06.979Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/xor.html</loc>
+    <lastmod>2026-02-21T02:26:06.980Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/weather-app.html</loc>
-    <lastmod>2026-09-07T20:10:16.262Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/bonferroni.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/geniuses-and-chocolate-lovers.html</loc>
     <lastmod>2026-02-21T02:26:06.979Z</lastmod>
   </url>
   <url>
@@ -221,36 +233,40 @@
     <lastmod>2026-02-21T02:26:06.981Z</lastmod>
   </url>
   <url>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/basic-counting.html</loc>
+    <lastmod>2026-02-21T02:26:06.984Z</lastmod>
+  </url>
+  <url>
     <loc>https://sta240-f26.github.io/problems/bank/counting/20-balls-4-colors.html</loc>
     <lastmod>2026-02-21T02:26:06.984Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/random-inner-product.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/ht-receipt.html</loc>
+    <lastmod>2026-09-07T20:13:48.410Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/ross-balls.html</loc>
+    <lastmod>2026-09-07T19:46:53.432Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/streaks.html</loc>
     <lastmod>2026-02-21T02:26:06.985Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/spotify-shuffle.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/poker-dice.html</loc>
     <lastmod>2026-02-21T02:26:06.985Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/mak-cards.html</loc>
-    <lastmod>2026-02-21T02:26:06.985Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/yes-replace-order-no.html</loc>
-    <lastmod>2026-02-21T02:26:06.986Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/senate-committees.html</loc>
-    <lastmod>2026-02-21T02:26:06.985Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/exactly-two-suits.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/library-card-PIN.html</loc>
     <lastmod>2026-02-21T02:26:06.985Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/counting/license-plates.html</loc>
     <lastmod>2026-02-21T02:26:06.985Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/elevator-2.html</loc>
+    <lastmod>2026-09-21T23:18:45.598Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/lab/lab-3.html</loc>
@@ -277,36 +293,40 @@
     <lastmod>2026-09-07T20:21:47.681Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/bridge.html</loc>
-    <lastmod>2026-02-21T02:26:06.984Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/elevator-1.html</loc>
+    <lastmod>2026-09-21T23:10:33.252Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/library-card-PIN.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/exactly-two-suits.html</loc>
     <lastmod>2026-02-21T02:26:06.985Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/poker-dice.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/senate-committees.html</loc>
     <lastmod>2026-02-21T02:26:06.985Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/streaks.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/yes-replace-order-no.html</loc>
+    <lastmod>2026-02-21T02:26:06.986Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/mak-cards.html</loc>
     <lastmod>2026-02-21T02:26:06.985Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/ross-balls.html</loc>
-    <lastmod>2026-09-07T19:46:53.432Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/spotify-shuffle.html</loc>
+    <lastmod>2026-09-21T23:33:12.385Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/ht-receipt.html</loc>
-    <lastmod>2026-09-07T20:13:48.410Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/random-inner-product.html</loc>
+    <lastmod>2026-02-21T02:26:06.985Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/elevator.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/bridge-1.html</loc>
     <lastmod>2026-02-21T02:26:06.984Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/counting/basic-counting.html</loc>
-    <lastmod>2026-02-21T02:26:06.984Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/counting/bridge-2.html</loc>
+    <lastmod>2026-09-22T00:45:02.471Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/math-review/gamma-recursion.html</loc>
@@ -329,32 +349,36 @@
     <lastmod>2026-02-21T02:26:06.979Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/geniuses-and-chocolate-lovers.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/weather-app.html</loc>
+    <lastmod>2026-09-07T20:10:16.262Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/intersection-bound.html</loc>
     <lastmod>2026-02-21T02:26:06.979Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/xor.html</loc>
-    <lastmod>2026-02-21T02:26:06.980Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/poisson-measure.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/incl-excl-3.html</loc>
     <lastmod>2026-02-21T02:26:06.979Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/blood-type.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/basic-mutually-exclusive-practice.html</loc>
+    <lastmod>2026-02-21T02:26:06.978Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/set-minus.html</loc>
     <lastmod>2026-02-21T02:26:06.979Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/union-bound.html</loc>
-    <lastmod>2026-09-14T22:23:16.325Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/basic-rules/bonferroni-2.html</loc>
+    <lastmod>2026-02-21T02:26:06.979Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/conceptual/diaconis.html</loc>
-    <lastmod>2026-02-21T02:26:06.981Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/conceptual/sally-clark.html</loc>
+    <lastmod>2026-09-21T22:44:39.880Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/conceptual/lousy-forecasting.html</loc>
-    <lastmod>2026-09-14T21:11:13.723Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/geometric-mgf.html</loc>
+    <lastmod>2026-02-21T02:26:06.991Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/pascal.html</loc>
@@ -365,39 +389,43 @@
     <lastmod>2026-02-21T02:26:06.990Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/gandalf-test.html</loc>
-    <lastmod>2026-02-21T02:26:06.990Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/zero-truncated-poisson.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/waiting-for-five-or-seven.html</loc>
     <lastmod>2026-02-21T02:26:06.991Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/contested-election.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/bdj-rv.html</loc>
+    <lastmod>2026-02-21T02:26:06.989Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/exponential-ceiling.html</loc>
     <lastmod>2026-02-21T02:26:06.990Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/binomial-lotus.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/random-exam.html</loc>
+    <lastmod>2026-02-21T02:26:06.991Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/indicator-party.html</loc>
+    <lastmod>2026-02-21T02:26:06.991Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/binomial-birthdays.html</loc>
     <lastmod>2026-02-21T02:26:06.990Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/mak-rv.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/set-theory/basic-set-practice.html</loc>
     <lastmod>2026-02-21T02:26:06.991Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/random-variables-discrete/memoryless-geometric.html</loc>
-    <lastmod>2026-02-21T02:26:06.991Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/testing-symptoms.html</loc>
+    <lastmod>2026-09-21T23:34:10.666Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/set-theory/picture-proofs.html</loc>
-    <lastmod>2026-02-21T02:26:06.992Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/dgs-exercise-2-3-1.html</loc>
+    <lastmod>2026-02-21T02:26:06.983Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/bdj-circuit.html</loc>
-    <lastmod>2026-02-21T02:26:06.982Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/axioms-conditional.html</loc>
+    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/bdj-white-balls.html</loc>
     <lastmod>2026-02-21T02:26:06.982Z</lastmod>
   </url>
   <url>
@@ -413,24 +441,28 @@
     <lastmod>2026-02-21T02:26:06.984Z</lastmod>
   </url>
   <url>
+    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/independent-complements-2.html</loc>
+    <lastmod>2026-09-22T00:33:07.138Z</lastmod>
+  </url>
+  <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/face-cards.html</loc>
     <lastmod>2026-02-21T02:26:06.983Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/recruiter.html</loc>
-    <lastmod>2026-02-21T02:26:06.984Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/darts.html</loc>
+    <lastmod>2026-02-21T02:26:06.983Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/pset-4.html</loc>
-    <lastmod>2026-09-19T16:33:10.042Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/pset-5.html</loc>
+    <lastmod>2026-09-22T00:00:37.965Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/pset-1.html</loc>
-    <lastmod>2026-09-07T17:33:47.257Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/pset-0.html</loc>
+    <lastmod>2026-08-16T02:33:23.299Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/pset-2.html</loc>
-    <lastmod>2026-09-14T17:59:54.520Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/pset-3.html</loc>
+    <lastmod>2026-09-21T23:52:43.083Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/index.html</loc>
