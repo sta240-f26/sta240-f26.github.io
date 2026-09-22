@@ -1,0 +1,1 @@
+You shuffle a standard deck of 52 playing cards, and then you reveal the cards one at a time until you see the first ace. What is the probability that the first ace will be revealed on the 28th card?

@@ -216,6 +216,15 @@ q_no <- q_no + 1
 
 {{< include bank/conditional-probability/darts.qmd >}}
 
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conditional-probability/first-ace.qmd >}}
+
 ## Want more review?
 
 - [Lecture notes](/lecture-notes/04-conditional-probability.pdf) with worked examples;
