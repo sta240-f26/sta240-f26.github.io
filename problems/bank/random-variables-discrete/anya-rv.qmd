@@ -1,0 +1,6 @@
+Let a random variable $X$ have the cdf $F$ pictured here:
+
+![](images/anya-cdf.png){fig-align="center" width="60%"}
+
+a. Compute $E(X)$;
+a. Draw the cdf of the random variable $Y=|X|$.

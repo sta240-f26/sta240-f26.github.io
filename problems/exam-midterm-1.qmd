@@ -1,0 +1,274 @@
+---
+title: "Midterm 1 Study Guide"
+format: html
+editor: 
+  mode: source
+draft: false
+---
+
+::: callout-important
+## Under construction!
+
+This is currently a draft. Until a formal announcement is issued on Canvas, everything below is subject to change.
+:::
+
+Midterm Exam 1 will take place on **Thursday October 8** during your lab section. There will be 7 problems, and they will break down as follows:
+
+0. (an undisclosed check on your visual intuition)
+1. probability rules
+1. counting
+1. counting
+1. conditional probability
+1. conditional probability
+1. discrete random variables
+
+Below are new practice problems for each of these areas, as well as guidance about what course materials to refer to if you want more review on a particular topic.
+
+::: callout-important
+## Give your cheat sheet some TLC!
+
+On the exam you are allowed both sides of one 8.5" x 11" sheet of notes, prepared by you and you alone. You can create it however you wish: handwritten, on a computer, etc.
+
+Do not skimp on the cheat sheet! Students in past semesters have neglected their cheat sheets to their detriment. Get an early start, and give it some elbow grease.
+
+:::
+
+# Probability spaces
+
+```{r}
+#| echo: false
+q_no <- 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/basic-rules/geniuses-and-chocolate-lovers.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/basic-rules/basic-mutually-exclusive-practice.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/basic-rules/set-minus.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/basic-rules/bonferroni-1.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/basic-rules/xor-2.qmd >}}
+
+## Want more review?
+
+- [Lecture notes](/lecture-notes/02-probability-spaces.pdf) on probability spaces, axioms, and rules;
+- [Problem Set 1](/problems/pset-1.html): problems 4 - 8;
+- [Problem Set 2](/problems/pset-2.html): problems 2 - 3.
+
+::: {.callout-tip collapse="true"}
+## Advice for writing proofs
+
+I included this at the end of the [lecture notes](/lecture-notes/02-probability-spaces.pdf) on probability rules:
+
+1. **Draw a picture**. Probability behaves like area, so see if you can make sense of the theorem statement by drawing and shading blobs;
+1. **Take hints from the statement**. The statement of the theorem to be proven often gives a hint at what tools will be used. In "$P(A)=1-P(A^c)$," the presence of "1" tips you off that the first axiom will probably show up. In "$P(A)\leq P(B)$," the presence of an inequality tips you off that the second axiom will probably show up, and so on. In the future for example, if the theorem statement has probabilities *subtracted* somewhere, maybe that's a clue that the complement rule or inclusion/exclusion will be used;
+1. **Look out for "the move."** I cannot guarantee that in 100% of all proofs, you will take a disjoint decomposition and apply additivity, but if that's not literally what you do, you're probably still using some other tool that was itself *enabled* by "the move" (eg. the complement rule). Anyway, "the move" is all about taking complicated sets and busting them into simpler disjoint pieces so that you can *add*. It's always worth a try.
+
+Furthermore, the [lecture notes](/lecture-notes/02-probability-spaces.pdf) on probability rules provide models for the structure, level of detail, and amount of discussion that is generally expected, though you will get some grace on a timed exam.
+
+:::
+
+# Counting
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/counting/mak-cards.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/counting/library-card-PIN.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/counting/senate-committees.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/counting/bridge-2.qmd >}}
+
+## Want more review?
+
+- [Lecture notes](/lecture-notes/03-counting.pdf) on counting theory;
+- [Lab 2](/lab/lab-2.html) worked examples;
+- [Lab 3](/lab/lab-3.html) worked examples;
+- [Problem Set 1](/problems/pset-1.html): problems 9 - 10;
+- [Problem Set 2](/problems/pset-2.html): problems 4 - 8;
+- [Problem Set 3](/problems/pset-3.html): problems 2 - 3;
+- Odd-numbered exercises in DeGroot & Schervish Chapters 1.6 - 1.8, 1.12.
+
+::: {.callout-tip collapse="true"}
+## Advice for solving counting problems
+
+I included this at the top of [Lab 3](/lab/lab-3.html):
+
+1. (**do as little counting as possible**) Let's face it: counting, like integration, is a huge pain in the ass. So we don't want to do any more than we have to. Your first step should always be to simplify the problem as far as you possibly can using set theory and the probability rules: is this event the union of other events? are those events disjoint? might the complement be *easier* to work with? is there a *partition* that could help me? Only after you have exhausted all of those options should you count;
+1. (**clarify what a single outcome consists of**) If I am studying the result of four coin flips, a single outcome is not H versus T. It's a string like HHTH or TTTH. Once you're clear on what an outcome consists of, decompose it into its distinct traits. In this example, each of the four flips is a trait. Once you've decomposed an outcome into traits, you can invoke the *counting principle*: count the traits separately and multiply. At a very high level, that's "all we are doing," but things can get elaborate;
+1. (**clarify the role of order and replacement**) You will probably do this in tandem with the surrounding items, but until you've answered the questions "does order matter" and "am I replacing or not" for yourself, you have no clue what tool you need to use;
+    - **Pro-tip**: "order" may not really mean "order." When we ask "does order matter or not," really what we are often asking is: "does it matter who gets what?" In other words, when we draw balls from the jar to fill our $k$ slots, are those slots *distinguishable* or not? Are they named? Are they labeled? Do they have distinct identities or *roles*? If so, then the order in which the balls are drawn corresponds to "who got what." If "who gets what" is relevant in your application (eg. if Ethel getting red and Seamus getting blue counts as a distinct outcome from Ethel getting blue and Seamus getting red), then order matters. The birthday problem below is a classic example of this;
+1. (**count $S$ first**) In all of these counting problems, at some point you must apply $P(A)=\#(A)/\#(S)$. I typically recommend that you start at the bottom and work your way up. So figure out $\#(S)$, and then move on to $\#(A)$. $\#(S)$ will often be easier to compute, and the process of doing so will force you to clarify what you need to clarify from above, which will help with $\#(A)$ later.
+
+:::
+
+# Conditional probability 
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conditional-probability/face-cards.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conditional-probability/bdj-white-balls.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conditional-probability/pairwise-versus-mutual-independence.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conditional-probability/independent-complements-2.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conditional-probability/anya-lightbulb-factory.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/conditional-probability/darts.qmd >}}
+
+## Want more review?
+
+- [Lecture notes](/lecture-notes/04-conditional-probability.pdf) with worked examples;
+    - The lil' [app](/lecture-notes/05-disease-testing.html) on disease testing;
+- [Problem Set 2](/problems/pset-2.html): problems 9 - 10;
+- [Problem Set 3](/problems/pset-3.html): problems 4 - 8;
+- [Problem Set 4](/problems/pset-4.html): problems 2 - 3;
+- Odd-numbered exercises in DeGroot & Schervish Chapter 2.
+
+# Discrete random variables
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-discrete/fibonacci-dice.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-discrete/memoryless-geometric.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-discrete/anya-rv.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-discrete/anya-printing-office.qmd >}}
+
+## Want more review?
+
+- Lecture notes;
+- Distribution explainers: binomial, geometric, Poisson;
+- Lab 5;
+- [Problem Set 2](/problems/pset-2.html): problem 8;
+- [Problem Set 3](/problems/pset-3.html): problems 9 - 10;
+- [Problem Set 4](/problems/pset-4.html): problems 4 - 10.
+

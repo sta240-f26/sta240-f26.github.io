@@ -1,0 +1,9 @@
+A quality-control engineer comes to inspect the machines in a light-bulb manufacturing factory. The factory uses two models of machines:  
+
+- ORION machines produce defective lightbulbs with probability $p_O$,
+- NOVA machines produce defective lightbulbs with probability $p_N$.
+
+
+a. The engineer picks one of the ORION machines to inspect and gets it to produce $n$ lightbulbs. Each of the $n$ lightbulbs is produced independently of one another. What is the probability that *exactly two* of the $n$ lightbulbs are defective?
+a. Next, the engineer chooses a machine at random from the factory floor and gets it to produce $n$ lightbulbs. Given that two of the $n$ lightbulbs are defective, what is the probability the engineer selected an ORION machine? Assume 2/3 of the machines in the factory are ORION, and 1/3 are NOVA;
+a. Simplify your answer in the previous part in the case that the defect probability is the same for both machines ($p_O=p_N$). Compare to the probability of selecting an ORION machine at random *before* knowing how many defective lightbulbs the machine produced. Explain why the probability changes or stays the same.

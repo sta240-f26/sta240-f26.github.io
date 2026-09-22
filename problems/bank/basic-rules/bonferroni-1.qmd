@@ -1,0 +1,8 @@
+Let $A,\, B\subseteq S$ be events in a probability space that might overlap. I claim that:
+
+$$
+P(A^c\cap B^c)\geq 1 - P(A)-P(B).
+$$
+
+a. Use words and pictures to explain why the claim is true;
+a. Prove the claim. Make sure you are explicit about which rules or axioms you are using.

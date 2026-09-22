@@ -1,0 +1,4 @@
+A printing office prepares $n=30$ exam booklets labeled $1,2,\dots,30$ and intends to give booklet $i$ to student $i$. Unfortunately, the stack is *randomly shuffled* and then distributed so that each student receives exactly one booklet. Assume every one of the $30!$ assignments is equally likely.
+
+a. Let $X$ be the number of students who receive *their own* booklet. Write $X$ as a sum of indicator random variables and compute $E(X)$;
+a. Let $Y$ be the number of *mutual swaps*, i.e.\ the number of unordered pairs $\{i,j\}$ with $i\neq j$ such that student $i$ receives booklet $j$ *and* student $j$ receives booklet $i$. Write $Y$ as a sum of indicator random variables and compute $E(Y)$.
