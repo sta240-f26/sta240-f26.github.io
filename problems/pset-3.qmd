@@ -67,7 +67,7 @@ q_no <- q_no + 1
 
 ## Problem `{r} q_no`
 
-{{< include bank/conditional-probability/testing-symptoms.qmd >}}
+{{< include bank/conditional-probability/recruiter.qmd >}}
 
 ```{r}
 #| echo: false
@@ -76,7 +76,7 @@ q_no <- q_no + 1
 
 ## Problem `{r} q_no`
 
-{{< include bank/conditional-probability/darts.qmd >}}
+{{< include bank/conditional-probability/testing-symptoms.qmd >}}
 
 ```{r}
 #| echo: false
