@@ -102,6 +102,14 @@ website:
             text: Summary statistics
           - href: explainers/histogram.qmd
             text: Histograms
+      - section: "Distributions"
+        contents:
+          - href: distributions/discrete-binomial.qmd
+            text: Binomial
+          - href: distributions/discrete-geometric.qmd
+            text: Geometric
+          - href: distributions/discrete-poisson.qmd
+            text: Poisson
       - section: "Problem Sets"
         contents:
           - href: problems/pset-0.qmd
