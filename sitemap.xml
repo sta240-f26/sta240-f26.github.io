@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sta240-f26.github.io/distributions/discrete-binomial.html</loc>
-    <lastmod>2026-09-22T01:23:30.966Z</lastmod>
+    <lastmod>2026-09-23T00:58:21.997Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/distributions/discrete-poisson.html</loc>
+    <lastmod>2026-09-23T00:56:06.744Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/explainers/vectorization.html</loc>
@@ -78,7 +82,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/math/logexp.html</loc>
-    <lastmod>2026-03-09T19:40:31.976Z</lastmod>
+    <lastmod>2026-09-23T02:20:42.945Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/math/differentiation.html</loc>
@@ -106,7 +110,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/pset-4.html</loc>
-    <lastmod>2026-09-21T23:57:03.990Z</lastmod>
+    <lastmod>2026-09-22T10:17:45.725Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/recruiter.html</loc>
@@ -126,7 +130,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/bdj-encryption.html</loc>
-    <lastmod>2026-02-21T02:26:06.982Z</lastmod>
+    <lastmod>2026-09-22T10:15:21.679Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/anya-lightbulb-factory.html</loc>
@@ -134,7 +138,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/axioms-conditional.html</loc>
-    <lastmod>2026-02-21T02:26:06.982Z</lastmod>
+    <lastmod>2026-09-22T10:15:11.822Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/bdj-circuit.html</loc>
@@ -202,7 +206,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/basic-rules/poisson-measure.html</loc>
-    <lastmod>2026-02-21T02:26:06.979Z</lastmod>
+    <lastmod>2026-09-22T12:43:33.829Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/basic-rules/xor.html</loc>
@@ -214,7 +218,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/basic-rules/xor-2.html</loc>
-    <lastmod>2026-02-21T02:26:06.980Z</lastmod>
+    <lastmod>2026-09-22T12:43:53.700Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/math-review/pareto-ish.html</loc>
@@ -358,15 +362,15 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/basic-rules/incl-excl-3.html</loc>
-    <lastmod>2026-02-21T02:26:06.979Z</lastmod>
+    <lastmod>2026-09-22T12:43:23.128Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/basic-rules/basic-mutually-exclusive-practice.html</loc>
-    <lastmod>2026-02-21T02:26:06.978Z</lastmod>
+    <lastmod>2026-09-22T12:43:02.643Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/basic-rules/set-minus.html</loc>
-    <lastmod>2026-02-21T02:26:06.979Z</lastmod>
+    <lastmod>2026-09-22T12:43:44.158Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/basic-rules/bonferroni-2.html</loc>
@@ -418,7 +422,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/testing-symptoms.html</loc>
-    <lastmod>2026-09-21T23:34:10.666Z</lastmod>
+    <lastmod>2026-09-22T10:17:08.454Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/dgs-exercise-2-3-1.html</loc>
@@ -426,7 +430,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/bdj-white-balls.html</loc>
-    <lastmod>2026-02-21T02:26:06.982Z</lastmod>
+    <lastmod>2026-09-22T10:15:25.958Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/pairwise-versus-mutual-independence.html</loc>
@@ -434,7 +438,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/car-engine.html</loc>
-    <lastmod>2026-07-06T14:05:11.526Z</lastmod>
+    <lastmod>2026-09-22T10:16:15.145Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/conditional-probability/independent-complements.html</loc>
@@ -555,5 +559,9 @@
   <url>
     <loc>https://sta240-f26.github.io/explainers/sample.html</loc>
     <lastmod>2026-03-09T19:40:31.968Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/distributions/discrete-geometric.html</loc>
+    <lastmod>2026-09-23T00:51:48.938Z</lastmod>
   </url>
 </urlset>

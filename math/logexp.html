@@ -385,12 +385,41 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Problem Sets</span></a>
+ <span class="menu-text">Distributions</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Binomial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-geometric.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geometric</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Poisson</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Problem Sets</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../problems/pset-0.html" class="sidebar-item-text sidebar-link">
@@ -419,13 +448,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">Labs</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lab/lab-1.html" class="sidebar-item-text sidebar-link">
@@ -489,7 +518,11 @@ a^{-c}&amp;=\frac{1}{a^c}\\
 a^{1/n}&amp;=\sqrt[n]{a}.
 \end{aligned}
 \]</span></p>
-<p>A particularly important function for us is the <strong>exponential function</strong> <span class="math inline">\(e^x\)</span>, where <span class="math inline">\(e\approx 2.71828\)</span> is <strong>Euler’s number</strong>. Because it is defined as an exponent, the exponential function obeys all the rules above: <span class="math inline">\(e^xe^y=e^{x+y}\)</span>, <span class="math inline">\(e^0=1\)</span>, etc.</p>
+<p>A particularly important function for us is the <strong>exponential function</strong> <span class="math inline">\(e^x\)</span>, where <span class="math inline">\(e\approx 2.71828\)</span> is <strong>Euler’s number</strong>. We can define this function by the following limit:</p>
+<p><span class="math display">\[
+e^x=\lim_{n\to\infty}\left(1+\frac{x}{n}\right)^n.
+\]</span></p>
+<p>Because it takes the form of an exponent, the exponential function obeys all the rules above: <span class="math inline">\(e^xe^y=e^{x+y}\)</span>, <span class="math inline">\(e^0=1\)</span>, etc.</p>
 <p>Here’s the graph of the function:</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span>

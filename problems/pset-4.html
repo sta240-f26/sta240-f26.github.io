@@ -88,6 +88,7 @@ window.Quarto = {
 </script>
 <meta property="og:title" content="Problem Set 4 – STA 240 Fall 2026">
 <meta property="og:description" content="Due Monday October 5 at 3PM">
+<meta property="og:image" content="https://sta240-f26.github.io/problems/images/jenkins.gif">
 <meta property="og:site_name" content="STA 240 Fall 2026">
 </head>
 <body class="nav-sidebar docked quarto-light">
@@ -345,12 +346,41 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Problem Sets</span></a>
+ <span class="menu-text">Distributions</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Binomial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-geometric.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geometric</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Poisson</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Problem Sets</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../problems/pset-0.html" class="sidebar-item-text sidebar-link">
@@ -379,13 +409,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">Labs</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lab/lab-1.html" class="sidebar-item-text sidebar-link">
@@ -455,7 +485,18 @@ window.Quarto = {
 </section><section id="problem-2" class="level2"><h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
 <p>Suppose that <span class="math inline">\(k\)</span> events <span class="math inline">\(B_1\)</span>, <span class="math inline">\(B_2\)</span>, …, <span class="math inline">\(B_k\)</span> form a partition of the sample space <span class="math inline">\(S\)</span>, and <span class="math inline">\(A\subseteq S\)</span> is some event with positive probability <span class="math inline">\(P(A)&gt;0\)</span>. Show that if <span class="math inline">\(P(B_1\mid A)&lt;P(B_1)\)</span>, then that guarantees <span class="math inline">\(P(B_i\mid A)&gt;P(B_i)\)</span> for at least one <span class="math inline">\(i\in\{1,\,2,\,...,\,k\}\)</span>.</p>
 </section><section id="problem-3" class="level2"><h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
-<p>SIGNIFICANCE MAGAZINE PROBLEM</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/jenkins.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>I know nothing about cars, and they do not interest me at all. I purchased my current vehicle in August 2019 when it had about 33,000 miles on it. Today, it has a little over 50,000 miles on it. Did I mention that I’m not a car guy? Having said that, I hate when I take my car to the shop and get manipulated into paying through the nose for some service that I don’t even understand. So let’s say that one day I pop the hood of my car and try to teach myself how the engine works. Inside, I see three components that seem important: a fan that can blow or not, a spiggot that can go up, down, or remain neutral, and a belt that can wiggle or thump. After long hours of study, I realize that the components behave as follows:</p>
+<ul>
+<li>the fan blows with probability 1/2;</li>
+<li>the spiggot goes up with probability 1/2 if the fan blows. The spiggot cannot go down if the fan blows. Otherwise, the spiggot goes up, down, or remains neutral with equal probabilities;</li>
+<li>the belt wiggles if the spiggot goes up, otherwise it wiggles with probability 1/6;</li>
+<li>The engine starts provided the belt is thumping.</li>
+</ul>
+<p>What is the probability that the engine starts?</p>
 </section><section id="problem-4" class="level2"><h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
 <p>An urn contains three white balls and two red balls. The balls are drawn from the urn one at a time, at random and without replacement, until we have drawn all of the balls from a color group. As soon as every ball of either color is drawn, we stop. Let <span class="math inline">\(X\)</span> be the number of balls drawn in this process.</p>
 <ol type="a">

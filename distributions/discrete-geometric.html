@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.34">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>contested-election – STA 240 Fall 2026</title>
+<title>Geometric distribution – STA 240 Fall 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,22 +54,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7ad8df1012cc34949a7a0ac4d54234c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-ab2af8015911caaedd078aba9a047385.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../distributions/discrete-poisson.html" rel="next">
+<link href="../distributions/discrete-binomial.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7ad8df1012cc34949a7a0ac4d54234c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ab2af8015911caaedd078aba9a047385.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<meta name="shinylive:serviceworker_dir" content="..">
+<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -121,12 +128,9 @@ window.Quarto = {
   typesetMath
 };
 </script>
-<meta property="og:title" content="STA 240 Fall 2026">
+<meta property="og:title" content="Geometric distribution – STA 240 Fall 2026">
 <meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
-<meta property="og:image" content="https://sta240-f26.github.io/problems/bank/random-variables-discrete/contested-election_files/figure-html/fig-elections-1.png">
 <meta property="og:site_name" content="STA 240 Fall 2026">
-<meta property="og:image:height" content="960">
-<meta property="og:image:width" content="1344">
 </head>
 <body class="nav-sidebar docked quarto-light">
 
@@ -135,7 +139,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../distributions/discrete-binomial.html">Distributions</a></li><li class="breadcrumb-item"><a href="../distributions/discrete-geometric.html">Geometric</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -145,8 +149,8 @@ window.Quarto = {
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../../../index.html" class="sidebar-logo-link">
-      <img src="../../../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://cmgr.oit.duke.edu/containers" title="RStudio Containers" class="quarto-navigation-tool px-1" aria-label="RStudio Containers"><i class="bi bi-code-square"></i></a>
     <a href="https://canvas.duke.edu/courses/84105" title="Canvas" class="quarto-navigation-tool px-1" aria-label="Canvas"><i class="bi bi-megaphone"></i></a>
@@ -163,7 +167,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/announcements.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/announcements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Check it out!</span></a>
   </div>
 </li>
@@ -178,43 +182,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/syllabus-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/syllabus-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/syllabus-team.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/syllabus-team.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teaching team</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/syllabus-materials.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/syllabus-materials.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Materials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/syllabus-assignments.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/syllabus-assignments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assignments and grading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/syllabus-policies.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/syllabus-policies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Policies</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/syllabus-resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/syllabus-resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">University resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
@@ -231,43 +235,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../math/greeks.html" class="sidebar-item-text sidebar-link">
+  <a href="../math/greeks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Greek alphabet</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../math/logexp.html" class="sidebar-item-text sidebar-link">
+  <a href="../math/logexp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exponents and logarithms</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../math/differentiation.html" class="sidebar-item-text sidebar-link">
+  <a href="../math/differentiation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Differentiation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../math/integration.html" class="sidebar-item-text sidebar-link">
+  <a href="../math/integration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Integration</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../math/limits.html" class="sidebar-item-text sidebar-link">
+  <a href="../math/limits.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Limits and continuity</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../math/series.html" class="sidebar-item-text sidebar-link">
+  <a href="../math/series.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sequences and series</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../math/gamma-function.html" class="sidebar-item-text sidebar-link">
+  <a href="../math/gamma-function.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Gamma function</span></a>
   </div>
 </li>
@@ -284,97 +288,97 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting started</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/hello-rstudio.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/hello-rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The lay of the land</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/quarto.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/latex.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/latex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Typing math</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/math.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/math.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic math</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/vectors.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/vectors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vectors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/lineplot.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/lineplot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Plotting lines</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/sample.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/sample.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">sample</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/if-else.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/if-else.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">if-else and logic</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/loops.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/loops.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">for loops</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/vectorization.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/vectorization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vectorization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/rng-seed.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/rng-seed.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setting a seed</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/probabilities.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/probabilities.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Computing probabilities</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/plot.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/plot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Plotting points</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/summary-statistics.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/summary-statistics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Summary statistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explainers/histogram.html" class="sidebar-item-text sidebar-link">
+  <a href="../explainers/histogram.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Histograms</span></a>
   </div>
 </li>
@@ -382,28 +386,28 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Distributions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../distributions/discrete-binomial.html" class="sidebar-item-text sidebar-link">
+  <a href="../distributions/discrete-binomial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Binomial</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../distributions/discrete-geometric.html" class="sidebar-item-text sidebar-link">
+  <a href="../distributions/discrete-geometric.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Geometric</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../distributions/discrete-poisson.html" class="sidebar-item-text sidebar-link">
+  <a href="../distributions/discrete-poisson.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Poisson</span></a>
   </div>
 </li>
@@ -420,25 +424,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../problems/pset-0.html" class="sidebar-item-text sidebar-link">
+  <a href="../problems/pset-0.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Problem Set 0</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../problems/pset-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../problems/pset-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Problem Set 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../problems/pset-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../problems/pset-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Problem Set 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../problems/pset-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../problems/pset-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Problem Set 3</span></a>
   </div>
 </li>
@@ -455,19 +459,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lab/lab-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../lab/lab-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lab/lab-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../lab/lab-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../lab/lab-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../lab/lab-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 3</span></a>
   </div>
 </li>
@@ -477,198 +481,182 @@ window.Quarto = {
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#basic-properties" id="toc-basic-properties" class="nav-link active" data-scroll-target="#basic-properties">Basic properties</a></li>
+  <li><a href="#r-commands" id="toc-r-commands" class="nav-link" data-scroll-target="#r-commands"><code>R</code> commands</a></li>
+  <li><a href="#play-around" id="toc-play-around" class="nav-link" data-scroll-target="#play-around">Play around!</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header><p>Not all election challenges are frivolous and cynical. Sometimes there are illegal/ineligible ballots in a close election, and if a candidate raises a legal challenge, a court must make a decision: certify the original results? adjust the vote totals somehow, possibly reversing the election? void the results entirely and order a new election? The concern of course is that the presence of the bad ballots might have swung the outcome, but how likely is this? Let’s model it.</p>
-<p>Imagine an election where Angela Lansbury receives <span class="math inline">\(a\)</span> votes, Bernadette Peters receives <span class="math inline">\(b\)</span> votes, and Angela provisionally wins with a margin of victory <span class="math inline">\(a-b&gt;0\)</span>. However, of the total <span class="math inline">\(a+b\)</span> votes, we learn that <span class="math inline">\(k&gt;a-b\)</span> were invalid or illegal. But we know nothing else. We do not know who these folks are, where they came from, or who they voted for. We just know that they exist. If the <span class="math inline">\(k\)</span> invalid ballots were removed from the total, what is the probability that it would flip the result of the election? If this probability is “too big,” we might start to worry.</p>
-<p>To model this, think of the original <span class="math inline">\(a+b\)</span> ballots as balls in the proverbial urn. <span class="math inline">\(a\)</span> of these balls are red, and <span class="math inline">\(b\)</span> of these balls are blue, and assume that <span class="math inline">\(a,\, b&gt;k\)</span>. Removing the <span class="math inline">\(k\)</span> invalid ballots is like drawing <span class="math inline">\(k\)</span> balls out of the urn without replacement. Since we know nothing about the illegal ballots apart from the fact that they exist, assume that each of the <span class="math inline">\(a+b\)</span> original ballots is <em>equally likely</em> to have been invalid. Next, imagine we randomly remove <span class="math inline">\(k\)</span> balls from the urn, and let <span class="math inline">\(X\)</span> be a random variable that counts the number of the removed/invalid ballots that belong to Angela. In other words, the number of red balls removed. If <span class="math inline">\(X\)</span> is large enough, it will swing the election in Bernadette’s favor.</p>
-<ol type="a">
-<li>What are the range and the pmf of the random variable <span class="math inline">\(X\)</span>?</li>
-<li>For what values of <span class="math inline">\(X\)</span> does removing <span class="math inline">\(k\)</span> ballots reverse the outcome of the election?</li>
-<li>Based on your answers to the previous parts, what is the probability that the election result is reversed when the <span class="math inline">\(k\)</span> bad ballots are removed? Give a general formula for this probability, and then compute the probability for each of the real elections listed in <a href="#tbl-elections" class="quarto-xref">Table&nbsp;1</a>;</li>
-<li>The random variable <span class="math inline">\(X\)</span> that you derived in the first part can be approximated by <span class="math inline">\(\text{Binom}(k,\,1/2)\)</span>. Explain why this approximation might be “good enough,” and verify that it’s not too bad by computing the <em>approximate</em> probability of reversal for the elections in <a href="#tbl-elections" class="quarto-xref">Table&nbsp;1</a>. Compare the approximate probabilities to the actual ones from the previous part;</li>
-<li>Let’s say that we consider the probability of reversal “too big” if it is greater than 5%. Create a plot in <code>R</code> like <a href="#fig-elections" class="quarto-xref">Figure&nbsp;1</a> with the following features:
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../distributions/discrete-binomial.html">Distributions</a></li><li class="breadcrumb-item"><a href="../distributions/discrete-geometric.html">Geometric</a></li></ol></nav><div class="quarto-title">
+<h1 class="title">Geometric distribution</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><p>The geometric distribution is based on a (possibly infinite) sequence of independent and identically distributed binary trials, each with probability of success <span class="math inline">\(p\)</span>. There are two versions:</p>
 <ul>
-<li>the margin of victory <span class="math inline">\(a-b\)</span> on the horizontal axis;</li>
-<li>the number of bad ballots <span class="math inline">\(k\)</span> on the vertical axis;</li>
-<li>scatterplot where each point represents an election in <a href="#tbl-elections" class="quarto-xref">Table&nbsp;1</a>, with the points colored according to the decision that was made in the case;</li>
-<li>divide the plane into two regions, one where the <em>approximate</em> probability of reversal is less than 0.05 and one where it is greater.</li>
+<li>sometimes, the geometric distribution is used to count the number of trials you must wait through until the first success. The range is <span class="math inline">\(\{1,\,2,\,3,\,4,\,...\}\)</span> and the PMF is <span class="math inline">\(P(X=k)=(1-p)^{k-1}p\)</span>. This is what we saw in lecture;</li>
+<li>other times, the geometric distribution is used to count the number of failures that occur <em>before</em> the first success. So the range is <span class="math inline">\(\mathbb{N}=\{0,\,1,\,2,\,3,\,4,\,...\}\)</span> and the PMF is <span class="math inline">\(P(X=k)=(1-p)^kp\)</span>. This is the version that <code>R</code> <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Geometric.html">implements</a>.</li>
 </ul>
-</li>
-<li>Write a few pithy paragraphs commenting on the following:
-<ul>
-<li>the assumptions of our lil’ model. Do you think they are innocuous? What might you change, and how?</li>
-<li>the match or lack thereof between our model and the decisions that were actually made in the real cases;</li>
-<li>How do you think a court should handle a legitimate election challenge? What are their responsibilities to the electorate, and what should they prioritize? Should they err on the side of upholding or voiding results? Should they think probabilistically? Should they consult this model, or one like it?</li>
-</ul>
-</li>
-</ol>
-<div id="tbl-elections" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-elections-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Close elections
-</figcaption><div aria-describedby="tbl-elections-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-</colgroup>
-<thead><tr class="header">
-<th>election</th>
-<th>year</th>
-<th>win</th>
-<th>loss</th>
-<th>total</th>
-<th>margin</th>
-<th>invalid</th>
-<th>decision</th>
-</tr></thead>
-<tbody>
+<section id="basic-properties" class="level2"><h2 class="anchored" data-anchor-id="basic-properties">Basic properties</h2>
+<p>For the first version of the distribution that we saw in lecture, the properties are:</p>
+<table class="caption-top table"><tbody>
 <tr class="odd">
-<td><em>Ippolito v. Power</em></td>
-<td>1968</td>
-<td>1,422</td>
-<td>1,405</td>
-<td>2,827</td>
-<td>17</td>
-<td>101</td>
-<td>void</td>
+<td><strong>Notation</strong></td>
+<td><span class="math inline">\(X\sim\text{Geom}(p)\)</span></td>
 </tr>
 <tr class="even">
-<td><em>Santucci v. Power</em></td>
-<td>1969</td>
-<td>58,076</td>
-<td>57,981</td>
-<td>116,057</td>
-<td>95</td>
-<td>448</td>
-<td>void</td>
+<td><strong>Range</strong></td>
+<td><span class="math inline">\(\{1,\,2,\,3,\,4,\,...\}\)</span></td>
 </tr>
 <tr class="odd">
-<td><em>DeMartini v. Power</em></td>
-<td>1970</td>
-<td>2,656</td>
-<td>2,594</td>
-<td>5,250</td>
-<td>62</td>
-<td>136</td>
-<td>upheld</td>
+<td><strong>Parameter space</strong></td>
+<td><span class="math inline">\(p\in[0,\,1]\)</span></td>
 </tr>
 <tr class="even">
-<td>Maine House</td>
-<td>1976</td>
-<td>1,193</td>
-<td>1,060</td>
-<td>2,253</td>
-<td>133</td>
-<td>208</td>
-<td>void</td>
+<td><strong>PMF</strong></td>
+<td><span class="math inline">\(P(X=k)=(1-p)^{k-1}p\)</span></td>
 </tr>
 <tr class="odd">
-<td>Ann Arbor mayor</td>
-<td>1977</td>
-<td>10,660</td>
-<td>10,659</td>
-<td>21,319</td>
-<td>1</td>
-<td>20</td>
-<td>void</td>
+<td><strong>Expectation</strong></td>
+<td><span class="math inline">\(1/p\)</span></td>
 </tr>
 <tr class="even">
-<td>Brunswick ME town council</td>
-<td>1980</td>
-<td>2,390</td>
-<td>2,383</td>
-<td>4,773</td>
-<td>7</td>
-<td>16</td>
-<td>upheld</td>
+<td><strong>Variance</strong></td>
+<td><span class="math inline">\(\frac{1-p}{p^2}\)</span></td>
 </tr>
-<tr class="odd">
-<td>Washington governor</td>
-<td>2004</td>
-<td>1,373,357</td>
-<td>1,373,228</td>
-<td>2,746,585</td>
-<td>129</td>
-<td>1,439</td>
-<td>upheld</td>
-</tr>
-</tbody>
-</table>
+</tbody></table></section><section id="r-commands" class="level2"><h2 class="anchored" data-anchor-id="r-commands">
+<code>R</code> commands</h2>
+<p>For the second version of the distribution, <code>R</code> provides:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Geometric.html">dgeom</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">prob</span><span class="op">)</span> <span class="co"># PMF: P(X = x)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Geometric.html">pgeom</a></span><span class="op">(</span><span class="va">q</span>, <span class="va">prob</span><span class="op">)</span> <span class="co"># CDF: P(X &lt;= q)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Geometric.html">qgeom</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">prob</span><span class="op">)</span> <span class="co"># quantile function (inverse CDF)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Geometric.html">rgeom</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">prob</span><span class="op">)</span> <span class="co"># random numbers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</figure>
-</div>
-<div class="cell" data-layout-align="center">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">elections</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>  election <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ippolito"</span>, <span class="st">"Santucci"</span>, <span class="st">"DeMartini"</span>, <span class="st">"Maine"</span>, <span class="st">"Ann Arbor"</span>, <span class="st">"Brunswick"</span>, <span class="st">"Washington"</span><span class="op">)</span>,</span>
-<span>  a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1422</span>, <span class="fl">58076</span>, <span class="fl">2656</span>, <span class="fl">1193</span>, <span class="fl">10660</span>, <span class="fl">2390</span>, <span class="fl">1373357</span><span class="op">)</span>,</span>
-<span>  b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1405</span>, <span class="fl">57981</span>, <span class="fl">2594</span>, <span class="fl">1060</span>, <span class="fl">10659</span>, <span class="fl">2383</span>, <span class="fl">1373228</span><span class="op">)</span>,</span>
-<span>  k <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">101</span>, <span class="fl">448</span>, <span class="fl">136</span>, <span class="fl">208</span>, <span class="fl">20</span>, <span class="fl">16</span>, <span class="fl">1439</span><span class="op">)</span>,</span>
-<span>  decision <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"void"</span>, <span class="st">"void"</span>, <span class="st">"upheld"</span>, <span class="st">"void"</span>, <span class="st">"void"</span>, <span class="st">"upheld"</span>, <span class="st">"upheld"</span><span class="op">)</span>,</span>
-<span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">reversal_prob_binom</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span>, <span class="va">k</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="va">cutoff</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="fl">0.5</span> <span class="op">*</span> <span class="op">(</span><span class="va">k</span> <span class="op">+</span> <span class="va">a</span> <span class="op">-</span> <span class="va">b</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="va">cutoff</span> <span class="op">-</span> <span class="fl">1</span>, <span class="va">k</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="va">margin_grid</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">150</span></span>
-<span><span class="va">k_grid</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">450</span></span>
-<span><span class="va">n_points</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">margin_grid</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">k_grid</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>  margin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">n_points</span><span class="op">)</span>,</span>
-<span>  k <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">n_points</span><span class="op">)</span>,</span>
-<span>  color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"lightblue"</span>, <span class="va">n_points</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">row</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
-<span></span>
-<span><span class="kw">for</span><span class="op">(</span><span class="va">x</span> <span class="kw">in</span> <span class="va">margin_grid</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="kw">for</span><span class="op">(</span><span class="va">y</span> <span class="kw">in</span> <span class="va">k_grid</span><span class="op">)</span><span class="op">{</span></span>
-<span>    <span class="va">row</span> <span class="op">&lt;-</span> <span class="va">row</span> <span class="op">+</span> <span class="fl">1</span></span>
-<span>    <span class="va">grid</span><span class="op">[</span><span class="va">row</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">x</span></span>
-<span>    <span class="va">grid</span><span class="op">[</span><span class="va">row</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">y</span></span>
-<span>    <span class="kw">if</span><span class="op">(</span><span class="fu">reversal_prob_binom</span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">x</span>, <span class="fl">1</span>, <span class="va">y</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">{</span></span>
-<span>      <span class="va">grid</span><span class="op">[</span><span class="va">row</span>, <span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"pink"</span></span>
-<span>    <span class="op">}</span></span>
-<span>  <span class="op">}</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">grid</span><span class="op">$</span><span class="va">margin</span>, <span class="va">grid</span><span class="op">$</span><span class="va">k</span>, col <span class="op">=</span> <span class="va">grid</span><span class="op">$</span><span class="va">color</span>, </span>
-<span>     pch <span class="op">=</span> <span class="fl">19</span>, cex <span class="op">=</span> <span class="fl">0.2</span>,</span>
-<span>     xlab <span class="op">=</span> <span class="st">"margin of victory (a - b)"</span>, </span>
-<span>     ylab <span class="op">=</span> <span class="st">"number of invalid ballots (k)"</span>,</span>
-<span>     main <span class="op">=</span> <span class="st">"Approximate probability of election reversal"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">elections</span><span class="op">$</span><span class="va">a</span> <span class="op">-</span> <span class="va">elections</span><span class="op">$</span><span class="va">b</span>, <span class="va">elections</span><span class="op">$</span><span class="va">k</span>, </span>
-<span>       pch <span class="op">=</span> <span class="fl">19</span>, col <span class="op">=</span> <span class="va">elections</span><span class="op">$</span><span class="va">col</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="op">-</span><span class="fl">7</span>, <span class="fl">450</span>, <span class="st">"&gt; 0.05"</span>, text.col <span class="op">=</span> <span class="st">"salmon"</span>, bty <span class="op">=</span> <span class="st">"n"</span>, cex <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="fl">115</span>, <span class="fl">450</span>, <span class="st">"&lt; 0.05"</span>, text.col <span class="op">=</span> <span class="st">"blue"</span>, bty <span class="op">=</span> <span class="st">"n"</span>, cex <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="fl">125</span>, <span class="fl">85</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Voided"</span>, <span class="st">"Upheld"</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">19</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span>, bty <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
-<div id="fig-elections" class="quarto-float quarto-figure quarto-figure-center anchored" width="672" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-elections-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="contested-election_files/figure-html/fig-elections-1.png" id="fig-elections" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-elections-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1
-</figcaption></figure>
-</div>
-</div>
-</div>
+</section><section id="play-around" class="level2"><h2 class="anchored" data-anchor-id="play-around">Play around!</h2>
+<pre class="shinylive-r" data-engine="r"><code><a href="https://shiny.posit.co/">#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 500
+
+library(shiny)
+
+discrete_pmf &lt;- function(x, p, xlim = c(min(x) - 1, max(x) + 1), label = "", add_mean = FALSE){
+  plot(x, p,
+       pch = 19,
+       cex = 0.5,
+       xlab = "",
+       ylab = "",
+       main = "",
+       ylim = c(0, 0.4),
+       yaxs = "i",
+       yaxt = "n",
+       xlim = xlim,
+       xaxt = "n",
+       bty = "n"
+  )
+  segments(x,
+           rep(0, length(x) + 1),
+           x1 = x,
+           y1 = p,
+           lwd = 3
+  )
+  axis(1, at = floor(xlim[1]):ceiling(xlim[2]), cex.axis = 1)
+  axis(2, at = seq(0, 1, length.out = 11), las = 1, cex.axis = 1.5)
+  legend("topright", label, bty = "n", cex = 3)
+  if(add_mean == TRUE){
+    mtext("E(X)", side = 1, at = sum(x * p), col = "red", line = 2)
+  }
+}
+
+discrete_cdf &lt;- function(x, p, xlim = c(min(x) - 1, max(x) + 1), label = ""){
+  closeddot = cumsum(p)
+  opencircle = c(0, closeddot[1:length(x)-1])
+  plot(x, closeddot, pch = 19, cex = 0.5,
+       ylim = c(0, 1),
+       ylab = "", main = "", xlab = "",
+       yaxt = "n",
+       xlim = xlim,
+       xaxt = "n",
+       #yaxs = "i", 
+       bty = "n")
+  points(x, opencircle, cex = 0.5)
+  segments(c(xlim[1], x), c(0, closeddot), c(x, xlim[2]), c(0, closeddot), lwd = 1)
+  axis(1, at = floor(xlim[1]):ceiling(xlim[2]), cex.axis = 1)
+  axis(2, at = seq(0, 1, length.out = 11), las = 1, cex.axis = 1.5)
+  legend("bottomright", label, bty = "n", cex = 3)
+}
+
+# Define UI for application that draws a histogram
+ui &lt;- fluidPage(
+  
+  # Application title
+  titlePanel("Geometric distribution CDF and PMF"),
+  
+  # Sidebar with a slider input for number of bins 
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("p",
+                  "Probability of success (p):",
+                  min = 0,
+                  max = 1,
+                  value = 0.5,
+                  step = 0.01)
+    ),
+    
+    # Show a plot of the generated distribution
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
+
+# Define server logic required to draw a histogram
+server &lt;- function(input, output) {
+  
+  output$distPlot &lt;- renderPlot({
+    
+    p &lt;- input$p
+    n &lt;- 30
+
+    par(mfrow = c(2, 1), mar = c(4, 4, 2, 2))
+    
+    discrete_cdf(1:n, dgeom(0:(n-1), p))
+    plot(1:n, dgeom(0:(n-1), p), type = "h",
+         #ylim = c(0, 1),
+        yaxs = "i",
+       yaxt = "n",
+       ylab = "",
+       xlim = c(0, n + 1),
+       xlab = "",
+       xaxt = "n",
+       bty = "n")
+    axis(1, at = 0:(n+1), cex.axis = 1)
+    axis(2, at = seq(0, 1, length.out = 11), las = 1, cex.axis = 1.5)
+    mtext("E(X)", side = 1, at = 1 / p, col = "red", line = 2)
+  })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)</a></code></pre>
 
 
-
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1066,7 +1054,17 @@ Figure&nbsp;1
       }
     }
   });
-  </script>
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../distributions/discrete-binomial.html" class="pagination-link" aria-label="Binomial">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Binomial</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../distributions/discrete-poisson.html" class="pagination-link" aria-label="Poisson">
+        <span class="nav-page-text">Poisson</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
