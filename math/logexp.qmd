@@ -23,7 +23,13 @@ a^{1/n}&=\sqrt[n]{a}.
 \end{aligned}
 $$
 
-A particularly important function for us is the **exponential function** $e^x$, where $e\approx 2.71828$ is **Euler's number**. Because it is defined as an exponent, the exponential function obeys all the rules above: $e^xe^y=e^{x+y}$, $e^0=1$, etc.
+A particularly important function for us is the **exponential function** $e^x$, where $e\approx 2.71828$ is **Euler's number**. We can define this function by the following limit:
+
+$$
+e^x=\lim_{n\to\infty}\left(1+\frac{x}{n}\right)^n.
+$$
+
+Because it takes the form of an exponent, the exponential function obeys all the rules above: $e^xe^y=e^{x+y}$, $e^0=1$, etc.
 
 Here's the graph of the function:
 
