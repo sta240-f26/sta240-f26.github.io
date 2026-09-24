@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Course materials – STA 240 Fall 2026</title>
+<title>Lab 4 – STA 240 Fall 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../syllabus/syllabus-assignments.html" rel="next">
-<link href="../syllabus/syllabus-team.html" rel="prev">
+<link href="../lab/lab-3.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -69,9 +68,38 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Course materials – STA 240 Fall 2026">
-<meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Lab 4 – STA 240 Fall 2026">
+<meta property="og:description" content="Due: end-of-lab Thursday September 24">
 <meta property="og:site_name" content="STA 240 Fall 2026">
 </head>
 
@@ -84,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../syllabus/syllabus-overview.html">Syllabus</a></li><li class="breadcrumb-item"><a href="../syllabus/syllabus-materials.html">Materials</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lab/lab-1.html">Labs</a></li><li class="breadcrumb-item"><a href="../lab/lab-4.html">Lab 4</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -123,13 +151,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Syllabus</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../syllabus/syllabus-overview.html" class="sidebar-item-text sidebar-link">
@@ -144,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../syllabus/syllabus-materials.html" class="sidebar-item-text sidebar-link active">
+  <a href="../syllabus/syllabus-materials.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Materials</span></a>
   </div>
 </li>
@@ -400,13 +428,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Labs</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lab/lab-1.html" class="sidebar-item-text sidebar-link">
@@ -427,7 +455,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lab/lab-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../lab/lab-4.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Lab 4</span></a>
   </div>
 </li>
@@ -443,17 +471,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#textbooks" id="toc-textbooks" class="nav-link active" data-scroll-target="#textbooks">Textbooks</a></li>
-  <li><a href="#technology" id="toc-technology" class="nav-link" data-scroll-target="#technology">Technology</a></li>
+  <li><a href="#task-1" id="toc-task-1" class="nav-link active" data-scroll-target="#task-1">Task 1</a></li>
+  <li><a href="#task-2" id="toc-task-2" class="nav-link" data-scroll-target="#task-2">Task 2</a></li>
+  <li><a href="#task-3" id="toc-task-3" class="nav-link" data-scroll-target="#task-3">Task 3</a></li>
+  <li><a href="#task-4" id="toc-task-4" class="nav-link" data-scroll-target="#task-4">Task 4</a></li>
+  <li><a href="#task-5" id="toc-task-5" class="nav-link" data-scroll-target="#task-5">Task 5</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../syllabus/syllabus-overview.html">Syllabus</a></li><li class="breadcrumb-item"><a href="../syllabus/syllabus-materials.html">Materials</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lab/lab-1.html">Labs</a></li><li class="breadcrumb-item"><a href="../lab/lab-4.html">Lab 4</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Course materials</h1>
+<h1 class="title">Lab 4</h1>
+<p class="subtitle lead">Due: end-of-lab Thursday September 24</p>
 </div>
 
 
@@ -470,31 +502,67 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="textbooks" class="level2">
-<h2 class="anchored" data-anchor-id="textbooks">Textbooks</h2>
-<p>You are not required to purchase a textbook for this class. However, if you wish to follow along with one, these are all good options:</p>
-<ul>
-<li><code>[Ross]</code> <em>A First Course in Probability</em> by Sheldon Ross;</li>
-<li><code>[HTZ]</code> <em>Probability and Statistical Inference</em> by Robert Hogg, Elliot Tanis, and Dale Zimmerman;</li>
-<li><code>[DS]</code> <em>Probability and Statistics</em> by Morris DeGroot and Mark Schervish;</li>
-<li><code>[Wass]</code> <em>All of Statistics</em> by Larry Wasserman.</li>
-</ul>
-<p>In the <strong>PREPARE</strong> column of the <a href="../index.html">course schedule</a>, I will indicate which parts of a book correspond to the lectures.</p>
+<p><em>Car Talk</em> (1977 - 2012) was a popular show on NPR. It featured a segment called the “Puzzler,” where the hosts would read a brain teaser and invite listeners to send in solutions for the chance to win a prize. Here is the text of one such Puzzler (original audio at around 19:19 <a href="https://www.npr.org/2015/07/11/422108689/-1528-forget-the-car-find-a-convent">here</a>):</p>
+<blockquote class="blockquote">
+<p>There’s a rare disease that’s sweeping through your town. Of all the people who are exposed to it, 0.1% of the people actually contract the disease. There are no symptoms until the disease actually occurs. However, there’s a diagnostic test that can detect the presence of the disease up to a year before it strikes. You go to your doctor, and he administers the test. It comes out positive. You say, “I’m done for!” Then you get a little bit encouraged. You say, “Wait a minute, doc, is this test 100% accurate?” Your doctor responds, “Well, not really. It’s 95% accurate.” In other words, 5% of the people who take the test will test positive but they don’t really have the disease. <strong>What are the chances that you actually have the disease?</strong></p>
+</blockquote>
+<p>In what follows, you may find some notation useful. Let <span class="math inline">\(D\)</span> denote your true disease status, and <span class="math inline">\(T\)</span> denote the result of your test. Then</p>
+<p><span class="math display">\[
+\begin{align*}
+    p &amp;= P(D=+) &amp;&amp; \text{(prevalence)}
+    \\
+    f_{-}&amp;=P(T=-\,|\, D=+) &amp;&amp; \text{(false negative rate)}
+    \\
+    f_{+}&amp;=P(T=+\,|\, D=-) &amp;&amp; \text{(false positive rate)}
+    \\
+    1-f_{-}&amp;=P(T=+\,|\, D = +) &amp;&amp; \text{(sensitivity)}
+    \\
+    1-f_{+}&amp;=P(T=-\,|\, D = -) &amp;&amp; \text{(specificity)}.
+\end{align*}
+\]</span></p>
+<section id="task-1" class="level2">
+<h2 class="anchored" data-anchor-id="task-1">Task 1</h2>
+<p>Before you read anything else below, try to solve the puzzler yourself. What do you come up with?</p>
 </section>
-<section id="technology" class="level2">
-<h2 class="anchored" data-anchor-id="technology">Technology</h2>
-<p>Lecture will largely be a low tech affair: pencil and paper should be sufficient most of the time. You should always plan to bring a laptop or tablet device to lab. In general, you will need access to a device with internet so that you can use the following:</p>
-<ul>
-<li><a href="../index.html">This course page</a> that you are on right now;</li>
-<li><code>R</code>/<code>RStudio</code> via the <a href="https://cmgr.oit.duke.edu/containers">Duke Container Manager</a>;</li>
-<li><a href="https://canvas.duke.edu/courses/84105">Canvas</a>, through which you can access…
-<ul>
-<li><a href="https://www.gradescope.com/courses/1351871">Gradescope</a>;</li>
-<li><a href="https://edstem.org/us/courses/96707/discussion">Ed Discussion</a>;</li>
-</ul></li>
-<li><a href="https://duke.zoom.us/">Zoom</a> (e.g.&nbsp;for remote office hours).</li>
-</ul>
-<p>If access to technology becomes a concern for you during the semester, contact the instructor immediately to discuss options.</p>
+<section id="task-2" class="level2">
+<h2 class="anchored" data-anchor-id="task-2">Task 2</h2>
+<p>Explain the correct way to solve this problem. Exactly what probability are we asked to compute, and what formula should we apply to do it? Does the prompt actually provide enough information to ultimately get the job done?</p>
+</section>
+<section id="task-3" class="level2">
+<h2 class="anchored" data-anchor-id="task-3">Task 3</h2>
+<p>Beneath the fold is the solution that the hosts ultimately revealed.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The show’s solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Original audio at around 20:30 <a href="https://www.npr.org/2015/07/11/422108689/-1528-forget-the-car-find-a-convent">here</a>:</p>
+<blockquote class="blockquote">
+<p>Let’s say 1000 people take the test. Fifty people will test positive and yet they will not have it. One will test positive and have it. So your chances of actually having it, even though you tested positive, are one in 51, or a little less than 2%.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<p>So, what do you think? Did they get it right? Explain how the show interpreted the information given in the Puzzler, and explain what arithmetic formula they implicitly applied in order to compute their answer.</p>
+</section>
+<section id="task-4" class="level2">
+<h2 class="anchored" data-anchor-id="task-4">Task 4</h2>
+<p>Explain two things:</p>
+<ol type="a">
+<li>Under what conditions is the formula that the show used actually an <em>upper bound</em> on the correct answer?</li>
+<li>Even though their number is not exactly correct, why might an upper bound on the true probability still be a useful thing to calculate?</li>
+</ol>
+</section>
+<section id="task-5" class="level2">
+<h2 class="anchored" data-anchor-id="task-5">Task 5</h2>
+<p>So, the show’s answer, while wrong, could still be potentially useful upper bound on the true probability. Neat! But how wrong is it, even? To get a sense of this, <a href="../explainers/lineplot.html">use <code>R</code></a> to create some line plots with the prevalence <span class="math inline">\(p\in[0,\, 1]\)</span> on the horizontal axis and the true and approximate probabilities for different values of <span class="math inline">\(f_-\)</span> and <span class="math inline">\(f_+\)</span> on the vertical axis. Mix-and-match <span class="math inline">\(f_-,\, f_+\in\{0.1,\, 0.2\}\)</span>, and comment on the difference between the two curves.</p>
 
 
 </section>
@@ -901,14 +969,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../syllabus/syllabus-team.html" class="pagination-link" aria-label="Teaching team">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Teaching team</span>
+      <a href="../lab/lab-3.html" class="pagination-link" aria-label="Lab 3">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 3</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../syllabus/syllabus-assignments.html" class="pagination-link" aria-label="Assignments and grading">
-        <span class="nav-page-text">Assignments and grading</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
