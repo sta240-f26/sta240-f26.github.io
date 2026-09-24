@@ -105,12 +105,24 @@ q_no <- q_no + 1
 
 {{< include bank/random-variables-discrete/ross-rv.qmd >}}
 
+::: callout-important
+## Update (9/24/2026)
+
+Ignore the last two parts. We haven't gotten there yet. 
+:::
+
 ```{r}
 #| echo: false
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## ~~Problem `{r} q_no`~~
+
+::: callout-important
+## Update (9/24/2026)
+
+We didn't get far enough for this either, so I am moving it to Problem Set 4. 
+:::
 
 {{< include bank/random-variables-discrete/random-exam.qmd >}}
 
