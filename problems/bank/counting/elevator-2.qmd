@@ -2,7 +2,7 @@
 
 ::: {.column width="70%"}
 
-In the land of Mordor, the dreaded fortress of Barad-dûr has a basement and 19 above-ground floors. Every week, a group of 7 trolls meet in the basement for an Alcoholics Anonymous meeting. Afterward, they board the elevator, and they each randomly select one of the above-ground floors to visit, independently of one another. Multiple trolls might select the same floor.
+In the land of Mordor, the dreaded fortress of Barad-dûr has a basement and 19 above-ground floors. Every week, a group of 7 trolls meet in the basement for an Alcoholics Anonymous meeting. Afterward, they board the elevator, and they each randomly select one of the *above-ground* floors to visit, independently of one another. Multiple trolls might select the same floor.
 
 Compute the probability that...
 
