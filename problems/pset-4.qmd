@@ -53,6 +53,15 @@ q_no <- q_no + 1
 
 ## Problem `{r} q_no`
 
+{{< include bank/random-variables-discrete/random-exam.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
 {{< include bank/random-variables-discrete/bdj-rv.qmd >}}
 
 ```{r}
