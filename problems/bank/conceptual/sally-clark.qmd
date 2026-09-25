@@ -1,6 +1,6 @@
 Here are some short readings about [the case of Sally Clark and Roy Meadow](/slides/2026-08-24-welcome.html#/sally-clark-1964---2007), as well as something called the *prosecutor's fallacy*:
 
-- Grimes (2023): "[Bad Science and Bad Statistics in the Courtroom Convict Innocent People](https://www.scientificamerican.com/article/bad-science-and-bad-statistics-in-the-courtroom-convict-innocent-people/)," *Scientific American*;
+- Grimes (2023): "[Bad Science and Bad Statistics in the Courtroom Convict Innocent People](/readings/grimes-2023-sciam.pdf)," *Scientific American*;
 - Carriquiry (2018): "[Misuse of statistics in the courtroom: the Sally Clark case](https://forensicstats.org/blog/misuse-of-statistics-in-the-courtroom-the-sally-clark-case)," CSAFE;
 - Westreich & Iliinsky (2014): "[Epidemiology visualized: the prosecutor's fallacy](/readings/westreich-iliinsky-2014-aje.pdf)," *American Journal of Epidemiology*;
 - [AP Dawid](https://en.wikipedia.org/wiki/Philip_Dawid)'s [statement](/readings/dawid-clark-statement.pdf) during the Clark appeal.
