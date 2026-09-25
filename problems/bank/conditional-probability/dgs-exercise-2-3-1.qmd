@@ -1,1 +1,7 @@
-Suppose that $k$ events $B_1$, $B_2$, ..., $B_k$ form a partition of the sample space $S$, and $A\subseteq S$ is some event with positive probability $P(A)>0$. Show that if $P(B_1\mid A)<P(B_1)$, then that guarantees $P(B_i\mid A)>P(B_i)$ for at least one $i\in\{1,\,2,\,...,\,k\}$.
+Suppose that $k$ events $A_1$, $A_2$, ..., $A_k$ form a partition of the sample space $S$, and $B\subseteq S$ is some event with positive probability $P(B)>0$. Show that if $P(A_1\mid B)<P(A_1)$, then that guarantees $P(A_i\mid B)>P(A_i)$ for at least one $i\in\{1,\,2,\,...,\,k\}$.
+
+::: {.callout-tip collapse="true"}
+## Hint
+
+Don't forget that both the marginal measure $A\mapsto P(A)$ and the conditional measure $A\mapsto P(A\mid B)$ are valid probability measures that obey all of the axioms. You showed that on [Problem Set 3](/problems/pset-3.html#problem-4).
+:::
