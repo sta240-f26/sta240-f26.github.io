@@ -3,6 +3,8 @@ title: "Support your classmates!"
 format: html
 ---
 
+{{< include announcements/rockapella.qmd >}}
+
 {{< include announcements/duke-music-day.qmd >}}
 
 {{< include announcements/chronicle.qmd >}}
