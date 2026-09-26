@@ -83,7 +83,7 @@ q_no <- q_no + 1
 
 ## Problem `{r} q_no`
 
-
+indicators
 
 ```{r}
 #| echo: false
@@ -92,7 +92,7 @@ q_no <- q_no + 1
 
 ## Problem `{r} q_no`
 
-
+???
 
 ```{r}
 #| echo: false
