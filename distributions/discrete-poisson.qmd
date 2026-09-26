@@ -146,6 +146,119 @@ Notice that the shape of the PMF becomes more like the bell curve as $\lambda$ g
 ## Derivations
 
 ::: {.callout-note collapse="true"}
+## Connecting the binomial and the Poisson
+
+Fix $\lambda>0$ and consider $X\sim\text{Binom}(n,\,\lambda / n)$. Then for any $k\leq n$, we have 
+
+$$
+\begin{aligned}
+P(X=k)
+&=
+\binom{n}{k}
+\left(\frac{\lambda}{n}\right)^k
+\left(1-\frac{\lambda}{n}\right)^{n-k}
+\\
+&=
+\binom{n}{k}
+\frac{\lambda^k}{n^k}
+\left(1-\frac{\lambda}{n}\right)^{n-k}
+\\
+&=
+\binom{n}{k}
+\frac{\lambda^k}{n^k}
+\left(1-\frac{\lambda}{n}\right)^{n}
+\left(1-\frac{\lambda}{n}\right)^{-k}
+\\
+&=
+\frac{n!}{k!(n-k)!}
+\frac{\lambda^k}{n^k}
+\left(1-\frac{\lambda}{n}\right)^{n}
+\left(1-\frac{\lambda}{n}\right)^{-k}
+\\
+&=
+\frac{\lambda^k}{k!}
+\left(1-\frac{\lambda}{n}\right)^{n}
+\frac{n!}{n^k(n-k)!}
+\left(1-\frac{\lambda}{n}\right)^{-k}
+\\
+&=
+\frac{\lambda^k}{k!}
+\left(1-\frac{\lambda}{n}\right)^{n}
+\frac{n(n-1)(n-2)\cdots(n-k+1)}{n^k}
+\left(1-\frac{\lambda}{n}\right)^{-k}
+\\
+&=
+\frac{\lambda^k}{k!}
+\left(1-\frac{\lambda}{n}\right)^{n}
+\frac{n(n-1)(n-2)\cdots(n-k+1)}{n\times n\times n\times\cdots\times n}
+\left(1-\frac{\lambda}{n}\right)^{-k}
+\\
+&=
+\frac{\lambda^k}{k!}
+\left(1-\frac{\lambda}{n}\right)^{n}
+\left(\frac{n}{n}\right)\left(\frac{n-1}{n}\right)\left(\frac{n-2}{n}\right)\cdots \left(\frac{n-k+1}{n}\right)
+\left(1-\frac{\lambda}{n}\right)^{-k}
+\\
+&=
+\frac{\lambda^k}{k!}
+\left(1-\frac{\lambda}{n}\right)^{n}
+(1)\left(1-\frac{1}{n}\right)\left(1-\frac{2}{n}\right)\cdots \left(1-\frac{k-1}{n}\right)
+\left(1-\frac{\lambda}{n}\right)^{-k}
+.
+\end{aligned}
+$$
+
+Take the limit as $n\to\infty$ and you get
+
+$$
+\begin{aligned}
+\lim_{n\to\infty}
+P(X=k)
+&=
+\lim_{n\to\infty}
+\frac{\lambda^k}{k!}
+\left(1-\frac{\lambda}{n}\right)^{n}
+\left(1-\frac{1}{n}\right)\left(1-\frac{2}{n}\right)\cdots \left(1-\frac{k-1}{n}\right)
+\left(1-\frac{\lambda}{n}\right)^{-k}
+\\
+&=
+\frac{\lambda^k}{k!}
+\lim_{n\to\infty}
+\left(1-\frac{\lambda}{n}\right)^{n}
+\left(1-\frac{1}{n}\right)\left(1-\frac{2}{n}\right)\cdots \left(1-\frac{k-1}{n}\right)
+\left(1-\frac{\lambda}{n}\right)^{-k}
+\\
+&=
+\frac{\lambda^k}{k!}
+\underbrace{\lim_{n\to\infty}
+\left(1-\frac{\lambda}{n}\right)^{n}}_{e^{-\lambda}}
+\times \underbrace{\lim_{n\to\infty}
+\left(1-\frac{1}{n}\right)}_{1}
+\times \underbrace{\lim_{n\to\infty}\left(1-\frac{2}{n}\right)}_{1}\cdots 
+\times \underbrace{\lim_{n\to\infty}\left(1-\frac{k-1}{n}\right)}_{1}
+\times \underbrace{\lim_{n\to\infty}\left(1-\frac{\lambda}{n}\right)^{-k}}_{1}.
+\\
+&=
+\frac{\lambda^k}{k!}
+e^{-\lambda}.
+\end{aligned}
+$$
+
+We used the fact that "[the limit of a product is the product of the limits](/math/series.html#limit-rules)" (provided the separate limits exist and are finite, which they all are here), and we needed to recall the *definition* of the [exponential function](/math/logexp.html):
+
+$$
+e^x=\lim_{n\to\infty}\left(1+\frac{x}{n}\right)^n.
+$$
+
+:::
+
+::: {.callout-tip collapse="true"}
+## Checking that the probabilities sum to 1
+
+
+:::
+
+::: {.callout-note collapse="true"}
 ## The mean (via the definition)
 
 Massage and squint until you recognize the Taylor series of $e^x$:
