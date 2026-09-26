@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.34">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Problem Set 4 – STA 240 Fall 2026</title>
+<title>Midterm 1 Study Guide – STA 240 Fall 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -86,10 +86,12 @@ window.Quarto = {
   typesetMath
 };
 </script>
-<meta property="og:title" content="Problem Set 4 – STA 240 Fall 2026">
-<meta property="og:description" content="Due Monday October 5 at 3PM">
-<meta property="og:image" content="https://sta240-f26.github.io/problems/images/jenkins.gif">
+<meta property="og:title" content="Midterm 1 Study Guide – STA 240 Fall 2026">
+<meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
+<meta property="og:image" content="https://sta240-f26.github.io/problems/images/dart-board.png">
 <meta property="og:site_name" content="STA 240 Fall 2026">
+<meta property="og:image:height" content="471">
+<meta property="og:image:width" content="479">
 </head>
 <body class="nav-sidebar docked quarto-light">
 
@@ -98,7 +100,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Problem Set 4</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Midterm 1 Study Guide</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -450,24 +452,55 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#problem-0" id="toc-problem-0" class="nav-link active" data-scroll-target="#problem-0">Problem 0</a></li>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
+<li>
+<a href="#probability-spaces" id="toc-probability-spaces" class="nav-link active" data-scroll-target="#probability-spaces">Probability spaces</a>
+  <ul class="collapse">
+<li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
   <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
-  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
+  <li><a href="#want-more-review" id="toc-want-more-review" class="nav-link" data-scroll-target="#want-more-review">Want more review?</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#counting" id="toc-counting" class="nav-link" data-scroll-target="#counting">Counting</a>
+  <ul class="collapse">
+<li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
   <li><a href="#problem-7" id="toc-problem-7" class="nav-link" data-scroll-target="#problem-7">Problem 7</a></li>
   <li><a href="#problem-8" id="toc-problem-8" class="nav-link" data-scroll-target="#problem-8">Problem 8</a></li>
   <li><a href="#problem-9" id="toc-problem-9" class="nav-link" data-scroll-target="#problem-9">Problem 9</a></li>
-  <li><a href="#problem-10" id="toc-problem-10" class="nav-link" data-scroll-target="#problem-10">Problem 10</a></li>
-  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#want-more-review-1" id="toc-want-more-review-1" class="nav-link" data-scroll-target="#want-more-review-1">Want more review?</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#conditional-probability" id="toc-conditional-probability" class="nav-link" data-scroll-target="#conditional-probability">Conditional probability</a>
+  <ul class="collapse">
+<li><a href="#problem-10" id="toc-problem-10" class="nav-link" data-scroll-target="#problem-10">Problem 10</a></li>
+  <li><a href="#problem-11" id="toc-problem-11" class="nav-link" data-scroll-target="#problem-11">Problem 11</a></li>
+  <li><a href="#problem-12" id="toc-problem-12" class="nav-link" data-scroll-target="#problem-12">Problem 12</a></li>
+  <li><a href="#problem-13" id="toc-problem-13" class="nav-link" data-scroll-target="#problem-13">Problem 13</a></li>
+  <li><a href="#problem-14" id="toc-problem-14" class="nav-link" data-scroll-target="#problem-14">Problem 14</a></li>
+  <li><a href="#problem-15" id="toc-problem-15" class="nav-link" data-scroll-target="#problem-15">Problem 15</a></li>
+  <li><a href="#problem-16" id="toc-problem-16" class="nav-link" data-scroll-target="#problem-16">Problem 16</a></li>
+  <li><a href="#want-more-review-2" id="toc-want-more-review-2" class="nav-link" data-scroll-target="#want-more-review-2">Want more review?</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link" data-scroll-target="#discrete-random-variables">Discrete random variables</a>
+  <ul class="collapse">
+<li><a href="#problem-17" id="toc-problem-17" class="nav-link" data-scroll-target="#problem-17">Problem 17</a></li>
+  <li><a href="#problem-18" id="toc-problem-18" class="nav-link" data-scroll-target="#problem-18">Problem 18</a></li>
+  <li><a href="#problem-19" id="toc-problem-19" class="nav-link" data-scroll-target="#problem-19">Problem 19</a></li>
+  <li><a href="#problem-20" id="toc-problem-20" class="nav-link" data-scroll-target="#problem-20">Problem 20</a></li>
+  <li><a href="#want-more-review-3" id="toc-want-more-review-3" class="nav-link" data-scroll-target="#want-more-review-3">Want more review?</a></li>
+  </ul>
+</li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Problem Set 4</h1>
-<p class="subtitle lead">Due Monday October 5 at 3PM</p>
+<h1 class="title">Midterm 1 Study Guide</h1>
 </div>
 
 
@@ -481,140 +514,290 @@ window.Quarto = {
   
 
 
-</header><blockquote class="blockquote">
-<p><a href="https://doi.org/10.1007/978-0-387-21736-9">Larry Wasserman</a>: “At a certain point in most probability courses, the sample space is rarely mentioned anymore and we work directly with random variables. But you should keep in mind that the sample space is really there, lurking in the background.”</p>
-</blockquote>
-<section id="problem-0" class="level2"><h2 class="anchored" data-anchor-id="problem-0">Problem 0</h2>
-<p>Recommend some music for us to listen to while we grade this.</p>
-</section><section id="problem-1" class="level2"><h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
-<p>CONCEPTUAL</p>
-</section><section id="problem-2" class="level2"><h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
-<p>Suppose that <span class="math inline">\(k\)</span> events <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2\)</span>, …, <span class="math inline">\(A_k\)</span> form a partition of the sample space <span class="math inline">\(S\)</span>, and <span class="math inline">\(B\subseteq S\)</span> is some event with positive probability <span class="math inline">\(P(B)&gt;0\)</span>. Show that if <span class="math inline">\(P(A_1\mid B)&lt;P(A_1)\)</span>, then that guarantees <span class="math inline">\(P(A_i\mid B)&gt;P(A_i)\)</span> for at least one <span class="math inline">\(i\in\{1,\,2,\,...,\,k\}\)</span>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+</header><div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Hint
+Under construction!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is currently a draft. Until a formal announcement is issued on Canvas, everything below is subject to change.</p>
+</div>
+</div>
+<p>Midterm Exam 1 will take place on <strong>Thursday October 8</strong> during your lab section. There will be 7 problems, and they will break down as follows:</p>
+<ol start="0" type="1">
+<li>(an undisclosed check on your visual intuition)</li>
+<li>probability rules</li>
+<li>counting</li>
+<li>counting</li>
+<li>conditional probability</li>
+<li>conditional probability</li>
+<li>discrete random variables</li>
+</ol>
+<p>Below are new practice problems for each of these areas, as well as guidance about what course materials to refer to if you want more review on a particular topic.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Give your cheat sheet some TLC!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On the exam you are allowed both sides of one 8.5” x 11” sheet of notes, prepared by you and you alone. You can create it however you wish: handwritten, on a computer, etc.</p>
+<p>Do not skimp on the cheat sheet! Students in past semesters have neglected their cheat sheets to their detriment. Get an early start, and give it some elbow grease.</p>
+</div>
+</div>
+<section id="probability-spaces" class="level1"><h1>Probability spaces</h1>
+<section id="problem-1" class="level2"><h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p>Out of the students in a class, 60% are geniuses, 70% love chocolate, and 40% fall into both categories. Determine the probability that a randomly selected student is neither a genius nor a chocolate lover.</p>
+</section><section id="problem-2" class="level2"><h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<p>Suppose that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are mutually exclusive events for which <span class="math inline">\(P(A) = 0.3\)</span> and <span class="math inline">\(P(B) = 0.5\)</span>. What is the probability that…</p>
+<ol type="a">
+<li>either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> occurs?</li>
+<li>
+<span class="math inline">\(A\)</span> occurs but <span class="math inline">\(B\)</span> does not?</li>
+<li>both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> occur?</li>
+<li>Are <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> independent? Why or why not?</li>
+</ol></section><section id="problem-3" class="level2"><h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<p>Let <span class="math inline">\(S\)</span> be a sample space, let <span class="math inline">\(A,\, B\subseteq S\)</span> be events, and define a new set</p>
+<p><span class="math display">\[
+A-B = \{x\in S:x\in A\text{ and }x\notin B\}.
+\]</span></p>
+<ol type="a">
+<li>Draw a well-labeled picture of <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(S\)</span>, and the set <span class="math inline">\(A-B\)</span>;</li>
+<li>Write down an equivalent expression for <span class="math inline">\(A-B\)</span> that only makes use of our three basic operations: union, intersection, and complement;</li>
+<li>Prove that <span class="math inline">\(P(A-B)=P(A)-P(A\cap B)\)</span>.</li>
+</ol></section><section id="problem-4" class="level2"><h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<p>Let <span class="math inline">\(A,\, B\subseteq S\)</span> be events in a probability space that might overlap. I claim that:</p>
+<p><span class="math display">\[
+P(A^c\cap B^c)\geq 1 - P(A)-P(B).
+\]</span></p>
+<ol type="a">
+<li>Use words and pictures to explain why the claim is true;</li>
+<li>Prove the claim. Make sure you are explicit about which rules or axioms you are using.</li>
+</ol></section><section id="problem-5" class="level2"><h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p>Let <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> be three arbitrary events, and let <span class="math inline">\(D\)</span> denote the event that “exactly one of these three events occurs.”</p>
+<ol type="a">
+<li>Draw a cartoon of <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>, and <span class="math inline">\(D\)</span>;</li>
+<li>Use the three basic set operations (union, intersection, and complement) to express <span class="math inline">\(D\)</span> in terms of <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span>;</li>
+<li>Show that</li>
+</ol>
+<p><span class="math display">\[
+P(D)=P(A) + P(B) + P(C) - 2P(A \cap B) - 2P(A \cap C) - 2P(B \cap C) + 3P(A \cap B \cap C).
+\]</span></p>
+</section><section id="want-more-review" class="level2"><h2 class="anchored" data-anchor-id="want-more-review">Want more review?</h2>
+<ul>
+<li>
+<a href="../lecture-notes/02-probability-spaces.pdf">Lecture notes</a> on probability spaces, axioms, and rules;</li>
+<li>
+<a href="../problems/pset-1.html">Problem Set 1</a>: problems 4 - 8;</li>
+<li>
+<a href="../problems/pset-2.html">Problem Set 2</a>: problems 2 - 3.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Advice for writing proofs
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Don’t forget that both the marginal measure <span class="math inline">\(A\mapsto P(A)\)</span> and the conditional measure <span class="math inline">\(A\mapsto P(A\mid B)\)</span> are valid probability measures that obey all of the axioms. You showed that on <a href="../problems/pset-3.html#problem-4">Problem Set 3</a>.</p>
-</div>
-</div>
-</div>
-</section><section id="problem-3" class="level2"><h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/jenkins.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
-</figure>
-</div>
-<p>I know nothing about cars, and they do not interest me at all. I purchased my current vehicle in August 2019, the same month I started my PhD. Back then it had about 33,000 miles on it. Today, it has a little over 52,000 miles on it. Did I mention that I’m not a car guy? Having said that, I hate when I take my car to the shop and get manipulated into paying through the nose for some service that I don’t even understand. So let’s say that one day I pop the hood of my car and try to teach myself how the engine works. Inside, I see three components that seem important: a fan that can blow or not, a spiggot that can go up, down, or remain neutral, and a belt that can wiggle or thump. After long hours of study, I realize that the components behave as follows:</p>
-<ul>
-<li>the fan blows with probability 1/2;</li>
-<li>the spiggot goes up with probability 1/2 if the fan blows. The spiggot cannot go down if the fan blows. Otherwise, the spiggot goes up, down, or remains neutral with equal probabilities;</li>
-<li>the belt wiggles if the spiggot goes up, otherwise it wiggles with probability 1/6;</li>
-<li>The engine starts provided the belt is thumping.</li>
-</ul>
-<p>What is the probability that the engine starts?</p>
-</section><section id="problem-4" class="level2"><h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
-<p>An urn contains three white balls and two red balls. The balls are drawn from the urn one at a time, at random and without replacement, until we have drawn all of the balls from a color group. As soon as every ball of either color is drawn, we stop. Let <span class="math inline">\(X\)</span> be the number of balls drawn in this process.</p>
-<ol type="a">
-<li>What is the range of the random variable <span class="math inline">\(X\)</span>?</li>
-<li>What is the probability mass function of <span class="math inline">\(X\)</span>?</li>
-<li>Sketch the CDF of <span class="math inline">\(X\)</span>.</li>
-<li>Compute <span class="math inline">\(E(X)\)</span>.</li>
-<li>Three balls were drawn, and then we stopped because all of one of the colors was drawn. Given this, what is the probability that the last ball we drew was red?</li>
-</ol></section><section id="problem-5" class="level2"><h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/morpheus.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
-</figure>
-</div>
-<blockquote class="blockquote">
-<p>I dreamed last night I got on the boat to heaven<br>And by some chance I had brought my dice along</p>
-<p><a href="https://youtu.be/6-ICTHg4Pw8?si=tNaFiMrkv4I5txKl"><em>Guys and Dolls</em></a></p>
-</blockquote>
-<p>Alas. You settle in for what you think will be a good night’s beauty sleep, and you end up having one of those awful dreams where you must take a test you haven’t studied for. It’s a multiple choice test, each question has five options with only one correct answer, there are fifty questions in total, and each is worth one point. The god Morpheus has kindly seen fit to leave a fair, five-sided die in your dream pocket, and so your dream self decides to do the only thing you can do: use the die to answer each of the exam questions completely at random.</p>
-<ol type="a">
-<li>Let <span class="math inline">\(X\)</span> be the number of questions you answer correctly. What is the distribution of <span class="math inline">\(X\)</span>?</li>
-<li>Plot the probability mass function of <span class="math inline">\(X\)</span>;</li>
-<li>What is the expected number of questions you will answer correctly?</li>
-<li>What is the probability that you get at least a C- on the exam?</li>
-</ol></section><section id="problem-6" class="level2"><h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
-<p>King Elessar summons the wizard Gandalf to court, seeking his counsel. A foul plague has been incapacitating the soldiers. King Elessar asks Gandalf if there exists a test for the disease that is 100% sensitive <em>and</em> 100% specific (ie perfect). Gandalf says that a perfect blood test does exist, but it is very expensive, requiring the venom of a special lizard found only in the Morgul Vale. Each blood test would cost one gold piece, but the Royal Purse only has 500 gold pieces to spare, and there are 1000 soldiers that need to be tested. Gandalf sleeps on it and returns the next day with a plan for testing all of them that won’t break the bank:</p>
+<p>I included this at the end of the <a href="../lecture-notes/02-probability-spaces.pdf">lecture notes</a> on probability rules:</p>
 <ol type="1">
-<li>Take a blood sample from each of the 1000 soldiers;</li>
-<li>Split each of these samples into two parts;</li>
-<li>Take one part of each sample and mix batches of ten of the samples together to create 100 mixed samples.</li>
-<li>Test each of those mixed samples;</li>
-<li>A few things could happen:
+<li>
+<strong>Draw a picture</strong>. Probability behaves like area, so see if you can make sense of the theorem statement by drawing and shading blobs;</li>
+<li>
+<strong>Take hints from the statement</strong>. The statement of the theorem to be proven often gives a hint at what tools will be used. In “<span class="math inline">\(P(A)=1-P(A^c)\)</span>,” the presence of “1” tips you off that the first axiom will probably show up. In “<span class="math inline">\(P(A)\leq P(B)\)</span>,” the presence of an inequality tips you off that the second axiom will probably show up, and so on. In the future for example, if the theorem statement has probabilities <em>subtracted</em> somewhere, maybe that’s a clue that the complement rule or inclusion/exclusion will be used;</li>
+<li>
+<strong>Look out for “the move.”</strong> I cannot guarantee that in 100% of all proofs, you will take a disjoint decomposition and apply additivity, but if that’s not literally what you do, you’re probably still using some other tool that was itself <em>enabled</em> by “the move” (eg. the complement rule). Anyway, “the move” is all about taking complicated sets and busting them into simpler disjoint pieces so that you can <em>add</em>. It’s always worth a try.</li>
+</ol>
+<p>Furthermore, the <a href="../lecture-notes/02-probability-spaces.pdf">lecture notes</a> on probability rules provide models for the structure, level of detail, and amount of discussion that is generally expected, though you will get some grace on a timed exam.</p>
+</div>
+</div>
+</div>
+</section></section><section id="counting" class="level1"><h1>Counting</h1>
+<section id="problem-6" class="level2"><h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
+<p>Suppose you are dealt six cards from a well-shuffled, standard deck of 52.</p>
+<ol type="a">
+<li>What is the probability of getting 3 of one rank and 3 of another?</li>
+<li>What is the probability of getting 4 of one rank and 2 of another?</li>
+<li>What is the probability of getting 3 aces and 3 of another rank?</li>
+<li>What is the probability of getting 4 of one rank and 2 aces?</li>
+<li>What is the probability that all 6 cards are in the same suit?</li>
+<li>What is the probability that all 6 cards are consecutive (ie a hand with 3 hearts, 4 spades, 5 spades, 6 clubs, 7 hearts, and the 8 diamonds)? Assume that the ace can only be the high card;</li>
+<li>What is the answer to the previous question if we allow the ace to be either high or low?</li>
+<li>What is the probability of receiving the ace, king, queen, jack, 10 and 9 all in hearts?</li>
+</ol></section><section id="problem-7" class="level2"><h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
+<p>Congratulations! You and two of your friends are now proud owners of brand-new library cards. In order to use your new cards, all you and your friends need to do is create four-digit PINs, with numbers <span class="math inline">\(0\)</span> - <span class="math inline">\(9\)</span> available (in theory) at each position. Predictably, all of you have different ideas of what an acceptable PIN is (odd or even, leading zeros or not, etc.).</p>
+<ol type="a">
+<li>You are fairly chill about what you want in a PIN – all you want is an even PIN, and you’re totally fine if it starts with a zero. How many possible PINs fit your preference?</li>
+<li>One of your friends is a bit more persnickety – they want a PIN divisible by <span class="math inline">\(5\)</span>, and they cannot stand PINs starting with a zero. How many possible PINs fit this friend’s preferences?</li>
+<li>Your other friend has some more…particular preferences – they have an affinity for the number <span class="math inline">\(16\)</span> and thus want the digits <span class="math inline">\(1\)</span> and <span class="math inline">\(6\)</span> to appear in that exact order at some point in the PIN. Further, they also despise PINs starting with a zero. How many possible PINs fit this friend’s preferences?</li>
+</ol></section><section id="problem-8" class="level2"><h2 class="anchored" data-anchor-id="problem-8">Problem 8</h2>
+<p>The United States Senate contains two senators – one senior and one junior – from each of the <span class="math inline">\(50\)</span> states.</p>
+<ol type="a">
+<li>If a committee of eight senators is selected, what is the probability that it will contain at least one of the two senators from a certain specified state?</li>
+<li>If a committee of twenty senators is selected, what is the probability it will contain <span class="math inline">\(15\)</span> junior senators and <span class="math inline">\(5\)</span> senior senators?</li>
+<li>What is the probability that a group of <span class="math inline">\(50\)</span> senators selected at random will contain one senator from each state?</li>
+</ol></section><section id="problem-9" class="level2"><h2 class="anchored" data-anchor-id="problem-9">Problem 9</h2>
+<p>A deck of 52 cards contains four aces. If the cards are shuffled and distributed in a random manner to four players so that each player receives 13 cards, what is the probability that all four aces will be received by the same player?</p>
+</section><section id="want-more-review-1" class="level2"><h2 class="anchored" data-anchor-id="want-more-review-1">Want more review?</h2>
 <ul>
-<li>If the test gives a negative result, we know all of the original ten samples are clear, and we can move on;</li>
-<li>If the test gives a positive result, then we know at least one of the original ten samples is positive. In that case we test the second part of the sample for each of the ten soldiers. We can then identify which soldiers are positive.</li>
+<li>
+<a href="../lecture-notes/03-counting.pdf">Lecture notes</a> on counting theory;</li>
+<li>
+<a href="../lab/lab-2.html">Lab 2</a> worked examples;</li>
+<li>
+<a href="../lab/lab-3.html">Lab 3</a> worked examples;</li>
+<li>
+<a href="../problems/pset-1.html">Problem Set 1</a>: problems 9 - 10;</li>
+<li>
+<a href="../problems/pset-2.html">Problem Set 2</a>: problems 4 - 8;</li>
+<li>
+<a href="../problems/pset-3.html">Problem Set 3</a>: problems 2 - 3;</li>
+<li>Odd-numbered exercises in DeGroot &amp; Schervish Chapters 1.6 - 1.8, 1.12.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Advice for solving counting problems
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>I included this at the top of <a href="../lab/lab-3.html">Lab 3</a>:</p>
+<ol type="1">
+<li>(<strong>do as little counting as possible</strong>) Let’s face it: counting, like integration, is a huge pain in the ass. So we don’t want to do any more than we have to. Your first step should always be to simplify the problem as far as you possibly can using set theory and the probability rules: is this event the union of other events? are those events disjoint? might the complement be <em>easier</em> to work with? is there a <em>partition</em> that could help me? Only after you have exhausted all of those options should you count;</li>
+<li>(<strong>clarify what a single outcome consists of</strong>) If I am studying the result of four coin flips, a single outcome is not H versus T. It’s a string like HHTH or TTTH. Once you’re clear on what an outcome consists of, decompose it into its distinct traits. In this example, each of the four flips is a trait. Once you’ve decomposed an outcome into traits, you can invoke the <em>counting principle</em>: count the traits separately and multiply. At a very high level, that’s “all we are doing,” but things can get elaborate;</li>
+<li>(<strong>clarify the role of order and replacement</strong>) You will probably do this in tandem with the surrounding items, but until you’ve answered the questions “does order matter” and “am I replacing or not” for yourself, you have no clue what tool you need to use;
+<ul>
+<li>
+<strong>Pro-tip</strong>: “order” may not really mean “order.” When we ask “does order matter or not,” really what we are often asking is: “does it matter who gets what?” In other words, when we draw balls from the jar to fill our <span class="math inline">\(k\)</span> slots, are those slots <em>distinguishable</em> or not? Are they named? Are they labeled? Do they have distinct identities or <em>roles</em>? If so, then the order in which the balls are drawn corresponds to “who got what.” If “who gets what” is relevant in your application (eg. if Ethel getting red and Seamus getting blue counts as a distinct outcome from Ethel getting blue and Seamus getting red), then order matters. The birthday problem below is a classic example of this;</li>
 </ul>
 </li>
+<li>(<strong>count <span class="math inline">\(S\)</span> first</strong>) In all of these counting problems, at some point you must apply <span class="math inline">\(P(A)=\#(A)/\#(S)\)</span>. I typically recommend that you start at the bottom and work your way up. So figure out <span class="math inline">\(\#(S)\)</span>, and then move on to <span class="math inline">\(\#(A)\)</span>. <span class="math inline">\(\#(S)\)</span> will often be easier to compute, and the process of doing so will force you to clarify what you need to clarify from above, which will help with <span class="math inline">\(\#(A)\)</span> later.</li>
 </ol>
-<p>Gandalf finishes by saying “I expect sixty of the mixed batches to be negative. For the other forty batches, I expect the results to be positive, and hence we will have to test all four hundred of the original samples. This gives a total expected cost of 500 gold pieces.”</p>
+</div>
+</div>
+</div>
+</section></section><section id="conditional-probability" class="level1"><h1>Conditional probability</h1>
+<section id="problem-10" class="level2"><h2 class="anchored" data-anchor-id="problem-10">Problem 10</h2>
+<p>In a standard deck of <span class="math inline">\(52\)</span> cards, 3 (Jack, Queen, and King) of the 13 ranks are collectively known as the “face cards” of the deck. Recall that a standard deck of <span class="math inline">\(52\)</span> cards also has <span class="math inline">\(4\)</span> suits (Hearts, Diamonds, Clubs, and Spades).</p>
+<p>Suppose you deal out two cards from the deck. What is the probability that they are both face cards given that they are both hearts?</p>
+</section><section id="problem-11" class="level2"><h2 class="anchored" data-anchor-id="problem-11">Problem 11</h2>
+<p>An urn contains 5 white and 10 black balls. Four tickets labeled 1, 2, 3, and 4 reside in a box. A ticket is drawn at random from the box, and that number of balls is randomly chosen from the urn, without replacement.</p>
 <ol type="a">
-<li>What disease prevalence is Gandalf implicitly assuming here?</li>
-<li>Can Gandalf revise his scheme to reduce the expected cost even more?</li>
-</ol></section><section id="problem-7" class="level2"><h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
-<p>indicators</p>
-</section><section id="problem-8" class="level2"><h2 class="anchored" data-anchor-id="problem-8">Problem 8</h2>
-<p>???</p>
-</section><section id="problem-9" class="level2"><h2 class="anchored" data-anchor-id="problem-9">Problem 9</h2>
-<p>Let <span class="math inline">\(X\)</span> be a random variable with the following pmf:</p>
-<div class="center-table">
-<table class="caption-top table">
-<thead><tr class="header">
-<th><span class="math inline">\(x\)</span></th>
-<th><span class="math inline">\(P(X=x)\)</span></th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>-1</td>
-<td>0.500</td>
-</tr>
-<tr class="even">
-<td>0</td>
-<td>0.250</td>
-</tr>
-<tr class="odd">
-<td>1</td>
-<td>0.125</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>0.125</td>
-</tr>
-</tbody>
-</table>
+<li>What is the probability that all of the balls drawn are white?</li>
+<li>If we learn that all balls drawn from the urn are white, what is the conditional probability that the #3 ticket was drawn?</li>
+</ol></section><section id="problem-12" class="level2"><h2 class="anchored" data-anchor-id="problem-12">Problem 12</h2>
+<ol type="a">
+<li><p>Let <span class="math inline">\(S\)</span> be the set of all permutations of <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(c\)</span>, together with the triples <span class="math inline">\(aaa\)</span>, <span class="math inline">\(bbb\)</span>, and <span class="math inline">\(ccc\)</span>. Imagine we draw an outcome randomly from this set. Define the event <span class="math inline">\(A_k=\{\text{the kth spot is occupied by the letter a}\}\)</span> for <span class="math inline">\(k=1,\,2,\,3\)</span>. Compute the probabilities <span class="math inline">\(P(A_k)\)</span>, <span class="math inline">\(P(A_i\cap A_j)\)</span>, <span class="math inline">\(P(A_1\cap A_2\cap A_3)\)</span>, and comment on the independence of the three of events;</p></li>
+<li><p>Imagine we roll two fair, six-sided die. Compute <span class="math inline">\(P(A)\)</span>, <span class="math inline">\(P(B)\)</span>, <span class="math inline">\(P(C)\)</span>, <span class="math inline">\(P(A\cap B)\)</span>, <span class="math inline">\(P(A\cap C)\)</span>, <span class="math inline">\(P(B\cap C)\)</span>, and <span class="math inline">\(P(A\cap B\cap C)\)</span> for the following three events and comment on their independence:</p></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+A&amp;=\text{first die is 1, 2, 3}\\
+B&amp;=\text{first die is 3, 4, 5}\\
+C&amp;=\text{the sum of the two rolls is 9}.
+\end{aligned}
+\]</span></p>
+</section><section id="problem-13" class="level2"><h2 class="anchored" data-anchor-id="problem-13">Problem 13</h2>
+<p>Suppose that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent events. Prove that <span class="math inline">\(A^c\)</span> and <span class="math inline">\(B\)</span> are also independent events.</p>
+</section><section id="problem-14" class="level2"><h2 class="anchored" data-anchor-id="problem-14">Problem 14</h2>
+<p>A quality-control engineer comes to inspect the machines in a light-bulb manufacturing factory. The factory uses two models of machines:</p>
+<ul>
+<li>ORION machines produce defective lightbulbs with probability <span class="math inline">\(p_O\)</span>,</li>
+<li>NOVA machines produce defective lightbulbs with probability <span class="math inline">\(p_N\)</span>.</li>
+</ul>
+<ol type="a">
+<li>The engineer picks one of the ORION machines to inspect and gets it to produce <span class="math inline">\(n\)</span> lightbulbs. Each of the <span class="math inline">\(n\)</span> lightbulbs is produced independently of one another. What is the probability that <em>exactly two</em> of the <span class="math inline">\(n\)</span> lightbulbs are defective?</li>
+<li>Next, the engineer chooses a machine at random from the factory floor and gets it to produce <span class="math inline">\(n\)</span> lightbulbs. Given that two of the <span class="math inline">\(n\)</span> lightbulbs are defective, what is the probability the engineer selected an ORION machine? Assume 2/3 of the machines in the factory are ORION, and 1/3 are NOVA;</li>
+<li>Simplify your answer in the previous part in the case that the defect probability is the same for both machines (<span class="math inline">\(p_O=p_N\)</span>). Compare to the probability of selecting an ORION machine at random <em>before</em> knowing how many defective lightbulbs the machine produced. Explain why the probability changes or stays the same.</li>
+</ol></section><section id="problem-15" class="level2"><h2 class="anchored" data-anchor-id="problem-15">Problem 15</h2>
+<div id="fig-dart" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="40%">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-dart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/dart-board.png" id="fig-dart" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-dart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption></figure>
+</div>
+<p>Jerry Lewis is throwing darts at the board pictured in <a href="#fig-dart" class="quarto-xref">Figure&nbsp;1</a>. It has the following properties:</p>
+<ul>
+<li>The board has radius <span class="math inline">\(r\)</span>;</li>
+<li>The board is partitioned into five rings, each with the same “thickness” <span class="math inline">\(r/5\)</span>;</li>
+<li>The board is mounted on a wall of area <span class="math inline">\(A\)</span>.</li>
+</ul>
+<p>Jerry is not very skilled. His dart is guaranteed to reach the wall and stick someplace, but beyond that, the probability that it lands in any given region is just proportional to that region’s area.</p>
+<p><strong>Task</strong>: Derive a general formula for the <em>conditional</em> probability that a dart lands in ring <span class="math inline">\(i\)</span> given that it hits the board and not the wall. Your formula should be a function of <span class="math inline">\(i=1,\,2,\,3,\,4,\,5\)</span>. Check that these probabilities are nonnegative and sum to one.</p>
+</section><section id="problem-16" class="level2"><h2 class="anchored" data-anchor-id="problem-16">Problem 16</h2>
+<p>You shuffle a standard deck of 52 playing cards, and then you reveal the cards one at a time until you see the first ace. What is the probability that the first ace will be revealed on the 28th card?</p>
+</section><section id="want-more-review-2" class="level2"><h2 class="anchored" data-anchor-id="want-more-review-2">Want more review?</h2>
+<ul>
+<li>
+<a href="../lecture-notes/04-conditional-probability.pdf">Lecture notes</a> with worked examples;
+<ul>
+<li>The lil’ <a href="../lecture-notes/05-disease-testing.html">app</a> on disease testing;</li>
+</ul>
+</li>
+<li>
+<a href="../problems/pset-2.html">Problem Set 2</a>: problems 9 - 10;</li>
+<li>
+<a href="../problems/pset-3.html">Problem Set 3</a>: problems 4 - 8;</li>
+<li>
+<a href="../problems/pset-4.html">Problem Set 4</a>: problems 2 - 3;</li>
+<li>Odd-numbered exercises in DeGroot &amp; Schervish Chapter 2.</li>
+</ul></section></section><section id="discrete-random-variables" class="level1"><h1>Discrete random variables</h1>
+<section id="problem-17" class="level2"><h2 class="anchored" data-anchor-id="problem-17">Problem 17</h2>
+<p>Signore Fibonacci has created a a balanced, six-sided die whose faces are labeled, naturally, 1, 2, 3, 5, 8, 13. He gives a pair to Enzo, who rolls them repeatedly, eager to get double 13s. Let <span class="math inline">\(X\)</span> be the number of times he has to roll the pair of dice in order to see double 13s for the first time.</p>
+<ol type="a">
+<li>What is the pmf of <span class="math inline">\(X\)</span>?</li>
+<li>What is the expected value of <span class="math inline">\(X\)</span>?</li>
+<li>Find a closed-form expression for <span class="math inline">\(P(X\geq m)\)</span>.</li>
+</ol></section><section id="problem-18" class="level2"><h2 class="anchored" data-anchor-id="problem-18">Problem 18</h2>
+<p>Let <span class="math inline">\(D \sim \text{Geometric}(p)\)</span>, and fix positive integers <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span>. What is <span class="math inline">\(P(D = n + k \,|\, D &gt; k)\)</span>? Does this look familiar?</p>
+</section><section id="problem-19" class="level2"><h2 class="anchored" data-anchor-id="problem-19">Problem 19</h2>
+<p>Let a random variable <span class="math inline">\(X\)</span> have the cdf <span class="math inline">\(F\)</span> pictured here:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/anya-cdf.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
 </div>
 <ol type="a">
-<li>What is the mean of <span class="math inline">\(X\)</span>?</li>
-<li>What is the pmf of <span class="math inline">\(Y = 2X-3\)</span>?</li>
-<li>What is the mean of <span class="math inline">\(Y\)</span>?</li>
-<li>What is the pmf of <span class="math inline">\(W = X^2\)</span>?</li>
-<li>What is the mean of <span class="math inline">\(W\)</span>?</li>
-<li>What is the conditional pmf of <span class="math inline">\(X\)</span> given <span class="math inline">\(X \neq 0\)</span>?</li>
-<li>What is the conditional mean of <span class="math inline">\(X\)</span> given <span class="math inline">\(X \neq 0\)</span>?</li>
-</ol></section><section id="problem-10" class="level2"><h2 class="anchored" data-anchor-id="problem-10">Problem 10</h2>
-<p>If <span class="math inline">\(X\sim\text{Binomial}(n,\,p)\)</span>, show that</p>
-<p><span class="math display">\[
-E\left[\frac{1}{X+1}\right]=\frac{1-(1-p)^{n+1}}{(n+1)p}.
-\]</span></p>
-</section><section id="submission" class="level2"><h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<p>You are free to compose your solutions for this problem set however you wish (scan or photograph written work, handwriting capture on a tablet device, LaTeX, Quarto, whatever) as long as the final product is a single PDF file. You must upload this to Gradescope and mark the pages associated with each problem.</p>
-<p>Do not forget to include the following:</p>
+<li>Compute <span class="math inline">\(E(X)\)</span>;</li>
+<li>Draw the cdf of the random variable <span class="math inline">\(Y=|X|\)</span>.</li>
+</ol></section><section id="problem-20" class="level2"><h2 class="anchored" data-anchor-id="problem-20">Problem 20</h2>
+<p>A printing office prepares <span class="math inline">\(n=30\)</span> exam booklets labeled <span class="math inline">\(1,2,\dots,30\)</span> and intends to give booklet <span class="math inline">\(i\)</span> to student <span class="math inline">\(i\)</span>. Unfortunately, the stack is <em>randomly shuffled</em> and then distributed so that each student receives exactly one booklet. Assume every one of the <span class="math inline">\(30!\)</span> assignments is equally likely.</p>
+<ol type="a">
+<li>Let <span class="math inline">\(X\)</span> be the number of students who receive <em>their own</em> booklet. Write <span class="math inline">\(X\)</span> as a sum of indicator random variables and compute <span class="math inline">\(E(X)\)</span>;</li>
+<li>Let <span class="math inline">\(Y\)</span> be the number of <em>mutual swaps</em>, i.e.&nbsp;the number of unordered pairs <span class="math inline">\(\{i,j\}\)</span> with <span class="math inline">\(i\neq j\)</span> such that student <span class="math inline">\(i\)</span> receives booklet <span class="math inline">\(j\)</span> <em>and</em> student <span class="math inline">\(j\)</span> receives booklet <span class="math inline">\(i\)</span>. Write <span class="math inline">\(Y\)</span> as a sum of indicator random variables and compute <span class="math inline">\(E(Y)\)</span>.</li>
+</ol></section><section id="want-more-review-3" class="level2"><h2 class="anchored" data-anchor-id="want-more-review-3">Want more review?</h2>
 <ul>
-<li>For each problem, please <a href="../syllabus/syllabus-policies.html#collaboration">acknowledge your collaborators</a>;</li>
-<li>If a problem required you to code something, please include both the code and the output. “Including the code” can be as crude as a screenshot, but you might also use <a href="../explainers/quarto.html">Quarto</a> to get a nice lil’ pdf that you can merge with the rest of your submission.</li>
+<li>Lecture notes;</li>
+<li>Distribution explainers: binomial, geometric, Poisson;</li>
+<li>Lab 5;</li>
+<li>
+<a href="../problems/pset-2.html">Problem Set 2</a>: problem 8;</li>
+<li>
+<a href="../problems/pset-3.html">Problem Set 3</a>: problems 9 - 10;</li>
+<li>
+<a href="../problems/pset-4.html">Problem Set 4</a>: problems 4 - 10.</li>
 </ul>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
