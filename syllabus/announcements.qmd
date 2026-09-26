@@ -5,9 +5,9 @@ format: html
 
 {{< include announcements/rockapella.qmd >}}
 
-{{< include announcements/duke-music-day.qmd >}}
-
 {{< include announcements/chronicle.qmd >}}
+
+{{< include announcements/duke-music-day.qmd >}}
 
 {{< include announcements/ssmu-dsci.qmd >}}
 
