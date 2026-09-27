@@ -24,9 +24,11 @@ Midterm Exam 1 will take place on **Thursday October 8** during your lab section
 
 A few remarks:
 
-- Below are new practice problems for each topic, as well as guidance about what course materials to refer to if you want more review;
+- We will probably begin talking about *continuous* random variables before October 8, but these will not appear on the exam. Everything about *discrete* random variables is fair game, but that's where we'll cut it off;
 - As I promised in class, you will not have to do any calculations with infinite series on this exam;
-- The listed topics indicate what a question *focuses on*, but their could be overlap. The conditional probability problem could require you to prove something. The random variable problem could require you to count. And so on.
+- The listed topics indicate what a question *focuses on*, but there could be overlap. The conditional probability problem could require you to prove something. The random variable problem could require you to count. And so on.
+
+Below are new practice problems for each topic, as well as guidance about what course materials to refer to if you want more review
 
 ::: callout-important
 ## Give your cheat sheet some TLC!
@@ -164,7 +166,9 @@ I included this at the top of [Lab 3](/lab/lab-3.html):
 
 :::
 
-# Conditional probability and independence
+# The special sauce
+
+Conditional probability and independence are the big main ideas that give probability its identity as a distinct branch of mathematics. So out of respect they'll get *two* problems on the exam.
 
 ```{r}
 #| echo: false
