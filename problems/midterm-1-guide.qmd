@@ -14,15 +14,19 @@ This is currently a draft. Until a formal announcement is issued on Canvas, ever
 
 Midterm Exam 1 will take place on **Thursday October 8** during your lab section. There will be 7 problems, and they will break down as follows:
 
-0. (an undisclosed check on your visual intuition)
-1. probability rules
-1. counting
-1. counting
-1. conditional probability
-1. conditional probability
+1. (undisclosed check on your visual intuition)
+1. (undisclosed check on your conceptual understanding)
+1. probability proof
+1. counting problem
+1. conditional probability and independence
+1. conditional probability and independence
 1. discrete random variables
 
-Below are new practice problems for each of these areas, as well as guidance about what course materials to refer to if you want more review on a particular topic.
+A few remarks:
+
+- Below are new practice problems for each topic, as well as guidance about what course materials to refer to if you want more review;
+- As I promised in class, you will not have to do any calculations with infinite series on this exam;
+- The listed topics indicate what a question *focuses on*, but their could be overlap. The conditional probability problem could require you to prove something. The random variable problem could require you to count. And so on.
 
 ::: callout-important
 ## Give your cheat sheet some TLC!
@@ -160,7 +164,7 @@ I included this at the top of [Lab 3](/lab/lab-3.html):
 
 :::
 
-# Conditional probability 
+# Conditional probability and independence
 
 ```{r}
 #| echo: false
@@ -229,6 +233,7 @@ q_no <- q_no + 1
 
 - [Lecture notes](/lecture-notes/04-conditional-probability.pdf) with worked examples;
     - The lil' [app](/lecture-notes/05-disease-testing.html) on disease testing;
+- [Lecture notes](/lecture-notes/06-independence.pdf) on independence;
 - [Problem Set 2](/problems/pset-2.html): problems 9 - 10;
 - [Problem Set 3](/problems/pset-3.html): problems 4 - 8;
 - [Problem Set 4](/problems/pset-4.html): problems 2 - 3;
@@ -274,9 +279,8 @@ q_no <- q_no + 1
 
 ## Want more review?
 
-- Lecture notes;
-- Distribution explainers: binomial, geometric, Poisson;
-- Lab 5;
+- [Lecture notes](/lecture-notes/07-random-variables.pdf) introducing random variables;
+- Special distributions: [binomial](/distributions/discrete-binomial.html), [geometric](/distributions/discrete-geometric.html), [Poisson](/distributions/discrete-poisson.html);
 - [Problem Set 2](/problems/pset-2.html): problem 8;
 - [Problem Set 3](/problems/pset-3.html): problems 9 - 10;
 - [Problem Set 4](/problems/pset-4.html): problems 4 - 10.
