@@ -143,4 +143,58 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
+## Derivations
 
+::: {.callout-tip collapse="true"}
+## Check that the probabilities sum to 1
+
+If $X\sim\text{Geom}(p)$, then 
+
+$$
+\begin{aligned}
+    \sum\limits_{k=1}^\infty P(X=k)&=\sum\limits_{k=1}^\infty(1-p)^{k-1}p\\
+    &=p\sum\limits_{k=1}^\infty(1-p)^{k-1}\\
+    &=p\sum\limits_{i=0}^\infty(1-p)^i\\
+    &=p\frac{1}{1-(1-p)} && \text{geometric series, since }|1-p|<1\\
+    &=p\frac{1}{p}\\
+    &=1.
+\end{aligned}
+$$
+
+So in some sense the geometric probabilities are "just" the terms in the geometric series, only they've been normalized to sum to 1. That's exactly the role that the constant $p$ plays in the PMF formula.
+
+:::
+
+::: {.callout-note collapse="true"}
+## The mean (brute force)
+
+$$
+\begin{aligned}
+    E(X)
+    &=
+    \sum\limits_{k=1}^\infty kP(X=k)\\
+    &=
+    \sum\limits_{k=1}^\infty k(1-p)^{k-1}p\\
+    &=
+    \sum\limits_{k=1}^\infty (k+0)(1-p)^{k-1}p\\
+    &=
+    \sum\limits_{k=1}^\infty (k-1+1)(1-p)^{k-1}p\\
+    &=
+    \sum\limits_{k=1}^\infty [(k-1)(1-p)^{k-1}p+(1-p)^{k-1}p]\\
+    &=
+     \sum\limits_{k=1}^\infty(k-1)(1-p)^{k-1}p+\sum\limits_{k=1}^\infty\underbrace{(1-p)^{k-1}p}_{P(X=k)}\\
+    &=
+     \sum\limits_{i=0}^\infty i(1-p)^{i}p+1\\
+         &=
+     0+\sum\limits_{i=1}^\infty i(1-p)^{i}p+1\\
+         &=
+     (1-p)\sum\limits_{i=1}^\infty i(1-p)^{i-1}p+1\\
+              &=
+     (1-p)E(X)+1.
+\end{aligned}
+$$
+
+Solving $E(X)=(1-p)E(X)+1$, we have that $E(X)=1/p$.
+
+
+:::
