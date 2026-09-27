@@ -162,6 +162,19 @@ Notice that, for all values of $p\in(0,\,1)$, the shape of the PMF becomes more 
 
 ## Derivations
 
+::: {.callout-note collapse="true"}
+## Check that the probabilities sum to 1
+
+If $X\sim\text{Binom}(n,\,p)$, then:
+
+$$
+\sum\limits_{k=0}^nP(X=k)=\sum\limits_{k=0}^n\binom{n}{k}p^k(1-p)^{n-k}=[p+(1-p)]^n=1^n=1.
+$$
+
+We are just applying the binomial theorem of the shelf: $(x+y)^m=\sum_{j=0}^m\binom{m}{j}x^{j}y^{m-j}$ with $m=n$, $x=p$, and $y=1-p$. 
+
+:::
+
 ::: {.callout-tip collapse="true"}
 ## The mean (via the definition)
 
@@ -183,4 +196,55 @@ $$
 
 At the end of the computation, we invoked the *binomial theorem*: $(x+y)^m=\sum_{j=0}^m\binom{m}{j}x^{j}y^{m-j}$ with $m=n-1$, $x=p$, and $y=1-p$. 
 
+:::
+
+::: {.callout-note collapse="true"}
+## The mean and variance of the Bernoulli
+Let $X\sim\text{Bern}(p)$. Proceeding directly from the definition, the first and second moments are:
+
+$$
+\begin{aligned}
+E(X)
+&=
+0\times P(X=0)+1\times P(X=1)
+=
+0\times (1-p)+1\times p
+=
+p
+\\
+\\
+E(X^2)
+&=
+0\times P(X^2=0)+1\times P(X^2=1)
+=
+0\times (1-p)+1\times p
+=
+p
+.
+\end{aligned}
+$$
+
+So $\text{var}(X)=E(X^2)-E(X)^2=p-p^2=p(1-p)$.
+:::
+
+::: {.callout-tip collapse="true"}
+## The mean (via indicators)
+If $I_i\overset{\text{iid}}{\sim}\text{Bern}(p)$, then $X=\sum_{i=1}^nI_i\sim\text{Binom}(n,\,p)$, and so by the linearity of expectation:
+
+$$
+E(X)=E\left(\sum_{i=1}^nI_i\right)=\sum_{i=1}^nE(I_i)=\sum_{i=1}^np=np.
+$$
+
+Assuming that the linearity of expectation is a result you can take for granted, this is far more elegant than proceeding brute-force from the definition.
+:::
+
+::: {.callout-note collapse="true"}
+## The variance (via indicators)
+If $I_i\overset{\text{iid}}{\sim}\text{Bern}(p)$, then $X=\sum_{i=1}^nI_i\sim\text{Binom}(n,\,p)$. Since the variance of an independent sum is the sum of the variances, then:
+
+$$
+\text{var}(X)=\text{var}\left(\sum_{i=1}^nI_i\right)=\sum_{i=1}^n\text{var}(I_i)=\sum_{i=1}^np(1-p)=np(1-p).
+$$
+
+Assuming that this property of variance is a result you can take for granted, this is far more elegant than proceeding brute-force from the definition.
 :::
