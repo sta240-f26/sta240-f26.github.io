@@ -253,8 +253,24 @@ $$
 :::
 
 ::: {.callout-tip collapse="true"}
-## Checking that the probabilities sum to 1
+## Check that the probabilities sum to 1
 
+If $X\sim\text{Poisson}(\lambda)$, then:
+
+$$
+\sum\limits_{k=0}^\infty P(X=k)
+=
+\sum\limits_{k=0}^\infty e^{-\lambda}\frac{\lambda^k}{k!}
+=
+e^{-\lambda}\sum\limits_{k=0}^\infty \frac{\lambda^k}{k!}
+=
+e^{-\lambda}
+e^\lambda
+=
+1.
+$$
+
+We see that the Poisson probabilities are in some sense "just" the terms in the Taylor series expansion of the exponential function, but they have been normalized so that the sum is 1. That's exactly what the $e^{-\lambda}$ factor is doing.
 
 :::
 
@@ -322,4 +338,95 @@ $$
     .
 \end{align*}
 $$
+:::
+
+::: {.callout-tip collapse="true"}
+## The variance (brute force)
+
+The second moment of $X\sim\text{Poisson}(\lambda)$ is 
+
+$$
+\begin{aligned}
+    E(X^2)
+    &=
+    \sum\limits_{k=0}^\infty 
+    k^2 e^{-\lambda}\frac{\lambda^k}{k!}
+    \\
+    &=
+    \sum\limits_{k=1}^\infty 
+    k^2 e^{-\lambda}\frac{\lambda^k}{k!}
+    \\
+    &=
+    \lambda e^{-\lambda}
+    \sum\limits_{k=1}^\infty 
+    k^2 \frac{\lambda^{k-1}}{k!}
+    \\
+    &=
+    \lambda e^{-\lambda}
+    \sum\limits_{k=1}^\infty 
+    k \frac{\lambda^{k-1}}{(k-1)!}
+    \\
+    &=
+    \lambda e^{-\lambda}
+    \sum\limits_{k=1}^\infty 
+    (k-1+1) \frac{\lambda^{k-1}}{(k-1)!}
+    \\
+            &=
+    \lambda e^{-\lambda}
+    \sum\limits_{k=1}^\infty 
+    \left[(k-1) \frac{\lambda^{k-1}}{(k-1)!}
+    +
+    \frac{\lambda^{k-1}}{(k-1)!}\right]
+    \\
+    &=
+    \lambda e^{-\lambda} 
+    \left[\sum\limits_{k=1}^\infty(k-1) \frac{\lambda^{k-1}}{(k-1)!}
+    +
+    \sum\limits_{k=1}^\infty
+    \frac{\lambda^{k-1}}{(k-1)!}\right]
+    \\
+    &=
+    \lambda e^{-\lambda} 
+    \left[\sum\limits_{k=2}^\infty(k-1) \frac{\lambda^{k-1}}{(k-1)!}
+    +
+    \sum\limits_{i=0}^\infty
+    \frac{\lambda^{i}}{i!}\right]
+    \\
+    &=
+    \lambda e^{-\lambda} 
+    \left[\sum\limits_{k=2}^\infty \frac{\lambda^{k-1}}{(k-2)!}
+    +
+    e^{\lambda}\right]
+    \\
+    &=
+    \lambda e^{-\lambda} 
+    \left[\lambda\sum\limits_{k=2}^\infty \frac{\lambda^{k-2}}{(k-2)!}
+    +
+    e^{\lambda}\right]
+    \\
+    &=
+    \lambda e^{-\lambda} 
+    \left[\lambda\sum\limits_{j=0}^\infty \frac{\lambda^{j}}{j!}
+    +
+    e^{\lambda}\right]
+    \\
+    &=
+    \lambda e^{-\lambda} 
+    \left[\lambda e^{\lambda}
+    +
+    e^{\lambda}\right]
+    \\
+    &=
+    \lambda^2 e^{-\lambda} e^{\lambda}
+    +
+    \lambda e^{-\lambda}
+    e^{\lambda}
+    \\
+    &=
+    \lambda^2+\lambda.
+\end{aligned}
+$$
+
+So $\text{var}(X)=E(X^2)-E(X)^2=\lambda^2+\lambda-\lambda^2=\lambda$, and strangely, the Poisson distribution has $E(X)=\text{var}(X)$. If you go to the app above and increase $\lambda$, you will see the PMF shift rightward *and* widen simultaneously for precisely this reason. This property renders the Poisson distribution less useful for modeling count-valued data than we might hope, because we cannot separately manipulate the center and the spread of the distribution. An entire literature has emerged in statistics that attempts to modify the Poisson so that it does not have this funky property.
+
 :::
