@@ -321,7 +321,7 @@ $$
     \sum\limits_{j=0}^\infty 
     \frac{\lambda^{j}}{j!}
     &&
-    \text{Reindex}
+    \text{Re-index: }j=n-1
     \\
     &=
     \lambda e^{-\lambda}

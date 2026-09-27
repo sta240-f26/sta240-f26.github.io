@@ -154,7 +154,7 @@ $$
 \begin{aligned}
     \sum\limits_{k=1}^\infty P(X=k)&=\sum\limits_{k=1}^\infty(1-p)^{k-1}p\\
     &=p\sum\limits_{k=1}^\infty(1-p)^{k-1}\\
-    &=p\sum\limits_{i=0}^\infty(1-p)^i\\
+    &=p\sum\limits_{i=0}^\infty(1-p)^i && \text{Re-index: }i=k-1\\
     &=p\frac{1}{1-(1-p)} && \text{geometric series, since }|1-p|<1\\
     &=p\frac{1}{p}\\
     &=1.
