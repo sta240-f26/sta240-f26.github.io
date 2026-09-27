@@ -120,6 +120,8 @@ website:
             text: Problem Set 2
           - href: problems/pset-3.qmd
             text: Problem Set 3
+          - href: problems/pset-4.qmd
+            text: Problem Set 4
       - section: "Labs"
         contents:
           - href: lab/lab-1.qmd
@@ -130,6 +132,10 @@ website:
             text: Lab 3
           - href: lab/lab-4.qmd
             text: Lab 4
+      - section: "Exam Study Guides"
+        contents:
+          - href: problems/midterm-1-guide.qmd
+            text: Midterm 1
             
   page-footer:
     right: 'This page is built with [Quarto](https://quarto.org/).'
