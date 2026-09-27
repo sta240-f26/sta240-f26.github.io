@@ -171,7 +171,7 @@ $$
 \sum\limits_{k=0}^nP(X=k)=\sum\limits_{k=0}^n\binom{n}{k}p^k(1-p)^{n-k}=[p+(1-p)]^n=1^n=1.
 $$
 
-We are just applying the binomial theorem of the shelf: $(x+y)^m=\sum_{j=0}^m\binom{m}{j}x^{j}y^{m-j}$ with $m=n$, $x=p$, and $y=1-p$. 
+We are just applying the binomial theorem off the shelf: $(x+y)^m=\sum_{j=0}^m\binom{m}{j}x^{j}y^{m-j}$ with $m=n$, $x=p$, and $y=1-p$. 
 
 :::
 
