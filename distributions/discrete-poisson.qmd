@@ -285,18 +285,14 @@ $$
     &=
 \sum\limits_{n=0}^\infty nP(X=n)
     \\
-    &=
-    \sum\limits_{n=0}^\infty 
-    n
-    \frac{\lambda^n}{n!}e^{-\lambda}
+        &=
+\sum\limits_{n=1}^\infty nP(X=n)
+    && 0\times P(X=0)=0
     \\
     &=
-    e^{-\lambda}
-    \sum\limits_{n=0}^\infty 
+    \sum\limits_{n=1}^\infty 
     n
-    \frac{\lambda^n}{n!}
-    &&
-    \text{Pull out constant}
+    \frac{\lambda^n}{n!}e^{-\lambda}
     \\
     &=
     e^{-\lambda}
@@ -304,7 +300,7 @@ $$
     n
     \frac{\lambda^n}{n!}
     &&
-    n=0\text{ term is equal to 0}
+    \text{Pull out constant}
     \\
     &=
     e^{-\lambda}
@@ -349,8 +345,14 @@ $$
 \begin{aligned}
     E(X^2)
     &=
-    \sum\limits_{k=0}^\infty 
-    k^2 e^{-\lambda}\frac{\lambda^k}{k!}
+    \sum\limits_{k=0}^\infty k^2P(X=k)
+    &&
+    \text{LOTUS}
+    \\
+    &=
+    \sum\limits_{k=1}^\infty k^2P(X=k)
+    &&
+    0^2\times P(X=0)=0
     \\
     &=
     \sum\limits_{k=1}^\infty 
