@@ -446,6 +446,12 @@ window.Quarto = {
  <span class="menu-text">Problem Set 3</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 4</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -483,6 +489,23 @@ window.Quarto = {
 </li>
       </ul>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Exam Study Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/midterm-1-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm 1</span></a>
+  </div>
+</li>
+      </ul>
+</li>
     </ul>
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
@@ -494,6 +517,7 @@ window.Quarto = {
 <li><a href="#basic-properties" id="toc-basic-properties" class="nav-link active" data-scroll-target="#basic-properties">Basic properties</a></li>
   <li><a href="#r-commands" id="toc-r-commands" class="nav-link" data-scroll-target="#r-commands"><code>R</code> commands</a></li>
   <li><a href="#play-around" id="toc-play-around" class="nav-link" data-scroll-target="#play-around">Play around!</a></li>
+  <li><a href="#derivations" id="toc-derivations" class="nav-link" data-scroll-target="#derivations">Derivations</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -660,6 +684,75 @@ server &lt;- function(input, output) {
 
 # Run the application 
 shinyApp(ui = ui, server = server)</a></code></pre>
+</section><section id="derivations" class="level2"><h2 class="anchored" data-anchor-id="derivations">Derivations</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Check that the probabilities sum to 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(X\sim\text{Geom}(p)\)</span>, then</p>
+<p><span class="math display">\[
+\begin{aligned}
+    \sum\limits_{k=1}^\infty P(X=k)&amp;=\sum\limits_{k=1}^\infty(1-p)^{k-1}p\\
+    &amp;=p\sum\limits_{k=1}^\infty(1-p)^{k-1}\\
+    &amp;=p\sum\limits_{i=0}^\infty(1-p)^i &amp;&amp; \text{Re-index: }i=k-1\\
+    &amp;=p\frac{1}{1-(1-p)} &amp;&amp; \text{geometric series, since }|1-p|&lt;1\\
+    &amp;=p\frac{1}{p}\\
+    &amp;=1.
+\end{aligned}
+\]</span></p>
+<p>So in some sense the geometric probabilities are “just” the terms in the geometric series, only they’ve been normalized to sum to 1. That’s exactly the role that the constant <span class="math inline">\(p\)</span> plays in the PMF formula.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The mean (brute force)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{aligned}
+    E(X)
+    &amp;=
+    \sum\limits_{k=1}^\infty kP(X=k)\\
+    &amp;=
+    \sum\limits_{k=1}^\infty k(1-p)^{k-1}p\\
+    &amp;=
+    \sum\limits_{k=1}^\infty (k+0)(1-p)^{k-1}p\\
+    &amp;=
+    \sum\limits_{k=1}^\infty (k-1+1)(1-p)^{k-1}p\\
+    &amp;=
+    \sum\limits_{k=1}^\infty [(k-1)(1-p)^{k-1}p+(1-p)^{k-1}p]\\
+    &amp;=
+     \sum\limits_{k=1}^\infty(k-1)(1-p)^{k-1}p+\sum\limits_{k=1}^\infty\underbrace{(1-p)^{k-1}p}_{P(X=k)}\\
+    &amp;=
+     \sum\limits_{i=0}^\infty i(1-p)^{i}p+1\\
+         &amp;=
+     0+\sum\limits_{i=1}^\infty i(1-p)^{i}p+1\\
+         &amp;=
+     (1-p)\sum\limits_{i=1}^\infty i(1-p)^{i-1}p+1\\
+              &amp;=
+     (1-p)E(X)+1.
+\end{aligned}
+\]</span></p>
+<p>Solving <span class="math inline">\(E(X)=(1-p)E(X)+1\)</span>, we have that <span class="math inline">\(E(X)=1/p\)</span>.</p>
+</div>
+</div>
+</div>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

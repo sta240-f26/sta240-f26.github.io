@@ -446,6 +446,12 @@ window.Quarto = {
  <span class="menu-text">Problem Set 3</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 4</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -479,6 +485,23 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../lab/lab-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 4</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Exam Study Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/midterm-1-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm 1</span></a>
   </div>
 </li>
       </ul>
@@ -683,8 +706,28 @@ Magic is happening!
 </div>
 </div>
 </section><section id="derivations" class="level2"><h2 class="anchored" data-anchor-id="derivations">Derivations</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Check that the probabilities sum to 1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(X\sim\text{Binom}(n,\,p)\)</span>, then:</p>
+<p><span class="math display">\[
+\sum\limits_{k=0}^nP(X=k)=\sum\limits_{k=0}^n\binom{n}{k}p^k(1-p)^{n-k}=[p+(1-p)]^n=1^n=1.
+\]</span></p>
+<p>We are just applying the binomial theorem off the shelf: <span class="math inline">\((x+y)^m=\sum_{j=0}^m\binom{m}{j}x^{j}y^{m-j}\)</span> with <span class="math inline">\(m=n\)</span>, <span class="math inline">\(x=p\)</span>, and <span class="math inline">\(y=1-p\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -693,24 +736,145 @@ The mean (via the definition)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[
 \begin{aligned}
-    E(X)&amp;=\sum\limits_{k=0}^nkP(X=k)\\
-    &amp;=\sum\limits_{k=0}^nk\binom{n}{k}p^k(1-p)^{n-k}\\
-    &amp;=\sum\limits_{k=1}^nk\binom{n}{k}p^k(1-p)^{n-k}\\
-    &amp;=\sum\limits_{k=1}^nk\frac{n!}{k!(n-k)!}p^k(1-p)^{n-k}\\
-        &amp;=\sum\limits_{k=1}^n\frac{n!}{(k-1)!(n-k)!}p^k(1-p)^{n-k}\\
-    &amp;=np\sum\limits_{k=1}^n\frac{(n-1)!}{(k-1)!(n-k)!}p^{k-1}(1-p)^{n-k}\\
-        &amp;=np\sum\limits_{k=1}^n\binom{n-1}{k-1}p^{k-1}(1-p)^{n-k}\\
-        &amp;=np\sum\limits_{i=0}^{n-1}\binom{n-1}{i}p^{i}(1-p)^{n-1-i}\\
+    E(X)
+    &amp;=
+    \sum\limits_{k=0}^nkP(X=k)
+    \\
+    &amp;=
+    \sum\limits_{k=1}^nkP(X=k)
+    &amp;&amp;
+    0\times P(X=0)=0
+    \\
+    &amp;=
+    \sum\limits_{k=1}^nk\binom{n}{k}p^k(1-p)^{n-k}
+    \\
+    &amp;=
+    \sum\limits_{k=1}^nk\frac{n!}{k!(n-k)!}p^k(1-p)^{n-k}
+    \\
         &amp;=
-        np[p+(1-p)]^{n-1}\\
+        \sum\limits_{k=1}^n\frac{n!}{(k-1)!(n-k)!}p^k(1-p)^{n-k}
+        &amp;&amp; \text{cancel }k
+        \\
+    &amp;=
+    p
+    \sum\limits_{k=1}^n\frac{n!}{(k-1)!(n-k)!}p^{k-1}(1-p)^{n-k}
+    &amp;&amp; \text{pull out }p
+    \\
+    &amp;=
+    p
+    \sum\limits_{k=1}^n\frac{n!}{(k-1)!(n-k+0)!}p^{k-1}(1-p)^{n-k+0}
+    \\
+    &amp;=
+    p
+    \sum\limits_{k=1}^n\frac{n!}{(k-1)!(n-k+1-1)!}p^{k-1}(1-p)^{n-k+1-1}
+    \\
+    &amp;=
+    p
+    \sum\limits_{k=1}^n\frac{n!}{(k-1)!(n-1-(k-1))!}p^{k-1}(1-p)^{n-1-(k-1)}
+    \\
+    &amp;=
+    np
+    \sum\limits_{k=1}^n\frac{(n-1)!}{(k-1)!(n-1-(k-1))!}p^{k-1}(1-p)^{n-1-(k-1)}
+    \\
+        &amp;=
+        np\sum\limits_{k=1}^n\binom{n-1}{k-1}p^{k-1}(1-p)^{n-1-(k-1)}
+        \\
+        &amp;=
+        np\sum\limits_{i=0}^{n-1}\binom{n-1}{i}p^{i}(1-p)^{n-1-i}
+        &amp;&amp;\text{Re-index: }i=k-1
+        \\
+        &amp;=
+        np[p+(1-p)]^{n-1}
+        \\
+        &amp;=
+        np \times 1^{n-1}
+        \\
         &amp;=np.
 \end{aligned}
 \]</span></p>
 <p>At the end of the computation, we invoked the <em>binomial theorem</em>: <span class="math inline">\((x+y)^m=\sum_{j=0}^m\binom{m}{j}x^{j}y^{m-j}\)</span> with <span class="math inline">\(m=n-1\)</span>, <span class="math inline">\(x=p\)</span>, and <span class="math inline">\(y=1-p\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The mean and variance of the Bernoulli
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(X\sim\text{Bern}(p)\)</span>. Proceeding directly from the definition, the first and second moments are:</p>
+<p><span class="math display">\[
+\begin{aligned}
+E(X)
+&amp;=
+0\times P(X=0)+1\times P(X=1)
+=
+0\times (1-p)+1\times p
+=
+p
+\\
+\\
+E(X^2)
+&amp;=
+0^2\times P(X=0)+1^2\times P(X=1)
+=
+0\times (1-p)+1\times p
+=
+p
+.
+\end{aligned}
+\]</span></p>
+<p>So <span class="math inline">\(\text{var}(X)=E(X^2)-E(X)^2=p-p^2=p(1-p)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The mean (via indicators)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(I_i\overset{\text{iid}}{\sim}\text{Bern}(p)\)</span>, then <span class="math inline">\(X=\sum_{i=1}^nI_i\sim\text{Binom}(n,\,p)\)</span>, and so by the linearity of expectation:</p>
+<p><span class="math display">\[
+E(X)=E\left(\sum_{i=1}^nI_i\right)=\sum_{i=1}^nE(I_i)=\sum_{i=1}^np=np.
+\]</span></p>
+<p>Assuming that the linearity of expectation is a result you can take for granted, this is far more elegant than proceeding brute-force from the definition.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The variance (via indicators)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(I_i\overset{\text{iid}}{\sim}\text{Bern}(p)\)</span>, then <span class="math inline">\(X=\sum_{i=1}^nI_i\sim\text{Binom}(n,\,p)\)</span>. Since the variance of an independent sum is the sum of the variances, then:</p>
+<p><span class="math display">\[
+\text{var}(X)=\text{var}\left(\sum_{i=1}^nI_i\right)=\sum_{i=1}^n\text{var}(I_i)=\sum_{i=1}^np(1-p)=np(1-p).
+\]</span></p>
+<p>Assuming that this property of variance is a result you can take for granted, this is far more elegant than proceeding brute-force from the definition.</p>
 </div>
 </div>
 </div>

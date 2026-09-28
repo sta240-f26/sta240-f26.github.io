@@ -25,6 +25,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../lab/lab-4.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -100,7 +101,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Midterm 1 Study Guide</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../problems/midterm-1-guide.html">Exam Study Guides</a></li><li class="breadcrumb-item"><a href="../problems/midterm-1-guide.html">Midterm 1</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -407,6 +408,12 @@ window.Quarto = {
  <span class="menu-text">Problem Set 3</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 4</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -444,6 +451,23 @@ window.Quarto = {
 </li>
       </ul>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Exam Study Guides</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/midterm-1-guide.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Midterm 1</span></a>
+  </div>
+</li>
+      </ul>
+</li>
     </ul>
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
@@ -474,7 +498,7 @@ window.Quarto = {
   </ul>
 </li>
   <li>
-<a href="#conditional-probability" id="toc-conditional-probability" class="nav-link" data-scroll-target="#conditional-probability">Conditional probability</a>
+<a href="#the-special-sauce" id="toc-the-special-sauce" class="nav-link" data-scroll-target="#the-special-sauce">The special sauce</a>
   <ul class="collapse">
 <li><a href="#problem-10" id="toc-problem-10" class="nav-link" data-scroll-target="#problem-10">Problem 10</a></li>
   <li><a href="#problem-11" id="toc-problem-11" class="nav-link" data-scroll-target="#problem-11">Problem 11</a></li>
@@ -499,7 +523,7 @@ window.Quarto = {
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../problems/midterm-1-guide.html">Exam Study Guides</a></li><li class="breadcrumb-item"><a href="../problems/midterm-1-guide.html">Midterm 1</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Midterm 1 Study Guide</h1>
 </div>
 
@@ -528,16 +552,22 @@ Under construction!
 </div>
 </div>
 <p>Midterm Exam 1 will take place on <strong>Thursday October 8</strong> during your lab section. There will be 7 problems, and they will break down as follows:</p>
-<ol start="0" type="1">
-<li>(an undisclosed check on your visual intuition)</li>
-<li>probability rules</li>
-<li>counting</li>
-<li>counting</li>
-<li>conditional probability</li>
-<li>conditional probability</li>
+<ol type="1">
+<li>(undisclosed check on your visual intuition)</li>
+<li>(undisclosed check on your conceptual understanding)</li>
+<li>probability proof</li>
+<li>counting problem</li>
+<li>conditional probability and independence</li>
+<li>conditional probability and independence</li>
 <li>discrete random variables</li>
 </ol>
-<p>Below are new practice problems for each of these areas, as well as guidance about what course materials to refer to if you want more review on a particular topic.</p>
+<p>A few remarks:</p>
+<ul>
+<li>We will probably begin talking about <em>continuous</em> random variables before October 8, but these will not appear on the exam. Everything about <em>discrete</em> random variables is fair game, but that’s where we’ll cut it off;</li>
+<li>As I promised in class, you will not have to do any calculations with infinite series on this exam;</li>
+<li>The listed topics indicate what a question <em>focuses on</em>, but there could be overlap. The conditional probability problem could require you to prove something. The random variable problem could require you to count. And so on.</li>
+</ul>
+<p>Below are new practice problems for each topic, as well as guidance about what course materials to refer to if you want more review</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -693,7 +723,8 @@ Advice for solving counting problems
 </div>
 </div>
 </div>
-</section></section><section id="conditional-probability" class="level1"><h1>Conditional probability</h1>
+</section></section><section id="the-special-sauce" class="level1"><h1>The special sauce</h1>
+<p>Conditional probability and independence are the big main ideas that give probability its identity as a distinct branch of mathematics. So out of respect they’ll get <em>two</em> problems on the exam.</p>
 <section id="problem-10" class="level2"><h2 class="anchored" data-anchor-id="problem-10">Problem 10</h2>
 <p>In a standard deck of <span class="math inline">\(52\)</span> cards, 3 (Jack, Queen, and King) of the 13 ranks are collectively known as the “face cards” of the deck. Recall that a standard deck of <span class="math inline">\(52\)</span> cards also has <span class="math inline">\(4\)</span> suits (Hearts, Diamonds, Clubs, and Spades).</p>
 <p>Suppose you deal out two cards from the deck. What is the probability that they are both face cards given that they are both hearts?</p>
@@ -754,6 +785,8 @@ Figure&nbsp;1
 </ul>
 </li>
 <li>
+<a href="../lecture-notes/06-independence.pdf">Lecture notes</a> on independence;</li>
+<li>
 <a href="../problems/pset-2.html">Problem Set 2</a>: problems 9 - 10;</li>
 <li>
 <a href="../problems/pset-3.html">Problem Set 3</a>: problems 4 - 8;</li>
@@ -785,9 +818,9 @@ Figure&nbsp;1
 <li>Let <span class="math inline">\(Y\)</span> be the number of <em>mutual swaps</em>, i.e.&nbsp;the number of unordered pairs <span class="math inline">\(\{i,j\}\)</span> with <span class="math inline">\(i\neq j\)</span> such that student <span class="math inline">\(i\)</span> receives booklet <span class="math inline">\(j\)</span> <em>and</em> student <span class="math inline">\(j\)</span> receives booklet <span class="math inline">\(i\)</span>. Write <span class="math inline">\(Y\)</span> as a sum of indicator random variables and compute <span class="math inline">\(E(Y)\)</span>.</li>
 </ol></section><section id="want-more-review-3" class="level2"><h2 class="anchored" data-anchor-id="want-more-review-3">Want more review?</h2>
 <ul>
-<li>Lecture notes;</li>
-<li>Distribution explainers: binomial, geometric, Poisson;</li>
-<li>Lab 5;</li>
+<li>
+<a href="../lecture-notes/07-random-variables.pdf">Lecture notes</a> introducing random variables;</li>
+<li>Special distributions: <a href="../distributions/discrete-binomial.html">binomial</a>, <a href="../distributions/discrete-geometric.html">geometric</a>, <a href="../distributions/discrete-poisson.html">Poisson</a>;</li>
 <li>
 <a href="../problems/pset-2.html">Problem Set 2</a>: problem 8;</li>
 <li>
@@ -1195,7 +1228,14 @@ Figure&nbsp;1
       }
     }
   });
-  </script>
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../lab/lab-4.html" class="pagination-link" aria-label="Lab 4">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 4</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">

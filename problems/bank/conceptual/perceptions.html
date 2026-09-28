@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>pairwise-versus-mutual-independence – STA 240 Fall 2026</title>
+<title>perceptions – STA 240 Fall 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,35 +67,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <meta property="og:title" content="STA 240 Fall 2026">
 <meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
@@ -497,17 +468,32 @@ window.Quarto = {
 
 
 
-<ol type="a">
-<li><p>Let <span class="math inline">\(S\)</span> be the set of all permutations of <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(c\)</span>, together with the triples <span class="math inline">\(aaa\)</span>, <span class="math inline">\(bbb\)</span>, and <span class="math inline">\(ccc\)</span>. Imagine we draw an outcome randomly from this set. Define the event <span class="math inline">\(A_k=\{\text{the kth spot is occupied by the letter a}\}\)</span> for <span class="math inline">\(k=1,\,2,\,3\)</span>. Compute the probabilities <span class="math inline">\(P(A_k)\)</span>, <span class="math inline">\(P(A_i\cap A_j)\)</span>, <span class="math inline">\(P(A_1\cap A_2\cap A_3)\)</span>, and comment on the independence of the three of events;</p></li>
-<li><p>Imagine we roll two fair, six-sided die. Compute <span class="math inline">\(P(A)\)</span>, <span class="math inline">\(P(B)\)</span>, <span class="math inline">\(P(C)\)</span>, <span class="math inline">\(P(A\cap B)\)</span>, <span class="math inline">\(P(A\cap C)\)</span>, <span class="math inline">\(P(B\cap C)\)</span>, and <span class="math inline">\(P(A\cap B\cap C)\)</span> for the following three events and comment on their independence:</p></li>
-</ol>
-<p><span class="math display">\[
-\begin{aligned}
-A&amp;=\text{first die is 1, 2, 3}\\
-B&amp;=\text{first die is 3, 4, 5}\\
-C&amp;=\text{the sum of the two rolls is 9}.
-\end{aligned}
-\]</span></p>
+<p>Communicating uncertainty is challenging. Below is a list of common phrases that you might hear someone say when they want to communicate the likelihood of something happening. If someone said one of these to you, what numerical probability would you think they were communicating? For each phrase, please give a probability in percentage terms: 0% - 100%.</p>
+<ul>
+<li>“Fat chance;”</li>
+<li>“We doubt;”</li>
+<li>“Very good chance;”</li>
+<li>“Probable;”</li>
+<li>“Highly likely;”</li>
+<li>“About even;”</li>
+<li>“Odds are;”</li>
+<li>“We believe;”</li>
+<li>“Unlikely;”</li>
+<li>“Almost certain;”</li>
+<li>“Chances are slight;”</li>
+<li>“Probably;”</li>
+<li>“Not a snowball’s chance in hell;”</li>
+<li>“Better than even;”</li>
+<li>“It’s a long shot;”</li>
+<li>“Improbable;”</li>
+<li>“More likely than not;”</li>
+<li>“Little chance;”</li>
+<li>“Almost no chance;”</li>
+<li>“Likely;”</li>
+<li>“Probably not;”</li>
+<li>“Highly unlikely.”</li>
+</ul>
+<p>Write a paragraph discussing the pros and cons of using numerical probabilities versus phrases like these for communicating uncertainty in everyday conversation.</p>
 
 
 
