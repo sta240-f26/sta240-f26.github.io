@@ -6,12 +6,6 @@ editor:
 draft: false
 ---
 
-::: callout-important
-## Under construction!
-
-This is currently a draft. Until a formal announcement is issued on Canvas, everything below is subject to change.
-:::
-
 Midterm Exam 1 will take place on **Thursday October 8** during your lab section. There will be 7 problems, and they will break down as follows:
 
 1. (undisclosed check on your visual intuition)
