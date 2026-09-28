@@ -26,7 +26,7 @@ q_no <- q_no + 1
 
 ## Problem `{r} q_no`
 
-CONCEPTUAL
+{{< include bank/conceptual/perceptions.qmd >}}
 
 ```{r}
 #| echo: false

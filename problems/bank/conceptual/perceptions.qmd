@@ -1,0 +1,26 @@
+Communicating uncertainty is challenging. Below is a list of common phrases that you might hear someone say when they want to communicate the likelihood of something happening. If someone said one of these to you, what numerical probability would you think they were communicating? For each phrase, please give a probability in percentage terms: 0% - 100%. 
+
+- "Fat chance;"
+- "We doubt;"
+- "Very good chance;"
+- "Probable;"
+- "Highly likely;"
+- "About even;"
+- "Odds are;"
+- "We believe;"
+- "Unlikely;"
+- "Almost certain;"
+- "Chances are slight;"
+- "Probably;"
+- "Not a snowball's chance in hell;"
+- "Better than even;"
+- "It's a long shot;"
+- "Improbable;"
+- "More likely than not;"
+- "Little chance;"
+- "Almost no chance;"
+- "Likely;"
+- "Probably not;"
+- "Highly unlikely."
+
+Write a paragraph discussing the pros and cons of using numerical probabilities versus phrases like these for communicating uncertainty in everyday conversation.
