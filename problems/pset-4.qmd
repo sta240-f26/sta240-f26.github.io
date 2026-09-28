@@ -83,16 +83,7 @@ q_no <- q_no + 1
 
 ## Problem `{r} q_no`
 
-indicators
-
-```{r}
-#| echo: false
-q_no <- q_no + 1
-```
-
-## Problem `{r} q_no`
-
-???
+{{< include bank/random-variables-discrete/indicator-party.qmd >}}
 
 ```{r}
 #| echo: false
@@ -115,6 +106,14 @@ q_no <- q_no + 1
 
 {{< include bank/random-variables-discrete/binomial-lotus.qmd >}}
 
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-discrete/zero-truncated-poisson.qmd >}}
 
 
 ## Submission
