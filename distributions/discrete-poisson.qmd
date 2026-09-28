@@ -277,7 +277,7 @@ We see that the Poisson probabilities are in some sense "just" the terms in the 
 ::: {.callout-note collapse="true"}
 ## The mean (via the definition)
 
-Massage and squint until you recognize the Taylor series of $e^x$:
+This is a *goal-directed* calculation. After you plug in the formula for the PMF, you initially recognize that the expression is "giving" Taylor series of $e^x$, but not quite: it starts at one instead of zero and it has that pesky extra $n$. So all of the re-writing is aimed at *forcing* the expression to conform to the structure of the Taylor series, and then you apply that identity off-the-shelf:
 
 $$
     \begin{align*}
@@ -334,6 +334,9 @@ $$
     .
 \end{align*}
 $$
+
+So it makes sense that the distribution shifts right as $\lambda$ increases. $\lambda$ *is* the center of mass.
+
 :::
 
 ::: {.callout-tip collapse="true"}

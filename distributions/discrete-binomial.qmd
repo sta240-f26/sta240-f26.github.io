@@ -178,6 +178,8 @@ We are just applying the binomial theorem off the shelf: $(x+y)^m=\sum_{j=0}^m\b
 ::: {.callout-tip collapse="true"}
 ## The mean (via the definition)
 
+This is a *goal-directed* calculation. After you plug in the formula for the PMF, you initially recognize that the expression is "giving" binomial theorem, but not quite: it starts at one instead of zero and it has that pesky extra $k$. So all of the re-writing is aimed at *forcing* the expression to conform to the structure of the binomial theorem, and then you apply that identity off-the-shelf:
+
 $$
 \begin{aligned}
     E(X)
@@ -207,6 +209,8 @@ $$
     &=
     p
     \sum\limits_{k=1}^n\frac{n!}{(k-1)!(n-k+0)!}p^{k-1}(1-p)^{n-k+0}
+    &&
+    \text{add }0
     \\
     &=
     p
@@ -237,7 +241,7 @@ $$
 \end{aligned}
 $$
 
-At the end of the computation, we invoked the *binomial theorem*: $(x+y)^m=\sum_{j=0}^m\binom{m}{j}x^{j}y^{m-j}$ with $m=n-1$, $x=p$, and $y=1-p$. 
+At the end of the computation, we invoke $(x+y)^m=\sum_{j=0}^m\binom{m}{j}x^{j}y^{m-j}$ with $m=n-1$, $x=p$, and $y=1-p$. 
 
 :::
 
