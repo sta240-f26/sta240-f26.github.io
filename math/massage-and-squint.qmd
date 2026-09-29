@@ -4,7 +4,7 @@ subtitle: \"rewrite and recognize\", or \"kernel tricks\"
 format: html
 ---
 
-In this class, we have to simplify many sums, infinite series, and integrals (eg when computing expected values). Sometimes, we have to do this using the formal techniques we learned in Calc II, but other times, the sum or integral is just a familiar object in disguise. If we can recognize that, we can avoid doing any hardcore math.
+In this class, we have to simplify many sums, infinite series, and integrals (eg. when computing expected values). Sometimes, we have to do this using the formal techniques we learned in Calc II, but other times, the sum or integral is just a familiar object in disguise. If we can recognize that, we can avoid doing any hardcore math.
 
 Here's the principle:
 
