@@ -22,7 +22,7 @@ A few remarks:
 - As I promised in class, you will not have to do any calculations with infinite series on this exam;
 - The listed topics indicate what a question *focuses on*, but there could be overlap. The conditional probability problem could require you to prove something. The random variable problem could require you to count. And so on.
 
-Below are new practice problems for each topic, as well as guidance about what course materials to refer to if you want more review
+Below are new practice problems for each topic, as well as guidance about what course materials to refer to if you want more review.
 
 ::: callout-important
 ## Give your cheat sheet some TLC!
