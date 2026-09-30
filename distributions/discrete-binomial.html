@@ -738,6 +738,7 @@ The mean (via the definition)
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>This is a <em>goal-directed</em> calculation. After you plug in the formula for the PMF, you initially recognize that the expression is “giving” binomial theorem, but not quite: it starts at one instead of zero and it has that pesky extra <span class="math inline">\(k\)</span>. So all of the re-writing is aimed at <em>forcing</em> the expression to conform to the structure of the binomial theorem, and then you apply that identity off-the-shelf:</p>
 <p><span class="math display">\[
 \begin{aligned}
     E(X)
@@ -767,6 +768,8 @@ The mean (via the definition)
     &amp;=
     p
     \sum\limits_{k=1}^n\frac{n!}{(k-1)!(n-k+0)!}p^{k-1}(1-p)^{n-k+0}
+    &amp;&amp;
+    \text{add }0
     \\
     &amp;=
     p
@@ -796,7 +799,7 @@ The mean (via the definition)
         &amp;=np.
 \end{aligned}
 \]</span></p>
-<p>At the end of the computation, we invoked the <em>binomial theorem</em>: <span class="math inline">\((x+y)^m=\sum_{j=0}^m\binom{m}{j}x^{j}y^{m-j}\)</span> with <span class="math inline">\(m=n-1\)</span>, <span class="math inline">\(x=p\)</span>, and <span class="math inline">\(y=1-p\)</span>.</p>
+<p>At the end of the computation, we invoke <span class="math inline">\((x+y)^m=\sum_{j=0}^m\binom{m}{j}x^{j}y^{m-j}\)</span> with <span class="math inline">\(m=n-1\)</span>, <span class="math inline">\(x=p\)</span>, and <span class="math inline">\(y=1-p\)</span>.</p>
 </div>
 </div>
 </div>

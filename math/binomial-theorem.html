@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.34">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Poisson distribution – STA 240 Fall 2026</title>
+
+
+<title>The binomial theorem – STA 240 Fall 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,42 +20,8 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
+
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -60,8 +29,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../problems/pset-0.html" rel="next">
-<link href="../distributions/discrete-geometric.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -72,11 +39,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-ab2af8015911caaedd078aba9a047385.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<meta name="shinylive:serviceworker_dir" content="..">
-<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
-<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
-<link href="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -102,55 +65,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-<meta property="og:title" content="Poisson distribution – STA 240 Fall 2026">
+}</script>
+
+
+<meta property="og:title" content="The binomial theorem – STA 240 Fall 2026">
 <meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
 <meta property="og:site_name" content="STA 240 Fall 2026">
 </head>
+
 <body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../distributions/discrete-binomial.html">Distributions</a></li><li class="breadcrumb-item"><a href="../distributions/discrete-poisson.html">Poisson</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">The binomial theorem</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://cmgr.oit.duke.edu/containers" title="RStudio Containers" class="quarto-navigation-tool px-1" aria-label="RStudio Containers"><i class="bi bi-code-square"></i></a>
     <a href="https://canvas.duke.edu/courses/84105" title="Canvas" class="quarto-navigation-tool px-1" aria-label="Canvas"><i class="bi bi-megaphone"></i></a>
@@ -165,7 +113,7 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../syllabus/announcements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Check it out!</span></a>
@@ -179,8 +127,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../syllabus/syllabus-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -223,7 +171,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -232,8 +180,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../math/greeks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Greek alphabet</span></a>
@@ -276,7 +224,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
@@ -285,8 +233,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../explainers/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting started</span></a>
@@ -383,17 +331,17 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">Distributions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../distributions/discrete-binomial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Binomial</span></a>
@@ -407,12 +355,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../distributions/discrete-poisson.html" class="sidebar-item-text sidebar-link active">
+  <a href="../distributions/discrete-poisson.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Poisson</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
@@ -421,8 +369,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../problems/pset-0.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Problem Set 0</span></a>
@@ -453,7 +401,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
@@ -462,8 +410,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lab/lab-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1</span></a>
@@ -488,7 +436,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
@@ -497,32 +445,29 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../problems/midterm-1-guide.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Midterm 1</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
-   
-  <ul>
-<li><a href="#basic-properties" id="toc-basic-properties" class="nav-link active" data-scroll-target="#basic-properties">Basic properties</a></li>
-  <li><a href="#r-commands" id="toc-r-commands" class="nav-link" data-scroll-target="#r-commands"><code>R</code> commands</a></li>
-  <li><a href="#play-around" id="toc-play-around" class="nav-link" data-scroll-target="#play-around">Play around!</a></li>
-  <li><a href="#derivations" id="toc-derivations" class="nav-link" data-scroll-target="#derivations">Derivations</a></li>
-  </ul></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../distributions/discrete-binomial.html">Distributions</a></li><li class="breadcrumb-item"><a href="../distributions/discrete-poisson.html">Poisson</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Poisson distribution</h1>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The binomial theorem</h1>
 </div>
 
 
@@ -536,479 +481,19 @@ window.Quarto = {
   
 
 
-</header><p>The Poisson distribution is what you get when you send the number of trials in the binomial distribution to infinity. This distribution is useful for modeling the number of random arrivals in a given window of time:</p>
-<ul>
-<li>how many claims an insurance company receives in a month;</li>
-<li>how many emails you receive in an hour;</li>
-<li>how many “likes” you receive on a dating app in a day.</li>
-</ul>
-<p>The distribution is governed by one parameter <span class="math inline">\(\lambda&gt;0\)</span> which is called the <strong>rate</strong>.</p>
-<section id="basic-properties" class="level2"><h2 class="anchored" data-anchor-id="basic-properties">Basic properties</h2>
-<table class="caption-top table"><tbody>
-<tr class="odd">
-<td><strong>Notation</strong></td>
-<td><span class="math inline">\(X\sim\text{Poisson}(\lambda)\)</span></td>
-</tr>
-<tr class="even">
-<td><strong>Range</strong></td>
-<td><span class="math inline">\(\mathbb{N}=\{0,\,1,\,2,\,3,\,4,\,...\}\)</span></td>
-</tr>
-<tr class="odd">
-<td><strong>Parameter space</strong></td>
-<td><span class="math inline">\(\lambda&gt;0\)</span></td>
-</tr>
-<tr class="even">
-<td><strong>PMF</strong></td>
-<td><span class="math inline">\(P(X=k)=e^{-\lambda}\frac{\lambda^k}{k!}\)</span></td>
-</tr>
-<tr class="odd">
-<td><strong>Expectation</strong></td>
-<td><span class="math inline">\(\lambda\)</span></td>
-</tr>
-<tr class="even">
-<td><strong>Variance</strong></td>
-<td><span class="math inline">\(\lambda\)</span></td>
-</tr>
-</tbody></table></section><section id="r-commands" class="level2"><h2 class="anchored" data-anchor-id="r-commands">
-<code>R</code> commands</h2>
-<p><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Poisson.html">Here</a> is the documentation for the suite of commands that let you work with the Poisson distribution in <code>R</code>:</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">lambda</span><span class="op">)</span> <span class="co"># PMF: P(X = x)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="va">q</span>, <span class="va">lambda</span><span class="op">)</span> <span class="co"># CDF: F(q) = P(X &lt;= q)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">qpois</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">lambda</span><span class="op">)</span> <span class="co"># quantile function (inverse CDF)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">lambda</span><span class="op">)</span> <span class="co"># random numbers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section><section id="play-around" class="level2"><h2 class="anchored" data-anchor-id="play-around">Play around!</h2>
-<p>As <span class="math inline">\(\lambda\)</span> grows, the distribution shifts to the right and gets wider, which makes sense since <span class="math inline">\(\lambda\)</span> acts as both the mean and variance:</p>
-<pre class="shinylive-r" data-engine="r"><code><a href="https://shiny.posit.co/">#| '!! shinylive warning !!': |
-#|   shinylive does not work in self-contained HTML documents.
-#|   Please set `embed-resources: false` in your metadata.
-#| standalone: true
-#| viewerHeight: 500
-
-library(shiny)
-
-discrete_pmf &lt;- function(x, p, xlim = c(min(x) - 1, max(x) + 1), label = "", add_mean = FALSE){
-  plot(x, p,
-       pch = 19,
-       cex = 0.5,
-       xlab = "",
-       ylab = "",
-       main = "",
-       ylim = c(0, 0.4),
-       yaxs = "i",
-       yaxt = "n",
-       xlim = xlim,
-       xaxt = "n",
-       bty = "n"
-  )
-  segments(x,
-           rep(0, length(x) + 1),
-           x1 = x,
-           y1 = p,
-           lwd = 3
-  )
-  axis(1, at = floor(xlim[1]):ceiling(xlim[2]), cex.axis = 1)
-  axis(2, at = seq(0, 1, length.out = 11), las = 1, cex.axis = 1.5)
-  legend("topright", label, bty = "n", cex = 3)
-  if(add_mean == TRUE){
-    mtext("E(X)", side = 1, at = sum(x * p), col = "red", line = 2)
-  }
-}
-
-discrete_cdf &lt;- function(x, p, xlim = c(min(x) - 1, max(x) + 1), label = ""){
-  closeddot = cumsum(p)
-  opencircle = c(0, closeddot[1:length(x)-1])
-  plot(x, closeddot, pch = 19, cex = 0.5,
-       ylim = c(0, 1),
-       ylab = "", main = "", xlab = "",
-       yaxt = "n",
-       xlim = xlim,
-       xaxt = "n",
-       #yaxs = "i", 
-       bty = "n")
-  points(x, opencircle, cex = 0.5)
-  segments(c(xlim[1], x), c(0, closeddot), c(x, xlim[2]), c(0, closeddot), lwd = 1)
-  axis(1, at = floor(xlim[1]):ceiling(xlim[2]), cex.axis = 1)
-  axis(2, at = seq(0, 1, length.out = 11), las = 1, cex.axis = 1.5)
-  legend("bottomright", label, bty = "n", cex = 3)
-}
-
-# Define UI for application that draws a histogram
-ui &lt;- fluidPage(
-  
-  # Application title
-  titlePanel("Poisson distribution CDF and PMF"),
-  
-  # Sidebar with a slider input for number of bins 
-  sidebarLayout(
-    sidebarPanel(
-      sliderInput("lambda",
-                  "Rate (λ):",
-                  min = 0,
-                  max = 100,
-                  value = 1,
-                  step = 0.1)
-    ),
-    
-    # Show a plot of the generated distribution
-    mainPanel(
-      plotOutput("distPlot")
-    )
-  )
-)
-
-# Define server logic required to draw a histogram
-server &lt;- function(input, output) {
-  
-  output$distPlot &lt;- renderPlot({
-    
-    lambda &lt;- input$lambda
-    n &lt;- 100
-
-    par(mfrow = c(2, 1), mar = c(4, 4, 2, 2))
-    
-    discrete_cdf(0:n, dpois(0:n, lambda))
-    discrete_pmf(0:n, dpois(0:n, lambda), add_mean = FALSE)
-    mtext("E(X)", side = 1, at = lambda, col = "red", line = 2)
-  })
-}
-
-# Run the application 
-shinyApp(ui = ui, server = server)</a></code></pre>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Magic is happening!
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Notice that the shape of the PMF becomes more like the bell curve as <span class="math inline">\(\lambda\)</span> grows. This is not an accident. It is a consequence of a deep result known as <strong>the central limit theorem</strong>.</p>
-</div>
-</div>
-</section><section id="derivations" class="level2"><h2 class="anchored" data-anchor-id="derivations">Derivations</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Connecting the binomial and the Poisson
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Fix <span class="math inline">\(\lambda&gt;0\)</span> and consider <span class="math inline">\(X\sim\text{Binom}(n,\,\lambda / n)\)</span>. Then for any <span class="math inline">\(k\leq n\)</span>, we have</p>
-<p><span class="math display">\[
-\begin{aligned}
-P(X=k)
-&amp;=
-\binom{n}{k}
-\left(\frac{\lambda}{n}\right)^k
-\left(1-\frac{\lambda}{n}\right)^{n-k}
-\\
-&amp;=
-\binom{n}{k}
-\frac{\lambda^k}{n^k}
-\left(1-\frac{\lambda}{n}\right)^{n-k}
-\\
-&amp;=
-\binom{n}{k}
-\frac{\lambda^k}{n^k}
-\left(1-\frac{\lambda}{n}\right)^{n}
-\left(1-\frac{\lambda}{n}\right)^{-k}
-\\
-&amp;=
-\frac{n!}{k!(n-k)!}
-\frac{\lambda^k}{n^k}
-\left(1-\frac{\lambda}{n}\right)^{n}
-\left(1-\frac{\lambda}{n}\right)^{-k}
-\\
-&amp;=
-\frac{\lambda^k}{k!}
-\left(1-\frac{\lambda}{n}\right)^{n}
-\frac{n!}{n^k(n-k)!}
-\left(1-\frac{\lambda}{n}\right)^{-k}
-\\
-&amp;=
-\frac{\lambda^k}{k!}
-\left(1-\frac{\lambda}{n}\right)^{n}
-\frac{n(n-1)(n-2)\cdots(n-k+1)}{n^k}
-\left(1-\frac{\lambda}{n}\right)^{-k}
-\\
-&amp;=
-\frac{\lambda^k}{k!}
-\left(1-\frac{\lambda}{n}\right)^{n}
-\frac{n(n-1)(n-2)\cdots(n-k+1)}{n\times n\times n\times\cdots\times n}
-\left(1-\frac{\lambda}{n}\right)^{-k}
-\\
-&amp;=
-\frac{\lambda^k}{k!}
-\left(1-\frac{\lambda}{n}\right)^{n}
-\left(\frac{n}{n}\right)\left(\frac{n-1}{n}\right)\left(\frac{n-2}{n}\right)\cdots \left(\frac{n-k+1}{n}\right)
-\left(1-\frac{\lambda}{n}\right)^{-k}
-\\
-&amp;=
-\frac{\lambda^k}{k!}
-\left(1-\frac{\lambda}{n}\right)^{n}
-(1)\left(1-\frac{1}{n}\right)\left(1-\frac{2}{n}\right)\cdots \left(1-\frac{k-1}{n}\right)
-\left(1-\frac{\lambda}{n}\right)^{-k}
-.
-\end{aligned}
-\]</span></p>
-<p>Take the limit as <span class="math inline">\(n\to\infty\)</span> and you get</p>
-<p><span class="math display">\[
-\begin{aligned}
-\lim_{n\to\infty}
-P(X=k)
-&amp;=
-\lim_{n\to\infty}
-\frac{\lambda^k}{k!}
-\left(1-\frac{\lambda}{n}\right)^{n}
-\left(1-\frac{1}{n}\right)\left(1-\frac{2}{n}\right)\cdots \left(1-\frac{k-1}{n}\right)
-\left(1-\frac{\lambda}{n}\right)^{-k}
-\\
-&amp;=
-\frac{\lambda^k}{k!}
-\lim_{n\to\infty}
-\left(1-\frac{\lambda}{n}\right)^{n}
-\left(1-\frac{1}{n}\right)\left(1-\frac{2}{n}\right)\cdots \left(1-\frac{k-1}{n}\right)
-\left(1-\frac{\lambda}{n}\right)^{-k}
-\\
-&amp;=
-\frac{\lambda^k}{k!}
-\underbrace{\lim_{n\to\infty}
-\left(1-\frac{\lambda}{n}\right)^{n}}_{e^{-\lambda}}
-\times \underbrace{\lim_{n\to\infty}
-\left(1-\frac{1}{n}\right)}_{1}
-\times \underbrace{\lim_{n\to\infty}\left(1-\frac{2}{n}\right)}_{1}\cdots
-\times \underbrace{\lim_{n\to\infty}\left(1-\frac{k-1}{n}\right)}_{1}
-\times \underbrace{\lim_{n\to\infty}\left(1-\frac{\lambda}{n}\right)^{-k}}_{1}.
-\\
-&amp;=
-\frac{\lambda^k}{k!}
-e^{-\lambda}.
-\end{aligned}
-\]</span></p>
-<p>We used the fact that “<a href="../math/series.html#limit-rules">the limit of a product is the product of the limits</a>” (provided the separate limits exist and are finite, which they all are here), and we needed to recall the <em>definition</em> of the <a href="../math/logexp.html">exponential function</a>:</p>
-<p><span class="math display">\[
-e^x=\lim_{n\to\infty}\left(1+\frac{x}{n}\right)^n.
-\]</span></p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Check that the probabilities sum to 1
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(X\sim\text{Poisson}(\lambda)\)</span>, then:</p>
-<p><span class="math display">\[
-\sum\limits_{k=0}^\infty P(X=k)
-=
-\sum\limits_{k=0}^\infty e^{-\lambda}\frac{\lambda^k}{k!}
-=
-e^{-\lambda}\sum\limits_{k=0}^\infty \frac{\lambda^k}{k!}
-=
-e^{-\lambda}
-e^\lambda
-=
-1.
-\]</span></p>
-<p>We see that the Poisson probabilities are in some sense “just” the terms in the Taylor series expansion of the exponential function, but they have been normalized so that the sum is 1. That’s exactly what the <span class="math inline">\(e^{-\lambda}\)</span> factor is doing.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-The mean (via the definition)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>This is a <em>goal-directed</em> calculation. After you plug in the formula for the PMF, you initially recognize that the expression is “giving” Taylor series of <span class="math inline">\(e^x\)</span>, but not quite: it starts at one instead of zero and it has that pesky extra <span class="math inline">\(n\)</span>. So all of the re-writing is aimed at <em>forcing</em> the expression to conform to the structure of the Taylor series, and then you apply that identity off-the-shelf:</p>
-<p><span class="math display">\[
-    \begin{align*}
-    E(X)
-    &amp;=
-\sum\limits_{n=0}^\infty nP(X=n)
-    \\
-        &amp;=
-\sum\limits_{n=1}^\infty nP(X=n)
-    &amp;&amp; 0\times P(X=0)=0
-    \\
-    &amp;=
-    \sum\limits_{n=1}^\infty
-    n
-    \frac{\lambda^n}{n!}e^{-\lambda}
-    \\
-    &amp;=
-    e^{-\lambda}
-    \sum\limits_{n=1}^\infty
-    n
-    \frac{\lambda^n}{n!}
-    &amp;&amp;
-    \text{Pull out constant}
-    \\
-    &amp;=
-    e^{-\lambda}
-    \sum\limits_{n=1}^\infty
-    \frac{\lambda^n}{(n-1)!}
-    &amp;&amp;
-    n\text{ cancels}
-    \\
-    &amp;=
-    \lambda e^{-\lambda}
-    \sum\limits_{n=1}^\infty
-    \frac{\lambda^{n-1}}{(n-1)!}
-    &amp;&amp;
-    \text{Pull out }\lambda
-    \\
-    &amp;=
-    \lambda e^{-\lambda}
-    \sum\limits_{j=0}^\infty
-    \frac{\lambda^{j}}{j!}
-    &amp;&amp;
-    \text{Re-index: }j=n-1
-    \\
-    &amp;=
-    \lambda e^{-\lambda}
-    e^\lambda
-    &amp;&amp;
-    \text{Recall Taylor series: } e^x=\sum\limits_{k=0}^\infty \frac{x^k}{k!}\,\forall\,x\in\mathbb{R}
-    \\
-    &amp;=
-    \lambda
-    .
-\end{align*}
-\]</span></p>
-<p>So it makes sense that the distribution shifts right as <span class="math inline">\(\lambda\)</span> increases. <span class="math inline">\(\lambda\)</span> <em>is</em> the center of mass.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-The variance (brute force)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The second moment of <span class="math inline">\(X\sim\text{Poisson}(\lambda)\)</span> is</p>
-<p><span class="math display">\[
-\begin{aligned}
-    E(X^2)
-    &amp;=
-    \sum\limits_{k=0}^\infty k^2P(X=k)
-    &amp;&amp;
-    \text{LOTUS}
-    \\
-    &amp;=
-    \sum\limits_{k=1}^\infty k^2P(X=k)
-    &amp;&amp;
-    0^2\times P(X=0)=0
-    \\
-    &amp;=
-    \sum\limits_{k=1}^\infty
-    k^2 e^{-\lambda}\frac{\lambda^k}{k!}
-    \\
-    &amp;=
-    \lambda e^{-\lambda}
-    \sum\limits_{k=1}^\infty
-    k^2 \frac{\lambda^{k-1}}{k!}
-    \\
-    &amp;=
-    \lambda e^{-\lambda}
-    \sum\limits_{k=1}^\infty
-    k \frac{\lambda^{k-1}}{(k-1)!}
-    \\
-    &amp;=
-    \lambda e^{-\lambda}
-    \sum\limits_{k=1}^\infty
-    (k-1+1) \frac{\lambda^{k-1}}{(k-1)!}
-    \\
-            &amp;=
-    \lambda e^{-\lambda}
-    \sum\limits_{k=1}^\infty
-    \left[(k-1) \frac{\lambda^{k-1}}{(k-1)!}
-    +
-    \frac{\lambda^{k-1}}{(k-1)!}\right]
-    \\
-    &amp;=
-    \lambda e^{-\lambda}
-    \left[\sum\limits_{k=1}^\infty(k-1) \frac{\lambda^{k-1}}{(k-1)!}
-    +
-    \sum\limits_{k=1}^\infty
-    \frac{\lambda^{k-1}}{(k-1)!}\right]
-    \\
-    &amp;=
-    \lambda e^{-\lambda}
-    \left[\sum\limits_{k=2}^\infty(k-1) \frac{\lambda^{k-1}}{(k-1)!}
-    +
-    \sum\limits_{i=0}^\infty
-    \frac{\lambda^{i}}{i!}\right]
-    \\
-    &amp;=
-    \lambda e^{-\lambda}
-    \left[\sum\limits_{k=2}^\infty \frac{\lambda^{k-1}}{(k-2)!}
-    +
-    e^{\lambda}\right]
-    \\
-    &amp;=
-    \lambda e^{-\lambda}
-    \left[\lambda\sum\limits_{k=2}^\infty \frac{\lambda^{k-2}}{(k-2)!}
-    +
-    e^{\lambda}\right]
-    \\
-    &amp;=
-    \lambda e^{-\lambda}
-    \left[\lambda\sum\limits_{j=0}^\infty \frac{\lambda^{j}}{j!}
-    +
-    e^{\lambda}\right]
-    \\
-    &amp;=
-    \lambda e^{-\lambda}
-    \left[\lambda e^{\lambda}
-    +
-    e^{\lambda}\right]
-    \\
-    &amp;=
-    \lambda^2 e^{-\lambda} e^{\lambda}
-    +
-    \lambda e^{-\lambda}
-    e^{\lambda}
-    \\
-    &amp;=
-    \lambda^2+\lambda.
-\end{aligned}
-\]</span></p>
-<p>So <span class="math inline">\(\text{var}(X)=E(X^2)-E(X)^2=\lambda^2+\lambda-\lambda^2=\lambda\)</span>, and strangely, the Poisson distribution has <span class="math inline">\(E(X)=\text{var}(X)\)</span>. If you go to the app above and increase <span class="math inline">\(\lambda\)</span>, you will see the PMF shift rightward <em>and</em> widen simultaneously for precisely this reason. This property renders the Poisson distribution less useful for modeling count-valued data than we might hope, because we cannot separately manipulate the center and the spread of the distribution. An entire literature has emerged in statistics that attempts to modify the Poisson so that it does not have this funky property.</p>
-</div>
-</div>
-</div>
+</header>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+<p>(x+y)^2</p>
+<p>(x+y)^3</p>
+<p>(x+y)^4</p>
+<p>So what about (x + y)^n?</p>
+<p>That’s exactly what the binomial theorem answers</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1406,19 +891,10 @@ The variance (brute force)
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../distributions/discrete-geometric.html" class="pagination-link" aria-label="Geometric">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Geometric</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../problems/pset-0.html" class="pagination-link" aria-label="Problem Set 0">
-        <span class="nav-page-text">Problem Set 0</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
+  </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2026 John Zito</p>
 </div>   
@@ -1430,6 +906,8 @@ The variance (brute force)
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>
