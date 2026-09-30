@@ -52,10 +52,10 @@ mean(x)
 # track the running average
 # ==============================================================================
 
-set.seed(23456)
+#set.seed(23456)
 
-n <- 10000
+n <- 50000
 
 x <- r_custom(n)
 
-plot(1:n, cumsum(x) / 1:n, type = "l")
+plot(1:n, cumsum(x) / 1:n, type = "l", ylim = c(0, 10))
