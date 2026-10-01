@@ -1,566 +1,2169 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.34">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Dwija Kakkad and John Zito">
+<title>All of the R you need to know in 75 minutes – STA 240 Fall 2026</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.34">
-
-  <meta name="author" content="Dwija Kakkad and John Zito">
-  <title>STA 240 Fall 2026 – All of the R you need to know in 75 minutes</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-      vertical-align: middle;
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7ad8df1012cc34949a7a0ac4d54234c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ab2af8015911caaedd078aba9a047385.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
     }
-  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3a79eefae13f5d96c3f0a322c43be57a.css">
-  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-    .reveal div.sourceCode {
-      margin: 0;
-      overflow: auto;
-    }
-    .reveal div.hanging-indent {
-      margin-left: 1em;
-      text-indent: -1em;
-    }
-    .reveal .slide:not(.center) {
-      height: 100%;
-    }
-    .reveal .slide.scrollable {
-      overflow-y: auto;
-    }
-    .reveal .footnotes {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide .absolute {
-      position: absolute;
-      display: block;
-    }
-    .reveal .footnotes ol {
-      counter-reset: ol;
-      list-style-type: none; 
-      margin-left: 0;
-    }
-    .reveal .footnotes ol li:before {
-      counter-increment: ol;
-      content: counter(ol) ". "; 
-    }
-    .reveal .footnotes ol li > p:first-child {
-      display: inline-block;
-    }
-    .reveal .slide ul,
-    .reveal .slide ol {
-      margin-bottom: 0.5em;
-    }
-    .reveal .slide ul li,
-    .reveal .slide ol li {
-      margin-top: 0.4em;
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide ul[role="tablist"] li {
-      margin-bottom: 0;
-    }
-    .reveal .slide ul li > *:first-child,
-    .reveal .slide ol li > *:first-child {
-      margin-block-start: 0;
-    }
-    .reveal .slide ul li > *:last-child,
-    .reveal .slide ol li > *:last-child {
-      margin-block-end: 0;
-    }
-    .reveal .slide .columns:nth-child(3) {
-      margin-block-start: 0.8em;
-    }
-    .reveal blockquote {
-      box-shadow: none;
-    }
-    .reveal .tippy-content>* {
-      margin-top: 0.2em;
-      margin-bottom: 0.7em;
-    }
-    .reveal .tippy-content>*:last-child {
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide > img.stretch.quarto-figure-center,
-    .reveal .slide > img.r-stretch.quarto-figure-center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-left,
-    .reveal .slide > img.r-stretch.quarto-figure-left  {
-      display: block;
-      margin-left: 0;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-right,
-    .reveal .slide > img.r-stretch.quarto-figure-right  {
-      display: block;
-      margin-left: auto;
-      margin-right: 0; 
-    }
-  </style>
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 <meta property="og:title" content="All of the R you need to know in 75 minutes – STA 240 Fall 2026">
+<meta property="og:image" content="https://sta240-f26.github.io/slides/images/sta240-finale.png">
 <meta property="og:site_name" content="STA 240 Fall 2026">
+<meta property="og:image:height" content="1840">
+<meta property="og:image:width" content="2593">
 </head>
-<body class="quarto-light">
-  <div class="reveal">
-    <div class="slides">
+<body class="nav-sidebar docked quarto-light">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">All of the R you need to know in 75 minutes</h1>
-
-<div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Dwija Kakkad and John Zito 
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">All of the R you need to know in 75 minutes</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://cmgr.oit.duke.edu/containers" title="RStudio Containers" class="quarto-navigation-tool px-1" aria-label="RStudio Containers"><i class="bi bi-code-square"></i></a>
+    <a href="https://canvas.duke.edu/courses/84105" title="Canvas" class="quarto-navigation-tool px-1" aria-label="Canvas"><i class="bi bi-megaphone"></i></a>
+    <a href="https://edstem.org/us/courses/96707/discussion" title="Ed Discussion" class="quarto-navigation-tool px-1" aria-label="Ed Discussion"><i class="bi bi-people"></i></a>
+    <a href="https://www.gradescope.com/courses/1351871" title="Gradescope" class="quarto-navigation-tool px-1" aria-label="Gradescope"><i class="bi bi-file-arrow-up"></i></a>
 </div>
-        <p class="quarto-title-affiliation">
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/announcements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Check it out!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Syllabus</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-team.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teaching team</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-materials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Materials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments and grading</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-policies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Policies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">University resources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Math Helpers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/greeks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Greek alphabet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/logexp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exponents and logarithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/differentiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Differentiation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/integration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/limits.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Limits and continuity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/series.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sequences and series</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/gamma-function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gamma function</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Code Helpers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/hello-rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The lay of the land</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/latex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Typing math</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic math</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/lineplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting lines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">sample</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/if-else.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">if-else and logic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">for loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/vectorization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectorization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/rng-seed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setting a seed</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/probabilities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Computing probabilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting points</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/summary-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summary statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/histogram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Histograms</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Distributions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Binomial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-geometric.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geometric</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Poisson</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Problem Sets</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 0</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 4</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Labs</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lab/lab-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lab/lab-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lab/lab-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lab/lab-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Exam Study Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/midterm-1-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm 1</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li>
+<a href="#our-dirty-little-secret" id="toc-our-dirty-little-secret" class="nav-link active" data-scroll-target="#our-dirty-little-secret">Our dirty little secret</a>
+  <ul class="collapse">
+<li><a href="#you-do-not-learn-r-in-101-199-etc" id="toc-you-do-not-learn-r-in-101-199-etc" class="nav-link" data-scroll-target="#you-do-not-learn-r-in-101-199-etc">You do not learn <code>R</code> in 101, 199, etc</a></li>
+  <li><a href="#our-computing-needs" id="toc-our-computing-needs" class="nav-link" data-scroll-target="#our-computing-needs">Our computing needs</a></li>
+  <li><a href="#why-is-simulation-so-important" id="toc-why-is-simulation-so-important" class="nav-link" data-scroll-target="#why-is-simulation-so-important">Why is simulation so important?</a></li>
+  <li><a href="#where-are-we-headed" id="toc-where-are-we-headed" class="nav-link" data-scroll-target="#where-are-we-headed">Where are we headed?</a></li>
+  <li><a href="#the-full-monty" id="toc-the-full-monty" class="nav-link" data-scroll-target="#the-full-monty">The Full Monty</a></li>
+  <li><a href="#the-goal" id="toc-the-goal" class="nav-link" data-scroll-target="#the-goal">The goal</a></li>
+  <li><a href="#this-will-take-a-while" id="toc-this-will-take-a-while" class="nav-link" data-scroll-target="#this-will-take-a-while">This will take a while!</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#meet-r-the-overgrown-calculator" id="toc-meet-r-the-overgrown-calculator" class="nav-link" data-scroll-target="#meet-r-the-overgrown-calculator">Meet R, the overgrown calculator</a>
+  <ul class="collapse">
+<li><a href="#the-basics" id="toc-the-basics" class="nav-link" data-scroll-target="#the-basics">The basics</a></li>
+  <li><a href="#the-slightly-less-basics" id="toc-the-slightly-less-basics" class="nav-link" data-scroll-target="#the-slightly-less-basics">The (slightly less) basics</a></li>
+  <li><a href="#from-problem-set-1" id="toc-from-problem-set-1" class="nav-link" data-scroll-target="#from-problem-set-1">From Problem Set 1</a></li>
+  <li><a href="#from-the-infamous-lab-2" id="toc-from-the-infamous-lab-2" class="nav-link" data-scroll-target="#from-the-infamous-lab-2">From the infamous Lab 2</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors">Vectors</a>
+  <ul class="collapse">
+<li><a href="#vectors-1" id="toc-vectors-1" class="nav-link" data-scroll-target="#vectors-1">Vectors</a></li>
+  <li><a href="#vectors-2" id="toc-vectors-2" class="nav-link" data-scroll-target="#vectors-2">Vectors</a></li>
+  <li><a href="#variable-assignment" id="toc-variable-assignment" class="nav-link" data-scroll-target="#variable-assignment">Variable assignment</a></li>
+  <li><a href="#about-variable-names" id="toc-about-variable-names" class="nav-link" data-scroll-target="#about-variable-names">About variable names</a></li>
+  <li><a href="#subsetting" id="toc-subsetting" class="nav-link" data-scroll-target="#subsetting">Subsetting</a></li>
+  <li><a href="#vectorization" id="toc-vectorization" class="nav-link" data-scroll-target="#vectorization">Vectorization</a></li>
+  <li><a href="#recall-center-of-mass-example" id="toc-recall-center-of-mass-example" class="nav-link" data-scroll-target="#recall-center-of-mass-example">Recall: center-of-mass example</a></li>
+  <li><a href="#recall-center-of-mass-example-1" id="toc-recall-center-of-mass-example-1" class="nav-link" data-scroll-target="#recall-center-of-mass-example-1">Recall: center-of-mass example</a></li>
+  <li><a href="#recall-center-of-mass-example-2" id="toc-recall-center-of-mass-example-2" class="nav-link" data-scroll-target="#recall-center-of-mass-example-2">Recall: center-of-mass example</a></li>
+  <li><a href="#recall-problem-set-3-8" id="toc-recall-problem-set-3-8" class="nav-link" data-scroll-target="#recall-problem-set-3-8">Recall: Problem Set 3 #8</a></li>
+  <li><a href="#recall-problem-set-3-8-1" id="toc-recall-problem-set-3-8-1" class="nav-link" data-scroll-target="#recall-problem-set-3-8-1">Recall: Problem Set 3 #8</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#sampling" id="toc-sampling" class="nav-link" data-scroll-target="#sampling">Sampling</a>
+  <ul class="collapse">
+<li><a href="#flip-a-coin" id="toc-flip-a-coin" class="nav-link" data-scroll-target="#flip-a-coin">Flip a coin</a></li>
+  <li><a href="#roll-a-die" id="toc-roll-a-die" class="nav-link" data-scroll-target="#roll-a-die">Roll a die</a></li>
+  <li><a href="#shuffle-a-deck" id="toc-shuffle-a-deck" class="nav-link" data-scroll-target="#shuffle-a-deck">Shuffle a deck</a></li>
+  <li><a href="#what-about-unequal-outcomes" id="toc-what-about-unequal-outcomes" class="nav-link" data-scroll-target="#what-about-unequal-outcomes">What about unequal outcomes?</a></li>
+  <li><a href="#recall-center-of-mass-example-3" id="toc-recall-center-of-mass-example-3" class="nav-link" data-scroll-target="#recall-center-of-mass-example-3">Recall: center-of-mass example</a></li>
+  <li><a href="#did-it-work" id="toc-did-it-work" class="nav-link" data-scroll-target="#did-it-work">Did it work?</a></li>
+  <li><a href="#how-does-the-computer-do-it" id="toc-how-does-the-computer-do-it" class="nav-link" data-scroll-target="#how-does-the-computer-do-it">How does the computer do it?</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#basic-plots" id="toc-basic-plots" class="nav-link" data-scroll-target="#basic-plots">Basic plots</a>
+  <ul class="collapse">
+<li><a href="#plotting-a-pmf" id="toc-plotting-a-pmf" class="nav-link" data-scroll-target="#plotting-a-pmf">Plotting a pmf</a></li>
+  <li><a href="#plotting-a-pmf-1" id="toc-plotting-a-pmf-1" class="nav-link" data-scroll-target="#plotting-a-pmf-1">Plotting a pmf</a></li>
+  <li><a href="#from-problem-set-0-8" id="toc-from-problem-set-0-8" class="nav-link" data-scroll-target="#from-problem-set-0-8">From Problem Set 0 #8</a></li>
+  <li><a href="#from-problem-set-0-8-1" id="toc-from-problem-set-0-8-1" class="nav-link" data-scroll-target="#from-problem-set-0-8-1">From Problem Set 0 #8</a></li>
+  <li><a href="#from-lab-4" id="toc-from-lab-4" class="nav-link" data-scroll-target="#from-lab-4">From Lab 4</a></li>
+  <li><a href="#from-lab-4-1" id="toc-from-lab-4-1" class="nav-link" data-scroll-target="#from-lab-4-1">From Lab 4</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#new-the-pdqr-functions" id="toc-new-the-pdqr-functions" class="nav-link" data-scroll-target="#new-the-pdqr-functions">New! the <code>pdqr</code> functions</a>
+  <ul class="collapse">
+<li><a href="#parametric-families" id="toc-parametric-families" class="nav-link" data-scroll-target="#parametric-families">Parametric families</a></li>
+  <li><a href="#the-pdqr-functions" id="toc-the-pdqr-functions" class="nav-link" data-scroll-target="#the-pdqr-functions">The <code>pdqr</code> functions</a></li>
+  <li><a href="#example-binomial" id="toc-example-binomial" class="nav-link" data-scroll-target="#example-binomial">Example: binomial</a></li>
+  <li><a href="#binomial-plot-the-pmf" id="toc-binomial-plot-the-pmf" class="nav-link" data-scroll-target="#binomial-plot-the-pmf">Binomial: plot the pmf</a></li>
+  <li><a href="#binomial-compute-probabilities" id="toc-binomial-compute-probabilities" class="nav-link" data-scroll-target="#binomial-compute-probabilities">Binomial: compute probabilities</a></li>
+  <li><a href="#binomial-compute-probabilities-1" id="toc-binomial-compute-probabilities-1" class="nav-link" data-scroll-target="#binomial-compute-probabilities-1">Binomial: compute probabilities</a></li>
+  <li><a href="#binomial-compute-probabilities-2" id="toc-binomial-compute-probabilities-2" class="nav-link" data-scroll-target="#binomial-compute-probabilities-2">Binomial: compute probabilities</a></li>
+  <li><a href="#binomial-simulate-and-verify" id="toc-binomial-simulate-and-verify" class="nav-link" data-scroll-target="#binomial-simulate-and-verify">Binomial: simulate and verify</a></li>
+  <li><a href="#example-poisson" id="toc-example-poisson" class="nav-link" data-scroll-target="#example-poisson">Example: Poisson</a></li>
+  <li><a href="#poisson-plot-the-pmf" id="toc-poisson-plot-the-pmf" class="nav-link" data-scroll-target="#poisson-plot-the-pmf">Poisson: plot the pmf</a></li>
+  <li><a href="#poisson-compute-probabilities" id="toc-poisson-compute-probabilities" class="nav-link" data-scroll-target="#poisson-compute-probabilities">Poisson: compute probabilities</a></li>
+  <li><a href="#poisson-compute-probabilities-1" id="toc-poisson-compute-probabilities-1" class="nav-link" data-scroll-target="#poisson-compute-probabilities-1">Poisson: compute probabilities</a></li>
+  <li><a href="#poisson-compute-probabilities-2" id="toc-poisson-compute-probabilities-2" class="nav-link" data-scroll-target="#poisson-compute-probabilities-2">Poisson: compute probabilities</a></li>
+  <li><a href="#poisson-simulate-and-verify" id="toc-poisson-simulate-and-verify" class="nav-link" data-scroll-target="#poisson-simulate-and-verify">Poisson: simulate and verify</a></li>
+  <li><a href="#poisson-simulate-and-verify-1" id="toc-poisson-simulate-and-verify-1" class="nav-link" data-scroll-target="#poisson-simulate-and-verify-1">Poisson: simulate and verify</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#one-more-thing" id="toc-one-more-thing" class="nav-link" data-scroll-target="#one-more-thing">One more thing</a>
+  <ul class="collapse">
+<li><a href="#latex" id="toc-latex" class="nav-link" data-scroll-target="#latex">LaTeX!</a></li>
+  <li><a href="#example-binomial-pmf" id="toc-example-binomial-pmf" class="nav-link" data-scroll-target="#example-binomial-pmf">Example: binomial pmf</a></li>
+  <li><a href="#example-poisson-pmf" id="toc-example-poisson-pmf" class="nav-link" data-scroll-target="#example-poisson-pmf">Example: Poisson pmf</a></li>
+  <li><a href="#example-gamma-function" id="toc-example-gamma-function" class="nav-link" data-scroll-target="#example-gamma-function">Example: gamma function</a></li>
+  <li><a href="#example-our-heavy-tailed-friend" id="toc-example-our-heavy-tailed-friend" class="nav-link" data-scroll-target="#example-our-heavy-tailed-friend">Example: our heavy-tailed friend</a></li>
+  <li><a href="#pro-tips" id="toc-pro-tips" class="nav-link" data-scroll-target="#pro-tips">Pro-tips</a></li>
+  <li><a href="#example-bell-curve-problem-set-0" id="toc-example-bell-curve-problem-set-0" class="nav-link" data-scroll-target="#example-bell-curve-problem-set-0">Example: bell curve (Problem Set 0)</a></li>
+  </ul>
+</li>
+  </ul><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2026-10-01-r-crash-course-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">All of the R you need to know in 75 minutes</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Dwija Kakkad and John Zito </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
             Duke University <br> STA 240 Fall 2026
           </p>
-    </div>
-</div>
+      </div>
+  </div>
 
-</section>
-<section class="slide level2">
+<div class="quarto-title-meta">
 
-<p>Our dirty little secret</p>
-<p>you did not learn R in 199.</p>
-<p>You learned a front end for R called the tidyverse which is useful for data science.</p>
-<p>But we’re not doing data science.</p>
-<p>so now what?</p>
-<p>R is a programming language just like python, C++, Julia, etc. it has variable types, control flow, inheritance, objects, whatever.</p>
-<p>our needs won’t be that extreme. To learn more about R the programming language, take STA 323 (required for stats majors).</p>
-<p>We need R for three things:</p>
-<ul>
-<li>overgrown calculator;</li>
-<li>basic visualizations;</li>
-<li><em>simulation</em></li>
-</ul>
-<p>Where are we headed:</p>
-<p>in 199, several of you saw something called the bootstrap. this is a simulation-based method for approximating the sampling distribution of an estimator. you took it on faith that this method works. in this class, we will investigate how it works and why (caveat).</p>
-<p>The goal is that you be able to understand and implement this: big diagram</p>
-<p>it will take several months to get there.</p>
-<p>this is a template for the sort of simulation you could design to investigate the theoretical properties of any statistical procedure</p>
-<p>statisticians are doing stuff like this daily. we want you to be able to do it to.</p>
-<p>everything I need you to be able to do in R is on this picture: simulation, looping, calculator, basic plots.</p>
-<p>The supporting derivations also build on all the math we do. So: last class meeting on Thursday December 3, we’ll bring it all together</p>
-<p>before then, let’s get the basics down.</p>
-<p>unpack one of the loop simulations touching on vectors and logic and other basic shit</p>
-<p>talk about basic plots.</p>
-<p>then introduce the pdqr functions</p>
-<p>what is the r- function doing? How do you program a computer to generate random numbers behaving according to some distribution? Good question! It is very important and we will study it.</p>
-<p>For now, trust that the computer knows how, and then we’ll dig into why.</p>
-
-
-</section>
-    </div>
-  <div class="quarto-auto-generated-content" style="display: none;">
-<div class="footer footer-default">
-
-</div>
-</div></div>
-
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+      
+  
+    
+  </div>
   
 
-  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
-  <script>
+</header><section id="our-dirty-little-secret" class="level1"><h1>Our dirty little secret</h1>
+<section id="you-do-not-learn-r-in-101-199-etc" class="level2"><h2 class="anchored" data-anchor-id="you-do-not-learn-r-in-101-199-etc">You do not learn <code>R</code> in 101, 199, etc</h2>
+<div class="incremental">
+<ul class="incremental">
+<li>
+<code>R</code> is a programming language, just like <code>Python</code>, <code>C++</code>, <code>Julia</code>, etc.</li>
+<li>It has inheritance, objects, control flow, all that CS stuff;</li>
+<li>Stats majors must take STA 323, where you learn all that;</li>
+<li>In 199, we suppress the programming language side of <code>R</code> and teach you a narrow <em>dialect</em> called the “tidyverse,” which is very well-suited to data science, especially for beginners;</li>
+<li>But we aren’t doing <em>any</em> data science in this class, so now what?</li>
+</ul>
+</div>
+</section><section id="our-computing-needs" class="level2"><h2 class="anchored" data-anchor-id="our-computing-needs">Our computing needs</h2>
+<p>We will use R as a labor-saving technology to perform three kinds of tasks:</p>
+<ul>
+<li>calculator (<code>choose</code>, <code>factorial</code>, <code>dbinom</code>, etc);</li>
+<li>basic graphics (histogram, line plot, etc);</li>
+<li>but most important: <strong><em>simulation</em></strong>.</li>
+</ul></section><section id="why-is-simulation-so-important" class="level2"><h2 class="anchored" data-anchor-id="why-is-simulation-so-important">Why is simulation so important?</h2>
+<ul>
+<li>This class is primarily about <em>doing the math</em> to understand how random phenomena behave;</li>
+<li>But when you cannot do the math, you can still simulate to approximate the behavior you are studying;</li>
+<li>This is a powerful tool for building intuition and prototyping mathematical ideas;</li>
+<li>Every statistician I know is constantly running simulations to understand how statistical methods behave, and we want you to be able to do the same thing.</li>
+</ul></section><section id="where-are-we-headed" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="where-are-we-headed">Where are we headed?</h2>
+<ul>
+<li>The mathematical and computational arcs of this class will converge to an analysis of <em>the bootstrap</em>;</li>
+<li>This is a simulation-based method for approximating the sampling distribution of a statistical estimator;</li>
+<li>Many of you used this procedure <em>on faith</em> in 101 or 199;</li>
+<li>In this class we want to explain what it’s doing, why it works, and implement it ourselves.</li>
+</ul></section><section id="the-full-monty" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="the-full-monty">The Full Monty</h2>
+<p><img src="images/sta240-finale.png" class="img-fluid"></p>
+</section><section id="the-goal" class="level2"><h2 class="anchored" data-anchor-id="the-goal">The goal</h2>
+<ul>
+<li>If by December you can understand every ingredient in that picture and how they fit together, then you have mastered the main ideas of this class and you are well prepared for the rest of the major;</li>
+<li>That diagram is a <em>template</em> for a generic kind of simulation that you can design to investigate the properties of <em>any</em> statistical method;</li>
+<li>It’s a very powerful way of thinking, and we want you to be able to do it on your own.</li>
+</ul></section><section id="this-will-take-a-while" class="level2"><h2 class="anchored" data-anchor-id="this-will-take-a-while">This will take a while!</h2>
+<ul>
+<li>(10/01) Lab 5: Lock down R basics;</li>
+<li>(10/15) Lab 6: Continuous random variables;</li>
+<li>(10/22) Lab 7: Transformations;</li>
+<li>(10/29) Lab 8: Random number generation;</li>
+<li>(11/05) Lab 9: More random number generation;</li>
+<li>(11/19) Lab 10: Simulation + statistics;</li>
+<li>(12/03) Lab 11: The bootstrap!</li>
+</ul></section></section><section id="meet-r-the-overgrown-calculator" class="level1"><h1>Meet R, the overgrown calculator</h1>
+<section id="the-basics" class="level2"><h2 class="anchored" data-anchor-id="the-basics">The basics</h2>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">2</span> <span class="op">+</span> <span class="fl">2</span> <span class="co"># addition</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">5</span> <span class="op">-</span> <span class="fl">2</span> <span class="co"># subtraction</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">0.5</span> <span class="op">*</span> <span class="fl">6</span> <span class="co"># multiplication</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">3</span> <span class="op">/</span> <span class="fl">4</span> <span class="co"># division</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.75</code></pre>
+</div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="co"># square root</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.414214</code></pre>
+</div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">4</span> <span class="op">^</span> <span class="fl">2</span> <span class="co"># exponent</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16</code></pre>
+</div>
+</div>
+</section><section id="the-slightly-less-basics" class="level2"><h2 class="anchored" data-anchor-id="the-slightly-less-basics">The (slightly less) basics</h2>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">4.9</span><span class="op">)</span> <span class="co"># base-e exponent</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 134.2898</code></pre>
+</div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span> <span class="co"># natural log</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.94591</code></pre>
+</div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="fl">4.6</span><span class="op">)</span> <span class="co"># round up</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="fl">4.6</span><span class="op">)</span> <span class="co"># round down</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Special.html">factorial</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="co"># n! = n x (n-1) x ... x 2 x 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24</code></pre>
+</div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Special.html">choose</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">3</span><span class="op">)</span> <span class="co"># binomial coefficient</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 56</code></pre>
+</div>
+</div>
+</section><section id="from-problem-set-1" class="level2"><h2 class="anchored" data-anchor-id="from-problem-set-1">From Problem Set 1</h2>
+<p>If <span class="math inline">\(X\sim\text{Poisson}(\lambda=4)\)</span>, then</p>
+<p><span class="math display">\[
+P(X\text{ even}) = e^{-4}\sum\limits_{i=0}^\infty\frac{4^{2i}}{(2i)!}=e^{-4}\cosh 4.
+\]</span></p>
+<p>. . .</p>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Hyperbolic.html">cosh</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5001677</code></pre>
+</div>
+</div>
+</section><section id="from-the-infamous-lab-2" class="level2 small"><h2 class="small anchored" data-anchor-id="from-the-infamous-lab-2">From the infamous Lab 2</h2>
+<blockquote class="blockquote">
+<p>a five-card hand is randomly dealt to you from a well-shuffled deck. What is the probability that the hand contains at least one ace?</p>
+</blockquote>
+<p><span class="math display">\[
+P\left(\begin{matrix}\text{at least}\\\text{one ace}\end{matrix}\right)=1 - P(\text{no ace})=1-\frac{\#(\text{no ace})}{\#(\text{five card hands})}=1-\frac{\binom{48}{5}}{\binom{52}{5}}.
+\]</span></p>
+<p>. . .</p>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Special.html">choose</a></span><span class="op">(</span><span class="fl">48</span>, <span class="fl">5</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Special.html">choose</a></span><span class="op">(</span><span class="fl">52</span>, <span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.341158</code></pre>
+</div>
+</div>
+</section></section><section id="vectors" class="level1"><h1>Vectors</h1>
+<section id="vectors-1" class="level2"><h2 class="anchored" data-anchor-id="vectors-1">Vectors</h2>
+<ul>
+<li>A <em>vector</em> in R is just an ordered collection of values that have the same type;</li>
+<li>The vector is the fundamental building block in R;</li>
+<li>Most data structures you see either <em>are</em> vectors or are made up of vectors;
+<ul>
+<li>Example: a <em>data frame</em> is just a bunch of vectors glued together.</li>
+</ul>
+</li>
+</ul></section><section id="vectors-2" class="level2 medium"><h2 class="medium anchored" data-anchor-id="vectors-2">Vectors</h2>
+<p>Many ways to construct a vector:</p>
+<p>. . .</p>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">pi</span>, <span class="fl">5</span>, <span class="fl">3.6</span>, <span class="fl">2</span>, <span class="fl">9</span>, <span class="fl">6000</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]    3.141593    5.000000    3.600000    2.000000    9.000000 6000.000000</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<div class="cell">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">5</span><span class="op">:</span><span class="fl">15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  5  6  7  8  9 10 11 12 13 14 15</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<div class="cell">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out <span class="op">=</span> <span class="fl">11</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<div class="cell">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0 0 0 0 0 0 0 0 0 0</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<div class="cell">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Mary"</span>, <span class="st">"had"</span>, <span class="st">"a"</span>, <span class="st">"little"</span>, <span class="st">"chainsaw"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Mary"     "had"      "a"        "little"   "chainsaw"</code></pre>
+</div>
+</div>
+</section><section id="variable-assignment" class="level2"><h2 class="anchored" data-anchor-id="variable-assignment">Variable assignment</h2>
+<p>It helps to give things a name so you can work with them later:</p>
+<div class="cell">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="va">pi</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.000000 3.141593 1.414214 2.718282 0.000000</code></pre>
+</div>
+</div>
+<p><code>&lt;-</code> is called the assignment operator. You should now see <code>x</code> listed in the “cast of characters” (<em>Environment</em>) in the upper right.</p>
+</section><section id="about-variable-names" class="level2"><h2 class="anchored" data-anchor-id="about-variable-names">About variable names</h2>
+<p>You can pick whatever name you want, but:</p>
+<ul>
+<li>Only numbers, letters, and <code>_</code> (underscore);</li>
+<li>The name must be a single unbroken phrase;
+<ul>
+<li>❌ <code>prob mass</code>
+</li>
+<li>✅ <code>prob_mass</code>
+</li>
+</ul>
+</li>
+<li>The first character cannot be a number;</li>
+<li>
+<code>R</code> is case sensitive;
+<ul>
+<li>
+<code>Prob_Mass</code> is different from <code>prob_mass</code>.</li>
+</ul>
+</li>
+</ul></section><section id="subsetting" class="level2"><h2 class="anchored" data-anchor-id="subsetting">Subsetting</h2>
+<p>If you want to isolate a <em>portion</em> of a vector, you can use bracket notation to request a subset of the elements:</p>
+<div class="cell">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.000000 3.141593 1.414214 2.718282 0.000000</code></pre>
+</div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.141593</code></pre>
+</div>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.000000 1.414214 0.000000</code></pre>
+</div>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.000000 3.141593 1.414214</code></pre>
+</div>
+</div>
+<p>Each of these subsets is itself a <em>new</em> vector.</p>
+</section><section id="vectorization" class="level2"><h2 class="anchored" data-anchor-id="vectorization">Vectorization</h2>
+<p>Many commands in R are <em>vectorized</em>. This means that if you provide the command with a vector containing many inputs, it will return a vector containing many outputs. It will go element-by-element through the input, apply the command to each one separately, and then return all of the outputs to you bundled in a vector.</p>
+</section><section id="recall-center-of-mass-example" class="level2 medium"><h2 class="medium anchored" data-anchor-id="recall-center-of-mass-example">Recall: center-of-mass example</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="recall-center-of-mass-example-1" class="level2 scrollable medium"><h2 class="scrollable medium anchored" data-anchor-id="recall-center-of-mass-example-1">Recall: center-of-mass example</h2>
+<p>I had a range:</p>
+<div class="cell">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">range_x</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">6</span><span class="op">:</span><span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>. . .</p>
+<p>I had masses at each one:</p>
+<div class="cell">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">masses</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">masses</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 33</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p>But they need to be normalized:</p>
+<div class="cell">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">probs</span> <span class="op">&lt;-</span> <span class="va">masses</span> <span class="op">/</span> <span class="fl">33</span></span>
+<span><span class="va">probs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.09090909 0.21212121 0.18181818 0.12121212 0.12121212 0.09090909 0.09090909
+[8] 0.06060606 0.03030303</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p>Division (<code>/</code>) is <em>vectorized</em>, so it knows to divide each mass by 33.</p>
+</section><section id="recall-center-of-mass-example-2" class="level2 scrollable medium"><h2 class="scrollable medium anchored" data-anchor-id="recall-center-of-mass-example-2">Recall: center-of-mass example</h2>
+<p>The expected value is</p>
+<p><span class="math display">\[
+E(X)=\sum\limits_{k=-6}^2 k \cdot P(X=k).
+\]</span></p>
+<p>. . .</p>
+<p>Multiplication (<code>*</code>) is <em>vectorized</em>, so multiply each value by its probability:</p>
+<div class="cell">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">range_x</span> <span class="op">*</span> <span class="va">probs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.54545455 -1.06060606 -0.72727273 -0.36363636 -0.24242424 -0.09090909
+[7]  0.00000000  0.06060606  0.06060606</code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p>Sum ’em up:</p>
+<div class="cell">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">EX</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">range_x</span> <span class="op">*</span> <span class="va">probs</span><span class="op">)</span></span>
+<span><span class="va">EX</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.909091</code></pre>
+</div>
+</div>
+</section><section id="recall-problem-set-3-8" class="level2"><h2 class="anchored" data-anchor-id="recall-problem-set-3-8">Recall: Problem Set 3 #8</h2>
+<p><span class="math inline">\(X\)</span> is the inner product of two random binary strings:</p>
+<p><span class="math display">\[
+X=\sum\limits_{i=1}^{10}a_ib_i.
+\]</span></p>
+<p>Its pmf is</p>
+<p><span class="math display">\[
+P(X=k)=\frac{\binom{10}{k}3^{10-k}}{2^{20}},\quad k = 0,\,1,\,2,\,...,\,10.
+\]</span></p>
+</section><section id="recall-problem-set-3-8-1" class="level2 scrollable medium"><h2 class="scrollable medium anchored" data-anchor-id="recall-problem-set-3-8-1">Recall: Problem Set 3 #8</h2>
+<p><span class="math display">\[
+P(X=k)=\frac{\binom{10}{k}3^{10-k}}{2^{20}},\quad k = 0,\,1,\,2,\,...,\,10.
+\]</span></p>
+<p>To compute all 11 of those probabilities in one fell swoop, take advantage of <em>vectorization</em>:</p>
+<p>. . .</p>
+<div class="cell">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">10</span></span>
+<span></span>
+<span><span class="va">pmf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Special.html">choose</a></span><span class="op">(</span><span class="fl">10</span>, <span class="va">k</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fl">3</span> <span class="op">^</span> <span class="op">(</span><span class="fl">10</span> <span class="op">-</span> <span class="va">k</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span><span class="op">^</span><span class="fl">20</span></span>
+<span><span class="va">pmf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 5.631351e-02 1.877117e-01 2.815676e-01 2.502823e-01 1.459980e-01
+ [6] 5.839920e-02 1.622200e-02 3.089905e-03 3.862381e-04 2.861023e-05
+[11] 9.536743e-07</code></pre>
+</div>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">pmf</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+</section></section><section id="sampling" class="level1"><h1>Sampling</h1>
+<section id="flip-a-coin" class="level2"><h2 class="anchored" data-anchor-id="flip-a-coin">Flip a coin</h2>
+<div class="cell">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"H"</span>, <span class="st">"T"</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "T" "T" "T" "H" "T" "H" "H" "T" "T" "T"</code></pre>
+</div>
+</div>
+</section><section id="roll-a-die" class="level2"><h2 class="anchored" data-anchor-id="roll-a-die">Roll a die</h2>
+<div class="cell">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, size <span class="op">=</span> <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 2 3 3 5 6 3 4 6 6 2</code></pre>
+</div>
+</div>
+</section><section id="shuffle-a-deck" class="level2"><h2 class="anchored" data-anchor-id="shuffle-a-deck">Shuffle a deck</h2>
+<div class="cell">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">deck_of_cards</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"AH"</span>, <span class="st">"2H"</span>, <span class="st">"3H"</span>, <span class="st">"4H"</span>, <span class="st">"5H"</span>, <span class="st">"6H"</span>, <span class="st">"7H"</span>, <span class="st">"8H"</span>, <span class="st">"9H"</span>, <span class="st">"10H"</span>, <span class="st">"JH"</span>, <span class="st">"QH"</span>, <span class="st">"KH"</span>,</span>
+<span>                   <span class="st">"AD"</span>, <span class="st">"2D"</span>, <span class="st">"3D"</span>, <span class="st">"4D"</span>, <span class="st">"5D"</span>, <span class="st">"6D"</span>, <span class="st">"7D"</span>, <span class="st">"8D"</span>, <span class="st">"9D"</span>, <span class="st">"10D"</span>, <span class="st">"JD"</span>, <span class="st">"QD"</span>, <span class="st">"KD"</span>,</span>
+<span>                   <span class="st">"AC"</span>, <span class="st">"2C"</span>, <span class="st">"3C"</span>, <span class="st">"4C"</span>, <span class="st">"5C"</span>, <span class="st">"6C"</span>, <span class="st">"7C"</span>, <span class="st">"8C"</span>, <span class="st">"9C"</span>, <span class="st">"10C"</span>, <span class="st">"JC"</span>, <span class="st">"QC"</span>, <span class="st">"KC"</span>,</span>
+<span>                   <span class="st">"AS"</span>, <span class="st">"2S"</span>, <span class="st">"3S"</span>, <span class="st">"4S"</span>, <span class="st">"5S"</span>, <span class="st">"6S"</span>, <span class="st">"7S"</span>, <span class="st">"8S"</span>, <span class="st">"9S"</span>, <span class="st">"10S"</span>, <span class="st">"JS"</span>, <span class="st">"QS"</span>, <span class="st">"KS"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">deck_of_cards</span>, size <span class="op">=</span> <span class="fl">5</span>, replace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "3D" "8D" "AH" "JD" "8C"</code></pre>
+</div>
+</div>
+</section><section id="what-about-unequal-outcomes" class="level2"><h2 class="anchored" data-anchor-id="what-about-unequal-outcomes">What about unequal outcomes?</h2>
+<p>From <code><a href="https://rdrr.io/r/base/sample.html">?sample</a></code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">size</span>, replace <span class="op">=</span> <span class="cn">FALSE</span>, prob <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>
+<code>x</code>: a vector of one or more elements from which to choose;</li>
+<li>
+<code>size</code>: the number of items to choose;</li>
+<li>
+<code>replace</code>: should sampling be with replacement?</li>
+<li>
+<code>prob</code>: a vector of probability weights for obtaining the elements of the vector being sampled.</li>
+</ul>
+<p><code>x</code> and <code>prob</code> should probably be the same length!</p>
+</section><section id="recall-center-of-mass-example-3" class="level2 medium"><h2 class="medium anchored" data-anchor-id="recall-center-of-mass-example-3">Recall: center-of-mass example</h2>
+<div class="cell">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">range_x</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">6</span><span class="op">:</span><span class="fl">2</span></span>
+<span><span class="va">masses</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">pmf</span> <span class="op">&lt;-</span> <span class="va">masses</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">masses</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">random_draws</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">range_x</span>, <span class="fl">5000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span>, prob <span class="op">=</span> <span class="va">pmf</span><span class="op">)</span></span>
+<span><span class="va">random_draws</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   [1] -6 -4 -5 -6 -5  1 -6 -1 -2 -4  0 -6 -4 -2 -3 -2  0 -1 -4 -4  0 -3 -6  0
+  [25]  1 -6 -6 -4 -5 -5 -5 -2 -5 -5 -2 -5 -4 -5 -5 -5 -1  1 -4 -6 -5 -6 -4 -5
+  [49] -2 -5 -5 -6  1 -2 -3 -5 -2 -2 -5 -4 -4 -5 -5 -3 -5 -6  0 -5 -3 -5 -1 -4
+  [73] -5 -2 -2  1 -5  1 -2 -4 -5 -5 -3 -5 -4 -3 -5 -3  1 -4 -5 -2  2 -2 -3 -5
+  [97] -5 -1 -4 -3 -2 -3 -2 -3 -3 -4 -6 -4 -5 -6 -1 -1  0 -5 -3 -1  0 -5 -2 -6
+ [121] -1 -4  0 -2 -4 -5  0 -5 -5 -6 -4 -4  0 -5 -3 -1 -6 -5 -5 -2 -5  0  0 -1
+ [145]  1 -1 -5 -3 -4 -4 -2 -6 -1 -1  0 -4 -4  0 -4  0 -2 -1 -1  1 -6 -2  1 -2
+ [169] -4 -5 -5 -6 -4 -5 -3 -1 -5  0 -4 -6 -4 -5 -6 -3 -2 -5 -4 -6 -2 -5  1 -2
+ [193] -3 -3 -6 -4 -2 -3 -5 -4 -2 -5  0 -6 -4 -4 -3 -3 -2 -6 -4 -5 -4 -5 -3 -5
+ [217] -2 -4  1  0  2 -3 -4 -2 -4 -5 -6 -2 -2 -2 -1 -5  0  0 -6 -1 -2 -5 -5  0
+ [241] -4 -3 -2  1 -6 -2 -3 -5 -1  2  1 -2 -4 -4 -4 -6 -5 -6  1 -4 -3  0 -6 -5
+ [265] -2 -4 -3 -1 -4 -2 -5 -6 -4 -4 -5 -2 -2 -3  1 -6 -5 -4 -6  1 -1  0 -5  0
+ [289] -2 -4  0 -2 -6 -2  1 -5 -2 -4 -2 -5  2 -5  0 -1 -5 -5 -2 -4 -3 -5  1  1
+ [313] -2 -6 -3 -4 -5 -6 -3 -4 -5 -2 -4 -4 -4  2 -4 -1 -1 -4 -4 -3 -5 -6 -4 -2
+ [337]  0 -1 -3 -6  0 -5 -4 -4 -3 -4 -4  0 -5 -5 -4 -4 -2 -6 -5 -2 -5 -4 -4 -2
+ [361] -4 -1 -3 -3  0 -3 -5 -4 -5 -5  2 -3 -3  0 -4  0 -4  2 -5  0 -5 -5  0 -1
+ [385] -3 -2 -2 -6 -4 -5 -5 -1 -6 -3 -6 -2 -3  0 -3 -3 -3 -1  2 -4 -1 -1 -3  1
+ [409] -6  1 -3 -3 -1 -5 -4 -3 -1 -2 -1 -3 -2 -4  0 -5 -3 -4 -2 -6  2  1 -4 -4
+ [433] -2  0  1 -4 -3 -3 -3 -4 -4 -4 -1  0  0 -4 -5 -4  2 -2 -2 -3 -3 -2 -5 -4
+ [457] -1 -3 -3  0 -4 -5 -4 -4 -5 -3 -4 -2 -3 -2 -5 -4 -1 -2 -5 -1  1 -5 -4 -1
+ [481] -1  0  0 -4 -3 -5 -6 -1 -5 -4 -5 -6 -2 -6 -6 -6 -1 -5 -6  2 -5 -4 -3 -3
+ [505] -3 -4 -4 -1 -4 -3 -5 -2 -5 -5 -2 -2 -6 -1 -6  1 -3  2 -6 -3 -5 -5  0 -1
+ [529] -2 -4 -5  1 -2 -2 -4 -6 -1  0 -6 -4 -2 -2  0  0 -2  1 -3 -4 -1 -4 -3 -5
+ [553] -1 -6 -4 -1 -4 -5 -6 -5 -4 -2 -1 -5 -6  2 -1  2 -1 -6 -4  0 -5 -6 -4 -4
+ [577] -5 -5 -2 -3 -5 -5 -5 -4 -5 -6  0 -4 -3 -5 -4 -4 -5  1 -5  0 -5 -5 -1 -2
+ [601]  1  0 -6  1 -3 -5  1 -6 -4 -1  1 -3  1 -2 -3 -5 -2 -6 -3 -5  0  1 -3 -4
+ [625] -3  1 -6 -6  0 -5 -5  0 -3 -5 -5  0  1 -3 -6 -5 -3 -2 -3 -2 -6 -6  0 -2
+ [649] -3 -1 -1  0 -5 -1  0 -2 -3  0 -3 -1 -5 -5 -2 -4 -5 -2 -5 -5 -2 -2 -3 -3
+ [673] -6 -4 -5 -4 -4 -5 -5  0 -4  1 -2 -6 -5 -5 -2 -2 -2 -5 -5 -6 -2 -5 -5  2
+ [697] -1 -5 -5  0 -1  1 -2 -4 -5 -1 -2 -6 -1 -2 -2 -3 -6  1 -6  1 -4  2 -4 -1
+ [721] -1 -6  1 -6 -2 -5 -2 -5 -1 -1 -3 -6 -3 -4 -6  1 -5 -1 -3 -6  0 -3 -5 -1
+ [745] -4 -5 -5 -4 -5 -4 -3 -4 -5 -5 -4 -3 -2  0 -1 -5 -5 -4 -4  0 -5 -3 -5 -2
+ [769]  0 -2 -6 -1 -5  0 -5 -3 -6 -4 -5 -5 -6 -2 -4  0 -3 -1 -5 -5 -2 -6 -6 -5
+ [793] -5 -5 -1 -6 -4 -4 -2 -5  0 -4 -3 -1 -2 -1 -2 -2 -6 -4 -6 -4 -4 -2 -6 -1
+ [817] -3  1 -2 -1 -1 -2 -2 -1 -6 -1 -4 -5 -3 -5 -3 -5 -1 -3 -5 -4 -3 -2  0 -4
+ [841] -5 -3  0 -4 -2  1  1 -4 -5 -5 -5  0  1 -5  0 -4 -5 -5 -5 -1 -5  1  0 -3
+ [865] -3 -4 -5 -5 -3 -6 -2 -2 -5 -2  0 -4 -5 -5 -5 -1 -1  0 -5 -5 -4  0 -4 -4
+ [889] -6 -4 -4 -1 -2 -5  2 -5 -1  1 -3  0 -5 -4 -4 -5 -4 -5 -6  0 -5 -2  1 -5
+ [913] -1 -2 -2 -2 -2 -4 -1  2 -3 -4 -4 -5  0 -1  0 -5 -4 -4 -4 -4  0 -4 -4 -4
+ [937] -4 -4 -2 -5 -4 -6 -5 -2 -2 -4 -2  2 -5 -2  0 -4  2  1 -5  0  0 -6  0 -1
+ [961] -5 -3  0 -1 -5 -3  1 -4 -5 -4 -6 -6 -1 -3 -1  1 -2 -4 -1  2 -5 -2 -4 -3
+ [985] -2 -4 -5 -1 -4  1 -3 -2 -5  1 -2 -2 -4  0 -5  0 -4 -4 -4 -1 -1  0 -5 -5
+[1009] -2 -1 -6 -5 -3  1  0 -6  1  1 -5 -5 -2 -4  1 -4  0 -5 -4 -2 -5  1 -2 -2
+[1033] -4 -5 -5 -5 -3 -2 -1 -1  2 -5  0 -3 -2  2 -4 -5 -6  1 -2 -3  2 -2 -1 -6
+[1057] -3 -2 -4 -1 -5  1 -5 -3 -6 -4 -2 -2 -4 -1  1 -5  0  0 -4  0 -6  1  1 -2
+[1081] -5 -3 -2 -2 -5  1 -5 -2 -5 -2 -5 -5 -1 -4  1 -3 -4 -1 -4  0 -4 -2 -3 -5
+[1105] -1  2 -3  1 -3  0  1 -5 -6  0 -4 -2 -4  1 -4 -5 -6 -6 -5 -4 -1 -3 -6 -6
+[1129] -1 -6 -5  0 -5 -2 -2 -4 -4 -1 -5 -3 -6 -4 -4 -4  0 -5 -4 -4 -5 -2 -5 -4
+[1153]  1 -5 -6 -5 -5 -5 -2 -5 -4 -2 -5 -5 -5  2  1  0 -1 -2 -3 -2 -2 -6  0 -5
+[1177]  0  2 -4 -5 -1 -2 -5 -3 -4 -3 -1 -1 -1 -1 -3  0 -4 -3 -6 -6  0 -5  0 -3
+[1201] -2 -3 -4 -6 -4 -2 -5 -4 -2 -4 -6 -6  1  1 -1 -4 -4 -1  0 -1 -5 -2 -1 -4
+[1225] -2 -5 -3 -1  0 -4  1 -4 -1  1 -2 -5 -2 -6 -1 -1 -1 -3 -6  0 -4 -4  1 -1
+[1249] -4 -4 -3  0 -1 -2 -6 -5 -2 -2 -2 -3 -5  1 -6 -6 -2  1 -2 -2 -5 -3 -2 -3
+[1273] -6 -6 -5 -5 -5 -6  1 -4 -5 -6 -4 -5 -5 -4 -5  0 -5 -6  1 -6 -4 -6 -4  0
+[1297] -6 -4 -1 -4  0 -3  1 -4 -6 -4  1 -2 -2 -5 -3 -4 -4 -4 -2 -3 -4  0 -6 -5
+[1321]  0 -5  2 -4 -2 -5  1 -4  0 -3 -3 -2 -4  0 -5 -5 -5 -4 -1  0 -3 -1 -1 -6
+[1345] -4 -6 -6 -2 -2 -4 -5 -5 -4 -5 -4 -4 -3 -4 -6 -2 -1 -2 -4  0 -4 -1 -1 -5
+[1369] -3 -2 -5  2 -2 -5 -3 -5 -5 -4 -3 -3 -6 -4 -2 -1 -4 -3 -6 -3 -2 -1 -5 -2
+[1393] -6 -4 -5 -2  2  2 -1 -5 -4 -5  1 -3  0 -5 -5 -5 -3 -2 -1 -5 -6 -2 -3 -4
+[1417] -2 -3 -6 -1 -2 -1 -4 -4 -4 -5 -6 -5 -1 -5 -4 -5 -1 -4 -2 -6 -4 -2 -1 -1
+[1441] -4 -2 -1  1 -5 -1 -2 -2 -2 -1 -1 -2 -1  0 -6  1 -5 -5 -4  0 -2 -5  1 -6
+[1465] -2 -1 -5 -1 -4 -5 -4 -5 -5 -4  0 -2 -5 -5 -6 -6 -1  0 -3 -6 -2  2  1 -6
+[1489] -6 -1 -4 -5 -4 -5  1 -5 -3 -1 -5  2 -5 -5 -4  0 -5 -5 -4 -6  0 -6  0 -3
+[1513] -5 -4  1 -2  1 -4 -5 -2 -5 -2 -5 -4 -3  0 -6 -5 -1 -4 -4 -4 -4 -2 -5 -2
+[1537] -2  0 -3  0 -6 -2 -3 -2  0 -5 -4 -5  0 -3 -4  0 -1 -5 -5 -2 -4  0 -2 -4
+[1561] -3 -5 -5  0 -2 -2 -4 -1 -4 -6 -4 -2 -2 -5 -1 -2 -5 -3 -1 -5  0 -5 -5 -4
+[1585] -6 -1 -3 -5 -5 -5 -3 -4 -2 -6  1 -2 -4 -6 -1  2  1 -1 -4 -5 -3 -4 -5  0
+[1609] -2 -1  1 -5 -6  0 -5 -2  0 -2 -5 -4 -4 -4 -5 -5 -1 -2 -2 -3 -6 -5  2 -5
+[1633] -5 -5  1 -4 -3 -2 -4 -4 -5 -2 -4 -6 -5 -6 -2 -2  0 -3 -5 -4 -3 -2 -6 -1
+[1657]  1 -5  1 -5 -5 -5 -5 -6 -4 -4 -3 -1 -5 -2 -3 -2 -2 -5 -5 -3 -5  1 -3 -3
+[1681] -4  1  0 -5  2 -1 -6 -3 -5 -4 -5 -6  1 -3  1 -1 -4 -4 -2 -6 -1 -5  0 -1
+[1705]  1  2 -3 -4 -1 -1  0 -4 -3 -5 -3 -4 -6 -2 -3 -2 -1 -3 -2 -4 -6 -4 -3  2
+[1729] -6 -4 -2 -5 -5 -2 -1  2 -3 -2 -5 -3 -5 -6 -3 -3  0 -5 -2 -3 -4 -2 -1 -4
+[1753] -1 -4 -5 -3 -2  1 -3 -5 -4 -1 -3 -4 -2  2 -5 -3 -6 -3 -2 -5 -1 -3 -5 -6
+[1777] -5 -4 -5 -2 -3 -4 -1 -3 -5 -5 -4 -1 -3 -1 -3  2 -1 -2 -5 -4 -5 -4 -1 -3
+[1801] -3 -2  2 -5 -6 -4 -2 -5  0 -3 -4 -4 -1  2 -2 -6 -6 -4 -3 -5 -4  1 -5  2
+[1825] -5  0  2  0 -5 -5 -3 -4 -3 -6  1 -5 -4  0  0 -1 -1 -1 -1 -6 -6 -3 -6 -1
+[1849] -5 -5  0 -4 -5 -3 -6 -6 -5 -5 -3 -5 -3 -5 -2 -2 -4 -4  1 -3 -4 -2 -4 -3
+[1873] -2  0 -5 -3 -2 -1 -1  0 -4 -1  0 -1 -3 -3 -5 -4 -3 -2 -4 -3  0 -4 -4 -3
+[1897] -2  1 -3 -6 -4 -6 -4  0 -3 -4  0 -6  1 -6 -6 -1 -4 -4  0 -2 -5 -6 -3  2
+[1921] -5  1 -5 -2 -2 -5 -2 -4  0  1  2 -5 -6 -3 -3 -3  0 -2  0  0 -1 -5 -3 -5
+[1945] -3 -5 -2 -5 -3 -5 -2 -6 -1 -4 -6 -4 -4 -4 -5 -2 -5 -5 -6 -3 -5 -2 -3 -6
+[1969]  0  0  0 -3  1 -6  1 -3 -5 -4 -3 -2  1 -4 -2  0 -5 -5 -4 -6 -3 -4 -3 -6
+[1993] -4 -4 -3 -4 -1 -5  2  0 -5 -4  0 -2  0 -2 -3 -3  2 -2 -5 -3 -3 -1 -5  2
+[2017] -5 -5  1 -1 -3 -3 -4 -6 -1  0 -1 -3  1 -4 -3 -2 -2  1  2 -5 -6 -5  1  2
+[2041] -3 -5 -1  0 -2 -5 -5 -2 -5 -6 -5 -5 -5 -1 -3  0  0 -3  0 -5 -6  2 -5 -4
+[2065] -5 -6 -2 -5 -1 -6 -2 -4  1 -6 -6 -3 -3 -4  0 -5  2 -1 -2 -4 -4 -1 -5 -5
+[2089] -4 -3 -5 -6 -5 -4 -1 -5 -6 -4 -4 -1 -4 -6 -3 -6 -5 -5 -1 -4 -2 -5 -4 -3
+[2113] -2 -4 -5  1 -3 -5 -5 -4 -1 -4 -3  1  1  0 -4 -5 -5  0 -5 -3 -2 -1 -6 -3
+[2137] -2 -2 -2  0 -4 -6 -2 -4 -5 -5 -5 -1 -5 -3 -2 -2 -4 -3 -4 -5 -4 -2 -2 -2
+[2161] -5 -4 -3 -3 -5 -6 -3 -6  1 -3 -6 -5 -5 -2  0  1 -4 -1 -5  1 -5 -4  1 -5
+[2185] -2 -4 -5 -4 -4  0 -3  0 -4  1  1 -4 -6 -5 -6  2  2  1 -4 -3 -5  2  1 -6
+[2209] -1  1 -3 -3 -5 -5  1 -4 -3 -5 -4 -6 -1 -5 -1 -2 -5 -5 -2 -5 -2 -2 -4  0
+[2233] -6 -3 -4 -4 -5 -2 -2 -1 -4 -4 -4 -1 -3 -5 -3 -5 -4  1  0 -6 -4 -5 -5 -6
+[2257] -6 -1 -5 -1 -1  0 -2 -4 -5  0 -4 -6 -3 -4 -4 -6  1 -4 -4  1 -5 -2 -4  2
+[2281] -2 -1 -1  0 -4 -1 -5 -5 -1 -3 -5  1 -3  0 -4 -2 -5 -1 -2 -2 -1 -3 -2 -3
+[2305] -4  0  0 -3 -2 -4  0 -1 -1  0 -1  0 -4 -5 -2 -6 -3 -2 -5 -2 -5 -2 -5 -4
+[2329] -3 -4 -4 -1 -3 -3  0  0  0 -1 -2 -5 -2  0 -6 -6 -4  1 -2  0 -5  2 -6 -5
+[2353] -4 -6 -1 -6 -2 -4  1 -5 -2 -4  2 -5  1 -2  1 -4 -3 -5 -3 -1 -2 -3 -6  1
+[2377] -3 -5 -4 -5 -4 -5 -3 -4 -2 -6 -3 -5 -1 -4 -2 -2 -2  0 -1  0 -5 -5 -4 -6
+[2401] -5 -3 -1  0 -1 -4 -3 -2 -3 -5  1 -1 -3 -6 -2  1 -5 -1 -5  0 -5 -4  1 -5
+[2425] -5 -2 -5  1  0 -2 -3 -5 -6 -5  0 -5 -5 -5  1 -3 -3 -5 -3 -4  0 -4 -5  0
+[2449] -5 -5 -5  0 -5 -5 -4 -2 -4 -1 -2 -5 -3 -4 -6 -4 -5 -3 -5 -4 -1 -4 -5 -6
+[2473] -6 -2 -4  0 -5 -5  0 -3 -3 -5 -4 -3 -5 -1 -1 -1 -4  1  0 -2 -5 -1  0 -5
+[2497] -1 -6  0  0  0  0 -5  0 -5 -2 -6 -6 -2 -4 -5 -3 -1 -4 -4 -5 -5 -6  2 -4
+[2521] -6 -4 -5 -4 -6 -4  2 -5 -5 -5 -1 -4 -3 -2 -4 -4 -4 -6 -5  0 -5 -4 -4 -5
+[2545] -1 -2 -5 -5 -1 -4 -5 -4 -6 -2  1  0  1 -5 -1 -5 -1 -4 -5 -4 -5 -4 -4 -6
+[2569] -5 -1 -3 -5 -4 -3  1 -3 -5 -4 -6 -2 -5  2  2 -1 -2 -5 -5 -4 -1 -5 -2  2
+[2593] -6 -5 -5 -5 -6  0  1  2 -5 -5 -6 -5 -5  0 -4 -4 -5 -2 -5  0  0 -5  2 -3
+[2617] -3  2  2 -2 -4 -6  1 -6 -5 -4 -3  2 -2 -1 -1 -3  1 -5 -3 -4 -6 -5 -5 -4
+[2641] -5 -3 -2 -5 -3  1  0  1  0 -3 -2 -4 -2 -1  0 -2  0  1 -5 -5 -1 -6 -5 -5
+[2665] -5 -6 -5  1 -4 -4 -1 -4 -4 -5 -3 -2 -6 -6 -3 -1 -6 -1 -5  1  1 -6 -4  0
+[2689] -3 -4 -4 -2 -3 -2 -2  0 -5 -5 -1 -6 -5  0 -4 -1 -5 -5 -5 -6  1 -5 -5  0
+[2713] -5  0  2 -4 -2 -4  0 -5 -3 -1 -5 -2 -5 -2 -3 -2  0  1 -5 -5 -6 -3 -6 -4
+[2737] -5 -3  2 -4 -5 -4 -5 -4 -2 -1 -2  0 -4 -6 -5 -5 -1 -6 -1 -3 -5  0 -5 -4
+[2761] -4 -4 -4 -2 -2  2 -2 -1 -5 -4 -1 -5 -6 -4 -1  0 -5 -5 -5  2  1 -1 -2 -2
+[2785] -3 -1 -3 -2 -1 -2 -4  0  1 -5 -4 -5 -3 -3 -3 -4 -4 -4 -4  1 -3 -2 -2 -4
+[2809] -4  2 -2 -6 -3 -5 -1 -6 -2 -3  1 -5  1 -4 -1 -5 -1 -4 -5 -3 -5 -3 -5 -3
+[2833] -6 -4 -4 -1  1 -6 -4 -5 -4 -5 -1 -5 -4 -5 -1  2 -6 -2  2 -3 -5 -4  2 -5
+[2857] -5 -4 -3  1  1 -4 -1 -5 -2 -6 -3 -5 -4 -5 -5  0 -3 -1 -3 -3 -5 -4 -3 -1
+[2881] -2 -5 -4 -4 -6 -6 -1 -2 -6 -5  0 -4 -4 -4 -4 -2 -5 -3 -6  2 -3 -4 -6 -3
+[2905]  0 -2 -2 -5 -5 -4 -5 -4 -4 -5 -3 -5 -3  0  2 -1 -6 -5 -4 -4 -5 -3 -2 -2
+[2929] -6 -6 -1 -6 -1 -6 -5  0 -5 -4 -5 -6 -5 -4 -5 -2  0 -5 -3 -4 -2 -4 -6 -5
+[2953] -4 -3 -4 -6 -4 -4 -1 -2  0 -2 -1 -4  0 -5 -5 -4 -2 -2 -2 -4 -6 -4 -5 -5
+[2977]  0 -5 -6  0 -4 -2 -5 -1 -4  1 -3 -6 -3 -1  0 -4 -5 -4  1 -4 -5 -6  2  0
+[3001] -1 -4  1 -5  0 -2 -3 -4 -5 -6  1  1 -2  1 -5 -3 -5 -3 -4 -1 -5 -6 -5 -1
+[3025] -3 -3 -5 -4 -5 -2 -5 -5 -3 -1 -1 -2 -5  1  2 -4 -3 -1 -5 -4 -5 -6 -5 -6
+[3049] -4 -4 -4 -5 -4 -5 -6  0 -5 -6 -4 -1 -2 -5 -4  0 -2 -2 -2  2  0  0 -4  1
+[3073] -3 -2  0 -4 -6 -5  1 -6 -4  0 -2  2 -4 -4 -5  1 -6 -5 -2  2  0 -5 -4 -5
+[3097]  0  1  2 -1 -4 -5 -5 -5  2 -5 -4 -5  0  1  0 -3 -5 -6 -5  1 -1 -5  2 -4
+[3121]  0 -5 -1 -1 -2 -5 -3 -6 -5 -6 -6  0  2 -5 -4 -5 -2 -3 -5 -6 -4  0  1 -3
+[3145] -4 -2 -5 -5 -4  1  1 -3 -4  0 -6 -3 -1 -5 -4 -2 -1 -1 -1 -3  1 -5 -6 -3
+[3169] -6 -3 -6  1 -5  2 -2 -5 -3 -1 -2 -2 -5 -2 -5 -2 -4 -2 -2 -6  0  0 -4 -4
+[3193] -3 -4 -3 -3  0 -3 -4 -4 -3 -3 -5 -5 -6 -4  0 -2 -5  0 -4  2 -5  1 -5 -3
+[3217] -4 -6 -5 -5 -4  1 -6 -5 -4  0 -5 -3 -6 -6 -2 -5 -2 -5 -4 -5  1 -5  1 -5
+[3241] -1 -5 -5 -5 -5  2 -4  0  1 -2  0  0  1 -3 -3 -1 -1 -2  0 -4 -6 -4 -1 -6
+[3265] -5 -5 -4 -2 -3 -3 -4 -4 -4  1 -5 -5 -2 -6 -3 -6 -5 -3 -2 -6 -5  0 -4 -2
+[3289] -1 -4 -2 -1  1  0 -1  1 -4 -5  0  0 -3 -2 -5 -4  1 -3 -5 -4  1 -2 -1  0
+[3313] -5 -5 -5 -5 -5 -5 -4 -5 -6  1  2 -4 -5 -5 -3 -1 -5 -4  1 -5 -5 -4 -1 -5
+[3337] -5 -3  0  2 -4 -5 -4 -4 -3 -3 -5 -3  0 -4  2 -5  0 -6 -6  0 -5 -3 -5  0
+[3361] -5 -5  0 -1  0 -3 -5 -3 -1 -4 -3  1 -2 -5 -4 -5 -6 -5 -6 -5 -4 -3 -1  2
+[3385] -1 -6 -3 -4  0 -2 -4 -1 -1 -4 -3 -4 -2 -5  0 -2  0 -6 -3 -3 -6 -2 -5  1
+[3409] -1 -5 -5 -2  1 -3 -5 -4  1 -4  2 -4 -1 -1 -4 -4 -1 -2 -5 -2 -4 -4 -3 -5
+[3433] -5 -4 -6 -5 -2 -2 -6  0 -3 -4 -1 -6 -1  0 -4 -2 -4 -5 -5  2 -6 -6 -2 -3
+[3457] -4 -4 -2 -4 -6 -5 -4 -5 -4 -4 -5 -5 -4 -5 -1 -5 -3 -5  2  1 -4 -3 -1 -4
+[3481]  0 -3 -6 -4 -4 -5 -4 -2  0  0 -6 -5  0 -4 -5 -6 -5 -5 -4 -1 -4 -2  1 -5
+[3505]  1 -4 -4 -5 -1  2 -5 -6 -1 -5  2 -4 -4  0 -2 -1 -1 -5 -5 -5 -1  0 -5 -5
+[3529] -5  0 -4 -4 -1  1 -5 -4  0 -5 -6 -2 -6  0 -1 -6 -5 -4 -5 -6 -3 -3 -4 -3
+[3553] -3 -2 -2 -5 -3 -2  1 -5 -1 -5 -5 -2 -1 -1 -5 -2  1  0  0 -4 -5  1 -2 -2
+[3577] -3 -3 -4 -5 -5 -4 -5 -5 -4 -5 -4 -5  2 -4  1 -2  0 -6  2 -5  0 -5 -6 -3
+[3601] -1 -1 -1 -6 -3  1 -4 -4 -3 -3 -2 -5 -5 -5 -3 -5  1 -2 -3 -3 -3 -1 -3 -4
+[3625] -2  1  0  0 -4  1 -1 -1 -3  1 -1 -5 -1 -4 -3 -6 -5 -5 -2 -4 -2 -6 -5 -3
+[3649] -4 -6 -4 -2 -2 -5 -4 -4 -6 -1 -4 -3  0 -5  1 -5 -6 -5 -5 -4  2 -5 -2 -4
+[3673]  1 -2 -5 -4 -6 -5 -4 -2  0  0 -3 -3 -4 -1 -2 -5 -6 -4 -3 -1  0 -4 -2 -5
+[3697]  0  2 -1 -2 -4  2 -3 -4 -6 -2  2 -4 -5 -6 -2 -6 -3  0 -5 -4 -1 -4 -4 -6
+[3721] -3 -3 -5 -1 -1 -6 -1 -1 -3 -5 -1 -5 -6 -6 -4 -4 -4 -5  0 -6 -6 -6 -5 -4
+[3745]  0 -1 -4  0 -4 -3 -4 -5 -5 -1 -3 -5  0 -5  0 -3  1 -5  0 -5 -3 -3  0 -5
+[3769] -5 -5  2 -1 -3 -2  1 -1 -4 -4 -5 -5 -6  1 -5  1 -5 -1 -4 -5 -5  2 -3 -2
+[3793] -3 -3 -3  2 -2 -6 -6 -4 -3 -3 -6  0 -4  0 -6 -1 -2  0 -2 -3 -2 -4 -4 -3
+[3817] -5 -3 -3 -5 -5 -5 -6  0 -5 -5 -5  0 -4 -3 -3 -4 -3 -3 -1 -5 -5 -5  1 -3
+[3841] -6 -5  2 -5  0 -5 -5 -3 -4 -2 -5 -3 -3  0 -5 -2 -1 -3 -4 -2 -4  2  2 -6
+[3865]  0 -6 -2  0  2 -5 -4  2 -6  0  0 -6 -4 -3 -3 -1 -4 -2 -4  1 -5  0 -1 -4
+[3889]  1 -2 -2 -2 -5 -3 -4 -5 -3 -6 -5 -4 -5 -5 -5  0 -1  1 -5  0 -3  0 -2 -1
+[3913] -5  0 -4 -4 -1  0 -3  0 -5 -2 -5  0 -1 -4 -2 -3  0 -2 -4 -3 -1 -3 -1 -4
+[3937] -2 -4 -5 -5 -5 -6 -1 -1 -1 -2 -5 -4 -2 -6 -2 -5 -5 -5 -3  1 -3 -2 -5 -4
+[3961]  0 -6 -1  1 -5 -2 -6  0 -5  0 -4  1 -3  1 -2 -4 -5 -5 -4 -2 -4  1 -5  2
+[3985] -5 -2  0 -5 -3  0 -5 -6 -4  0 -4 -1  0  2 -1 -5 -5 -1 -4 -4 -2 -5 -4 -2
+[4009]  2 -5  2 -4 -4  1 -5  1  1 -1 -2 -3 -5 -3 -3 -5 -1 -1 -2  1 -5 -5 -1 -1
+[4033] -4 -5 -6 -5 -1 -5 -6 -1 -6  0 -1 -2 -5 -5 -4 -6 -4 -2 -2 -1 -5 -6  0 -5
+[4057] -6  1 -3  0 -1 -4 -4  2 -4  0 -3 -5 -6 -4 -3 -6  1 -5 -2 -6 -5  2 -2 -3
+[4081]  1 -4 -2 -2 -5  1 -2 -5  1  0 -5 -3  0 -3  1 -4 -3 -3 -3 -4 -5 -3 -1 -6
+[4105] -4 -5  1 -5 -5 -5  0 -5 -5 -1  1 -4 -6 -2 -5 -4 -4 -1  1 -6 -1 -4  1 -3
+[4129] -1 -6 -5 -6  2  0 -1 -4  1 -2 -3 -2 -2 -4 -4 -2 -3 -2 -3 -5 -3 -2  0 -6
+[4153] -2 -2 -1 -5 -6 -2 -1  0  0 -3 -2  0  0 -5 -1 -4 -5 -4 -3  1 -2 -6 -5 -3
+[4177]  2 -2  0 -3 -5 -3 -1 -3  1 -5 -4 -3 -6  2 -1 -5 -1 -2 -5 -5 -1 -5 -5  0
+[4201] -3  0  0 -1 -3 -4 -5 -6 -4 -5  1 -5 -6 -3 -6 -5 -4 -6 -4 -3 -6 -5 -6 -4
+[4225] -3 -4 -6 -1 -2 -4  0 -5  0 -2 -4 -1 -5  1  0 -4  0  0 -5 -5 -2  2 -5 -4
+[4249] -4  0 -5 -6  2 -5 -3  0 -3 -2 -2 -5 -3 -5  0 -3 -5 -1 -4 -5 -5 -3 -1 -4
+[4273] -4 -5 -3 -4 -5 -4 -2 -5 -3 -5 -5 -5 -4 -5 -5 -3 -4  1 -3  0  1 -5 -4 -6
+[4297] -4 -5 -2  1 -4 -2 -5 -5 -4 -2 -5 -1 -5 -2  1 -3 -2 -6 -5 -6  0 -2 -5 -6
+[4321] -5 -2 -5  2 -6 -3  2 -5 -5 -4 -5  0 -2 -3 -4 -2 -4 -3 -5 -1  0 -5 -3 -3
+[4345] -1 -6 -5 -4 -5 -1 -1 -5 -6 -4 -1 -2 -3 -3  0 -4 -5 -1 -4 -4  1 -6 -5 -2
+[4369] -3 -2 -3  0 -3 -2 -5 -4 -5 -4 -2 -1 -5 -5 -3 -2 -4 -2 -6 -2 -1 -4 -5  1
+[4393]  1  0 -3 -2 -2  1 -4 -4  0  0 -6 -1 -6 -5  0 -5 -5 -4 -3 -3 -5 -5 -5 -2
+[4417]  1  0 -6 -5 -4 -5 -1  1  0 -2 -5 -4 -6  0  0 -5 -5 -5 -5 -5 -6  1 -6 -5
+[4441]  2 -4 -5  0 -3 -4  0 -5 -2 -4 -6 -5  0  0 -6 -3 -3 -1 -3 -2  0 -3 -5 -1
+[4465] -2 -3 -1 -6 -2 -1 -5 -4 -3 -4 -4 -2 -5 -5 -2 -5 -1 -4 -4 -5 -3  0 -2 -2
+[4489] -1 -2 -5 -3  2 -5 -3 -4 -3 -4 -5 -4 -5 -3 -2 -1 -4  0 -4 -6 -3 -5 -5 -4
+[4513] -2 -3 -6 -4 -4  2  2 -3 -3  0 -3  1 -6 -5 -5 -1 -1 -2 -6 -2  0 -4 -6 -4
+[4537]  2 -5 -3  2 -4 -5 -3 -4 -3 -2 -3 -4  0 -3 -3  0 -3 -2 -3 -1 -4  0 -4 -4
+[4561] -5 -5 -3 -5 -1 -5 -4 -3 -4 -4 -3  1 -6 -1 -4 -4 -4 -6  1 -3 -5 -5 -4 -4
+[4585] -1 -1 -5 -4 -5 -4 -5  0 -6 -2 -4 -4  0 -3 -5 -4 -4 -1  0  0 -1 -3 -3 -4
+[4609] -4 -4 -6 -5 -5 -6 -3 -5 -3 -4 -6  0 -3  2 -5 -5 -5 -6 -2  1 -3 -2 -5 -6
+[4633] -3  1 -6  0  1 -5  0 -5 -2 -2 -1  1 -5 -6 -5 -4 -1 -2 -5 -2 -5 -5 -6  0
+[4657]  1 -6 -5 -2  2  0  0  0 -4 -3 -2 -4 -4 -5 -5 -2 -4 -3  0  0 -4 -5 -6  0
+[4681] -3 -3 -4 -4  0 -2  0 -1 -5 -2 -3  1 -3 -5 -5 -5 -4 -4 -5  2  0 -5 -1 -3
+[4705] -5 -1 -6  0 -3  2 -5 -4 -4 -6 -5 -6 -3 -4 -2  2 -4 -2  0 -6 -2 -5 -4 -2
+[4729]  0 -6 -4 -6 -3 -4 -6 -4  0  0 -4 -1 -5 -2 -6 -4  1 -2 -5 -5 -5 -4 -2 -3
+[4753]  2 -5 -4 -5 -2 -4 -6  2 -4 -5 -4 -6 -6 -1  2 -1  1 -3 -6 -5 -4 -2 -4  0
+[4777] -2 -3 -3 -6 -1 -1 -2 -5 -5 -4 -2 -1 -2 -1 -2  0  0 -4  1 -4 -5 -6 -1 -5
+[4801] -1 -5 -2 -5 -4 -6 -2 -1  0 -1 -5 -3 -3 -5  0 -4 -5 -6 -2 -1 -6 -5 -5 -2
+[4825]  1 -3 -1 -6 -1 -3 -3  1 -2 -1  0  1 -3  2  1 -6 -4 -2 -1  2 -3 -5 -2 -4
+[4849] -6 -5 -1  1  1  1 -1  1 -4  1  0 -3 -5  1  0 -6 -4 -1 -6 -5 -4 -3 -1  0
+[4873] -4  1 -3 -2 -5 -3 -4 -6  1 -5 -5 -2 -3 -5 -1 -1 -1  2 -4 -6 -4 -1 -1  2
+[4897] -3 -5 -4  1 -2 -3 -5 -4 -5 -6 -6 -5 -1 -2 -2 -3 -6 -1 -2 -5 -2  1 -4 -1
+[4921] -3 -4 -2 -5 -5 -4  1 -2 -5 -3 -6 -3 -5 -2 -1 -3 -5 -4 -6 -2 -4 -5 -6 -5
+[4945] -3 -4 -5 -1 -5 -4 -5  0 -1 -5 -5 -6 -2 -5 -5 -4 -6 -4 -5 -6 -3 -4 -2 -1
+[4969] -4 -2 -1 -4 -1 -3 -2 -4 -5 -3 -2 -5  0  2 -5 -4  1 -5 -4 -4 -4 -4 -1 -4
+[4993]  0 -3 -5 -6  1 -2 -3  1</code></pre>
+</div>
+</div>
+</section><section id="did-it-work" class="level2 medium"><h2 class="medium anchored" data-anchor-id="did-it-work">Did it work?</h2>
+<p>How many times did we see each value?</p>
+<div class="cell">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">random_draws</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>random_draws
+  -6   -5   -4   -3   -2   -1    0    1    2 
+ 474 1099  874  601  607  478  428  292  147 </code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p>What proportion of the time did we see each value?</p>
+<div class="cell">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">random_draws</span><span class="op">)</span> <span class="op">/</span> <span class="fl">5000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>random_draws
+    -6     -5     -4     -3     -2     -1      0      1      2 
+0.0948 0.2198 0.1748 0.1202 0.1214 0.0956 0.0856 0.0584 0.0294 </code></pre>
+</div>
+</div>
+<p>. . .</p>
+<p>Are those close to the true probabilities?</p>
+<div class="cell">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">pmf</span>, digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.091 0.212 0.182 0.121 0.121 0.091 0.091 0.061 0.030</code></pre>
+</div>
+</div>
+</section><section id="how-does-the-computer-do-it" class="level2"><h2 class="anchored" data-anchor-id="how-does-the-computer-do-it">How does the computer do it?</h2>
+<p>How does the computer know how to generate draws from this distribution? What is it actually doing?</p>
+<p>This is a fascinating, beautiful, and very important topic that we will spend several future labs on. Stay tuned!</p>
+</section></section><section id="basic-plots" class="level1"><h1>Basic plots</h1>
+<section id="plotting-a-pmf" class="level2 small scrollable"><h2 class="small scrollable anchored" data-anchor-id="plotting-a-pmf">Plotting a pmf</h2>
+<p>Just a scatterplot: the first vector is the x-values; second vector is the y-values.</p>
+<div class="cell">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">range_x</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">6</span><span class="op">:</span><span class="fl">2</span></span>
+<span><span class="va">masses</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">pmf</span> <span class="op">&lt;-</span> <span class="va">masses</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">masses</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">range_x</span>, <span class="va">pmf</span>, xlab <span class="op">=</span> <span class="st">"k"</span>, ylab <span class="op">=</span> <span class="st">"P(X = k)"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="plotting-a-pmf-1" class="level2 small scrollable"><h2 class="small scrollable anchored" data-anchor-id="plotting-a-pmf-1">Plotting a pmf</h2>
+<p>Make it more pmf-ish with <code>type = "h"</code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">range_x</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">6</span><span class="op">:</span><span class="fl">2</span></span>
+<span><span class="va">masses</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">pmf</span> <span class="op">&lt;-</span> <span class="va">masses</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">masses</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">range_x</span>, <span class="va">pmf</span>, type <span class="op">=</span> <span class="st">"h"</span>, lwd <span class="op">=</span> <span class="fl">3</span>, xlab <span class="op">=</span> <span class="st">"k"</span>, ylab <span class="op">=</span> <span class="st">"P(X = k)"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="from-problem-set-0-8" class="level2"><h2 class="anchored" data-anchor-id="from-problem-set-0-8">From Problem Set 0 #8</h2>
+<p>Plot this function from 2 to 15:</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{x(\ln x)^{-1}}.
+\]</span></p>
+</section><section id="from-problem-set-0-8-1" class="level2"><h2 class="anchored" data-anchor-id="from-problem-set-0-8-1">From Problem Set 0 #8</h2>
+<p>To plot a smooth curve, give it the formula (in terms of <code>x</code>) and connect the dots:</p>
+<div class="cell">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="op">(</span><span class="va">x</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">^</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span>, from <span class="op">=</span> <span class="fl">2</span>, to <span class="op">=</span> <span class="fl">15</span>, n <span class="op">=</span> <span class="fl">1000</span>, lwd <span class="op">=</span> <span class="fl">3</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="from-lab-4" class="level2"><h2 class="anchored" data-anchor-id="from-lab-4">From Lab 4</h2>
+<p>For fixed <span class="math inline">\(f_- = f_+=0.2\)</span>, plot these functions:</p>
+<p><span class="math display">\[
+\begin{aligned}
+h(p)&amp;=\frac{(1-f_-)p}{(1-f_-)p+f_+(1-p)},\\
+g(p)&amp;=\frac{p}{p+f_+}.
+\end{aligned}
+\]</span></p>
+</section><section id="from-lab-4-1" class="level2"><h2 class="anchored" data-anchor-id="from-lab-4-1">From Lab 4</h2>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb80"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">f_plus</span> <span class="op">=</span> <span class="fl">0.2</span></span>
+<span><span class="va">f_minus</span> <span class="op">=</span> <span class="fl">0.2</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="op">(</span><span class="va">x</span> <span class="op">+</span> <span class="va">f_plus</span><span class="op">)</span>,</span>
+<span>      col <span class="op">=</span> <span class="st">"blue"</span>,</span>
+<span>      xlab <span class="op">=</span> <span class="st">"p"</span>, </span>
+<span>      ylab <span class="op">=</span> <span class="st">""</span>, </span>
+<span>      xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>      ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>      main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"FNR = "</span>, <span class="va">f_minus</span>, <span class="st">"; FPR = "</span>, <span class="va">f_plus</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="op">(</span><span class="va">x</span> <span class="op">+</span> <span class="va">f_plus</span> <span class="op">*</span> <span class="op">(</span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">f_minus</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      col <span class="op">=</span> <span class="st">"red"</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"bottomright"</span>,</span>
+<span>       <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"True Probability"</span>, <span class="st">"Car Talk Answer"</span><span class="op">)</span>,</span>
+<span>       col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span>,</span>
+<span>       bty <span class="op">=</span> <span class="st">"n"</span>,</span>
+<span>       lty <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>       <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section><section id="new-the-pdqr-functions" class="level1"><h1>New! the <code>pdqr</code> functions</h1>
+<section id="parametric-families" class="level2"><h2 class="anchored" data-anchor-id="parametric-families">Parametric families</h2>
+<p>We’ve begun studying famous <em>parametric</em> families of probability distributions:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead><tr class="header">
+<th>Distribution</th>
+<th>Range</th>
+<th>PMF: <span class="math inline">\(P(X=k)\)</span>
+</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(X\sim\text{Binom}(n,\,p)\)</span></td>
+<td><span class="math inline">\(\{0,\,1,\,2,\,...,\,n\}\)</span></td>
+<td><span class="math inline">\(\binom{n}{k}p^k(1-p)^{n-k}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(X\sim\text{Geom}(p)\)</span></td>
+<td><span class="math inline">\(\{1,\,2,\,3,\,...\}\)</span></td>
+<td><span class="math inline">\((1-p)^{k-1}p\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(X\sim\text{Poisson}(\lambda)\)</span></td>
+<td><span class="math inline">\(\mathbb{N}=\{0,\,1,\,2,\,3,\,...\}\)</span></td>
+<td><span class="math inline">\(e^{-\lambda}\frac{\lambda^k}{k!}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>You will see <em>dozens</em> more by the end of the semester.</p>
+</section><section id="the-pdqr-functions" class="level2"><h2 class="anchored" data-anchor-id="the-pdqr-functions">The <code>pdqr</code> functions</h2>
+<p>R provides a standardized set of commands for working with each family of distributions:</p>
+<ul>
+<li>The <code>p</code> command computes the CDF (stay tuned!);</li>
+<li>The <code>d</code> command computes the PMF;</li>
+<li>The <code>q</code> command computes the quantile functions (stay tuned!);</li>
+<li>The <code>r</code> command simulates random numbers from the distribution.</li>
+</ul></section><section id="example-binomial" class="level2"><h2 class="anchored" data-anchor-id="example-binomial">Example: binomial</h2>
+<p>For <span class="math inline">\(X\sim\text{Binom}(\texttt{size},\,\texttt{prob})\)</span>, use:</p>
+<div class="cell">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">size</span>, <span class="va">prob</span><span class="op">)</span> <span class="co"># PMF: P(X = x)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">size</span>, <span class="va">prob</span><span class="op">)</span> <span class="co"># draw n random numbers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="binomial-plot-the-pmf" class="level2"><h2 class="anchored" data-anchor-id="binomial-plot-the-pmf">Binomial: plot the pmf</h2>
+<div class="cell">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">binom_range</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">6</span></span>
+<span><span class="va">binom_pmf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">binom_range</span>, <span class="fl">6</span>, <span class="fl">0.4</span><span class="op">)</span> <span class="co"># vectorized!</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">binom_range</span>, <span class="va">binom_pmf</span>, type <span class="op">=</span> <span class="st">"h"</span>, xlab <span class="op">=</span> <span class="st">"k"</span>, ylab <span class="op">=</span> <span class="st">"P(X = k)"</span>, lwd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="binomial-compute-probabilities" class="level2"><h2 class="anchored" data-anchor-id="binomial-compute-probabilities">Binomial: compute probabilities</h2>
+<p>Recall from class that the probability of a random person liking my dating profile is <span class="math inline">\(p=0.0162\)</span>. If <span class="math inline">\(X\sim\text{Binom}(25,\,p)\)</span> counts the number of matches I receive back today in 25 attempts, what is <span class="math inline">\(P(X&gt;0)\)</span>?</p>
+<p>. . .</p>
+<p>Finite additivity:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(X&gt;0)
+&amp;=
+P(X=1\text{ or }X=2\text{ or }...\text{ or }X = 25)
+\\
+&amp;=
+P(X=1)+P(X=2)+...+P(X = 25)
+\\
+&amp;=
+\sum\limits_{k=1}^{25}P(X=k)
+\\
+&amp;=
+\sum\limits_{k=1}^{25}\texttt{dbinom(k, 25, 0.0162)}
+.
+\end{aligned}
+\]</span></p>
+</section><section id="binomial-compute-probabilities-1" class="level2"><h2 class="anchored" data-anchor-id="binomial-compute-probabilities-1">Binomial: compute probabilities</h2>
+<div class="cell">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">probs_1_to_25</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">25</span>, <span class="fl">25</span>, <span class="fl">0.0162</span><span class="op">)</span></span>
+<span><span class="va">probs_1_to_25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 2.736646e-01 5.407644e-02 6.826890e-03 6.182922e-04 4.276133e-05
+ [6] 2.347136e-06 1.049064e-07 3.886804e-09 1.208947e-10 3.185191e-12
+[11] 7.152242e-14 1.374033e-15 2.262588e-17 3.193499e-19 3.856350e-21
+[16] 3.968850e-23 3.459923e-25 2.532166e-27 1.536189e-29 7.588819e-32
+[21] 2.975316e-34 8.907967e-37 1.913287e-39 2.625471e-42 1.729320e-45</code></pre>
+</div>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">probs_1_to_25</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3352315</code></pre>
+</div>
+</div>
+</section><section id="binomial-compute-probabilities-2" class="level2"><h2 class="anchored" data-anchor-id="binomial-compute-probabilities-2">Binomial: compute probabilities</h2>
+<p>Recall from class that the probability of a random person liking my dating profile is <span class="math inline">\(p=0.0162\)</span>. If <span class="math inline">\(X\sim\text{Binom}(25,\,p)\)</span> counts the number of matches I receive back today in 25 attempts, what is <span class="math inline">\(P(X&gt;0)\)</span>?</p>
+<p>. . .</p>
+<p>Complement rule:</p>
+<p><span class="math display">\[
+P(X&gt;0) = 1 - P(X = 0) = 1 - \texttt{dbinom(0, 25, 0.0162)}.
+\]</span></p>
+<p>. . .</p>
+<div class="cell">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prob_0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">25</span>, <span class="fl">0.0162</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fl">1</span> <span class="op">-</span> <span class="va">prob_0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3352315</code></pre>
+</div>
+</div>
+<p>Same number as before.</p>
+</section><section id="binomial-simulate-and-verify" class="level2"><h2 class="anchored" data-anchor-id="binomial-simulate-and-verify">Binomial: simulate and verify</h2>
+<p>Simulate <span class="math inline">\(X\sim\text{Binom}(25,\,0.0162)\)</span> a bunch and verify that the empirical proportions are close to the true probabilities.</p>
+<div class="cell">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">random_draws</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="fl">5000</span>, <span class="fl">25</span>, <span class="fl">0.0162</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">random_draws</span><span class="op">)</span> <span class="op">/</span> <span class="fl">5000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>random_draws
+     0      1      2      3      4 
+0.6614 0.2766 0.0560 0.0050 0.0010 </code></pre>
+</div>
+</div>
+<p>. . .</p>
+<div class="cell">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">7</span>, <span class="fl">25</span>, <span class="fl">0.0162</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6648 0.2737 0.0541 0.0068 0.0006 0.0000 0.0000 0.0000</code></pre>
+</div>
+</div>
+</section><section id="example-poisson" class="level2"><h2 class="anchored" data-anchor-id="example-poisson">Example: Poisson</h2>
+<p>For <span class="math inline">\(X\sim\text{Pois}(\texttt{lambda})\)</span>, use:</p>
+<div class="cell">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">lambda</span><span class="op">)</span> <span class="co"># PMF: P(X = x)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">lambda</span><span class="op">)</span> <span class="co"># n random numbers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="poisson-plot-the-pmf" class="level2"><h2 class="anchored" data-anchor-id="poisson-plot-the-pmf">Poisson: plot the pmf</h2>
+<p>If <span class="math inline">\(X\sim\text{Poisson}(\lambda = 100)\)</span>, then</p>
+<div class="cell">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pois_range</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">140</span></span>
+<span><span class="va">pois_pmf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span><span class="va">pois_range</span>, <span class="fl">100</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pois_range</span>, <span class="va">pois_pmf</span>, type <span class="op">=</span> <span class="st">"h"</span>, xlab <span class="op">=</span> <span class="st">"k"</span>, ylab <span class="op">=</span> <span class="st">"P(X = k)"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="poisson-compute-probabilities" class="level2 small"><h2 class="small anchored" data-anchor-id="poisson-compute-probabilities">Poisson: compute probabilities</h2>
+<p>Say that <span class="math inline">\(X\sim\text{Poisson}(\lambda = 100)\)</span> represents the number of claims an insurance company receives in a month. What is the probability that they receive an above-average number of claims?</p>
+<p>. . .</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(X &gt; E(X)) = P(X &gt; \lambda)
+&amp;=P(X&gt;100) = \sum\limits_{k=101}^\infty P(X=k) &amp;&amp; (\text{ick!})
+\\
+&amp;=
+1-P(X\leq 100)
+=
+1 - \sum\limits_{k=0}^{100} P(X=k)
+&amp;&amp; (\text{yay!})
+\end{aligned}
+\]</span></p>
+</section><section id="poisson-compute-probabilities-1" class="level2"><h2 class="anchored" data-anchor-id="poisson-compute-probabilities-1">Poisson: compute probabilities</h2>
+<div class="cell">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prob_below_average</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fl">1</span> <span class="op">-</span> <span class="va">prob_below_average</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4734378</code></pre>
+</div>
+</div>
+</section><section id="poisson-compute-probabilities-2" class="level2"><h2 class="anchored" data-anchor-id="poisson-compute-probabilities-2">Poisson: compute probabilities</h2>
+<p>If <span class="math inline">\(X\sim\text{Poisson}(\lambda=4)\)</span>, then <span class="math inline">\(P(X\text{ even})\approx 0.5001677\)</span>.</p>
+<p>Verify:</p>
+<div class="cell">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">evens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span><span class="va">evens</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5001677</code></pre>
+</div>
+</div>
+</section><section id="poisson-simulate-and-verify" class="level2 scrollable medium"><h2 class="scrollable medium anchored" data-anchor-id="poisson-simulate-and-verify">Poisson: simulate and verify</h2>
+<p>Simulate <span class="math inline">\(X\sim\text{Poisson}(\lambda = 100)\)</span> a bunch and verify that the empirical proportions are close to the true probabilities.</p>
+<div class="cell">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">random_draws</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span><span class="op">(</span><span class="fl">5000</span>, <span class="fl">100</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">random_draws</span><span class="op">)</span> <span class="op">/</span> <span class="fl">5000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>random_draws
+    68     69     71     72     73     74     75     76     77     78     79 
+0.0002 0.0004 0.0002 0.0006 0.0008 0.0010 0.0016 0.0014 0.0030 0.0020 0.0030 
+    80     81     82     83     84     85     86     87     88     89     90 
+0.0044 0.0036 0.0078 0.0098 0.0112 0.0112 0.0166 0.0218 0.0202 0.0224 0.0260 
+    91     92     93     94     95     96     97     98     99    100    101 
+0.0274 0.0318 0.0306 0.0342 0.0350 0.0358 0.0382 0.0440 0.0358 0.0386 0.0436 
+   102    103    104    105    106    107    108    109    110    111    112 
+0.0396 0.0362 0.0390 0.0298 0.0340 0.0286 0.0288 0.0278 0.0220 0.0202 0.0208 
+   113    114    115    116    117    118    119    120    121    122    123 
+0.0186 0.0174 0.0114 0.0106 0.0084 0.0074 0.0044 0.0056 0.0068 0.0032 0.0034 
+   124    125    126    127    128    129    130    131    132    135    136 
+0.0024 0.0014 0.0016 0.0016 0.0012 0.0008 0.0010 0.0002 0.0004 0.0006 0.0002 
+   141    142 
+0.0002 0.0002 </code></pre>
+</div>
+</div>
+</section><section id="poisson-simulate-and-verify-1" class="level2 scrollable medium"><h2 class="scrollable medium anchored" data-anchor-id="poisson-simulate-and-verify-1">Poisson: simulate and verify</h2>
+<p>Clearly we didn’t visit every possible natural number. Which ones did we see?</p>
+<div class="cell">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">random_draws</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87
+[20]  88  89  90  91  92  93  94  95  96  97  98  99 100 101 102 103 104 105 106
+[39] 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125
+[58] 126 127 128 129 130 131 132 135 136 141 142</code></pre>
+</div>
+</div>
+<p>What are their probabilities?</p>
+<div class="cell">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">probs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">random_draws</span><span class="op">)</span><span class="op">)</span>, <span class="fl">100</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">probs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.0002 0.0002 0.0004 0.0006 0.0008 0.0011 0.0015 0.0020 0.0026 0.0033
+[11] 0.0042 0.0052 0.0064 0.0078 0.0094 0.0112 0.0132 0.0154 0.0176 0.0201
+[21] 0.0225 0.0250 0.0275 0.0299 0.0322 0.0342 0.0360 0.0375 0.0387 0.0395
+[31] 0.0399 0.0399 0.0395 0.0387 0.0376 0.0361 0.0344 0.0325 0.0303 0.0281
+[41] 0.0258 0.0234 0.0211 0.0188 0.0167 0.0146 0.0127 0.0110 0.0094 0.0079
+[51] 0.0067 0.0056 0.0046 0.0038 0.0031 0.0025 0.0020 0.0016 0.0012 0.0010
+[61] 0.0007 0.0006 0.0004 0.0003 0.0001 0.0001 0.0000 0.0000</code></pre>
+</div>
+</div>
+<p>Close?</p>
+<div class="cell">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">props</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">random_draws</span><span class="op">)</span> <span class="op">/</span> <span class="fl">5000</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">probs</span>, <span class="va">props</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     probs  props
+68  0.0002 0.0002
+69  0.0002 0.0004
+71  0.0004 0.0002
+72  0.0006 0.0006
+73  0.0008 0.0008
+74  0.0011 0.0010
+75  0.0015 0.0016
+76  0.0020 0.0014
+77  0.0026 0.0030
+78  0.0033 0.0020
+79  0.0042 0.0030
+80  0.0052 0.0044
+81  0.0064 0.0036
+82  0.0078 0.0078
+83  0.0094 0.0098
+84  0.0112 0.0112
+85  0.0132 0.0112
+86  0.0154 0.0166
+87  0.0176 0.0218
+88  0.0201 0.0202
+89  0.0225 0.0224
+90  0.0250 0.0260
+91  0.0275 0.0274
+92  0.0299 0.0318
+93  0.0322 0.0306
+94  0.0342 0.0342
+95  0.0360 0.0350
+96  0.0375 0.0358
+97  0.0387 0.0382
+98  0.0395 0.0440
+99  0.0399 0.0358
+100 0.0399 0.0386
+101 0.0395 0.0436
+102 0.0387 0.0396
+103 0.0376 0.0362
+104 0.0361 0.0390
+105 0.0344 0.0298
+106 0.0325 0.0340
+107 0.0303 0.0286
+108 0.0281 0.0288
+109 0.0258 0.0278
+110 0.0234 0.0220
+111 0.0211 0.0202
+112 0.0188 0.0208
+113 0.0167 0.0186
+114 0.0146 0.0174
+115 0.0127 0.0114
+116 0.0110 0.0106
+117 0.0094 0.0084
+118 0.0079 0.0074
+119 0.0067 0.0044
+120 0.0056 0.0056
+121 0.0046 0.0068
+122 0.0038 0.0032
+123 0.0031 0.0034
+124 0.0025 0.0024
+125 0.0020 0.0014
+126 0.0016 0.0016
+127 0.0012 0.0016
+128 0.0010 0.0012
+129 0.0007 0.0008
+130 0.0006 0.0010
+131 0.0004 0.0002
+132 0.0003 0.0004
+135 0.0001 0.0006
+136 0.0001 0.0002
+141 0.0000 0.0002
+142 0.0000 0.0002</code></pre>
+</div>
+</div>
+</section></section><section id="one-more-thing" class="level1"><h1>One more thing</h1>
+<section id="latex" class="level2 medium"><h2 class="medium anchored" data-anchor-id="latex">LaTeX!</h2>
+<ul>
+<li>This is new for most of you, and has been causing some headache;</li>
+<li>But if you major in a mathematical discipline, you need to know it;</li>
+<li>I create all of the course materials using Quarto + R + LaTeX;</li>
+<li>You would not want to write <a href="../math/series.html">this</a> in Google Docs.</li>
+</ul></section><section id="example-binomial-pmf" class="level2"><h2 class="anchored" data-anchor-id="example-binomial-pmf">Example: binomial pmf</h2>
+<p>What you type in your Quarto doc:</p>
+<pre><code>$$
+P(X = k) = \binom{n}{k} p^k (1-p)^{n - k}.
+$$</code></pre>
+<p>What appears in the rendered <code>.pdf</code>:</p>
+<p><span class="math display">\[
+P(X = k) = \binom{n}{k} p^k (1-p) ^{n - k}.
+\]</span></p>
+</section><section id="example-poisson-pmf" class="level2"><h2 class="anchored" data-anchor-id="example-poisson-pmf">Example: Poisson pmf</h2>
+<p>What you type in your Quarto doc:</p>
+<pre><code>$$
+P(X = k) = e^{-\lambda} \frac{\lambda^k}{k!}.
+$$</code></pre>
+<p>What appears in the rendered <code>.pdf</code>:</p>
+<p><span class="math display">\[
+P(X = k) = e^{-\lambda} \frac{\lambda^k}{k!}.
+\]</span></p>
+</section><section id="example-gamma-function" class="level2"><h2 class="anchored" data-anchor-id="example-gamma-function">Example: gamma function</h2>
+<p>What you type in your Quarto doc:</p>
+<pre><code>$$
+\Gamma(x) = \int_0^\infty z^{x-1} e^{-z} dz.
+$$</code></pre>
+<p>What appears in the rendered <code>.pdf</code>:</p>
+<p><span class="math display">\[
+\Gamma(x) = \int_0^\infty z^{x-1} e^{-z} dz.
+\]</span></p>
+</section><section id="example-our-heavy-tailed-friend" class="level2"><h2 class="anchored" data-anchor-id="example-our-heavy-tailed-friend">Example: our heavy-tailed friend</h2>
+<p>What you type in your Quarto doc:</p>
+<pre><code>$$
+\sum\limits_{n=0}^\infty n\frac{6}{\pi^2n^2} = \infty.
+$$</code></pre>
+<p>What appears in the rendered <code>.pdf</code>:</p>
+<p><span class="math display">\[
+\sum\limits_{n=0}^\infty n\frac{6}{\pi^2n^2} = \infty.
+\]</span></p>
+</section><section id="pro-tips" class="level2"><h2 class="anchored" data-anchor-id="pro-tips">Pro-tips</h2>
+<ul>
+<li>A math chunk begins with <code>$$</code> and ends with <code>$$</code>. Make sure you have line breaks immediately before the start of the math chunk and immediately after;</li>
+<li>
+<em>Within</em> the math chunk, do not have any empty lines. You’ll get a dumb render error;</li>
+<li>Spread your expression across multiple lines to make it a little more readable.</li>
+</ul></section><section id="example-bell-curve-problem-set-0" class="level2"><h2 class="anchored" data-anchor-id="example-bell-curve-problem-set-0">Example: bell curve (Problem Set 0)</h2>
+<div class="columns">
+<div class="column">
+<p>What you type:</p>
+<pre><code>$$
+h(x)
+=
+\exp
+\left(
+-\frac{1}{2}
+\frac{(x-\mu)^2}{\sigma^2}
+\right)
+.
+$$</code></pre>
+</div><div class="column">
+<p>How it renders:</p>
+<p><span class="math display">\[
+h(x)
+=
+\exp
+\left(
+-\frac{1}{2}
+\frac{(x-\mu)^2}{\sigma^2}
+\right)
+.
+\]</span></p>
+</div>
+</div>
 
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': true,
-'previewLinksAuto': false,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'chalkboard': {"buttons":true},
-'smaller': false,
- 
-        // Display controls in the bottom right corner
-        controls: false,
 
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: false,
+</section></section></main><!-- /main --><script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
 
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'edges',
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
 
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
 
-        // Display a presentation progress bar
-        progress: true,
-
-        // Display the page number of the current slide
-        slideNumber: 'c/t',
-
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
-
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
-        // Push each slide change to the browser history
-        history: true,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: false,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: false,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'fade',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 1050,
-
-        height: 700,
-
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
-
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
-        // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
-
-          RevealMath,
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
-            }
-          }
-          return false;
+    }
+
+  })();
+</script><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
         }
-        const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
-            }
-            return codeEl.innerText;
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sta240-f26\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/sta240-f26\.github\.io\/");
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
-              }
-            }
-          }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-          const config = {
-            allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
-            appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
-          };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
             } else {
-              return "";
+              container.appendChild(child.cloneNode(true));
+              break;
             }
-          });
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
             }
           } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
             });
           }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
         }
+      }, function(instance) {
       });
-      </script>
-    
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026 John Zito</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
 
 </body></html>

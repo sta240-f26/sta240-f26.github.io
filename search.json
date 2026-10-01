@@ -514,6 +514,804 @@
     ]
   },
   {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#you-do-not-learn-r-in-101-199-etc",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#you-do-not-learn-r-in-101-199-etc",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "You do not learn R in 101, 199, etc",
+    "text": "You do not learn R in 101, 199, etc\n\n\nR is a programming language, just like Python, C++, Julia, etc.\nIt has inheritance, objects, control flow, all that CS stuff;\nStats majors must take STA 323, where you learn all that;\nIn 199, we suppress the programming language side of R and teach you a narrow dialect called the “tidyverse,” which is very well-suited to data science, especially for beginners;\nBut we aren’t doing any data science in this class, so now what?"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#our-computing-needs",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#our-computing-needs",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Our computing needs",
+    "text": "Our computing needs\nWe will use R as a labor-saving technology to perform three kinds of tasks:\n\ncalculator (choose, factorial, dbinom, etc);\nbasic graphics (histogram, line plot, etc);\nbut most important: simulation."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#why-is-simulation-so-important",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#why-is-simulation-so-important",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Why is simulation so important?",
+    "text": "Why is simulation so important?\n\nThis class is primarily about doing the math to understand how random phenomena behave;\nBut when you cannot do the math, you can still simulate to approximate the behavior you are studying;\nThis is a powerful tool for building intuition and prototyping mathematical ideas;\nEvery statistician I know is constantly running simulations to understand how statistical methods behave, and we want you to be able to do the same thing."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#where-are-we-headed",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#where-are-we-headed",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Where are we headed?",
+    "text": "Where are we headed?\n\nThe mathematical and computational arcs of this class will converge to an analysis of the bootstrap;\nThis is a simulation-based method for approximating the sampling distribution of a statistical estimator;\nMany of you used this procedure on faith in 101 or 199;\nIn this class we want to explain what it’s doing, why it works, and implement it ourselves."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#the-full-monty",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#the-full-monty",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "The Full Monty",
+    "text": "The Full Monty"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#the-goal",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#the-goal",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "The goal",
+    "text": "The goal\n\nIf by December you can understand every ingredient in that picture and how they fit together, then you have mastered the main ideas of this class and you are well prepared for the rest of the major;\nThat diagram is a template for a generic kind of simulation that you can design to investigate the properties of any statistical method;\nIt’s a very powerful way of thinking, and we want you to be able to do it on your own."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#this-will-take-a-while",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#this-will-take-a-while",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "This will take a while!",
+    "text": "This will take a while!\n\n(10/01) Lab 5: Lock down R basics;\n(10/15) Lab 6: Continuous random variables;\n(10/22) Lab 7: Transformations;\n(10/29) Lab 8: Random number generation;\n(11/05) Lab 9: More random number generation;\n(11/19) Lab 10: Simulation + statistics;\n(12/03) Lab 11: The bootstrap!"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#the-basics",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#the-basics",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "The basics",
+    "text": "The basics\n\n2 + 2 # addition\n\n[1] 4\n\n5 - 2 # subtraction\n\n[1] 3\n\n0.5 * 6 # multiplication\n\n[1] 3\n\n3 / 4 # division\n\n[1] 0.75\n\nsqrt(2) # square root\n\n[1] 1.414214\n\n4 ^ 2 # exponent\n\n[1] 16"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#the-slightly-less-basics",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#the-slightly-less-basics",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "The (slightly less) basics",
+    "text": "The (slightly less) basics\n\nexp(4.9) # base-e exponent\n\n[1] 134.2898\n\nlog(7) # natural log\n\n[1] 1.94591\n\nceiling(4.6) # round up\n\n[1] 5\n\nfloor(4.6) # round down\n\n[1] 4\n\nfactorial(4) # n! = n x (n-1) x ... x 2 x 1\n\n[1] 24\n\nchoose(8, 3) # binomial coefficient\n\n[1] 56"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#from-problem-set-1",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#from-problem-set-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "From Problem Set 1",
+    "text": "From Problem Set 1\nIf \\(X\\sim\\text{Poisson}(\\lambda=4)\\), then\n\\[\nP(X\\text{ even}) = e^{-4}\\sum\\limits_{i=0}^\\infty\\frac{4^{2i}}{(2i)!}=e^{-4}\\cosh 4.\n\\]\n\n\nexp(-4) * cosh(4)\n\n[1] 0.5001677"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#from-the-infamous-lab-2",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#from-the-infamous-lab-2",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "From the infamous Lab 2",
+    "text": "From the infamous Lab 2\n\na five-card hand is randomly dealt to you from a well-shuffled deck. What is the probability that the hand contains at least one ace?\n\n\\[\nP\\left(\\begin{matrix}\\text{at least}\\\\\\text{one ace}\\end{matrix}\\right)=1 - P(\\text{no ace})=1-\\frac{\\#(\\text{no ace})}{\\#(\\text{five card hands})}=1-\\frac{\\binom{48}{5}}{\\binom{52}{5}}.\n\\]\n\n\n1 - choose(48, 5) / choose(52, 5)\n\n[1] 0.341158"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#vectors-1",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#vectors-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Vectors",
+    "text": "Vectors\n\nA vector in R is just an ordered collection of values that have the same type;\nThe vector is the fundamental building block in R;\nMost data structures you see either are vectors or are made up of vectors;\n\nExample: a data frame is just a bunch of vectors glued together."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#vectors-2",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#vectors-2",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Vectors",
+    "text": "Vectors\nMany ways to construct a vector:\n\n\nc(pi, 5, 3.6, 2, 9, 6000) \n\n[1]    3.141593    5.000000    3.600000    2.000000    9.000000 6000.000000\n\n\n\n\n\n5:15\n\n [1]  5  6  7  8  9 10 11 12 13 14 15\n\n\n\n\n\nseq(0, 1, length.out = 11) \n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\n\n\n\n\nnumeric(10)\n\n [1] 0 0 0 0 0 0 0 0 0 0\n\n\n\n\n\nc(\"Mary\", \"had\", \"a\", \"little\", \"chainsaw\")\n\n[1] \"Mary\"     \"had\"      \"a\"        \"little\"   \"chainsaw\""
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#variable-assignment",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#variable-assignment",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Variable assignment",
+    "text": "Variable assignment\nIt helps to give things a name so you can work with them later:\n\nx &lt;- c(6, pi, sqrt(2), exp(1), 0)\nx\n\n[1] 6.000000 3.141593 1.414214 2.718282 0.000000\n\n\n&lt;- is called the assignment operator. You should now see x listed in the “cast of characters” (Environment) in the upper right."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#about-variable-names",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#about-variable-names",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "About variable names",
+    "text": "About variable names\nYou can pick whatever name you want, but:\n\nOnly numbers, letters, and _ (underscore);\nThe name must be a single unbroken phrase;\n\n❌ prob mass\n\n✅ prob_mass\n\n\n\nThe first character cannot be a number;\n\nR is case sensitive;\n\n\nProb_Mass is different from prob_mass."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#subsetting",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#subsetting",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Subsetting",
+    "text": "Subsetting\nIf you want to isolate a portion of a vector, you can use bracket notation to request a subset of the elements:\n\nx\n\n[1] 6.000000 3.141593 1.414214 2.718282 0.000000\n\nx[2]\n\n[1] 3.141593\n\nx[c(1, 3, 5)]\n\n[1] 6.000000 1.414214 0.000000\n\nx[1:3]\n\n[1] 6.000000 3.141593 1.414214\n\n\nEach of these subsets is itself a new vector."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#vectorization",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#vectorization",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Vectorization",
+    "text": "Vectorization\nMany commands in R are vectorized. This means that if you provide the command with a vector containing many inputs, it will return a vector containing many outputs. It will go element-by-element through the input, apply the command to each one separately, and then return all of the outputs to you bundled in a vector."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#recall-center-of-mass-example",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#recall-center-of-mass-example",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Recall: center-of-mass example",
+    "text": "Recall: center-of-mass example"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#recall-center-of-mass-example-1",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#recall-center-of-mass-example-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Recall: center-of-mass example",
+    "text": "Recall: center-of-mass example\nI had a range:\n\nrange_x &lt;- -6:2\n\n\nI had masses at each one:\n\nmasses &lt;- c(3, 7, 6, 4, 4, 3, 3, 2, 1)\n\nsum(masses)\n\n[1] 33\n\n\n\n\nBut they need to be normalized:\n\nprobs &lt;- masses / 33\nprobs\n\n[1] 0.09090909 0.21212121 0.18181818 0.12121212 0.12121212 0.09090909 0.09090909\n[8] 0.06060606 0.03030303\n\n\n\n\nDivision (/) is vectorized, so it knows to divide each mass by 33."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#recall-center-of-mass-example-2",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#recall-center-of-mass-example-2",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Recall: center-of-mass example",
+    "text": "Recall: center-of-mass example\nThe expected value is\n\\[\nE(X)=\\sum\\limits_{k=-6}^2 k \\cdot P(X=k).\n\\]\n\nMultiplication (*) is vectorized, so multiply each value by its probability:\n\nrange_x * probs\n\n[1] -0.54545455 -1.06060606 -0.72727273 -0.36363636 -0.24242424 -0.09090909\n[7]  0.00000000  0.06060606  0.06060606\n\n\n\n\nSum ’em up:\n\nEX &lt;- sum(range_x * probs)\nEX\n\n[1] -2.909091"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#recall-problem-set-3-8",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#recall-problem-set-3-8",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Recall: Problem Set 3 #8",
+    "text": "Recall: Problem Set 3 #8\n\\(X\\) is the inner product of two random binary strings:\n\\[\nX=\\sum\\limits_{i=1}^{10}a_ib_i.\n\\]\nIts pmf is\n\\[\nP(X=k)=\\frac{\\binom{10}{k}3^{10-k}}{2^{20}},\\quad k = 0,\\,1,\\,2,\\,...,\\,10.\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#recall-problem-set-3-8-1",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#recall-problem-set-3-8-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Recall: Problem Set 3 #8",
+    "text": "Recall: Problem Set 3 #8\n\\[\nP(X=k)=\\frac{\\binom{10}{k}3^{10-k}}{2^{20}},\\quad k = 0,\\,1,\\,2,\\,...,\\,10.\n\\]\nTo compute all 11 of those probabilities in one fell swoop, take advantage of vectorization:\n\n\nk &lt;- 0:10\n\npmf &lt;- choose(10, k) * (3 ^ (10 - k)) / 2^20\npmf\n\n [1] 5.631351e-02 1.877117e-01 2.815676e-01 2.502823e-01 1.459980e-01\n [6] 5.839920e-02 1.622200e-02 3.089905e-03 3.862381e-04 2.861023e-05\n[11] 9.536743e-07\n\nsum(pmf)\n\n[1] 1"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#flip-a-coin",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#flip-a-coin",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Flip a coin",
+    "text": "Flip a coin\n\nsample(c(\"H\", \"T\"), size = 10, replace = TRUE)\n\n [1] \"T\" \"T\" \"T\" \"H\" \"T\" \"H\" \"H\" \"T\" \"T\" \"T\""
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#roll-a-die",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#roll-a-die",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Roll a die",
+    "text": "Roll a die\n\nsample(1:6, size = 10, replace = TRUE)\n\n [1] 2 3 3 5 6 3 4 6 6 2"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#shuffle-a-deck",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#shuffle-a-deck",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Shuffle a deck",
+    "text": "Shuffle a deck\n\ndeck_of_cards &lt;- c(\"AH\", \"2H\", \"3H\", \"4H\", \"5H\", \"6H\", \"7H\", \"8H\", \"9H\", \"10H\", \"JH\", \"QH\", \"KH\",\n                   \"AD\", \"2D\", \"3D\", \"4D\", \"5D\", \"6D\", \"7D\", \"8D\", \"9D\", \"10D\", \"JD\", \"QD\", \"KD\",\n                   \"AC\", \"2C\", \"3C\", \"4C\", \"5C\", \"6C\", \"7C\", \"8C\", \"9C\", \"10C\", \"JC\", \"QC\", \"KC\",\n                   \"AS\", \"2S\", \"3S\", \"4S\", \"5S\", \"6S\", \"7S\", \"8S\", \"9S\", \"10S\", \"JS\", \"QS\", \"KS\")\n\nsample(deck_of_cards, size = 5, replace = FALSE)\n\n[1] \"3D\" \"8D\" \"AH\" \"JD\" \"8C\""
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#what-about-unequal-outcomes",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#what-about-unequal-outcomes",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "What about unequal outcomes?",
+    "text": "What about unequal outcomes?\nFrom ?sample:\n\nsample(x, size, replace = FALSE, prob = NULL)\n\n\n\nx: a vector of one or more elements from which to choose;\n\nsize: the number of items to choose;\n\nreplace: should sampling be with replacement?\n\nprob: a vector of probability weights for obtaining the elements of the vector being sampled.\n\nx and prob should probably be the same length!"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#recall-center-of-mass-example-3",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#recall-center-of-mass-example-3",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Recall: center-of-mass example",
+    "text": "Recall: center-of-mass example\n\nrange_x &lt;- -6:2\nmasses &lt;- c(3, 7, 6, 4, 4, 3, 3, 2, 1)\npmf &lt;- masses / sum(masses)\n\nrandom_draws &lt;- sample(range_x, 5000, replace = TRUE, prob = pmf)\nrandom_draws\n\n   [1] -6 -4 -5 -6 -5  1 -6 -1 -2 -4  0 -6 -4 -2 -3 -2  0 -1 -4 -4  0 -3 -6  0\n  [25]  1 -6 -6 -4 -5 -5 -5 -2 -5 -5 -2 -5 -4 -5 -5 -5 -1  1 -4 -6 -5 -6 -4 -5\n  [49] -2 -5 -5 -6  1 -2 -3 -5 -2 -2 -5 -4 -4 -5 -5 -3 -5 -6  0 -5 -3 -5 -1 -4\n  [73] -5 -2 -2  1 -5  1 -2 -4 -5 -5 -3 -5 -4 -3 -5 -3  1 -4 -5 -2  2 -2 -3 -5\n  [97] -5 -1 -4 -3 -2 -3 -2 -3 -3 -4 -6 -4 -5 -6 -1 -1  0 -5 -3 -1  0 -5 -2 -6\n [121] -1 -4  0 -2 -4 -5  0 -5 -5 -6 -4 -4  0 -5 -3 -1 -6 -5 -5 -2 -5  0  0 -1\n [145]  1 -1 -5 -3 -4 -4 -2 -6 -1 -1  0 -4 -4  0 -4  0 -2 -1 -1  1 -6 -2  1 -2\n [169] -4 -5 -5 -6 -4 -5 -3 -1 -5  0 -4 -6 -4 -5 -6 -3 -2 -5 -4 -6 -2 -5  1 -2\n [193] -3 -3 -6 -4 -2 -3 -5 -4 -2 -5  0 -6 -4 -4 -3 -3 -2 -6 -4 -5 -4 -5 -3 -5\n [217] -2 -4  1  0  2 -3 -4 -2 -4 -5 -6 -2 -2 -2 -1 -5  0  0 -6 -1 -2 -5 -5  0\n [241] -4 -3 -2  1 -6 -2 -3 -5 -1  2  1 -2 -4 -4 -4 -6 -5 -6  1 -4 -3  0 -6 -5\n [265] -2 -4 -3 -1 -4 -2 -5 -6 -4 -4 -5 -2 -2 -3  1 -6 -5 -4 -6  1 -1  0 -5  0\n [289] -2 -4  0 -2 -6 -2  1 -5 -2 -4 -2 -5  2 -5  0 -1 -5 -5 -2 -4 -3 -5  1  1\n [313] -2 -6 -3 -4 -5 -6 -3 -4 -5 -2 -4 -4 -4  2 -4 -1 -1 -4 -4 -3 -5 -6 -4 -2\n [337]  0 -1 -3 -6  0 -5 -4 -4 -3 -4 -4  0 -5 -5 -4 -4 -2 -6 -5 -2 -5 -4 -4 -2\n [361] -4 -1 -3 -3  0 -3 -5 -4 -5 -5  2 -3 -3  0 -4  0 -4  2 -5  0 -5 -5  0 -1\n [385] -3 -2 -2 -6 -4 -5 -5 -1 -6 -3 -6 -2 -3  0 -3 -3 -3 -1  2 -4 -1 -1 -3  1\n [409] -6  1 -3 -3 -1 -5 -4 -3 -1 -2 -1 -3 -2 -4  0 -5 -3 -4 -2 -6  2  1 -4 -4\n [433] -2  0  1 -4 -3 -3 -3 -4 -4 -4 -1  0  0 -4 -5 -4  2 -2 -2 -3 -3 -2 -5 -4\n [457] -1 -3 -3  0 -4 -5 -4 -4 -5 -3 -4 -2 -3 -2 -5 -4 -1 -2 -5 -1  1 -5 -4 -1\n [481] -1  0  0 -4 -3 -5 -6 -1 -5 -4 -5 -6 -2 -6 -6 -6 -1 -5 -6  2 -5 -4 -3 -3\n [505] -3 -4 -4 -1 -4 -3 -5 -2 -5 -5 -2 -2 -6 -1 -6  1 -3  2 -6 -3 -5 -5  0 -1\n [529] -2 -4 -5  1 -2 -2 -4 -6 -1  0 -6 -4 -2 -2  0  0 -2  1 -3 -4 -1 -4 -3 -5\n [553] -1 -6 -4 -1 -4 -5 -6 -5 -4 -2 -1 -5 -6  2 -1  2 -1 -6 -4  0 -5 -6 -4 -4\n [577] -5 -5 -2 -3 -5 -5 -5 -4 -5 -6  0 -4 -3 -5 -4 -4 -5  1 -5  0 -5 -5 -1 -2\n [601]  1  0 -6  1 -3 -5  1 -6 -4 -1  1 -3  1 -2 -3 -5 -2 -6 -3 -5  0  1 -3 -4\n [625] -3  1 -6 -6  0 -5 -5  0 -3 -5 -5  0  1 -3 -6 -5 -3 -2 -3 -2 -6 -6  0 -2\n [649] -3 -1 -1  0 -5 -1  0 -2 -3  0 -3 -1 -5 -5 -2 -4 -5 -2 -5 -5 -2 -2 -3 -3\n [673] -6 -4 -5 -4 -4 -5 -5  0 -4  1 -2 -6 -5 -5 -2 -2 -2 -5 -5 -6 -2 -5 -5  2\n [697] -1 -5 -5  0 -1  1 -2 -4 -5 -1 -2 -6 -1 -2 -2 -3 -6  1 -6  1 -4  2 -4 -1\n [721] -1 -6  1 -6 -2 -5 -2 -5 -1 -1 -3 -6 -3 -4 -6  1 -5 -1 -3 -6  0 -3 -5 -1\n [745] -4 -5 -5 -4 -5 -4 -3 -4 -5 -5 -4 -3 -2  0 -1 -5 -5 -4 -4  0 -5 -3 -5 -2\n [769]  0 -2 -6 -1 -5  0 -5 -3 -6 -4 -5 -5 -6 -2 -4  0 -3 -1 -5 -5 -2 -6 -6 -5\n [793] -5 -5 -1 -6 -4 -4 -2 -5  0 -4 -3 -1 -2 -1 -2 -2 -6 -4 -6 -4 -4 -2 -6 -1\n [817] -3  1 -2 -1 -1 -2 -2 -1 -6 -1 -4 -5 -3 -5 -3 -5 -1 -3 -5 -4 -3 -2  0 -4\n [841] -5 -3  0 -4 -2  1  1 -4 -5 -5 -5  0  1 -5  0 -4 -5 -5 -5 -1 -5  1  0 -3\n [865] -3 -4 -5 -5 -3 -6 -2 -2 -5 -2  0 -4 -5 -5 -5 -1 -1  0 -5 -5 -4  0 -4 -4\n [889] -6 -4 -4 -1 -2 -5  2 -5 -1  1 -3  0 -5 -4 -4 -5 -4 -5 -6  0 -5 -2  1 -5\n [913] -1 -2 -2 -2 -2 -4 -1  2 -3 -4 -4 -5  0 -1  0 -5 -4 -4 -4 -4  0 -4 -4 -4\n [937] -4 -4 -2 -5 -4 -6 -5 -2 -2 -4 -2  2 -5 -2  0 -4  2  1 -5  0  0 -6  0 -1\n [961] -5 -3  0 -1 -5 -3  1 -4 -5 -4 -6 -6 -1 -3 -1  1 -2 -4 -1  2 -5 -2 -4 -3\n [985] -2 -4 -5 -1 -4  1 -3 -2 -5  1 -2 -2 -4  0 -5  0 -4 -4 -4 -1 -1  0 -5 -5\n[1009] -2 -1 -6 -5 -3  1  0 -6  1  1 -5 -5 -2 -4  1 -4  0 -5 -4 -2 -5  1 -2 -2\n[1033] -4 -5 -5 -5 -3 -2 -1 -1  2 -5  0 -3 -2  2 -4 -5 -6  1 -2 -3  2 -2 -1 -6\n[1057] -3 -2 -4 -1 -5  1 -5 -3 -6 -4 -2 -2 -4 -1  1 -5  0  0 -4  0 -6  1  1 -2\n[1081] -5 -3 -2 -2 -5  1 -5 -2 -5 -2 -5 -5 -1 -4  1 -3 -4 -1 -4  0 -4 -2 -3 -5\n[1105] -1  2 -3  1 -3  0  1 -5 -6  0 -4 -2 -4  1 -4 -5 -6 -6 -5 -4 -1 -3 -6 -6\n[1129] -1 -6 -5  0 -5 -2 -2 -4 -4 -1 -5 -3 -6 -4 -4 -4  0 -5 -4 -4 -5 -2 -5 -4\n[1153]  1 -5 -6 -5 -5 -5 -2 -5 -4 -2 -5 -5 -5  2  1  0 -1 -2 -3 -2 -2 -6  0 -5\n[1177]  0  2 -4 -5 -1 -2 -5 -3 -4 -3 -1 -1 -1 -1 -3  0 -4 -3 -6 -6  0 -5  0 -3\n[1201] -2 -3 -4 -6 -4 -2 -5 -4 -2 -4 -6 -6  1  1 -1 -4 -4 -1  0 -1 -5 -2 -1 -4\n[1225] -2 -5 -3 -1  0 -4  1 -4 -1  1 -2 -5 -2 -6 -1 -1 -1 -3 -6  0 -4 -4  1 -1\n[1249] -4 -4 -3  0 -1 -2 -6 -5 -2 -2 -2 -3 -5  1 -6 -6 -2  1 -2 -2 -5 -3 -2 -3\n[1273] -6 -6 -5 -5 -5 -6  1 -4 -5 -6 -4 -5 -5 -4 -5  0 -5 -6  1 -6 -4 -6 -4  0\n[1297] -6 -4 -1 -4  0 -3  1 -4 -6 -4  1 -2 -2 -5 -3 -4 -4 -4 -2 -3 -4  0 -6 -5\n[1321]  0 -5  2 -4 -2 -5  1 -4  0 -3 -3 -2 -4  0 -5 -5 -5 -4 -1  0 -3 -1 -1 -6\n[1345] -4 -6 -6 -2 -2 -4 -5 -5 -4 -5 -4 -4 -3 -4 -6 -2 -1 -2 -4  0 -4 -1 -1 -5\n[1369] -3 -2 -5  2 -2 -5 -3 -5 -5 -4 -3 -3 -6 -4 -2 -1 -4 -3 -6 -3 -2 -1 -5 -2\n[1393] -6 -4 -5 -2  2  2 -1 -5 -4 -5  1 -3  0 -5 -5 -5 -3 -2 -1 -5 -6 -2 -3 -4\n[1417] -2 -3 -6 -1 -2 -1 -4 -4 -4 -5 -6 -5 -1 -5 -4 -5 -1 -4 -2 -6 -4 -2 -1 -1\n[1441] -4 -2 -1  1 -5 -1 -2 -2 -2 -1 -1 -2 -1  0 -6  1 -5 -5 -4  0 -2 -5  1 -6\n[1465] -2 -1 -5 -1 -4 -5 -4 -5 -5 -4  0 -2 -5 -5 -6 -6 -1  0 -3 -6 -2  2  1 -6\n[1489] -6 -1 -4 -5 -4 -5  1 -5 -3 -1 -5  2 -5 -5 -4  0 -5 -5 -4 -6  0 -6  0 -3\n[1513] -5 -4  1 -2  1 -4 -5 -2 -5 -2 -5 -4 -3  0 -6 -5 -1 -4 -4 -4 -4 -2 -5 -2\n[1537] -2  0 -3  0 -6 -2 -3 -2  0 -5 -4 -5  0 -3 -4  0 -1 -5 -5 -2 -4  0 -2 -4\n[1561] -3 -5 -5  0 -2 -2 -4 -1 -4 -6 -4 -2 -2 -5 -1 -2 -5 -3 -1 -5  0 -5 -5 -4\n[1585] -6 -1 -3 -5 -5 -5 -3 -4 -2 -6  1 -2 -4 -6 -1  2  1 -1 -4 -5 -3 -4 -5  0\n[1609] -2 -1  1 -5 -6  0 -5 -2  0 -2 -5 -4 -4 -4 -5 -5 -1 -2 -2 -3 -6 -5  2 -5\n[1633] -5 -5  1 -4 -3 -2 -4 -4 -5 -2 -4 -6 -5 -6 -2 -2  0 -3 -5 -4 -3 -2 -6 -1\n[1657]  1 -5  1 -5 -5 -5 -5 -6 -4 -4 -3 -1 -5 -2 -3 -2 -2 -5 -5 -3 -5  1 -3 -3\n[1681] -4  1  0 -5  2 -1 -6 -3 -5 -4 -5 -6  1 -3  1 -1 -4 -4 -2 -6 -1 -5  0 -1\n[1705]  1  2 -3 -4 -1 -1  0 -4 -3 -5 -3 -4 -6 -2 -3 -2 -1 -3 -2 -4 -6 -4 -3  2\n[1729] -6 -4 -2 -5 -5 -2 -1  2 -3 -2 -5 -3 -5 -6 -3 -3  0 -5 -2 -3 -4 -2 -1 -4\n[1753] -1 -4 -5 -3 -2  1 -3 -5 -4 -1 -3 -4 -2  2 -5 -3 -6 -3 -2 -5 -1 -3 -5 -6\n[1777] -5 -4 -5 -2 -3 -4 -1 -3 -5 -5 -4 -1 -3 -1 -3  2 -1 -2 -5 -4 -5 -4 -1 -3\n[1801] -3 -2  2 -5 -6 -4 -2 -5  0 -3 -4 -4 -1  2 -2 -6 -6 -4 -3 -5 -4  1 -5  2\n[1825] -5  0  2  0 -5 -5 -3 -4 -3 -6  1 -5 -4  0  0 -1 -1 -1 -1 -6 -6 -3 -6 -1\n[1849] -5 -5  0 -4 -5 -3 -6 -6 -5 -5 -3 -5 -3 -5 -2 -2 -4 -4  1 -3 -4 -2 -4 -3\n[1873] -2  0 -5 -3 -2 -1 -1  0 -4 -1  0 -1 -3 -3 -5 -4 -3 -2 -4 -3  0 -4 -4 -3\n[1897] -2  1 -3 -6 -4 -6 -4  0 -3 -4  0 -6  1 -6 -6 -1 -4 -4  0 -2 -5 -6 -3  2\n[1921] -5  1 -5 -2 -2 -5 -2 -4  0  1  2 -5 -6 -3 -3 -3  0 -2  0  0 -1 -5 -3 -5\n[1945] -3 -5 -2 -5 -3 -5 -2 -6 -1 -4 -6 -4 -4 -4 -5 -2 -5 -5 -6 -3 -5 -2 -3 -6\n[1969]  0  0  0 -3  1 -6  1 -3 -5 -4 -3 -2  1 -4 -2  0 -5 -5 -4 -6 -3 -4 -3 -6\n[1993] -4 -4 -3 -4 -1 -5  2  0 -5 -4  0 -2  0 -2 -3 -3  2 -2 -5 -3 -3 -1 -5  2\n[2017] -5 -5  1 -1 -3 -3 -4 -6 -1  0 -1 -3  1 -4 -3 -2 -2  1  2 -5 -6 -5  1  2\n[2041] -3 -5 -1  0 -2 -5 -5 -2 -5 -6 -5 -5 -5 -1 -3  0  0 -3  0 -5 -6  2 -5 -4\n[2065] -5 -6 -2 -5 -1 -6 -2 -4  1 -6 -6 -3 -3 -4  0 -5  2 -1 -2 -4 -4 -1 -5 -5\n[2089] -4 -3 -5 -6 -5 -4 -1 -5 -6 -4 -4 -1 -4 -6 -3 -6 -5 -5 -1 -4 -2 -5 -4 -3\n[2113] -2 -4 -5  1 -3 -5 -5 -4 -1 -4 -3  1  1  0 -4 -5 -5  0 -5 -3 -2 -1 -6 -3\n[2137] -2 -2 -2  0 -4 -6 -2 -4 -5 -5 -5 -1 -5 -3 -2 -2 -4 -3 -4 -5 -4 -2 -2 -2\n[2161] -5 -4 -3 -3 -5 -6 -3 -6  1 -3 -6 -5 -5 -2  0  1 -4 -1 -5  1 -5 -4  1 -5\n[2185] -2 -4 -5 -4 -4  0 -3  0 -4  1  1 -4 -6 -5 -6  2  2  1 -4 -3 -5  2  1 -6\n[2209] -1  1 -3 -3 -5 -5  1 -4 -3 -5 -4 -6 -1 -5 -1 -2 -5 -5 -2 -5 -2 -2 -4  0\n[2233] -6 -3 -4 -4 -5 -2 -2 -1 -4 -4 -4 -1 -3 -5 -3 -5 -4  1  0 -6 -4 -5 -5 -6\n[2257] -6 -1 -5 -1 -1  0 -2 -4 -5  0 -4 -6 -3 -4 -4 -6  1 -4 -4  1 -5 -2 -4  2\n[2281] -2 -1 -1  0 -4 -1 -5 -5 -1 -3 -5  1 -3  0 -4 -2 -5 -1 -2 -2 -1 -3 -2 -3\n[2305] -4  0  0 -3 -2 -4  0 -1 -1  0 -1  0 -4 -5 -2 -6 -3 -2 -5 -2 -5 -2 -5 -4\n[2329] -3 -4 -4 -1 -3 -3  0  0  0 -1 -2 -5 -2  0 -6 -6 -4  1 -2  0 -5  2 -6 -5\n[2353] -4 -6 -1 -6 -2 -4  1 -5 -2 -4  2 -5  1 -2  1 -4 -3 -5 -3 -1 -2 -3 -6  1\n[2377] -3 -5 -4 -5 -4 -5 -3 -4 -2 -6 -3 -5 -1 -4 -2 -2 -2  0 -1  0 -5 -5 -4 -6\n[2401] -5 -3 -1  0 -1 -4 -3 -2 -3 -5  1 -1 -3 -6 -2  1 -5 -1 -5  0 -5 -4  1 -5\n[2425] -5 -2 -5  1  0 -2 -3 -5 -6 -5  0 -5 -5 -5  1 -3 -3 -5 -3 -4  0 -4 -5  0\n[2449] -5 -5 -5  0 -5 -5 -4 -2 -4 -1 -2 -5 -3 -4 -6 -4 -5 -3 -5 -4 -1 -4 -5 -6\n[2473] -6 -2 -4  0 -5 -5  0 -3 -3 -5 -4 -3 -5 -1 -1 -1 -4  1  0 -2 -5 -1  0 -5\n[2497] -1 -6  0  0  0  0 -5  0 -5 -2 -6 -6 -2 -4 -5 -3 -1 -4 -4 -5 -5 -6  2 -4\n[2521] -6 -4 -5 -4 -6 -4  2 -5 -5 -5 -1 -4 -3 -2 -4 -4 -4 -6 -5  0 -5 -4 -4 -5\n[2545] -1 -2 -5 -5 -1 -4 -5 -4 -6 -2  1  0  1 -5 -1 -5 -1 -4 -5 -4 -5 -4 -4 -6\n[2569] -5 -1 -3 -5 -4 -3  1 -3 -5 -4 -6 -2 -5  2  2 -1 -2 -5 -5 -4 -1 -5 -2  2\n[2593] -6 -5 -5 -5 -6  0  1  2 -5 -5 -6 -5 -5  0 -4 -4 -5 -2 -5  0  0 -5  2 -3\n[2617] -3  2  2 -2 -4 -6  1 -6 -5 -4 -3  2 -2 -1 -1 -3  1 -5 -3 -4 -6 -5 -5 -4\n[2641] -5 -3 -2 -5 -3  1  0  1  0 -3 -2 -4 -2 -1  0 -2  0  1 -5 -5 -1 -6 -5 -5\n[2665] -5 -6 -5  1 -4 -4 -1 -4 -4 -5 -3 -2 -6 -6 -3 -1 -6 -1 -5  1  1 -6 -4  0\n[2689] -3 -4 -4 -2 -3 -2 -2  0 -5 -5 -1 -6 -5  0 -4 -1 -5 -5 -5 -6  1 -5 -5  0\n[2713] -5  0  2 -4 -2 -4  0 -5 -3 -1 -5 -2 -5 -2 -3 -2  0  1 -5 -5 -6 -3 -6 -4\n[2737] -5 -3  2 -4 -5 -4 -5 -4 -2 -1 -2  0 -4 -6 -5 -5 -1 -6 -1 -3 -5  0 -5 -4\n[2761] -4 -4 -4 -2 -2  2 -2 -1 -5 -4 -1 -5 -6 -4 -1  0 -5 -5 -5  2  1 -1 -2 -2\n[2785] -3 -1 -3 -2 -1 -2 -4  0  1 -5 -4 -5 -3 -3 -3 -4 -4 -4 -4  1 -3 -2 -2 -4\n[2809] -4  2 -2 -6 -3 -5 -1 -6 -2 -3  1 -5  1 -4 -1 -5 -1 -4 -5 -3 -5 -3 -5 -3\n[2833] -6 -4 -4 -1  1 -6 -4 -5 -4 -5 -1 -5 -4 -5 -1  2 -6 -2  2 -3 -5 -4  2 -5\n[2857] -5 -4 -3  1  1 -4 -1 -5 -2 -6 -3 -5 -4 -5 -5  0 -3 -1 -3 -3 -5 -4 -3 -1\n[2881] -2 -5 -4 -4 -6 -6 -1 -2 -6 -5  0 -4 -4 -4 -4 -2 -5 -3 -6  2 -3 -4 -6 -3\n[2905]  0 -2 -2 -5 -5 -4 -5 -4 -4 -5 -3 -5 -3  0  2 -1 -6 -5 -4 -4 -5 -3 -2 -2\n[2929] -6 -6 -1 -6 -1 -6 -5  0 -5 -4 -5 -6 -5 -4 -5 -2  0 -5 -3 -4 -2 -4 -6 -5\n[2953] -4 -3 -4 -6 -4 -4 -1 -2  0 -2 -1 -4  0 -5 -5 -4 -2 -2 -2 -4 -6 -4 -5 -5\n[2977]  0 -5 -6  0 -4 -2 -5 -1 -4  1 -3 -6 -3 -1  0 -4 -5 -4  1 -4 -5 -6  2  0\n[3001] -1 -4  1 -5  0 -2 -3 -4 -5 -6  1  1 -2  1 -5 -3 -5 -3 -4 -1 -5 -6 -5 -1\n[3025] -3 -3 -5 -4 -5 -2 -5 -5 -3 -1 -1 -2 -5  1  2 -4 -3 -1 -5 -4 -5 -6 -5 -6\n[3049] -4 -4 -4 -5 -4 -5 -6  0 -5 -6 -4 -1 -2 -5 -4  0 -2 -2 -2  2  0  0 -4  1\n[3073] -3 -2  0 -4 -6 -5  1 -6 -4  0 -2  2 -4 -4 -5  1 -6 -5 -2  2  0 -5 -4 -5\n[3097]  0  1  2 -1 -4 -5 -5 -5  2 -5 -4 -5  0  1  0 -3 -5 -6 -5  1 -1 -5  2 -4\n[3121]  0 -5 -1 -1 -2 -5 -3 -6 -5 -6 -6  0  2 -5 -4 -5 -2 -3 -5 -6 -4  0  1 -3\n[3145] -4 -2 -5 -5 -4  1  1 -3 -4  0 -6 -3 -1 -5 -4 -2 -1 -1 -1 -3  1 -5 -6 -3\n[3169] -6 -3 -6  1 -5  2 -2 -5 -3 -1 -2 -2 -5 -2 -5 -2 -4 -2 -2 -6  0  0 -4 -4\n[3193] -3 -4 -3 -3  0 -3 -4 -4 -3 -3 -5 -5 -6 -4  0 -2 -5  0 -4  2 -5  1 -5 -3\n[3217] -4 -6 -5 -5 -4  1 -6 -5 -4  0 -5 -3 -6 -6 -2 -5 -2 -5 -4 -5  1 -5  1 -5\n[3241] -1 -5 -5 -5 -5  2 -4  0  1 -2  0  0  1 -3 -3 -1 -1 -2  0 -4 -6 -4 -1 -6\n[3265] -5 -5 -4 -2 -3 -3 -4 -4 -4  1 -5 -5 -2 -6 -3 -6 -5 -3 -2 -6 -5  0 -4 -2\n[3289] -1 -4 -2 -1  1  0 -1  1 -4 -5  0  0 -3 -2 -5 -4  1 -3 -5 -4  1 -2 -1  0\n[3313] -5 -5 -5 -5 -5 -5 -4 -5 -6  1  2 -4 -5 -5 -3 -1 -5 -4  1 -5 -5 -4 -1 -5\n[3337] -5 -3  0  2 -4 -5 -4 -4 -3 -3 -5 -3  0 -4  2 -5  0 -6 -6  0 -5 -3 -5  0\n[3361] -5 -5  0 -1  0 -3 -5 -3 -1 -4 -3  1 -2 -5 -4 -5 -6 -5 -6 -5 -4 -3 -1  2\n[3385] -1 -6 -3 -4  0 -2 -4 -1 -1 -4 -3 -4 -2 -5  0 -2  0 -6 -3 -3 -6 -2 -5  1\n[3409] -1 -5 -5 -2  1 -3 -5 -4  1 -4  2 -4 -1 -1 -4 -4 -1 -2 -5 -2 -4 -4 -3 -5\n[3433] -5 -4 -6 -5 -2 -2 -6  0 -3 -4 -1 -6 -1  0 -4 -2 -4 -5 -5  2 -6 -6 -2 -3\n[3457] -4 -4 -2 -4 -6 -5 -4 -5 -4 -4 -5 -5 -4 -5 -1 -5 -3 -5  2  1 -4 -3 -1 -4\n[3481]  0 -3 -6 -4 -4 -5 -4 -2  0  0 -6 -5  0 -4 -5 -6 -5 -5 -4 -1 -4 -2  1 -5\n[3505]  1 -4 -4 -5 -1  2 -5 -6 -1 -5  2 -4 -4  0 -2 -1 -1 -5 -5 -5 -1  0 -5 -5\n[3529] -5  0 -4 -4 -1  1 -5 -4  0 -5 -6 -2 -6  0 -1 -6 -5 -4 -5 -6 -3 -3 -4 -3\n[3553] -3 -2 -2 -5 -3 -2  1 -5 -1 -5 -5 -2 -1 -1 -5 -2  1  0  0 -4 -5  1 -2 -2\n[3577] -3 -3 -4 -5 -5 -4 -5 -5 -4 -5 -4 -5  2 -4  1 -2  0 -6  2 -5  0 -5 -6 -3\n[3601] -1 -1 -1 -6 -3  1 -4 -4 -3 -3 -2 -5 -5 -5 -3 -5  1 -2 -3 -3 -3 -1 -3 -4\n[3625] -2  1  0  0 -4  1 -1 -1 -3  1 -1 -5 -1 -4 -3 -6 -5 -5 -2 -4 -2 -6 -5 -3\n[3649] -4 -6 -4 -2 -2 -5 -4 -4 -6 -1 -4 -3  0 -5  1 -5 -6 -5 -5 -4  2 -5 -2 -4\n[3673]  1 -2 -5 -4 -6 -5 -4 -2  0  0 -3 -3 -4 -1 -2 -5 -6 -4 -3 -1  0 -4 -2 -5\n[3697]  0  2 -1 -2 -4  2 -3 -4 -6 -2  2 -4 -5 -6 -2 -6 -3  0 -5 -4 -1 -4 -4 -6\n[3721] -3 -3 -5 -1 -1 -6 -1 -1 -3 -5 -1 -5 -6 -6 -4 -4 -4 -5  0 -6 -6 -6 -5 -4\n[3745]  0 -1 -4  0 -4 -3 -4 -5 -5 -1 -3 -5  0 -5  0 -3  1 -5  0 -5 -3 -3  0 -5\n[3769] -5 -5  2 -1 -3 -2  1 -1 -4 -4 -5 -5 -6  1 -5  1 -5 -1 -4 -5 -5  2 -3 -2\n[3793] -3 -3 -3  2 -2 -6 -6 -4 -3 -3 -6  0 -4  0 -6 -1 -2  0 -2 -3 -2 -4 -4 -3\n[3817] -5 -3 -3 -5 -5 -5 -6  0 -5 -5 -5  0 -4 -3 -3 -4 -3 -3 -1 -5 -5 -5  1 -3\n[3841] -6 -5  2 -5  0 -5 -5 -3 -4 -2 -5 -3 -3  0 -5 -2 -1 -3 -4 -2 -4  2  2 -6\n[3865]  0 -6 -2  0  2 -5 -4  2 -6  0  0 -6 -4 -3 -3 -1 -4 -2 -4  1 -5  0 -1 -4\n[3889]  1 -2 -2 -2 -5 -3 -4 -5 -3 -6 -5 -4 -5 -5 -5  0 -1  1 -5  0 -3  0 -2 -1\n[3913] -5  0 -4 -4 -1  0 -3  0 -5 -2 -5  0 -1 -4 -2 -3  0 -2 -4 -3 -1 -3 -1 -4\n[3937] -2 -4 -5 -5 -5 -6 -1 -1 -1 -2 -5 -4 -2 -6 -2 -5 -5 -5 -3  1 -3 -2 -5 -4\n[3961]  0 -6 -1  1 -5 -2 -6  0 -5  0 -4  1 -3  1 -2 -4 -5 -5 -4 -2 -4  1 -5  2\n[3985] -5 -2  0 -5 -3  0 -5 -6 -4  0 -4 -1  0  2 -1 -5 -5 -1 -4 -4 -2 -5 -4 -2\n[4009]  2 -5  2 -4 -4  1 -5  1  1 -1 -2 -3 -5 -3 -3 -5 -1 -1 -2  1 -5 -5 -1 -1\n[4033] -4 -5 -6 -5 -1 -5 -6 -1 -6  0 -1 -2 -5 -5 -4 -6 -4 -2 -2 -1 -5 -6  0 -5\n[4057] -6  1 -3  0 -1 -4 -4  2 -4  0 -3 -5 -6 -4 -3 -6  1 -5 -2 -6 -5  2 -2 -3\n[4081]  1 -4 -2 -2 -5  1 -2 -5  1  0 -5 -3  0 -3  1 -4 -3 -3 -3 -4 -5 -3 -1 -6\n[4105] -4 -5  1 -5 -5 -5  0 -5 -5 -1  1 -4 -6 -2 -5 -4 -4 -1  1 -6 -1 -4  1 -3\n[4129] -1 -6 -5 -6  2  0 -1 -4  1 -2 -3 -2 -2 -4 -4 -2 -3 -2 -3 -5 -3 -2  0 -6\n[4153] -2 -2 -1 -5 -6 -2 -1  0  0 -3 -2  0  0 -5 -1 -4 -5 -4 -3  1 -2 -6 -5 -3\n[4177]  2 -2  0 -3 -5 -3 -1 -3  1 -5 -4 -3 -6  2 -1 -5 -1 -2 -5 -5 -1 -5 -5  0\n[4201] -3  0  0 -1 -3 -4 -5 -6 -4 -5  1 -5 -6 -3 -6 -5 -4 -6 -4 -3 -6 -5 -6 -4\n[4225] -3 -4 -6 -1 -2 -4  0 -5  0 -2 -4 -1 -5  1  0 -4  0  0 -5 -5 -2  2 -5 -4\n[4249] -4  0 -5 -6  2 -5 -3  0 -3 -2 -2 -5 -3 -5  0 -3 -5 -1 -4 -5 -5 -3 -1 -4\n[4273] -4 -5 -3 -4 -5 -4 -2 -5 -3 -5 -5 -5 -4 -5 -5 -3 -4  1 -3  0  1 -5 -4 -6\n[4297] -4 -5 -2  1 -4 -2 -5 -5 -4 -2 -5 -1 -5 -2  1 -3 -2 -6 -5 -6  0 -2 -5 -6\n[4321] -5 -2 -5  2 -6 -3  2 -5 -5 -4 -5  0 -2 -3 -4 -2 -4 -3 -5 -1  0 -5 -3 -3\n[4345] -1 -6 -5 -4 -5 -1 -1 -5 -6 -4 -1 -2 -3 -3  0 -4 -5 -1 -4 -4  1 -6 -5 -2\n[4369] -3 -2 -3  0 -3 -2 -5 -4 -5 -4 -2 -1 -5 -5 -3 -2 -4 -2 -6 -2 -1 -4 -5  1\n[4393]  1  0 -3 -2 -2  1 -4 -4  0  0 -6 -1 -6 -5  0 -5 -5 -4 -3 -3 -5 -5 -5 -2\n[4417]  1  0 -6 -5 -4 -5 -1  1  0 -2 -5 -4 -6  0  0 -5 -5 -5 -5 -5 -6  1 -6 -5\n[4441]  2 -4 -5  0 -3 -4  0 -5 -2 -4 -6 -5  0  0 -6 -3 -3 -1 -3 -2  0 -3 -5 -1\n[4465] -2 -3 -1 -6 -2 -1 -5 -4 -3 -4 -4 -2 -5 -5 -2 -5 -1 -4 -4 -5 -3  0 -2 -2\n[4489] -1 -2 -5 -3  2 -5 -3 -4 -3 -4 -5 -4 -5 -3 -2 -1 -4  0 -4 -6 -3 -5 -5 -4\n[4513] -2 -3 -6 -4 -4  2  2 -3 -3  0 -3  1 -6 -5 -5 -1 -1 -2 -6 -2  0 -4 -6 -4\n[4537]  2 -5 -3  2 -4 -5 -3 -4 -3 -2 -3 -4  0 -3 -3  0 -3 -2 -3 -1 -4  0 -4 -4\n[4561] -5 -5 -3 -5 -1 -5 -4 -3 -4 -4 -3  1 -6 -1 -4 -4 -4 -6  1 -3 -5 -5 -4 -4\n[4585] -1 -1 -5 -4 -5 -4 -5  0 -6 -2 -4 -4  0 -3 -5 -4 -4 -1  0  0 -1 -3 -3 -4\n[4609] -4 -4 -6 -5 -5 -6 -3 -5 -3 -4 -6  0 -3  2 -5 -5 -5 -6 -2  1 -3 -2 -5 -6\n[4633] -3  1 -6  0  1 -5  0 -5 -2 -2 -1  1 -5 -6 -5 -4 -1 -2 -5 -2 -5 -5 -6  0\n[4657]  1 -6 -5 -2  2  0  0  0 -4 -3 -2 -4 -4 -5 -5 -2 -4 -3  0  0 -4 -5 -6  0\n[4681] -3 -3 -4 -4  0 -2  0 -1 -5 -2 -3  1 -3 -5 -5 -5 -4 -4 -5  2  0 -5 -1 -3\n[4705] -5 -1 -6  0 -3  2 -5 -4 -4 -6 -5 -6 -3 -4 -2  2 -4 -2  0 -6 -2 -5 -4 -2\n[4729]  0 -6 -4 -6 -3 -4 -6 -4  0  0 -4 -1 -5 -2 -6 -4  1 -2 -5 -5 -5 -4 -2 -3\n[4753]  2 -5 -4 -5 -2 -4 -6  2 -4 -5 -4 -6 -6 -1  2 -1  1 -3 -6 -5 -4 -2 -4  0\n[4777] -2 -3 -3 -6 -1 -1 -2 -5 -5 -4 -2 -1 -2 -1 -2  0  0 -4  1 -4 -5 -6 -1 -5\n[4801] -1 -5 -2 -5 -4 -6 -2 -1  0 -1 -5 -3 -3 -5  0 -4 -5 -6 -2 -1 -6 -5 -5 -2\n[4825]  1 -3 -1 -6 -1 -3 -3  1 -2 -1  0  1 -3  2  1 -6 -4 -2 -1  2 -3 -5 -2 -4\n[4849] -6 -5 -1  1  1  1 -1  1 -4  1  0 -3 -5  1  0 -6 -4 -1 -6 -5 -4 -3 -1  0\n[4873] -4  1 -3 -2 -5 -3 -4 -6  1 -5 -5 -2 -3 -5 -1 -1 -1  2 -4 -6 -4 -1 -1  2\n[4897] -3 -5 -4  1 -2 -3 -5 -4 -5 -6 -6 -5 -1 -2 -2 -3 -6 -1 -2 -5 -2  1 -4 -1\n[4921] -3 -4 -2 -5 -5 -4  1 -2 -5 -3 -6 -3 -5 -2 -1 -3 -5 -4 -6 -2 -4 -5 -6 -5\n[4945] -3 -4 -5 -1 -5 -4 -5  0 -1 -5 -5 -6 -2 -5 -5 -4 -6 -4 -5 -6 -3 -4 -2 -1\n[4969] -4 -2 -1 -4 -1 -3 -2 -4 -5 -3 -2 -5  0  2 -5 -4  1 -5 -4 -4 -4 -4 -1 -4\n[4993]  0 -3 -5 -6  1 -2 -3  1"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#did-it-work",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#did-it-work",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Did it work?",
+    "text": "Did it work?\nHow many times did we see each value?\n\ntable(random_draws)\n\nrandom_draws\n  -6   -5   -4   -3   -2   -1    0    1    2 \n 474 1099  874  601  607  478  428  292  147 \n\n\n\nWhat proportion of the time did we see each value?\n\ntable(random_draws) / 5000\n\nrandom_draws\n    -6     -5     -4     -3     -2     -1      0      1      2 \n0.0948 0.2198 0.1748 0.1202 0.1214 0.0956 0.0856 0.0584 0.0294 \n\n\n\n\nAre those close to the true probabilities?\n\nround(pmf, digits = 3)\n\n[1] 0.091 0.212 0.182 0.121 0.121 0.091 0.091 0.061 0.030"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#how-does-the-computer-do-it",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#how-does-the-computer-do-it",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "How does the computer do it?",
+    "text": "How does the computer do it?\nHow does the computer know how to generate draws from this distribution? What is it actually doing?\nThis is a fascinating, beautiful, and very important topic that we will spend several future labs on. Stay tuned!"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#plotting-a-pmf",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#plotting-a-pmf",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Plotting a pmf",
+    "text": "Plotting a pmf\nJust a scatterplot: the first vector is the x-values; second vector is the y-values.\n\nrange_x &lt;- -6:2\nmasses &lt;- c(3, 7, 6, 4, 4, 3, 3, 2, 1)\npmf &lt;- masses / sum(masses)\n\nplot(range_x, pmf, xlab = \"k\", ylab = \"P(X = k)\")"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#plotting-a-pmf-1",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#plotting-a-pmf-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Plotting a pmf",
+    "text": "Plotting a pmf\nMake it more pmf-ish with type = \"h\":\n\nrange_x &lt;- -6:2\nmasses &lt;- c(3, 7, 6, 4, 4, 3, 3, 2, 1)\npmf &lt;- masses / sum(masses)\n\nplot(range_x, pmf, type = \"h\", lwd = 3, xlab = \"k\", ylab = \"P(X = k)\")"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#from-problem-set-0-8",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#from-problem-set-0-8",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "From Problem Set 0 #8",
+    "text": "From Problem Set 0 #8\nPlot this function from 2 to 15:\n\\[\nf(x) = \\frac{1}{x(\\ln x)^{-1}}.\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#from-problem-set-0-8-1",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#from-problem-set-0-8-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "From Problem Set 0 #8",
+    "text": "From Problem Set 0 #8\nTo plot a smooth curve, give it the formula (in terms of x) and connect the dots:\n\ncurve(1 / (x * log(x) ^ -1), from = 2, to = 15, n = 1000, lwd = 3, col = \"red\")"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#from-lab-4",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#from-lab-4",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "From Lab 4",
+    "text": "From Lab 4\nFor fixed \\(f_- = f_+=0.2\\), plot these functions:\n\\[\n\\begin{aligned}\nh(p)&=\\frac{(1-f_-)p}{(1-f_-)p+f_+(1-p)},\\\\\ng(p)&=\\frac{p}{p+f_+}.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#from-lab-4-1",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#from-lab-4-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "From Lab 4",
+    "text": "From Lab 4\n\nCodef_plus = 0.2\nf_minus = 0.2\ncurve(x / (x + f_plus),\n      col = \"blue\",\n      xlab = \"p\", \n      ylab = \"\", \n      xlim = c(0, 1),\n      ylim = c(0, 1),\n      main = paste(\"FNR = \", f_minus, \"; FPR = \", f_plus))\ncurve(x / (x + f_plus * ((1 - x) / (1 - f_minus))),\n      col = \"red\", add = TRUE)\nlegend(\"bottomright\",\n       c(\"True Probability\", \"Car Talk Answer\"),\n       col = c(\"red\", \"blue\"),\n       bty = \"n\",\n       lty = c(1, 1)\n       )"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#parametric-families",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#parametric-families",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Parametric families",
+    "text": "Parametric families\nWe’ve begun studying famous parametric families of probability distributions:\n\n\n\n\n\n\n\nDistribution\nRange\nPMF: \\(P(X=k)\\)\n\n\n\n\n\\(X\\sim\\text{Binom}(n,\\,p)\\)\n\\(\\{0,\\,1,\\,2,\\,...,\\,n\\}\\)\n\\(\\binom{n}{k}p^k(1-p)^{n-k}\\)\n\n\n\\(X\\sim\\text{Geom}(p)\\)\n\\(\\{1,\\,2,\\,3,\\,...\\}\\)\n\\((1-p)^{k-1}p\\)\n\n\n\\(X\\sim\\text{Poisson}(\\lambda)\\)\n\\(\\mathbb{N}=\\{0,\\,1,\\,2,\\,3,\\,...\\}\\)\n\\(e^{-\\lambda}\\frac{\\lambda^k}{k!}\\)\n\n\n\nYou will see dozens more by the end of the semester."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#the-pdqr-functions",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#the-pdqr-functions",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "The pdqr functions",
+    "text": "The pdqr functions\nR provides a standardized set of commands for working with each family of distributions:\n\nThe p command computes the CDF (stay tuned!);\nThe d command computes the PMF;\nThe q command computes the quantile functions (stay tuned!);\nThe r command simulates random numbers from the distribution."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#example-binomial",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#example-binomial",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: binomial",
+    "text": "Example: binomial\nFor \\(X\\sim\\text{Binom}(\\texttt{size},\\,\\texttt{prob})\\), use:\n\ndbinom(x, size, prob) # PMF: P(X = x)\nrbinom(n, size, prob) # draw n random numbers"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#binomial-plot-the-pmf",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#binomial-plot-the-pmf",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Binomial: plot the pmf",
+    "text": "Binomial: plot the pmf\n\nbinom_range &lt;- 0:6\nbinom_pmf &lt;- dbinom(binom_range, 6, 0.4) # vectorized!\n\nplot(binom_range, binom_pmf, type = \"h\", xlab = \"k\", ylab = \"P(X = k)\", lwd = 3)"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#binomial-compute-probabilities",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#binomial-compute-probabilities",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Binomial: compute probabilities",
+    "text": "Binomial: compute probabilities\nRecall from class that the probability of a random person liking my dating profile is \\(p=0.0162\\). If \\(X\\sim\\text{Binom}(25,\\,p)\\) counts the number of matches I receive back today in 25 attempts, what is \\(P(X&gt;0)\\)?\n\nFinite additivity:\n\\[\n\\begin{aligned}\nP(X&gt;0)\n&=\nP(X=1\\text{ or }X=2\\text{ or }...\\text{ or }X = 25)\n\\\\\n&=\nP(X=1)+P(X=2)+...+P(X = 25)\n\\\\\n&=\n\\sum\\limits_{k=1}^{25}P(X=k)\n\\\\\n&=\n\\sum\\limits_{k=1}^{25}\\texttt{dbinom(k, 25, 0.0162)}\n.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#binomial-compute-probabilities-1",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#binomial-compute-probabilities-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Binomial: compute probabilities",
+    "text": "Binomial: compute probabilities\n\nprobs_1_to_25 &lt;- dbinom(1:25, 25, 0.0162)\nprobs_1_to_25\n\n [1] 2.736646e-01 5.407644e-02 6.826890e-03 6.182922e-04 4.276133e-05\n [6] 2.347136e-06 1.049064e-07 3.886804e-09 1.208947e-10 3.185191e-12\n[11] 7.152242e-14 1.374033e-15 2.262588e-17 3.193499e-19 3.856350e-21\n[16] 3.968850e-23 3.459923e-25 2.532166e-27 1.536189e-29 7.588819e-32\n[21] 2.975316e-34 8.907967e-37 1.913287e-39 2.625471e-42 1.729320e-45\n\nsum(probs_1_to_25)\n\n[1] 0.3352315"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#binomial-compute-probabilities-2",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#binomial-compute-probabilities-2",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Binomial: compute probabilities",
+    "text": "Binomial: compute probabilities\nRecall from class that the probability of a random person liking my dating profile is \\(p=0.0162\\). If \\(X\\sim\\text{Binom}(25,\\,p)\\) counts the number of matches I receive back today in 25 attempts, what is \\(P(X&gt;0)\\)?\n\nComplement rule:\n\\[\nP(X&gt;0) = 1 - P(X = 0) = 1 - \\texttt{dbinom(0, 25, 0.0162)}.\n\\]\n\n\n\nprob_0 &lt;- dbinom(0, 25, 0.0162)\n\n1 - prob_0\n\n[1] 0.3352315\n\n\nSame number as before."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#binomial-simulate-and-verify",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#binomial-simulate-and-verify",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Binomial: simulate and verify",
+    "text": "Binomial: simulate and verify\nSimulate \\(X\\sim\\text{Binom}(25,\\,0.0162)\\) a bunch and verify that the empirical proportions are close to the true probabilities.\n\nrandom_draws &lt;- rbinom(5000, 25, 0.0162)\n\ntable(random_draws) / 5000\n\nrandom_draws\n     0      1      2      3      4 \n0.6614 0.2766 0.0560 0.0050 0.0010 \n\n\n\n\nround(dbinom(0:7, 25, 0.0162), digits = 4)\n\n[1] 0.6648 0.2737 0.0541 0.0068 0.0006 0.0000 0.0000 0.0000"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#example-poisson",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#example-poisson",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: Poisson",
+    "text": "Example: Poisson\nFor \\(X\\sim\\text{Pois}(\\texttt{lambda})\\), use:\n\ndpois(x, lambda) # PMF: P(X = x)\nrpois(n, lambda) # n random numbers"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#poisson-plot-the-pmf",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#poisson-plot-the-pmf",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Poisson: plot the pmf",
+    "text": "Poisson: plot the pmf\nIf \\(X\\sim\\text{Poisson}(\\lambda = 100)\\), then\n\npois_range &lt;- 0:140\npois_pmf &lt;- dpois(pois_range, 100)\n\nplot(pois_range, pois_pmf, type = \"h\", xlab = \"k\", ylab = \"P(X = k)\")"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#poisson-compute-probabilities",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#poisson-compute-probabilities",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Poisson: compute probabilities",
+    "text": "Poisson: compute probabilities\nSay that \\(X\\sim\\text{Poisson}(\\lambda = 100)\\) represents the number of claims an insurance company receives in a month. What is the probability that they receive an above-average number of claims?\n\n\\[\n\\begin{aligned}\nP(X &gt; E(X)) = P(X &gt; \\lambda)\n&=P(X&gt;100) = \\sum\\limits_{k=101}^\\infty P(X=k) && (\\text{ick!})\n\\\\\n&=\n1-P(X\\leq 100)\n=\n1 - \\sum\\limits_{k=0}^{100} P(X=k)\n&& (\\text{yay!})\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#poisson-compute-probabilities-1",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#poisson-compute-probabilities-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Poisson: compute probabilities",
+    "text": "Poisson: compute probabilities\n\nprob_below_average &lt;- sum(dpois(0:100, 100))\n\n1 - prob_below_average\n\n[1] 0.4734378"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#poisson-compute-probabilities-2",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#poisson-compute-probabilities-2",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Poisson: compute probabilities",
+    "text": "Poisson: compute probabilities\nIf \\(X\\sim\\text{Poisson}(\\lambda=4)\\), then \\(P(X\\text{ even})\\approx 0.5001677\\).\nVerify:\n\nevens &lt;- seq(0, 100, by = 2)\n\nsum(dpois(evens, 4))\n\n[1] 0.5001677"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#poisson-simulate-and-verify",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#poisson-simulate-and-verify",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Poisson: simulate and verify",
+    "text": "Poisson: simulate and verify\nSimulate \\(X\\sim\\text{Poisson}(\\lambda = 100)\\) a bunch and verify that the empirical proportions are close to the true probabilities.\n\nrandom_draws &lt;- rpois(5000, 100)\n\ntable(random_draws) / 5000\n\nrandom_draws\n    68     69     71     72     73     74     75     76     77     78     79 \n0.0002 0.0004 0.0002 0.0006 0.0008 0.0010 0.0016 0.0014 0.0030 0.0020 0.0030 \n    80     81     82     83     84     85     86     87     88     89     90 \n0.0044 0.0036 0.0078 0.0098 0.0112 0.0112 0.0166 0.0218 0.0202 0.0224 0.0260 \n    91     92     93     94     95     96     97     98     99    100    101 \n0.0274 0.0318 0.0306 0.0342 0.0350 0.0358 0.0382 0.0440 0.0358 0.0386 0.0436 \n   102    103    104    105    106    107    108    109    110    111    112 \n0.0396 0.0362 0.0390 0.0298 0.0340 0.0286 0.0288 0.0278 0.0220 0.0202 0.0208 \n   113    114    115    116    117    118    119    120    121    122    123 \n0.0186 0.0174 0.0114 0.0106 0.0084 0.0074 0.0044 0.0056 0.0068 0.0032 0.0034 \n   124    125    126    127    128    129    130    131    132    135    136 \n0.0024 0.0014 0.0016 0.0016 0.0012 0.0008 0.0010 0.0002 0.0004 0.0006 0.0002 \n   141    142 \n0.0002 0.0002"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#poisson-simulate-and-verify-1",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#poisson-simulate-and-verify-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Poisson: simulate and verify",
+    "text": "Poisson: simulate and verify\nClearly we didn’t visit every possible natural number. Which ones did we see?\n\nsort(unique(random_draws))\n\n [1]  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87\n[20]  88  89  90  91  92  93  94  95  96  97  98  99 100 101 102 103 104 105 106\n[39] 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125\n[58] 126 127 128 129 130 131 132 135 136 141 142\n\n\nWhat are their probabilities?\n\nprobs &lt;- round( dpois(sort(unique(random_draws)), 100), digits = 4)\nprobs\n\n [1] 0.0002 0.0002 0.0004 0.0006 0.0008 0.0011 0.0015 0.0020 0.0026 0.0033\n[11] 0.0042 0.0052 0.0064 0.0078 0.0094 0.0112 0.0132 0.0154 0.0176 0.0201\n[21] 0.0225 0.0250 0.0275 0.0299 0.0322 0.0342 0.0360 0.0375 0.0387 0.0395\n[31] 0.0399 0.0399 0.0395 0.0387 0.0376 0.0361 0.0344 0.0325 0.0303 0.0281\n[41] 0.0258 0.0234 0.0211 0.0188 0.0167 0.0146 0.0127 0.0110 0.0094 0.0079\n[51] 0.0067 0.0056 0.0046 0.0038 0.0031 0.0025 0.0020 0.0016 0.0012 0.0010\n[61] 0.0007 0.0006 0.0004 0.0003 0.0001 0.0001 0.0000 0.0000\n\n\nClose?\n\nprops &lt;- table(random_draws) / 5000\n\ncbind(probs, props)\n\n     probs  props\n68  0.0002 0.0002\n69  0.0002 0.0004\n71  0.0004 0.0002\n72  0.0006 0.0006\n73  0.0008 0.0008\n74  0.0011 0.0010\n75  0.0015 0.0016\n76  0.0020 0.0014\n77  0.0026 0.0030\n78  0.0033 0.0020\n79  0.0042 0.0030\n80  0.0052 0.0044\n81  0.0064 0.0036\n82  0.0078 0.0078\n83  0.0094 0.0098\n84  0.0112 0.0112\n85  0.0132 0.0112\n86  0.0154 0.0166\n87  0.0176 0.0218\n88  0.0201 0.0202\n89  0.0225 0.0224\n90  0.0250 0.0260\n91  0.0275 0.0274\n92  0.0299 0.0318\n93  0.0322 0.0306\n94  0.0342 0.0342\n95  0.0360 0.0350\n96  0.0375 0.0358\n97  0.0387 0.0382\n98  0.0395 0.0440\n99  0.0399 0.0358\n100 0.0399 0.0386\n101 0.0395 0.0436\n102 0.0387 0.0396\n103 0.0376 0.0362\n104 0.0361 0.0390\n105 0.0344 0.0298\n106 0.0325 0.0340\n107 0.0303 0.0286\n108 0.0281 0.0288\n109 0.0258 0.0278\n110 0.0234 0.0220\n111 0.0211 0.0202\n112 0.0188 0.0208\n113 0.0167 0.0186\n114 0.0146 0.0174\n115 0.0127 0.0114\n116 0.0110 0.0106\n117 0.0094 0.0084\n118 0.0079 0.0074\n119 0.0067 0.0044\n120 0.0056 0.0056\n121 0.0046 0.0068\n122 0.0038 0.0032\n123 0.0031 0.0034\n124 0.0025 0.0024\n125 0.0020 0.0014\n126 0.0016 0.0016\n127 0.0012 0.0016\n128 0.0010 0.0012\n129 0.0007 0.0008\n130 0.0006 0.0010\n131 0.0004 0.0002\n132 0.0003 0.0004\n135 0.0001 0.0006\n136 0.0001 0.0002\n141 0.0000 0.0002\n142 0.0000 0.0002"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#latex",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#latex",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "LaTeX!",
+    "text": "LaTeX!\n\nThis is new for most of you, and has been causing some headache;\nBut if you major in a mathematical discipline, you need to know it;\nI create all of the course materials using Quarto + R + LaTeX;\nYou would not want to write this in Google Docs."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#example-binomial-pmf",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#example-binomial-pmf",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: binomial pmf",
+    "text": "Example: binomial pmf\nWhat you type in your Quarto doc:\n$$\nP(X = k) = \\binom{n}{k} p^k (1-p)^{n - k}.\n$$\nWhat appears in the rendered .pdf:\n\\[\nP(X = k) = \\binom{n}{k} p^k (1-p) ^{n - k}.\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#example-poisson-pmf",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#example-poisson-pmf",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: Poisson pmf",
+    "text": "Example: Poisson pmf\nWhat you type in your Quarto doc:\n$$\nP(X = k) = e^{-\\lambda} \\frac{\\lambda^k}{k!}.\n$$\nWhat appears in the rendered .pdf:\n\\[\nP(X = k) = e^{-\\lambda} \\frac{\\lambda^k}{k!}.\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#example-gamma-function",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#example-gamma-function",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: gamma function",
+    "text": "Example: gamma function\nWhat you type in your Quarto doc:\n$$\n\\Gamma(x) = \\int_0^\\infty z^{x-1} e^{-z} dz.\n$$\nWhat appears in the rendered .pdf:\n\\[\n\\Gamma(x) = \\int_0^\\infty z^{x-1} e^{-z} dz.\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#example-our-heavy-tailed-friend",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#example-our-heavy-tailed-friend",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: our heavy-tailed friend",
+    "text": "Example: our heavy-tailed friend\nWhat you type in your Quarto doc:\n$$\n\\sum\\limits_{n=0}^\\infty n\\frac{6}{\\pi^2n^2} = \\infty.\n$$\nWhat appears in the rendered .pdf:\n\\[\n\\sum\\limits_{n=0}^\\infty n\\frac{6}{\\pi^2n^2} = \\infty.\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#pro-tips",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#pro-tips",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Pro-tips",
+    "text": "Pro-tips\n\nA math chunk begins with $$ and ends with $$. Make sure you have line breaks immediately before the start of the math chunk and immediately after;\n\nWithin the math chunk, do not have any empty lines. You’ll get a dumb render error;\nSpread your expression across multiple lines to make it a little more readable."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course-slides.html#example-bell-curve-problem-set-0",
+    "href": "slides/2026-10-01-r-crash-course-slides.html#example-bell-curve-problem-set-0",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: bell curve (Problem Set 0)",
+    "text": "Example: bell curve (Problem Set 0)\n\n\nWhat you type:\n$$\nh(x)\n=\n\\exp\n\\left(\n-\\frac{1}{2}\n\\frac{(x-\\mu)^2}{\\sigma^2}\n\\right)\n.\n$$\n\nHow it renders:\n\\[\nh(x)\n=\n\\exp\n\\left(\n-\\frac{1}{2}\n\\frac{(x-\\mu)^2}{\\sigma^2}\n\\right)\n.\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html",
+    "href": "slides/2026-10-01-r-crash-course.html",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "",
+    "text": "R is a programming language, just like Python, C++, Julia, etc.\nIt has inheritance, objects, control flow, all that CS stuff;\nStats majors must take STA 323, where you learn all that;\nIn 199, we suppress the programming language side of R and teach you a narrow dialect called the “tidyverse,” which is very well-suited to data science, especially for beginners;\nBut we aren’t doing any data science in this class, so now what?\n\n\n\nWe will use R as a labor-saving technology to perform three kinds of tasks:\n\ncalculator (choose, factorial, dbinom, etc);\nbasic graphics (histogram, line plot, etc);\nbut most important: simulation.\n\n\nThis class is primarily about doing the math to understand how random phenomena behave;\nBut when you cannot do the math, you can still simulate to approximate the behavior you are studying;\nThis is a powerful tool for building intuition and prototyping mathematical ideas;\nEvery statistician I know is constantly running simulations to understand how statistical methods behave, and we want you to be able to do the same thing.\n\n\nThe mathematical and computational arcs of this class will converge to an analysis of the bootstrap;\nThis is a simulation-based method for approximating the sampling distribution of a statistical estimator;\nMany of you used this procedure on faith in 101 or 199;\nIn this class we want to explain what it’s doing, why it works, and implement it ourselves.\n\n\n\n\nIf by December you can understand every ingredient in that picture and how they fit together, then you have mastered the main ideas of this class and you are well prepared for the rest of the major;\nThat diagram is a template for a generic kind of simulation that you can design to investigate the properties of any statistical method;\nIt’s a very powerful way of thinking, and we want you to be able to do it on your own.\n\n\n(10/01) Lab 5: Lock down R basics;\n(10/15) Lab 6: Continuous random variables;\n(10/22) Lab 7: Transformations;\n(10/29) Lab 8: Random number generation;\n(11/05) Lab 9: More random number generation;\n(11/19) Lab 10: Simulation + statistics;\n(12/03) Lab 11: The bootstrap!"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#you-do-not-learn-r-in-101-199-etc",
+    "href": "slides/2026-10-01-r-crash-course.html#you-do-not-learn-r-in-101-199-etc",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "",
+    "text": "R is a programming language, just like Python, C++, Julia, etc.\nIt has inheritance, objects, control flow, all that CS stuff;\nStats majors must take STA 323, where you learn all that;\nIn 199, we suppress the programming language side of R and teach you a narrow dialect called the “tidyverse,” which is very well-suited to data science, especially for beginners;\nBut we aren’t doing any data science in this class, so now what?"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#our-computing-needs",
+    "href": "slides/2026-10-01-r-crash-course.html#our-computing-needs",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "",
+    "text": "We will use R as a labor-saving technology to perform three kinds of tasks:\n\ncalculator (choose, factorial, dbinom, etc);\nbasic graphics (histogram, line plot, etc);\nbut most important: simulation."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#why-is-simulation-so-important",
+    "href": "slides/2026-10-01-r-crash-course.html#why-is-simulation-so-important",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "",
+    "text": "This class is primarily about doing the math to understand how random phenomena behave;\nBut when you cannot do the math, you can still simulate to approximate the behavior you are studying;\nThis is a powerful tool for building intuition and prototyping mathematical ideas;\nEvery statistician I know is constantly running simulations to understand how statistical methods behave, and we want you to be able to do the same thing."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#where-are-we-headed",
+    "href": "slides/2026-10-01-r-crash-course.html#where-are-we-headed",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "",
+    "text": "The mathematical and computational arcs of this class will converge to an analysis of the bootstrap;\nThis is a simulation-based method for approximating the sampling distribution of a statistical estimator;\nMany of you used this procedure on faith in 101 or 199;\nIn this class we want to explain what it’s doing, why it works, and implement it ourselves."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#the-goal",
+    "href": "slides/2026-10-01-r-crash-course.html#the-goal",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "",
+    "text": "If by December you can understand every ingredient in that picture and how they fit together, then you have mastered the main ideas of this class and you are well prepared for the rest of the major;\nThat diagram is a template for a generic kind of simulation that you can design to investigate the properties of any statistical method;\nIt’s a very powerful way of thinking, and we want you to be able to do it on your own."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#this-will-take-a-while",
+    "href": "slides/2026-10-01-r-crash-course.html#this-will-take-a-while",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "",
+    "text": "(10/01) Lab 5: Lock down R basics;\n(10/15) Lab 6: Continuous random variables;\n(10/22) Lab 7: Transformations;\n(10/29) Lab 8: Random number generation;\n(11/05) Lab 9: More random number generation;\n(11/19) Lab 10: Simulation + statistics;\n(12/03) Lab 11: The bootstrap!"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#the-basics",
+    "href": "slides/2026-10-01-r-crash-course.html#the-basics",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "The basics",
+    "text": "The basics\n\n2 + 2 # addition\n\n[1] 4\n\n5 - 2 # subtraction\n\n[1] 3\n\n0.5 * 6 # multiplication\n\n[1] 3\n\n3 / 4 # division\n\n[1] 0.75\n\nsqrt(2) # square root\n\n[1] 1.414214\n\n4 ^ 2 # exponent\n\n[1] 16"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#the-slightly-less-basics",
+    "href": "slides/2026-10-01-r-crash-course.html#the-slightly-less-basics",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "The (slightly less) basics",
+    "text": "The (slightly less) basics\n\nexp(4.9) # base-e exponent\n\n[1] 134.2898\n\nlog(7) # natural log\n\n[1] 1.94591\n\nceiling(4.6) # round up\n\n[1] 5\n\nfloor(4.6) # round down\n\n[1] 4\n\nfactorial(4) # n! = n x (n-1) x ... x 2 x 1\n\n[1] 24\n\nchoose(8, 3) # binomial coefficient\n\n[1] 56"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#from-problem-set-1",
+    "href": "slides/2026-10-01-r-crash-course.html#from-problem-set-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "From Problem Set 1",
+    "text": "From Problem Set 1\nIf \\(X\\sim\\text{Poisson}(\\lambda=4)\\), then\n\\[\nP(X\\text{ even}) = e^{-4}\\sum\\limits_{i=0}^\\infty\\frac{4^{2i}}{(2i)!}=e^{-4}\\cosh 4.\n\\]\n. . .\n\nexp(-4) * cosh(4)\n\n[1] 0.5001677"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#from-the-infamous-lab-2",
+    "href": "slides/2026-10-01-r-crash-course.html#from-the-infamous-lab-2",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "From the infamous Lab 2",
+    "text": "From the infamous Lab 2\n\na five-card hand is randomly dealt to you from a well-shuffled deck. What is the probability that the hand contains at least one ace?\n\n\\[\nP\\left(\\begin{matrix}\\text{at least}\\\\\\text{one ace}\\end{matrix}\\right)=1 - P(\\text{no ace})=1-\\frac{\\#(\\text{no ace})}{\\#(\\text{five card hands})}=1-\\frac{\\binom{48}{5}}{\\binom{52}{5}}.\n\\]\n. . .\n\n1 - choose(48, 5) / choose(52, 5)\n\n[1] 0.341158"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#vectors-1",
+    "href": "slides/2026-10-01-r-crash-course.html#vectors-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Vectors",
+    "text": "Vectors\n\nA vector in R is just an ordered collection of values that have the same type;\nThe vector is the fundamental building block in R;\nMost data structures you see either are vectors or are made up of vectors;\n\nExample: a data frame is just a bunch of vectors glued together."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#vectors-2",
+    "href": "slides/2026-10-01-r-crash-course.html#vectors-2",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Vectors",
+    "text": "Vectors\nMany ways to construct a vector:\n. . .\n\nc(pi, 5, 3.6, 2, 9, 6000) \n\n[1]    3.141593    5.000000    3.600000    2.000000    9.000000 6000.000000\n\n\n. . .\n\n5:15\n\n [1]  5  6  7  8  9 10 11 12 13 14 15\n\n\n. . .\n\nseq(0, 1, length.out = 11) \n\n [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0\n\n\n. . .\n\nnumeric(10)\n\n [1] 0 0 0 0 0 0 0 0 0 0\n\n\n. . .\n\nc(\"Mary\", \"had\", \"a\", \"little\", \"chainsaw\")\n\n[1] \"Mary\"     \"had\"      \"a\"        \"little\"   \"chainsaw\""
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#variable-assignment",
+    "href": "slides/2026-10-01-r-crash-course.html#variable-assignment",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Variable assignment",
+    "text": "Variable assignment\nIt helps to give things a name so you can work with them later:\n\nx &lt;- c(6, pi, sqrt(2), exp(1), 0)\nx\n\n[1] 6.000000 3.141593 1.414214 2.718282 0.000000\n\n\n&lt;- is called the assignment operator. You should now see x listed in the “cast of characters” (Environment) in the upper right."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#about-variable-names",
+    "href": "slides/2026-10-01-r-crash-course.html#about-variable-names",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "About variable names",
+    "text": "About variable names\nYou can pick whatever name you want, but:\n\nOnly numbers, letters, and _ (underscore);\nThe name must be a single unbroken phrase;\n\n❌ prob mass\n\n✅ prob_mass\n\n\n\nThe first character cannot be a number;\n\nR is case sensitive;\n\n\nProb_Mass is different from prob_mass."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#subsetting",
+    "href": "slides/2026-10-01-r-crash-course.html#subsetting",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Subsetting",
+    "text": "Subsetting\nIf you want to isolate a portion of a vector, you can use bracket notation to request a subset of the elements:\n\nx\n\n[1] 6.000000 3.141593 1.414214 2.718282 0.000000\n\nx[2]\n\n[1] 3.141593\n\nx[c(1, 3, 5)]\n\n[1] 6.000000 1.414214 0.000000\n\nx[1:3]\n\n[1] 6.000000 3.141593 1.414214\n\n\nEach of these subsets is itself a new vector."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#vectorization",
+    "href": "slides/2026-10-01-r-crash-course.html#vectorization",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Vectorization",
+    "text": "Vectorization\nMany commands in R are vectorized. This means that if you provide the command with a vector containing many inputs, it will return a vector containing many outputs. It will go element-by-element through the input, apply the command to each one separately, and then return all of the outputs to you bundled in a vector."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#recall-center-of-mass-example",
+    "href": "slides/2026-10-01-r-crash-course.html#recall-center-of-mass-example",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Recall: center-of-mass example",
+    "text": "Recall: center-of-mass example"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#recall-center-of-mass-example-1",
+    "href": "slides/2026-10-01-r-crash-course.html#recall-center-of-mass-example-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Recall: center-of-mass example",
+    "text": "Recall: center-of-mass example\nI had a range:\n\nrange_x &lt;- -6:2\n\n. . .\nI had masses at each one:\n\nmasses &lt;- c(3, 7, 6, 4, 4, 3, 3, 2, 1)\n\nsum(masses)\n\n[1] 33\n\n\n. . .\nBut they need to be normalized:\n\nprobs &lt;- masses / 33\nprobs\n\n[1] 0.09090909 0.21212121 0.18181818 0.12121212 0.12121212 0.09090909 0.09090909\n[8] 0.06060606 0.03030303\n\n\n. . .\nDivision (/) is vectorized, so it knows to divide each mass by 33."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#recall-center-of-mass-example-2",
+    "href": "slides/2026-10-01-r-crash-course.html#recall-center-of-mass-example-2",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Recall: center-of-mass example",
+    "text": "Recall: center-of-mass example\nThe expected value is\n\\[\nE(X)=\\sum\\limits_{k=-6}^2 k \\cdot P(X=k).\n\\]\n. . .\nMultiplication (*) is vectorized, so multiply each value by its probability:\n\nrange_x * probs\n\n[1] -0.54545455 -1.06060606 -0.72727273 -0.36363636 -0.24242424 -0.09090909\n[7]  0.00000000  0.06060606  0.06060606\n\n\n. . .\nSum ’em up:\n\nEX &lt;- sum(range_x * probs)\nEX\n\n[1] -2.909091"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#recall-problem-set-3-8",
+    "href": "slides/2026-10-01-r-crash-course.html#recall-problem-set-3-8",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Recall: Problem Set 3 #8",
+    "text": "Recall: Problem Set 3 #8\n\\(X\\) is the inner product of two random binary strings:\n\\[\nX=\\sum\\limits_{i=1}^{10}a_ib_i.\n\\]\nIts pmf is\n\\[\nP(X=k)=\\frac{\\binom{10}{k}3^{10-k}}{2^{20}},\\quad k = 0,\\,1,\\,2,\\,...,\\,10.\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#recall-problem-set-3-8-1",
+    "href": "slides/2026-10-01-r-crash-course.html#recall-problem-set-3-8-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Recall: Problem Set 3 #8",
+    "text": "Recall: Problem Set 3 #8\n\\[\nP(X=k)=\\frac{\\binom{10}{k}3^{10-k}}{2^{20}},\\quad k = 0,\\,1,\\,2,\\,...,\\,10.\n\\]\nTo compute all 11 of those probabilities in one fell swoop, take advantage of vectorization:\n. . .\n\nk &lt;- 0:10\n\npmf &lt;- choose(10, k) * (3 ^ (10 - k)) / 2^20\npmf\n\n [1] 5.631351e-02 1.877117e-01 2.815676e-01 2.502823e-01 1.459980e-01\n [6] 5.839920e-02 1.622200e-02 3.089905e-03 3.862381e-04 2.861023e-05\n[11] 9.536743e-07\n\nsum(pmf)\n\n[1] 1"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#flip-a-coin",
+    "href": "slides/2026-10-01-r-crash-course.html#flip-a-coin",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Flip a coin",
+    "text": "Flip a coin\n\nsample(c(\"H\", \"T\"), size = 10, replace = TRUE)\n\n [1] \"T\" \"T\" \"T\" \"H\" \"T\" \"H\" \"H\" \"T\" \"T\" \"T\""
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#roll-a-die",
+    "href": "slides/2026-10-01-r-crash-course.html#roll-a-die",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Roll a die",
+    "text": "Roll a die\n\nsample(1:6, size = 10, replace = TRUE)\n\n [1] 2 3 3 5 6 3 4 6 6 2"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#shuffle-a-deck",
+    "href": "slides/2026-10-01-r-crash-course.html#shuffle-a-deck",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Shuffle a deck",
+    "text": "Shuffle a deck\n\ndeck_of_cards &lt;- c(\"AH\", \"2H\", \"3H\", \"4H\", \"5H\", \"6H\", \"7H\", \"8H\", \"9H\", \"10H\", \"JH\", \"QH\", \"KH\",\n                   \"AD\", \"2D\", \"3D\", \"4D\", \"5D\", \"6D\", \"7D\", \"8D\", \"9D\", \"10D\", \"JD\", \"QD\", \"KD\",\n                   \"AC\", \"2C\", \"3C\", \"4C\", \"5C\", \"6C\", \"7C\", \"8C\", \"9C\", \"10C\", \"JC\", \"QC\", \"KC\",\n                   \"AS\", \"2S\", \"3S\", \"4S\", \"5S\", \"6S\", \"7S\", \"8S\", \"9S\", \"10S\", \"JS\", \"QS\", \"KS\")\n\nsample(deck_of_cards, size = 5, replace = FALSE)\n\n[1] \"3D\" \"8D\" \"AH\" \"JD\" \"8C\""
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#what-about-unequal-outcomes",
+    "href": "slides/2026-10-01-r-crash-course.html#what-about-unequal-outcomes",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "What about unequal outcomes?",
+    "text": "What about unequal outcomes?\nFrom ?sample:\n\nsample(x, size, replace = FALSE, prob = NULL)\n\n\n\nx: a vector of one or more elements from which to choose;\n\nsize: the number of items to choose;\n\nreplace: should sampling be with replacement?\n\nprob: a vector of probability weights for obtaining the elements of the vector being sampled.\n\nx and prob should probably be the same length!"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#recall-center-of-mass-example-3",
+    "href": "slides/2026-10-01-r-crash-course.html#recall-center-of-mass-example-3",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Recall: center-of-mass example",
+    "text": "Recall: center-of-mass example\n\nrange_x &lt;- -6:2\nmasses &lt;- c(3, 7, 6, 4, 4, 3, 3, 2, 1)\npmf &lt;- masses / sum(masses)\n\nrandom_draws &lt;- sample(range_x, 5000, replace = TRUE, prob = pmf)\nrandom_draws\n\n   [1] -6 -4 -5 -6 -5  1 -6 -1 -2 -4  0 -6 -4 -2 -3 -2  0 -1 -4 -4  0 -3 -6  0\n  [25]  1 -6 -6 -4 -5 -5 -5 -2 -5 -5 -2 -5 -4 -5 -5 -5 -1  1 -4 -6 -5 -6 -4 -5\n  [49] -2 -5 -5 -6  1 -2 -3 -5 -2 -2 -5 -4 -4 -5 -5 -3 -5 -6  0 -5 -3 -5 -1 -4\n  [73] -5 -2 -2  1 -5  1 -2 -4 -5 -5 -3 -5 -4 -3 -5 -3  1 -4 -5 -2  2 -2 -3 -5\n  [97] -5 -1 -4 -3 -2 -3 -2 -3 -3 -4 -6 -4 -5 -6 -1 -1  0 -5 -3 -1  0 -5 -2 -6\n [121] -1 -4  0 -2 -4 -5  0 -5 -5 -6 -4 -4  0 -5 -3 -1 -6 -5 -5 -2 -5  0  0 -1\n [145]  1 -1 -5 -3 -4 -4 -2 -6 -1 -1  0 -4 -4  0 -4  0 -2 -1 -1  1 -6 -2  1 -2\n [169] -4 -5 -5 -6 -4 -5 -3 -1 -5  0 -4 -6 -4 -5 -6 -3 -2 -5 -4 -6 -2 -5  1 -2\n [193] -3 -3 -6 -4 -2 -3 -5 -4 -2 -5  0 -6 -4 -4 -3 -3 -2 -6 -4 -5 -4 -5 -3 -5\n [217] -2 -4  1  0  2 -3 -4 -2 -4 -5 -6 -2 -2 -2 -1 -5  0  0 -6 -1 -2 -5 -5  0\n [241] -4 -3 -2  1 -6 -2 -3 -5 -1  2  1 -2 -4 -4 -4 -6 -5 -6  1 -4 -3  0 -6 -5\n [265] -2 -4 -3 -1 -4 -2 -5 -6 -4 -4 -5 -2 -2 -3  1 -6 -5 -4 -6  1 -1  0 -5  0\n [289] -2 -4  0 -2 -6 -2  1 -5 -2 -4 -2 -5  2 -5  0 -1 -5 -5 -2 -4 -3 -5  1  1\n [313] -2 -6 -3 -4 -5 -6 -3 -4 -5 -2 -4 -4 -4  2 -4 -1 -1 -4 -4 -3 -5 -6 -4 -2\n [337]  0 -1 -3 -6  0 -5 -4 -4 -3 -4 -4  0 -5 -5 -4 -4 -2 -6 -5 -2 -5 -4 -4 -2\n [361] -4 -1 -3 -3  0 -3 -5 -4 -5 -5  2 -3 -3  0 -4  0 -4  2 -5  0 -5 -5  0 -1\n [385] -3 -2 -2 -6 -4 -5 -5 -1 -6 -3 -6 -2 -3  0 -3 -3 -3 -1  2 -4 -1 -1 -3  1\n [409] -6  1 -3 -3 -1 -5 -4 -3 -1 -2 -1 -3 -2 -4  0 -5 -3 -4 -2 -6  2  1 -4 -4\n [433] -2  0  1 -4 -3 -3 -3 -4 -4 -4 -1  0  0 -4 -5 -4  2 -2 -2 -3 -3 -2 -5 -4\n [457] -1 -3 -3  0 -4 -5 -4 -4 -5 -3 -4 -2 -3 -2 -5 -4 -1 -2 -5 -1  1 -5 -4 -1\n [481] -1  0  0 -4 -3 -5 -6 -1 -5 -4 -5 -6 -2 -6 -6 -6 -1 -5 -6  2 -5 -4 -3 -3\n [505] -3 -4 -4 -1 -4 -3 -5 -2 -5 -5 -2 -2 -6 -1 -6  1 -3  2 -6 -3 -5 -5  0 -1\n [529] -2 -4 -5  1 -2 -2 -4 -6 -1  0 -6 -4 -2 -2  0  0 -2  1 -3 -4 -1 -4 -3 -5\n [553] -1 -6 -4 -1 -4 -5 -6 -5 -4 -2 -1 -5 -6  2 -1  2 -1 -6 -4  0 -5 -6 -4 -4\n [577] -5 -5 -2 -3 -5 -5 -5 -4 -5 -6  0 -4 -3 -5 -4 -4 -5  1 -5  0 -5 -5 -1 -2\n [601]  1  0 -6  1 -3 -5  1 -6 -4 -1  1 -3  1 -2 -3 -5 -2 -6 -3 -5  0  1 -3 -4\n [625] -3  1 -6 -6  0 -5 -5  0 -3 -5 -5  0  1 -3 -6 -5 -3 -2 -3 -2 -6 -6  0 -2\n [649] -3 -1 -1  0 -5 -1  0 -2 -3  0 -3 -1 -5 -5 -2 -4 -5 -2 -5 -5 -2 -2 -3 -3\n [673] -6 -4 -5 -4 -4 -5 -5  0 -4  1 -2 -6 -5 -5 -2 -2 -2 -5 -5 -6 -2 -5 -5  2\n [697] -1 -5 -5  0 -1  1 -2 -4 -5 -1 -2 -6 -1 -2 -2 -3 -6  1 -6  1 -4  2 -4 -1\n [721] -1 -6  1 -6 -2 -5 -2 -5 -1 -1 -3 -6 -3 -4 -6  1 -5 -1 -3 -6  0 -3 -5 -1\n [745] -4 -5 -5 -4 -5 -4 -3 -4 -5 -5 -4 -3 -2  0 -1 -5 -5 -4 -4  0 -5 -3 -5 -2\n [769]  0 -2 -6 -1 -5  0 -5 -3 -6 -4 -5 -5 -6 -2 -4  0 -3 -1 -5 -5 -2 -6 -6 -5\n [793] -5 -5 -1 -6 -4 -4 -2 -5  0 -4 -3 -1 -2 -1 -2 -2 -6 -4 -6 -4 -4 -2 -6 -1\n [817] -3  1 -2 -1 -1 -2 -2 -1 -6 -1 -4 -5 -3 -5 -3 -5 -1 -3 -5 -4 -3 -2  0 -4\n [841] -5 -3  0 -4 -2  1  1 -4 -5 -5 -5  0  1 -5  0 -4 -5 -5 -5 -1 -5  1  0 -3\n [865] -3 -4 -5 -5 -3 -6 -2 -2 -5 -2  0 -4 -5 -5 -5 -1 -1  0 -5 -5 -4  0 -4 -4\n [889] -6 -4 -4 -1 -2 -5  2 -5 -1  1 -3  0 -5 -4 -4 -5 -4 -5 -6  0 -5 -2  1 -5\n [913] -1 -2 -2 -2 -2 -4 -1  2 -3 -4 -4 -5  0 -1  0 -5 -4 -4 -4 -4  0 -4 -4 -4\n [937] -4 -4 -2 -5 -4 -6 -5 -2 -2 -4 -2  2 -5 -2  0 -4  2  1 -5  0  0 -6  0 -1\n [961] -5 -3  0 -1 -5 -3  1 -4 -5 -4 -6 -6 -1 -3 -1  1 -2 -4 -1  2 -5 -2 -4 -3\n [985] -2 -4 -5 -1 -4  1 -3 -2 -5  1 -2 -2 -4  0 -5  0 -4 -4 -4 -1 -1  0 -5 -5\n[1009] -2 -1 -6 -5 -3  1  0 -6  1  1 -5 -5 -2 -4  1 -4  0 -5 -4 -2 -5  1 -2 -2\n[1033] -4 -5 -5 -5 -3 -2 -1 -1  2 -5  0 -3 -2  2 -4 -5 -6  1 -2 -3  2 -2 -1 -6\n[1057] -3 -2 -4 -1 -5  1 -5 -3 -6 -4 -2 -2 -4 -1  1 -5  0  0 -4  0 -6  1  1 -2\n[1081] -5 -3 -2 -2 -5  1 -5 -2 -5 -2 -5 -5 -1 -4  1 -3 -4 -1 -4  0 -4 -2 -3 -5\n[1105] -1  2 -3  1 -3  0  1 -5 -6  0 -4 -2 -4  1 -4 -5 -6 -6 -5 -4 -1 -3 -6 -6\n[1129] -1 -6 -5  0 -5 -2 -2 -4 -4 -1 -5 -3 -6 -4 -4 -4  0 -5 -4 -4 -5 -2 -5 -4\n[1153]  1 -5 -6 -5 -5 -5 -2 -5 -4 -2 -5 -5 -5  2  1  0 -1 -2 -3 -2 -2 -6  0 -5\n[1177]  0  2 -4 -5 -1 -2 -5 -3 -4 -3 -1 -1 -1 -1 -3  0 -4 -3 -6 -6  0 -5  0 -3\n[1201] -2 -3 -4 -6 -4 -2 -5 -4 -2 -4 -6 -6  1  1 -1 -4 -4 -1  0 -1 -5 -2 -1 -4\n[1225] -2 -5 -3 -1  0 -4  1 -4 -1  1 -2 -5 -2 -6 -1 -1 -1 -3 -6  0 -4 -4  1 -1\n[1249] -4 -4 -3  0 -1 -2 -6 -5 -2 -2 -2 -3 -5  1 -6 -6 -2  1 -2 -2 -5 -3 -2 -3\n[1273] -6 -6 -5 -5 -5 -6  1 -4 -5 -6 -4 -5 -5 -4 -5  0 -5 -6  1 -6 -4 -6 -4  0\n[1297] -6 -4 -1 -4  0 -3  1 -4 -6 -4  1 -2 -2 -5 -3 -4 -4 -4 -2 -3 -4  0 -6 -5\n[1321]  0 -5  2 -4 -2 -5  1 -4  0 -3 -3 -2 -4  0 -5 -5 -5 -4 -1  0 -3 -1 -1 -6\n[1345] -4 -6 -6 -2 -2 -4 -5 -5 -4 -5 -4 -4 -3 -4 -6 -2 -1 -2 -4  0 -4 -1 -1 -5\n[1369] -3 -2 -5  2 -2 -5 -3 -5 -5 -4 -3 -3 -6 -4 -2 -1 -4 -3 -6 -3 -2 -1 -5 -2\n[1393] -6 -4 -5 -2  2  2 -1 -5 -4 -5  1 -3  0 -5 -5 -5 -3 -2 -1 -5 -6 -2 -3 -4\n[1417] -2 -3 -6 -1 -2 -1 -4 -4 -4 -5 -6 -5 -1 -5 -4 -5 -1 -4 -2 -6 -4 -2 -1 -1\n[1441] -4 -2 -1  1 -5 -1 -2 -2 -2 -1 -1 -2 -1  0 -6  1 -5 -5 -4  0 -2 -5  1 -6\n[1465] -2 -1 -5 -1 -4 -5 -4 -5 -5 -4  0 -2 -5 -5 -6 -6 -1  0 -3 -6 -2  2  1 -6\n[1489] -6 -1 -4 -5 -4 -5  1 -5 -3 -1 -5  2 -5 -5 -4  0 -5 -5 -4 -6  0 -6  0 -3\n[1513] -5 -4  1 -2  1 -4 -5 -2 -5 -2 -5 -4 -3  0 -6 -5 -1 -4 -4 -4 -4 -2 -5 -2\n[1537] -2  0 -3  0 -6 -2 -3 -2  0 -5 -4 -5  0 -3 -4  0 -1 -5 -5 -2 -4  0 -2 -4\n[1561] -3 -5 -5  0 -2 -2 -4 -1 -4 -6 -4 -2 -2 -5 -1 -2 -5 -3 -1 -5  0 -5 -5 -4\n[1585] -6 -1 -3 -5 -5 -5 -3 -4 -2 -6  1 -2 -4 -6 -1  2  1 -1 -4 -5 -3 -4 -5  0\n[1609] -2 -1  1 -5 -6  0 -5 -2  0 -2 -5 -4 -4 -4 -5 -5 -1 -2 -2 -3 -6 -5  2 -5\n[1633] -5 -5  1 -4 -3 -2 -4 -4 -5 -2 -4 -6 -5 -6 -2 -2  0 -3 -5 -4 -3 -2 -6 -1\n[1657]  1 -5  1 -5 -5 -5 -5 -6 -4 -4 -3 -1 -5 -2 -3 -2 -2 -5 -5 -3 -5  1 -3 -3\n[1681] -4  1  0 -5  2 -1 -6 -3 -5 -4 -5 -6  1 -3  1 -1 -4 -4 -2 -6 -1 -5  0 -1\n[1705]  1  2 -3 -4 -1 -1  0 -4 -3 -5 -3 -4 -6 -2 -3 -2 -1 -3 -2 -4 -6 -4 -3  2\n[1729] -6 -4 -2 -5 -5 -2 -1  2 -3 -2 -5 -3 -5 -6 -3 -3  0 -5 -2 -3 -4 -2 -1 -4\n[1753] -1 -4 -5 -3 -2  1 -3 -5 -4 -1 -3 -4 -2  2 -5 -3 -6 -3 -2 -5 -1 -3 -5 -6\n[1777] -5 -4 -5 -2 -3 -4 -1 -3 -5 -5 -4 -1 -3 -1 -3  2 -1 -2 -5 -4 -5 -4 -1 -3\n[1801] -3 -2  2 -5 -6 -4 -2 -5  0 -3 -4 -4 -1  2 -2 -6 -6 -4 -3 -5 -4  1 -5  2\n[1825] -5  0  2  0 -5 -5 -3 -4 -3 -6  1 -5 -4  0  0 -1 -1 -1 -1 -6 -6 -3 -6 -1\n[1849] -5 -5  0 -4 -5 -3 -6 -6 -5 -5 -3 -5 -3 -5 -2 -2 -4 -4  1 -3 -4 -2 -4 -3\n[1873] -2  0 -5 -3 -2 -1 -1  0 -4 -1  0 -1 -3 -3 -5 -4 -3 -2 -4 -3  0 -4 -4 -3\n[1897] -2  1 -3 -6 -4 -6 -4  0 -3 -4  0 -6  1 -6 -6 -1 -4 -4  0 -2 -5 -6 -3  2\n[1921] -5  1 -5 -2 -2 -5 -2 -4  0  1  2 -5 -6 -3 -3 -3  0 -2  0  0 -1 -5 -3 -5\n[1945] -3 -5 -2 -5 -3 -5 -2 -6 -1 -4 -6 -4 -4 -4 -5 -2 -5 -5 -6 -3 -5 -2 -3 -6\n[1969]  0  0  0 -3  1 -6  1 -3 -5 -4 -3 -2  1 -4 -2  0 -5 -5 -4 -6 -3 -4 -3 -6\n[1993] -4 -4 -3 -4 -1 -5  2  0 -5 -4  0 -2  0 -2 -3 -3  2 -2 -5 -3 -3 -1 -5  2\n[2017] -5 -5  1 -1 -3 -3 -4 -6 -1  0 -1 -3  1 -4 -3 -2 -2  1  2 -5 -6 -5  1  2\n[2041] -3 -5 -1  0 -2 -5 -5 -2 -5 -6 -5 -5 -5 -1 -3  0  0 -3  0 -5 -6  2 -5 -4\n[2065] -5 -6 -2 -5 -1 -6 -2 -4  1 -6 -6 -3 -3 -4  0 -5  2 -1 -2 -4 -4 -1 -5 -5\n[2089] -4 -3 -5 -6 -5 -4 -1 -5 -6 -4 -4 -1 -4 -6 -3 -6 -5 -5 -1 -4 -2 -5 -4 -3\n[2113] -2 -4 -5  1 -3 -5 -5 -4 -1 -4 -3  1  1  0 -4 -5 -5  0 -5 -3 -2 -1 -6 -3\n[2137] -2 -2 -2  0 -4 -6 -2 -4 -5 -5 -5 -1 -5 -3 -2 -2 -4 -3 -4 -5 -4 -2 -2 -2\n[2161] -5 -4 -3 -3 -5 -6 -3 -6  1 -3 -6 -5 -5 -2  0  1 -4 -1 -5  1 -5 -4  1 -5\n[2185] -2 -4 -5 -4 -4  0 -3  0 -4  1  1 -4 -6 -5 -6  2  2  1 -4 -3 -5  2  1 -6\n[2209] -1  1 -3 -3 -5 -5  1 -4 -3 -5 -4 -6 -1 -5 -1 -2 -5 -5 -2 -5 -2 -2 -4  0\n[2233] -6 -3 -4 -4 -5 -2 -2 -1 -4 -4 -4 -1 -3 -5 -3 -5 -4  1  0 -6 -4 -5 -5 -6\n[2257] -6 -1 -5 -1 -1  0 -2 -4 -5  0 -4 -6 -3 -4 -4 -6  1 -4 -4  1 -5 -2 -4  2\n[2281] -2 -1 -1  0 -4 -1 -5 -5 -1 -3 -5  1 -3  0 -4 -2 -5 -1 -2 -2 -1 -3 -2 -3\n[2305] -4  0  0 -3 -2 -4  0 -1 -1  0 -1  0 -4 -5 -2 -6 -3 -2 -5 -2 -5 -2 -5 -4\n[2329] -3 -4 -4 -1 -3 -3  0  0  0 -1 -2 -5 -2  0 -6 -6 -4  1 -2  0 -5  2 -6 -5\n[2353] -4 -6 -1 -6 -2 -4  1 -5 -2 -4  2 -5  1 -2  1 -4 -3 -5 -3 -1 -2 -3 -6  1\n[2377] -3 -5 -4 -5 -4 -5 -3 -4 -2 -6 -3 -5 -1 -4 -2 -2 -2  0 -1  0 -5 -5 -4 -6\n[2401] -5 -3 -1  0 -1 -4 -3 -2 -3 -5  1 -1 -3 -6 -2  1 -5 -1 -5  0 -5 -4  1 -5\n[2425] -5 -2 -5  1  0 -2 -3 -5 -6 -5  0 -5 -5 -5  1 -3 -3 -5 -3 -4  0 -4 -5  0\n[2449] -5 -5 -5  0 -5 -5 -4 -2 -4 -1 -2 -5 -3 -4 -6 -4 -5 -3 -5 -4 -1 -4 -5 -6\n[2473] -6 -2 -4  0 -5 -5  0 -3 -3 -5 -4 -3 -5 -1 -1 -1 -4  1  0 -2 -5 -1  0 -5\n[2497] -1 -6  0  0  0  0 -5  0 -5 -2 -6 -6 -2 -4 -5 -3 -1 -4 -4 -5 -5 -6  2 -4\n[2521] -6 -4 -5 -4 -6 -4  2 -5 -5 -5 -1 -4 -3 -2 -4 -4 -4 -6 -5  0 -5 -4 -4 -5\n[2545] -1 -2 -5 -5 -1 -4 -5 -4 -6 -2  1  0  1 -5 -1 -5 -1 -4 -5 -4 -5 -4 -4 -6\n[2569] -5 -1 -3 -5 -4 -3  1 -3 -5 -4 -6 -2 -5  2  2 -1 -2 -5 -5 -4 -1 -5 -2  2\n[2593] -6 -5 -5 -5 -6  0  1  2 -5 -5 -6 -5 -5  0 -4 -4 -5 -2 -5  0  0 -5  2 -3\n[2617] -3  2  2 -2 -4 -6  1 -6 -5 -4 -3  2 -2 -1 -1 -3  1 -5 -3 -4 -6 -5 -5 -4\n[2641] -5 -3 -2 -5 -3  1  0  1  0 -3 -2 -4 -2 -1  0 -2  0  1 -5 -5 -1 -6 -5 -5\n[2665] -5 -6 -5  1 -4 -4 -1 -4 -4 -5 -3 -2 -6 -6 -3 -1 -6 -1 -5  1  1 -6 -4  0\n[2689] -3 -4 -4 -2 -3 -2 -2  0 -5 -5 -1 -6 -5  0 -4 -1 -5 -5 -5 -6  1 -5 -5  0\n[2713] -5  0  2 -4 -2 -4  0 -5 -3 -1 -5 -2 -5 -2 -3 -2  0  1 -5 -5 -6 -3 -6 -4\n[2737] -5 -3  2 -4 -5 -4 -5 -4 -2 -1 -2  0 -4 -6 -5 -5 -1 -6 -1 -3 -5  0 -5 -4\n[2761] -4 -4 -4 -2 -2  2 -2 -1 -5 -4 -1 -5 -6 -4 -1  0 -5 -5 -5  2  1 -1 -2 -2\n[2785] -3 -1 -3 -2 -1 -2 -4  0  1 -5 -4 -5 -3 -3 -3 -4 -4 -4 -4  1 -3 -2 -2 -4\n[2809] -4  2 -2 -6 -3 -5 -1 -6 -2 -3  1 -5  1 -4 -1 -5 -1 -4 -5 -3 -5 -3 -5 -3\n[2833] -6 -4 -4 -1  1 -6 -4 -5 -4 -5 -1 -5 -4 -5 -1  2 -6 -2  2 -3 -5 -4  2 -5\n[2857] -5 -4 -3  1  1 -4 -1 -5 -2 -6 -3 -5 -4 -5 -5  0 -3 -1 -3 -3 -5 -4 -3 -1\n[2881] -2 -5 -4 -4 -6 -6 -1 -2 -6 -5  0 -4 -4 -4 -4 -2 -5 -3 -6  2 -3 -4 -6 -3\n[2905]  0 -2 -2 -5 -5 -4 -5 -4 -4 -5 -3 -5 -3  0  2 -1 -6 -5 -4 -4 -5 -3 -2 -2\n[2929] -6 -6 -1 -6 -1 -6 -5  0 -5 -4 -5 -6 -5 -4 -5 -2  0 -5 -3 -4 -2 -4 -6 -5\n[2953] -4 -3 -4 -6 -4 -4 -1 -2  0 -2 -1 -4  0 -5 -5 -4 -2 -2 -2 -4 -6 -4 -5 -5\n[2977]  0 -5 -6  0 -4 -2 -5 -1 -4  1 -3 -6 -3 -1  0 -4 -5 -4  1 -4 -5 -6  2  0\n[3001] -1 -4  1 -5  0 -2 -3 -4 -5 -6  1  1 -2  1 -5 -3 -5 -3 -4 -1 -5 -6 -5 -1\n[3025] -3 -3 -5 -4 -5 -2 -5 -5 -3 -1 -1 -2 -5  1  2 -4 -3 -1 -5 -4 -5 -6 -5 -6\n[3049] -4 -4 -4 -5 -4 -5 -6  0 -5 -6 -4 -1 -2 -5 -4  0 -2 -2 -2  2  0  0 -4  1\n[3073] -3 -2  0 -4 -6 -5  1 -6 -4  0 -2  2 -4 -4 -5  1 -6 -5 -2  2  0 -5 -4 -5\n[3097]  0  1  2 -1 -4 -5 -5 -5  2 -5 -4 -5  0  1  0 -3 -5 -6 -5  1 -1 -5  2 -4\n[3121]  0 -5 -1 -1 -2 -5 -3 -6 -5 -6 -6  0  2 -5 -4 -5 -2 -3 -5 -6 -4  0  1 -3\n[3145] -4 -2 -5 -5 -4  1  1 -3 -4  0 -6 -3 -1 -5 -4 -2 -1 -1 -1 -3  1 -5 -6 -3\n[3169] -6 -3 -6  1 -5  2 -2 -5 -3 -1 -2 -2 -5 -2 -5 -2 -4 -2 -2 -6  0  0 -4 -4\n[3193] -3 -4 -3 -3  0 -3 -4 -4 -3 -3 -5 -5 -6 -4  0 -2 -5  0 -4  2 -5  1 -5 -3\n[3217] -4 -6 -5 -5 -4  1 -6 -5 -4  0 -5 -3 -6 -6 -2 -5 -2 -5 -4 -5  1 -5  1 -5\n[3241] -1 -5 -5 -5 -5  2 -4  0  1 -2  0  0  1 -3 -3 -1 -1 -2  0 -4 -6 -4 -1 -6\n[3265] -5 -5 -4 -2 -3 -3 -4 -4 -4  1 -5 -5 -2 -6 -3 -6 -5 -3 -2 -6 -5  0 -4 -2\n[3289] -1 -4 -2 -1  1  0 -1  1 -4 -5  0  0 -3 -2 -5 -4  1 -3 -5 -4  1 -2 -1  0\n[3313] -5 -5 -5 -5 -5 -5 -4 -5 -6  1  2 -4 -5 -5 -3 -1 -5 -4  1 -5 -5 -4 -1 -5\n[3337] -5 -3  0  2 -4 -5 -4 -4 -3 -3 -5 -3  0 -4  2 -5  0 -6 -6  0 -5 -3 -5  0\n[3361] -5 -5  0 -1  0 -3 -5 -3 -1 -4 -3  1 -2 -5 -4 -5 -6 -5 -6 -5 -4 -3 -1  2\n[3385] -1 -6 -3 -4  0 -2 -4 -1 -1 -4 -3 -4 -2 -5  0 -2  0 -6 -3 -3 -6 -2 -5  1\n[3409] -1 -5 -5 -2  1 -3 -5 -4  1 -4  2 -4 -1 -1 -4 -4 -1 -2 -5 -2 -4 -4 -3 -5\n[3433] -5 -4 -6 -5 -2 -2 -6  0 -3 -4 -1 -6 -1  0 -4 -2 -4 -5 -5  2 -6 -6 -2 -3\n[3457] -4 -4 -2 -4 -6 -5 -4 -5 -4 -4 -5 -5 -4 -5 -1 -5 -3 -5  2  1 -4 -3 -1 -4\n[3481]  0 -3 -6 -4 -4 -5 -4 -2  0  0 -6 -5  0 -4 -5 -6 -5 -5 -4 -1 -4 -2  1 -5\n[3505]  1 -4 -4 -5 -1  2 -5 -6 -1 -5  2 -4 -4  0 -2 -1 -1 -5 -5 -5 -1  0 -5 -5\n[3529] -5  0 -4 -4 -1  1 -5 -4  0 -5 -6 -2 -6  0 -1 -6 -5 -4 -5 -6 -3 -3 -4 -3\n[3553] -3 -2 -2 -5 -3 -2  1 -5 -1 -5 -5 -2 -1 -1 -5 -2  1  0  0 -4 -5  1 -2 -2\n[3577] -3 -3 -4 -5 -5 -4 -5 -5 -4 -5 -4 -5  2 -4  1 -2  0 -6  2 -5  0 -5 -6 -3\n[3601] -1 -1 -1 -6 -3  1 -4 -4 -3 -3 -2 -5 -5 -5 -3 -5  1 -2 -3 -3 -3 -1 -3 -4\n[3625] -2  1  0  0 -4  1 -1 -1 -3  1 -1 -5 -1 -4 -3 -6 -5 -5 -2 -4 -2 -6 -5 -3\n[3649] -4 -6 -4 -2 -2 -5 -4 -4 -6 -1 -4 -3  0 -5  1 -5 -6 -5 -5 -4  2 -5 -2 -4\n[3673]  1 -2 -5 -4 -6 -5 -4 -2  0  0 -3 -3 -4 -1 -2 -5 -6 -4 -3 -1  0 -4 -2 -5\n[3697]  0  2 -1 -2 -4  2 -3 -4 -6 -2  2 -4 -5 -6 -2 -6 -3  0 -5 -4 -1 -4 -4 -6\n[3721] -3 -3 -5 -1 -1 -6 -1 -1 -3 -5 -1 -5 -6 -6 -4 -4 -4 -5  0 -6 -6 -6 -5 -4\n[3745]  0 -1 -4  0 -4 -3 -4 -5 -5 -1 -3 -5  0 -5  0 -3  1 -5  0 -5 -3 -3  0 -5\n[3769] -5 -5  2 -1 -3 -2  1 -1 -4 -4 -5 -5 -6  1 -5  1 -5 -1 -4 -5 -5  2 -3 -2\n[3793] -3 -3 -3  2 -2 -6 -6 -4 -3 -3 -6  0 -4  0 -6 -1 -2  0 -2 -3 -2 -4 -4 -3\n[3817] -5 -3 -3 -5 -5 -5 -6  0 -5 -5 -5  0 -4 -3 -3 -4 -3 -3 -1 -5 -5 -5  1 -3\n[3841] -6 -5  2 -5  0 -5 -5 -3 -4 -2 -5 -3 -3  0 -5 -2 -1 -3 -4 -2 -4  2  2 -6\n[3865]  0 -6 -2  0  2 -5 -4  2 -6  0  0 -6 -4 -3 -3 -1 -4 -2 -4  1 -5  0 -1 -4\n[3889]  1 -2 -2 -2 -5 -3 -4 -5 -3 -6 -5 -4 -5 -5 -5  0 -1  1 -5  0 -3  0 -2 -1\n[3913] -5  0 -4 -4 -1  0 -3  0 -5 -2 -5  0 -1 -4 -2 -3  0 -2 -4 -3 -1 -3 -1 -4\n[3937] -2 -4 -5 -5 -5 -6 -1 -1 -1 -2 -5 -4 -2 -6 -2 -5 -5 -5 -3  1 -3 -2 -5 -4\n[3961]  0 -6 -1  1 -5 -2 -6  0 -5  0 -4  1 -3  1 -2 -4 -5 -5 -4 -2 -4  1 -5  2\n[3985] -5 -2  0 -5 -3  0 -5 -6 -4  0 -4 -1  0  2 -1 -5 -5 -1 -4 -4 -2 -5 -4 -2\n[4009]  2 -5  2 -4 -4  1 -5  1  1 -1 -2 -3 -5 -3 -3 -5 -1 -1 -2  1 -5 -5 -1 -1\n[4033] -4 -5 -6 -5 -1 -5 -6 -1 -6  0 -1 -2 -5 -5 -4 -6 -4 -2 -2 -1 -5 -6  0 -5\n[4057] -6  1 -3  0 -1 -4 -4  2 -4  0 -3 -5 -6 -4 -3 -6  1 -5 -2 -6 -5  2 -2 -3\n[4081]  1 -4 -2 -2 -5  1 -2 -5  1  0 -5 -3  0 -3  1 -4 -3 -3 -3 -4 -5 -3 -1 -6\n[4105] -4 -5  1 -5 -5 -5  0 -5 -5 -1  1 -4 -6 -2 -5 -4 -4 -1  1 -6 -1 -4  1 -3\n[4129] -1 -6 -5 -6  2  0 -1 -4  1 -2 -3 -2 -2 -4 -4 -2 -3 -2 -3 -5 -3 -2  0 -6\n[4153] -2 -2 -1 -5 -6 -2 -1  0  0 -3 -2  0  0 -5 -1 -4 -5 -4 -3  1 -2 -6 -5 -3\n[4177]  2 -2  0 -3 -5 -3 -1 -3  1 -5 -4 -3 -6  2 -1 -5 -1 -2 -5 -5 -1 -5 -5  0\n[4201] -3  0  0 -1 -3 -4 -5 -6 -4 -5  1 -5 -6 -3 -6 -5 -4 -6 -4 -3 -6 -5 -6 -4\n[4225] -3 -4 -6 -1 -2 -4  0 -5  0 -2 -4 -1 -5  1  0 -4  0  0 -5 -5 -2  2 -5 -4\n[4249] -4  0 -5 -6  2 -5 -3  0 -3 -2 -2 -5 -3 -5  0 -3 -5 -1 -4 -5 -5 -3 -1 -4\n[4273] -4 -5 -3 -4 -5 -4 -2 -5 -3 -5 -5 -5 -4 -5 -5 -3 -4  1 -3  0  1 -5 -4 -6\n[4297] -4 -5 -2  1 -4 -2 -5 -5 -4 -2 -5 -1 -5 -2  1 -3 -2 -6 -5 -6  0 -2 -5 -6\n[4321] -5 -2 -5  2 -6 -3  2 -5 -5 -4 -5  0 -2 -3 -4 -2 -4 -3 -5 -1  0 -5 -3 -3\n[4345] -1 -6 -5 -4 -5 -1 -1 -5 -6 -4 -1 -2 -3 -3  0 -4 -5 -1 -4 -4  1 -6 -5 -2\n[4369] -3 -2 -3  0 -3 -2 -5 -4 -5 -4 -2 -1 -5 -5 -3 -2 -4 -2 -6 -2 -1 -4 -5  1\n[4393]  1  0 -3 -2 -2  1 -4 -4  0  0 -6 -1 -6 -5  0 -5 -5 -4 -3 -3 -5 -5 -5 -2\n[4417]  1  0 -6 -5 -4 -5 -1  1  0 -2 -5 -4 -6  0  0 -5 -5 -5 -5 -5 -6  1 -6 -5\n[4441]  2 -4 -5  0 -3 -4  0 -5 -2 -4 -6 -5  0  0 -6 -3 -3 -1 -3 -2  0 -3 -5 -1\n[4465] -2 -3 -1 -6 -2 -1 -5 -4 -3 -4 -4 -2 -5 -5 -2 -5 -1 -4 -4 -5 -3  0 -2 -2\n[4489] -1 -2 -5 -3  2 -5 -3 -4 -3 -4 -5 -4 -5 -3 -2 -1 -4  0 -4 -6 -3 -5 -5 -4\n[4513] -2 -3 -6 -4 -4  2  2 -3 -3  0 -3  1 -6 -5 -5 -1 -1 -2 -6 -2  0 -4 -6 -4\n[4537]  2 -5 -3  2 -4 -5 -3 -4 -3 -2 -3 -4  0 -3 -3  0 -3 -2 -3 -1 -4  0 -4 -4\n[4561] -5 -5 -3 -5 -1 -5 -4 -3 -4 -4 -3  1 -6 -1 -4 -4 -4 -6  1 -3 -5 -5 -4 -4\n[4585] -1 -1 -5 -4 -5 -4 -5  0 -6 -2 -4 -4  0 -3 -5 -4 -4 -1  0  0 -1 -3 -3 -4\n[4609] -4 -4 -6 -5 -5 -6 -3 -5 -3 -4 -6  0 -3  2 -5 -5 -5 -6 -2  1 -3 -2 -5 -6\n[4633] -3  1 -6  0  1 -5  0 -5 -2 -2 -1  1 -5 -6 -5 -4 -1 -2 -5 -2 -5 -5 -6  0\n[4657]  1 -6 -5 -2  2  0  0  0 -4 -3 -2 -4 -4 -5 -5 -2 -4 -3  0  0 -4 -5 -6  0\n[4681] -3 -3 -4 -4  0 -2  0 -1 -5 -2 -3  1 -3 -5 -5 -5 -4 -4 -5  2  0 -5 -1 -3\n[4705] -5 -1 -6  0 -3  2 -5 -4 -4 -6 -5 -6 -3 -4 -2  2 -4 -2  0 -6 -2 -5 -4 -2\n[4729]  0 -6 -4 -6 -3 -4 -6 -4  0  0 -4 -1 -5 -2 -6 -4  1 -2 -5 -5 -5 -4 -2 -3\n[4753]  2 -5 -4 -5 -2 -4 -6  2 -4 -5 -4 -6 -6 -1  2 -1  1 -3 -6 -5 -4 -2 -4  0\n[4777] -2 -3 -3 -6 -1 -1 -2 -5 -5 -4 -2 -1 -2 -1 -2  0  0 -4  1 -4 -5 -6 -1 -5\n[4801] -1 -5 -2 -5 -4 -6 -2 -1  0 -1 -5 -3 -3 -5  0 -4 -5 -6 -2 -1 -6 -5 -5 -2\n[4825]  1 -3 -1 -6 -1 -3 -3  1 -2 -1  0  1 -3  2  1 -6 -4 -2 -1  2 -3 -5 -2 -4\n[4849] -6 -5 -1  1  1  1 -1  1 -4  1  0 -3 -5  1  0 -6 -4 -1 -6 -5 -4 -3 -1  0\n[4873] -4  1 -3 -2 -5 -3 -4 -6  1 -5 -5 -2 -3 -5 -1 -1 -1  2 -4 -6 -4 -1 -1  2\n[4897] -3 -5 -4  1 -2 -3 -5 -4 -5 -6 -6 -5 -1 -2 -2 -3 -6 -1 -2 -5 -2  1 -4 -1\n[4921] -3 -4 -2 -5 -5 -4  1 -2 -5 -3 -6 -3 -5 -2 -1 -3 -5 -4 -6 -2 -4 -5 -6 -5\n[4945] -3 -4 -5 -1 -5 -4 -5  0 -1 -5 -5 -6 -2 -5 -5 -4 -6 -4 -5 -6 -3 -4 -2 -1\n[4969] -4 -2 -1 -4 -1 -3 -2 -4 -5 -3 -2 -5  0  2 -5 -4  1 -5 -4 -4 -4 -4 -1 -4\n[4993]  0 -3 -5 -6  1 -2 -3  1"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#did-it-work",
+    "href": "slides/2026-10-01-r-crash-course.html#did-it-work",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Did it work?",
+    "text": "Did it work?\nHow many times did we see each value?\n\ntable(random_draws)\n\nrandom_draws\n  -6   -5   -4   -3   -2   -1    0    1    2 \n 474 1099  874  601  607  478  428  292  147 \n\n\n. . .\nWhat proportion of the time did we see each value?\n\ntable(random_draws) / 5000\n\nrandom_draws\n    -6     -5     -4     -3     -2     -1      0      1      2 \n0.0948 0.2198 0.1748 0.1202 0.1214 0.0956 0.0856 0.0584 0.0294 \n\n\n. . .\nAre those close to the true probabilities?\n\nround(pmf, digits = 3)\n\n[1] 0.091 0.212 0.182 0.121 0.121 0.091 0.091 0.061 0.030"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#how-does-the-computer-do-it",
+    "href": "slides/2026-10-01-r-crash-course.html#how-does-the-computer-do-it",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "How does the computer do it?",
+    "text": "How does the computer do it?\nHow does the computer know how to generate draws from this distribution? What is it actually doing?\nThis is a fascinating, beautiful, and very important topic that we will spend several future labs on. Stay tuned!"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#plotting-a-pmf",
+    "href": "slides/2026-10-01-r-crash-course.html#plotting-a-pmf",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Plotting a pmf",
+    "text": "Plotting a pmf\nJust a scatterplot: the first vector is the x-values; second vector is the y-values.\n\nrange_x &lt;- -6:2\nmasses &lt;- c(3, 7, 6, 4, 4, 3, 3, 2, 1)\npmf &lt;- masses / sum(masses)\n\nplot(range_x, pmf, xlab = \"k\", ylab = \"P(X = k)\")"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#plotting-a-pmf-1",
+    "href": "slides/2026-10-01-r-crash-course.html#plotting-a-pmf-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Plotting a pmf",
+    "text": "Plotting a pmf\nMake it more pmf-ish with type = \"h\":\n\nrange_x &lt;- -6:2\nmasses &lt;- c(3, 7, 6, 4, 4, 3, 3, 2, 1)\npmf &lt;- masses / sum(masses)\n\nplot(range_x, pmf, type = \"h\", lwd = 3, xlab = \"k\", ylab = \"P(X = k)\")"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#from-problem-set-0-8",
+    "href": "slides/2026-10-01-r-crash-course.html#from-problem-set-0-8",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "From Problem Set 0 #8",
+    "text": "From Problem Set 0 #8\nPlot this function from 2 to 15:\n\\[\nf(x) = \\frac{1}{x(\\ln x)^{-1}}.\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#from-problem-set-0-8-1",
+    "href": "slides/2026-10-01-r-crash-course.html#from-problem-set-0-8-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "From Problem Set 0 #8",
+    "text": "From Problem Set 0 #8\nTo plot a smooth curve, give it the formula (in terms of x) and connect the dots:\n\ncurve(1 / (x * log(x) ^ -1), from = 2, to = 15, n = 1000, lwd = 3, col = \"red\")"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#from-lab-4",
+    "href": "slides/2026-10-01-r-crash-course.html#from-lab-4",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "From Lab 4",
+    "text": "From Lab 4\nFor fixed \\(f_- = f_+=0.2\\), plot these functions:\n\\[\n\\begin{aligned}\nh(p)&=\\frac{(1-f_-)p}{(1-f_-)p+f_+(1-p)},\\\\\ng(p)&=\\frac{p}{p+f_+}.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#from-lab-4-1",
+    "href": "slides/2026-10-01-r-crash-course.html#from-lab-4-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "From Lab 4",
+    "text": "From Lab 4\n\nCodef_plus = 0.2\nf_minus = 0.2\ncurve(x / (x + f_plus),\n      col = \"blue\",\n      xlab = \"p\", \n      ylab = \"\", \n      xlim = c(0, 1),\n      ylim = c(0, 1),\n      main = paste(\"FNR = \", f_minus, \"; FPR = \", f_plus))\ncurve(x / (x + f_plus * ((1 - x) / (1 - f_minus))),\n      col = \"red\", add = TRUE)\nlegend(\"bottomright\",\n       c(\"True Probability\", \"Car Talk Answer\"),\n       col = c(\"red\", \"blue\"),\n       bty = \"n\",\n       lty = c(1, 1)\n       )"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#parametric-families",
+    "href": "slides/2026-10-01-r-crash-course.html#parametric-families",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Parametric families",
+    "text": "Parametric families\nWe’ve begun studying famous parametric families of probability distributions:\n\n\n\n\n\n\n\nDistribution\nRange\nPMF: \\(P(X=k)\\)\n\n\n\n\n\\(X\\sim\\text{Binom}(n,\\,p)\\)\n\\(\\{0,\\,1,\\,2,\\,...,\\,n\\}\\)\n\\(\\binom{n}{k}p^k(1-p)^{n-k}\\)\n\n\n\\(X\\sim\\text{Geom}(p)\\)\n\\(\\{1,\\,2,\\,3,\\,...\\}\\)\n\\((1-p)^{k-1}p\\)\n\n\n\\(X\\sim\\text{Poisson}(\\lambda)\\)\n\\(\\mathbb{N}=\\{0,\\,1,\\,2,\\,3,\\,...\\}\\)\n\\(e^{-\\lambda}\\frac{\\lambda^k}{k!}\\)\n\n\n\nYou will see dozens more by the end of the semester."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#the-pdqr-functions",
+    "href": "slides/2026-10-01-r-crash-course.html#the-pdqr-functions",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "The pdqr functions",
+    "text": "The pdqr functions\nR provides a standardized set of commands for working with each family of distributions:\n\nThe p command computes the CDF (stay tuned!);\nThe d command computes the PMF;\nThe q command computes the quantile functions (stay tuned!);\nThe r command simulates random numbers from the distribution."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#example-binomial",
+    "href": "slides/2026-10-01-r-crash-course.html#example-binomial",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: binomial",
+    "text": "Example: binomial\nFor \\(X\\sim\\text{Binom}(\\texttt{size},\\,\\texttt{prob})\\), use:\n\ndbinom(x, size, prob) # PMF: P(X = x)\nrbinom(n, size, prob) # draw n random numbers"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#binomial-plot-the-pmf",
+    "href": "slides/2026-10-01-r-crash-course.html#binomial-plot-the-pmf",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Binomial: plot the pmf",
+    "text": "Binomial: plot the pmf\n\nbinom_range &lt;- 0:6\nbinom_pmf &lt;- dbinom(binom_range, 6, 0.4) # vectorized!\n\nplot(binom_range, binom_pmf, type = \"h\", xlab = \"k\", ylab = \"P(X = k)\", lwd = 3)"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#binomial-compute-probabilities",
+    "href": "slides/2026-10-01-r-crash-course.html#binomial-compute-probabilities",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Binomial: compute probabilities",
+    "text": "Binomial: compute probabilities\nRecall from class that the probability of a random person liking my dating profile is \\(p=0.0162\\). If \\(X\\sim\\text{Binom}(25,\\,p)\\) counts the number of matches I receive back today in 25 attempts, what is \\(P(X&gt;0)\\)?\n. . .\nFinite additivity:\n\\[\n\\begin{aligned}\nP(X&gt;0)\n&=\nP(X=1\\text{ or }X=2\\text{ or }...\\text{ or }X = 25)\n\\\\\n&=\nP(X=1)+P(X=2)+...+P(X = 25)\n\\\\\n&=\n\\sum\\limits_{k=1}^{25}P(X=k)\n\\\\\n&=\n\\sum\\limits_{k=1}^{25}\\texttt{dbinom(k, 25, 0.0162)}\n.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#binomial-compute-probabilities-1",
+    "href": "slides/2026-10-01-r-crash-course.html#binomial-compute-probabilities-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Binomial: compute probabilities",
+    "text": "Binomial: compute probabilities\n\nprobs_1_to_25 &lt;- dbinom(1:25, 25, 0.0162)\nprobs_1_to_25\n\n [1] 2.736646e-01 5.407644e-02 6.826890e-03 6.182922e-04 4.276133e-05\n [6] 2.347136e-06 1.049064e-07 3.886804e-09 1.208947e-10 3.185191e-12\n[11] 7.152242e-14 1.374033e-15 2.262588e-17 3.193499e-19 3.856350e-21\n[16] 3.968850e-23 3.459923e-25 2.532166e-27 1.536189e-29 7.588819e-32\n[21] 2.975316e-34 8.907967e-37 1.913287e-39 2.625471e-42 1.729320e-45\n\nsum(probs_1_to_25)\n\n[1] 0.3352315"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#binomial-compute-probabilities-2",
+    "href": "slides/2026-10-01-r-crash-course.html#binomial-compute-probabilities-2",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Binomial: compute probabilities",
+    "text": "Binomial: compute probabilities\nRecall from class that the probability of a random person liking my dating profile is \\(p=0.0162\\). If \\(X\\sim\\text{Binom}(25,\\,p)\\) counts the number of matches I receive back today in 25 attempts, what is \\(P(X&gt;0)\\)?\n. . .\nComplement rule:\n\\[\nP(X&gt;0) = 1 - P(X = 0) = 1 - \\texttt{dbinom(0, 25, 0.0162)}.\n\\]\n. . .\n\nprob_0 &lt;- dbinom(0, 25, 0.0162)\n\n1 - prob_0\n\n[1] 0.3352315\n\n\nSame number as before."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#binomial-simulate-and-verify",
+    "href": "slides/2026-10-01-r-crash-course.html#binomial-simulate-and-verify",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Binomial: simulate and verify",
+    "text": "Binomial: simulate and verify\nSimulate \\(X\\sim\\text{Binom}(25,\\,0.0162)\\) a bunch and verify that the empirical proportions are close to the true probabilities.\n\nrandom_draws &lt;- rbinom(5000, 25, 0.0162)\n\ntable(random_draws) / 5000\n\nrandom_draws\n     0      1      2      3      4 \n0.6614 0.2766 0.0560 0.0050 0.0010 \n\n\n. . .\n\nround(dbinom(0:7, 25, 0.0162), digits = 4)\n\n[1] 0.6648 0.2737 0.0541 0.0068 0.0006 0.0000 0.0000 0.0000"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#example-poisson",
+    "href": "slides/2026-10-01-r-crash-course.html#example-poisson",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: Poisson",
+    "text": "Example: Poisson\nFor \\(X\\sim\\text{Pois}(\\texttt{lambda})\\), use:\n\ndpois(x, lambda) # PMF: P(X = x)\nrpois(n, lambda) # n random numbers"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#poisson-plot-the-pmf",
+    "href": "slides/2026-10-01-r-crash-course.html#poisson-plot-the-pmf",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Poisson: plot the pmf",
+    "text": "Poisson: plot the pmf\nIf \\(X\\sim\\text{Poisson}(\\lambda = 100)\\), then\n\npois_range &lt;- 0:140\npois_pmf &lt;- dpois(pois_range, 100)\n\nplot(pois_range, pois_pmf, type = \"h\", xlab = \"k\", ylab = \"P(X = k)\")"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#poisson-compute-probabilities",
+    "href": "slides/2026-10-01-r-crash-course.html#poisson-compute-probabilities",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Poisson: compute probabilities",
+    "text": "Poisson: compute probabilities\nSay that \\(X\\sim\\text{Poisson}(\\lambda = 100)\\) represents the number of claims an insurance company receives in a month. What is the probability that they receive an above-average number of claims?\n. . .\n\\[\n\\begin{aligned}\nP(X &gt; E(X)) = P(X &gt; \\lambda)\n&=P(X&gt;100) = \\sum\\limits_{k=101}^\\infty P(X=k) && (\\text{ick!})\n\\\\\n&=\n1-P(X\\leq 100)\n=\n1 - \\sum\\limits_{k=0}^{100} P(X=k)\n&& (\\text{yay!})\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#poisson-compute-probabilities-1",
+    "href": "slides/2026-10-01-r-crash-course.html#poisson-compute-probabilities-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Poisson: compute probabilities",
+    "text": "Poisson: compute probabilities\n\nprob_below_average &lt;- sum(dpois(0:100, 100))\n\n1 - prob_below_average\n\n[1] 0.4734378"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#poisson-compute-probabilities-2",
+    "href": "slides/2026-10-01-r-crash-course.html#poisson-compute-probabilities-2",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Poisson: compute probabilities",
+    "text": "Poisson: compute probabilities\nIf \\(X\\sim\\text{Poisson}(\\lambda=4)\\), then \\(P(X\\text{ even})\\approx 0.5001677\\).\nVerify:\n\nevens &lt;- seq(0, 100, by = 2)\n\nsum(dpois(evens, 4))\n\n[1] 0.5001677"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#poisson-simulate-and-verify",
+    "href": "slides/2026-10-01-r-crash-course.html#poisson-simulate-and-verify",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Poisson: simulate and verify",
+    "text": "Poisson: simulate and verify\nSimulate \\(X\\sim\\text{Poisson}(\\lambda = 100)\\) a bunch and verify that the empirical proportions are close to the true probabilities.\n\nrandom_draws &lt;- rpois(5000, 100)\n\ntable(random_draws) / 5000\n\nrandom_draws\n    68     69     71     72     73     74     75     76     77     78     79 \n0.0002 0.0004 0.0002 0.0006 0.0008 0.0010 0.0016 0.0014 0.0030 0.0020 0.0030 \n    80     81     82     83     84     85     86     87     88     89     90 \n0.0044 0.0036 0.0078 0.0098 0.0112 0.0112 0.0166 0.0218 0.0202 0.0224 0.0260 \n    91     92     93     94     95     96     97     98     99    100    101 \n0.0274 0.0318 0.0306 0.0342 0.0350 0.0358 0.0382 0.0440 0.0358 0.0386 0.0436 \n   102    103    104    105    106    107    108    109    110    111    112 \n0.0396 0.0362 0.0390 0.0298 0.0340 0.0286 0.0288 0.0278 0.0220 0.0202 0.0208 \n   113    114    115    116    117    118    119    120    121    122    123 \n0.0186 0.0174 0.0114 0.0106 0.0084 0.0074 0.0044 0.0056 0.0068 0.0032 0.0034 \n   124    125    126    127    128    129    130    131    132    135    136 \n0.0024 0.0014 0.0016 0.0016 0.0012 0.0008 0.0010 0.0002 0.0004 0.0006 0.0002 \n   141    142 \n0.0002 0.0002"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#poisson-simulate-and-verify-1",
+    "href": "slides/2026-10-01-r-crash-course.html#poisson-simulate-and-verify-1",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Poisson: simulate and verify",
+    "text": "Poisson: simulate and verify\nClearly we didn’t visit every possible natural number. Which ones did we see?\n\nsort(unique(random_draws))\n\n [1]  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87\n[20]  88  89  90  91  92  93  94  95  96  97  98  99 100 101 102 103 104 105 106\n[39] 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125\n[58] 126 127 128 129 130 131 132 135 136 141 142\n\n\nWhat are their probabilities?\n\nprobs &lt;- round( dpois(sort(unique(random_draws)), 100), digits = 4)\nprobs\n\n [1] 0.0002 0.0002 0.0004 0.0006 0.0008 0.0011 0.0015 0.0020 0.0026 0.0033\n[11] 0.0042 0.0052 0.0064 0.0078 0.0094 0.0112 0.0132 0.0154 0.0176 0.0201\n[21] 0.0225 0.0250 0.0275 0.0299 0.0322 0.0342 0.0360 0.0375 0.0387 0.0395\n[31] 0.0399 0.0399 0.0395 0.0387 0.0376 0.0361 0.0344 0.0325 0.0303 0.0281\n[41] 0.0258 0.0234 0.0211 0.0188 0.0167 0.0146 0.0127 0.0110 0.0094 0.0079\n[51] 0.0067 0.0056 0.0046 0.0038 0.0031 0.0025 0.0020 0.0016 0.0012 0.0010\n[61] 0.0007 0.0006 0.0004 0.0003 0.0001 0.0001 0.0000 0.0000\n\n\nClose?\n\nprops &lt;- table(random_draws) / 5000\n\ncbind(probs, props)\n\n     probs  props\n68  0.0002 0.0002\n69  0.0002 0.0004\n71  0.0004 0.0002\n72  0.0006 0.0006\n73  0.0008 0.0008\n74  0.0011 0.0010\n75  0.0015 0.0016\n76  0.0020 0.0014\n77  0.0026 0.0030\n78  0.0033 0.0020\n79  0.0042 0.0030\n80  0.0052 0.0044\n81  0.0064 0.0036\n82  0.0078 0.0078\n83  0.0094 0.0098\n84  0.0112 0.0112\n85  0.0132 0.0112\n86  0.0154 0.0166\n87  0.0176 0.0218\n88  0.0201 0.0202\n89  0.0225 0.0224\n90  0.0250 0.0260\n91  0.0275 0.0274\n92  0.0299 0.0318\n93  0.0322 0.0306\n94  0.0342 0.0342\n95  0.0360 0.0350\n96  0.0375 0.0358\n97  0.0387 0.0382\n98  0.0395 0.0440\n99  0.0399 0.0358\n100 0.0399 0.0386\n101 0.0395 0.0436\n102 0.0387 0.0396\n103 0.0376 0.0362\n104 0.0361 0.0390\n105 0.0344 0.0298\n106 0.0325 0.0340\n107 0.0303 0.0286\n108 0.0281 0.0288\n109 0.0258 0.0278\n110 0.0234 0.0220\n111 0.0211 0.0202\n112 0.0188 0.0208\n113 0.0167 0.0186\n114 0.0146 0.0174\n115 0.0127 0.0114\n116 0.0110 0.0106\n117 0.0094 0.0084\n118 0.0079 0.0074\n119 0.0067 0.0044\n120 0.0056 0.0056\n121 0.0046 0.0068\n122 0.0038 0.0032\n123 0.0031 0.0034\n124 0.0025 0.0024\n125 0.0020 0.0014\n126 0.0016 0.0016\n127 0.0012 0.0016\n128 0.0010 0.0012\n129 0.0007 0.0008\n130 0.0006 0.0010\n131 0.0004 0.0002\n132 0.0003 0.0004\n135 0.0001 0.0006\n136 0.0001 0.0002\n141 0.0000 0.0002\n142 0.0000 0.0002"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#latex",
+    "href": "slides/2026-10-01-r-crash-course.html#latex",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "LaTeX!",
+    "text": "LaTeX!\n\nThis is new for most of you, and has been causing some headache;\nBut if you major in a mathematical discipline, you need to know it;\nI create all of the course materials using Quarto + R + LaTeX;\nYou would not want to write this in Google Docs."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#example-binomial-pmf",
+    "href": "slides/2026-10-01-r-crash-course.html#example-binomial-pmf",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: binomial pmf",
+    "text": "Example: binomial pmf\nWhat you type in your Quarto doc:\n$$\nP(X = k) = \\binom{n}{k} p^k (1-p)^{n - k}.\n$$\nWhat appears in the rendered .pdf:\n\\[\nP(X = k) = \\binom{n}{k} p^k (1-p) ^{n - k}.\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#example-poisson-pmf",
+    "href": "slides/2026-10-01-r-crash-course.html#example-poisson-pmf",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: Poisson pmf",
+    "text": "Example: Poisson pmf\nWhat you type in your Quarto doc:\n$$\nP(X = k) = e^{-\\lambda} \\frac{\\lambda^k}{k!}.\n$$\nWhat appears in the rendered .pdf:\n\\[\nP(X = k) = e^{-\\lambda} \\frac{\\lambda^k}{k!}.\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#example-gamma-function",
+    "href": "slides/2026-10-01-r-crash-course.html#example-gamma-function",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: gamma function",
+    "text": "Example: gamma function\nWhat you type in your Quarto doc:\n$$\n\\Gamma(x) = \\int_0^\\infty z^{x-1} e^{-z} dz.\n$$\nWhat appears in the rendered .pdf:\n\\[\n\\Gamma(x) = \\int_0^\\infty z^{x-1} e^{-z} dz.\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#example-our-heavy-tailed-friend",
+    "href": "slides/2026-10-01-r-crash-course.html#example-our-heavy-tailed-friend",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: our heavy-tailed friend",
+    "text": "Example: our heavy-tailed friend\nWhat you type in your Quarto doc:\n$$\n\\sum\\limits_{n=0}^\\infty n\\frac{6}{\\pi^2n^2} = \\infty.\n$$\nWhat appears in the rendered .pdf:\n\\[\n\\sum\\limits_{n=0}^\\infty n\\frac{6}{\\pi^2n^2} = \\infty.\n\\]"
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#pro-tips",
+    "href": "slides/2026-10-01-r-crash-course.html#pro-tips",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Pro-tips",
+    "text": "Pro-tips\n\nA math chunk begins with $$ and ends with $$. Make sure you have line breaks immediately before the start of the math chunk and immediately after;\n\nWithin the math chunk, do not have any empty lines. You’ll get a dumb render error;\nSpread your expression across multiple lines to make it a little more readable."
+  },
+  {
+    "objectID": "slides/2026-10-01-r-crash-course.html#example-bell-curve-problem-set-0",
+    "href": "slides/2026-10-01-r-crash-course.html#example-bell-curve-problem-set-0",
+    "title": "All of the R you need to know in 75 minutes",
+    "section": "Example: bell curve (Problem Set 0)",
+    "text": "Example: bell curve (Problem Set 0)\n\n\nWhat you type:\n$$\nh(x)\n=\n\\exp\n\\left(\n-\\frac{1}{2}\n\\frac{(x-\\mu)^2}{\\sigma^2}\n\\right)\n.\n$$\n\nHow it renders:\n\\[\nh(x)\n=\n\\exp\n\\left(\n-\\frac{1}{2}\n\\frac{(x-\\mu)^2}{\\sigma^2}\n\\right)\n.\n\\]"
+  },
+  {
     "objectID": "math/integration.html",
     "href": "math/integration.html",
     "title": "Integration",
@@ -716,7 +1514,7 @@
     "href": "index.html",
     "title": "STA 240 Probability for Statistical Inference",
     "section": "",
-    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 24\n\nDS: 1.1 - 1.2\n🧑‍🏫 Welcome!\n🛝 slides\n\n\n\n\n\nWed, Aug 26\n\nDS: 1.3 - 1.4\n🧑‍🏫 Set Theory\n🎶 notes\n\n\n\n\n\nThu, Aug 27\n\n💻 Lab 0 (calculus review)\n🛝 slides\n\n\nIntro survey @ 5PM\n\n\n2\nMon, Aug 31\n\nDS: 1.5\n🧑‍🏫 Probability spaces\n🛝 slides\n\n\n\n\n\nWed, Sep 2\n\nDS: 1.5\n🧑‍🏫 Probability spaces\n🎶 notes\n\n\n\n\n\nThu, Sep 3\n\n💻 Lab 1 (hello R)\n\n\nLab 1 @ end-of-lab\n\n\n\nFri, Sep 4\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 7\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 9\n\nDS: 1.6 - 1.8\n🧑‍🏫 Counting\n🎶 notes (draft)\n\n\n\n\n\nThu, Sep 10\n\n💻 Lab 2 (counting)\n\n\nLab 2 @ end-of-lab\n\n\n4\nMon, Sep 14\n\nDS: 2\n🧑‍🏫 Conditional probability\n🎶 notes (draft)  🤮 play!  🙄 play more!  📚 read!\n\n\nPSET 1 @ 3PM\n\n\n\nWed, Sep 16\n\nDS: 2\n🧑‍🏫 Independence\n🎶 notes  🐐 play!\n\n\n\n\n\nThu, Sep 17\n\n💻 Lab 3\n\n\nLab 3 @ end-of-lab\n\n\n5\nMon, Sep 21\n\nDS: 3.1, 3.3, 4.1\n🧑‍🏫 Random variables\n🎶 notes (draft)\n\n\nPSET 2 @ 3PM\n\n\n\nWed, Sep 23\n\nDS: 5.1 - 5.4\n🧑‍🏫 Discrete random variables\n🏆 binomial  ⏳ geometric  🐟 poisson\n\n\n\n\n\nThu, Sep 24\n\n💻 Lab 4\n\nLab 4 @ end-of-lab\n\n\n6\nMon, Sep 28\n\nDS: 4.2\n🧑‍🏫 Expected value\n\n\nPSET 3 @ 3PM\n\n\n\nWed, Sep 30\n\nDS: 4.3\n🧑‍🏫 Variance\n\n\n\n\n\nThu, Oct 1\n\n💻 Lab 5\n\nLab 5 @ end-of-lab\n\n\n7\nMon, Oct 5\n\n🧑‍🏫 The CDF\n\n\nPSET 4 @ 3PM\n\n\n\nWed, Oct 7\n\n🧑‍🏫 Continuous random variables\n\n\n\n\n\nThu, Oct 8\n\n📝 Midterm 1\n\n\n\n\n\n8\nMon, Oct 12\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 14\n\n🧑‍🏫 Normal, gamma\n\n\n\n\n\nThu, Oct 15\n\n💻 Lab 6\n\nLab 6 @ end-of-lab\n\n\n9\nMon, Oct 19\n\n🧑‍🏫 Moments and quantiles\n\nPSET 5 @ 3PM\n\n\n\nWed, Oct 21\n\n🧑‍🏫 The MGF\n\n\n\n\n\nThu, Oct 22\n\n💻 Lab 7\n\nLab 7 @ end-of-lab\n\n\n10\nMon, Oct 26\n\n🧑‍🏫 Joint distributions\n\nPSET 6 @ 3PM\n\n\n\nWed, Oct 28\n\n🧑‍🏫 Joint distributions\n\n\n\n\n\nThu, Oct 29\n\n💻 Lab 8\n\nLab 8 @ end-of-lab\n\n\n11\nMon, Nov 2\n\n🧑‍🏫 Joint distributions\n\nPSET 7 @ 3PM\n\n\n\nWed, Nov 4\n\n🧑‍🏫 Sums and averages\n\n\n\n\n\nThu, Nov 5\n\n💻 Lab 9\n\nLab 9 @ end-of-lab\n\n\n12\nMon, Nov 9\n\n🧑‍🏫 Limit theorems\n\nPSET 8 @ 3PM\n\n\n\nWed, Nov 11\n\n🧑‍🏫 Limit theorems\n\n\n\n\n\nThu, Nov 12\n\n📝 Midterm 2\n\n\n\n\n\n13\nMon, Nov 16\n\n🧑‍🏫 What is statistics?\n\n\n\n\n\nWed, Nov 18\n\n🧑‍🏫 Interval estimation\n\n\n\n\n\nThu, Nov 19\n\n💻 Lab 10\n\nLab 10 @ end-of-lab\n\n\n14\nMon, Nov 23\n\n🧑‍🏫 Hypothesis testing\n\nPSET 9 @ 3PM\n\n\n\nWed, Nov 25\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n\nThu, Nov 26\n\n❌ Thanksgiving - No Lab\n\n\n\n\n\n15\nMon, Nov 30\n\n🧑‍🏫 Maximum likelihood\n\n\n\n\n\nWed, Dec 2\n\n🧑‍🏫 Maximum likelihood\n\n\n\n\n\nThu, Dec 3\n\n💻 Lab 11\n\nLab 11 @ end-of-lab\n\n\n16\nMon, Dec 7\n\n\n\nPSET 10 @ 3PM\n\n\n17\nMon, Dec 14\n\n📝 Final (2PM - 5PM)",
+    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 24\n\nDS: 1.1 - 1.2\n🧑‍🏫 Welcome!\n🛝 slides\n\n\n\n\n\nWed, Aug 26\n\nDS: 1.3 - 1.4\n🧑‍🏫 Set Theory\n🎶 notes\n\n\n\n\n\nThu, Aug 27\n\n💻 Lab 0 (calculus review)\n🛝 slides\n\n\nIntro survey @ 5PM\n\n\n2\nMon, Aug 31\n\nDS: 1.5\n🧑‍🏫 Probability spaces\n🛝 slides\n\n\n\n\n\nWed, Sep 2\n\nDS: 1.5\n🧑‍🏫 Probability spaces\n🎶 notes\n\n\n\n\n\nThu, Sep 3\n\n💻 Lab 1 (hello R)\n\n\nLab 1 @ end-of-lab\n\n\n\nFri, Sep 4\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 7\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 9\n\nDS: 1.6 - 1.8\n🧑‍🏫 Counting\n🎶 notes (draft)\n\n\n\n\n\nThu, Sep 10\n\n💻 Lab 2 (counting)\n\n\nLab 2 @ end-of-lab\n\n\n4\nMon, Sep 14\n\nDS: 2\n🧑‍🏫 Conditional probability\n🎶 notes (draft)  🤮 play!  🙄 play more!  📚 read!\n\n\nPSET 1 @ 3PM\n\n\n\nWed, Sep 16\n\nDS: 2\n🧑‍🏫 Independence\n🎶 notes  🐐 play!\n\n\n\n\n\nThu, Sep 17\n\n💻 Lab 3\n\n\nLab 3 @ end-of-lab\n\n\n5\nMon, Sep 21\n\nDS: 3.1, 3.3, 4.1\n🧑‍🏫 Random variables\n🎶 notes (draft)\n\n\nPSET 2 @ 3PM\n\n\n\nWed, Sep 23\n\nDS: 5.1 - 5.4\n🧑‍🏫 Discrete random variables\n🏆 binomial  ⏳ geometric  🐟 poisson\n\n\n\n\n\nThu, Sep 24\n\n💻 Lab 4\n\n\nLab 4 @ end-of-lab\n\n\n6\nMon, Sep 28\n\nDS: 4.2\n🧑‍🏫 Expected value\n\n\nPSET 3 @ 3PM\n\n\n\nWed, Sep 30\n\nDS: 4.3\n🧑‍🏫 Variance\n\n\n\n\n\nThu, Oct 1\n\n💻 Lab 5\n🛝 slides  🎶 notes\n\nLab 5 @ end-of-lab\n\n\n7\nMon, Oct 5\n\n🧑‍🏫 The CDF\n\n\nPSET 4 @ 3PM\n\n\n\nWed, Oct 7\n\n🧑‍🏫 Continuous random variables\n\n\n\n\n\nThu, Oct 8\n\n📝 Midterm 1\n\n\n\n\n\n8\nMon, Oct 12\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 14\n\n🧑‍🏫 Normal, gamma\n\n\n\n\n\nThu, Oct 15\n\n💻 Lab 6\n\nLab 6 @ end-of-lab\n\n\n9\nMon, Oct 19\n\n🧑‍🏫 Moments and quantiles\n\nPSET 5 @ 3PM\n\n\n\nWed, Oct 21\n\n🧑‍🏫 The MGF\n\n\n\n\n\nThu, Oct 22\n\n💻 Lab 7\n\nLab 7 @ end-of-lab\n\n\n10\nMon, Oct 26\n\n🧑‍🏫 Joint distributions\n\nPSET 6 @ 3PM\n\n\n\nWed, Oct 28\n\n🧑‍🏫 Joint distributions\n\n\n\n\n\nThu, Oct 29\n\n💻 Lab 8\n\nLab 8 @ end-of-lab\n\n\n11\nMon, Nov 2\n\n🧑‍🏫 Joint distributions\n\nPSET 7 @ 3PM\n\n\n\nWed, Nov 4\n\n🧑‍🏫 Sums and averages\n\n\n\n\n\nThu, Nov 5\n\n💻 Lab 9\n\nLab 9 @ end-of-lab\n\n\n12\nMon, Nov 9\n\n🧑‍🏫 Limit theorems\n\nPSET 8 @ 3PM\n\n\n\nWed, Nov 11\n\n🧑‍🏫 Limit theorems\n\n\n\n\n\nThu, Nov 12\n\n📝 Midterm 2\n\n\n\n\n\n13\nMon, Nov 16\n\n🧑‍🏫 What is statistics?\n\n\n\n\n\nWed, Nov 18\n\n🧑‍🏫 Interval estimation\n\n\n\n\n\nThu, Nov 19\n\n💻 Lab 10\n\nLab 10 @ end-of-lab\n\n\n14\nMon, Nov 23\n\n🧑‍🏫 Hypothesis testing\n\nPSET 9 @ 3PM\n\n\n\nWed, Nov 25\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n\nThu, Nov 26\n\n❌ Thanksgiving - No Lab\n\n\n\n\n\n15\nMon, Nov 30\n\n🧑‍🏫 Maximum likelihood\n\n\n\n\n\nWed, Dec 2\n\n🧑‍🏫 Maximum likelihood\n\n\n\n\n\nThu, Dec 3\n\n💻 Lab 11\n\nLab 11 @ end-of-lab\n\n\n16\nMon, Dec 7\n\n\n\nPSET 10 @ 3PM\n\n\n17\nMon, Dec 14\n\n📝 Final (2PM - 5PM)",
     "crumbs": [
       "Syllabus",
       "Schedule"
