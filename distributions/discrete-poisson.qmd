@@ -362,14 +362,26 @@ $$
     k^2 e^{-\lambda}\frac{\lambda^k}{k!}
     \\
     &=
-    \lambda e^{-\lambda}
+    e^{-\lambda}
     \sum\limits_{k=1}^\infty 
-    k^2 \frac{\lambda^{k-1}}{k!}
+    k^2 \frac{\lambda^{k}}{k!}
+    &&\text{pull out constant}
     \\
     &=
-    \lambda e^{-\lambda}
+     e^{-\lambda}
+    \sum\limits_{k=1}^\infty 
+    k \frac{\lambda^{k}}{(k-1)!}
+    &&\text{cancel only one }k 
+    \\
+    &=
+     \lambda e^{-\lambda}
     \sum\limits_{k=1}^\infty 
     k \frac{\lambda^{k-1}}{(k-1)!}
+    \\
+    &=
+     \lambda e^{-\lambda}
+    \sum\limits_{k=1}^\infty 
+    (k+0) \frac{\lambda^{k-1}}{(k-1)!}
     \\
     &=
     \lambda e^{-\lambda}
