@@ -54,6 +54,11 @@ q_no <- q_no + 1
 
 ## Problem `{r} q_no`
 
+::: callout-important
+## Update (10/2/2026)
+Skip part c.
+:::
+
 {{< include bank/random-variables-discrete/bdj-rv.qmd >}}
 
 ```{r}
@@ -111,7 +116,18 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
+::: {.callout-tip collapse="true"}
+## Hint
+
+Before you launch into the calculation, spend some time staring at the right-hand side. Right now it may just look like a steaming pile of junk, but can the ingredients be interpreted *probabilistically*? What might $(n+1)p$ represent? What might $(1 - p)^{n+1}$ represent? What might $1 - (1 - p)^{n+1}$ represent? 
+:::
+
 ## Problem `{r} q_no`
+
+::: callout-important
+## Update (10/2/2026)
+Skip part c.
+:::
 
 {{< include bank/random-variables-discrete/zero-truncated-poisson.qmd >}}
 
