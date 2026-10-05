@@ -3,6 +3,8 @@ title: "Support your classmates!"
 format: html
 ---
 
+{{< include announcements/ssmu-challenge.qmd >}}
+
 {{< include announcements/duke-symphony-2026-10-03.qmd >}}
 
 {{< include announcements/rockapella.qmd >}}

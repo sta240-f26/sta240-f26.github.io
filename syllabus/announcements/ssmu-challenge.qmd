@@ -1,0 +1,9 @@
+## SSMU Data Challenge
+
+The Statistical Science Majors Union is excited to invite you to Data Challenge I, a free-to-attend, hands-on, collaborative event where you will work in teams of 3-4 students (either randomly assigned or self-selected) to analyze a mystery dataset! Your mission: uncover insights, run analysis, and present findings in your own creative way.
+
+The competition is from 11:00 am - 5:30 pm on Saturday, October 17, in Physics 150. This event is open to students of all backgrounds and skill levels; food is provided, and prizes will be awarded to the team with the best analysis! This includes $100 to spend at the University Store and other prizes as well. We hope you will join us for this fun opportunity to explore data, collaborate with peers, and practice your analytical skills.
+
+Register through the following link: <http://duke.is/data-challenge-1>.
+
+![](announcements/images/ssmu-challenge.JPG){width="40%"}
