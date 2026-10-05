@@ -933,14 +933,26 @@ The variance (brute force)
     k^2 e^{-\lambda}\frac{\lambda^k}{k!}
     \\
     &amp;=
-    \lambda e^{-\lambda}
+    e^{-\lambda}
     \sum\limits_{k=1}^\infty
-    k^2 \frac{\lambda^{k-1}}{k!}
+    k^2 \frac{\lambda^{k}}{k!}
+    &amp;&amp;\text{pull out constant}
     \\
     &amp;=
-    \lambda e^{-\lambda}
+     e^{-\lambda}
+    \sum\limits_{k=1}^\infty
+    k \frac{\lambda^{k}}{(k-1)!}
+    &amp;&amp;\text{cancel only one }k
+    \\
+    &amp;=
+     \lambda e^{-\lambda}
     \sum\limits_{k=1}^\infty
     k \frac{\lambda^{k-1}}{(k-1)!}
+    \\
+    &amp;=
+     \lambda e^{-\lambda}
+    \sum\limits_{k=1}^\infty
+    (k+0) \frac{\lambda^{k-1}}{(k-1)!}
     \\
     &amp;=
     \lambda e^{-\lambda}
