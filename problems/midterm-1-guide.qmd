@@ -18,7 +18,7 @@ Midterm Exam 1 will take place on **Thursday October 8** during your lab section
 
 A few remarks:
 
-- We will probably begin talking about *continuous* random variables before October 8, but these will not appear on the exam. Everything about *discrete* random variables is fair game, but that's where we'll cut it off;
+- Everything up to and including the expected value of a discrete random variable is fair game. Anything we covered after that (variance, CDF, start of continuous random variables) will not appear on the exam;
 - As I promised in class, you will not have to do any calculations with infinite series on this exam;
 - The listed topics indicate what a question *focuses on*, but there could be overlap. The conditional probability problem could require you to prove something. The random variable problem could require you to count. And so on.
 
@@ -279,6 +279,7 @@ q_no <- q_no + 1
 
 - [Lecture notes](/lecture-notes/07-random-variables.pdf) introducing random variables;
 - Special distributions: [binomial](/distributions/discrete-binomial.html), [geometric](/distributions/discrete-geometric.html), [Poisson](/distributions/discrete-poisson.html);
+- [Lecture notes](/lecture-notes/08-expected-value.pdf) introducing expected value;
 - [Problem Set 2](/problems/pset-2.html): problem 8;
 - [Problem Set 3](/problems/pset-3.html): problems 9 - 10;
 - [Problem Set 4](/problems/pset-4.html): problems 4 - 10.
