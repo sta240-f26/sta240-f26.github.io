@@ -447,7 +447,7 @@ P\left(\begin{matrix}\text{at least}\\\text{one ace}\end{matrix}\right)=1 - P(\t
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -847,7 +847,7 @@ P(X=k)=\frac{\binom{10}{k}3^{10-k}}{2^{20}},\quad k = 0,\,1,\,2,\,...,\,10.
 <span id="cb77-5"><a></a><span class="fu">plot</span>(range_x, pmf, <span class="at">xlab =</span> <span class="st">"k"</span>, <span class="at">ylab =</span> <span class="st">"P(X = k)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-html/unnamed-chunk-28-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -862,7 +862,7 @@ P(X=k)=\frac{\binom{10}{k}3^{10-k}}{2^{20}},\quad k = 0,\,1,\,2,\,...,\,10.
 <span id="cb78-5"><a></a><span class="fu">plot</span>(range_x, pmf, <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">xlab =</span> <span class="st">"k"</span>, <span class="at">ylab =</span> <span class="st">"P(X = k)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-html/unnamed-chunk-29-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -878,7 +878,7 @@ f(x) = \frac{1}{x(\ln x)^{-1}}.
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a></a><span class="fu">curve</span>(<span class="dv">1</span> <span class="sc">/</span> (x <span class="sc">*</span> <span class="fu">log</span>(x) <span class="sc">^</span> <span class="sc">-</span><span class="dv">1</span>), <span class="at">from =</span> <span class="dv">2</span>, <span class="at">to =</span> <span class="dv">15</span>, <span class="at">n =</span> <span class="dv">1000</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-html/unnamed-chunk-30-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -912,7 +912,7 @@ g(p)&amp;=\frac{p}{p+f_+}.
 <span id="cb80-17"><a></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-html/unnamed-chunk-31-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -973,7 +973,7 @@ g(p)&amp;=\frac{p}{p+f_+}.
 <span id="cb82-4"><a></a><span class="fu">plot</span>(binom_range, binom_pmf, <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">xlab =</span> <span class="st">"k"</span>, <span class="at">ylab =</span> <span class="st">"P(X = k)"</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-html/unnamed-chunk-33-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1070,7 +1070,7 @@ P(X&gt;0) = 1 - P(X = 0) = 1 - \texttt{dbinom(0, 25, 0.0162)}.
 <span id="cb94-4"><a></a><span class="fu">plot</span>(pois_range, pois_pmf, <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">xlab =</span> <span class="st">"k"</span>, <span class="at">ylab =</span> <span class="st">"P(X = k)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-revealjs/unnamed-chunk-39-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-01-r-crash-course_files/figure-html/unnamed-chunk-39-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1516,41 +1516,6 @@ h(x)
           RevealZoom
         ]
       });
-    </script><script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
     </script><script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

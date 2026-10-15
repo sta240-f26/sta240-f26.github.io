@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.34">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Dwija Kakkad">
+<title>Computing probabilities in R – STA 240 Fall 2026</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7ad8df1012cc34949a7a0ac4d54234c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ab2af8015911caaedd078aba9a047385.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+<meta property="og:title" content="Computing probabilities in R – STA 240 Fall 2026">
+<meta property="og:image" content="https://sta240-f26.github.io/slides/2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-1-1.png">
+<meta property="og:site_name" content="STA 240 Fall 2026">
+<meta property="og:image:height" content="729">
+<meta property="og:image:width" content="1920">
+</head>
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Computing probabilities in R</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://cmgr.oit.duke.edu/containers" title="RStudio Containers" class="quarto-navigation-tool px-1" aria-label="RStudio Containers"><i class="bi bi-code-square"></i></a>
+    <a href="https://canvas.duke.edu/courses/84105" title="Canvas" class="quarto-navigation-tool px-1" aria-label="Canvas"><i class="bi bi-megaphone"></i></a>
+    <a href="https://edstem.org/us/courses/96707/discussion" title="Ed Discussion" class="quarto-navigation-tool px-1" aria-label="Ed Discussion"><i class="bi bi-people"></i></a>
+    <a href="https://www.gradescope.com/courses/1351871" title="Gradescope" class="quarto-navigation-tool px-1" aria-label="Gradescope"><i class="bi bi-file-arrow-up"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/announcements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Check it out!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Syllabus</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-team.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teaching team</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-materials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Materials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments and grading</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-policies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Policies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">University resources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Math Helpers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/greeks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Greek alphabet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/logexp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exponents and logarithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/differentiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Differentiation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/integration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/limits.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Limits and continuity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/series.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sequences and series</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/gamma-function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gamma function</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Code Helpers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/hello-rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The lay of the land</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/latex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Typing math</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic math</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/lineplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting lines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">sample</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/if-else.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">if-else and logic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">for loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/vectorization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectorization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/rng-seed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setting a seed</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/probabilities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Computing probabilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting points</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/summary-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summary statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/histogram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Histograms</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Distributions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Binomial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-geometric.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geometric</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Poisson</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Problem Sets</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 0</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 4</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Labs</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lab/lab-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lab/lab-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lab/lab-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lab/lab-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Exam Study Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/midterm-1-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm 1</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li>
+<a href="#where-we-are" id="toc-where-we-are" class="nav-link active" data-scroll-target="#where-we-are">Where we are</a>
+  <ul class="collapse">
+<li><a href="#today" id="toc-today" class="nav-link" data-scroll-target="#today">Today</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#part-i-discrete-random-variables" id="toc-part-i-discrete-random-variables" class="nav-link" data-scroll-target="#part-i-discrete-random-variables">Part I: Discrete random variables</a>
+  <ul class="collapse">
+<li><a href="#review-discrete-random-variables" id="toc-review-discrete-random-variables" class="nav-link" data-scroll-target="#review-discrete-random-variables">Review: discrete random variables</a></li>
+  <li><a href="#pictures-of-two-discrete-pmfs" id="toc-pictures-of-two-discrete-pmfs" class="nav-link" data-scroll-target="#pictures-of-two-discrete-pmfs">Pictures of two discrete PMFs</a></li>
+  <li><a href="#three-families-weve-met" id="toc-three-families-weve-met" class="nav-link" data-scroll-target="#three-families-weve-met">Three families we’ve met</a></li>
+  <li><a href="#review-binomial" id="toc-review-binomial" class="nav-link" data-scroll-target="#review-binomial">Review: binomial</a></li>
+  <li><a href="#review-poisson" id="toc-review-poisson" class="nav-link" data-scroll-target="#review-poisson">Review: Poisson</a></li>
+  <li><a href="#review-geometric" id="toc-review-geometric" class="nav-link" data-scroll-target="#review-geometric">Review: geometric</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#the-cdf" id="toc-the-cdf" class="nav-link" data-scroll-target="#the-cdf">The CDF</a>
+  <ul class="collapse">
+<li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition">Definition</a></li>
+  <li><a href="#from-masses-to-a-cdf" id="toc-from-masses-to-a-cdf" class="nav-link" data-scroll-target="#from-masses-to-a-cdf">From masses to a CDF</a></li>
+  <li><a href="#review-properties-of-every-cdf" id="toc-review-properties-of-every-cdf" class="nav-link" data-scroll-target="#review-properties-of-every-cdf">Review: properties of every CDF</a></li>
+  <li><a href="#the-p-functions-in-r" id="toc-the-p-functions-in-r" class="nav-link" data-scroll-target="#the-p-functions-in-r">The <code>p</code> functions in R</a></li>
+  <li><a href="#first-calculation-a-shortcut-for-summing-masses" id="toc-first-calculation-a-shortcut-for-summing-masses" class="nav-link" data-scroll-target="#first-calculation-a-shortcut-for-summing-masses">First calculation: a shortcut for summing masses</a></li>
+  <li><a href="#see-the-complement" id="toc-see-the-complement" class="nav-link" data-scroll-target="#see-the-complement">See the complement</a></li>
+  <li><a href="#one-formula-many-probabilities" id="toc-one-formula-many-probabilities" class="nav-link" data-scroll-target="#one-formula-many-probabilities">One formula, many probabilities</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#part-ii-translating-probability-statements" id="toc-part-ii-translating-probability-statements" class="nav-link" data-scroll-target="#part-ii-translating-probability-statements">Part II: Translating probability statements</a>
+  <ul class="collapse">
+<li><a href="#your-turn-poisson-probabilities" id="toc-your-turn-poisson-probabilities" class="nav-link" data-scroll-target="#your-turn-poisson-probabilities">Your turn: Poisson probabilities</a></li>
+  <li><a href="#solutions-poisson-probabilities" id="toc-solutions-poisson-probabilities" class="nav-link" data-scroll-target="#solutions-poisson-probabilities">Solutions: Poisson probabilities</a></li>
+  <li><a href="#visualize-the-endpoints" id="toc-visualize-the-endpoints" class="nav-link" data-scroll-target="#visualize-the-endpoints">Visualize the endpoints</a></li>
+  <li><a href="#another-way-to-compute-upper-tails" id="toc-another-way-to-compute-upper-tails" class="nav-link" data-scroll-target="#another-way-to-compute-upper-tails">Another way to compute upper tails</a></li>
+  <li><a href="#your-turn-a-binomial-variable" id="toc-your-turn-a-binomial-variable" class="nav-link" data-scroll-target="#your-turn-a-binomial-variable">Your turn: a binomial variable</a></li>
+  <li><a href="#solutions-binomial-probabilities" id="toc-solutions-binomial-probabilities" class="nav-link" data-scroll-target="#solutions-binomial-probabilities">Solutions: binomial probabilities</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#part-iii-continuous-random-variables" id="toc-part-iii-continuous-random-variables" class="nav-link" data-scroll-target="#part-iii-continuous-random-variables">Part III: Continuous random variables</a>
+  <ul class="collapse">
+<li><a href="#review-continuous-random-variables" id="toc-review-continuous-random-variables" class="nav-link" data-scroll-target="#review-continuous-random-variables">Review: continuous random variables</a></li>
+  <li><a href="#what-does-a-pdf-represent" id="toc-what-does-a-pdf-represent" class="nav-link" data-scroll-target="#what-does-a-pdf-represent">What does a PDF represent?</a></li>
+  <li><a href="#the-continuous-cdf" id="toc-the-continuous-cdf" class="nav-link" data-scroll-target="#the-continuous-cdf">The continuous CDF</a></li>
+  <li><a href="#discrete-versus-continuous" id="toc-discrete-versus-continuous" class="nav-link" data-scroll-target="#discrete-versus-continuous">Discrete versus continuous</a></li>
+  <li><a href="#the-continuous-uniform-distribution" id="toc-the-continuous-uniform-distribution" class="nav-link" data-scroll-target="#the-continuous-uniform-distribution">The continuous uniform distribution</a></li>
+  <li><a href="#uniform-density-and-cdf" id="toc-uniform-density-and-cdf" class="nav-link" data-scroll-target="#uniform-density-and-cdf">Uniform: density and CDF</a></li>
+  <li><a href="#the-normal-distribution" id="toc-the-normal-distribution" class="nav-link" data-scroll-target="#the-normal-distribution">The normal distribution</a></li>
+  <li><a href="#normal-density-and-cdf" id="toc-normal-density-and-cdf" class="nav-link" data-scroll-target="#normal-density-and-cdf">Normal: density and CDF</a></li>
+  <li><a href="#a-first-continuous-calculation" id="toc-a-first-continuous-calculation" class="nav-link" data-scroll-target="#a-first-continuous-calculation">A first continuous calculation</a></li>
+  <li><a href="#dont-confuse-d-and-p" id="toc-dont-confuse-d-and-p" class="nav-link" data-scroll-target="#dont-confuse-d-and-p">Don’t confuse <code>d</code> and <code>p</code></a></li>
+  </ul>
+</li>
+  <li>
+<a href="#part-iv-translating-probability-statements-your-turn" id="toc-part-iv-translating-probability-statements-your-turn" class="nav-link" data-scroll-target="#part-iv-translating-probability-statements-your-turn">Part IV: Translating probability statements — your turn</a>
+  <ul class="collapse">
+<li><a href="#exercise-1-uniform" id="toc-exercise-1-uniform" class="nav-link" data-scroll-target="#exercise-1-uniform">Exercise 1: uniform</a></li>
+  <li><a href="#practice-visualize-before-calculating" id="toc-practice-visualize-before-calculating" class="nav-link" data-scroll-target="#practice-visualize-before-calculating">Practice: visualize before calculating</a></li>
+  <li><a href="#exercise-2-normal" id="toc-exercise-2-normal" class="nav-link" data-scroll-target="#exercise-2-normal">Exercise 2: normal</a></li>
+  <li><a href="#exercise-3-choose-your-model" id="toc-exercise-3-choose-your-model" class="nav-link" data-scroll-target="#exercise-3-choose-your-model">Exercise 3: choose your model</a></li>
+  <li><a href="#exercise-4-choose-your-model" id="toc-exercise-4-choose-your-model" class="nav-link" data-scroll-target="#exercise-4-choose-your-model">Exercise 4: choose your model</a></li>
+  <li><a href="#exercise-5-a-manufacturing-tolerance" id="toc-exercise-5-a-manufacturing-tolerance" class="nav-link" data-scroll-target="#exercise-5-a-manufacturing-tolerance">Exercise 5: a manufacturing tolerance</a></li>
+  <li><a href="#exercise-6-conditional-probability-challenge" id="toc-exercise-6-conditional-probability-challenge" class="nav-link" data-scroll-target="#exercise-6-conditional-probability-challenge">Exercise 6: conditional probability (challenge)</a></li>
+  <li><a href="#before-you-leave" id="toc-before-you-leave" class="nav-link" data-scroll-target="#before-you-leave">Before you leave</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#appendix-solutions-to-independent-exercises" id="toc-appendix-solutions-to-independent-exercises" class="nav-link" data-scroll-target="#appendix-solutions-to-independent-exercises">Appendix: solutions to independent exercises</a>
+  <ul class="collapse">
+<li><a href="#exercise-1-solutions" id="toc-exercise-1-solutions" class="nav-link" data-scroll-target="#exercise-1-solutions">Exercise 1 solutions</a></li>
+  <li><a href="#exercise-2-solutions" id="toc-exercise-2-solutions" class="nav-link" data-scroll-target="#exercise-2-solutions">Exercise 2 solutions</a></li>
+  <li><a href="#exercise-3-solutions" id="toc-exercise-3-solutions" class="nav-link" data-scroll-target="#exercise-3-solutions">Exercise 3 solutions</a></li>
+  <li><a href="#exercise-4-solutions" id="toc-exercise-4-solutions" class="nav-link" data-scroll-target="#exercise-4-solutions">Exercise 4 solutions</a></li>
+  <li><a href="#exercise-5-solutions" id="toc-exercise-5-solutions" class="nav-link" data-scroll-target="#exercise-5-solutions">Exercise 5 solutions</a></li>
+  <li><a href="#exercise-6-solution" id="toc-exercise-6-solution" class="nav-link" data-scroll-target="#exercise-6-solution">Exercise 6 solution</a></li>
+  </ul>
+</li>
+  </ul><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2026-10-15-pdqr-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Computing probabilities in R</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Dwija Kakkad </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Duke University <br> STA 240 Fall 2026
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+
+</header><section id="where-we-are" class="level1 scrollable"><h1 class="scrollable">Where we are</h1>
+<section id="today" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="today">Today</h2>
+<p>We’ve already practiced using R as a calculator, working with vectors, and evaluating probability mass functions.</p>
+<p>Now we’ve met the <strong>cumulative distribution function (CDF)</strong> in lecture. Today we’ll use R to compute probabilities using the CDF.</p>
+<p>Our priorities:</p>
+<ul>
+<li>Recognize the probability model and its parameters;</li>
+<li>Translate events into expressions involving the CDF;</li>
+<li>Ask R to evaluate those expressions.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The review slides are here for reference. We’ll move quickly through some of them.</p>
+</div>
+</div>
+</section></section><section id="part-i-discrete-random-variables" class="level1 scrollable"><h1 class="scrollable">Part I: Discrete random variables</h1>
+<section id="review-discrete-random-variables" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="review-discrete-random-variables">Review: discrete random variables</h2>
+<p>A random variable <span class="math inline">\(X\)</span> is <strong>discrete</strong> if its possible values form a finite or countably infinite set.</p>
+<p>Its <strong>probability mass function (PMF)</strong> is</p>
+<p><span class="math display">\[p_X(k)=P(X=k).\]</span></p>
+<p>The PMF must satisfy</p>
+<p><span class="math display">\[p_X(k)\geq 0,\qquad \sum_k p_X(k)=1.\]</span></p>
+<p>To find the probability of an event, add the masses at the values in that event:</p>
+<p><span class="math display">\[P(X\in A)=\sum_{k\in A}p_X(k).\]</span></p>
+</section><section id="pictures-of-two-discrete-pmfs" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="pictures-of-two-discrete-pmfs">Pictures of two discrete PMFs</h2>
+<p>A PMF assigns <strong>probability mass</strong> to individual values.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Neither picture is a density curve. The probability at an integer is the <strong>height of its spike</strong>.</p>
+</section><section id="three-families-weve-met" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="three-families-weve-met">Three families we’ve met</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">Family</th>
+<th style="text-align: left;">Interpretation</th>
+<th style="text-align: left;">Range</th>
+<th style="text-align: left;">Parameters</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Binomial</td>
+<td style="text-align: left;">Number of successes in <span class="math inline">\(n\)</span> independent Bernoulli trials</td>
+<td style="text-align: left;"><span class="math inline">\(0,1,\ldots,n\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(n, p\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Poisson</td>
+<td style="text-align: left;">Count of events in a specified interval</td>
+<td style="text-align: left;"><span class="math inline">\(0,1,2,\ldots\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\lambda&gt;0\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Geometric</td>
+<td style="text-align: left;">Number of trials until the first success</td>
+<td style="text-align: left;"><span class="math inline">\(1,2,3,\ldots\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(p\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Different probability models describe different experiments. <strong>Identifying the model comes before choosing an R command.</strong></p>
+</section><section id="review-binomial" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="review-binomial">Review: binomial</h2>
+<p>If <span class="math inline">\(X\sim\operatorname{Binomial}(n,p)\)</span>, then</p>
+<p><span class="math display">\[P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}, \quad k=0,\ldots,n.\]</span></p>
+<p>Think: <span class="math inline">\(n\)</span> independent trials, each with success probability <span class="math inline">\(p\)</span>; <span class="math inline">\(X\)</span> counts successes.</p>
+<p>For example, if <span class="math inline">\(X\sim\operatorname{Binomial}(20,0.3)\)</span>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Probability of exactly 5 successes</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">5</span>, size <span class="op">=</span> <span class="fl">20</span>, prob <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1788631</code></pre>
+</div>
+</div>
+</section><section id="review-poisson" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="review-poisson">Review: Poisson</h2>
+<p>If <span class="math inline">\(X\sim\operatorname{Poisson}(\lambda)\)</span>, then</p>
+<p><span class="math display">\[P(X=k)=e^{-\lambda}\frac{\lambda^k}{k!}, \quad k=0,1,2,\ldots.\]</span></p>
+<p><span class="math inline">\(X\)</span> often counts arrivals, occurrences, or defects; <span class="math inline">\(\lambda\)</span> is the <strong>expected count for the interval being studied</strong>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Probability of exactly 5 events when lambda = 12</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span><span class="fl">5</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.01274064</code></pre>
+</div>
+</div>
+<p>If the rate is 6 events/hour, the Poisson mean for a two-hour interval is 12, not 6 (assuming the usual Poisson-process model).</p>
+</section><section id="review-geometric" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="review-geometric">Review: geometric</h2>
+<p>Under our convention, <span class="math inline">\(X\)</span> counts the <strong>trial number of the first success</strong> in independent Bernoulli trials with success probability <span class="math inline">\(p\)</span>:</p>
+<p><span class="math display">\[P(X=k)=(1-p)^{k-1}p,\qquad k=1,2,3,\ldots.\]</span></p>
+<p>We won’t use the geometric distribution in today’s R exercises. Our computational examples will use binomial and Poisson distributions.</p>
+</section></section><section id="the-cdf" class="level1 scrollable"><h1 class="scrollable">The CDF</h1>
+<section id="definition" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="definition">Definition</h2>
+<p>For <strong>any</strong> random variable <span class="math inline">\(X\)</span>, its cumulative distribution function (CDF) is</p>
+<p><span class="math display">\[\boxed{F_X(x)=P(X\leq x).}\]</span></p>
+<p>For discrete <span class="math inline">\(X\)</span>:</p>
+<p><span class="math display">\[F_X(x)=\sum_{k\leq x}P(X=k).\]</span></p>
+<p>For example, if <span class="math inline">\(X\sim\operatorname{Binomial}(20,0.3)\)</span>:</p>
+<p><span class="math display">\[P(X\leq 5)=\sum_{k=0}^{5}P(X=k).\]</span></p>
+<p>. . .</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">5</span>, size <span class="op">=</span> <span class="fl">20</span>, prob <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4163708</code></pre>
+</div>
+</div>
+</section><section id="from-masses-to-a-cdf" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="from-masses-to-a-cdf">From masses to a CDF</h2>
+<p>The CDF <strong>accumulates</strong> the probability mass as the threshold increases.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The CDF jumps at possible outcomes; the size of each jump is the corresponding PMF value.</p>
+</section><section id="review-properties-of-every-cdf" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="review-properties-of-every-cdf">Review: properties of every CDF</h2>
+<ul>
+<li>
+<span class="math inline">\(0\leq F_X(x)\leq 1\)</span>;</li>
+<li>
+<span class="math inline">\(F_X(x)\)</span> is <strong>nondecreasing</strong>;</li>
+<li>
+<span class="math inline">\(F_X(x)\to 0\)</span> as <span class="math inline">\(x\to-\infty\)</span>, and <span class="math inline">\(F_X(x)\to1\)</span> as <span class="math inline">\(x\to\infty\)</span>;</li>
+<li>
+<span class="math inline">\(F_X\)</span> is <strong>right-continuous</strong>;</li>
+<li>
+<span class="math inline">\(P(a&lt;X\leq b)=F_X(b)-F_X(a)\)</span>, for <span class="math inline">\(a&lt;b\)</span>.</li>
+</ul>
+<p>For discrete <span class="math inline">\(X\)</span>, the CDF has jumps. The jump at <span class="math inline">\(x\)</span> has size <span class="math inline">\(P(X=x)\)</span>.</p>
+</section><section id="the-p-functions-in-r" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="the-p-functions-in-r">The <code>p</code> functions in R</h2>
+<p>R uses a common naming scheme for probability distributions:</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: left;">Family</th>
+<th style="text-align: left;">PMF or PDF</th>
+<th style="text-align: left;">CDF</th>
+<th style="text-align: left;">Simulation</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Binomial</td>
+<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code></td>
+<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code></td>
+<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Binomial.html">rbinom()</a></code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Poisson</td>
+<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Poisson.html">dpois()</a></code></td>
+<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Poisson.html">ppois()</a></code></td>
+<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Poisson.html">rpois()</a></code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Uniform</td>
+<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Uniform.html">dunif()</a></code></td>
+<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Uniform.html">punif()</a></code></td>
+<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Normal</td>
+<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code></td>
+<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code></td>
+<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code></td>
+</tr>
+</tbody>
+</table>
+<p>The <code>p</code> functions return <span class="math inline">\(P(X\leq x)\)</span> (the <strong>lower tail</strong>) by default.</p>
+</section><section id="first-calculation-a-shortcut-for-summing-masses" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="first-calculation-a-shortcut-for-summing-masses">First calculation: a shortcut for summing masses</h2>
+<p>Let <span class="math inline">\(X\sim\operatorname{Binomial}(20,0.3)\)</span>. Compute <span class="math inline">\(P(X\leq5)\)</span> using the PMF and then the CDF.</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Long way: add the individual masses</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">5</span>, size <span class="op">=</span> <span class="fl">20</span>, prob <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4163708</code></pre>
+</div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Short way: ask for the CDF</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">5</span>, size <span class="op">=</span> <span class="fl">20</span>, prob <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4163708</code></pre>
+</div>
+</div>
+<p>They give the same answer. <code>pbinom(5, ...)</code> evaluates the cumulative probability directly.</p>
+</section><section id="see-the-complement" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="see-the-complement">See the complement</h2>
+<p>For <span class="math inline">\(X\sim\operatorname{Poisson}(12)\)</span>, the event <span class="math inline">\(X&gt;10\)</span> is the <strong>unshaded remainder</strong> when <span class="math inline">\(X\leq10\)</span> is shaded.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[P(X&gt;10)=1-F_X(10).\]</span></p>
+</section><section id="one-formula-many-probabilities" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="one-formula-many-probabilities">One formula, many probabilities</h2>
+<p>For any <span class="math inline">\(a&lt;b\)</span>,</p>
+<p><span class="math display">\[P(a&lt;X\leq b)=F_X(b)-F_X(a).\]</span></p>
+<p>And by the complement rule,</p>
+<p><span class="math display">\[P(X&gt;a)=1-F_X(a).\]</span></p>
+<p><strong>Warning:</strong> For a discrete random variable, <span class="math inline">\(P(X&lt; a)\)</span> and <span class="math inline">\(P(X\leq a)\)</span> need not be equal.</p>
+</section></section><section id="part-ii-translating-probability-statements" class="level1 scrollable"><h1 class="scrollable">Part II: Translating probability statements</h1>
+<section id="your-turn-poisson-probabilities" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="your-turn-poisson-probabilities">Your turn: Poisson probabilities</h2>
+<p>Let <span class="math inline">\(X\sim\operatorname{Poisson}(12)\)</span>. Write an R expression for <strong>each</strong> probability. Don’t execute anything until you’ve decided which endpoints to use.</p>
+<ol type="1">
+<li><span class="math inline">\(P(X\leq10)\)</span></li>
+<li><span class="math inline">\(P(X&gt;10)\)</span></li>
+<li><span class="math inline">\(P(X&lt;10)\)</span></li>
+<li><span class="math inline">\(P(X\geq10)\)</span></li>
+<li><span class="math inline">\(P(8\leq X\leq15)\)</span></li>
+<li><span class="math inline">\(P(8&lt;X&lt;15)\)</span></li>
+</ol>
+<div class="notes">
+<p>Allow time to discuss the endpoint adjustments, especially the differences between 2/4 and 5/6.</p>
+</div>
+</section><section id="solutions-poisson-probabilities" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="solutions-poisson-probabilities">Solutions: Poisson probabilities</h2>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">10</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>               <span class="co"># P(X &lt;= 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3472294</code></pre>
+</div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">10</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>           <span class="co"># P(X &gt; 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6527706</code></pre>
+</div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">9</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>                <span class="co"># P(X &lt; 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2423922</code></pre>
+</div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">9</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>            <span class="co"># P(X &gt;= 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7576078</code></pre>
+</div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">12</span><span class="op">)</span>         <span class="co"># P(8 &lt;= X &lt;= 15)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7549112</code></pre>
+</div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">14</span>, <span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">12</span><span class="op">)</span>         <span class="co"># P(8 &lt; X &lt; 15)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6169968</code></pre>
+</div>
+</div>
+<p>Why 9 instead of 10? Why 7 instead of 8? We can move a strict inequality by one because a Poisson variable takes <strong>integer values</strong>.</p>
+</section><section id="visualize-the-endpoints" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="visualize-the-endpoints">Visualize the endpoints</h2>
+<p>For integer-valued <span class="math inline">\(X\)</span>, the two events below are <strong>not</strong> the same.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The only difference is the mass at <span class="math inline">\(X=10\)</span>.</p>
+</section><section id="another-way-to-compute-upper-tails" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="another-way-to-compute-upper-tails">Another way to compute upper tails</h2>
+<p>The function argument <code>lower.tail = FALSE</code> asks R for <span class="math inline">\(P(X&gt;x)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Two ways to compute P(X &gt; 10)</span></span>
+<span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">10</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6527706</code></pre>
+</div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">10</span>, lambda <span class="op">=</span> <span class="fl">12</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6527706</code></pre>
+</div>
+</div>
+<p>These are mathematically equivalent. The second is often preferable for very small tail probabilities because it avoids subtracting a number extremely close to 1.</p>
+<p><strong>It still means <span class="math inline">\(P(X&gt;10)\)</span>, not <span class="math inline">\(P(X\geq10)\)</span>.</strong></p>
+</section><section id="your-turn-a-binomial-variable" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="your-turn-a-binomial-variable">Your turn: a binomial variable</h2>
+<p>Let <span class="math inline">\(Y\sim\operatorname{Binomial}(30,0.2)\)</span>.</p>
+<p>Write R expressions for:</p>
+<ol type="1">
+<li>
+<span class="math inline">\(P(Y=4)\)</span>;</li>
+<li>
+<span class="math inline">\(P(Y\leq4)\)</span>;</li>
+<li>
+<span class="math inline">\(P(Y\geq4)\)</span>;</li>
+<li>
+<span class="math inline">\(P(3\leq Y&lt;8)\)</span>.</li>
+</ol>
+<p>Try to use <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> whenever it is appropriate, and <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code> for an individual mass.</p>
+</section><section id="solutions-binomial-probabilities" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="solutions-binomial-probabilities">Solutions: binomial probabilities</h2>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">4</span>, size <span class="op">=</span> <span class="fl">30</span>, prob <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1325224</code></pre>
+</div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">4</span>, size <span class="op">=</span> <span class="fl">30</span>, prob <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2552333</code></pre>
+</div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">3</span>, size <span class="op">=</span> <span class="fl">30</span>, prob <span class="op">=</span> <span class="fl">0.2</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8772892</code></pre>
+</div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">30</span>, <span class="fl">0.2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">30</span>, <span class="fl">0.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7166116</code></pre>
+</div>
+</div>
+<p><strong>Sanity check:</strong> Every result must lie between 0 and 1. The probability of <span class="math inline">\(Y\geq4\)</span> should exceed the probability of <span class="math inline">\(Y=4\)</span>.</p>
+</section></section><section id="part-iii-continuous-random-variables" class="level1 scrollable"><h1 class="scrollable">Part III: Continuous random variables</h1>
+<section id="review-continuous-random-variables" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="review-continuous-random-variables">Review: continuous random variables</h2>
+<p>A continuous random variable is described by a <strong>probability density function (PDF)</strong> <span class="math inline">\(f_X\)</span> such that</p>
+<p><span class="math display">\[f_X(x)\geq0,\qquad \int_{-\infty}^{\infty}f_X(x)\,dx=1.\]</span></p>
+<p>Probabilities are <strong>areas under the density curve</strong>:</p>
+<p><span class="math display">\[P(a&lt;X&lt;b)=\int_a^b f_X(x)\,dx.\]</span></p>
+<p>Crucially, <span class="math inline">\(f_X(x)\)</span> is a <strong>density</strong>, not <span class="math inline">\(P(X=x)\)</span>.</p>
+<p>For a continuous random variable with a PDF,</p>
+<p><span class="math display">\[\boxed{P(X=x)=0\quad\text{for every }x.}\]</span></p>
+</section><section id="what-does-a-pdf-represent" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="what-does-a-pdf-represent">What does a PDF represent?</h2>
+<p>A probability is an <strong>area</strong>, not the height of a density curve.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[P(-1&lt;Z&lt;1)=F_Z(1)-F_Z(-1).\]</span></p>
+</section><section id="the-continuous-cdf" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="the-continuous-cdf">The continuous CDF</h2>
+<p>The definition has <strong>not changed</strong>:</p>
+<p><span class="math display">\[F_X(x)=P(X\leq x).\]</span></p>
+<p>For a continuous random variable with density <span class="math inline">\(f_X\)</span>,</p>
+<p><span class="math display">\[F_X(x)=\int_{-\infty}^{x}f_X(t)\,dt.\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[P(a&lt;X&lt;b)=F_X(b)-F_X(a).\]</span></p>
+<p>Because individual points have zero probability, the strictness of the endpoints doesn’t matter for intervals:</p>
+<p><span class="math display">\[P(a&lt;X&lt;b)=P(a\leq X\leq b).\]</span></p>
+</section><section id="discrete-versus-continuous" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="discrete-versus-continuous">Discrete versus continuous</h2>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: left;">Probability statement</th>
+<th style="text-align: left;">Integer-valued <span class="math inline">\(X\)</span>
+</th>
+<th style="text-align: left;">Continuous <span class="math inline">\(Y\)</span>
+</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">
+<span class="math inline">\(P( X &lt; 10)\)</span> or <span class="math inline">\(P(Y&lt;10)\)</span>
+</td>
+<td style="text-align: left;"><span class="math inline">\(F_X(9)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(F_Y(10)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+<span class="math inline">\(P(X\leq10)\)</span> or <span class="math inline">\(P(Y\leq10)\)</span>
+</td>
+<td style="text-align: left;"><span class="math inline">\(F_X(10)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(F_Y(10)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">
+<span class="math inline">\(P(X=10)\)</span> or <span class="math inline">\(P(Y=10)\)</span>
+</td>
+<td style="text-align: left;">May be positive</td>
+<td style="text-align: left;"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+<span class="math inline">\(P(8&lt;X&lt;12)\)</span> or <span class="math inline">\(P(8&lt;Y&lt;12)\)</span>
+</td>
+<td style="text-align: left;"><span class="math inline">\(F_X(11)-F_X(8)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(F_Y(12)-F_Y(8)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>definition of the CDF</strong> is the same. The endpoint bookkeeping is different.</p>
+</section><section id="the-continuous-uniform-distribution" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="the-continuous-uniform-distribution">The continuous uniform distribution</h2>
+<p><span class="math inline">\(X\sim\operatorname{Uniform}(a,b)\)</span> means that the density is constant between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>:</p>
+<p><span class="math display">\[f_X(x)=\begin{cases}\dfrac{1}{b-a},&amp;a\leq x\leq b,\\[4pt]0,&amp;\text{otherwise.}\end{cases}\]</span></p>
+<p>For <span class="math inline">\(a\leq x\leq b\)</span>, its CDF is</p>
+<p><span class="math display">\[F_X(x)=\frac{x-a}{b-a}.\]</span></p>
+<p>For example, if <span class="math inline">\(X\sim\operatorname{Uniform}(2,8)\)</span>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">5</span>, min <span class="op">=</span> <span class="fl">2</span>, max <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>  <span class="co"># P(X &lt;= 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5</code></pre>
+</div>
+</div>
+</section><section id="uniform-density-and-cdf" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="uniform-density-and-cdf">Uniform: density and CDF</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The shaded area on the left equals the CDF’s height at <span class="math inline">\(x=5\)</span> on the right.</p>
+</section><section id="the-normal-distribution" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="the-normal-distribution">The normal distribution</h2>
+<p><span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span> means <span class="math inline">\(X\)</span> has a <strong>normal distribution</strong> with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Its density is</p>
+<p><span class="math display">\[f_X(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\},\quad \sigma&gt;0.\]</span></p>
+<p>The normal density is symmetric about <span class="math inline">\(\mu\)</span>. Its CDF cannot be expressed in elementary functions, but R can evaluate it numerically.</p>
+<div class="cell">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># N(100, 2^2): mean = 100, STANDARD DEVIATION = 2</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">103</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9331928</code></pre>
+</div>
+</div>
+<p><strong>R takes <code>sd</code>, not variance.</strong></p>
+</section><section id="normal-density-and-cdf" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="normal-density-and-cdf">Normal: density and CDF</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The vertical difference between CDF values at 97 and 103 equals the shaded PDF area.</p>
+</section><section id="a-first-continuous-calculation" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="a-first-continuous-calculation">A first continuous calculation</h2>
+<p>Suppose <span class="math inline">\(Y\sim N(100,2^2)\)</span>. Find <span class="math inline">\(P(97&lt;Y&lt;103)\)</span>.</p>
+<p><span class="math display">\[P(97&lt;Y&lt;103)=F_Y(103)-F_Y(97).\]</span></p>
+<p>. . .</p>
+<div class="cell">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">103</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">97</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8663856</code></pre>
+</div>
+</div>
+<p>Notice that for this continuous variable, we need <strong>no plus or minus 1</strong> at the endpoints.</p>
+</section><section id="dont-confuse-d-and-p" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="dont-confuse-d-and-p">Don’t confuse <code>d</code> and <code>p</code>
+</h2>
+<p>For the normal family:</p>
+<div class="cell">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># Height of the density</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1994711</code></pre>
+</div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># Area to the left</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5</code></pre>
+</div>
+</div>
+<p>The first number is <strong>not</strong> <span class="math inline">\(P(Y=100)\)</span>; that probability is zero. The second is <span class="math inline">\(P(Y\leq100)=1/2\)</span> by symmetry.</p>
+</section></section><section id="part-iv-translating-probability-statements-your-turn" class="level1 scrollable"><h1 class="scrollable">Part IV: Translating probability statements — your turn</h1>
+<section id="exercise-1-uniform" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-1-uniform">Exercise 1: uniform</h2>
+<p>Let <span class="math inline">\(U\sim\operatorname{Uniform}(2,8)\)</span>.</p>
+<p>Using <code><a href="https://rdrr.io/r/stats/Uniform.html">punif()</a></code> and ordinary arithmetic, calculate:</p>
+<ol type="1">
+<li>
+<span class="math inline">\(P(U\leq5)\)</span>;</li>
+<li>
+<span class="math inline">\(P(U&gt;6)\)</span>;</li>
+<li>
+<span class="math inline">\(P(3&lt;U&lt;7)\)</span>;</li>
+<li>
+<span class="math inline">\(P(U=5)\)</span>.</li>
+</ol>
+<p>Then <strong>check</strong> answers 1–3 by calculating the corresponding lengths as fractions of the total interval length.</p>
+</section><section id="practice-visualize-before-calculating" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="practice-visualize-before-calculating">Practice: visualize before calculating</h2>
+<p>For <span class="math inline">\(Z\sim N(100,2^2)\)</span>, sketch the event <span class="math inline">\(|Z-100|&gt;3\)</span> <strong>before</strong> entering any code.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="exercise-2-normal" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-2-normal">Exercise 2: normal</h2>
+<p>Let <span class="math inline">\(Z\sim N(100,2^2)\)</span>.</p>
+<p>Using <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code>, calculate:</p>
+<ol type="1">
+<li>
+<span class="math inline">\(P(Z&lt;97)\)</span>;</li>
+<li>
+<span class="math inline">\(P(Z\geq103)\)</span>;</li>
+<li>
+<span class="math inline">\(P(97&lt;Z&lt;103)\)</span>;</li>
+<li>
+<span class="math inline">\(P(|Z-100|&gt;3)\)</span>.</li>
+</ol>
+<p>Explain in words what event 4 describes. Which answers can be related by symmetry?</p>
+</section><section id="exercise-3-choose-your-model" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-3-choose-your-model">Exercise 3: choose your model</h2>
+<p>A factory makes components independently. Each component has probability <span class="math inline">\(0.04\)</span> of being defective. An inspector tests 75 components.</p>
+<ol type="1">
+<li>Specify a distribution for the number of defective components, including its parameters.</li>
+<li>Find the probability that <strong>at least five</strong> are defective.</li>
+<li>Find the probability that <strong>between two and six, inclusive</strong>, are defective.</li>
+</ol>
+<p>Write the probability statement in mathematical notation <strong>before</strong> writing the R code.</p>
+</section><section id="exercise-4-choose-your-model" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-4-choose-your-model">Exercise 4: choose your model</h2>
+<p>Customers arrive at a shop according to a Poisson process at an average rate of 6 per hour.</p>
+<ol type="1">
+<li>Specify a distribution for the number arriving in the next <strong>two hours</strong>.</li>
+<li>Find the probability of <strong>more than 15</strong> arrivals.</li>
+<li>Find the probability of <strong>between 10 and 15 arrivals, inclusive</strong>.</li>
+<li>What would you change if the observation interval were <strong>30 minutes</strong>?</li>
+</ol></section><section id="exercise-5-a-manufacturing-tolerance" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-5-a-manufacturing-tolerance">Exercise 5: a manufacturing tolerance</h2>
+<p>The length <span class="math inline">\(L\)</span> of a manufactured rod is normally distributed, with mean 100 mm and standard deviation 2 mm. A rod is accepted if its length is between 97 and 103 mm, inclusive.</p>
+<ol type="1">
+<li>Calculate the proportion of rods that will be accepted.</li>
+<li>Calculate the proportion that will be rejected.</li>
+<li>If the acceptance interval were instead 98 to 102 mm, what would happen to the acceptance probability? Calculate it.</li>
+</ol></section><section id="exercise-6-conditional-probability-challenge" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-6-conditional-probability-challenge">Exercise 6: conditional probability (challenge)</h2>
+<p>Let <span class="math inline">\(X\sim\operatorname{Poisson}(12)\)</span>.</p>
+<p>A researcher learns that at least 10 events occurred but doesn’t know the exact count. Find</p>
+<p><span class="math display">\[P(X\geq15\mid X\geq10).\]</span></p>
+<p>Write this as a ratio of <strong>two unconditional probabilities</strong> before evaluating it in R.</p>
+</section><section id="before-you-leave" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="before-you-leave">Before you leave</h2>
+<p>You should be able to:</p>
+<ul>
+<li>Identify the appropriate model and its parameters;</li>
+<li>Translate <span class="math inline">\(&lt;,\leq,&gt;,\geq\)</span> and interval events into CDF expressions;</li>
+<li>Handle endpoints correctly for discrete versus continuous variables;</li>
+<li>Use <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code>, <code><a href="https://rdrr.io/r/stats/Poisson.html">ppois()</a></code>, <code><a href="https://rdrr.io/r/stats/Uniform.html">punif()</a></code>, and <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> to evaluate the results;</li>
+<li>Recognize when <code>d...()</code> supplies a mass versus a density.</li>
+</ul></section></section><section id="appendix-solutions-to-independent-exercises" class="level1 scrollable"><h1 class="scrollable">Appendix: solutions to independent exercises</h1>
+<section id="exercise-1-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-1-solutions">Exercise 1 solutions</h2>
+<div class="cell">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">5</span>, min <span class="op">=</span> <span class="fl">2</span>, max <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>          <span class="co"># 3/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5</code></pre>
+</div>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">2</span>, <span class="fl">8</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="co"># 2/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3333333</code></pre>
+</div>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">2</span>, <span class="fl">8</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">8</span><span class="op">)</span>    <span class="co"># 4/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6666667</code></pre>
+</div>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">0</span>                                   <span class="co"># P(U = 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+</section><section id="exercise-2-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-2-solutions">Exercise 2 solutions</h2>
+<div class="cell">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">97</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0668072</code></pre>
+</div>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">103</span>, <span class="fl">100</span>, <span class="fl">2</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0668072</code></pre>
+</div>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">103</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">97</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8663856</code></pre>
+</div>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">97</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">103</span>, <span class="fl">100</span>, <span class="fl">2</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1336144</code></pre>
+</div>
+</div>
+<p>By symmetry, answers 1 and 2 are equal. Answer 4 is their sum.</p>
+</section><section id="exercise-3-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-3-solutions">Exercise 3 solutions</h2>
+<p><span class="math inline">\(D\sim\operatorname{Binomial}(75,0.04)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">4</span>, size <span class="op">=</span> <span class="fl">75</span>, prob <span class="op">=</span> <span class="fl">0.04</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1812487</code></pre>
+</div>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">75</span>, <span class="fl">0.04</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">75</span>, <span class="fl">0.04</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7764451</code></pre>
+</div>
+</div>
+</section><section id="exercise-4-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-4-solutions">Exercise 4 solutions</h2>
+<p>For two hours, <span class="math inline">\(N\sim\operatorname{Poisson}(12)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">15</span>, lambda <span class="op">=</span> <span class="fl">12</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1555843</code></pre>
+</div>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6020235</code></pre>
+</div>
+</div>
+<p>For 30 minutes, use <span class="math inline">\(\lambda=3\)</span> instead of <span class="math inline">\(\lambda=12\)</span>.</p>
+</section><section id="exercise-5-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-5-solutions">Exercise 5 solutions</h2>
+<div class="cell">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">accepted</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">103</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">97</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">accepted</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8663856</code></pre>
+</div>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="va">accepted</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1336144</code></pre>
+</div>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">102</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">98</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6826895</code></pre>
+</div>
+</div>
+<p>A narrower acceptance interval reduces the probability of acceptance.</p>
+</section><section id="exercise-6-solution" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-6-solution">Exercise 6 solution</h2>
+<p>Because <span class="math inline">\(\{X\geq15\}\subseteq\{X\geq10\}\)</span>,</p>
+<p><span class="math display">\[P(X\geq15\mid X\geq10)=\frac{P(X\geq15)}{P(X\geq10)}.\]</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">14</span>, <span class="fl">12</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">/</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">12</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3009149</code></pre>
+</div>
+</div>
+
+
+</section></section></main><!-- /main --><script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
+
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
+
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
+
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+      });
+    }
+
+  })();
+</script><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sta240-f26\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026 John Zito</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>
