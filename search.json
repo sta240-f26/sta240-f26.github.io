@@ -594,56 +594,56 @@
     "href": "slides/2026-10-15-pdqr-slides.html#today",
     "title": "Computing probabilities in R",
     "section": "Today",
-    "text": "Today\nWe’ve already practiced using R as a calculator, working with vectors, and evaluating probability mass functions.\nNow we’ve met the cumulative distribution function (CDF) in lecture. Today we’ll use R to compute probabilities using the CDF.\nOur priorities:\n\nRecognize the probability model and its parameters;\nTranslate events into expressions involving the CDF;\nAsk R to evaluate those expressions.\n\n\n\n\n\n\n\nNote\n\n\nThe review slides are here for reference. We’ll move quickly through some of them."
+    "text": "Today\nWe will use the cumulative distribution function (CDF) to compute probabilities in our familiar distribution families.\n\nIn order to do this, you must be able to translate an event into an expression involving the CDF;\nOnce you have done that, R provides the p- functions for computing the CDF in the famous examples;\nIf a random variable is discrete, care must be taken about the endpoints of intervals. For continuous random variables it doesn’t matter."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#review-discrete-random-variables",
     "href": "slides/2026-10-15-pdqr-slides.html#review-discrete-random-variables",
     "title": "Computing probabilities in R",
     "section": "Review: discrete random variables",
-    "text": "Review: discrete random variables\nA random variable \\(X\\) is discrete if its possible values form a finite or countably infinite set.\nIts probability mass function (PMF) is\n\\[p_X(k)=P(X=k).\\]\nThe PMF must satisfy\n\\[p_X(k)\\geq 0,\\qquad \\sum_k p_X(k)=1.\\]\nTo find the probability of an event, add the masses at the values in that event:\n\\[P(X\\in A)=\\sum_{k\\in A}p_X(k).\\]"
+    "text": "Review: discrete random variables\nA random variable \\(X\\) is discrete if its range is finite or countably infinite.\n\nIts probability mass function (PMF) is\n\\[\np_X(k)\n=\n\\begin{cases}\nP(X=k) & k\\in\\text{Range}(X)\\\\\n0 & \\text{else},\n\\end{cases}\n\\]\nwhich must satisfy:\n\\[p_X(k)\\geq 0,\\qquad \\sum_{k\\in\\text{Range}(X)} p_X(k)=1.\\]\n\n\nTo find the probability of an event, add the inidividual probabilities of all values in the event:\n\\[\nP(X\\in A)=\\sum_{k\\in A}p_X(k).\n\\]"
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#pictures-of-two-discrete-pmfs",
     "href": "slides/2026-10-15-pdqr-slides.html#pictures-of-two-discrete-pmfs",
     "title": "Computing probabilities in R",
     "section": "Pictures of two discrete PMFs",
-    "text": "Pictures of two discrete PMFs\nA PMF assigns probability mass to individual values.\n\n\n\n\n\n\n\n\nNeither picture is a density curve. The probability at an integer is the height of its spike."
+    "text": "Pictures of two discrete PMFs\nA PMF assigns probability mass to individual values.\n\n\n\n\n\n\n\n\nThe probability at a value is the height of its spike."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#three-families-weve-met",
     "href": "slides/2026-10-15-pdqr-slides.html#three-families-weve-met",
     "title": "Computing probabilities in R",
     "section": "Three families we’ve met",
-    "text": "Three families we’ve met\n\n\n\n\n\n\n\n\nFamily\nInterpretation\nRange\nParameters\n\n\n\nBinomial\nNumber of successes in \\(n\\) independent Bernoulli trials\n\\(0,1,\\ldots,n\\)\n\\(n, p\\)\n\n\nPoisson\nCount of events in a specified interval\n\\(0,1,2,\\ldots\\)\n\\(\\lambda&gt;0\\)\n\n\nGeometric\nNumber of trials until the first success\n\\(1,2,3,\\ldots\\)\n\\(p\\)\n\n\n\nDifferent probability models describe different experiments. Identifying the model comes before choosing an R command."
+    "text": "Three families we’ve met\nWe’ve begun studying famous parametric families of probability distributions:\n\n\n\n\n\n\n\nDistribution\nRange\nPMF: \\(P(X=k)\\)\n\n\n\n\n\\(X\\sim\\text{Binom}(n,\\,p)\\)\n\\(\\{0,\\,1,\\,2,\\,...,\\,n\\}\\)\n\\(\\binom{n}{k}p^k(1-p)^{n-k}\\)\n\n\n\\(X\\sim\\text{Geom}(p)\\)\n\\(\\{1,\\,2,\\,3,\\,...\\}\\)\n\\((1-p)^{k-1}p\\)\n\n\n\\(X\\sim\\text{Poisson}(\\lambda)\\)\n\\(\\mathbb{N}=\\{0,\\,1,\\,2,\\,3,\\,...\\}\\)\n\\(e^{-\\lambda}\\frac{\\lambda^k}{k!}\\)\n\n\n\nYou will see dozens more by the end of the semester."
+  },
+  {
+    "objectID": "slides/2026-10-15-pdqr-slides.html#the-pdqr-functions",
+    "href": "slides/2026-10-15-pdqr-slides.html#the-pdqr-functions",
+    "title": "Computing probabilities in R",
+    "section": "The pdqr functions",
+    "text": "The pdqr functions\nR provides a standardized set of commands for working with each family of distributions:\n\nThe p command computes the CDF (today!);\nThe d command computes the PMF;\nThe q command computes the quantile functions (stay tuned!);\nThe r command simulates random numbers from the distribution."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#review-binomial",
     "href": "slides/2026-10-15-pdqr-slides.html#review-binomial",
     "title": "Computing probabilities in R",
     "section": "Review: binomial",
-    "text": "Review: binomial\nIf \\(X\\sim\\operatorname{Binomial}(n,p)\\), then\n\\[P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}, \\quad k=0,\\ldots,n.\\]\nThink: \\(n\\) independent trials, each with success probability \\(p\\); \\(X\\) counts successes.\nFor example, if \\(X\\sim\\operatorname{Binomial}(20,0.3)\\):\n\n# Probability of exactly 5 successes\ndbinom(5, size = 20, prob = 0.3)\n\n[1] 0.1788631"
+    "text": "Review: binomial\nIf \\(X\\sim\\operatorname{Binomial}(n,p)\\), then\n\\[P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}, \\quad k=0,\\ldots,n.\\]\nThink: \\(n\\) independent trials, each with success probability \\(p\\); \\(X\\) counts successes.\nFor example, if \\(X\\sim\\operatorname{Binomial}(20,0.3)\\):\n\ndbinom(5, size = 20, prob = 0.3) # P(X = 5)\n\n[1] 0.1788631"
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#review-poisson",
     "href": "slides/2026-10-15-pdqr-slides.html#review-poisson",
     "title": "Computing probabilities in R",
     "section": "Review: Poisson",
-    "text": "Review: Poisson\nIf \\(X\\sim\\operatorname{Poisson}(\\lambda)\\), then\n\\[P(X=k)=e^{-\\lambda}\\frac{\\lambda^k}{k!}, \\quad k=0,1,2,\\ldots.\\]\n\\(X\\) often counts arrivals, occurrences, or defects; \\(\\lambda\\) is the expected count for the interval being studied.\n\n# Probability of exactly 5 events when lambda = 12\ndpois(5, lambda = 12)\n\n[1] 0.01274064\n\n\nIf the rate is 6 events/hour, the Poisson mean for a two-hour interval is 12, not 6 (assuming the usual Poisson-process model)."
-  },
-  {
-    "objectID": "slides/2026-10-15-pdqr-slides.html#review-geometric",
-    "href": "slides/2026-10-15-pdqr-slides.html#review-geometric",
-    "title": "Computing probabilities in R",
-    "section": "Review: geometric",
-    "text": "Review: geometric\nUnder our convention, \\(X\\) counts the trial number of the first success in independent Bernoulli trials with success probability \\(p\\):\n\\[P(X=k)=(1-p)^{k-1}p,\\qquad k=1,2,3,\\ldots.\\]\nWe won’t use the geometric distribution in today’s R exercises. Our computational examples will use binomial and Poisson distributions."
+    "text": "Review: Poisson\nIf \\(X\\sim\\operatorname{Poisson}(\\lambda)\\), then\n\\[P(X=k)=e^{-\\lambda}\\frac{\\lambda^k}{k!}, \\quad k=0,1,2,\\ldots.\\]\n\\(X\\) often counts arrivals, occurrences, or defects in a given window of time. \\(\\lambda&gt;0\\) is the mean count.\n\ndpois(5, lambda = 12) # P(X = 5)\n\n[1] 0.01274064"
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#definition",
     "href": "slides/2026-10-15-pdqr-slides.html#definition",
     "title": "Computing probabilities in R",
     "section": "Definition",
-    "text": "Definition\nFor any random variable \\(X\\), its cumulative distribution function (CDF) is\n\\[\\boxed{F_X(x)=P(X\\leq x).}\\]\nFor discrete \\(X\\):\n\\[F_X(x)=\\sum_{k\\leq x}P(X=k).\\]\nFor example, if \\(X\\sim\\operatorname{Binomial}(20,0.3)\\):\n\\[P(X\\leq 5)=\\sum_{k=0}^{5}P(X=k).\\]\n\n\nsum(dbinom(0:5, size = 20, prob = 0.3))\n\n[1] 0.4163708"
+    "text": "Definition\nFor any random variable \\(X\\), its cumulative distribution function (CDF) is\n\\[F_X(x)=P(X\\leq x).\\]\nFor discrete \\(X\\), you get this by adding up (ie. accumulating) PMF values from left to right:\n\\[F_X(x)=P(X\\in(-\\infty,\\,x]))=\\sum_{k\\leq x}P(X=k).\\]"
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#from-masses-to-a-cdf",
@@ -653,18 +653,25 @@
     "text": "From masses to a CDF\nThe CDF accumulates the probability mass as the threshold increases.\n\n\n\n\n\n\n\n\nThe CDF jumps at possible outcomes; the size of each jump is the corresponding PMF value."
   },
   {
+    "objectID": "slides/2026-10-15-pdqr-slides.html#example",
+    "href": "slides/2026-10-15-pdqr-slides.html#example",
+    "title": "Computing probabilities in R",
+    "section": "Example",
+    "text": "Example\nFor example, if \\(X\\sim\\operatorname{Binomial}(20,0.3)\\):\n\\[P(X\\leq 5)=\\sum_{k=0}^{5}P(X=k).\\]\n\n\nsum(dbinom(0:5, size = 20, prob = 0.3))\n\n[1] 0.4163708\n\n\n\n\n\npbinom(5, size = 20, prob = 0.3)\n\n[1] 0.4163708\n\n\nSame answer!"
+  },
+  {
     "objectID": "slides/2026-10-15-pdqr-slides.html#review-properties-of-every-cdf",
     "href": "slides/2026-10-15-pdqr-slides.html#review-properties-of-every-cdf",
     "title": "Computing probabilities in R",
     "section": "Review: properties of every CDF",
-    "text": "Review: properties of every CDF\n\n\n\\(0\\leq F_X(x)\\leq 1\\);\n\n\\(F_X(x)\\) is nondecreasing;\n\n\\(F_X(x)\\to 0\\) as \\(x\\to-\\infty\\), and \\(F_X(x)\\to1\\) as \\(x\\to\\infty\\);\n\n\\(F_X\\) is right-continuous;\n\n\\(P(a&lt;X\\leq b)=F_X(b)-F_X(a)\\), for \\(a&lt;b\\).\n\nFor discrete \\(X\\), the CDF has jumps. The jump at \\(x\\) has size \\(P(X=x)\\)."
+    "text": "Review: properties of every CDF\n\n(universality) every random variable has a CDF, and it uniquely characterizes the entire distribution;\n(nondecreasing) if \\(a\\leq b\\), then \\(F_X(a)\\leq F_X(b)\\);\n(right continuous) \\(\\lim_{x\\to a^+}F_X(x)=F_X(a)\\);\n(limits) \\(F_X(x)\\to 0\\) as \\(x\\to-\\infty\\), and \\(F_X(x)\\to1\\) as \\(x\\to\\infty\\);\n(computation) \\(P(a&lt;X\\leq b)=F_X(b)-F_X(a)\\), for \\(a&lt;b\\).\n\n\nFor discrete random variables specifically, the CDF is piecewise constant (ie. a step function), and the size of the jump at \\(x\\) is \\(P(X=x)\\)."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#the-p-functions-in-r",
     "href": "slides/2026-10-15-pdqr-slides.html#the-p-functions-in-r",
     "title": "Computing probabilities in R",
     "section": "The p functions in R",
-    "text": "The p functions in R\nR uses a common naming scheme for probability distributions:\n\n\nFamily\nPMF or PDF\nCDF\nSimulation\n\n\n\nBinomial\ndbinom()\npbinom()\nrbinom()\n\n\nPoisson\ndpois()\nppois()\nrpois()\n\n\nUniform\ndunif()\npunif()\nrunif()\n\n\nNormal\ndnorm()\npnorm()\nrnorm()\n\n\n\nThe p functions return \\(P(X\\leq x)\\) (the lower tail) by default."
+    "text": "The p functions in R\nR uses a common naming scheme for probability distributions:\n\n\nFamily\nPMF or PDF\nCDF\nSimulation\n\n\n\nBinomial\ndbinom()\npbinom()\nrbinom()\n\n\nPoisson\ndpois()\nppois()\nrpois()\n\n\nUniform\ndunif()\npunif()\nrunif()\n\n\n\nThe p functions return \\(P(X\\leq x)\\) (the lower tail) by default."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#first-calculation-a-shortcut-for-summing-masses",
@@ -692,14 +699,14 @@
     "href": "slides/2026-10-15-pdqr-slides.html#your-turn-poisson-probabilities",
     "title": "Computing probabilities in R",
     "section": "Your turn: Poisson probabilities",
-    "text": "Your turn: Poisson probabilities\nLet \\(X\\sim\\operatorname{Poisson}(12)\\). Write an R expression for each probability. Don’t execute anything until you’ve decided which endpoints to use.\n\n\\(P(X\\leq10)\\)\n\\(P(X&gt;10)\\)\n\\(P(X&lt;10)\\)\n\\(P(X\\geq10)\\)\n\\(P(8\\leq X\\leq15)\\)\n\\(P(8&lt;X&lt;15)\\)\n\nAllow time to discuss the endpoint adjustments, especially the differences between 2/4 and 5/6."
+    "text": "Your turn: Poisson probabilities\nLet \\(X\\sim\\operatorname{Poisson}(12)\\). Using only the CDF, write an R expression for each probability:\n\n\\(P(X\\leq10)\\)\n\\(P(X&gt;10)\\)\n\\(P(X&lt;10)\\)\n\\(P(X\\geq10)\\)\n\\(P(8\\leq X\\leq15)\\)\n\\(P(8&lt;X&lt;15)\\)\n\\(P(X = 8)\\)"
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#solutions-poisson-probabilities",
     "href": "slides/2026-10-15-pdqr-slides.html#solutions-poisson-probabilities",
     "title": "Computing probabilities in R",
     "section": "Solutions: Poisson probabilities",
-    "text": "Solutions: Poisson probabilities\n\nppois(10, lambda = 12)               # P(X &lt;= 10)\n\n[1] 0.3472294\n\n1 - ppois(10, lambda = 12)           # P(X &gt; 10)\n\n[1] 0.6527706\n\nppois(9, lambda = 12)                # P(X &lt; 10)\n\n[1] 0.2423922\n\n1 - ppois(9, lambda = 12)            # P(X &gt;= 10)\n\n[1] 0.7576078\n\nppois(15, 12) - ppois(7, 12)         # P(8 &lt;= X &lt;= 15)\n\n[1] 0.7549112\n\nppois(14, 12) - ppois(8, 12)         # P(8 &lt; X &lt; 15)\n\n[1] 0.6169968\n\n\nWhy 9 instead of 10? Why 7 instead of 8? We can move a strict inequality by one because a Poisson variable takes integer values."
+    "text": "Solutions: Poisson probabilities\n\nppois(10, lambda = 12)               # P(X &lt;= 10)\n\n[1] 0.3472294\n\n1 - ppois(10, lambda = 12)           # P(X &gt; 10)\n\n[1] 0.6527706\n\nppois(9, lambda = 12)                # P(X &lt; 10)\n\n[1] 0.2423922\n\n1 - ppois(9, lambda = 12)            # P(X &gt;= 10)\n\n[1] 0.7576078\n\nppois(15, 12) - ppois(7, 12)         # P(8 &lt;= X &lt;= 15)\n\n[1] 0.7549112\n\nppois(14, 12) - ppois(8, 12)         # P(8 &lt; X &lt; 15)\n\n[1] 0.6169968\n\nppois(8, 12) - ppois(7, 12)          # P(X = 8)\n\n[1] 0.06552328\n\n\nWhy 9 instead of 10? Why 7 instead of 8? We can move a strict inequality by one because a Poisson variable takes integer values."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#visualize-the-endpoints",
@@ -720,21 +727,28 @@
     "href": "slides/2026-10-15-pdqr-slides.html#your-turn-a-binomial-variable",
     "title": "Computing probabilities in R",
     "section": "Your turn: a binomial variable",
-    "text": "Your turn: a binomial variable\nLet \\(Y\\sim\\operatorname{Binomial}(30,0.2)\\).\nWrite R expressions for:\n\n\n\\(P(Y=4)\\);\n\n\\(P(Y\\leq4)\\);\n\n\\(P(Y\\geq4)\\);\n\n\\(P(3\\leq Y&lt;8)\\).\n\nTry to use pbinom() whenever it is appropriate, and dbinom() for an individual mass."
+    "text": "Your turn: a binomial variable\nLet \\(Y\\sim\\operatorname{Binomial}(30,0.2)\\).\nUsing only the CDF, write R expressions for:\n\n\n\\(P(Y=4)\\);\n\n\\(P(Y\\leq4)\\);\n\n\\(P(Y\\geq4)\\);\n\n\\(P(3\\leq Y&lt;8)\\)."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#solutions-binomial-probabilities",
     "href": "slides/2026-10-15-pdqr-slides.html#solutions-binomial-probabilities",
     "title": "Computing probabilities in R",
     "section": "Solutions: binomial probabilities",
-    "text": "Solutions: binomial probabilities\n\ndbinom(4, size = 30, prob = 0.2)\n\n[1] 0.1325224\n\npbinom(4, size = 30, prob = 0.2)\n\n[1] 0.2552333\n\npbinom(3, size = 30, prob = 0.2, lower.tail = FALSE)\n\n[1] 0.8772892\n\npbinom(7, 30, 0.2) - pbinom(2, 30, 0.2)\n\n[1] 0.7166116\n\n\nSanity check: Every result must lie between 0 and 1. The probability of \\(Y\\geq4\\) should exceed the probability of \\(Y=4\\)."
+    "text": "Solutions: binomial probabilities\n\ndbinom(4, size = 30, prob = 0.2)\n\n[1] 0.1325224\n\npbinom(4, size = 30, prob = 0.2) - pbinom(3, size = 30, prob = 0.2) # same as above\n\n[1] 0.1325224\n\npbinom(4, size = 30, prob = 0.2)\n\n[1] 0.2552333\n\npbinom(3, size = 30, prob = 0.2, lower.tail = FALSE)\n\n[1] 0.8772892\n\npbinom(7, 30, 0.2) - pbinom(2, 30, 0.2)\n\n[1] 0.7166116"
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#review-continuous-random-variables",
     "href": "slides/2026-10-15-pdqr-slides.html#review-continuous-random-variables",
     "title": "Computing probabilities in R",
     "section": "Review: continuous random variables",
-    "text": "Review: continuous random variables\nA continuous random variable is described by a probability density function (PDF) \\(f_X\\) such that\n\\[f_X(x)\\geq0,\\qquad \\int_{-\\infty}^{\\infty}f_X(x)\\,dx=1.\\]\nProbabilities are areas under the density curve:\n\\[P(a&lt;X&lt;b)=\\int_a^b f_X(x)\\,dx.\\]\nCrucially, \\(f_X(x)\\) is a density, not \\(P(X=x)\\).\nFor a continuous random variable with a PDF,\n\\[\\boxed{P(X=x)=0\\quad\\text{for every }x.}\\]"
+    "text": "Review: continuous random variables\nAn (absolutely) continuous random variable is described by a probability density function (PDF) \\(f_X\\) such that\n\\[f_X(x)\\geq0,\\qquad \\int_{-\\infty}^{\\infty}f_X(x)\\,dx=1.\\]\nProbabilities are areas under the density curve:\n\\[P(a&lt;X&lt;b)=\\int_a^b f_X(x)\\,dx.\\]\nNOTE: for discrete variables, we computed probabilities by summing over the PMF. For continuous, we integrate over the PDF. Same idea"
+  },
+  {
+    "objectID": "slides/2026-10-15-pdqr-slides.html#two-crucial-points",
+    "href": "slides/2026-10-15-pdqr-slides.html#two-crucial-points",
+    "title": "Computing probabilities in R",
+    "section": "Two crucial points",
+    "text": "Two crucial points\n\nIf \\(X\\) is continuous, then \\(P(X = x)=0\\) for all \\(x\\in\\mathbb{R}\\);\nSo the height of the density curve \\(f_X(x)\\) is not a probability. It’s a “density,” which is not an interpretable quantity."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#what-does-a-pdf-represent",
@@ -748,7 +762,14 @@
     "href": "slides/2026-10-15-pdqr-slides.html#the-continuous-cdf",
     "title": "Computing probabilities in R",
     "section": "The continuous CDF",
-    "text": "The continuous CDF\nThe definition has not changed:\n\\[F_X(x)=P(X\\leq x).\\]\nFor a continuous random variable with density \\(f_X\\),\n\\[F_X(x)=\\int_{-\\infty}^{x}f_X(t)\\,dt.\\]\nTherefore,\n\\[P(a&lt;X&lt;b)=F_X(b)-F_X(a).\\]\nBecause individual points have zero probability, the strictness of the endpoints doesn’t matter for intervals:\n\\[P(a&lt;X&lt;b)=P(a\\leq X\\leq b).\\]"
+    "text": "The continuous CDF\nThe definition has not changed:\n\\[F_X(x)=P(X\\leq x).\\]\nFor a continuous random variable with density \\(f_X\\),\n\\[F_X(x)=\\int_{-\\infty}^{x}f_X(t)\\,\\text{d}t.\\]\nTherefore,\n\\[P(a&lt;X&lt;b)=F_X(b)-F_X(a).\\]"
+  },
+  {
+    "objectID": "slides/2026-10-15-pdqr-slides.html#back-to-the-crucial-point",
+    "href": "slides/2026-10-15-pdqr-slides.html#back-to-the-crucial-point",
+    "title": "Computing probabilities in R",
+    "section": "Back to the crucial point",
+    "text": "Back to the crucial point\nBecause individual points have zero probability, the strictness of the endpoints doesn’t matter for intervals:\n\\[P(a&lt;X&lt;b)=P(a\\leq X\\leq b).\\]"
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#discrete-versus-continuous",
@@ -772,32 +793,25 @@
     "text": "Uniform: density and CDF\n\n\n\n\n\n\n\n\nThe shaded area on the left equals the CDF’s height at \\(x=5\\) on the right."
   },
   {
-    "objectID": "slides/2026-10-15-pdqr-slides.html#the-normal-distribution",
-    "href": "slides/2026-10-15-pdqr-slides.html#the-normal-distribution",
+    "objectID": "slides/2026-10-15-pdqr-slides.html#uniform-probabilities-are-lengths",
+    "href": "slides/2026-10-15-pdqr-slides.html#uniform-probabilities-are-lengths",
     "title": "Computing probabilities in R",
-    "section": "The normal distribution",
-    "text": "The normal distribution\n\\(X\\sim N(\\mu,\\sigma^2)\\) means \\(X\\) has a normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\).\nIts density is\n\\[f_X(x)=\\frac{1}{\\sigma\\sqrt{2\\pi}}\\exp\\left\\{-\\frac{(x-\\mu)^2}{2\\sigma^2}\\right\\},\\quad \\sigma&gt;0.\\]\nThe normal density is symmetric about \\(\\mu\\). Its CDF cannot be expressed in elementary functions, but R can evaluate it numerically.\n\n# N(100, 2^2): mean = 100, STANDARD DEVIATION = 2\npnorm(103, mean = 100, sd = 2)\n\n[1] 0.9331928\n\n\nR takes sd, not variance."
+    "section": "Uniform probabilities are lengths",
+    "text": "Uniform probabilities are lengths\nLet \\(U\\sim\\operatorname{Uniform}(2,8)\\). The total width is \\(8-2=6\\).\nTo calculate \\(P(3&lt;U&lt;7)\\), take the length of the desired interval divided by the total length:\n\\[P(3&lt;U&lt;7)=\\frac{7-3}{8-2}=\\frac{4}{6}.\\]\nNow compute the same probability using the CDF:\n\npunif(7, min = 2, max = 8) - punif(3, min = 2, max = 8)\n\n[1] 0.6666667\n\n\nThe agreement is not a coincidence: the difference of the CDF values is the area under the density between the endpoints."
   },
   {
-    "objectID": "slides/2026-10-15-pdqr-slides.html#normal-density-and-cdf",
-    "href": "slides/2026-10-15-pdqr-slides.html#normal-density-and-cdf",
+    "objectID": "slides/2026-10-15-pdqr-slides.html#uniform-an-interval-probability-two-pictures",
+    "href": "slides/2026-10-15-pdqr-slides.html#uniform-an-interval-probability-two-pictures",
     "title": "Computing probabilities in R",
-    "section": "Normal: density and CDF",
-    "text": "Normal: density and CDF\n\n\n\n\n\n\n\n\nThe vertical difference between CDF values at 97 and 103 equals the shaded PDF area."
-  },
-  {
-    "objectID": "slides/2026-10-15-pdqr-slides.html#a-first-continuous-calculation",
-    "href": "slides/2026-10-15-pdqr-slides.html#a-first-continuous-calculation",
-    "title": "Computing probabilities in R",
-    "section": "A first continuous calculation",
-    "text": "A first continuous calculation\nSuppose \\(Y\\sim N(100,2^2)\\). Find \\(P(97&lt;Y&lt;103)\\).\n\\[P(97&lt;Y&lt;103)=F_Y(103)-F_Y(97).\\]\n\n\npnorm(103, mean = 100, sd = 2) -\n  pnorm(97, mean = 100, sd = 2)\n\n[1] 0.8663856\n\n\nNotice that for this continuous variable, we need no plus or minus 1 at the endpoints."
+    "section": "Uniform: an interval probability, two pictures",
+    "text": "Uniform: an interval probability, two pictures\n\n\n\n\n\n\n\n\n\\[P(3&lt;U&lt;7)=F_U(7)-F_U(3).\\]"
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#dont-confuse-d-and-p",
     "href": "slides/2026-10-15-pdqr-slides.html#dont-confuse-d-and-p",
     "title": "Computing probabilities in R",
     "section": "Don’t confuse d and p\n",
-    "text": "Don’t confuse d and p\n\nFor the normal family:\n\ndnorm(100, mean = 100, sd = 2) # Height of the density\n\n[1] 0.1994711\n\npnorm(100, mean = 100, sd = 2) # Area to the left\n\n[1] 0.5\n\n\nThe first number is not \\(P(Y=100)\\); that probability is zero. The second is \\(P(Y\\leq100)=1/2\\) by symmetry."
+    "text": "Don’t confuse d and p\n\nFor the continuous uniform family:\n\ndunif(5, min = 2, max = 8) # Height of the density at 5\n\n[1] 0.1666667\n\npunif(5, min = 2, max = 8) # Area to the left of 5\n\n[1] 0.5\n\n\nThe first number is not \\(P(U=5)\\); that probability is zero. The second is \\(P(U\\leq5)=1/2\\)."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#exercise-1-uniform",
@@ -807,18 +821,11 @@
     "text": "Exercise 1: uniform\nLet \\(U\\sim\\operatorname{Uniform}(2,8)\\).\nUsing punif() and ordinary arithmetic, calculate:\n\n\n\\(P(U\\leq5)\\);\n\n\\(P(U&gt;6)\\);\n\n\\(P(3&lt;U&lt;7)\\);\n\n\\(P(U=5)\\).\n\nThen check answers 1–3 by calculating the corresponding lengths as fractions of the total interval length."
   },
   {
-    "objectID": "slides/2026-10-15-pdqr-slides.html#practice-visualize-before-calculating",
-    "href": "slides/2026-10-15-pdqr-slides.html#practice-visualize-before-calculating",
+    "objectID": "slides/2026-10-15-pdqr-slides.html#exercise-2-visualize-before-calculating",
+    "href": "slides/2026-10-15-pdqr-slides.html#exercise-2-visualize-before-calculating",
     "title": "Computing probabilities in R",
-    "section": "Practice: visualize before calculating",
-    "text": "Practice: visualize before calculating\nFor \\(Z\\sim N(100,2^2)\\), sketch the event \\(|Z-100|&gt;3\\) before entering any code."
-  },
-  {
-    "objectID": "slides/2026-10-15-pdqr-slides.html#exercise-2-normal",
-    "href": "slides/2026-10-15-pdqr-slides.html#exercise-2-normal",
-    "title": "Computing probabilities in R",
-    "section": "Exercise 2: normal",
-    "text": "Exercise 2: normal\nLet \\(Z\\sim N(100,2^2)\\).\nUsing pnorm(), calculate:\n\n\n\\(P(Z&lt;97)\\);\n\n\\(P(Z\\geq103)\\);\n\n\\(P(97&lt;Z&lt;103)\\);\n\n\\(P(|Z-100|&gt;3)\\).\n\nExplain in words what event 4 describes. Which answers can be related by symmetry?"
+    "section": "Exercise 2: visualize before calculating",
+    "text": "Exercise 2: visualize before calculating\nLet \\(U\\sim\\operatorname{Uniform}(2,8)\\). Sketch the region describing\n\\[P(U&lt;3\\text{ or }U&gt;7)\\]\nbefore entering any R code. Then:\n\nCalculate the probability using two CDF values.\nCalculate it using lengths of intervals.\nCheck your answer using the complement of \\(P(3\\leq U\\leq7)\\)."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#exercise-3-choose-your-model",
@@ -835,11 +842,11 @@
     "text": "Exercise 4: choose your model\nCustomers arrive at a shop according to a Poisson process at an average rate of 6 per hour.\n\nSpecify a distribution for the number arriving in the next two hours.\nFind the probability of more than 15 arrivals.\nFind the probability of between 10 and 15 arrivals, inclusive.\nWhat would you change if the observation interval were 30 minutes?"
   },
   {
-    "objectID": "slides/2026-10-15-pdqr-slides.html#exercise-5-a-manufacturing-tolerance",
-    "href": "slides/2026-10-15-pdqr-slides.html#exercise-5-a-manufacturing-tolerance",
+    "objectID": "slides/2026-10-15-pdqr-slides.html#exercise-5-continuous-uniform-application",
+    "href": "slides/2026-10-15-pdqr-slides.html#exercise-5-continuous-uniform-application",
     "title": "Computing probabilities in R",
-    "section": "Exercise 5: a manufacturing tolerance",
-    "text": "Exercise 5: a manufacturing tolerance\nThe length \\(L\\) of a manufactured rod is normally distributed, with mean 100 mm and standard deviation 2 mm. A rod is accepted if its length is between 97 and 103 mm, inclusive.\n\nCalculate the proportion of rods that will be accepted.\nCalculate the proportion that will be rejected.\nIf the acceptance interval were instead 98 to 102 mm, what would happen to the acceptance probability? Calculate it."
+    "section": "Exercise 5: continuous uniform application",
+    "text": "Exercise 5: continuous uniform application\nA bus arrives at a stop at a time uniformly distributed between 2:00 and 2:12 p.m. Let \\(W\\) denote the number of minutes after 2:00 when it arrives.\n\nSpecify the distribution of \\(W\\).\nFind the probability that the bus arrives after 2:09.\nFind the probability that it arrives between 2:03 and 2:07.\nWhat is the probability that it arrives at exactly 2:06?\n\nFor 2 and 3, answer both geometrically and using punif()."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#exercise-6-conditional-probability-challenge",
@@ -853,7 +860,7 @@
     "href": "slides/2026-10-15-pdqr-slides.html#before-you-leave",
     "title": "Computing probabilities in R",
     "section": "Before you leave",
-    "text": "Before you leave\nYou should be able to:\n\nIdentify the appropriate model and its parameters;\nTranslate \\(&lt;,\\leq,&gt;,\\geq\\) and interval events into CDF expressions;\nHandle endpoints correctly for discrete versus continuous variables;\nUse pbinom(), ppois(), punif(), and pnorm() to evaluate the results;\nRecognize when d...() supplies a mass versus a density."
+    "text": "Before you leave\nYou should be able to:\n\nTranslate \\(&lt;,\\leq,&gt;,\\geq\\) and interval events into CDF expressions;\nHandle endpoints correctly for discrete versus continuous variables;\nUse pbinom(), ppois(), and punif() to evaluate the results;\nRecognize when d...() supplies a mass versus a density."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#exercise-1-solutions",
@@ -867,7 +874,7 @@
     "href": "slides/2026-10-15-pdqr-slides.html#exercise-2-solutions",
     "title": "Computing probabilities in R",
     "section": "Exercise 2 solutions",
-    "text": "Exercise 2 solutions\n\npnorm(97, mean = 100, sd = 2)\n\n[1] 0.0668072\n\npnorm(103, 100, 2, lower.tail = FALSE)\n\n[1] 0.0668072\n\npnorm(103, 100, 2) - pnorm(97, 100, 2)\n\n[1] 0.8663856\n\npnorm(97, 100, 2) + pnorm(103, 100, 2, lower.tail = FALSE)\n\n[1] 0.1336144\n\n\nBy symmetry, answers 1 and 2 are equal. Answer 4 is their sum."
+    "text": "Exercise 2 solutions\n\npunif(3, 2, 8) + punif(7, 2, 8, lower.tail = FALSE)\n\n[1] 0.3333333\n\n(3 - 2) / 6 + (8 - 7) / 6\n\n[1] 0.3333333\n\n1 - (punif(7, 2, 8) - punif(3, 2, 8))\n\n[1] 0.3333333\n\n\nAll three calculations equal \\(1/3\\)."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#exercise-3-solutions",
@@ -888,7 +895,7 @@
     "href": "slides/2026-10-15-pdqr-slides.html#exercise-5-solutions",
     "title": "Computing probabilities in R",
     "section": "Exercise 5 solutions",
-    "text": "Exercise 5 solutions\n\naccepted &lt;- pnorm(103, 100, 2) - pnorm(97, 100, 2)\naccepted\n\n[1] 0.8663856\n\n1 - accepted\n\n[1] 0.1336144\n\npnorm(102, 100, 2) - pnorm(98, 100, 2)\n\n[1] 0.6826895\n\n\nA narrower acceptance interval reduces the probability of acceptance."
+    "text": "Exercise 5 solutions\n\\(W\\sim\\operatorname{Uniform}(0,12)\\).\n\npunif(9, min = 0, max = 12, lower.tail = FALSE) # 3/12\n\n[1] 0.25\n\npunif(7, 0, 12) - punif(3, 0, 12)         # 4/12\n\n[1] 0.3333333\n\n0                                          # P(W = 6)\n\n[1] 0\n\n\nGeometrically, the relevant widths are 3 minutes and 4 minutes out of a 12-minute interval."
   },
   {
     "objectID": "slides/2026-10-15-pdqr-slides.html#exercise-6-solution",
@@ -902,63 +909,63 @@
     "href": "slides/2026-10-15-pdqr.html",
     "title": "Computing probabilities in R",
     "section": "",
-    "text": "We’ve already practiced using R as a calculator, working with vectors, and evaluating probability mass functions.\nNow we’ve met the cumulative distribution function (CDF) in lecture. Today we’ll use R to compute probabilities using the CDF.\nOur priorities:\n\nRecognize the probability model and its parameters;\nTranslate events into expressions involving the CDF;\nAsk R to evaluate those expressions.\n\n\n\n\n\n\n\nNote\n\n\n\nThe review slides are here for reference. We’ll move quickly through some of them."
+    "text": "We will use the cumulative distribution function (CDF) to compute probabilities in our familiar distribution families.\n\nIn order to do this, you must be able to translate an event into an expression involving the CDF;\nOnce you have done that, R provides the p- functions for computing the CDF in the famous examples;\nIf a random variable is discrete, care must be taken about the endpoints of intervals. For continuous random variables it doesn’t matter."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#today",
     "href": "slides/2026-10-15-pdqr.html#today",
     "title": "Computing probabilities in R",
     "section": "",
-    "text": "We’ve already practiced using R as a calculator, working with vectors, and evaluating probability mass functions.\nNow we’ve met the cumulative distribution function (CDF) in lecture. Today we’ll use R to compute probabilities using the CDF.\nOur priorities:\n\nRecognize the probability model and its parameters;\nTranslate events into expressions involving the CDF;\nAsk R to evaluate those expressions.\n\n\n\n\n\n\n\nNote\n\n\n\nThe review slides are here for reference. We’ll move quickly through some of them."
+    "text": "We will use the cumulative distribution function (CDF) to compute probabilities in our familiar distribution families.\n\nIn order to do this, you must be able to translate an event into an expression involving the CDF;\nOnce you have done that, R provides the p- functions for computing the CDF in the famous examples;\nIf a random variable is discrete, care must be taken about the endpoints of intervals. For continuous random variables it doesn’t matter."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#review-discrete-random-variables",
     "href": "slides/2026-10-15-pdqr.html#review-discrete-random-variables",
     "title": "Computing probabilities in R",
     "section": "Review: discrete random variables",
-    "text": "Review: discrete random variables\nA random variable \\(X\\) is discrete if its possible values form a finite or countably infinite set.\nIts probability mass function (PMF) is\n\\[p_X(k)=P(X=k).\\]\nThe PMF must satisfy\n\\[p_X(k)\\geq 0,\\qquad \\sum_k p_X(k)=1.\\]\nTo find the probability of an event, add the masses at the values in that event:\n\\[P(X\\in A)=\\sum_{k\\in A}p_X(k).\\]"
+    "text": "Review: discrete random variables\nA random variable \\(X\\) is discrete if its range is finite or countably infinite.\n. . .\nIts probability mass function (PMF) is\n\\[\np_X(k)\n=\n\\begin{cases}\nP(X=k) & k\\in\\text{Range}(X)\\\\\n0 & \\text{else},\n\\end{cases}\n\\]\nwhich must satisfy:\n\\[p_X(k)\\geq 0,\\qquad \\sum_{k\\in\\text{Range}(X)} p_X(k)=1.\\]\n. . .\nTo find the probability of an event, add the inidividual probabilities of all values in the event:\n\\[\nP(X\\in A)=\\sum_{k\\in A}p_X(k).\n\\]"
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#pictures-of-two-discrete-pmfs",
     "href": "slides/2026-10-15-pdqr.html#pictures-of-two-discrete-pmfs",
     "title": "Computing probabilities in R",
     "section": "Pictures of two discrete PMFs",
-    "text": "Pictures of two discrete PMFs\nA PMF assigns probability mass to individual values.\n\n\n\n\n\n\n\n\nNeither picture is a density curve. The probability at an integer is the height of its spike."
+    "text": "Pictures of two discrete PMFs\nA PMF assigns probability mass to individual values.\n\n\n\n\n\n\n\n\nThe probability at a value is the height of its spike."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#three-families-weve-met",
     "href": "slides/2026-10-15-pdqr.html#three-families-weve-met",
     "title": "Computing probabilities in R",
     "section": "Three families we’ve met",
-    "text": "Three families we’ve met\n\n\n\n\n\n\n\n\nFamily\nInterpretation\nRange\nParameters\n\n\n\nBinomial\nNumber of successes in \\(n\\) independent Bernoulli trials\n\\(0,1,\\ldots,n\\)\n\\(n, p\\)\n\n\nPoisson\nCount of events in a specified interval\n\\(0,1,2,\\ldots\\)\n\\(\\lambda&gt;0\\)\n\n\nGeometric\nNumber of trials until the first success\n\\(1,2,3,\\ldots\\)\n\\(p\\)\n\n\n\nDifferent probability models describe different experiments. Identifying the model comes before choosing an R command."
+    "text": "Three families we’ve met\nWe’ve begun studying famous parametric families of probability distributions:\n\n\n\n\n\n\n\nDistribution\nRange\nPMF: \\(P(X=k)\\)\n\n\n\n\n\\(X\\sim\\text{Binom}(n,\\,p)\\)\n\\(\\{0,\\,1,\\,2,\\,...,\\,n\\}\\)\n\\(\\binom{n}{k}p^k(1-p)^{n-k}\\)\n\n\n\\(X\\sim\\text{Geom}(p)\\)\n\\(\\{1,\\,2,\\,3,\\,...\\}\\)\n\\((1-p)^{k-1}p\\)\n\n\n\\(X\\sim\\text{Poisson}(\\lambda)\\)\n\\(\\mathbb{N}=\\{0,\\,1,\\,2,\\,3,\\,...\\}\\)\n\\(e^{-\\lambda}\\frac{\\lambda^k}{k!}\\)\n\n\n\nYou will see dozens more by the end of the semester."
+  },
+  {
+    "objectID": "slides/2026-10-15-pdqr.html#the-pdqr-functions",
+    "href": "slides/2026-10-15-pdqr.html#the-pdqr-functions",
+    "title": "Computing probabilities in R",
+    "section": "The pdqr functions",
+    "text": "The pdqr functions\nR provides a standardized set of commands for working with each family of distributions:\n\nThe p command computes the CDF (today!);\nThe d command computes the PMF;\nThe q command computes the quantile functions (stay tuned!);\nThe r command simulates random numbers from the distribution."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#review-binomial",
     "href": "slides/2026-10-15-pdqr.html#review-binomial",
     "title": "Computing probabilities in R",
     "section": "Review: binomial",
-    "text": "Review: binomial\nIf \\(X\\sim\\operatorname{Binomial}(n,p)\\), then\n\\[P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}, \\quad k=0,\\ldots,n.\\]\nThink: \\(n\\) independent trials, each with success probability \\(p\\); \\(X\\) counts successes.\nFor example, if \\(X\\sim\\operatorname{Binomial}(20,0.3)\\):\n\n# Probability of exactly 5 successes\ndbinom(5, size = 20, prob = 0.3)\n\n[1] 0.1788631"
+    "text": "Review: binomial\nIf \\(X\\sim\\operatorname{Binomial}(n,p)\\), then\n\\[P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}, \\quad k=0,\\ldots,n.\\]\nThink: \\(n\\) independent trials, each with success probability \\(p\\); \\(X\\) counts successes.\nFor example, if \\(X\\sim\\operatorname{Binomial}(20,0.3)\\):\n\ndbinom(5, size = 20, prob = 0.3) # P(X = 5)\n\n[1] 0.1788631"
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#review-poisson",
     "href": "slides/2026-10-15-pdqr.html#review-poisson",
     "title": "Computing probabilities in R",
     "section": "Review: Poisson",
-    "text": "Review: Poisson\nIf \\(X\\sim\\operatorname{Poisson}(\\lambda)\\), then\n\\[P(X=k)=e^{-\\lambda}\\frac{\\lambda^k}{k!}, \\quad k=0,1,2,\\ldots.\\]\n\\(X\\) often counts arrivals, occurrences, or defects; \\(\\lambda\\) is the expected count for the interval being studied.\n\n# Probability of exactly 5 events when lambda = 12\ndpois(5, lambda = 12)\n\n[1] 0.01274064\n\n\nIf the rate is 6 events/hour, the Poisson mean for a two-hour interval is 12, not 6 (assuming the usual Poisson-process model)."
-  },
-  {
-    "objectID": "slides/2026-10-15-pdqr.html#review-geometric",
-    "href": "slides/2026-10-15-pdqr.html#review-geometric",
-    "title": "Computing probabilities in R",
-    "section": "Review: geometric",
-    "text": "Review: geometric\nUnder our convention, \\(X\\) counts the trial number of the first success in independent Bernoulli trials with success probability \\(p\\):\n\\[P(X=k)=(1-p)^{k-1}p,\\qquad k=1,2,3,\\ldots.\\]\nWe won’t use the geometric distribution in today’s R exercises. Our computational examples will use binomial and Poisson distributions."
+    "text": "Review: Poisson\nIf \\(X\\sim\\operatorname{Poisson}(\\lambda)\\), then\n\\[P(X=k)=e^{-\\lambda}\\frac{\\lambda^k}{k!}, \\quad k=0,1,2,\\ldots.\\]\n\\(X\\) often counts arrivals, occurrences, or defects in a given window of time. \\(\\lambda&gt;0\\) is the mean count.\n\ndpois(5, lambda = 12) # P(X = 5)\n\n[1] 0.01274064"
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#definition",
     "href": "slides/2026-10-15-pdqr.html#definition",
     "title": "Computing probabilities in R",
     "section": "Definition",
-    "text": "Definition\nFor any random variable \\(X\\), its cumulative distribution function (CDF) is\n\\[\\boxed{F_X(x)=P(X\\leq x).}\\]\nFor discrete \\(X\\):\n\\[F_X(x)=\\sum_{k\\leq x}P(X=k).\\]\nFor example, if \\(X\\sim\\operatorname{Binomial}(20,0.3)\\):\n\\[P(X\\leq 5)=\\sum_{k=0}^{5}P(X=k).\\]\n. . .\n\nsum(dbinom(0:5, size = 20, prob = 0.3))\n\n[1] 0.4163708"
+    "text": "Definition\nFor any random variable \\(X\\), its cumulative distribution function (CDF) is\n\\[F_X(x)=P(X\\leq x).\\]\nFor discrete \\(X\\), you get this by adding up (ie. accumulating) PMF values from left to right:\n\\[F_X(x)=P(X\\in(-\\infty,\\,x]))=\\sum_{k\\leq x}P(X=k).\\]"
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#from-masses-to-a-cdf",
@@ -968,18 +975,25 @@
     "text": "From masses to a CDF\nThe CDF accumulates the probability mass as the threshold increases.\n\n\n\n\n\n\n\n\nThe CDF jumps at possible outcomes; the size of each jump is the corresponding PMF value."
   },
   {
+    "objectID": "slides/2026-10-15-pdqr.html#example",
+    "href": "slides/2026-10-15-pdqr.html#example",
+    "title": "Computing probabilities in R",
+    "section": "Example",
+    "text": "Example\nFor example, if \\(X\\sim\\operatorname{Binomial}(20,0.3)\\):\n\\[P(X\\leq 5)=\\sum_{k=0}^{5}P(X=k).\\]\n. . .\n\nsum(dbinom(0:5, size = 20, prob = 0.3))\n\n[1] 0.4163708\n\n\n. . .\n\npbinom(5, size = 20, prob = 0.3)\n\n[1] 0.4163708\n\n\nSame answer!"
+  },
+  {
     "objectID": "slides/2026-10-15-pdqr.html#review-properties-of-every-cdf",
     "href": "slides/2026-10-15-pdqr.html#review-properties-of-every-cdf",
     "title": "Computing probabilities in R",
     "section": "Review: properties of every CDF",
-    "text": "Review: properties of every CDF\n\n\n\\(0\\leq F_X(x)\\leq 1\\);\n\n\\(F_X(x)\\) is nondecreasing;\n\n\\(F_X(x)\\to 0\\) as \\(x\\to-\\infty\\), and \\(F_X(x)\\to1\\) as \\(x\\to\\infty\\);\n\n\\(F_X\\) is right-continuous;\n\n\\(P(a&lt;X\\leq b)=F_X(b)-F_X(a)\\), for \\(a&lt;b\\).\n\nFor discrete \\(X\\), the CDF has jumps. The jump at \\(x\\) has size \\(P(X=x)\\)."
+    "text": "Review: properties of every CDF\n\n\n(universality) every random variable has a CDF, and it uniquely characterizes the entire distribution;\n(nondecreasing) if \\(a\\leq b\\), then \\(F_X(a)\\leq F_X(b)\\);\n(right continuous) \\(\\lim_{x\\to a^+}F_X(x)=F_X(a)\\);\n(limits) \\(F_X(x)\\to 0\\) as \\(x\\to-\\infty\\), and \\(F_X(x)\\to1\\) as \\(x\\to\\infty\\);\n(computation) \\(P(a&lt;X\\leq b)=F_X(b)-F_X(a)\\), for \\(a&lt;b\\).\n\n\n. . .\nFor discrete random variables specifically, the CDF is piecewise constant (ie. a step function), and the size of the jump at \\(x\\) is \\(P(X=x)\\)."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#the-p-functions-in-r",
     "href": "slides/2026-10-15-pdqr.html#the-p-functions-in-r",
     "title": "Computing probabilities in R",
     "section": "The p functions in R",
-    "text": "The p functions in R\nR uses a common naming scheme for probability distributions:\n\n\nFamily\nPMF or PDF\nCDF\nSimulation\n\n\n\nBinomial\ndbinom()\npbinom()\nrbinom()\n\n\nPoisson\ndpois()\nppois()\nrpois()\n\n\nUniform\ndunif()\npunif()\nrunif()\n\n\nNormal\ndnorm()\npnorm()\nrnorm()\n\n\n\nThe p functions return \\(P(X\\leq x)\\) (the lower tail) by default."
+    "text": "The p functions in R\nR uses a common naming scheme for probability distributions:\n\n\nFamily\nPMF or PDF\nCDF\nSimulation\n\n\n\nBinomial\ndbinom()\npbinom()\nrbinom()\n\n\nPoisson\ndpois()\nppois()\nrpois()\n\n\nUniform\ndunif()\npunif()\nrunif()\n\n\n\nThe p functions return \\(P(X\\leq x)\\) (the lower tail) by default."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#first-calculation-a-shortcut-for-summing-masses",
@@ -1007,14 +1021,14 @@
     "href": "slides/2026-10-15-pdqr.html#your-turn-poisson-probabilities",
     "title": "Computing probabilities in R",
     "section": "Your turn: Poisson probabilities",
-    "text": "Your turn: Poisson probabilities\nLet \\(X\\sim\\operatorname{Poisson}(12)\\). Write an R expression for each probability. Don’t execute anything until you’ve decided which endpoints to use.\n\n\\(P(X\\leq10)\\)\n\\(P(X&gt;10)\\)\n\\(P(X&lt;10)\\)\n\\(P(X\\geq10)\\)\n\\(P(8\\leq X\\leq15)\\)\n\\(P(8&lt;X&lt;15)\\)\n\n\nAllow time to discuss the endpoint adjustments, especially the differences between 2/4 and 5/6."
+    "text": "Your turn: Poisson probabilities\nLet \\(X\\sim\\operatorname{Poisson}(12)\\). Using only the CDF, write an R expression for each probability:\n\n\\(P(X\\leq10)\\)\n\\(P(X&gt;10)\\)\n\\(P(X&lt;10)\\)\n\\(P(X\\geq10)\\)\n\\(P(8\\leq X\\leq15)\\)\n\\(P(8&lt;X&lt;15)\\)\n\\(P(X = 8)\\)"
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#solutions-poisson-probabilities",
     "href": "slides/2026-10-15-pdqr.html#solutions-poisson-probabilities",
     "title": "Computing probabilities in R",
     "section": "Solutions: Poisson probabilities",
-    "text": "Solutions: Poisson probabilities\n\nppois(10, lambda = 12)               # P(X &lt;= 10)\n\n[1] 0.3472294\n\n1 - ppois(10, lambda = 12)           # P(X &gt; 10)\n\n[1] 0.6527706\n\nppois(9, lambda = 12)                # P(X &lt; 10)\n\n[1] 0.2423922\n\n1 - ppois(9, lambda = 12)            # P(X &gt;= 10)\n\n[1] 0.7576078\n\nppois(15, 12) - ppois(7, 12)         # P(8 &lt;= X &lt;= 15)\n\n[1] 0.7549112\n\nppois(14, 12) - ppois(8, 12)         # P(8 &lt; X &lt; 15)\n\n[1] 0.6169968\n\n\nWhy 9 instead of 10? Why 7 instead of 8? We can move a strict inequality by one because a Poisson variable takes integer values."
+    "text": "Solutions: Poisson probabilities\n\nppois(10, lambda = 12)               # P(X &lt;= 10)\n\n[1] 0.3472294\n\n1 - ppois(10, lambda = 12)           # P(X &gt; 10)\n\n[1] 0.6527706\n\nppois(9, lambda = 12)                # P(X &lt; 10)\n\n[1] 0.2423922\n\n1 - ppois(9, lambda = 12)            # P(X &gt;= 10)\n\n[1] 0.7576078\n\nppois(15, 12) - ppois(7, 12)         # P(8 &lt;= X &lt;= 15)\n\n[1] 0.7549112\n\nppois(14, 12) - ppois(8, 12)         # P(8 &lt; X &lt; 15)\n\n[1] 0.6169968\n\nppois(8, 12) - ppois(7, 12)          # P(X = 8)\n\n[1] 0.06552328\n\n\nWhy 9 instead of 10? Why 7 instead of 8? We can move a strict inequality by one because a Poisson variable takes integer values."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#visualize-the-endpoints",
@@ -1035,21 +1049,28 @@
     "href": "slides/2026-10-15-pdqr.html#your-turn-a-binomial-variable",
     "title": "Computing probabilities in R",
     "section": "Your turn: a binomial variable",
-    "text": "Your turn: a binomial variable\nLet \\(Y\\sim\\operatorname{Binomial}(30,0.2)\\).\nWrite R expressions for:\n\n\n\\(P(Y=4)\\);\n\n\\(P(Y\\leq4)\\);\n\n\\(P(Y\\geq4)\\);\n\n\\(P(3\\leq Y&lt;8)\\).\n\nTry to use pbinom() whenever it is appropriate, and dbinom() for an individual mass."
+    "text": "Your turn: a binomial variable\nLet \\(Y\\sim\\operatorname{Binomial}(30,0.2)\\).\nUsing only the CDF, write R expressions for:\n\n\n\\(P(Y=4)\\);\n\n\\(P(Y\\leq4)\\);\n\n\\(P(Y\\geq4)\\);\n\n\\(P(3\\leq Y&lt;8)\\)."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#solutions-binomial-probabilities",
     "href": "slides/2026-10-15-pdqr.html#solutions-binomial-probabilities",
     "title": "Computing probabilities in R",
     "section": "Solutions: binomial probabilities",
-    "text": "Solutions: binomial probabilities\n\ndbinom(4, size = 30, prob = 0.2)\n\n[1] 0.1325224\n\npbinom(4, size = 30, prob = 0.2)\n\n[1] 0.2552333\n\npbinom(3, size = 30, prob = 0.2, lower.tail = FALSE)\n\n[1] 0.8772892\n\npbinom(7, 30, 0.2) - pbinom(2, 30, 0.2)\n\n[1] 0.7166116\n\n\nSanity check: Every result must lie between 0 and 1. The probability of \\(Y\\geq4\\) should exceed the probability of \\(Y=4\\)."
+    "text": "Solutions: binomial probabilities\n\ndbinom(4, size = 30, prob = 0.2)\n\n[1] 0.1325224\n\npbinom(4, size = 30, prob = 0.2) - pbinom(3, size = 30, prob = 0.2) # same as above\n\n[1] 0.1325224\n\npbinom(4, size = 30, prob = 0.2)\n\n[1] 0.2552333\n\npbinom(3, size = 30, prob = 0.2, lower.tail = FALSE)\n\n[1] 0.8772892\n\npbinom(7, 30, 0.2) - pbinom(2, 30, 0.2)\n\n[1] 0.7166116"
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#review-continuous-random-variables",
     "href": "slides/2026-10-15-pdqr.html#review-continuous-random-variables",
     "title": "Computing probabilities in R",
     "section": "Review: continuous random variables",
-    "text": "Review: continuous random variables\nA continuous random variable is described by a probability density function (PDF) \\(f_X\\) such that\n\\[f_X(x)\\geq0,\\qquad \\int_{-\\infty}^{\\infty}f_X(x)\\,dx=1.\\]\nProbabilities are areas under the density curve:\n\\[P(a&lt;X&lt;b)=\\int_a^b f_X(x)\\,dx.\\]\nCrucially, \\(f_X(x)\\) is a density, not \\(P(X=x)\\).\nFor a continuous random variable with a PDF,\n\\[\\boxed{P(X=x)=0\\quad\\text{for every }x.}\\]"
+    "text": "Review: continuous random variables\nAn (absolutely) continuous random variable is described by a probability density function (PDF) \\(f_X\\) such that\n\\[f_X(x)\\geq0,\\qquad \\int_{-\\infty}^{\\infty}f_X(x)\\,dx=1.\\]\nProbabilities are areas under the density curve:\n\\[P(a&lt;X&lt;b)=\\int_a^b f_X(x)\\,dx.\\]\nNOTE: for discrete variables, we computed probabilities by summing over the PMF. For continuous, we integrate over the PDF. Same idea"
+  },
+  {
+    "objectID": "slides/2026-10-15-pdqr.html#two-crucial-points",
+    "href": "slides/2026-10-15-pdqr.html#two-crucial-points",
+    "title": "Computing probabilities in R",
+    "section": "Two crucial points",
+    "text": "Two crucial points\n\nIf \\(X\\) is continuous, then \\(P(X = x)=0\\) for all \\(x\\in\\mathbb{R}\\);\nSo the height of the density curve \\(f_X(x)\\) is not a probability. It’s a “density,” which is not an interpretable quantity."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#what-does-a-pdf-represent",
@@ -1063,7 +1084,14 @@
     "href": "slides/2026-10-15-pdqr.html#the-continuous-cdf",
     "title": "Computing probabilities in R",
     "section": "The continuous CDF",
-    "text": "The continuous CDF\nThe definition has not changed:\n\\[F_X(x)=P(X\\leq x).\\]\nFor a continuous random variable with density \\(f_X\\),\n\\[F_X(x)=\\int_{-\\infty}^{x}f_X(t)\\,dt.\\]\nTherefore,\n\\[P(a&lt;X&lt;b)=F_X(b)-F_X(a).\\]\nBecause individual points have zero probability, the strictness of the endpoints doesn’t matter for intervals:\n\\[P(a&lt;X&lt;b)=P(a\\leq X\\leq b).\\]"
+    "text": "The continuous CDF\nThe definition has not changed:\n\\[F_X(x)=P(X\\leq x).\\]\nFor a continuous random variable with density \\(f_X\\),\n\\[F_X(x)=\\int_{-\\infty}^{x}f_X(t)\\,\\text{d}t.\\]\nTherefore,\n\\[P(a&lt;X&lt;b)=F_X(b)-F_X(a).\\]"
+  },
+  {
+    "objectID": "slides/2026-10-15-pdqr.html#back-to-the-crucial-point",
+    "href": "slides/2026-10-15-pdqr.html#back-to-the-crucial-point",
+    "title": "Computing probabilities in R",
+    "section": "Back to the crucial point",
+    "text": "Back to the crucial point\nBecause individual points have zero probability, the strictness of the endpoints doesn’t matter for intervals:\n\\[P(a&lt;X&lt;b)=P(a\\leq X\\leq b).\\]"
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#discrete-versus-continuous",
@@ -1087,32 +1115,25 @@
     "text": "Uniform: density and CDF\n\n\n\n\n\n\n\n\nThe shaded area on the left equals the CDF’s height at \\(x=5\\) on the right."
   },
   {
-    "objectID": "slides/2026-10-15-pdqr.html#the-normal-distribution",
-    "href": "slides/2026-10-15-pdqr.html#the-normal-distribution",
+    "objectID": "slides/2026-10-15-pdqr.html#uniform-probabilities-are-lengths",
+    "href": "slides/2026-10-15-pdqr.html#uniform-probabilities-are-lengths",
     "title": "Computing probabilities in R",
-    "section": "The normal distribution",
-    "text": "The normal distribution\n\\(X\\sim N(\\mu,\\sigma^2)\\) means \\(X\\) has a normal distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\).\nIts density is\n\\[f_X(x)=\\frac{1}{\\sigma\\sqrt{2\\pi}}\\exp\\left\\{-\\frac{(x-\\mu)^2}{2\\sigma^2}\\right\\},\\quad \\sigma&gt;0.\\]\nThe normal density is symmetric about \\(\\mu\\). Its CDF cannot be expressed in elementary functions, but R can evaluate it numerically.\n\n# N(100, 2^2): mean = 100, STANDARD DEVIATION = 2\npnorm(103, mean = 100, sd = 2)\n\n[1] 0.9331928\n\n\nR takes sd, not variance."
+    "section": "Uniform probabilities are lengths",
+    "text": "Uniform probabilities are lengths\nLet \\(U\\sim\\operatorname{Uniform}(2,8)\\). The total width is \\(8-2=6\\).\nTo calculate \\(P(3&lt;U&lt;7)\\), take the length of the desired interval divided by the total length:\n\\[P(3&lt;U&lt;7)=\\frac{7-3}{8-2}=\\frac{4}{6}.\\]\nNow compute the same probability using the CDF:\n\npunif(7, min = 2, max = 8) - punif(3, min = 2, max = 8)\n\n[1] 0.6666667\n\n\nThe agreement is not a coincidence: the difference of the CDF values is the area under the density between the endpoints."
   },
   {
-    "objectID": "slides/2026-10-15-pdqr.html#normal-density-and-cdf",
-    "href": "slides/2026-10-15-pdqr.html#normal-density-and-cdf",
+    "objectID": "slides/2026-10-15-pdqr.html#uniform-an-interval-probability-two-pictures",
+    "href": "slides/2026-10-15-pdqr.html#uniform-an-interval-probability-two-pictures",
     "title": "Computing probabilities in R",
-    "section": "Normal: density and CDF",
-    "text": "Normal: density and CDF\n\n\n\n\n\n\n\n\nThe vertical difference between CDF values at 97 and 103 equals the shaded PDF area."
-  },
-  {
-    "objectID": "slides/2026-10-15-pdqr.html#a-first-continuous-calculation",
-    "href": "slides/2026-10-15-pdqr.html#a-first-continuous-calculation",
-    "title": "Computing probabilities in R",
-    "section": "A first continuous calculation",
-    "text": "A first continuous calculation\nSuppose \\(Y\\sim N(100,2^2)\\). Find \\(P(97&lt;Y&lt;103)\\).\n\\[P(97&lt;Y&lt;103)=F_Y(103)-F_Y(97).\\]\n. . .\n\npnorm(103, mean = 100, sd = 2) -\n  pnorm(97, mean = 100, sd = 2)\n\n[1] 0.8663856\n\n\nNotice that for this continuous variable, we need no plus or minus 1 at the endpoints."
+    "section": "Uniform: an interval probability, two pictures",
+    "text": "Uniform: an interval probability, two pictures\n\n\n\n\n\n\n\n\n\\[P(3&lt;U&lt;7)=F_U(7)-F_U(3).\\]"
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#dont-confuse-d-and-p",
     "href": "slides/2026-10-15-pdqr.html#dont-confuse-d-and-p",
     "title": "Computing probabilities in R",
     "section": "Don’t confuse d and p\n",
-    "text": "Don’t confuse d and p\n\nFor the normal family:\n\ndnorm(100, mean = 100, sd = 2) # Height of the density\n\n[1] 0.1994711\n\npnorm(100, mean = 100, sd = 2) # Area to the left\n\n[1] 0.5\n\n\nThe first number is not \\(P(Y=100)\\); that probability is zero. The second is \\(P(Y\\leq100)=1/2\\) by symmetry."
+    "text": "Don’t confuse d and p\n\nFor the continuous uniform family:\n\ndunif(5, min = 2, max = 8) # Height of the density at 5\n\n[1] 0.1666667\n\npunif(5, min = 2, max = 8) # Area to the left of 5\n\n[1] 0.5\n\n\nThe first number is not \\(P(U=5)\\); that probability is zero. The second is \\(P(U\\leq5)=1/2\\)."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#exercise-1-uniform",
@@ -1122,18 +1143,11 @@
     "text": "Exercise 1: uniform\nLet \\(U\\sim\\operatorname{Uniform}(2,8)\\).\nUsing punif() and ordinary arithmetic, calculate:\n\n\n\\(P(U\\leq5)\\);\n\n\\(P(U&gt;6)\\);\n\n\\(P(3&lt;U&lt;7)\\);\n\n\\(P(U=5)\\).\n\nThen check answers 1–3 by calculating the corresponding lengths as fractions of the total interval length."
   },
   {
-    "objectID": "slides/2026-10-15-pdqr.html#practice-visualize-before-calculating",
-    "href": "slides/2026-10-15-pdqr.html#practice-visualize-before-calculating",
+    "objectID": "slides/2026-10-15-pdqr.html#exercise-2-visualize-before-calculating",
+    "href": "slides/2026-10-15-pdqr.html#exercise-2-visualize-before-calculating",
     "title": "Computing probabilities in R",
-    "section": "Practice: visualize before calculating",
-    "text": "Practice: visualize before calculating\nFor \\(Z\\sim N(100,2^2)\\), sketch the event \\(|Z-100|&gt;3\\) before entering any code."
-  },
-  {
-    "objectID": "slides/2026-10-15-pdqr.html#exercise-2-normal",
-    "href": "slides/2026-10-15-pdqr.html#exercise-2-normal",
-    "title": "Computing probabilities in R",
-    "section": "Exercise 2: normal",
-    "text": "Exercise 2: normal\nLet \\(Z\\sim N(100,2^2)\\).\nUsing pnorm(), calculate:\n\n\n\\(P(Z&lt;97)\\);\n\n\\(P(Z\\geq103)\\);\n\n\\(P(97&lt;Z&lt;103)\\);\n\n\\(P(|Z-100|&gt;3)\\).\n\nExplain in words what event 4 describes. Which answers can be related by symmetry?"
+    "section": "Exercise 2: visualize before calculating",
+    "text": "Exercise 2: visualize before calculating\nLet \\(U\\sim\\operatorname{Uniform}(2,8)\\). Sketch the region describing\n\\[P(U&lt;3\\text{ or }U&gt;7)\\]\nbefore entering any R code. Then:\n\nCalculate the probability using two CDF values.\nCalculate it using lengths of intervals.\nCheck your answer using the complement of \\(P(3\\leq U\\leq7)\\)."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#exercise-3-choose-your-model",
@@ -1150,11 +1164,11 @@
     "text": "Exercise 4: choose your model\nCustomers arrive at a shop according to a Poisson process at an average rate of 6 per hour.\n\nSpecify a distribution for the number arriving in the next two hours.\nFind the probability of more than 15 arrivals.\nFind the probability of between 10 and 15 arrivals, inclusive.\nWhat would you change if the observation interval were 30 minutes?"
   },
   {
-    "objectID": "slides/2026-10-15-pdqr.html#exercise-5-a-manufacturing-tolerance",
-    "href": "slides/2026-10-15-pdqr.html#exercise-5-a-manufacturing-tolerance",
+    "objectID": "slides/2026-10-15-pdqr.html#exercise-5-continuous-uniform-application",
+    "href": "slides/2026-10-15-pdqr.html#exercise-5-continuous-uniform-application",
     "title": "Computing probabilities in R",
-    "section": "Exercise 5: a manufacturing tolerance",
-    "text": "Exercise 5: a manufacturing tolerance\nThe length \\(L\\) of a manufactured rod is normally distributed, with mean 100 mm and standard deviation 2 mm. A rod is accepted if its length is between 97 and 103 mm, inclusive.\n\nCalculate the proportion of rods that will be accepted.\nCalculate the proportion that will be rejected.\nIf the acceptance interval were instead 98 to 102 mm, what would happen to the acceptance probability? Calculate it."
+    "section": "Exercise 5: continuous uniform application",
+    "text": "Exercise 5: continuous uniform application\nA bus arrives at a stop at a time uniformly distributed between 2:00 and 2:12 p.m. Let \\(W\\) denote the number of minutes after 2:00 when it arrives.\n\nSpecify the distribution of \\(W\\).\nFind the probability that the bus arrives after 2:09.\nFind the probability that it arrives between 2:03 and 2:07.\nWhat is the probability that it arrives at exactly 2:06?\n\nFor 2 and 3, answer both geometrically and using punif()."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#exercise-6-conditional-probability-challenge",
@@ -1168,7 +1182,7 @@
     "href": "slides/2026-10-15-pdqr.html#before-you-leave",
     "title": "Computing probabilities in R",
     "section": "Before you leave",
-    "text": "Before you leave\nYou should be able to:\n\nIdentify the appropriate model and its parameters;\nTranslate \\(&lt;,\\leq,&gt;,\\geq\\) and interval events into CDF expressions;\nHandle endpoints correctly for discrete versus continuous variables;\nUse pbinom(), ppois(), punif(), and pnorm() to evaluate the results;\nRecognize when d...() supplies a mass versus a density."
+    "text": "Before you leave\nYou should be able to:\n\nTranslate \\(&lt;,\\leq,&gt;,\\geq\\) and interval events into CDF expressions;\nHandle endpoints correctly for discrete versus continuous variables;\nUse pbinom(), ppois(), and punif() to evaluate the results;\nRecognize when d...() supplies a mass versus a density."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#exercise-1-solutions",
@@ -1182,7 +1196,7 @@
     "href": "slides/2026-10-15-pdqr.html#exercise-2-solutions",
     "title": "Computing probabilities in R",
     "section": "Exercise 2 solutions",
-    "text": "Exercise 2 solutions\n\npnorm(97, mean = 100, sd = 2)\n\n[1] 0.0668072\n\npnorm(103, 100, 2, lower.tail = FALSE)\n\n[1] 0.0668072\n\npnorm(103, 100, 2) - pnorm(97, 100, 2)\n\n[1] 0.8663856\n\npnorm(97, 100, 2) + pnorm(103, 100, 2, lower.tail = FALSE)\n\n[1] 0.1336144\n\n\nBy symmetry, answers 1 and 2 are equal. Answer 4 is their sum."
+    "text": "Exercise 2 solutions\n\npunif(3, 2, 8) + punif(7, 2, 8, lower.tail = FALSE)\n\n[1] 0.3333333\n\n(3 - 2) / 6 + (8 - 7) / 6\n\n[1] 0.3333333\n\n1 - (punif(7, 2, 8) - punif(3, 2, 8))\n\n[1] 0.3333333\n\n\nAll three calculations equal \\(1/3\\)."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#exercise-3-solutions",
@@ -1203,7 +1217,7 @@
     "href": "slides/2026-10-15-pdqr.html#exercise-5-solutions",
     "title": "Computing probabilities in R",
     "section": "Exercise 5 solutions",
-    "text": "Exercise 5 solutions\n\naccepted &lt;- pnorm(103, 100, 2) - pnorm(97, 100, 2)\naccepted\n\n[1] 0.8663856\n\n1 - accepted\n\n[1] 0.1336144\n\npnorm(102, 100, 2) - pnorm(98, 100, 2)\n\n[1] 0.6826895\n\n\nA narrower acceptance interval reduces the probability of acceptance."
+    "text": "Exercise 5 solutions\n\\(W\\sim\\operatorname{Uniform}(0,12)\\).\n\npunif(9, min = 0, max = 12, lower.tail = FALSE) # 3/12\n\n[1] 0.25\n\npunif(7, 0, 12) - punif(3, 0, 12)         # 4/12\n\n[1] 0.3333333\n\n0                                          # P(W = 6)\n\n[1] 0\n\n\nGeometrically, the relevant widths are 3 minutes and 4 minutes out of a 12-minute interval."
   },
   {
     "objectID": "slides/2026-10-15-pdqr.html#exercise-6-solution",
@@ -1595,7 +1609,7 @@
     "href": "slides/2026-10-01-r-crash-course-slides.html#example-our-heavy-tailed-friend",
     "title": "All of the R you need to know in 75 minutes",
     "section": "Example: our heavy-tailed friend",
-    "text": "Example: our heavy-tailed friend\nWhat you type in your Quarto doc:\n$$\n\\sum\\limits_{n=0}^\\infty n\\frac{6}{\\pi^2n^2} = \\infty.\n$$\nWhat appears in the rendered .pdf:\n\\[\n\\sum\\limits_{n=0}^\\infty n\\frac{6}{\\pi^2n^2} = \\infty.\n\\]"
+    "text": "Example: our heavy-tailed friend\nWhat you type in your Quarto doc:\n$$\n\\sum\\limits_{n=0}^\\infty n\\frac{6}{\\pi^2n^2} = \\infty.\n$$\nWhat appears in the rendered .pdf:\n\\[\n\\sum\\limits_{n=1}^\\infty n\\frac{6}{\\pi^2n^2} = \\infty.\n\\]"
   },
   {
     "objectID": "slides/2026-10-01-r-crash-course-slides.html#pro-tips",
@@ -1994,7 +2008,7 @@
     "href": "slides/2026-10-01-r-crash-course.html#example-our-heavy-tailed-friend",
     "title": "All of the R you need to know in 75 minutes",
     "section": "Example: our heavy-tailed friend",
-    "text": "Example: our heavy-tailed friend\nWhat you type in your Quarto doc:\n$$\n\\sum\\limits_{n=0}^\\infty n\\frac{6}{\\pi^2n^2} = \\infty.\n$$\nWhat appears in the rendered .pdf:\n\\[\n\\sum\\limits_{n=0}^\\infty n\\frac{6}{\\pi^2n^2} = \\infty.\n\\]"
+    "text": "Example: our heavy-tailed friend\nWhat you type in your Quarto doc:\n$$\n\\sum\\limits_{n=0}^\\infty n\\frac{6}{\\pi^2n^2} = \\infty.\n$$\nWhat appears in the rendered .pdf:\n\\[\n\\sum\\limits_{n=1}^\\infty n\\frac{6}{\\pi^2n^2} = \\infty.\n\\]"
   },
   {
     "objectID": "slides/2026-10-01-r-crash-course.html#pro-tips",

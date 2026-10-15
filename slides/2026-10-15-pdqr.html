@@ -123,6 +123,7 @@ window.Quarto = {
 };
 </script>
 <meta property="og:title" content="Computing probabilities in R – STA 240 Fall 2026">
+<meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
 <meta property="og:image" content="https://sta240-f26.github.io/slides/2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-1-1.png">
 <meta property="og:site_name" content="STA 240 Fall 2026">
 <meta property="og:image:height" content="729">
@@ -510,21 +511,16 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#where-we-are" id="toc-where-we-are" class="nav-link active" data-scroll-target="#where-we-are">Where we are</a>
-  <ul class="collapse">
-<li><a href="#today" id="toc-today" class="nav-link" data-scroll-target="#today">Today</a></li>
-  </ul>
-</li>
+<li><a href="#today" id="toc-today" class="nav-link active" data-scroll-target="#today">Today</a></li>
   <li>
-<a href="#part-i-discrete-random-variables" id="toc-part-i-discrete-random-variables" class="nav-link" data-scroll-target="#part-i-discrete-random-variables">Part I: Discrete random variables</a>
+<a href="#part-1-discrete-random-variables" id="toc-part-1-discrete-random-variables" class="nav-link" data-scroll-target="#part-1-discrete-random-variables">Part 1: Discrete random variables</a>
   <ul class="collapse">
 <li><a href="#review-discrete-random-variables" id="toc-review-discrete-random-variables" class="nav-link" data-scroll-target="#review-discrete-random-variables">Review: discrete random variables</a></li>
   <li><a href="#pictures-of-two-discrete-pmfs" id="toc-pictures-of-two-discrete-pmfs" class="nav-link" data-scroll-target="#pictures-of-two-discrete-pmfs">Pictures of two discrete PMFs</a></li>
   <li><a href="#three-families-weve-met" id="toc-three-families-weve-met" class="nav-link" data-scroll-target="#three-families-weve-met">Three families we’ve met</a></li>
+  <li><a href="#the-pdqr-functions" id="toc-the-pdqr-functions" class="nav-link" data-scroll-target="#the-pdqr-functions">The <code>pdqr</code> functions</a></li>
   <li><a href="#review-binomial" id="toc-review-binomial" class="nav-link" data-scroll-target="#review-binomial">Review: binomial</a></li>
   <li><a href="#review-poisson" id="toc-review-poisson" class="nav-link" data-scroll-target="#review-poisson">Review: Poisson</a></li>
-  <li><a href="#review-geometric" id="toc-review-geometric" class="nav-link" data-scroll-target="#review-geometric">Review: geometric</a></li>
   </ul>
 </li>
   <li>
@@ -532,6 +528,7 @@ window.Quarto = {
   <ul class="collapse">
 <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition">Definition</a></li>
   <li><a href="#from-masses-to-a-cdf" id="toc-from-masses-to-a-cdf" class="nav-link" data-scroll-target="#from-masses-to-a-cdf">From masses to a CDF</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   <li><a href="#review-properties-of-every-cdf" id="toc-review-properties-of-every-cdf" class="nav-link" data-scroll-target="#review-properties-of-every-cdf">Review: properties of every CDF</a></li>
   <li><a href="#the-p-functions-in-r" id="toc-the-p-functions-in-r" class="nav-link" data-scroll-target="#the-p-functions-in-r">The <code>p</code> functions in R</a></li>
   <li><a href="#first-calculation-a-shortcut-for-summing-masses" id="toc-first-calculation-a-shortcut-for-summing-masses" class="nav-link" data-scroll-target="#first-calculation-a-shortcut-for-summing-masses">First calculation: a shortcut for summing masses</a></li>
@@ -540,7 +537,7 @@ window.Quarto = {
   </ul>
 </li>
   <li>
-<a href="#part-ii-translating-probability-statements" id="toc-part-ii-translating-probability-statements" class="nav-link" data-scroll-target="#part-ii-translating-probability-statements">Part II: Translating probability statements</a>
+<a href="#part-2-translating-probability-statements" id="toc-part-2-translating-probability-statements" class="nav-link" data-scroll-target="#part-2-translating-probability-statements">Part 2: Translating probability statements</a>
   <ul class="collapse">
 <li><a href="#your-turn-poisson-probabilities" id="toc-your-turn-poisson-probabilities" class="nav-link" data-scroll-target="#your-turn-poisson-probabilities">Your turn: Poisson probabilities</a></li>
   <li><a href="#solutions-poisson-probabilities" id="toc-solutions-poisson-probabilities" class="nav-link" data-scroll-target="#solutions-poisson-probabilities">Solutions: Poisson probabilities</a></li>
@@ -551,29 +548,29 @@ window.Quarto = {
   </ul>
 </li>
   <li>
-<a href="#part-iii-continuous-random-variables" id="toc-part-iii-continuous-random-variables" class="nav-link" data-scroll-target="#part-iii-continuous-random-variables">Part III: Continuous random variables</a>
+<a href="#part-3-continuous-random-variables" id="toc-part-3-continuous-random-variables" class="nav-link" data-scroll-target="#part-3-continuous-random-variables">Part 3: Continuous random variables</a>
   <ul class="collapse">
 <li><a href="#review-continuous-random-variables" id="toc-review-continuous-random-variables" class="nav-link" data-scroll-target="#review-continuous-random-variables">Review: continuous random variables</a></li>
+  <li><a href="#two-crucial-points" id="toc-two-crucial-points" class="nav-link" data-scroll-target="#two-crucial-points">Two crucial points</a></li>
   <li><a href="#what-does-a-pdf-represent" id="toc-what-does-a-pdf-represent" class="nav-link" data-scroll-target="#what-does-a-pdf-represent">What does a PDF represent?</a></li>
   <li><a href="#the-continuous-cdf" id="toc-the-continuous-cdf" class="nav-link" data-scroll-target="#the-continuous-cdf">The continuous CDF</a></li>
+  <li><a href="#back-to-the-crucial-point" id="toc-back-to-the-crucial-point" class="nav-link" data-scroll-target="#back-to-the-crucial-point">Back to the crucial point</a></li>
   <li><a href="#discrete-versus-continuous" id="toc-discrete-versus-continuous" class="nav-link" data-scroll-target="#discrete-versus-continuous">Discrete versus continuous</a></li>
   <li><a href="#the-continuous-uniform-distribution" id="toc-the-continuous-uniform-distribution" class="nav-link" data-scroll-target="#the-continuous-uniform-distribution">The continuous uniform distribution</a></li>
   <li><a href="#uniform-density-and-cdf" id="toc-uniform-density-and-cdf" class="nav-link" data-scroll-target="#uniform-density-and-cdf">Uniform: density and CDF</a></li>
-  <li><a href="#the-normal-distribution" id="toc-the-normal-distribution" class="nav-link" data-scroll-target="#the-normal-distribution">The normal distribution</a></li>
-  <li><a href="#normal-density-and-cdf" id="toc-normal-density-and-cdf" class="nav-link" data-scroll-target="#normal-density-and-cdf">Normal: density and CDF</a></li>
-  <li><a href="#a-first-continuous-calculation" id="toc-a-first-continuous-calculation" class="nav-link" data-scroll-target="#a-first-continuous-calculation">A first continuous calculation</a></li>
+  <li><a href="#uniform-probabilities-are-lengths" id="toc-uniform-probabilities-are-lengths" class="nav-link" data-scroll-target="#uniform-probabilities-are-lengths">Uniform probabilities are lengths</a></li>
+  <li><a href="#uniform-an-interval-probability-two-pictures" id="toc-uniform-an-interval-probability-two-pictures" class="nav-link" data-scroll-target="#uniform-an-interval-probability-two-pictures">Uniform: an interval probability, two pictures</a></li>
   <li><a href="#dont-confuse-d-and-p" id="toc-dont-confuse-d-and-p" class="nav-link" data-scroll-target="#dont-confuse-d-and-p">Don’t confuse <code>d</code> and <code>p</code></a></li>
   </ul>
 </li>
   <li>
-<a href="#part-iv-translating-probability-statements-your-turn" id="toc-part-iv-translating-probability-statements-your-turn" class="nav-link" data-scroll-target="#part-iv-translating-probability-statements-your-turn">Part IV: Translating probability statements — your turn</a>
+<a href="#part-4-translating-probability-statements-your-turn" id="toc-part-4-translating-probability-statements-your-turn" class="nav-link" data-scroll-target="#part-4-translating-probability-statements-your-turn">Part 4: Translating probability statements — your turn</a>
   <ul class="collapse">
 <li><a href="#exercise-1-uniform" id="toc-exercise-1-uniform" class="nav-link" data-scroll-target="#exercise-1-uniform">Exercise 1: uniform</a></li>
-  <li><a href="#practice-visualize-before-calculating" id="toc-practice-visualize-before-calculating" class="nav-link" data-scroll-target="#practice-visualize-before-calculating">Practice: visualize before calculating</a></li>
-  <li><a href="#exercise-2-normal" id="toc-exercise-2-normal" class="nav-link" data-scroll-target="#exercise-2-normal">Exercise 2: normal</a></li>
+  <li><a href="#exercise-2-visualize-before-calculating" id="toc-exercise-2-visualize-before-calculating" class="nav-link" data-scroll-target="#exercise-2-visualize-before-calculating">Exercise 2: visualize before calculating</a></li>
   <li><a href="#exercise-3-choose-your-model" id="toc-exercise-3-choose-your-model" class="nav-link" data-scroll-target="#exercise-3-choose-your-model">Exercise 3: choose your model</a></li>
   <li><a href="#exercise-4-choose-your-model" id="toc-exercise-4-choose-your-model" class="nav-link" data-scroll-target="#exercise-4-choose-your-model">Exercise 4: choose your model</a></li>
-  <li><a href="#exercise-5-a-manufacturing-tolerance" id="toc-exercise-5-a-manufacturing-tolerance" class="nav-link" data-scroll-target="#exercise-5-a-manufacturing-tolerance">Exercise 5: a manufacturing tolerance</a></li>
+  <li><a href="#exercise-5-continuous-uniform-application" id="toc-exercise-5-continuous-uniform-application" class="nav-link" data-scroll-target="#exercise-5-continuous-uniform-application">Exercise 5: continuous uniform application</a></li>
   <li><a href="#exercise-6-conditional-probability-challenge" id="toc-exercise-6-conditional-probability-challenge" class="nav-link" data-scroll-target="#exercise-6-conditional-probability-challenge">Exercise 6: conditional probability (challenge)</a></li>
   <li><a href="#before-you-leave" id="toc-before-you-leave" class="nav-link" data-scroll-target="#before-you-leave">Before you leave</a></li>
   </ul>
@@ -620,38 +617,32 @@ window.Quarto = {
   
 
 
-</header><section id="where-we-are" class="level1 scrollable"><h1 class="scrollable">Where we are</h1>
-<section id="today" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="today">Today</h2>
-<p>We’ve already practiced using R as a calculator, working with vectors, and evaluating probability mass functions.</p>
-<p>Now we’ve met the <strong>cumulative distribution function (CDF)</strong> in lecture. Today we’ll use R to compute probabilities using the CDF.</p>
-<p>Our priorities:</p>
+</header><section id="today" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="today">Today</h2>
+<p>We will use the cumulative distribution function (CDF) to compute probabilities in our familiar distribution families.</p>
 <ul>
-<li>Recognize the probability model and its parameters;</li>
-<li>Translate events into expressions involving the CDF;</li>
-<li>Ask R to evaluate those expressions.</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The review slides are here for reference. We’ll move quickly through some of them.</p>
-</div>
-</div>
-</section></section><section id="part-i-discrete-random-variables" class="level1 scrollable"><h1 class="scrollable">Part I: Discrete random variables</h1>
+<li>In order to do this, you must be able to translate an event into an expression involving the CDF;</li>
+<li>Once you have done that, R provides the <code>p-</code> functions for computing the CDF in the famous examples;</li>
+<li>If a random variable is discrete, care must be taken about the endpoints of intervals. For continuous random variables it doesn’t matter.</li>
+</ul></section><section id="part-1-discrete-random-variables" class="level1 scrollable"><h1 class="scrollable">Part 1: Discrete random variables</h1>
 <section id="review-discrete-random-variables" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="review-discrete-random-variables">Review: discrete random variables</h2>
-<p>A random variable <span class="math inline">\(X\)</span> is <strong>discrete</strong> if its possible values form a finite or countably infinite set.</p>
+<p>A random variable <span class="math inline">\(X\)</span> is <strong>discrete</strong> if its range is finite or countably infinite.</p>
+<p>. . .</p>
 <p>Its <strong>probability mass function (PMF)</strong> is</p>
-<p><span class="math display">\[p_X(k)=P(X=k).\]</span></p>
-<p>The PMF must satisfy</p>
-<p><span class="math display">\[p_X(k)\geq 0,\qquad \sum_k p_X(k)=1.\]</span></p>
-<p>To find the probability of an event, add the masses at the values in that event:</p>
-<p><span class="math display">\[P(X\in A)=\sum_{k\in A}p_X(k).\]</span></p>
+<p><span class="math display">\[
+p_X(k)
+=
+\begin{cases}
+P(X=k) &amp; k\in\text{Range}(X)\\
+0 &amp; \text{else},
+\end{cases}
+\]</span></p>
+<p>which must satisfy:</p>
+<p><span class="math display">\[p_X(k)\geq 0,\qquad \sum_{k\in\text{Range}(X)} p_X(k)=1.\]</span></p>
+<p>. . .</p>
+<p>To find the probability of an event, add the inidividual probabilities of all values in the event:</p>
+<p><span class="math display">\[
+P(X\in A)=\sum_{k\in A}p_X(k).
+\]</span></p>
 </section><section id="pictures-of-two-discrete-pmfs" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="pictures-of-two-discrete-pmfs">Pictures of two discrete PMFs</h2>
 <p>A PMF assigns <strong>probability mass</strong> to individual values.</p>
 <div class="cell">
@@ -662,51 +653,54 @@ Note
 </div>
 </div>
 </div>
-<p>Neither picture is a density curve. The probability at an integer is the <strong>height of its spike</strong>.</p>
+<p>The probability at a value is the height of its spike.</p>
 </section><section id="three-families-weve-met" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="three-families-weve-met">Three families we’ve met</h2>
+<p>We’ve begun studying famous <em>parametric</em> families of probability distributions:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead><tr class="header">
-<th style="text-align: left;">Family</th>
-<th style="text-align: left;">Interpretation</th>
-<th style="text-align: left;">Range</th>
-<th style="text-align: left;">Parameters</th>
+<th>Distribution</th>
+<th>Range</th>
+<th>PMF: <span class="math inline">\(P(X=k)\)</span>
+</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Binomial</td>
-<td style="text-align: left;">Number of successes in <span class="math inline">\(n\)</span> independent Bernoulli trials</td>
-<td style="text-align: left;"><span class="math inline">\(0,1,\ldots,n\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(n, p\)</span></td>
+<td><span class="math inline">\(X\sim\text{Binom}(n,\,p)\)</span></td>
+<td><span class="math inline">\(\{0,\,1,\,2,\,...,\,n\}\)</span></td>
+<td><span class="math inline">\(\binom{n}{k}p^k(1-p)^{n-k}\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Poisson</td>
-<td style="text-align: left;">Count of events in a specified interval</td>
-<td style="text-align: left;"><span class="math inline">\(0,1,2,\ldots\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\lambda&gt;0\)</span></td>
+<td><span class="math inline">\(X\sim\text{Geom}(p)\)</span></td>
+<td><span class="math inline">\(\{1,\,2,\,3,\,...\}\)</span></td>
+<td><span class="math inline">\((1-p)^{k-1}p\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Geometric</td>
-<td style="text-align: left;">Number of trials until the first success</td>
-<td style="text-align: left;"><span class="math inline">\(1,2,3,\ldots\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(p\)</span></td>
+<td><span class="math inline">\(X\sim\text{Poisson}(\lambda)\)</span></td>
+<td><span class="math inline">\(\mathbb{N}=\{0,\,1,\,2,\,3,\,...\}\)</span></td>
+<td><span class="math inline">\(e^{-\lambda}\frac{\lambda^k}{k!}\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>Different probability models describe different experiments. <strong>Identifying the model comes before choosing an R command.</strong></p>
-</section><section id="review-binomial" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="review-binomial">Review: binomial</h2>
+<p>You will see <em>dozens</em> more by the end of the semester.</p>
+</section><section id="the-pdqr-functions" class="level2"><h2 class="anchored" data-anchor-id="the-pdqr-functions">The <code>pdqr</code> functions</h2>
+<p>R provides a standardized set of commands for working with each family of distributions:</p>
+<ul>
+<li>The <code>p</code> command computes the CDF (today!);</li>
+<li>The <code>d</code> command computes the PMF;</li>
+<li>The <code>q</code> command computes the quantile functions (stay tuned!);</li>
+<li>The <code>r</code> command simulates random numbers from the distribution.</li>
+</ul></section><section id="review-binomial" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="review-binomial">Review: binomial</h2>
 <p>If <span class="math inline">\(X\sim\operatorname{Binomial}(n,p)\)</span>, then</p>
 <p><span class="math display">\[P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}, \quad k=0,\ldots,n.\]</span></p>
 <p>Think: <span class="math inline">\(n\)</span> independent trials, each with success probability <span class="math inline">\(p\)</span>; <span class="math inline">\(X\)</span> counts successes.</p>
 <p>For example, if <span class="math inline">\(X\sim\operatorname{Binomial}(20,0.3)\)</span>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Probability of exactly 5 successes</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">5</span>, size <span class="op">=</span> <span class="fl">20</span>, prob <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">5</span>, size <span class="op">=</span> <span class="fl">20</span>, prob <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span> <span class="co"># P(X = 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1788631</code></pre>
 </div>
@@ -714,25 +708,31 @@ Note
 </section><section id="review-poisson" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="review-poisson">Review: Poisson</h2>
 <p>If <span class="math inline">\(X\sim\operatorname{Poisson}(\lambda)\)</span>, then</p>
 <p><span class="math display">\[P(X=k)=e^{-\lambda}\frac{\lambda^k}{k!}, \quad k=0,1,2,\ldots.\]</span></p>
-<p><span class="math inline">\(X\)</span> often counts arrivals, occurrences, or defects; <span class="math inline">\(\lambda\)</span> is the <strong>expected count for the interval being studied</strong>.</p>
+<p><span class="math inline">\(X\)</span> often counts arrivals, occurrences, or defects in a given window of time. <span class="math inline">\(\lambda&gt;0\)</span> is the mean count.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Probability of exactly 5 events when lambda = 12</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span><span class="fl">5</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span><span class="fl">5</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span> <span class="co"># P(X = 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.01274064</code></pre>
 </div>
 </div>
-<p>If the rate is 6 events/hour, the Poisson mean for a two-hour interval is 12, not 6 (assuming the usual Poisson-process model).</p>
-</section><section id="review-geometric" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="review-geometric">Review: geometric</h2>
-<p>Under our convention, <span class="math inline">\(X\)</span> counts the <strong>trial number of the first success</strong> in independent Bernoulli trials with success probability <span class="math inline">\(p\)</span>:</p>
-<p><span class="math display">\[P(X=k)=(1-p)^{k-1}p,\qquad k=1,2,3,\ldots.\]</span></p>
-<p>We won’t use the geometric distribution in today’s R exercises. Our computational examples will use binomial and Poisson distributions.</p>
 </section></section><section id="the-cdf" class="level1 scrollable"><h1 class="scrollable">The CDF</h1>
 <section id="definition" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="definition">Definition</h2>
-<p>For <strong>any</strong> random variable <span class="math inline">\(X\)</span>, its cumulative distribution function (CDF) is</p>
-<p><span class="math display">\[\boxed{F_X(x)=P(X\leq x).}\]</span></p>
-<p>For discrete <span class="math inline">\(X\)</span>:</p>
-<p><span class="math display">\[F_X(x)=\sum_{k\leq x}P(X=k).\]</span></p>
+<p>For <em>any</em> random variable <span class="math inline">\(X\)</span>, its cumulative distribution function (CDF) is</p>
+<p><span class="math display">\[F_X(x)=P(X\leq x).\]</span></p>
+<p>For discrete <span class="math inline">\(X\)</span>, you get this by adding up (ie. <em>accumulating</em>) PMF values from left to right:</p>
+<p><span class="math display">\[F_X(x)=P(X\in(-\infty,\,x]))=\sum_{k\leq x}P(X=k).\]</span></p>
+</section><section id="from-masses-to-a-cdf" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="from-masses-to-a-cdf">From masses to a CDF</h2>
+<p>The CDF <strong>accumulates</strong> the probability mass as the threshold increases.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The CDF jumps at possible outcomes; the size of each jump is the corresponding PMF value.</p>
+</section><section id="example" class="level2"><h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>For example, if <span class="math inline">\(X\sim\operatorname{Binomial}(20,0.3)\)</span>:</p>
 <p><span class="math display">\[P(X\leq 5)=\sum_{k=0}^{5}P(X=k).\]</span></p>
 <p>. . .</p>
@@ -742,31 +742,26 @@ Note
 <pre><code>[1] 0.4163708</code></pre>
 </div>
 </div>
-</section><section id="from-masses-to-a-cdf" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="from-masses-to-a-cdf">From masses to a CDF</h2>
-<p>The CDF <strong>accumulates</strong> the probability mass as the threshold increases.</p>
+<p>. . .</p>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="960"></p>
-</figure>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">5</span>, size <span class="op">=</span> <span class="fl">20</span>, prob <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4163708</code></pre>
 </div>
 </div>
-</div>
-<p>The CDF jumps at possible outcomes; the size of each jump is the corresponding PMF value.</p>
+<p>Same answer!</p>
 </section><section id="review-properties-of-every-cdf" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="review-properties-of-every-cdf">Review: properties of every CDF</h2>
-<ul>
-<li>
-<span class="math inline">\(0\leq F_X(x)\leq 1\)</span>;</li>
-<li>
-<span class="math inline">\(F_X(x)\)</span> is <strong>nondecreasing</strong>;</li>
-<li>
-<span class="math inline">\(F_X(x)\to 0\)</span> as <span class="math inline">\(x\to-\infty\)</span>, and <span class="math inline">\(F_X(x)\to1\)</span> as <span class="math inline">\(x\to\infty\)</span>;</li>
-<li>
-<span class="math inline">\(F_X\)</span> is <strong>right-continuous</strong>;</li>
-<li>
-<span class="math inline">\(P(a&lt;X\leq b)=F_X(b)-F_X(a)\)</span>, for <span class="math inline">\(a&lt;b\)</span>.</li>
-</ul>
-<p>For discrete <span class="math inline">\(X\)</span>, the CDF has jumps. The jump at <span class="math inline">\(x\)</span> has size <span class="math inline">\(P(X=x)\)</span>.</p>
+<div class="incremental">
+<ol class="incremental" type="1">
+<li>(universality) every random variable has a CDF, and it uniquely characterizes the entire distribution;</li>
+<li>(nondecreasing) if <span class="math inline">\(a\leq b\)</span>, then <span class="math inline">\(F_X(a)\leq F_X(b)\)</span>;</li>
+<li>(right continuous) <span class="math inline">\(\lim_{x\to a^+}F_X(x)=F_X(a)\)</span>;</li>
+<li>(limits) <span class="math inline">\(F_X(x)\to 0\)</span> as <span class="math inline">\(x\to-\infty\)</span>, and <span class="math inline">\(F_X(x)\to1\)</span> as <span class="math inline">\(x\to\infty\)</span>;</li>
+<li>(computation) <span class="math inline">\(P(a&lt;X\leq b)=F_X(b)-F_X(a)\)</span>, for <span class="math inline">\(a&lt;b\)</span>.</li>
+</ol>
+</div>
+<p>. . .</p>
+<p>For discrete random variables specifically, the CDF is piecewise constant (ie. a step function), and the size of the jump at <span class="math inline">\(x\)</span> is <span class="math inline">\(P(X=x)\)</span>.</p>
 </section><section id="the-p-functions-in-r" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="the-p-functions-in-r">The <code>p</code> functions in R</h2>
 <p>R uses a common naming scheme for probability distributions:</p>
 <table class="caption-top table">
@@ -795,24 +790,18 @@ Note
 <td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Uniform.html">punif()</a></code></td>
 <td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code></td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Normal</td>
-<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code></td>
-<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code></td>
-<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code></td>
-</tr>
 </tbody>
 </table>
 <p>The <code>p</code> functions return <span class="math inline">\(P(X\leq x)\)</span> (the <strong>lower tail</strong>) by default.</p>
 </section><section id="first-calculation-a-shortcut-for-summing-masses" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="first-calculation-a-shortcut-for-summing-masses">First calculation: a shortcut for summing masses</h2>
 <p>Let <span class="math inline">\(X\sim\operatorname{Binomial}(20,0.3)\)</span>. Compute <span class="math inline">\(P(X\leq5)\)</span> using the PMF and then the CDF.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Long way: add the individual masses</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Long way: add the individual masses</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">5</span>, size <span class="op">=</span> <span class="fl">20</span>, prob <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4163708</code></pre>
 </div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Short way: ask for the CDF</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Short way: ask for the CDF</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">5</span>, size <span class="op">=</span> <span class="fl">20</span>, prob <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4163708</code></pre>
@@ -824,7 +813,7 @@ Note
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="960"></p>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -836,9 +825,9 @@ Note
 <p>And by the complement rule,</p>
 <p><span class="math display">\[P(X&gt;a)=1-F_X(a).\]</span></p>
 <p><strong>Warning:</strong> For a discrete random variable, <span class="math inline">\(P(X&lt; a)\)</span> and <span class="math inline">\(P(X\leq a)\)</span> need not be equal.</p>
-</section></section><section id="part-ii-translating-probability-statements" class="level1 scrollable"><h1 class="scrollable">Part II: Translating probability statements</h1>
-<section id="your-turn-poisson-probabilities" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="your-turn-poisson-probabilities">Your turn: Poisson probabilities</h2>
-<p>Let <span class="math inline">\(X\sim\operatorname{Poisson}(12)\)</span>. Write an R expression for <strong>each</strong> probability. Don’t execute anything until you’ve decided which endpoints to use.</p>
+</section></section><section id="part-2-translating-probability-statements" class="level1 scrollable"><h1 class="scrollable">Part 2: Translating probability statements</h1>
+<section id="your-turn-poisson-probabilities" class="level2 medium scrollable"><h2 class="medium scrollable anchored" data-anchor-id="your-turn-poisson-probabilities">Your turn: Poisson probabilities</h2>
+<p>Let <span class="math inline">\(X\sim\operatorname{Poisson}(12)\)</span>. Using only the CDF, write an R expression for <strong>each</strong> probability:</p>
 <ol type="1">
 <li><span class="math inline">\(P(X\leq10)\)</span></li>
 <li><span class="math inline">\(P(X&gt;10)\)</span></li>
@@ -846,35 +835,36 @@ Note
 <li><span class="math inline">\(P(X\geq10)\)</span></li>
 <li><span class="math inline">\(P(8\leq X\leq15)\)</span></li>
 <li><span class="math inline">\(P(8&lt;X&lt;15)\)</span></li>
-</ol>
-<div class="notes">
-<p>Allow time to discuss the endpoint adjustments, especially the differences between 2/4 and 5/6.</p>
-</div>
-</section><section id="solutions-poisson-probabilities" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="solutions-poisson-probabilities">Solutions: Poisson probabilities</h2>
+<li><span class="math inline">\(P(X = 8)\)</span></li>
+</ol></section><section id="solutions-poisson-probabilities" class="level2 small scrollable"><h2 class="small scrollable anchored" data-anchor-id="solutions-poisson-probabilities">Solutions: Poisson probabilities</h2>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">10</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>               <span class="co"># P(X &lt;= 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">10</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>               <span class="co"># P(X &lt;= 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3472294</code></pre>
 </div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">10</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>           <span class="co"># P(X &gt; 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">10</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>           <span class="co"># P(X &gt; 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6527706</code></pre>
 </div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">9</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>                <span class="co"># P(X &lt; 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">9</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>                <span class="co"># P(X &lt; 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2423922</code></pre>
 </div>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">9</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>            <span class="co"># P(X &gt;= 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">9</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>            <span class="co"># P(X &gt;= 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7576078</code></pre>
 </div>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">12</span><span class="op">)</span>         <span class="co"># P(8 &lt;= X &lt;= 15)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">12</span><span class="op">)</span>         <span class="co"># P(8 &lt;= X &lt;= 15)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7549112</code></pre>
 </div>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">14</span>, <span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">12</span><span class="op">)</span>         <span class="co"># P(8 &lt; X &lt; 15)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">14</span>, <span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">12</span><span class="op">)</span>         <span class="co"># P(8 &lt; X &lt; 15)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6169968</code></pre>
+</div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">12</span><span class="op">)</span>          <span class="co"># P(X = 8)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.06552328</code></pre>
 </div>
 </div>
 <p>Why 9 instead of 10? Why 7 instead of 8? We can move a strict inequality by one because a Poisson variable takes <strong>integer values</strong>.</p>
@@ -883,21 +873,21 @@ Note
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="960"></p>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>The only difference is the mass at <span class="math inline">\(X=10\)</span>.</p>
-</section><section id="another-way-to-compute-upper-tails" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="another-way-to-compute-upper-tails">Another way to compute upper tails</h2>
+</section><section id="another-way-to-compute-upper-tails" class="level2 medium scrollable"><h2 class="medium scrollable anchored" data-anchor-id="another-way-to-compute-upper-tails">Another way to compute upper tails</h2>
 <p>The function argument <code>lower.tail = FALSE</code> asks R for <span class="math inline">\(P(X&gt;x)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Two ways to compute P(X &gt; 10)</span></span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Two ways to compute P(X &gt; 10)</span></span>
 <span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">10</span>, lambda <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6527706</code></pre>
 </div>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">10</span>, lambda <span class="op">=</span> <span class="fl">12</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">10</span>, lambda <span class="op">=</span> <span class="fl">12</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6527706</code></pre>
 </div>
@@ -906,7 +896,7 @@ Note
 <p><strong>It still means <span class="math inline">\(P(X&gt;10)\)</span>, not <span class="math inline">\(P(X\geq10)\)</span>.</strong></p>
 </section><section id="your-turn-a-binomial-variable" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="your-turn-a-binomial-variable">Your turn: a binomial variable</h2>
 <p>Let <span class="math inline">\(Y\sim\operatorname{Binomial}(30,0.2)\)</span>.</p>
-<p>Write R expressions for:</p>
+<p>Using only the CDF, write R expressions for:</p>
 <ol type="1">
 <li>
 <span class="math inline">\(P(Y=4)\)</span>;</li>
@@ -916,43 +906,46 @@ Note
 <span class="math inline">\(P(Y\geq4)\)</span>;</li>
 <li>
 <span class="math inline">\(P(3\leq Y&lt;8)\)</span>.</li>
-</ol>
-<p>Try to use <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> whenever it is appropriate, and <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code> for an individual mass.</p>
-</section><section id="solutions-binomial-probabilities" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="solutions-binomial-probabilities">Solutions: binomial probabilities</h2>
+</ol></section><section id="solutions-binomial-probabilities" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="solutions-binomial-probabilities">Solutions: binomial probabilities</h2>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">4</span>, size <span class="op">=</span> <span class="fl">30</span>, prob <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">4</span>, size <span class="op">=</span> <span class="fl">30</span>, prob <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1325224</code></pre>
 </div>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">4</span>, size <span class="op">=</span> <span class="fl">30</span>, prob <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">4</span>, size <span class="op">=</span> <span class="fl">30</span>, prob <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">3</span>, size <span class="op">=</span> <span class="fl">30</span>, prob <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="co"># same as above</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1325224</code></pre>
+</div>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">4</span>, size <span class="op">=</span> <span class="fl">30</span>, prob <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2552333</code></pre>
 </div>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">3</span>, size <span class="op">=</span> <span class="fl">30</span>, prob <span class="op">=</span> <span class="fl">0.2</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">3</span>, size <span class="op">=</span> <span class="fl">30</span>, prob <span class="op">=</span> <span class="fl">0.2</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8772892</code></pre>
 </div>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">30</span>, <span class="fl">0.2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">30</span>, <span class="fl">0.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">30</span>, <span class="fl">0.2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">30</span>, <span class="fl">0.2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7166116</code></pre>
 </div>
 </div>
-<p><strong>Sanity check:</strong> Every result must lie between 0 and 1. The probability of <span class="math inline">\(Y\geq4\)</span> should exceed the probability of <span class="math inline">\(Y=4\)</span>.</p>
-</section></section><section id="part-iii-continuous-random-variables" class="level1 scrollable"><h1 class="scrollable">Part III: Continuous random variables</h1>
+</section></section><section id="part-3-continuous-random-variables" class="level1 scrollable"><h1 class="scrollable">Part 3: Continuous random variables</h1>
 <section id="review-continuous-random-variables" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="review-continuous-random-variables">Review: continuous random variables</h2>
-<p>A continuous random variable is described by a <strong>probability density function (PDF)</strong> <span class="math inline">\(f_X\)</span> such that</p>
+<p>An (absolutely) continuous random variable is described by a <strong>probability density function (PDF)</strong> <span class="math inline">\(f_X\)</span> such that</p>
 <p><span class="math display">\[f_X(x)\geq0,\qquad \int_{-\infty}^{\infty}f_X(x)\,dx=1.\]</span></p>
 <p>Probabilities are <strong>areas under the density curve</strong>:</p>
 <p><span class="math display">\[P(a&lt;X&lt;b)=\int_a^b f_X(x)\,dx.\]</span></p>
-<p>Crucially, <span class="math inline">\(f_X(x)\)</span> is a <strong>density</strong>, not <span class="math inline">\(P(X=x)\)</span>.</p>
-<p>For a continuous random variable with a PDF,</p>
-<p><span class="math display">\[\boxed{P(X=x)=0\quad\text{for every }x.}\]</span></p>
-</section><section id="what-does-a-pdf-represent" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="what-does-a-pdf-represent">What does a PDF represent?</h2>
+<p>NOTE: for discrete variables, we computed probabilities by summing over the PMF. For continuous, we integrate over the PDF. Same idea</p>
+</section><section id="two-crucial-points" class="level2"><h2 class="anchored" data-anchor-id="two-crucial-points">Two crucial points</h2>
+<ul>
+<li>If <span class="math inline">\(X\)</span> is continuous, then <span class="math inline">\(P(X = x)=0\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>;</li>
+<li>So the height of the density curve <span class="math inline">\(f_X(x)\)</span> is <em>not</em> a probability. It’s a “<em>density</em>,” which is not an interpretable quantity.</li>
+</ul></section><section id="what-does-a-pdf-represent" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="what-does-a-pdf-represent">What does a PDF represent?</h2>
 <p>A probability is an <strong>area</strong>, not the height of a density curve.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="960"></p>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -962,12 +955,13 @@ Note
 <p>The definition has <strong>not changed</strong>:</p>
 <p><span class="math display">\[F_X(x)=P(X\leq x).\]</span></p>
 <p>For a continuous random variable with density <span class="math inline">\(f_X\)</span>,</p>
-<p><span class="math display">\[F_X(x)=\int_{-\infty}^{x}f_X(t)\,dt.\]</span></p>
+<p><span class="math display">\[F_X(x)=\int_{-\infty}^{x}f_X(t)\,\text{d}t.\]</span></p>
 <p>Therefore,</p>
 <p><span class="math display">\[P(a&lt;X&lt;b)=F_X(b)-F_X(a).\]</span></p>
+</section><section id="back-to-the-crucial-point" class="level2"><h2 class="anchored" data-anchor-id="back-to-the-crucial-point">Back to the crucial point</h2>
 <p>Because individual points have zero probability, the strictness of the endpoints doesn’t matter for intervals:</p>
 <p><span class="math display">\[P(a&lt;X&lt;b)=P(a\leq X\leq b).\]</span></p>
-</section><section id="discrete-versus-continuous" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="discrete-versus-continuous">Discrete versus continuous</h2>
+</section><section id="discrete-versus-continuous" class="level2 medium scrollable"><h2 class="medium scrollable anchored" data-anchor-id="discrete-versus-continuous">Discrete versus continuous</h2>
 <table class="caption-top table">
 <thead><tr class="header">
 <th style="text-align: left;">Probability statement</th>
@@ -1015,7 +1009,7 @@ Note
 <p><span class="math display">\[F_X(x)=\frac{x-a}{b-a}.\]</span></p>
 <p>For example, if <span class="math inline">\(X\sim\operatorname{Uniform}(2,8)\)</span>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">5</span>, min <span class="op">=</span> <span class="fl">2</span>, max <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>  <span class="co"># P(X &lt;= 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">5</span>, min <span class="op">=</span> <span class="fl">2</span>, max <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>  <span class="co"># P(X &lt;= 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5</code></pre>
 </div>
@@ -1024,62 +1018,49 @@ Note
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="960"></p>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>The shaded area on the left equals the CDF’s height at <span class="math inline">\(x=5\)</span> on the right.</p>
-</section><section id="the-normal-distribution" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="the-normal-distribution">The normal distribution</h2>
-<p><span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span> means <span class="math inline">\(X\)</span> has a <strong>normal distribution</strong> with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>.</p>
-<p>Its density is</p>
-<p><span class="math display">\[f_X(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\},\quad \sigma&gt;0.\]</span></p>
-<p>The normal density is symmetric about <span class="math inline">\(\mu\)</span>. Its CDF cannot be expressed in elementary functions, but R can evaluate it numerically.</p>
+</section><section id="uniform-probabilities-are-lengths" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="uniform-probabilities-are-lengths">Uniform probabilities are lengths</h2>
+<p>Let <span class="math inline">\(U\sim\operatorname{Uniform}(2,8)\)</span>. The total width is <span class="math inline">\(8-2=6\)</span>.</p>
+<p>To calculate <span class="math inline">\(P(3&lt;U&lt;7)\)</span>, take the <strong>length of the desired interval</strong> divided by the <strong>total length</strong>:</p>
+<p><span class="math display">\[P(3&lt;U&lt;7)=\frac{7-3}{8-2}=\frac{4}{6}.\]</span></p>
+<p>Now compute the same probability using the CDF:</p>
 <div class="cell">
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># N(100, 2^2): mean = 100, STANDARD DEVIATION = 2</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">103</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">7</span>, min <span class="op">=</span> <span class="fl">2</span>, max <span class="op">=</span> <span class="fl">8</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">3</span>, min <span class="op">=</span> <span class="fl">2</span>, max <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9331928</code></pre>
+<pre><code>[1] 0.6666667</code></pre>
 </div>
 </div>
-<p><strong>R takes <code>sd</code>, not variance.</strong></p>
-</section><section id="normal-density-and-cdf" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="normal-density-and-cdf">Normal: density and CDF</h2>
+<p>The agreement is not a coincidence: the difference of the CDF values is the area under the density between the endpoints.</p>
+</section><section id="uniform-an-interval-probability-two-pictures" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="uniform-an-interval-probability-two-pictures">Uniform: an interval probability, two pictures</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="960"></p>
+<figure class="figure"><p><img src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>The vertical difference between CDF values at 97 and 103 equals the shaded PDF area.</p>
-</section><section id="a-first-continuous-calculation" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="a-first-continuous-calculation">A first continuous calculation</h2>
-<p>Suppose <span class="math inline">\(Y\sim N(100,2^2)\)</span>. Find <span class="math inline">\(P(97&lt;Y&lt;103)\)</span>.</p>
-<p><span class="math display">\[P(97&lt;Y&lt;103)=F_Y(103)-F_Y(97).\]</span></p>
-<p>. . .</p>
-<div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">103</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">-</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">97</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8663856</code></pre>
-</div>
-</div>
-<p>Notice that for this continuous variable, we need <strong>no plus or minus 1</strong> at the endpoints.</p>
+<p><span class="math display">\[P(3&lt;U&lt;7)=F_U(7)-F_U(3).\]</span></p>
 </section><section id="dont-confuse-d-and-p" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="dont-confuse-d-and-p">Don’t confuse <code>d</code> and <code>p</code>
 </h2>
-<p>For the normal family:</p>
+<p>For the continuous uniform family:</p>
 <div class="cell">
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># Height of the density</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">dunif</a></span><span class="op">(</span><span class="fl">5</span>, min <span class="op">=</span> <span class="fl">2</span>, max <span class="op">=</span> <span class="fl">8</span><span class="op">)</span> <span class="co"># Height of the density at 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1994711</code></pre>
+<pre><code>[1] 0.1666667</code></pre>
 </div>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># Area to the left</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">5</span>, min <span class="op">=</span> <span class="fl">2</span>, max <span class="op">=</span> <span class="fl">8</span><span class="op">)</span> <span class="co"># Area to the left of 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5</code></pre>
 </div>
 </div>
-<p>The first number is <strong>not</strong> <span class="math inline">\(P(Y=100)\)</span>; that probability is zero. The second is <span class="math inline">\(P(Y\leq100)=1/2\)</span> by symmetry.</p>
-</section></section><section id="part-iv-translating-probability-statements-your-turn" class="level1 scrollable"><h1 class="scrollable">Part IV: Translating probability statements — your turn</h1>
+<p>The first number is <strong>not</strong> <span class="math inline">\(P(U=5)\)</span>; that probability is zero. The second is <span class="math inline">\(P(U\leq5)=1/2\)</span>.</p>
+</section></section><section id="part-4-translating-probability-statements-your-turn" class="level1 scrollable"><h1 class="scrollable">Part 4: Translating probability statements — your turn</h1>
 <section id="exercise-1-uniform" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-1-uniform">Exercise 1: uniform</h2>
 <p>Let <span class="math inline">\(U\sim\operatorname{Uniform}(2,8)\)</span>.</p>
 <p>Using <code><a href="https://rdrr.io/r/stats/Uniform.html">punif()</a></code> and ordinary arithmetic, calculate:</p>
@@ -1094,8 +1075,15 @@ Note
 <span class="math inline">\(P(U=5)\)</span>.</li>
 </ol>
 <p>Then <strong>check</strong> answers 1–3 by calculating the corresponding lengths as fractions of the total interval length.</p>
-</section><section id="practice-visualize-before-calculating" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="practice-visualize-before-calculating">Practice: visualize before calculating</h2>
-<p>For <span class="math inline">\(Z\sim N(100,2^2)\)</span>, sketch the event <span class="math inline">\(|Z-100|&gt;3\)</span> <strong>before</strong> entering any code.</p>
+</section><section id="exercise-2-visualize-before-calculating" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-2-visualize-before-calculating">Exercise 2: visualize before calculating</h2>
+<p>Let <span class="math inline">\(U\sim\operatorname{Uniform}(2,8)\)</span>. Sketch the region describing</p>
+<p><span class="math display">\[P(U&lt;3\text{ or }U&gt;7)\]</span></p>
+<p>before entering any R code. Then:</p>
+<ol type="1">
+<li>Calculate the probability using <strong>two CDF values</strong>.</li>
+<li>Calculate it using <strong>lengths of intervals</strong>.</li>
+<li>Check your answer using the complement of <span class="math inline">\(P(3\leq U\leq7)\)</span>.</li>
+</ol>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -1104,20 +1092,6 @@ Note
 </div>
 </div>
 </div>
-</section><section id="exercise-2-normal" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-2-normal">Exercise 2: normal</h2>
-<p>Let <span class="math inline">\(Z\sim N(100,2^2)\)</span>.</p>
-<p>Using <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code>, calculate:</p>
-<ol type="1">
-<li>
-<span class="math inline">\(P(Z&lt;97)\)</span>;</li>
-<li>
-<span class="math inline">\(P(Z\geq103)\)</span>;</li>
-<li>
-<span class="math inline">\(P(97&lt;Z&lt;103)\)</span>;</li>
-<li>
-<span class="math inline">\(P(|Z-100|&gt;3)\)</span>.</li>
-</ol>
-<p>Explain in words what event 4 describes. Which answers can be related by symmetry?</p>
 </section><section id="exercise-3-choose-your-model" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-3-choose-your-model">Exercise 3: choose your model</h2>
 <p>A factory makes components independently. Each component has probability <span class="math inline">\(0.04\)</span> of being defective. An inspector tests 75 components.</p>
 <ol type="1">
@@ -1133,13 +1107,16 @@ Note
 <li>Find the probability of <strong>more than 15</strong> arrivals.</li>
 <li>Find the probability of <strong>between 10 and 15 arrivals, inclusive</strong>.</li>
 <li>What would you change if the observation interval were <strong>30 minutes</strong>?</li>
-</ol></section><section id="exercise-5-a-manufacturing-tolerance" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-5-a-manufacturing-tolerance">Exercise 5: a manufacturing tolerance</h2>
-<p>The length <span class="math inline">\(L\)</span> of a manufactured rod is normally distributed, with mean 100 mm and standard deviation 2 mm. A rod is accepted if its length is between 97 and 103 mm, inclusive.</p>
+</ol></section><section id="exercise-5-continuous-uniform-application" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-5-continuous-uniform-application">Exercise 5: continuous uniform application</h2>
+<p>A bus arrives at a stop at a time uniformly distributed between 2:00 and 2:12 p.m. Let <span class="math inline">\(W\)</span> denote the number of minutes after 2:00 when it arrives.</p>
 <ol type="1">
-<li>Calculate the proportion of rods that will be accepted.</li>
-<li>Calculate the proportion that will be rejected.</li>
-<li>If the acceptance interval were instead 98 to 102 mm, what would happen to the acceptance probability? Calculate it.</li>
-</ol></section><section id="exercise-6-conditional-probability-challenge" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-6-conditional-probability-challenge">Exercise 6: conditional probability (challenge)</h2>
+<li>Specify the distribution of <span class="math inline">\(W\)</span>.</li>
+<li>Find the probability that the bus arrives after 2:09.</li>
+<li>Find the probability that it arrives between 2:03 and 2:07.</li>
+<li>What is the probability that it arrives at <strong>exactly</strong> 2:06?</li>
+</ol>
+<p>For 2 and 3, answer both <strong>geometrically</strong> and using <code><a href="https://rdrr.io/r/stats/Uniform.html">punif()</a></code>.</p>
+</section><section id="exercise-6-conditional-probability-challenge" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-6-conditional-probability-challenge">Exercise 6: conditional probability (challenge)</h2>
 <p>Let <span class="math inline">\(X\sim\operatorname{Poisson}(12)\)</span>.</p>
 <p>A researcher learns that at least 10 events occurred but doesn’t know the exact count. Find</p>
 <p><span class="math display">\[P(X\geq15\mid X\geq10).\]</span></p>
@@ -1147,59 +1124,54 @@ Note
 </section><section id="before-you-leave" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="before-you-leave">Before you leave</h2>
 <p>You should be able to:</p>
 <ul>
-<li>Identify the appropriate model and its parameters;</li>
 <li>Translate <span class="math inline">\(&lt;,\leq,&gt;,\geq\)</span> and interval events into CDF expressions;</li>
 <li>Handle endpoints correctly for discrete versus continuous variables;</li>
-<li>Use <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code>, <code><a href="https://rdrr.io/r/stats/Poisson.html">ppois()</a></code>, <code><a href="https://rdrr.io/r/stats/Uniform.html">punif()</a></code>, and <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> to evaluate the results;</li>
+<li>Use <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code>, <code><a href="https://rdrr.io/r/stats/Poisson.html">ppois()</a></code>, and <code><a href="https://rdrr.io/r/stats/Uniform.html">punif()</a></code> to evaluate the results;</li>
 <li>Recognize when <code>d...()</code> supplies a mass versus a density.</li>
 </ul></section></section><section id="appendix-solutions-to-independent-exercises" class="level1 scrollable"><h1 class="scrollable">Appendix: solutions to independent exercises</h1>
 <section id="exercise-1-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-1-solutions">Exercise 1 solutions</h2>
 <div class="cell">
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">5</span>, min <span class="op">=</span> <span class="fl">2</span>, max <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>          <span class="co"># 3/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">5</span>, min <span class="op">=</span> <span class="fl">2</span>, max <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>          <span class="co"># 3/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5</code></pre>
 </div>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">2</span>, <span class="fl">8</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="co"># 2/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">2</span>, <span class="fl">8</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="co"># 2/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3333333</code></pre>
 </div>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">2</span>, <span class="fl">8</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">8</span><span class="op">)</span>    <span class="co"># 4/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">2</span>, <span class="fl">8</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">8</span><span class="op">)</span>    <span class="co"># 4/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6666667</code></pre>
 </div>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">0</span>                                   <span class="co"># P(U = 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">0</span>                                   <span class="co"># P(U = 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
 </div>
 </section><section id="exercise-2-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-2-solutions">Exercise 2 solutions</h2>
 <div class="cell">
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">97</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">8</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">2</span>, <span class="fl">8</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0668072</code></pre>
+<pre><code>[1] 0.3333333</code></pre>
 </div>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">103</span>, <span class="fl">100</span>, <span class="fl">2</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="fl">3</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="fl">6</span> <span class="op">+</span> <span class="op">(</span><span class="fl">8</span> <span class="op">-</span> <span class="fl">7</span><span class="op">)</span> <span class="op">/</span> <span class="fl">6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0668072</code></pre>
+<pre><code>[1] 0.3333333</code></pre>
 </div>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">103</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">97</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">2</span>, <span class="fl">8</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">8</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8663856</code></pre>
-</div>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">97</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">103</span>, <span class="fl">100</span>, <span class="fl">2</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1336144</code></pre>
+<pre><code>[1] 0.3333333</code></pre>
 </div>
 </div>
-<p>By symmetry, answers 1 and 2 are equal. Answer 4 is their sum.</p>
+<p>All three calculations equal <span class="math inline">\(1/3\)</span>.</p>
 </section><section id="exercise-3-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-3-solutions">Exercise 3 solutions</h2>
 <p><span class="math inline">\(D\sim\operatorname{Binomial}(75,0.04)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">4</span>, size <span class="op">=</span> <span class="fl">75</span>, prob <span class="op">=</span> <span class="fl">0.04</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">4</span>, size <span class="op">=</span> <span class="fl">75</span>, prob <span class="op">=</span> <span class="fl">0.04</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1812487</code></pre>
 </div>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">75</span>, <span class="fl">0.04</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">75</span>, <span class="fl">0.04</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">75</span>, <span class="fl">0.04</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">75</span>, <span class="fl">0.04</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7764451</code></pre>
 </div>
@@ -1207,38 +1179,38 @@ Note
 </section><section id="exercise-4-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-4-solutions">Exercise 4 solutions</h2>
 <p>For two hours, <span class="math inline">\(N\sim\operatorname{Poisson}(12)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">15</span>, lambda <span class="op">=</span> <span class="fl">12</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">15</span>, lambda <span class="op">=</span> <span class="fl">12</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1555843</code></pre>
 </div>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6020235</code></pre>
 </div>
 </div>
 <p>For 30 minutes, use <span class="math inline">\(\lambda=3\)</span> instead of <span class="math inline">\(\lambda=12\)</span>.</p>
 </section><section id="exercise-5-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-5-solutions">Exercise 5 solutions</h2>
+<p><span class="math inline">\(W\sim\operatorname{Uniform}(0,12)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">accepted</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">103</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">97</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="va">accepted</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">9</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">12</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="co"># 3/12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8663856</code></pre>
+<pre><code>[1] 0.25</code></pre>
 </div>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">-</span> <span class="va">accepted</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">0</span>, <span class="fl">12</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">punif</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">12</span><span class="op">)</span>         <span class="co"># 4/12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1336144</code></pre>
+<pre><code>[1] 0.3333333</code></pre>
 </div>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">102</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">98</span>, <span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">0</span>                                          <span class="co"># P(W = 6)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6826895</code></pre>
+<pre><code>[1] 0</code></pre>
 </div>
 </div>
-<p>A narrower acceptance interval reduces the probability of acceptance.</p>
+<p>Geometrically, the relevant widths are 3 minutes and 4 minutes out of a 12-minute interval.</p>
 </section><section id="exercise-6-solution" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exercise-6-solution">Exercise 6 solution</h2>
 <p>Because <span class="math inline">\(\{X\geq15\}\subseteq\{X\geq10\}\)</span>,</p>
 <p><span class="math display">\[P(X\geq15\mid X\geq10)=\frac{P(X\geq15)}{P(X\geq10)}.\]</span></p>
 <div class="cell">
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">14</span>, <span class="fl">12</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">/</span></span>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">14</span>, <span class="fl">12</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">/</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">12</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3009149</code></pre>

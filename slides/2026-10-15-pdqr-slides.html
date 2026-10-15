@@ -209,40 +209,35 @@ Dwija Kakkad
     </div>
 </div>
 
-</section><section><section id="where-we-are" class="title-slide slide level1 scrollable center"><h1>Where we are</h1>
-
 </section><section id="today" class="slide level2 scrollable"><h2>Today</h2>
-<p>We’ve already practiced using R as a calculator, working with vectors, and evaluating probability mass functions.</p>
-<p>Now we’ve met the <strong>cumulative distribution function (CDF)</strong> in lecture. Today we’ll use R to compute probabilities using the CDF.</p>
-<p>Our priorities:</p>
+<p>We will use the cumulative distribution function (CDF) to compute probabilities in our familiar distribution families.</p>
 <ul>
-<li>Recognize the probability model and its parameters;</li>
-<li>Translate events into expressions involving the CDF;</li>
-<li>Ask R to evaluate those expressions.</li>
-</ul>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>The review slides are here for reference. We’ll move quickly through some of them.</p>
-</div>
-</div>
-</div>
-</section></section><section><section id="part-i-discrete-random-variables" class="title-slide slide level1 scrollable center"><h1>Part I: Discrete random variables</h1>
+<li>In order to do this, you must be able to translate an event into an expression involving the CDF;</li>
+<li>Once you have done that, R provides the <code>p-</code> functions for computing the CDF in the famous examples;</li>
+<li>If a random variable is discrete, care must be taken about the endpoints of intervals. For continuous random variables it doesn’t matter.</li>
+</ul></section><section><section id="part-1-discrete-random-variables" class="title-slide slide level1 scrollable center"><h1>Part 1: Discrete random variables</h1>
 
 </section><section id="review-discrete-random-variables" class="slide level2 scrollable"><h2>Review: discrete random variables</h2>
-<p>A random variable <span class="math inline">\(X\)</span> is <strong>discrete</strong> if its possible values form a finite or countably infinite set.</p>
+<p>A random variable <span class="math inline">\(X\)</span> is <strong>discrete</strong> if its range is finite or countably infinite.</p>
+<div class="fragment">
 <p>Its <strong>probability mass function (PMF)</strong> is</p>
-<p><span class="math display">\[p_X(k)=P(X=k).\]</span></p>
-<p>The PMF must satisfy</p>
-<p><span class="math display">\[p_X(k)\geq 0,\qquad \sum_k p_X(k)=1.\]</span></p>
-<p>To find the probability of an event, add the masses at the values in that event:</p>
-<p><span class="math display">\[P(X\in A)=\sum_{k\in A}p_X(k).\]</span></p>
+<p><span class="math display">\[
+p_X(k)
+=
+\begin{cases}
+P(X=k) &amp; k\in\text{Range}(X)\\
+0 &amp; \text{else},
+\end{cases}
+\]</span></p>
+<p>which must satisfy:</p>
+<p><span class="math display">\[p_X(k)\geq 0,\qquad \sum_{k\in\text{Range}(X)} p_X(k)=1.\]</span></p>
+</div>
+<div class="fragment">
+<p>To find the probability of an event, add the inidividual probabilities of all values in the event:</p>
+<p><span class="math display">\[
+P(X\in A)=\sum_{k\in A}p_X(k).
+\]</span></p>
+</div>
 </section><section id="pictures-of-two-discrete-pmfs" class="slide level2 scrollable"><h2>Pictures of two discrete PMFs</h2>
 <p>A PMF assigns <strong>probability mass</strong> to individual values.</p>
 <div class="cell">
@@ -253,51 +248,54 @@ Dwija Kakkad
 </div>
 </div>
 </div>
-<p>Neither picture is a density curve. The probability at an integer is the <strong>height of its spike</strong>.</p>
+<p>The probability at a value is the height of its spike.</p>
 </section><section id="three-families-weve-met" class="slide level2 scrollable"><h2>Three families we’ve met</h2>
+<p>We’ve begun studying famous <em>parametric</em> families of probability distributions:</p>
 <table class="caption-top">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead><tr class="header">
-<th style="text-align: left;">Family</th>
-<th style="text-align: left;">Interpretation</th>
-<th style="text-align: left;">Range</th>
-<th style="text-align: left;">Parameters</th>
+<th>Distribution</th>
+<th>Range</th>
+<th>PMF: <span class="math inline">\(P(X=k)\)</span>
+</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Binomial</td>
-<td style="text-align: left;">Number of successes in <span class="math inline">\(n\)</span> independent Bernoulli trials</td>
-<td style="text-align: left;"><span class="math inline">\(0,1,\ldots,n\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(n, p\)</span></td>
+<td><span class="math inline">\(X\sim\text{Binom}(n,\,p)\)</span></td>
+<td><span class="math inline">\(\{0,\,1,\,2,\,...,\,n\}\)</span></td>
+<td><span class="math inline">\(\binom{n}{k}p^k(1-p)^{n-k}\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Poisson</td>
-<td style="text-align: left;">Count of events in a specified interval</td>
-<td style="text-align: left;"><span class="math inline">\(0,1,2,\ldots\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\lambda&gt;0\)</span></td>
+<td><span class="math inline">\(X\sim\text{Geom}(p)\)</span></td>
+<td><span class="math inline">\(\{1,\,2,\,3,\,...\}\)</span></td>
+<td><span class="math inline">\((1-p)^{k-1}p\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Geometric</td>
-<td style="text-align: left;">Number of trials until the first success</td>
-<td style="text-align: left;"><span class="math inline">\(1,2,3,\ldots\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(p\)</span></td>
+<td><span class="math inline">\(X\sim\text{Poisson}(\lambda)\)</span></td>
+<td><span class="math inline">\(\mathbb{N}=\{0,\,1,\,2,\,3,\,...\}\)</span></td>
+<td><span class="math inline">\(e^{-\lambda}\frac{\lambda^k}{k!}\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>Different probability models describe different experiments. <strong>Identifying the model comes before choosing an R command.</strong></p>
-</section><section id="review-binomial" class="slide level2 scrollable"><h2>Review: binomial</h2>
+<p>You will see <em>dozens</em> more by the end of the semester.</p>
+</section><section id="the-pdqr-functions" class="slide level2"><h2>The <code>pdqr</code> functions</h2>
+<p>R provides a standardized set of commands for working with each family of distributions:</p>
+<ul>
+<li>The <code>p</code> command computes the CDF (today!);</li>
+<li>The <code>d</code> command computes the PMF;</li>
+<li>The <code>q</code> command computes the quantile functions (stay tuned!);</li>
+<li>The <code>r</code> command simulates random numbers from the distribution.</li>
+</ul></section><section id="review-binomial" class="slide level2 scrollable"><h2>Review: binomial</h2>
 <p>If <span class="math inline">\(X\sim\operatorname{Binomial}(n,p)\)</span>, then</p>
 <p><span class="math display">\[P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}, \quad k=0,\ldots,n.\]</span></p>
 <p>Think: <span class="math inline">\(n\)</span> independent trials, each with success probability <span class="math inline">\(p\)</span>; <span class="math inline">\(X\)</span> counts successes.</p>
 <p>For example, if <span class="math inline">\(X\sim\operatorname{Binomial}(20,0.3)\)</span>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Probability of exactly 5 successes</span></span>
-<span id="cb1-2"><a></a><span class="fu">dbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">dbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fl">0.3</span>) <span class="co"># P(X = 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1788631</code></pre>
 </div>
@@ -305,26 +303,32 @@ Dwija Kakkad
 </section><section id="review-poisson" class="slide level2 scrollable"><h2>Review: Poisson</h2>
 <p>If <span class="math inline">\(X\sim\operatorname{Poisson}(\lambda)\)</span>, then</p>
 <p><span class="math display">\[P(X=k)=e^{-\lambda}\frac{\lambda^k}{k!}, \quad k=0,1,2,\ldots.\]</span></p>
-<p><span class="math inline">\(X\)</span> often counts arrivals, occurrences, or defects; <span class="math inline">\(\lambda\)</span> is the <strong>expected count for the interval being studied</strong>.</p>
+<p><span class="math inline">\(X\)</span> often counts arrivals, occurrences, or defects in a given window of time. <span class="math inline">\(\lambda&gt;0\)</span> is the mean count.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Probability of exactly 5 events when lambda = 12</span></span>
-<span id="cb3-2"><a></a><span class="fu">dpois</span>(<span class="dv">5</span>, <span class="at">lambda =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">dpois</span>(<span class="dv">5</span>, <span class="at">lambda =</span> <span class="dv">12</span>) <span class="co"># P(X = 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.01274064</code></pre>
 </div>
 </div>
-<p>If the rate is 6 events/hour, the Poisson mean for a two-hour interval is 12, not 6 (assuming the usual Poisson-process model).</p>
-</section><section id="review-geometric" class="slide level2 scrollable"><h2>Review: geometric</h2>
-<p>Under our convention, <span class="math inline">\(X\)</span> counts the <strong>trial number of the first success</strong> in independent Bernoulli trials with success probability <span class="math inline">\(p\)</span>:</p>
-<p><span class="math display">\[P(X=k)=(1-p)^{k-1}p,\qquad k=1,2,3,\ldots.\]</span></p>
-<p>We won’t use the geometric distribution in today’s R exercises. Our computational examples will use binomial and Poisson distributions.</p>
 </section></section><section><section id="the-cdf" class="title-slide slide level1 scrollable center"><h1>The CDF</h1>
 
 </section><section id="definition" class="slide level2 scrollable"><h2>Definition</h2>
-<p>For <strong>any</strong> random variable <span class="math inline">\(X\)</span>, its cumulative distribution function (CDF) is</p>
-<p><span class="math display">\[\boxed{F_X(x)=P(X\leq x).}\]</span></p>
-<p>For discrete <span class="math inline">\(X\)</span>:</p>
-<p><span class="math display">\[F_X(x)=\sum_{k\leq x}P(X=k).\]</span></p>
+<p>For <em>any</em> random variable <span class="math inline">\(X\)</span>, its cumulative distribution function (CDF) is</p>
+<p><span class="math display">\[F_X(x)=P(X\leq x).\]</span></p>
+<p>For discrete <span class="math inline">\(X\)</span>, you get this by adding up (ie. <em>accumulating</em>) PMF values from left to right:</p>
+<p><span class="math display">\[F_X(x)=P(X\in(-\infty,\,x]))=\sum_{k\leq x}P(X=k).\]</span></p>
+</section><section id="from-masses-to-a-cdf" class="slide level2 scrollable"><h2>From masses to a CDF</h2>
+<p>The CDF <strong>accumulates</strong> the probability mass as the threshold increases.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The CDF jumps at possible outcomes; the size of each jump is the corresponding PMF value.</p>
+</section><section id="example" class="slide level2"><h2>Example</h2>
 <p>For example, if <span class="math inline">\(X\sim\operatorname{Binomial}(20,0.3)\)</span>:</p>
 <p><span class="math display">\[P(X\leq 5)=\sum_{k=0}^{5}P(X=k).\]</span></p>
 <div class="fragment">
@@ -335,31 +339,26 @@ Dwija Kakkad
 </div>
 </div>
 </div>
-</section><section id="from-masses-to-a-cdf" class="slide level2 scrollable"><h2>From masses to a CDF</h2>
-<p>The CDF <strong>accumulates</strong> the probability mass as the threshold increases.</p>
+<div class="fragment">
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure><p><img data-src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">pbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4163708</code></pre>
 </div>
 </div>
+<p>Same answer!</p>
 </div>
-<p>The CDF jumps at possible outcomes; the size of each jump is the corresponding PMF value.</p>
 </section><section id="review-properties-of-every-cdf" class="slide level2 scrollable"><h2>Review: properties of every CDF</h2>
-<ul>
-<li>
-<span class="math inline">\(0\leq F_X(x)\leq 1\)</span>;</li>
-<li>
-<span class="math inline">\(F_X(x)\)</span> is <strong>nondecreasing</strong>;</li>
-<li>
-<span class="math inline">\(F_X(x)\to 0\)</span> as <span class="math inline">\(x\to-\infty\)</span>, and <span class="math inline">\(F_X(x)\to1\)</span> as <span class="math inline">\(x\to\infty\)</span>;</li>
-<li>
-<span class="math inline">\(F_X\)</span> is <strong>right-continuous</strong>;</li>
-<li>
-<span class="math inline">\(P(a&lt;X\leq b)=F_X(b)-F_X(a)\)</span>, for <span class="math inline">\(a&lt;b\)</span>.</li>
-</ul>
-<p>For discrete <span class="math inline">\(X\)</span>, the CDF has jumps. The jump at <span class="math inline">\(x\)</span> has size <span class="math inline">\(P(X=x)\)</span>.</p>
+<ol type="1">
+<li class="fragment">(universality) every random variable has a CDF, and it uniquely characterizes the entire distribution;</li>
+<li class="fragment">(nondecreasing) if <span class="math inline">\(a\leq b\)</span>, then <span class="math inline">\(F_X(a)\leq F_X(b)\)</span>;</li>
+<li class="fragment">(right continuous) <span class="math inline">\(\lim_{x\to a^+}F_X(x)=F_X(a)\)</span>;</li>
+<li class="fragment">(limits) <span class="math inline">\(F_X(x)\to 0\)</span> as <span class="math inline">\(x\to-\infty\)</span>, and <span class="math inline">\(F_X(x)\to1\)</span> as <span class="math inline">\(x\to\infty\)</span>;</li>
+<li class="fragment">(computation) <span class="math inline">\(P(a&lt;X\leq b)=F_X(b)-F_X(a)\)</span>, for <span class="math inline">\(a&lt;b\)</span>.</li>
+</ol>
+<div class="fragment">
+<p>For discrete random variables specifically, the CDF is piecewise constant (ie. a step function), and the size of the jump at <span class="math inline">\(x\)</span> is <span class="math inline">\(P(X=x)\)</span>.</p>
+</div>
 </section><section id="the-p-functions-in-r" class="slide level2 scrollable"><h2>The <code>p</code> functions in R</h2>
 <p>R uses a common naming scheme for probability distributions:</p>
 <table class="caption-top">
@@ -388,25 +387,19 @@ Dwija Kakkad
 <td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Uniform.html">punif()</a></code></td>
 <td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code></td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Normal</td>
-<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code></td>
-<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code></td>
-<td style="text-align: left;"><code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code></td>
-</tr>
 </tbody>
 </table>
 <p>The <code>p</code> functions return <span class="math inline">\(P(X\leq x)\)</span> (the <strong>lower tail</strong>) by default.</p>
 </section><section id="first-calculation-a-shortcut-for-summing-masses" class="slide level2 scrollable"><h2>First calculation: a shortcut for summing masses</h2>
 <p>Let <span class="math inline">\(X\sim\operatorname{Binomial}(20,0.3)\)</span>. Compute <span class="math inline">\(P(X\leq5)\)</span> using the PMF and then the CDF.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Long way: add the individual masses</span></span>
-<span id="cb7-2"><a></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fl">0.3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Long way: add the individual masses</span></span>
+<span id="cb9-2"><a></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fl">0.3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4163708</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Short way: ask for the CDF</span></span>
-<span id="cb9-2"><a></a><span class="fu">pbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># Short way: ask for the CDF</span></span>
+<span id="cb11-2"><a></a><span class="fu">pbinom</span>(<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4163708</code></pre>
 </div>
@@ -417,7 +410,7 @@ Dwija Kakkad
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -429,10 +422,10 @@ Dwija Kakkad
 <p>And by the complement rule,</p>
 <p><span class="math display">\[P(X&gt;a)=1-F_X(a).\]</span></p>
 <p><strong>Warning:</strong> For a discrete random variable, <span class="math inline">\(P(X&lt; a)\)</span> and <span class="math inline">\(P(X\leq a)\)</span> need not be equal.</p>
-</section></section><section><section id="part-ii-translating-probability-statements" class="title-slide slide level1 scrollable center"><h1>Part II: Translating probability statements</h1>
+</section></section><section><section id="part-2-translating-probability-statements" class="title-slide slide level1 scrollable center"><h1>Part 2: Translating probability statements</h1>
 
-</section><section id="your-turn-poisson-probabilities" class="slide level2 scrollable"><h2>Your turn: Poisson probabilities</h2>
-<p>Let <span class="math inline">\(X\sim\operatorname{Poisson}(12)\)</span>. Write an R expression for <strong>each</strong> probability. Don’t execute anything until you’ve decided which endpoints to use.</p>
+</section><section id="your-turn-poisson-probabilities" class="slide level2 medium scrollable"><h2>Your turn: Poisson probabilities</h2>
+<p>Let <span class="math inline">\(X\sim\operatorname{Poisson}(12)\)</span>. Using only the CDF, write an R expression for <strong>each</strong> probability:</p>
 <ol type="1">
 <li><span class="math inline">\(P(X\leq10)\)</span></li>
 <li><span class="math inline">\(P(X&gt;10)\)</span></li>
@@ -440,43 +433,36 @@ Dwija Kakkad
 <li><span class="math inline">\(P(X\geq10)\)</span></li>
 <li><span class="math inline">\(P(8\leq X\leq15)\)</span></li>
 <li><span class="math inline">\(P(8&lt;X&lt;15)\)</span></li>
-</ol>
-<aside class="notes"><p>Allow time to discuss the endpoint adjustments, especially the differences between 2/4 and 5/6.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="solutions-poisson-probabilities" class="slide level2 scrollable"><h2>Solutions: Poisson probabilities</h2>
+<li><span class="math inline">\(P(X = 8)\)</span></li>
+</ol></section><section id="solutions-poisson-probabilities" class="slide level2 small scrollable"><h2>Solutions: Poisson probabilities</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ppois</span>(<span class="dv">10</span>, <span class="at">lambda =</span> <span class="dv">12</span>)               <span class="co"># P(X &lt;= 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ppois</span>(<span class="dv">10</span>, <span class="at">lambda =</span> <span class="dv">12</span>)               <span class="co"># P(X &lt;= 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3472294</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">10</span>, <span class="at">lambda =</span> <span class="dv">12</span>)           <span class="co"># P(X &gt; 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">10</span>, <span class="at">lambda =</span> <span class="dv">12</span>)           <span class="co"># P(X &gt; 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6527706</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ppois</span>(<span class="dv">9</span>, <span class="at">lambda =</span> <span class="dv">12</span>)                <span class="co"># P(X &lt; 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ppois</span>(<span class="dv">9</span>, <span class="at">lambda =</span> <span class="dv">12</span>)                <span class="co"># P(X &lt; 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2423922</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">9</span>, <span class="at">lambda =</span> <span class="dv">12</span>)            <span class="co"># P(X &gt;= 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">9</span>, <span class="at">lambda =</span> <span class="dv">12</span>)            <span class="co"># P(X &gt;= 10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7576078</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">ppois</span>(<span class="dv">15</span>, <span class="dv">12</span>) <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">7</span>, <span class="dv">12</span>)         <span class="co"># P(8 &lt;= X &lt;= 15)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ppois</span>(<span class="dv">15</span>, <span class="dv">12</span>) <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">7</span>, <span class="dv">12</span>)         <span class="co"># P(8 &lt;= X &lt;= 15)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7549112</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ppois</span>(<span class="dv">14</span>, <span class="dv">12</span>) <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">8</span>, <span class="dv">12</span>)         <span class="co"># P(8 &lt; X &lt; 15)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ppois</span>(<span class="dv">14</span>, <span class="dv">12</span>) <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">8</span>, <span class="dv">12</span>)         <span class="co"># P(8 &lt; X &lt; 15)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6169968</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ppois</span>(<span class="dv">8</span>, <span class="dv">12</span>) <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">7</span>, <span class="dv">12</span>)          <span class="co"># P(X = 8)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.06552328</code></pre>
 </div>
 </div>
 <p>Why 9 instead of 10? Why 7 instead of 8? We can move a strict inequality by one because a Poisson variable takes <strong>integer values</strong>.</p>
@@ -485,21 +471,21 @@ Dwija Kakkad
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>The only difference is the mass at <span class="math inline">\(X=10\)</span>.</p>
-</section><section id="another-way-to-compute-upper-tails" class="slide level2 scrollable"><h2>Another way to compute upper tails</h2>
+</section><section id="another-way-to-compute-upper-tails" class="slide level2 medium scrollable"><h2>Another way to compute upper tails</h2>
 <p>The function argument <code>lower.tail = FALSE</code> asks R for <span class="math inline">\(P(X&gt;x)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># Two ways to compute P(X &gt; 10)</span></span>
-<span id="cb23-2"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">10</span>, <span class="at">lambda =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="co"># Two ways to compute P(X &gt; 10)</span></span>
+<span id="cb27-2"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">10</span>, <span class="at">lambda =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6527706</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ppois</span>(<span class="dv">10</span>, <span class="at">lambda =</span> <span class="dv">12</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">ppois</span>(<span class="dv">10</span>, <span class="at">lambda =</span> <span class="dv">12</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6527706</code></pre>
 </div>
@@ -508,7 +494,7 @@ Dwija Kakkad
 <p><strong>It still means <span class="math inline">\(P(X&gt;10)\)</span>, not <span class="math inline">\(P(X\geq10)\)</span>.</strong></p>
 </section><section id="your-turn-a-binomial-variable" class="slide level2 scrollable"><h2>Your turn: a binomial variable</h2>
 <p>Let <span class="math inline">\(Y\sim\operatorname{Binomial}(30,0.2)\)</span>.</p>
-<p>Write R expressions for:</p>
+<p>Using only the CDF, write R expressions for:</p>
 <ol type="1">
 <li>
 <span class="math inline">\(P(Y=4)\)</span>;</li>
@@ -518,44 +504,47 @@ Dwija Kakkad
 <span class="math inline">\(P(Y\geq4)\)</span>;</li>
 <li>
 <span class="math inline">\(P(3\leq Y&lt;8)\)</span>.</li>
-</ol>
-<p>Try to use <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> whenever it is appropriate, and <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code> for an individual mass.</p>
-</section><section id="solutions-binomial-probabilities" class="slide level2 scrollable"><h2>Solutions: binomial probabilities</h2>
+</ol></section><section id="solutions-binomial-probabilities" class="slide level2 scrollable"><h2>Solutions: binomial probabilities</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">dbinom</span>(<span class="dv">4</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">dbinom</span>(<span class="dv">4</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1325224</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">pbinom</span>(<span class="dv">4</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">pbinom</span>(<span class="dv">4</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> <span class="fl">0.2</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">3</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> <span class="fl">0.2</span>) <span class="co"># same as above</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1325224</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">pbinom</span>(<span class="dv">4</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2552333</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">pbinom</span>(<span class="dv">3</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> <span class="fl">0.2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">pbinom</span>(<span class="dv">3</span>, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> <span class="fl">0.2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8772892</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">pbinom</span>(<span class="dv">7</span>, <span class="dv">30</span>, <span class="fl">0.2</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">2</span>, <span class="dv">30</span>, <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">pbinom</span>(<span class="dv">7</span>, <span class="dv">30</span>, <span class="fl">0.2</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">2</span>, <span class="dv">30</span>, <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7166116</code></pre>
 </div>
 </div>
-<p><strong>Sanity check:</strong> Every result must lie between 0 and 1. The probability of <span class="math inline">\(Y\geq4\)</span> should exceed the probability of <span class="math inline">\(Y=4\)</span>.</p>
-</section></section><section><section id="part-iii-continuous-random-variables" class="title-slide slide level1 scrollable center"><h1>Part III: Continuous random variables</h1>
+</section></section><section><section id="part-3-continuous-random-variables" class="title-slide slide level1 scrollable center"><h1>Part 3: Continuous random variables</h1>
 
 </section><section id="review-continuous-random-variables" class="slide level2 scrollable"><h2>Review: continuous random variables</h2>
-<p>A continuous random variable is described by a <strong>probability density function (PDF)</strong> <span class="math inline">\(f_X\)</span> such that</p>
+<p>An (absolutely) continuous random variable is described by a <strong>probability density function (PDF)</strong> <span class="math inline">\(f_X\)</span> such that</p>
 <p><span class="math display">\[f_X(x)\geq0,\qquad \int_{-\infty}^{\infty}f_X(x)\,dx=1.\]</span></p>
 <p>Probabilities are <strong>areas under the density curve</strong>:</p>
 <p><span class="math display">\[P(a&lt;X&lt;b)=\int_a^b f_X(x)\,dx.\]</span></p>
-<p>Crucially, <span class="math inline">\(f_X(x)\)</span> is a <strong>density</strong>, not <span class="math inline">\(P(X=x)\)</span>.</p>
-<p>For a continuous random variable with a PDF,</p>
-<p><span class="math display">\[\boxed{P(X=x)=0\quad\text{for every }x.}\]</span></p>
-</section><section id="what-does-a-pdf-represent" class="slide level2 scrollable"><h2>What does a PDF represent?</h2>
+<p>NOTE: for discrete variables, we computed probabilities by summing over the PMF. For continuous, we integrate over the PDF. Same idea</p>
+</section><section id="two-crucial-points" class="slide level2"><h2>Two crucial points</h2>
+<ul>
+<li>If <span class="math inline">\(X\)</span> is continuous, then <span class="math inline">\(P(X = x)=0\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>;</li>
+<li>So the height of the density curve <span class="math inline">\(f_X(x)\)</span> is <em>not</em> a probability. It’s a “<em>density</em>,” which is not an interpretable quantity.</li>
+</ul></section><section id="what-does-a-pdf-represent" class="slide level2 scrollable"><h2>What does a PDF represent?</h2>
 <p>A probability is an <strong>area</strong>, not the height of a density curve.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -565,12 +554,13 @@ Dwija Kakkad
 <p>The definition has <strong>not changed</strong>:</p>
 <p><span class="math display">\[F_X(x)=P(X\leq x).\]</span></p>
 <p>For a continuous random variable with density <span class="math inline">\(f_X\)</span>,</p>
-<p><span class="math display">\[F_X(x)=\int_{-\infty}^{x}f_X(t)\,dt.\]</span></p>
+<p><span class="math display">\[F_X(x)=\int_{-\infty}^{x}f_X(t)\,\text{d}t.\]</span></p>
 <p>Therefore,</p>
 <p><span class="math display">\[P(a&lt;X&lt;b)=F_X(b)-F_X(a).\]</span></p>
+</section><section id="back-to-the-crucial-point" class="slide level2"><h2>Back to the crucial point</h2>
 <p>Because individual points have zero probability, the strictness of the endpoints doesn’t matter for intervals:</p>
 <p><span class="math display">\[P(a&lt;X&lt;b)=P(a\leq X\leq b).\]</span></p>
-</section><section id="discrete-versus-continuous" class="slide level2 scrollable"><h2>Discrete versus continuous</h2>
+</section><section id="discrete-versus-continuous" class="slide level2 medium scrollable"><h2>Discrete versus continuous</h2>
 <table class="caption-top">
 <thead><tr class="header">
 <th style="text-align: left;">Probability statement</th>
@@ -618,7 +608,7 @@ Dwija Kakkad
 <p><span class="math display">\[F_X(x)=\frac{x-a}{b-a}.\]</span></p>
 <p>For example, if <span class="math inline">\(X\sim\operatorname{Uniform}(2,8)\)</span>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">punif</span>(<span class="dv">5</span>, <span class="at">min =</span> <span class="dv">2</span>, <span class="at">max =</span> <span class="dv">8</span>)  <span class="co"># P(X &lt;= 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">punif</span>(<span class="dv">5</span>, <span class="at">min =</span> <span class="dv">2</span>, <span class="at">max =</span> <span class="dv">8</span>)  <span class="co"># P(X &lt;= 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5</code></pre>
 </div>
@@ -627,63 +617,49 @@ Dwija Kakkad
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>The shaded area on the left equals the CDF’s height at <span class="math inline">\(x=5\)</span> on the right.</p>
-</section><section id="the-normal-distribution" class="slide level2 scrollable"><h2>The normal distribution</h2>
-<p><span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span> means <span class="math inline">\(X\)</span> has a <strong>normal distribution</strong> with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>.</p>
-<p>Its density is</p>
-<p><span class="math display">\[f_X(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\},\quad \sigma&gt;0.\]</span></p>
-<p>The normal density is symmetric about <span class="math inline">\(\mu\)</span>. Its CDF cannot be expressed in elementary functions, but R can evaluate it numerically.</p>
+</section><section id="uniform-probabilities-are-lengths" class="slide level2 scrollable"><h2>Uniform probabilities are lengths</h2>
+<p>Let <span class="math inline">\(U\sim\operatorname{Uniform}(2,8)\)</span>. The total width is <span class="math inline">\(8-2=6\)</span>.</p>
+<p>To calculate <span class="math inline">\(P(3&lt;U&lt;7)\)</span>, take the <strong>length of the desired interval</strong> divided by the <strong>total length</strong>:</p>
+<p><span class="math display">\[P(3&lt;U&lt;7)=\frac{7-3}{8-2}=\frac{4}{6}.\]</span></p>
+<p>Now compute the same probability using the CDF:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="co"># N(100, 2^2): mean = 100, STANDARD DEVIATION = 2</span></span>
-<span id="cb37-2"><a></a><span class="fu">pnorm</span>(<span class="dv">103</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">punif</span>(<span class="dv">7</span>, <span class="at">min =</span> <span class="dv">2</span>, <span class="at">max =</span> <span class="dv">8</span>) <span class="sc">-</span> <span class="fu">punif</span>(<span class="dv">3</span>, <span class="at">min =</span> <span class="dv">2</span>, <span class="at">max =</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9331928</code></pre>
+<pre><code>[1] 0.6666667</code></pre>
 </div>
 </div>
-<p><strong>R takes <code>sd</code>, not variance.</strong></p>
-</section><section id="normal-density-and-cdf" class="slide level2 scrollable"><h2>Normal: density and CDF</h2>
+<p>The agreement is not a coincidence: the difference of the CDF values is the area under the density between the endpoints.</p>
+</section><section id="uniform-an-interval-probability-two-pictures" class="slide level2 scrollable"><h2>Uniform: an interval probability, two pictures</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-15-pdqr_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>The vertical difference between CDF values at 97 and 103 equals the shaded PDF area.</p>
-</section><section id="a-first-continuous-calculation" class="slide level2 scrollable"><h2>A first continuous calculation</h2>
-<p>Suppose <span class="math inline">\(Y\sim N(100,2^2)\)</span>. Find <span class="math inline">\(P(97&lt;Y&lt;103)\)</span>.</p>
-<p><span class="math display">\[P(97&lt;Y&lt;103)=F_Y(103)-F_Y(97).\]</span></p>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">pnorm</span>(<span class="dv">103</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">2</span>) <span class="sc">-</span></span>
-<span id="cb39-2"><a></a>  <span class="fu">pnorm</span>(<span class="dv">97</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8663856</code></pre>
-</div>
-</div>
-<p>Notice that for this continuous variable, we need <strong>no plus or minus 1</strong> at the endpoints.</p>
-</div>
+<p><span class="math display">\[P(3&lt;U&lt;7)=F_U(7)-F_U(3).\]</span></p>
 </section><section id="dont-confuse-d-and-p" class="slide level2 scrollable"><h2>Don’t confuse <code>d</code> and <code>p</code>
 </h2>
-<p>For the normal family:</p>
+<p>For the continuous uniform family:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">dnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">2</span>) <span class="co"># Height of the density</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">dunif</span>(<span class="dv">5</span>, <span class="at">min =</span> <span class="dv">2</span>, <span class="at">max =</span> <span class="dv">8</span>) <span class="co"># Height of the density at 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1994711</code></pre>
+<pre><code>[1] 0.1666667</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">pnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">2</span>) <span class="co"># Area to the left</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">punif</span>(<span class="dv">5</span>, <span class="at">min =</span> <span class="dv">2</span>, <span class="at">max =</span> <span class="dv">8</span>) <span class="co"># Area to the left of 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5</code></pre>
 </div>
 </div>
-<p>The first number is <strong>not</strong> <span class="math inline">\(P(Y=100)\)</span>; that probability is zero. The second is <span class="math inline">\(P(Y\leq100)=1/2\)</span> by symmetry.</p>
-</section></section><section><section id="part-iv-translating-probability-statements-your-turn" class="title-slide slide level1 scrollable center"><h1>Part IV: Translating probability statements — your turn</h1>
+<p>The first number is <strong>not</strong> <span class="math inline">\(P(U=5)\)</span>; that probability is zero. The second is <span class="math inline">\(P(U\leq5)=1/2\)</span>.</p>
+</section></section><section><section id="part-4-translating-probability-statements-your-turn" class="title-slide slide level1 scrollable center"><h1>Part 4: Translating probability statements — your turn</h1>
 
 </section><section id="exercise-1-uniform" class="slide level2 scrollable"><h2>Exercise 1: uniform</h2>
 <p>Let <span class="math inline">\(U\sim\operatorname{Uniform}(2,8)\)</span>.</p>
@@ -699,8 +675,15 @@ Dwija Kakkad
 <span class="math inline">\(P(U=5)\)</span>.</li>
 </ol>
 <p>Then <strong>check</strong> answers 1–3 by calculating the corresponding lengths as fractions of the total interval length.</p>
-</section><section id="practice-visualize-before-calculating" class="slide level2 scrollable"><h2>Practice: visualize before calculating</h2>
-<p>For <span class="math inline">\(Z\sim N(100,2^2)\)</span>, sketch the event <span class="math inline">\(|Z-100|&gt;3\)</span> <strong>before</strong> entering any code.</p>
+</section><section id="exercise-2-visualize-before-calculating" class="slide level2 scrollable"><h2>Exercise 2: visualize before calculating</h2>
+<p>Let <span class="math inline">\(U\sim\operatorname{Uniform}(2,8)\)</span>. Sketch the region describing</p>
+<p><span class="math display">\[P(U&lt;3\text{ or }U&gt;7)\]</span></p>
+<p>before entering any R code. Then:</p>
+<ol type="1">
+<li>Calculate the probability using <strong>two CDF values</strong>.</li>
+<li>Calculate it using <strong>lengths of intervals</strong>.</li>
+<li>Check your answer using the complement of <span class="math inline">\(P(3\leq U\leq7)\)</span>.</li>
+</ol>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -709,20 +692,6 @@ Dwija Kakkad
 </div>
 </div>
 </div>
-</section><section id="exercise-2-normal" class="slide level2 scrollable"><h2>Exercise 2: normal</h2>
-<p>Let <span class="math inline">\(Z\sim N(100,2^2)\)</span>.</p>
-<p>Using <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code>, calculate:</p>
-<ol type="1">
-<li>
-<span class="math inline">\(P(Z&lt;97)\)</span>;</li>
-<li>
-<span class="math inline">\(P(Z\geq103)\)</span>;</li>
-<li>
-<span class="math inline">\(P(97&lt;Z&lt;103)\)</span>;</li>
-<li>
-<span class="math inline">\(P(|Z-100|&gt;3)\)</span>.</li>
-</ol>
-<p>Explain in words what event 4 describes. Which answers can be related by symmetry?</p>
 </section><section id="exercise-3-choose-your-model" class="slide level2 scrollable"><h2>Exercise 3: choose your model</h2>
 <p>A factory makes components independently. Each component has probability <span class="math inline">\(0.04\)</span> of being defective. An inspector tests 75 components.</p>
 <ol type="1">
@@ -738,13 +707,16 @@ Dwija Kakkad
 <li>Find the probability of <strong>more than 15</strong> arrivals.</li>
 <li>Find the probability of <strong>between 10 and 15 arrivals, inclusive</strong>.</li>
 <li>What would you change if the observation interval were <strong>30 minutes</strong>?</li>
-</ol></section><section id="exercise-5-a-manufacturing-tolerance" class="slide level2 scrollable"><h2>Exercise 5: a manufacturing tolerance</h2>
-<p>The length <span class="math inline">\(L\)</span> of a manufactured rod is normally distributed, with mean 100 mm and standard deviation 2 mm. A rod is accepted if its length is between 97 and 103 mm, inclusive.</p>
+</ol></section><section id="exercise-5-continuous-uniform-application" class="slide level2 scrollable"><h2>Exercise 5: continuous uniform application</h2>
+<p>A bus arrives at a stop at a time uniformly distributed between 2:00 and 2:12 p.m. Let <span class="math inline">\(W\)</span> denote the number of minutes after 2:00 when it arrives.</p>
 <ol type="1">
-<li>Calculate the proportion of rods that will be accepted.</li>
-<li>Calculate the proportion that will be rejected.</li>
-<li>If the acceptance interval were instead 98 to 102 mm, what would happen to the acceptance probability? Calculate it.</li>
-</ol></section><section id="exercise-6-conditional-probability-challenge" class="slide level2 scrollable"><h2>Exercise 6: conditional probability (challenge)</h2>
+<li>Specify the distribution of <span class="math inline">\(W\)</span>.</li>
+<li>Find the probability that the bus arrives after 2:09.</li>
+<li>Find the probability that it arrives between 2:03 and 2:07.</li>
+<li>What is the probability that it arrives at <strong>exactly</strong> 2:06?</li>
+</ol>
+<p>For 2 and 3, answer both <strong>geometrically</strong> and using <code><a href="https://rdrr.io/r/stats/Uniform.html">punif()</a></code>.</p>
+</section><section id="exercise-6-conditional-probability-challenge" class="slide level2 scrollable"><h2>Exercise 6: conditional probability (challenge)</h2>
 <p>Let <span class="math inline">\(X\sim\operatorname{Poisson}(12)\)</span>.</p>
 <p>A researcher learns that at least 10 events occurred but doesn’t know the exact count. Find</p>
 <p><span class="math display">\[P(X\geq15\mid X\geq10).\]</span></p>
@@ -752,60 +724,55 @@ Dwija Kakkad
 </section><section id="before-you-leave" class="slide level2 scrollable"><h2>Before you leave</h2>
 <p>You should be able to:</p>
 <ul>
-<li>Identify the appropriate model and its parameters;</li>
 <li>Translate <span class="math inline">\(&lt;,\leq,&gt;,\geq\)</span> and interval events into CDF expressions;</li>
 <li>Handle endpoints correctly for discrete versus continuous variables;</li>
-<li>Use <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code>, <code><a href="https://rdrr.io/r/stats/Poisson.html">ppois()</a></code>, <code><a href="https://rdrr.io/r/stats/Uniform.html">punif()</a></code>, and <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> to evaluate the results;</li>
+<li>Use <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code>, <code><a href="https://rdrr.io/r/stats/Poisson.html">ppois()</a></code>, and <code><a href="https://rdrr.io/r/stats/Uniform.html">punif()</a></code> to evaluate the results;</li>
 <li>Recognize when <code>d...()</code> supplies a mass versus a density.</li>
 </ul></section></section><section><section id="appendix-solutions-to-independent-exercises" class="title-slide slide level1 scrollable center"><h1>Appendix: solutions to independent exercises</h1>
 
 </section><section id="exercise-1-solutions" class="slide level2 scrollable"><h2>Exercise 1 solutions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">punif</span>(<span class="dv">5</span>, <span class="at">min =</span> <span class="dv">2</span>, <span class="at">max =</span> <span class="dv">8</span>)          <span class="co"># 3/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">punif</span>(<span class="dv">5</span>, <span class="at">min =</span> <span class="dv">2</span>, <span class="at">max =</span> <span class="dv">8</span>)          <span class="co"># 3/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">punif</span>(<span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="co"># 2/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="fu">punif</span>(<span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="co"># 2/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3333333</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">punif</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">8</span>) <span class="sc">-</span> <span class="fu">punif</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">8</span>)    <span class="co"># 4/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">punif</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">8</span>) <span class="sc">-</span> <span class="fu">punif</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">8</span>)    <span class="co"># 4/6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6666667</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="dv">0</span>                                   <span class="co"># P(U = 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="dv">0</span>                                   <span class="co"># P(U = 5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
 </div>
 </section><section id="exercise-2-solutions" class="slide level2 scrollable"><h2>Exercise 2 solutions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">pnorm</span>(<span class="dv">97</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a><span class="fu">punif</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">8</span>) <span class="sc">+</span> <span class="fu">punif</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0668072</code></pre>
+<pre><code>[1] 0.3333333</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">pnorm</span>(<span class="dv">103</span>, <span class="dv">100</span>, <span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>(<span class="dv">3</span> <span class="sc">-</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="dv">6</span> <span class="sc">+</span> (<span class="dv">8</span> <span class="sc">-</span> <span class="dv">7</span>) <span class="sc">/</span> <span class="dv">6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0668072</code></pre>
+<pre><code>[1] 0.3333333</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a><span class="fu">pnorm</span>(<span class="dv">103</span>, <span class="dv">100</span>, <span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">97</span>, <span class="dv">100</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a><span class="dv">1</span> <span class="sc">-</span> (<span class="fu">punif</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">8</span>) <span class="sc">-</span> <span class="fu">punif</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8663856</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a><span class="fu">pnorm</span>(<span class="dv">97</span>, <span class="dv">100</span>, <span class="dv">2</span>) <span class="sc">+</span> <span class="fu">pnorm</span>(<span class="dv">103</span>, <span class="dv">100</span>, <span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1336144</code></pre>
+<pre><code>[1] 0.3333333</code></pre>
 </div>
 </div>
-<p>By symmetry, answers 1 and 2 are equal. Answer 4 is their sum.</p>
+<p>All three calculations equal <span class="math inline">\(1/3\)</span>.</p>
 </section><section id="exercise-3-solutions" class="slide level2 scrollable"><h2>Exercise 3 solutions</h2>
 <p><span class="math inline">\(D\sim\operatorname{Binomial}(75,0.04)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a><span class="fu">pbinom</span>(<span class="dv">4</span>, <span class="at">size =</span> <span class="dv">75</span>, <span class="at">prob =</span> <span class="fl">0.04</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="fu">pbinom</span>(<span class="dv">4</span>, <span class="at">size =</span> <span class="dv">75</span>, <span class="at">prob =</span> <span class="fl">0.04</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1812487</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="fu">pbinom</span>(<span class="dv">6</span>, <span class="dv">75</span>, <span class="fl">0.04</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">1</span>, <span class="dv">75</span>, <span class="fl">0.04</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a><span class="fu">pbinom</span>(<span class="dv">6</span>, <span class="dv">75</span>, <span class="fl">0.04</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">1</span>, <span class="dv">75</span>, <span class="fl">0.04</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7764451</code></pre>
 </div>
@@ -813,39 +780,39 @@ Dwija Kakkad
 </section><section id="exercise-4-solutions" class="slide level2 scrollable"><h2>Exercise 4 solutions</h2>
 <p>For two hours, <span class="math inline">\(N\sim\operatorname{Poisson}(12)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a><span class="fu">ppois</span>(<span class="dv">15</span>, <span class="at">lambda =</span> <span class="dv">12</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a><span class="fu">ppois</span>(<span class="dv">15</span>, <span class="at">lambda =</span> <span class="dv">12</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1555843</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a><span class="fu">ppois</span>(<span class="dv">15</span>, <span class="dv">12</span>) <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">9</span>, <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a><span class="fu">ppois</span>(<span class="dv">15</span>, <span class="dv">12</span>) <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">9</span>, <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6020235</code></pre>
 </div>
 </div>
 <p>For 30 minutes, use <span class="math inline">\(\lambda=3\)</span> instead of <span class="math inline">\(\lambda=12\)</span>.</p>
 </section><section id="exercise-5-solutions" class="slide level2 scrollable"><h2>Exercise 5 solutions</h2>
+<p><span class="math inline">\(W\sim\operatorname{Uniform}(0,12)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a>accepted <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">103</span>, <span class="dv">100</span>, <span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">97</span>, <span class="dv">100</span>, <span class="dv">2</span>)</span>
-<span id="cb69-2"><a></a>accepted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a><span class="fu">punif</span>(<span class="dv">9</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">12</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="co"># 3/12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8663856</code></pre>
+<pre><code>[1] 0.25</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a><span class="dv">1</span> <span class="sc">-</span> accepted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a><span class="fu">punif</span>(<span class="dv">7</span>, <span class="dv">0</span>, <span class="dv">12</span>) <span class="sc">-</span> <span class="fu">punif</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">12</span>)         <span class="co"># 4/12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1336144</code></pre>
+<pre><code>[1] 0.3333333</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a><span class="fu">pnorm</span>(<span class="dv">102</span>, <span class="dv">100</span>, <span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">98</span>, <span class="dv">100</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a><span class="dv">0</span>                                          <span class="co"># P(W = 6)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6826895</code></pre>
+<pre><code>[1] 0</code></pre>
 </div>
 </div>
-<p>A narrower acceptance interval reduces the probability of acceptance.</p>
+<p>Geometrically, the relevant widths are 3 minutes and 4 minutes out of a 12-minute interval.</p>
 </section><section id="exercise-6-solution" class="slide level2 scrollable"><h2>Exercise 6 solution</h2>
 <p>Because <span class="math inline">\(\{X\geq15\}\subseteq\{X\geq10\}\)</span>,</p>
 <p><span class="math display">\[P(X\geq15\mid X\geq10)=\frac{P(X\geq15)}{P(X\geq10)}.\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a><span class="fu">ppois</span>(<span class="dv">14</span>, <span class="dv">12</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="sc">/</span></span>
-<span id="cb75-2"><a></a>  <span class="fu">ppois</span>(<span class="dv">9</span>, <span class="dv">12</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a></a><span class="fu">ppois</span>(<span class="dv">14</span>, <span class="dv">12</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="sc">/</span></span>
+<span id="cb77-2"><a></a>  <span class="fu">ppois</span>(<span class="dv">9</span>, <span class="dv">12</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3009149</code></pre>
 </div>
