@@ -1,0 +1,643 @@
+---
+title: "Computing probabilities in R"
+author: "Dwija Kakkad"
+format: 
+  revealjs: 
+    output-file: 2026-10-15-pdqr-slides.html
+    footer: "[🔗 sta240-f26.github.io](https://sta240-f26.github.io/)"
+    theme: slides.scss
+    transition: fade
+    slide-number: true
+    toc: false
+  html: 
+    code-link: true
+auto-stretch: false
+editor: 
+  mode: source
+---
+
+## Today {.scrollable}
+
+We will use the cumulative distribution function (CDF) to compute probabilities in our familiar distribution families. 
+
+- In order to do this, you must be able to translate an event into an expression involving the CDF;
+- Once you have done that, R provides the `p-` functions for computing the CDF in the famous examples;
+- If a random variable is discrete, care must be taken about the endpoints of intervals. For continuous random variables it doesn't matter.
+
+# Part 1: Discrete random variables {.scrollable}
+
+## Review: discrete random variables {.scrollable}
+
+A random variable $X$ is **discrete** if its range is finite or countably infinite.
+
+. . .
+
+Its **probability mass function (PMF)** is
+
+$$
+p_X(k)
+=
+\begin{cases}
+P(X=k) & k\in\text{Range}(X)\\
+0 & \text{else},
+\end{cases}
+$$
+
+which must satisfy:
+
+$$p_X(k)\geq 0,\qquad \sum_{k\in\text{Range}(X)} p_X(k)=1.$$
+
+. . .
+
+To find the probability of an event, add the inidividual probabilities of all values in the event:
+
+$$
+P(X\in A)=\sum_{k\in A}p_X(k).
+$$
+
+## Pictures of two discrete PMFs {.scrollable}
+
+A PMF assigns **probability mass** to individual values.
+
+```{r}
+#| echo: false
+#| fig-height: 3.8
+par(mfrow = c(1, 2), mar = c(4, 4, 2, 1))
+k <- 0:20
+plot(k, dbinom(k, 20, 0.3), type = "h", lwd = 4, col = "steelblue",
+     xlab = "Number of successes", ylab = "Probability",
+     main = "Binomial(20, 0.3)")
+points(k, dbinom(k, 20, 0.3), pch = 16, col = "steelblue")
+k <- 0:25
+plot(k, dpois(k, 12), type = "h", lwd = 4, col = "tomato3",
+     xlab = "Event count", ylab = "Probability", main = "Poisson(12)")
+points(k, dpois(k, 12), pch = 16, col = "tomato3")
+par(mfrow = c(1, 1))
+```
+
+The probability at a value is the height of its spike. 
+
+## Three families we've met {.scrollable}
+
+We've begun studying famous *parametric* families of probability distributions:
+
+| Distribution | Range | PMF: $P(X=k)$ | 
+| --- | --- | --- |
+| $X\sim\text{Binom}(n,\,p)$ | $\{0,\,1,\,2,\,...,\,n\}$ | $\binom{n}{k}p^k(1-p)^{n-k}$ |
+| $X\sim\text{Geom}(p)$ | $\{1,\,2,\,3,\,...\}$ | $(1-p)^{k-1}p$ |
+| $X\sim\text{Poisson}(\lambda)$ | $\mathbb{N}=\{0,\,1,\,2,\,3,\,...\}$ | $e^{-\lambda}\frac{\lambda^k}{k!}$ |
+
+You will see *dozens* more by the end of the semester.
+
+## The `pdqr` functions
+
+R provides a standardized set of commands for working with each family of distributions:
+
+- The `p` command computes the CDF (today!);
+- The `d` command computes the PMF;
+- The `q` command computes the quantile functions (stay tuned!);
+- The `r` command simulates random numbers from the distribution.
+
+## Review: binomial {.scrollable}
+
+If $X\sim\operatorname{Binomial}(n,p)$, then
+
+$$P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}, \quad k=0,\ldots,n.$$
+
+Think: $n$ independent trials, each with success probability $p$; $X$ counts successes.
+
+For example, if $X\sim\operatorname{Binomial}(20,0.3)$:
+
+```{r}
+dbinom(5, size = 20, prob = 0.3) # P(X = 5)
+```
+
+## Review: Poisson {.scrollable}
+
+If $X\sim\operatorname{Poisson}(\lambda)$, then
+
+$$P(X=k)=e^{-\lambda}\frac{\lambda^k}{k!}, \quad k=0,1,2,\ldots.$$
+
+$X$ often counts arrivals, occurrences, or defects in a given window of time. $\lambda>0$ is the mean count.
+
+```{r}
+dpois(5, lambda = 12) # P(X = 5)
+```
+
+# The CDF {.scrollable}
+
+## Definition {.scrollable}
+
+For *any* random variable $X$, its cumulative distribution function (CDF) is
+
+$$F_X(x)=P(X\leq x).$$
+
+For discrete $X$, you get this by adding up (ie. *accumulating*) PMF values from left to right:
+
+$$F_X(x)=P(X\in(-\infty,\,x]))=\sum_{k\leq x}P(X=k).$$
+
+## From masses to a CDF {.scrollable}
+
+The CDF **accumulates** the probability mass as the threshold increases.
+
+```{r}
+#| echo: false
+#| fig-height: 3.8
+k <- 0:20
+par(mfrow = c(1, 2), mar = c(4, 4, 2, 1))
+barplot(dbinom(k, 20, 0.3), names.arg = k, border = NA,
+        col = ifelse(k <= 5, "steelblue", "grey80"),
+        xlab = "k", ylab = "P(X = k)", main = "PMF: highlighted X <= 5", cex.names = 0.6)
+plot(stepfun(k, c(0, pbinom(k, 20, 0.3))), xlim = c(0, 20), ylim = c(0, 1),
+     do.points = FALSE, verticals = TRUE, col = "steelblue", lwd = 2,
+     xlab = "x", ylab = "F(x) = P(X <= x)", main = "CDF: cumulative mass")
+abline(v = 5, lty = 2, col = "tomato3")
+par(mfrow = c(1, 1))
+```
+
+The CDF jumps at possible outcomes; the size of each jump is the corresponding PMF value.
+
+## Example
+
+For example, if $X\sim\operatorname{Binomial}(20,0.3)$:
+
+$$P(X\leq 5)=\sum_{k=0}^{5}P(X=k).$$
+
+. . .
+
+```{r}
+sum(dbinom(0:5, size = 20, prob = 0.3))
+```
+
+. . .
+
+```{r}
+pbinom(5, size = 20, prob = 0.3)
+```
+
+Same answer!
+
+## Review: properties of every CDF {.scrollable}
+
+::: incremental
+1. (universality) every random variable has a CDF, and it uniquely characterizes the entire distribution;
+1. (nondecreasing) if $a\leq b$, then $F_X(a)\leq F_X(b)$;
+1. (right continuous) $\lim_{x\to a^+}F_X(x)=F_X(a)$;
+1. (limits) $F_X(x)\to 0$ as $x\to-\infty$, and $F_X(x)\to1$ as $x\to\infty$;
+1. (computation) $P(a<X\leq b)=F_X(b)-F_X(a)$, for $a<b$.
+:::
+
+. . .
+
+For discrete random variables specifically, the CDF is piecewise constant (ie. a step function), and the size of the jump at $x$ is $P(X=x)$.
+
+## The `p` functions in R {.scrollable}
+
+R uses a common naming scheme for probability distributions:
+
+| Family | PMF or PDF | CDF | Simulation |
+|:--|:--|:--|:--|
+| Binomial | `dbinom()` | `pbinom()` | `rbinom()` |
+| Poisson | `dpois()` | `ppois()` | `rpois()` |
+| Uniform | `dunif()` | `punif()` | `runif()` |
+
+The `p` functions return $P(X\leq x)$ (the **lower tail**) by default.
+
+## First calculation: a shortcut for summing masses {.scrollable}
+
+Let $X\sim\operatorname{Binomial}(20,0.3)$. Compute $P(X\leq5)$ using the PMF and then the CDF.
+
+```{r}
+# Long way: add the individual masses
+sum(dbinom(0:5, size = 20, prob = 0.3))
+
+# Short way: ask for the CDF
+pbinom(5, size = 20, prob = 0.3)
+```
+
+They give the same answer. `pbinom(5, ...)` evaluates the cumulative probability directly.
+
+## See the complement {.scrollable}
+
+For $X\sim\operatorname{Poisson}(12)$, the event $X>10$ is the **unshaded remainder** when $X\leq10$ is shaded.
+
+```{r}
+#| echo: false
+k <- 0:28
+barplot(dpois(k, 12), names.arg = k, border = NA,
+        col = ifelse(k <= 10, "steelblue", "tomato3"),
+        xlab = "Event count", ylab = "Probability mass", cex.names = 0.7,
+        main = "Blue: P(X <= 10)     Red: P(X > 10)")
+legend("topright", legend = c("X <= 10", "X > 10"),
+       fill = c("steelblue", "tomato3"), bty = "n")
+```
+
+$$P(X>10)=1-F_X(10).$$
+
+## One formula, many probabilities {.scrollable}
+
+For any $a<b$,
+
+$$P(a<X\leq b)=F_X(b)-F_X(a).$$
+
+And by the complement rule,
+
+$$P(X>a)=1-F_X(a).$$
+
+**Warning:** For a discrete random variable, $P(X< a)$ and $P(X\leq a)$ need not be equal.
+
+# Part 2: Translating probability statements {.scrollable}
+
+## Your turn: Poisson probabilities {.medium .scrollable}
+
+Let $X\sim\operatorname{Poisson}(12)$. Using only the CDF, write an R expression for **each** probability:
+
+1. $P(X\leq10)$
+1. $P(X>10)$
+1. $P(X<10)$
+1. $P(X\geq10)$
+1. $P(8\leq X\leq15)$
+1. $P(8<X<15)$
+1. $P(X = 8)$
+
+
+## Solutions: Poisson probabilities {.small .scrollable}
+
+```{r}
+ppois(10, lambda = 12)               # P(X <= 10)
+1 - ppois(10, lambda = 12)           # P(X > 10)
+ppois(9, lambda = 12)                # P(X < 10)
+1 - ppois(9, lambda = 12)            # P(X >= 10)
+ppois(15, 12) - ppois(7, 12)         # P(8 <= X <= 15)
+ppois(14, 12) - ppois(8, 12)         # P(8 < X < 15)
+ppois(8, 12) - ppois(7, 12)          # P(X = 8)
+```
+
+Why 9 instead of 10? Why 7 instead of 8? We can move a strict inequality by one because a Poisson variable takes **integer values**.
+
+## Visualize the endpoints {.scrollable}
+
+For integer-valued $X$, the two events below are **not** the same.
+
+```{r}
+#| echo: false
+#| fig-height: 3.6
+k <- 0:23
+par(mfrow = c(1, 2), mar = c(4, 3.6, 2, 1))
+for (inclusive in c(FALSE, TRUE)) {
+  chosen <- if (inclusive) k >= 10 else k > 10
+  barplot(dpois(k, 12), names.arg = k, border = NA,
+          col = ifelse(chosen, "steelblue", "grey85"), cex.names = 0.65,
+          xlab = "k", ylab = "P(X = k)",
+          main = if (inclusive) "P(X >= 10)" else "P(X > 10)")
+}
+par(mfrow = c(1, 1))
+```
+
+The only difference is the mass at $X=10$.
+
+## Another way to compute upper tails {.medium .scrollable}
+
+The function argument `lower.tail = FALSE` asks R for $P(X>x)$.
+
+```{r}
+# Two ways to compute P(X > 10)
+1 - ppois(10, lambda = 12)
+ppois(10, lambda = 12, lower.tail = FALSE)
+```
+
+These are mathematically equivalent. The second is often preferable for very small tail probabilities because it avoids subtracting a number extremely close to 1.
+
+**It still means $P(X>10)$, not $P(X\geq10)$.**
+
+## Your turn: a binomial variable {.scrollable}
+
+Let $Y\sim\operatorname{Binomial}(30,0.2)$.
+
+Using only the CDF, write R expressions for:
+
+1. $P(Y=4)$;
+1. $P(Y\leq4)$;
+1. $P(Y\geq4)$;
+1. $P(3\leq Y<8)$.
+
+## Solutions: binomial probabilities {.scrollable}
+
+```{r}
+dbinom(4, size = 30, prob = 0.2)
+pbinom(4, size = 30, prob = 0.2) - pbinom(3, size = 30, prob = 0.2) # same as above
+pbinom(4, size = 30, prob = 0.2)
+pbinom(3, size = 30, prob = 0.2, lower.tail = FALSE)
+pbinom(7, 30, 0.2) - pbinom(2, 30, 0.2)
+```
+
+
+
+# Part 3: Continuous random variables {.scrollable}
+
+## Review: continuous random variables {.scrollable}
+
+An (absolutely) continuous random variable is described by a **probability density function (PDF)** $f_X$ such that
+
+$$f_X(x)\geq0,\qquad \int_{-\infty}^{\infty}f_X(x)\,dx=1.$$
+
+Probabilities are **areas under the density curve**:
+
+$$P(a<X<b)=\int_a^b f_X(x)\,dx.$$
+
+NOTE: for discrete variables, we computed probabilities by summing over the PMF. For continuous, we integrate over the PDF. Same idea
+
+
+## Two crucial points
+
+- If $X$ is continuous, then $P(X = x)=0$ for all $x\in\mathbb{R}$;
+- So the height of the density curve $f_X(x)$ is *not* a probability. It's a "*density*," which is not an interpretable quantity.
+
+## What does a PDF represent? {.scrollable}
+
+A probability is an **area**, not the height of a density curve.
+
+```{r}
+#| echo: false
+x <- seq(-4, 4, length.out = 600)
+y <- dnorm(x)
+plot(x, y, type = "l", lwd = 3, col = "steelblue", ylim = c(0, 0.43),
+     xlab = "x", ylab = "Density", main = "Area between -1 and 1")
+inside <- x >= -1 & x <= 1
+polygon(c(-1, x[inside], 1), c(0, y[inside], 0),
+        col = adjustcolor("steelblue", alpha.f = 0.3), border = NA)
+lines(x, y, lwd = 3, col = "steelblue")
+abline(v = c(-1, 1), lty = 3)
+```
+
+$$P(-1<Z<1)=F_Z(1)-F_Z(-1).$$
+
+## The continuous CDF {.scrollable}
+
+The definition has **not changed**:
+
+$$F_X(x)=P(X\leq x).$$
+
+For a continuous random variable with density $f_X$,
+
+$$F_X(x)=\int_{-\infty}^{x}f_X(t)\,\text{d}t.$$
+
+Therefore,
+
+$$P(a<X<b)=F_X(b)-F_X(a).$$
+
+## Back to the crucial point
+
+Because individual points have zero probability, the strictness of the endpoints doesn't matter for intervals:
+
+$$P(a<X<b)=P(a\leq X\leq b).$$
+
+## Discrete versus continuous {.medium .scrollable}
+
+| Probability statement | Integer-valued $X$ | Continuous $Y$ |
+|:--|:--|:--|
+| $P( X < 10)$ or $P(Y<10)$ | $F_X(9)$ | $F_Y(10)$ |
+| $P(X\leq10)$ or $P(Y\leq10)$ | $F_X(10)$ | $F_Y(10)$ |
+| $P(X=10)$ or $P(Y=10)$ | May be positive | $0$ |
+| $P(8<X<12)$ or $P(8<Y<12)$ | $F_X(11)-F_X(8)$ | $F_Y(12)-F_Y(8)$ |
+
+The **definition of the CDF** is the same. The endpoint bookkeeping is different.
+
+## The continuous uniform distribution {.scrollable}
+
+$X\sim\operatorname{Uniform}(a,b)$ means that the density is constant between $a$ and $b$:
+
+$$f_X(x)=\begin{cases}\dfrac{1}{b-a},&a\leq x\leq b,\\[4pt]0,&\text{otherwise.}\end{cases}$$
+
+For $a\leq x\leq b$, its CDF is
+
+$$F_X(x)=\frac{x-a}{b-a}.$$
+
+For example, if $X\sim\operatorname{Uniform}(2,8)$:
+
+```{r}
+punif(5, min = 2, max = 8)  # P(X <= 5)
+```
+
+## Uniform: density and CDF {.scrollable}
+
+```{r}
+#| echo: false
+#| fig-height: 3.8
+x <- seq(0, 10, length.out = 500)
+par(mfrow = c(1, 2), mar = c(4, 4, 2, 1))
+plot(x, dunif(x, 2, 8), type = "l", lwd = 3, col = "steelblue",
+     xlab = "x", ylab = "f(x)", main = "Uniform(2, 8) PDF", ylim = c(0, 0.22))
+polygon(c(2, 2, 5, 5), c(0, 1/6, 1/6, 0),
+        col = adjustcolor("steelblue", alpha.f = 0.3), border = NA)
+lines(x, dunif(x, 2, 8), lwd = 3, col = "steelblue")
+plot(x, punif(x, 2, 8), type = "l", lwd = 3, col = "tomato3",
+     xlab = "x", ylab = "F(x)", main = "Uniform(2, 8) CDF")
+abline(v = 5, h = punif(5, 2, 8), lty = 3)
+par(mfrow = c(1, 1))
+```
+
+The shaded area on the left equals the CDF's height at $x=5$ on the right.
+
+## Uniform probabilities are lengths {.scrollable}
+
+Let $U\sim\operatorname{Uniform}(2,8)$. The total width is $8-2=6$.
+
+To calculate $P(3<U<7)$, take the **length of the desired interval** divided by the **total length**:
+
+$$P(3<U<7)=\frac{7-3}{8-2}=\frac{4}{6}.$$
+
+Now compute the same probability using the CDF:
+
+```{r}
+punif(7, min = 2, max = 8) - punif(3, min = 2, max = 8)
+```
+
+The agreement is not a coincidence: the difference of the CDF values is the area under the density between the endpoints.
+
+## Uniform: an interval probability, two pictures {.scrollable}
+
+```{r}
+#| echo: false
+#| fig-height: 3.8
+par(mfrow = c(1, 2), mar = c(4, 4, 2, 1))
+plot(c(0, 10), c(0, .22), type = "n", xlab = "x", ylab = "f(x)",
+     main = "Area from 3 to 7")
+polygon(c(3, 3, 7, 7), c(0, 1/6, 1/6, 0),
+        col = adjustcolor("steelblue", alpha.f = .35), border = NA)
+segments(c(0, 2, 8), c(0, 1/6, 0), c(2, 8, 10), c(0, 1/6, 0), col = "steelblue", lwd = 3)
+segments(c(2, 8), c(0, 1/6), c(2, 8), c(1/6, 0), col = "steelblue", lwd = 2)
+x <- seq(0, 10, length.out = 500)
+plot(x, punif(x, 2, 8), type = "l", lwd = 3, col = "tomato3",
+     xlab = "x", ylab = "F(x)", main = "CDF difference")
+segments(3, punif(3, 2, 8), 7, punif(3, 2, 8), lty = 2)
+segments(7, punif(3, 2, 8), 7, punif(7, 2, 8), lwd = 5, col = "steelblue")
+points(c(3, 7), punif(c(3, 7), 2, 8), pch = 16, col = "tomato3")
+par(mfrow = c(1, 1))
+```
+
+$$P(3<U<7)=F_U(7)-F_U(3).$$
+
+## Don't confuse `d` and `p` {.scrollable}
+
+For the continuous uniform family:
+
+```{r}
+dunif(5, min = 2, max = 8) # Height of the density at 5
+punif(5, min = 2, max = 8) # Area to the left of 5
+```
+
+The first number is **not** $P(U=5)$; that probability is zero. The second is $P(U\leq5)=1/2$.
+
+# Part 4: Translating probability statements — your turn {.scrollable}
+
+## Exercise 1: uniform {.scrollable}
+
+Let $U\sim\operatorname{Uniform}(2,8)$.
+
+Using `punif()` and ordinary arithmetic, calculate:
+
+1. $P(U\leq5)$;
+2. $P(U>6)$;
+3. $P(3<U<7)$;
+4. $P(U=5)$.
+
+Then **check** answers 1–3 by calculating the corresponding lengths as fractions of the total interval length.
+
+## Exercise 2: visualize before calculating {.scrollable}
+
+Let $U\sim\operatorname{Uniform}(2,8)$. Sketch the region describing
+
+$$P(U<3\text{ or }U>7)$$
+
+before entering any R code. Then:
+
+1. Calculate the probability using **two CDF values**.
+2. Calculate it using **lengths of intervals**.
+3. Check your answer using the complement of $P(3\leq U\leq7)$.
+
+```{r}
+#| echo: false
+#| fig-height: 3.1
+plot(c(0, 10), c(0, 0.22), type = "n", xlab = "u", ylab = "Density",
+     main = "Which parts of the rectangle describe the event?")
+for (ends in list(c(2, 3), c(7, 8))) {
+  polygon(c(ends[1], ends[1], ends[2], ends[2]), c(0, 1/6, 1/6, 0),
+          col = adjustcolor("tomato3", alpha.f = 0.4), border = NA)
+}
+segments(c(0, 2, 8), c(0, 1/6, 0), c(2, 8, 10), c(0, 1/6, 0), col = "steelblue", lwd = 3)
+segments(c(2, 8), c(0, 1/6), c(2, 8), c(1/6, 0), col = "steelblue", lwd = 2)
+```
+
+## Exercise 3: choose your model {.scrollable}
+
+A factory makes components independently. Each component has probability $0.04$ of being defective. An inspector tests 75 components.
+
+1. Specify a distribution for the number of defective components, including its parameters.
+2. Find the probability that **at least five** are defective.
+3. Find the probability that **between two and six, inclusive**, are defective.
+
+Write the probability statement in mathematical notation **before** writing the R code.
+
+## Exercise 4: choose your model {.scrollable}
+
+Customers arrive at a shop according to a Poisson process at an average rate of 6 per hour.
+
+1. Specify a distribution for the number arriving in the next **two hours**.
+2. Find the probability of **more than 15** arrivals.
+3. Find the probability of **between 10 and 15 arrivals, inclusive**.
+4. What would you change if the observation interval were **30 minutes**?
+
+## Exercise 5: continuous uniform application {.scrollable}
+
+A bus arrives at a stop at a time uniformly distributed between 2:00 and 2:12 p.m. Let $W$ denote the number of minutes after 2:00 when it arrives.
+
+1. Specify the distribution of $W$.
+2. Find the probability that the bus arrives after 2:09.
+3. Find the probability that it arrives between 2:03 and 2:07.
+4. What is the probability that it arrives at **exactly** 2:06?
+
+For 2 and 3, answer both **geometrically** and using `punif()`.
+
+## Exercise 6: conditional probability (challenge) {.scrollable}
+
+Let $X\sim\operatorname{Poisson}(12)$.
+
+A researcher learns that at least 10 events occurred but doesn't know the exact count. Find
+
+$$P(X\geq15\mid X\geq10).$$
+
+Write this as a ratio of **two unconditional probabilities** before evaluating it in R.
+
+## Before you leave {.scrollable}
+
+You should be able to:
+
+- Translate $<,\leq,>,\geq$ and interval events into CDF expressions;
+- Handle endpoints correctly for discrete versus continuous variables;
+- Use `pbinom()`, `ppois()`, and `punif()` to evaluate the results;
+- Recognize when `d...()` supplies a mass versus a density.
+
+# Appendix: solutions to independent exercises {.scrollable}
+
+## Exercise 1 solutions {.scrollable}
+
+```{r}
+punif(5, min = 2, max = 8)          # 3/6
+punif(6, 2, 8, lower.tail = FALSE) # 2/6
+punif(7, 2, 8) - punif(3, 2, 8)    # 4/6
+0                                   # P(U = 5)
+```
+
+## Exercise 2 solutions {.scrollable}
+
+```{r}
+punif(3, 2, 8) + punif(7, 2, 8, lower.tail = FALSE)
+(3 - 2) / 6 + (8 - 7) / 6
+1 - (punif(7, 2, 8) - punif(3, 2, 8))
+```
+
+All three calculations equal $1/3$.
+
+## Exercise 3 solutions {.scrollable}
+
+$D\sim\operatorname{Binomial}(75,0.04)$.
+
+```{r}
+pbinom(4, size = 75, prob = 0.04, lower.tail = FALSE)
+pbinom(6, 75, 0.04) - pbinom(1, 75, 0.04)
+```
+
+## Exercise 4 solutions {.scrollable}
+
+For two hours, $N\sim\operatorname{Poisson}(12)$.
+
+```{r}
+ppois(15, lambda = 12, lower.tail = FALSE)
+ppois(15, 12) - ppois(9, 12)
+```
+
+For 30 minutes, use $\lambda=3$ instead of $\lambda=12$.
+
+## Exercise 5 solutions {.scrollable}
+
+$W\sim\operatorname{Uniform}(0,12)$.
+
+```{r}
+punif(9, min = 0, max = 12, lower.tail = FALSE) # 3/12
+punif(7, 0, 12) - punif(3, 0, 12)         # 4/12
+0                                          # P(W = 6)
+```
+
+Geometrically, the relevant widths are 3 minutes and 4 minutes out of a 12-minute interval.
+
+## Exercise 6 solution {.scrollable}
+
+Because $\{X\geq15\}\subseteq\{X\geq10\}$,
+
+$$P(X\geq15\mid X\geq10)=\frac{P(X\geq15)}{P(X\geq10)}.$$
+
+```{r}
+ppois(14, 12, lower.tail = FALSE) /
+  ppois(9, 12, lower.tail = FALSE)
+```
