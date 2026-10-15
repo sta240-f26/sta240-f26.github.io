@@ -772,7 +772,7 @@ $$
 What appears in the rendered `.pdf`:
 
 $$
-\sum\limits_{n=0}^\infty n\frac{6}{\pi^2n^2} = \infty.
+\sum\limits_{n=1}^\infty n\frac{6}{\pi^2n^2} = \infty.
 $$
 
 ## Pro-tips
