@@ -132,6 +132,10 @@ website:
             text: Lab 3
           - href: lab/lab-4.qmd
             text: Lab 4
+          - href: slides/2026-10-01-r-crash-course.qmd
+            text: Lab 5
+          - href: slides/2026-10-15-pdqr.qmd
+            text: Lab 6
       - section: "Exam Study Guides"
         contents:
           - href: problems/midterm-1-guide.qmd
