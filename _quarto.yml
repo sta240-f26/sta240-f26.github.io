@@ -122,6 +122,8 @@ website:
             text: Problem Set 3
           - href: problems/pset-4.qmd
             text: Problem Set 4
+          - href: problems/pset-5.qmd
+            text: Problem Set 5
       - section: "Labs"
         contents:
           - href: lab/lab-1.qmd

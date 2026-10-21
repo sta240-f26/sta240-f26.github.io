@@ -1,0 +1,79 @@
+---
+title: "Problem Set 5"
+subtitle: Due Monday October 26 at 3PM
+editor: 
+  mode: source
+---
+
+> [Polonius](https://www.folger.edu/explore/shakespeares-works/hamlet/read/): "Brevity is the soul of wit."
+
+
+
+
+```{r}
+#| echo: false
+q_no <- 0
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/_music-rec.qmd >}}
+
+
+
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-continuous/continuous-cdf-g.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-continuous/basic-pdf-practice.qmd >}}
+
+
+
+
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-continuous/all-moments-finite-no-mgf.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-continuous/expectation-short-cuts.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-continuous/minimize-expected-error.qmd >}}
+
+
+
+
+## Submission
+
+{{< include bank/_submission.qmd >}}
