@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.34">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Dwija Kakkad">
+<title>Continuous distributions – STA 240 Fall 2026</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7ad8df1012cc34949a7a0ac4d54234c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ab2af8015911caaedd078aba9a047385.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<meta name="shinylive:serviceworker_dir" content="..">
+<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+<meta property="og:title" content="Continuous distributions – STA 240 Fall 2026">
+<meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
+<meta property="og:image" content="https://sta240-f26.github.io/slides/2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-1-1.png">
+<meta property="og:site_name" content="STA 240 Fall 2026">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1920">
+</head>
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Continuous distributions</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://cmgr.oit.duke.edu/containers" title="RStudio Containers" class="quarto-navigation-tool px-1" aria-label="RStudio Containers"><i class="bi bi-code-square"></i></a>
+    <a href="https://canvas.duke.edu/courses/84105" title="Canvas" class="quarto-navigation-tool px-1" aria-label="Canvas"><i class="bi bi-megaphone"></i></a>
+    <a href="https://edstem.org/us/courses/96707/discussion" title="Ed Discussion" class="quarto-navigation-tool px-1" aria-label="Ed Discussion"><i class="bi bi-people"></i></a>
+    <a href="https://www.gradescope.com/courses/1351871" title="Gradescope" class="quarto-navigation-tool px-1" aria-label="Gradescope"><i class="bi bi-file-arrow-up"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/announcements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Check it out!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Syllabus</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-team.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teaching team</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-materials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Materials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments and grading</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-policies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Policies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus/syllabus-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">University resources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Math Helpers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/greeks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Greek alphabet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/logexp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exponents and logarithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/differentiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Differentiation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/integration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/limits.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Limits and continuity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/series.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sequences and series</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../math/gamma-function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gamma function</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Code Helpers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/hello-rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The lay of the land</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/latex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Typing math</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic math</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/lineplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting lines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">sample</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/if-else.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">if-else and logic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">for loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/vectorization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectorization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/rng-seed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setting a seed</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/probabilities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Computing probabilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting points</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/summary-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summary statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../explainers/histogram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Histograms</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Distributions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Binomial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-geometric.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geometric</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/discrete-poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Poisson</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/continuous-uniform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Continuous uniform</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/continuous-gamma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gamma</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/continuous-normal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Normal</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Problem Sets</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 0</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 5</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Labs</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lab/lab-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lab/lab-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lab/lab-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lab/lab-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/2026-10-01-r-crash-course.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 5</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/2026-10-15-pdqr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 6</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Exam Study Guides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/midterm-1-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm 1</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#today" id="toc-today" class="nav-link active" data-scroll-target="#today">Today</a></li>
+  <li>
+<a href="#part-1-the-normal-distribution" id="toc-part-1-the-normal-distribution" class="nav-link" data-scroll-target="#part-1-the-normal-distribution">Part 1: The normal distribution</a>
+  <ul class="collapse">
+<li><a href="#meet-the-bell-curve" id="toc-meet-the-bell-curve" class="nav-link" data-scroll-target="#meet-the-bell-curve">Meet the bell curve</a></li>
+  <li><a href="#normal-pdf-constant-times-kernel" id="toc-normal-pdf-constant-times-kernel" class="nav-link" data-scroll-target="#normal-pdf-constant-times-kernel">Normal PDF = constant <span class="math inline">\(\times\)</span> kernel</a></li>
+  <li><a href="#free-integral-identity" id="toc-free-integral-identity" class="nav-link" data-scroll-target="#free-integral-identity">Free integral identity!</a></li>
+  <li><a href="#what-does-mu-do" id="toc-what-does-mu-do" class="nav-link" data-scroll-target="#what-does-mu-do">What does <span class="math inline">\(\mu\)</span> do?</a></li>
+  <li><a href="#what-does-sigma-do" id="toc-what-does-sigma-do" class="nav-link" data-scroll-target="#what-does-sigma-do">What does <span class="math inline">\(\sigma\)</span> do?</a></li>
+  <li><a href="#what-does-sigma-do-1" id="toc-what-does-sigma-do-1" class="nav-link" data-scroll-target="#what-does-sigma-do-1">What does <span class="math inline">\(\sigma\)</span> do?</a></li>
+  <li><a href="#the-689599.7-rule" id="toc-the-689599.7-rule" class="nav-link" data-scroll-target="#the-689599.7-rule">The 68–95–99.7 rule</a></li>
+  <li><a href="#havent-we-seen-this-shape-before" id="toc-havent-we-seen-this-shape-before" class="nav-link" data-scroll-target="#havent-we-seen-this-shape-before">Haven’t we seen this shape before?</a></li>
+  <li><a href="#havent-we-seen-this-shape-before-1" id="toc-havent-we-seen-this-shape-before-1" class="nav-link" data-scroll-target="#havent-we-seen-this-shape-before-1">Haven’t we seen this shape before?</a></li>
+  <li><a href="#havent-we-seen-this-shape-before-2" id="toc-havent-we-seen-this-shape-before-2" class="nav-link" data-scroll-target="#havent-we-seen-this-shape-before-2">Haven’t we seen this shape before?</a></li>
+  <li><a href="#the-standard-normal-and-its-cdf" id="toc-the-standard-normal-and-its-cdf" class="nav-link" data-scroll-target="#the-standard-normal-and-its-cdf">The standard normal and its CDF</a></li>
+  <li><a href="#probabilities-are-areas-not-heights" id="toc-probabilities-are-areas-not-heights" class="nav-link" data-scroll-target="#probabilities-are-areas-not-heights">Probabilities are areas, not heights</a></li>
+  <li><a href="#rs-familiar-pdqr-family" id="toc-rs-familiar-pdqr-family" class="nav-link" data-scroll-target="#rs-familiar-pdqr-family">R’s familiar <code>pdqr</code> family</a></li>
+  <li><a href="#a-warm-up-the-classs-new-grading-machine" id="toc-a-warm-up-the-classs-new-grading-machine" class="nav-link" data-scroll-target="#a-warm-up-the-classs-new-grading-machine">A warm-up: the class’s new grading machine</a></li>
+  <li><a href="#grading-machine-solutions" id="toc-grading-machine-solutions" class="nav-link" data-scroll-target="#grading-machine-solutions">Grading machine: solutions</a></li>
+  <li><a href="#your-turn-airport-securitys-suspiciously-precise-clock" id="toc-your-turn-airport-securitys-suspiciously-precise-clock" class="nav-link" data-scroll-target="#your-turn-airport-securitys-suspiciously-precise-clock">Your turn: airport security’s suspiciously precise clock</a></li>
+  <li><a href="#airport-a-visual-hint" id="toc-airport-a-visual-hint" class="nav-link" data-scroll-target="#airport-a-visual-hint">Airport: a visual hint</a></li>
+  <li><a href="#airport-solutions" id="toc-airport-solutions" class="nav-link" data-scroll-target="#airport-solutions">Airport: solutions</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#part-2-the-gamma-distribution" id="toc-part-2-the-gamma-distribution" class="nav-link" data-scroll-target="#part-2-the-gamma-distribution">Part 2: The gamma distribution</a>
+  <ul class="collapse">
+<li><a href="#first-remember-the-exponential" id="toc-first-remember-the-exponential" class="nav-link" data-scroll-target="#first-remember-the-exponential">First, remember the exponential</a></li>
+  <li><a href="#meet-the-gamma" id="toc-meet-the-gamma" class="nav-link" data-scroll-target="#meet-the-gamma">Meet the gamma</a></li>
+  <li><a href="#gamma-pdf-constant-times-kernel" id="toc-gamma-pdf-constant-times-kernel" class="nav-link" data-scroll-target="#gamma-pdf-constant-times-kernel">Gamma PDF = constant <span class="math inline">\(\times\)</span> kernel</a></li>
+  <li><a href="#whats-that-capital-gamma" id="toc-whats-that-capital-gamma" class="nav-link" data-scroll-target="#whats-that-capital-gamma">What’s that capital gamma?</a></li>
+  <li><a href="#exponential-is-gamma-in-disguise" id="toc-exponential-is-gamma-in-disguise" class="nav-link" data-scroll-target="#exponential-is-gamma-in-disguise">Exponential is gamma in disguise</a></li>
+  <li><a href="#how-do-the-parameters-control-the-shape" id="toc-how-do-the-parameters-control-the-shape" class="nav-link" data-scroll-target="#how-do-the-parameters-control-the-shape">How do the parameters control the shape?</a></li>
+  <li><a href="#a-gamma-from-familiar-exponential-variables" id="toc-a-gamma-from-familiar-exponential-variables" class="nav-link" data-scroll-target="#a-gamma-from-familiar-exponential-variables">A gamma from familiar exponential variables</a></li>
+  <li><a href="#rs-gamma-commands" id="toc-rs-gamma-commands" class="nav-link" data-scroll-target="#rs-gamma-commands">R’s gamma commands</a></li>
+  <li><a href="#the-campus-coffee-emergency" id="toc-the-campus-coffee-emergency" class="nav-link" data-scroll-target="#the-campus-coffee-emergency">The campus coffee emergency</a></li>
+  <li><a href="#coffee-emergency-picture" id="toc-coffee-emergency-picture" class="nav-link" data-scroll-target="#coffee-emergency-picture">Coffee emergency: picture</a></li>
+  <li><a href="#coffee-emergency-solutions" id="toc-coffee-emergency-solutions" class="nav-link" data-scroll-target="#coffee-emergency-solutions">Coffee emergency: solutions</a></li>
+  <li><a href="#your-turn-haunted-house-jump-scares" id="toc-your-turn-haunted-house-jump-scares" class="nav-link" data-scroll-target="#your-turn-haunted-house-jump-scares">Your turn: haunted house jump scares</a></li>
+  <li><a href="#one-last-picture-simulation-versus-theory" id="toc-one-last-picture-simulation-versus-theory" class="nav-link" data-scroll-target="#one-last-picture-simulation-versus-theory">One last picture: simulation versus theory</a></li>
+  <li><a href="#haunted-house-solutions" id="toc-haunted-house-solutions" class="nav-link" data-scroll-target="#haunted-house-solutions">Haunted house: solutions</a></li>
+  </ul>
+</li>
+  </ul><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2026-10-22-continuous-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Continuous distributions</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Dwija Kakkad </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Duke University <br> STA 240 Fall 2026
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+
+</header><section id="today" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="today">Today</h2>
+<p>Two new families of continuous random variables:</p>
+<ul>
+<li>
+<strong>Normal:</strong> the famous bell curve. It can take values anywhere on the real line;</li>
+<li>
+<strong>Gamma:</strong> a flexible family for positive quantities (eg. waiting times) that generalizes the exponential distribution.</li>
+</ul>
+<p>Today we just enumerate basic facts. Derivations come later. We also continue to practice that basic skill:</p>
+<blockquote class="blockquote">
+<p>event in words <span class="math inline">\(\to\)</span> probability statement <span class="math inline">\(\to\)</span> formula involving CDF <span class="math inline">\(\to\)</span> <code>R</code> commands</p>
+</blockquote>
+</section><section id="part-1-the-normal-distribution" class="level1"><h1>Part 1: The normal distribution</h1>
+<section id="meet-the-bell-curve" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="meet-the-bell-curve">Meet the bell curve</h2>
+<p>A random variable <span class="math inline">\(X\)</span> has a <strong>normal</strong> (or <strong>Gaussian</strong>) distribution if its PDF is</p>
+<p><span class="math display">\[
+f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\!\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right),\qquad -\infty&lt;x&lt;\infty.
+\]</span></p>
+<p>We write <span class="math inline">\(X\sim\text{N}(\mu,\sigma^2)\)</span>, where <span class="math inline">\(\sigma&gt;0\)</span>.</p>
+<ul>
+<li>
+<span class="math inline">\(E(X)=\mu\)</span>: the center and axis of symmetry.</li>
+<li>
+<span class="math inline">\(\operatorname{Var}(X)=\sigma^2\)</span>: the variance; <span class="math inline">\(\sigma\)</span> is the <strong>standard deviation</strong>.</li>
+<li>The total area under the curve is 1.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="normal-pdf-constant-times-kernel" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="normal-pdf-constant-times-kernel">Normal PDF = constant <span class="math inline">\(\times\)</span> kernel</h2>
+<p>As with <strong>every PMF or PDF</strong>, separate the formula into two pieces:</p>
+<p><span class="math display">\[
+f(x)=\underbrace{\frac{1}{\sqrt{2\pi\sigma^2}}}_{\text{normalizing constant}}
+\;\times\;
+\underbrace{\exp\!\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)}_{\text{kernel}}.
+\]</span></p>
+<ul>
+<li>The <strong>kernel</strong> determines the shape as a function of <span class="math inline">\(x\)</span>;</li>
+<li>The <strong>normalizing constant</strong> rescales that shape so the total area is <strong>1</strong>;</li>
+<li>For fixed <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>, the constant does <strong>not</strong> depend on <span class="math inline">\(x\)</span>.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="free-integral-identity" class="level2"><h2 class="anchored" data-anchor-id="free-integral-identity">Free integral identity!</h2>
+<p>Because PDFs must integrate to 1, the formula for the bell curve implies a free integral identity:</p>
+<p><span class="math display">\[
+\int_{-\infty}^\infty
+\exp\!\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)
+\,\text{d}x=\sqrt{2\pi\sigma^2}.
+\]</span></p>
+<p>It’s true <em>for any</em> <span class="math inline">\(\mu\in\mathbb{R}\)</span> and <span class="math inline">\(\sigma&gt;0\)</span>. If you are prepared to recognize this, it can simplify future calculations tremendously!</p>
+</section><section id="what-does-mu-do" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="what-does-mu-do">What does <span class="math inline">\(\mu\)</span> do?</h2>
+<p>You can show that <span class="math inline">\(\mu\)</span> is the location of the peak (the <em>maximizer</em>). Changing <span class="math inline">\(\mu\)</span> slides the bell curve horizontally, without changing its shape.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="what-does-sigma-do" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="what-does-sigma-do">What does <span class="math inline">\(\sigma\)</span> do?</h2>
+<p>You showed on Problem Set 0 that <span class="math inline">\(\sigma\)</span> is the distance between the peak and the <em>inflection points</em>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-concavity" class="quarto-float quarto-figure quarto-figure-center anchored" width="960">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-concavity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="2026-10-22-continuous_files/figure-revealjs/fig-concavity-1.png" id="fig-concavity" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-concavity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="what-does-sigma-do-1" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="what-does-sigma-do-1">What does <span class="math inline">\(\sigma\)</span> do?</h2>
+<p>Changing <span class="math inline">\(\sigma\)</span> changes the <strong>spread</strong>. A smaller standard deviation means a narrower, taller bell curve. Changing the spread must simultaneously alter the height because total area 1 must be preserved at all times.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Watch out:</strong> <span class="math inline">\(\text{N}(10, 4)\)</span> has standard deviation <strong>2</strong>, not 4.</p>
+</section><section id="the-689599.7-rule" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="the-689599.7-rule">The 68–95–99.7 rule</h2>
+<p>Approximately:</p>
+<ul>
+<li>68% of the probability lies within <strong>one</strong> standard deviation of the mean;</li>
+<li>95% lies within <strong>two</strong>;</li>
+<li>99.7% lies within <strong>three</strong>.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="havent-we-seen-this-shape-before" class="level2 medium scrollable"><h2 class="medium scrollable anchored" data-anchor-id="havent-we-seen-this-shape-before">Haven’t we seen this shape before?</h2>
+<p>The normal distribution plays a <em>central</em> role in probability 😉:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/galton.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section><section id="havent-we-seen-this-shape-before-1" class="level2 medium scrollable"><h2 class="medium scrollable anchored" data-anchor-id="havent-we-seen-this-shape-before-1">Haven’t we seen this shape before?</h2>
+<p>The normal distribution plays a <em>central</em> role in probability 😉:</p>
+<pre class="shinylive-r" data-engine="r"><code><a href="https://shiny.posit.co/">#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 500
+
+library(shiny)
+
+discrete_pmf &lt;- function(x, p, xlim = c(min(x) - 1, max(x) + 1), label = "", add_mean = FALSE){
+  plot(x, p,
+       pch = 19,
+       cex = 1,
+       xlab = "",
+       ylab = "",
+       main = "",
+       ylim = c(0, 1.05 * max(p)),
+       yaxs = "i",
+       yaxt = "n",
+       xlim = xlim,
+       xaxt = "n",
+       bty = "n"
+  )
+  segments(x,
+           rep(0, length(x) + 1),
+           x1 = x,
+           y1 = p,
+           lwd = 3
+  )
+  axis(1, at = floor(xlim[1]):ceiling(xlim[2]), cex.axis = 1)
+  axis(2, at = seq(0, 1, length.out = 11), las = 1, cex.axis = 1.5)
+  legend("topright", label, bty = "n", cex = 3)
+  if(add_mean == TRUE){
+    mtext("E(X)", side = 1, at = sum(x * p), col = "red", line = 2)
+  }
+}
+
+discrete_cdf &lt;- function(x, p, xlim = c(min(x) - 1, max(x) + 1), label = ""){
+  closeddot = cumsum(p)
+  opencircle = c(0, closeddot[1:length(x)-1])
+  plot(x, closeddot, pch = 19, cex = 1,
+       ylim = c(0, 1),
+       ylab = "", main = "", xlab = "",
+       yaxt = "n",
+       xlim = xlim,
+       xaxt = "n",
+       #yaxs = "i", 
+       bty = "n")
+  points(x, opencircle, cex = 1)
+  segments(c(xlim[1], x), c(0, closeddot), c(x, xlim[2]), c(0, closeddot), lwd = 1)
+  axis(1, at = floor(xlim[1]):ceiling(xlim[2]), cex.axis = 1)
+  axis(2, at = seq(0, 1, length.out = 11), las = 1, cex.axis = 1.5)
+  legend("bottomright", label, bty = "n", cex = 3)
+}
+
+# Define UI for application that draws a histogram
+ui &lt;- fluidPage(
+  
+  # Application title
+  titlePanel("Binomial distribution PMF"),
+  
+  # Sidebar with a slider input for number of bins 
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("p",
+                  "Probability of success (p):",
+                  min = 0,
+                  max = 1,
+                  value = 0.5,
+                  step = 0.01),
+      sliderInput("n",
+                  "Number of trials (n):",
+                  min = 1,
+                  max = 100,
+                  value = 5,
+                  step = 1)
+    ),
+    
+    # Show a plot of the generated distribution
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
+
+# Define server logic required to draw a histogram
+server &lt;- function(input, output) {
+  
+  output$distPlot &lt;- renderPlot({
+    
+    p &lt;- input$p
+    n &lt;- input$n
+
+    #par(mfrow = c(2, 1), mar = c(4, 4, 2, 2))
+    
+    #discrete_cdf(0:n, dbinom(0:n, n, p))
+    discrete_pmf(0:n, dbinom(0:n, n, p), add_mean = TRUE)
+    
+  })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)</a></code></pre>
+</section><section id="havent-we-seen-this-shape-before-2" class="level2 medium scrollable"><h2 class="medium scrollable anchored" data-anchor-id="havent-we-seen-this-shape-before-2">Haven’t we seen this shape before?</h2>
+<p>The normal distribution plays a <em>central</em> role in probability 😉:</p>
+<pre class="shinylive-r" data-engine="r"><code><a href="https://shiny.posit.co/">#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 500
+
+library(shiny)
+
+discrete_pmf &lt;- function(x, p, xlim = c(min(x) - 1, max(x) + 1), label = "", add_mean = FALSE){
+  plot(x, p,
+       pch = 19,
+       cex = 0.5,
+       xlab = "",
+       ylab = "",
+       main = "",
+       ylim = c(0, 0.4),
+       yaxs = "i",
+       yaxt = "n",
+       xlim = xlim,
+       xaxt = "n",
+       bty = "n"
+  )
+  segments(x,
+           rep(0, length(x) + 1),
+           x1 = x,
+           y1 = p,
+           lwd = 3
+  )
+  axis(1, at = floor(xlim[1]):ceiling(xlim[2]), cex.axis = 1)
+  axis(2, at = seq(0, 1, length.out = 11), las = 1, cex.axis = 1.5)
+  legend("topright", label, bty = "n", cex = 3)
+  if(add_mean == TRUE){
+    mtext("E(X)", side = 1, at = sum(x * p), col = "red", line = 2)
+  }
+}
+
+discrete_cdf &lt;- function(x, p, xlim = c(min(x) - 1, max(x) + 1), label = ""){
+  closeddot = cumsum(p)
+  opencircle = c(0, closeddot[1:length(x)-1])
+  plot(x, closeddot, pch = 19, cex = 0.5,
+       ylim = c(0, 1),
+       ylab = "", main = "", xlab = "",
+       yaxt = "n",
+       xlim = xlim,
+       xaxt = "n",
+       #yaxs = "i", 
+       bty = "n")
+  points(x, opencircle, cex = 0.5)
+  segments(c(xlim[1], x), c(0, closeddot), c(x, xlim[2]), c(0, closeddot), lwd = 1)
+  axis(1, at = floor(xlim[1]):ceiling(xlim[2]), cex.axis = 1)
+  axis(2, at = seq(0, 1, length.out = 11), las = 1, cex.axis = 1.5)
+  legend("bottomright", label, bty = "n", cex = 3)
+}
+
+# Define UI for application that draws a histogram
+ui &lt;- fluidPage(
+  
+  # Application title
+  titlePanel("Poisson distribution PMF"),
+  
+  # Sidebar with a slider input for number of bins 
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("lambda",
+                  "Rate (λ):",
+                  min = 0,
+                  max = 100,
+                  value = 1,
+                  step = 0.1)
+    ),
+    
+    # Show a plot of the generated distribution
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
+
+# Define server logic required to draw a histogram
+server &lt;- function(input, output) {
+  
+  output$distPlot &lt;- renderPlot({
+    
+    lambda &lt;- input$lambda
+    n &lt;- 100
+
+    #par(mfrow = c(2, 1), mar = c(4, 4, 2, 2))
+    
+    #discrete_cdf(0:n, dpois(0:n, lambda))
+    discrete_pmf(0:n, dpois(0:n, lambda), add_mean = FALSE)
+    mtext("E(X)", side = 1, at = lambda, col = "red", line = 2)
+  })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)</a></code></pre>
+</section><section id="the-standard-normal-and-its-cdf" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="the-standard-normal-and-its-cdf">The standard normal and its CDF</h2>
+<p>The special case <span class="math inline">\(Z\sim\text{N}(0,1)\)</span> is the <strong>standard normal</strong>.</p>
+<p>Its CDF is traditionally denoted by <span class="math inline">\(\Phi\)</span>:</p>
+<p><span class="math display">\[
+\Phi(z)=P(Z\le z)=\int_{-\infty}^{z}\frac{1}{\sqrt{2\pi}}e^{-t^2/2}\,dt.
+\]</span></p>
+<p>Unlike the uniform or exponential CDF, this integral <strong>cannot be expressed using elementary functions</strong>. But computers evaluate it to high precision.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="probabilities-are-areas-not-heights" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="probabilities-are-areas-not-heights">Probabilities are areas, not heights</h2>
+<p>For <span class="math inline">\(X\sim\text{N}(70, 10^2)\)</span>, picture <span class="math inline">\(P(60&lt;X&lt;85)\)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[P(60&lt;X&lt;85)=F(85)-F(60).\]</span></p>
+<p>Because <span class="math inline">\(X\)</span> is continuous, <span class="math inline">\(P(X=60)=0\)</span>: including or excluding endpoints makes no difference.</p>
+</section><section id="rs-familiar-pdqr-family" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="rs-familiar-pdqr-family">R’s familiar <code>pdqr</code> family</h2>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Task</th>
+<th>Normal distribution</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>PDF height at <span class="math inline">\(x\)</span>
+</td>
+<td><code>dnorm(x, mean, sd)</code></td>
+</tr>
+<tr class="even">
+<td>CDF <span class="math inline">\(P(X\le x)\)</span>
+</td>
+<td><code>pnorm(x, mean, sd)</code></td>
+</tr>
+<tr class="odd">
+<td>Quantile (probability <span class="math inline">\(p\)</span>)</td>
+<td><code>qnorm(p, mean, sd)</code></td>
+</tr>
+<tr class="even">
+<td>Generate <span class="math inline">\(n\)</span> observations</td>
+<td><code>rnorm(n, mean, sd)</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>R takes the standard deviation</strong>, not the variance.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">70</span>, mean <span class="op">=</span> <span class="fl">70</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03989423</code></pre>
+</div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">85</span>, mean <span class="op">=</span> <span class="fl">70</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">60</span>, mean <span class="op">=</span> <span class="fl">70</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7745375</code></pre>
+</div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.95</span>, mean <span class="op">=</span> <span class="fl">70</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 86.44854</code></pre>
+</div>
+</div>
+</section><section id="a-warm-up-the-classs-new-grading-machine" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="a-warm-up-the-classs-new-grading-machine">A warm-up: the class’s new grading machine</h2>
+<p>A malfunctioning grading machine produces scores that are approximately normal, with mean 75 and standard deviation 12. (For the purpose of this exercise, pretend scores can exceed 100.)</p>
+<p>Let <span class="math inline">\(X\sim\text{N}(75,12^2)\)</span>.</p>
+<p>Compute in R:</p>
+<ol type="1">
+<li>
+<span class="math inline">\(P(X&lt;60)\)</span>: a decidedly unhappy student.</li>
+<li>
+<span class="math inline">\(P(X\ge90)\)</span>: a very happy student.</li>
+<li>
+<span class="math inline">\(P(70&lt;X&lt;85)\)</span>: comfortably in the middle.</li>
+<li>The score at the <strong>90th percentile</strong>.</li>
+</ol>
+<p>Try these before looking at the next slide.</p>
+</section><section id="grading-machine-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="grading-machine-solutions">Grading machine: solutions</h2>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">60</span>, mean <span class="op">=</span> <span class="fl">75</span>, sd <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1056498</code></pre>
+</div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">90</span>, mean <span class="op">=</span> <span class="fl">75</span>, sd <span class="op">=</span> <span class="fl">12</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1056498</code></pre>
+</div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">85</span>, mean <span class="op">=</span> <span class="fl">75</span>, sd <span class="op">=</span> <span class="fl">12</span><span class="op">)</span> <span class="op">-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">70</span>, mean <span class="op">=</span> <span class="fl">75</span>, sd <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4592105</code></pre>
+</div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.9</span>, mean <span class="op">=</span> <span class="fl">75</span>, sd <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 90.37862</code></pre>
+</div>
+</div>
+<p><strong>Question:</strong> How could the machine produce scores over 100? Is a normal model always sensible for bounded quantities?</p>
+</section><section id="your-turn-airport-securitys-suspiciously-precise-clock" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="your-turn-airport-securitys-suspiciously-precise-clock">Your turn: airport security’s suspiciously precise clock</h2>
+<p>According to an airline’s optimistic brochure, the time <span class="math inline">\(T\)</span> (minutes) spent in a security line follows</p>
+<p><span class="math display">\[T\sim\text{N}(24,6^2).\]</span></p>
+<ol type="1">
+<li>What is the probability of clearing security in <strong>under 15 minutes</strong>?</li>
+<li>What is the probability of waiting <strong>between 20 and 30 minutes</strong>?</li>
+<li>The airline claims that <strong>95% of passengers wait less than <span class="math inline">\(t\)</span> minutes</strong>. Find <span class="math inline">\(t\)</span>.</li>
+<li>Generate 10,000 hypothetical waiting times and approximate the answer to (1) by simulation.</li>
+<li>How many simulated waiting times are negative? What does that tell you about this model?</li>
+</ol>
+<p><em>The distribution is chosen for computing practice, not because airport queues really are Gaussian.</em></p>
+</section><section id="airport-a-visual-hint" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="airport-a-visual-hint">Airport: a visual hint</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="airport-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="airport-solutions">Airport: solutions</h2>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">15</span>, mean <span class="op">=</span> <span class="fl">24</span>, sd <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0668072</code></pre>
+</div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">30</span>, mean <span class="op">=</span> <span class="fl">24</span>, sd <span class="op">=</span> <span class="fl">6</span><span class="op">)</span> <span class="op">-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">24</span>, sd <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5888522</code></pre>
+</div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.95</span>, mean <span class="op">=</span> <span class="fl">24</span>, sd <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 33.86912</code></pre>
+</div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">240</span><span class="op">)</span></span>
+<span><span class="va">times</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10000</span>, mean <span class="op">=</span> <span class="fl">24</span>, sd <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">times</span> <span class="op">&lt;</span> <span class="fl">15</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0682</code></pre>
+</div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">times</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+</section></section><section id="part-2-the-gamma-distribution" class="level1"><h1>Part 2: The gamma distribution</h1>
+<section id="first-remember-the-exponential" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="first-remember-the-exponential">First, remember the exponential</h2>
+<p>The exponential distribution models positive quantities, often <strong>waiting times</strong>.</p>
+<p><span class="math display">\[X\sim\operatorname{Exp}(\beta),\qquad f_X(x)=\beta e^{-\beta x},\quad x&gt;0.\]</span></p>
+<ul>
+<li>
+<span class="math inline">\(\beta&gt;0\)</span> is the <strong>rate</strong>.</li>
+<li>
+<span class="math inline">\(E(X)=1/\beta\)</span>.</li>
+<li>Its density decreases from its maximum at zero.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The gamma family will give us many more shapes, while retaining positive support.</p>
+</section><section id="meet-the-gamma" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="meet-the-gamma">Meet the gamma</h2>
+<p>For <span class="math inline">\(\alpha&gt;0\)</span> and <span class="math inline">\(\beta&gt;0\)</span>, a random variable has the gamma distribution if</p>
+<p><span class="math display">\[
+f_X(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x},\qquad x&gt;0,
+\]</span></p>
+<p>and <span class="math inline">\(f_X(x)=0\)</span> for <span class="math inline">\(x&lt;0\)</span>.</p>
+<p>We write <span class="math inline">\(X\sim\operatorname{Gamma}(\alpha,\beta)\)</span>.</p>
+<ul>
+<li>
+<span class="math inline">\(\alpha\)</span>: <strong>shape</strong> parameter.</li>
+<li>
+<span class="math inline">\(\beta\)</span>: <strong>rate</strong> parameter.</li>
+<li>
+<span class="math inline">\(E(X)=\alpha/\beta\)</span>, <span class="math inline">\(\operatorname{Var}(X)=\alpha/\beta^2\)</span> (derivations later).</li>
+</ul>
+<p><strong>Important:</strong> Some books use a <em>scale</em> parameter instead. Our <span class="math inline">\(\beta\)</span> is a <strong>rate</strong>.</p>
+</section><section id="gamma-pdf-constant-times-kernel" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="gamma-pdf-constant-times-kernel">Gamma PDF = constant <span class="math inline">\(\times\)</span> kernel</h2>
+<p>Here is the same structure again:</p>
+<p><span class="math display">\[
+\underbrace{\frac{\beta^\alpha}{\Gamma(\alpha)}}_{\text{normalizing constant}}
+\;\times\;
+\underbrace{x^{\alpha-1}e^{-\beta x}}_{\text{kernel (unnormalized density)}},
+\qquad x&gt;0.
+\]</span></p>
+<ul>
+<li>For fixed <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, only the <strong>kernel</strong> depends on <span class="math inline">\(x\)</span>.</li>
+<li>The factor involving <span class="math inline">\(\Gamma(\alpha)\)</span> ensures that the total area is 1.</li>
+<li>This is the same organizational trick we’ve used for other PMFs and PDFs. <strong>Spot the constant; spot the kernel.</strong>
+</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="whats-that-capital-gamma" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="whats-that-capital-gamma">What’s that capital gamma?</h2>
+<p>The gamma function is</p>
+<p><span class="math display">\[\Gamma(a)=\int_0^\infty t^{a-1}e^{-t}\,dt,\qquad a&gt;0.\]</span></p>
+<p>For positive integers, <span class="math inline">\(\Gamma(n)=(n-1)!\)</span>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Special.html">gamma</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Special.html">gamma</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Special.html">factorial</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Special.html">gamma</a></span><span class="op">(</span><span class="fl">2.5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.32934</code></pre>
+</div>
+</div>
+<p>It supplies the normalizing constant that makes the gamma PDF integrate to 1. We will study the mathematical details elsewhere.</p>
+</section><section id="exponential-is-gamma-in-disguise" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="exponential-is-gamma-in-disguise">Exponential is gamma in disguise</h2>
+<p>When <span class="math inline">\(\alpha=1\)</span>, since <span class="math inline">\(\Gamma(1)=1\)</span>,</p>
+<p><span class="math display">\[\frac{\beta^1}{\Gamma(1)}x^{1-1}e^{-\beta x}=\beta e^{-\beta x}.\]</span></p>
+<p>So <strong><span class="math inline">\(\operatorname{Gamma}(1,\beta)=\operatorname{Exp}(\beta)\)</span></strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="how-do-the-parameters-control-the-shape" class="level2 small scrollable"><h2 class="small scrollable anchored" data-anchor-id="how-do-the-parameters-control-the-shape">How do the parameters control the shape?</h2>
+<ul>
+<li>Keep the rate <span class="math inline">\(\beta=1\)</span> fixed and change shape;</li>
+<li>Keep the shape <span class="math inline">\(\alpha=3\)</span> fixed and change rate.</li>
+</ul>
+<pre class="shinylive-r" data-engine="r"><code><a href="https://shiny.posit.co/">#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 500
+
+library(shiny)
+
+ui &lt;- fluidPage(
+  titlePanel("Gamma distribution DF"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("alpha", "Shape (α):",
+                  min = 0.5, max = 20, value = 2, step = 0.1),
+      sliderInput("beta", "Rate (β):",
+                  min = 0.2, max = 10, value = 0.5, step = 0.05),
+      hr(),
+      verbatimTextOutput("moments")
+    ),
+    
+    mainPanel(
+      plotOutput("gammaPlot", height = "600px")
+    )
+  )
+)
+
+server &lt;- function(input, output) {
+  output$moments &lt;- renderText({
+    alpha &lt;- input$alpha
+    beta  &lt;- input$beta
+    mu &lt;- alpha / beta
+    sd &lt;- sqrt(alpha) / beta
+    paste0("E(X) = ", round(mu, 3),
+           "\nsd(X) = ", round(sd, 3))
+  })
+  
+  output$gammaPlot &lt;- renderPlot({
+    alpha &lt;- input$alpha
+    beta  &lt;- input$beta
+    
+    # Fixed plotting range
+    x_min &lt;- -2
+    x_max &lt;- 25
+    x &lt;- seq(x_min, x_max, length.out = 2000)
+    
+    # PDF and CDF
+    pdf_vals &lt;- ifelse(x &gt;= 0, dgamma(x, shape = alpha, rate = beta), 0)
+    cdf_vals &lt;- ifelse(x &gt;= 0, pgamma(x, shape = alpha, rate = beta), 0)
+    
+    mu &lt;- alpha / beta
+    
+    # Fixed y-limits
+    pdf_ylim &lt;- c(0, 0.8)
+    cdf_ylim &lt;- c(0, 1)
+    
+
+    
+    # --- PDF ---
+    plot(x, pdf_vals, type = "l", lwd = 2, col = "darkred",
+         xlim = c(x_min, x_max), ylim = pdf_ylim,
+         main = "Probability Density Function (PDF)",
+         xlab = "x", ylab = "f(x)")
+    #abline(v = mu, col = "gray60", lty = 3)
+    
+    # Label E(X) with mtext along x-axis
+    if (mu &gt;= x_min &amp;&amp; mu &lt;= x_max) {
+      mtext("E(X)",
+            side = 1, line = 2.2, at = mu, cex = 1.0)
+    }
+  })
+}
+
+shinyApp(ui = ui, server = server)
+
+</a></code></pre>
+</section><section id="a-gamma-from-familiar-exponential-variables" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="a-gamma-from-familiar-exponential-variables">A gamma from familiar exponential variables</h2>
+<p>Suppose <span class="math inline">\(W_1,W_2,\ldots,W_k\)</span> are <strong>independent</strong> exponential random variables, all with rate <span class="math inline">\(\beta\)</span>.</p>
+<p>Then their sum has a gamma distribution:</p>
+<p><span class="math display">\[
+W_1+\cdots+W_k\sim\operatorname{Gamma}(k,\beta).
+\]</span></p>
+<ul>
+<li>One exponential waiting time is <span class="math inline">\(\operatorname{Gamma}(1,\beta)\)</span>.</li>
+<li>The total of three independent exponential waiting times is <span class="math inline">\(\operatorname{Gamma}(3,\beta)\)</span>.</li>
+<li>This gives us a concrete interpretation when the shape <span class="math inline">\(k\)</span> is a positive integer. <strong>No proof needed today.</strong>
+</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="rs-gamma-commands" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="rs-gamma-commands">R’s gamma commands</h2>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Task</th>
+<th>Gamma distribution</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>PDF height</td>
+<td><code>dgamma(x, shape, rate)</code></td>
+</tr>
+<tr class="even">
+<td>CDF</td>
+<td><code>pgamma(x, shape, rate)</code></td>
+</tr>
+<tr class="odd">
+<td>Quantile</td>
+<td><code>qgamma(p, shape, rate)</code></td>
+</tr>
+<tr class="even">
+<td>Simulation</td>
+<td><code>rgamma(n, shape, rate)</code></td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">dgamma</a></span><span class="op">(</span><span class="fl">2</span>, shape <span class="op">=</span> <span class="fl">3</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2706706</code></pre>
+</div>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">pgamma</a></span><span class="op">(</span><span class="fl">2</span>, shape <span class="op">=</span> <span class="fl">3</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3233236</code></pre>
+</div>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">qgamma</a></span><span class="op">(</span><span class="fl">0.9</span>, shape <span class="op">=</span> <span class="fl">3</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.32232</code></pre>
+</div>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">rgamma</a></span><span class="op">(</span><span class="fl">5</span>, shape <span class="op">=</span> <span class="fl">3</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.139866 1.302124 2.858878 1.099562 2.607368</code></pre>
+</div>
+</div>
+<p><strong>Warning:</strong> <code>scale = 1 / rate</code>. We will use <code>rate =</code> explicitly throughout.</p>
+</section><section id="the-campus-coffee-emergency" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="the-campus-coffee-emergency">The campus coffee emergency</h2>
+<p>A terrifyingly elaborate coffee machine makes your latte in <strong>four successive stages</strong>: grinding, brewing, steaming, and “artisanal finishing.” Each stage takes an independent <span class="math inline">\(\operatorname{Exp}(0.5)\)</span> number of minutes.</p>
+<p>Let <span class="math inline">\(T\)</span> be the <strong>total</strong> time. Then</p>
+<p><span class="math display">\[T=W_1+W_2+W_3+W_4\sim\operatorname{Gamma}(4,0.5).\]</span></p>
+<p>Why is the rate <strong>0.5</strong>, rather than 2, when each stage takes 2 minutes <em>on average</em>?</p>
+<p>Compute:</p>
+<ol type="1">
+<li>
+<span class="math inline">\(P(T&lt;5)\)</span>: the student might reach lecture on time.</li>
+<li>
+<span class="math inline">\(P(T&gt;12)\)</span>: time to reconsider one’s life choices.</li>
+<li>
+<span class="math inline">\(P(4&lt;T&lt;10)\)</span>.</li>
+<li>The 90th percentile of <span class="math inline">\(T\)</span>.</li>
+</ol></section><section id="coffee-emergency-picture" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="coffee-emergency-picture">Coffee emergency: picture</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="coffee-emergency-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="coffee-emergency-solutions">Coffee emergency: solutions</h2>
+<div class="cell">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">pgamma</a></span><span class="op">(</span><span class="fl">5</span>, shape <span class="op">=</span> <span class="fl">4</span>, rate <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2424239</code></pre>
+</div>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">pgamma</a></span><span class="op">(</span><span class="fl">12</span>, shape <span class="op">=</span> <span class="fl">4</span>, rate <span class="op">=</span> <span class="fl">0.5</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1512039</code></pre>
+</div>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">pgamma</a></span><span class="op">(</span><span class="fl">10</span>, shape <span class="op">=</span> <span class="fl">4</span>, rate <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">pgamma</a></span><span class="op">(</span><span class="fl">4</span>, shape <span class="op">=</span> <span class="fl">4</span>, rate <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5920975</code></pre>
+</div>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">qgamma</a></span><span class="op">(</span><span class="fl">0.9</span>, shape <span class="op">=</span> <span class="fl">4</span>, rate <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13.36157</code></pre>
+</div>
+</div>
+</section><section id="your-turn-haunted-house-jump-scares" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="your-turn-haunted-house-jump-scares">Your turn: haunted house jump scares</h2>
+<p>A haunted house contains <strong>five rooms</strong>, each with an independent, exponentially distributed amount of time before a jump scare. In each room, the waiting time has rate <strong>3 per hour</strong>. (Management refuses refunds.)</p>
+<p>Let <span class="math inline">\(T\)</span> be the <strong>total waiting time across all five rooms</strong>, measured in hours.</p>
+<ol type="1">
+<li>Identify the distribution of <span class="math inline">\(T\)</span>, including its parameters.</li>
+<li>Find <span class="math inline">\(P(T&lt;1)\)</span>.</li>
+<li>Find <span class="math inline">\(P(T&gt;2)\)</span>.</li>
+<li>Find the smallest <span class="math inline">\(t\)</span> such that <span class="math inline">\(P(T\le t)=0.75\)</span>.</li>
+<li>Generate 10,000 observations of <span class="math inline">\(T\)</span> and estimate <span class="math inline">\(P(T&gt;2)\)</span> using simulation.</li>
+</ol></section><section id="one-last-picture-simulation-versus-theory" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="one-last-picture-simulation-versus-theory">One last picture: simulation versus theory</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The histogram approximates a density, not a PMF. Why is <code>probability = TRUE</code> necessary here?</p>
+</section><section id="haunted-house-solutions" class="level2 scrollable"><h2 class="scrollable anchored" data-anchor-id="haunted-house-solutions">Haunted house: solutions</h2>
+<p><span class="math inline">\(T\sim\operatorname{Gamma}(5,3)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">pgamma</a></span><span class="op">(</span><span class="fl">1</span>, shape <span class="op">=</span> <span class="fl">5</span>, rate <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1847368</code></pre>
+</div>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">pgamma</a></span><span class="op">(</span><span class="fl">2</span>, shape <span class="op">=</span> <span class="fl">5</span>, rate <span class="op">=</span> <span class="fl">3</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2850565</code></pre>
+</div>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">qgamma</a></span><span class="op">(</span><span class="fl">0.75</span>, shape <span class="op">=</span> <span class="fl">5</span>, rate <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.091477</code></pre>
+</div>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">240</span><span class="op">)</span></span>
+<span><span class="va">t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">rgamma</a></span><span class="op">(</span><span class="fl">10000</span>, shape <span class="op">=</span> <span class="fl">5</span>, rate <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">t</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.281</code></pre>
+</div>
+</div>
+
+
+</section></section></main><!-- /main --><script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
+
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
+
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
+
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+      });
+    }
+
+  })();
+</script><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sta240-f26\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026 John Zito</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

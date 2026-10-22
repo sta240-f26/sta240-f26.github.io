@@ -60,6 +60,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../distributions/continuous-normal.html" rel="next">
+<link href="../distributions/continuous-uniform.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -137,7 +139,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Gamma distribution</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../distributions/discrete-binomial.html">Distributions</a></li><li class="breadcrumb-item"><a href="../distributions/continuous-gamma.html">Gamma</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -384,13 +386,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Distributions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../distributions/discrete-binomial.html" class="sidebar-item-text sidebar-link">
@@ -407,6 +409,24 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../distributions/discrete-poisson.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Poisson</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/continuous-uniform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Continuous uniform</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/continuous-gamma.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Gamma</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/continuous-normal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Normal</span></a>
   </div>
 </li>
       </ul>
@@ -538,7 +558,7 @@ window.Quarto = {
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../distributions/discrete-binomial.html">Distributions</a></li><li class="breadcrumb-item"><a href="../distributions/continuous-gamma.html">Gamma</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Gamma distribution</h1>
 </div>
 
@@ -559,7 +579,7 @@ window.Quarto = {
 <p><span class="math display">\[
 \Gamma(\alpha) = \int_0^\infty x^{\alpha-1}e^{-x}\,\text{d}x.
 \]</span></p>
-<p>We have a lil’ <a href="https://sta240-f25.github.io/math/gamma-function.html">math explainer</a> where you can read more about it.</p>
+<p>We have a lil’ <a href="../math/gamma-function.html">math explainer</a> where you can read more about it.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 23%">
@@ -707,82 +727,6 @@ shinyApp(ui = ui, server = server)
 
 </a></code></pre>
 </section><section id="derivations" class="level2"><h2 class="anchored" data-anchor-id="derivations">Derivations</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-CDF, quantile function, and median of Gamma(1, <span class="math inline">\(\beta\)</span>)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(X\sim\text{Exp}(\beta)\)</span>, and recall that this means <span class="math inline">\(X\sim\text{Gamma}(\alpha=1,\, \beta)\)</span>. So the pdf is <span class="math inline">\(f_X(x)=\beta\exp(-\beta x)\)</span> for <span class="math inline">\(x&gt;0\)</span>, and the cdf is</p>
-<p><span class="math display">\[
-\begin{aligned}
-F_X(x)
-&amp;=
-\int_0^x\beta e^{-\beta t}\,\text{d} t
-=
-[
--e^{\beta t}
-]_0^x
-=
-1-e^{-\beta x},\quad x&gt;0.
-\end{aligned}
-\]</span></p>
-<p>For some <span class="math inline">\(y\in(0,\, 1)\)</span>, we see that</p>
-<p><span class="math display">\[
-\begin{align*}
-y&amp;=1-e^{-\beta x}\\
-e^{-y}&amp;=1-y\\
--\beta x&amp;=\ln(1-y)\\
-x&amp;=\frac{-\ln(1-y)}{\beta},
-\end{align*}
-\]</span></p>
-<p>and so the quantile function is</p>
-<p><span class="math display">\[
-F_X^{-1}(y)=-\frac{\ln(1-y)}{\beta},
-\]</span></p>
-<p>and the median of the exponential distribution is</p>
-<p><span class="math display">\[
-F_X^{-1}(0.5)=-\frac{\ln(1-0.5)}{\beta}=-\frac{\ln(0.5)}{\beta}=\frac{\ln 2}{\beta}.
-\]</span></p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Moment-generating function
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>This is classic “massage and squint.” Let <span class="math inline">\(t\in(-\infty,\,\beta)\)</span>. Then</p>
-<p><span class="math display">\[
-      \begin{align*}
-          M_X(t)&amp;=E\left(e^{tX}\right)\\
-          &amp;=\int_0^\infty e^{tx}\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}\,\text{d} x &amp;&amp; \text{LOTUS}\\
-          &amp;=\frac{\beta^\alpha}{\Gamma(\alpha)}\int_0^\infty x^{\alpha-1}e^{tx}e^{-\beta x}\,\text{d} x &amp;&amp; \text{pull out constant}\\
-          &amp;=\frac{\beta^\alpha}{\Gamma(\alpha)}\int_0^\infty x^{\alpha-1}e^{tx-\beta x}\,\text{d} x&amp;&amp; \text{combine base-e terms}\\
-`         &amp;=\frac{\beta^\alpha}{\Gamma(\alpha)}\int_0^\infty x^{\alpha-1}e^{(t-\beta) x}\,\text{d} x&amp;&amp; \text{factor out }x\\
-`         &amp;=\frac{\beta^\alpha}{\Gamma(\alpha)}\int_0^\infty x^{\alpha-1}e^{-(\beta-t) x}\,\text{d} x&amp;&amp; \text{factor out -1}\\
-          &amp;=\frac{\beta^\alpha}{\Gamma(\alpha)}\int_0^\infty \underbrace{x^{\alpha-1}e^{-(\beta-t)x}}_{\text{kernel of Gamma}(\alpha,\,\beta-t)}\,\text{d} x &amp;&amp; \text{recognize}\\
-          &amp;=\frac{\beta^\alpha}{{\Gamma(\alpha)}}\frac{{\Gamma(\alpha)}}{(\beta-t)^\alpha}\\
-          &amp;=\left(\frac{\beta}{\beta-t}\right)^\alpha.
-      \end{align*}
-\]</span></p>
-<p>In order to invoke the gamma density kernel, we require that <span class="math inline">\(t&lt;\beta\)</span> so that the rate parameter of the implied gamma is positive.</p>
-</div>
-</div>
-</div>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -1183,7 +1127,17 @@ Moment-generating function
       }
     }
   });
-  </script>
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../distributions/continuous-uniform.html" class="pagination-link" aria-label="Continuous uniform">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Continuous uniform</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../distributions/continuous-normal.html" class="pagination-link" aria-label="Normal">
+        <span class="nav-page-text">Normal</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
