@@ -31,7 +31,17 @@ Today we just enumerate basic facts. Derivations come later. We also continue to
 
 # Part 1: The normal distribution
 
-## Meet the bell curve {.scrollable}
+## Meet the bell curve {.medium .scrollable}
+
+```{r}
+#| echo: false
+x <- seq(-4, 4, length.out = 600)
+plot(x, dnorm(x), type = "l", lwd = 3, col = "red",
+     xlab = "", main = "", ylab = "", bty = "n", xaxt = "n", yaxt = "n", yaxs = "i", ylim = c(0, 0.5))
+abline(h = 0)
+```
+
+## Meet the bell curve {.medium .scrollable}
 
 A random variable $X$ has a **normal** (or **Gaussian**) distribution if its PDF is
 
@@ -39,19 +49,14 @@ $$
 f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\!\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right),\qquad -\infty<x<\infty.
 $$
 
-We write $X\sim\text{N}(\mu,\sigma^2)$, where $\sigma>0$.
+We denote this $X\sim\text{N}(\mu,\sigma^2)$. This is a *parametric family* where each distinct combination of parameters $(\mu,\, \sigma^2)$ gives you a different distribution with different behavior:
 
-- $E(X)=\mu$: the center and axis of symmetry.
-- $\operatorname{Var}(X)=\sigma^2$: the variance; $\sigma$ is the **standard deviation**.
-- The total area under the curve is 1.
+- $\text{Range}(X)=\mathbb{R}=(-\infty,\,\infty)$;
+- $E(X)=\text{median}(X)=\mu\in\mathbb{R}$: the center and axis of symmetry;
+- $\operatorname{var}(X)=\sigma^2>0$ and $\operatorname{sd}(X)=\sigma$;
+- The distribution is symmetric (zero skew) with *light*, well-behaved tails.
 
-```{r}
-#| echo: false
-x <- seq(-4, 4, length.out = 600)
-plot(x, dnorm(x), type = "l", lwd = 3, col = "steelblue4",
-     xlab = "x", ylab = "Density", main = "The standard bell curve")
-abline(v = 0, lty = 2, col = "grey50")
-```
+
 
 ## Normal PDF = constant $\times$ kernel {.scrollable}
 
@@ -63,9 +68,8 @@ f(x)=\underbrace{\frac{1}{\sqrt{2\pi\sigma^2}}}_{\text{normalizing constant}}
 \underbrace{\exp\!\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)}_{\text{kernel}}.
 $$
 
-- The **kernel** determines the shape as a function of $x$;
-- The **normalizing constant** rescales that shape so the total area is **1**;
-- For fixed $\mu$ and $\sigma$, the constant does **not** depend on $x$.
+- The **kernel** determines the shape of the curve and the relative likelihoods of different regions of the number line;
+- The **normalizing constant** doesn't depend on $x$. It just rescales the kernel the total area is **1**.
 
 ```{r}
 #| echo: false
@@ -96,7 +100,7 @@ It's true *for any* $\mu\in\mathbb{R}$ and $\sigma>0$. If you are prepared to re
 
 ## What does $\mu$ do? {.scrollable}
 
-You can show that $\mu$ is the location of the peak (the *maximizer*). Changing $\mu$ slides the bell curve horizontally, without changing its shape.
+You can show that $\mu$ is the location of the peak (the *maximizer*). Changing $\mu$ slides the bell curve horizontally without changing its shape.
 
 ```{r}
 #| echo: false
@@ -167,7 +171,7 @@ text(mu,    .47, "concave down", col = "blue", cex = 1.2)
 text( 2.75, .47, "concave up", col = "#FD9409", cex = 1.2)
 ```
 
-## What does $\sigma$ do? {.scrollable}
+## What does $\sigma$ do? {.small .scrollable}
 
 Changing $\sigma$ changes the **spread**. A smaller standard deviation means a narrower, taller bell curve. Changing the spread must simultaneously alter the height because total area 1 must be preserved at all times.
 
@@ -183,9 +187,12 @@ legend("topright", c("sd = 0.6", "sd = 1.2", "sd = 2.4"),
        col = c("#0072B2", "#D55E00", "#009E73"), lwd = 3, bty = "n")
 ```
 
-**Watch out:** $\text{N}(10, 4)$ has standard deviation **2**, not 4.
+::: callout-warning
+## Watch out 
+$\text{N}(10, 4)$ has standard deviation **2**, not 4.
+:::
 
-## The 68–95–99.7 rule {.scrollable}
+## The 68–95–99.7 rule {.small .scrollable}
 
 Approximately:
 
@@ -195,6 +202,7 @@ Approximately:
 
 ```{r}
 #| echo: false
+#| fig-asp: 0.3
 par(mfrow = c(1, 3), mar = c(3.3, 2.5, 2.2, 0.5))
 x <- seq(-4, 4, length.out = 801)
 for (k in 1:3) {
@@ -213,6 +221,8 @@ par(mfrow = c(1, 1))
 ```
 
 ## Haven't we seen this shape before? {.medium .scrollable}
+
+. . .
 
 The normal distribution plays a *central* role in probability 😉:
 
@@ -424,7 +434,7 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-## The standard normal and its CDF {.scrollable}
+## The standard normal and its CDF {.small .scrollable}
 
 The special case $Z\sim\text{N}(0,1)$ is the **standard normal**.
 
@@ -483,7 +493,36 @@ pnorm(85, mean = 70, sd = 10) - pnorm(60, mean = 70, sd = 10)
 qnorm(0.95, mean = 70, sd = 10)
 ```
 
-## A warm-up: the class's new grading machine {.scrollable}
+## Exercise: simulation versus theory
+
+The primary goal of these labs is to run simulations and verify that they agree with what the theory says. To get a taste for that, do the following:
+
+1. Generate and store 1000 draws from N(5.6, 22);
+1. Plot a histogram of these;
+1. Add on top of your histogram a line tracing the density of N(5.6, 22).
+
+If you did everything correctly, the histogram and density should match.
+
+## Solution
+
+```{r}
+set.seed(8675309)
+x <- rnorm(1000, 5.6, sqrt(22))
+hist(x, freq = FALSE, breaks = "Scott")
+curve(dnorm(x, 5.6, sqrt(22)), from = min(x), to = max(x), 
+      col = "red", add = TRUE, lwd = 2)
+```
+
+## Notes about that
+
+- set a seed so the random numbers are reproducible;
+- Never forget that the pdqr functions for the normal take the *standard deviation*;
+- if `freq = TRUE` the histogram bars are counts. if `freq = FALSE`, the bar heights are normalized so that the total area under the histogram is 1, which is the correct scale to compare with a density;
+- We do `breaks = "Scott"` because David Scott was one of JZ's professors in grad school, so we honor him.
+
+
+
+## Exercises: the class's new grading machine {.scrollable}
 
 A malfunctioning grading machine produces scores that are approximately normal, with mean 75 and standard deviation 12. (For the purpose of this exercise, pretend scores can exceed 100.)
 
@@ -513,7 +552,7 @@ qnorm(0.9, mean = 75, sd = 12)
 
 **Question:** How could the machine produce scores over 100? Is a normal model always sensible for bounded quantities?
 
-## Your turn: airport security's suspiciously precise clock {.scrollable}
+## Exercises: airport security's suspiciously precise clock {.scrollable}
 
 According to an airline's optimistic brochure, the time $T$ (minutes) spent in a security line follows
 
@@ -579,38 +618,46 @@ plot(x, dexp(x, rate = 1), type = "l", col = "steelblue4", lwd = 3,
 
 The gamma family will give us many more shapes, while retaining positive support.
 
-## Meet the gamma {.scrollable}
+## Second, recall from Problem Set 0 {.small .scrollable}
 
-For $\alpha>0$ and $\beta>0$, a random variable has the gamma distribution if
+The gamma function is this silly thing:
+
+$$\Gamma(a)=\int_0^\infty t^{a-1}e^{-t}\,dt,\qquad a>0.$$
+
+Using integration by parts, you showed that $\Gamma(a + 1)=a\Gamma(a)$, so for positive integers, $\Gamma(n)=(n-1)!$:
+
+```{r}
+gamma(1)
+gamma(4)
+factorial(3)
+gamma(2.5)
+```
+
+## Third, meet the gamma distribution {.scrollable}
+
+A random variable has the gamma distribution if
 
 $$
-f_X(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x},\qquad x>0,
+f(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x},\qquad x>0.
 $$
 
-and $f_X(x)=0$ for $x<0$.
+We write $X\sim\operatorname{Gamma}(\alpha,\,\beta)$.
 
-We write $X\sim\operatorname{Gamma}(\alpha,\beta)$.
-
-- $\alpha$: **shape** parameter.
-- $\beta$: **rate** parameter.
+- $\text{Range}(X)=[0,\,\infty)$;
+- $\alpha>0$ is the **shape** parameter;
+- $\beta>0$ is the **rate** parameter;
 - $E(X)=\alpha/\beta$, $\operatorname{Var}(X)=\alpha/\beta^2$ (derivations later).
 
-**Important:** Some books use a *scale* parameter instead. Our $\beta$ is a **rate**.
+## Gamma PDF = constant $\times$ kernel {.medium .scrollable}
 
-## Gamma PDF = constant $\times$ kernel {.scrollable}
-
-Here is the same structure again:
+Here is that same structure again:
 
 $$
-\underbrace{\frac{\beta^\alpha}{\Gamma(\alpha)}}_{\text{normalizing constant}}
+f(x)=\underbrace{\frac{\beta^\alpha}{\Gamma(\alpha)}}_{\text{normalizing constant}}
 \;\times\;
-\underbrace{x^{\alpha-1}e^{-\beta x}}_{\text{kernel (unnormalized density)}},
+\underbrace{x^{\alpha-1}e^{-\beta x}}_{\text{kernel}},
 \qquad x>0.
 $$
-
-- For fixed $\alpha$ and $\beta$, only the **kernel** depends on $x$.
-- The factor involving $\Gamma(\alpha)$ ensures that the total area is 1.
-- This is the same organizational trick we've used for other PMFs and PDFs. **Spot the constant; spot the kernel.**
 
 ```{r}
 #| echo: false
@@ -626,30 +673,27 @@ legend("topright", c("Kernel", "Normalized PDF"),
        col = c("#D55E00", "#0072B2"), lwd = 3, bty = "n")
 ```
 
-## What's that capital gamma? {.scrollable}
+## Free integral identity!
 
-The gamma function is
+Beause PDFs must integrate to 1, the gamma density gives us a new integral identity for free:
 
-$$\Gamma(a)=\int_0^\infty t^{a-1}e^{-t}\,dt,\qquad a>0.$$
+$$
+\int_0^\infty 
+x^{\alpha-1}e^{-\beta x}
+\text{d}x
+=
+\frac{\Gamma(\alpha)}{\beta^\alpha}.
+$$
 
-For positive integers, $\Gamma(n)=(n-1)!$.
-
-```{r}
-gamma(1)
-gamma(4)
-factorial(3)
-gamma(2.5)
-```
-
-It supplies the normalizing constant that makes the gamma PDF integrate to 1. We will study the mathematical details elsewhere.
+Be prepared to use this to simplify your life!
 
 ## Exponential is gamma in disguise {.scrollable}
 
-When $\alpha=1$, since $\Gamma(1)=1$,
+When $\alpha=1$, $\Gamma(1)=1$, and so:
 
 $$\frac{\beta^1}{\Gamma(1)}x^{1-1}e^{-\beta x}=\beta e^{-\beta x}.$$
 
-So **$\operatorname{Gamma}(1,\beta)=\operatorname{Exp}(\beta)$**.
+Therefore **$\operatorname{Gamma}(1,\beta)=\operatorname{Exp}(\beta)$**.
 
 ```{r}
 #| echo: false
@@ -673,7 +717,7 @@ legend("topright", c("Exponential(1)", "Gamma(shape=1, rate=1)"),
 library(shiny)
 
 ui <- fluidPage(
-  titlePanel("Gamma distribution DF"),
+  titlePanel("Gamma distribution PDF"),
   
   sidebarLayout(
     sidebarPanel(
@@ -686,7 +730,7 @@ ui <- fluidPage(
     ),
     
     mainPanel(
-      plotOutput("gammaPlot", height = "600px")
+      plotOutput("gammaPlot", height = "400px")
     )
   )
 )
@@ -784,9 +828,27 @@ qgamma(0.9, shape = 3, rate = 1)
 rgamma(5, shape = 3, rate = 1)
 ```
 
-**Warning:** `scale = 1 / rate`. We will use `rate =` explicitly throughout.
+## Exercise: simulation versus theory
 
-## The campus coffee emergency {.scrollable}
+On every lab from here to the end, you will do something like the following. So let's practice again:
+
+1. Generate and store 1000 draws from Gamma(2, 2);
+1. Plot a histogram of these;
+1. Add on top of your histogram a line tracing th density of Gamma(2, 2).
+
+If you did everything correctly, the histogram and density should match.
+
+## Solution
+
+```{r}
+set.seed(8675309)
+x <- rgamma(1000, 2, 2)
+hist(x, freq = FALSE, breaks = "Scott")
+curve(dgamma(x, 2, rate = 2), from = min(x), to = max(x), 
+      col = "red", add = TRUE, lwd = 2)
+```
+
+## Exercises: the campus coffee emergency {.scrollable}
 
 A terrifyingly elaborate coffee machine makes your latte in **four successive stages**: grinding, brewing, steaming, and "artisanal finishing." Each stage takes an independent $\operatorname{Exp}(0.5)$ number of minutes.
 
@@ -801,7 +863,7 @@ Compute:
 1. $P(T<5)$: the student might reach lecture on time.
 2. $P(T>12)$: time to reconsider one's life choices.
 3. $P(4<T<10)$.
-4. The 90th percentile of $T$.
+4. The 90% quantile of $T$.
 
 ## Coffee emergency: picture {.scrollable}
 
@@ -831,7 +893,7 @@ pgamma(10, shape = 4, rate = 0.5) -
 qgamma(0.9, shape = 4, rate = 0.5)
 ```
 
-## Your turn: haunted house jump scares {.scrollable}
+## Exercises: haunted house jump scares {.scrollable}
 
 A haunted house contains **five rooms**, each with an independent, exponentially distributed amount of time before a jump scare. In each room, the waiting time has rate **3 per hour**. (Management refuses refunds.)
 
@@ -842,21 +904,6 @@ Let $T$ be the **total waiting time across all five rooms**, measured in hours.
 3. Find $P(T>2)$.
 4. Find the smallest $t$ such that $P(T\le t)=0.75$.
 5. Generate 10,000 observations of $T$ and estimate $P(T>2)$ using simulation.
-
-## One last picture: simulation versus theory {.scrollable}
-
-```{r}
-#| echo: false
-set.seed(240)
-t <- rgamma(10000, shape = 5, rate = 3)
-hist(t, breaks = 50, probability = TRUE, col = "grey85", border = "white",
-     xlab = "Total waiting time across five rooms", main = "10,000 simulated haunted-house visits")
-curve(dgamma(x, shape = 5, rate = 3), add = TRUE,
-      col = "#D55E00", lwd = 3)
-legend("topright", "Gamma(5, rate = 3) PDF", col = "#D55E00", lwd = 3, bty = "n")
-```
-
-The histogram approximates a density, not a PMF. Why is `probability = TRUE` necessary here?
 
 ## Haunted house: solutions {.scrollable}
 
