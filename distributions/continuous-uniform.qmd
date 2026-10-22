@@ -1,0 +1,271 @@
+---
+title: "Continuous uniform distribution"
+format: html
+filters:
+  - shinylive
+---
+
+If $X$ is a continuous random quantity that is "equally likely" to take on any value in a bounded interval $[a,\, b]$, then we can model it with the continuous uniform distribution.
+
+## Basic properties
+
+|  |        |
+|------|--------------------|
+| **Notation** | $X\sim\text{Unif}(a,\,b)$  |
+| **Range** | $[a,\,b]$ |
+| **Parameter space** | $-\infty < a < b < \infty$ |
+| **PDF** | $f(x)=\begin{cases}\frac{1}{b-a} & a\leq x\leq b\\0&\text{else}\end{cases}$ |
+| **CDF** | $F(x)=\begin{cases}0 & x < a\\\frac{x-a}{b-a} & a\leq x\leq b\\1&b<x\end{cases}$ |
+| **Expectation** | $\frac{a+b}{2}$ |
+| **Variance** | $(b-a)^2/12$ |
+
+Fun facts:
+
+- Unif(0, 1) is called the **standard uniform** distribution.
+
+## `R` commands
+
+[Here](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Uniform.html) is the documentation for the suite of commands that let you work with the normal distribution in `R`:
+
+```{r}
+#| eval: false
+dunif(x, min, max) # PDF
+punif(q, min, max) # CDF: P(X <= q)
+qunif(p, min, max) # quantile function
+runif(n, min, max) # random numbers
+```
+
+## Play around!
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 600
+#| fig-asp: 1
+
+library(shiny)
+
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel("Uniform distribution CDF and PDF"),
+  
+  # Sidebar with a slider input for number of bins 
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("a",
+                  "Lower bound (a):",
+                  min = 0,
+                  max = 2,
+                  value = 1,
+                  step = 0.1),
+      sliderInput("b",
+                  "Upper bound (b):",
+                  min = 3,
+                  max = 5,
+                  value = 4,
+                  step = 0.1)
+    ),
+    
+    # Show a plot of the generated distribution
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+  
+  output$distPlot <- renderPlot({
+    
+    a <- input$a
+    b <- input$b
+
+    par(mfrow = c(2, 1), mar = c(4, 4, 2, 2))
+    
+    curve(punif(x, min = a, max = b), from = -1, to = 6, n = 1000,
+          ylab = "", col = "red", xlim = c(0, 5))
+    curve(0*x, from = -1, to = a, n = 1000, 
+          ylim = c(0, 1), ylab = "", col = "red", xlim = c(0, 5))
+    curve(dunif(x, min = a, max = b), from = a, to = b, n = 1000, 
+          ylim = c(0, 1), ylab = "", col = "red", add = TRUE)
+    curve(0*x, from = b, to = 6, n = 1000, 
+          ylim = c(0, 1), ylab = "", col = "red", add = TRUE)
+  })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+## Derivations
+
+::: {.callout-note collapse="true"}
+## The pdf integrates to 1
+
+$$
+\begin{aligned}
+    \int_{-\infty}^\infty f_X(x)\,\text{d} x
+    &=
+    \int_{-\infty}^a f_X(x)\,\text{d} x
+    +
+    \int_{a}^b f_X(x)\,\text{d} x
+    +
+    \int_{b}^\infty f_X(x)\,\text{d} x
+    \\
+    &=
+    {\int_{-\infty}^a 0\,\text{d} x}
+    +
+    \int_{a}^b \frac{1}{b-a}\,\text{d} x
+    +
+    {\int_{b}^\infty 0\,\text{d} x}
+    \\
+    &=
+    \frac{1}{b-a}\int_a^b1\,\text{d} x
+    \\
+    &=
+    \frac{1}{b-a}
+    [x]_a^b
+    \\
+    &=
+    \frac{1}{b-a}(b-a)
+    \\
+    &=
+    1
+    .
+\end{aligned}
+$$
+:::
+
+::: {.callout-tip collapse="true"}
+## The CDF
+
+The cdf is $F_X(x)=P(X\leq x)=\int_{-\infty}^x f_X(t)\,\text{d} t$. If $x< a$, then 
+
+$$
+F_X(x)=\int_{-\infty}^xf_X(t)\,\text{d} t=\int_{-\infty}^x0\,\text{d} t=0.
+$$
+
+If $a\leq x\leq b$, then 
+
+$$
+\begin{aligned}
+    F_X(x)
+    &=
+    \int_{-\infty}^xf_X(t)\,\text{d} t
+    \\
+    &=
+    \int_{-\infty}^af_X(t)\,\text{d} t
+    +
+    \int_{a}^xf_X(t)\,\text{d} t
+    \\
+    &=
+    {\int_{-\infty}^a0\,\text{d} t}
+    +
+    \int_{a}^x\frac{1}{b-a}\,\text{d} t
+    \\
+    &=
+    \frac{1}{b-a}[t]_a^x
+    \\
+    &=
+    \frac{x-a}{b-a}
+    .
+\end{aligned}
+$$
+
+If $b < x$, then 
+
+$$
+\begin{aligned}
+    F_X(x)
+    &=
+    \int_{-\infty}^xf_X(t)\,\text{d} t
+    \\
+    &=
+    \int_{-\infty}^af_X(t)\,\text{d} t
+    +
+    \int_{a}^bf_X(t)\,\text{d} t
+    +
+    \int_{b}^xf_X(t)\,\text{d} t
+    \\
+        &=
+    {\int_{-\infty}^a0\,\text{d} t}
+    +
+    \int_{a}^b\frac{1}{b-a}\,\text{d} t
+    +
+    {\int_{b}^x0\,\text{d} t}
+    \\
+    &=1.
+\end{aligned}
+$$
+
+So the cdf of $X\sim\text{Unif}(a,\, b)$ is 
+
+$$
+    F_X(x)
+    =
+    \begin{cases}
+        0 & x<a \\
+        \frac{x-a}{b-a} & a\leq x\leq b \\
+        1 & b<x.
+    \end{cases}
+$$
+
+:::
+
+::: {.callout-note collapse="true"}
+## The mean
+
+The expected value is the midpoint of the interval:
+
+$$
+\begin{align*}
+    E(X)
+    &=
+    \int_{-\infty}^\infty 
+    xf_X(x)\,\text{d} x
+    \\
+    &=
+    \int_{-\infty}^a 
+    xf_X(x)\,\text{d} x
+    +
+    \int_{a}^b 
+    xf_X(x)\,\text{d} x
+    +
+    \int_{b}^\infty 
+    xf_X(x)\,\text{d} x
+    \\
+        &=
+    {\int_{-\infty}^a 
+    x\cdot0\,\text{d} x}
+    +
+    \int_{a}^b 
+    x\frac{1}{b-a}\,\text{d} x
+    +
+    {\int_{b}^\infty 
+    x\cdot0\,\text{d} x}
+    \\
+    &=
+    0+\frac{1}{b-a}\int_a^b x\,\text{d} x+0
+    \\
+    &=
+    \frac{1}{b-a}\left[\frac{1}{2}x^2\right]_a^b
+    \\
+    &=
+    \frac{1}{b-a}\left[\frac{1}{2}b^2-\frac{1}{2}a^2\right]
+    \\
+        &=
+    \frac{1}{2(b-a)}\left[b^2-a^2\right]
+    \\
+        &=
+    \frac{1}{2{(b-a)}}{(b-a)}(b+a)
+    \\
+    &=\frac{b+a}{2}.
+\end{align*}
+$$
+
+That's the proper derivation, but without the math, we could have reasoned our way to this answer by noting that the range is bounded, so the mean is guaranteed to exist, and the distribution is symmetric, so the mean matches the point of symmetry.
+
+:::
+
