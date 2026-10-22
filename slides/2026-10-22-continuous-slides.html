@@ -228,19 +228,7 @@ Dwija Kakkad
 </blockquote>
 </section><section><section id="part-1-the-normal-distribution" class="title-slide slide level1 center"><h1>Part 1: The normal distribution</h1>
 
-</section><section id="meet-the-bell-curve" class="slide level2 scrollable"><h2>Meet the bell curve</h2>
-<p>A random variable <span class="math inline">\(X\)</span> has a <strong>normal</strong> (or <strong>Gaussian</strong>) distribution if its PDF is</p>
-<p><span class="math display">\[
-f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\!\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right),\qquad -\infty&lt;x&lt;\infty.
-\]</span></p>
-<p>We write <span class="math inline">\(X\sim\text{N}(\mu,\sigma^2)\)</span>, where <span class="math inline">\(\sigma&gt;0\)</span>.</p>
-<ul>
-<li>
-<span class="math inline">\(E(X)=\mu\)</span>: the center and axis of symmetry.</li>
-<li>
-<span class="math inline">\(\operatorname{Var}(X)=\sigma^2\)</span>: the variance; <span class="math inline">\(\sigma\)</span> is the <strong>standard deviation</strong>.</li>
-<li>The total area under the curve is 1.</li>
-</ul>
+</section><section id="meet-the-bell-curve" class="slide level2 medium scrollable"><h2>Meet the bell curve</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -249,7 +237,21 @@ f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\!\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigm
 </div>
 </div>
 </div>
-</section><section id="normal-pdf-constant-times-kernel" class="slide level2 scrollable"><h2>Normal PDF = constant <span class="math inline">\(\times\)</span> kernel</h2>
+</section><section id="meet-the-bell-curve-1" class="slide level2 medium scrollable"><h2>Meet the bell curve</h2>
+<p>A random variable <span class="math inline">\(X\)</span> has a <strong>normal</strong> (or <strong>Gaussian</strong>) distribution if its PDF is</p>
+<p><span class="math display">\[
+f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\!\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right),\qquad -\infty&lt;x&lt;\infty.
+\]</span></p>
+<p>We denote this <span class="math inline">\(X\sim\text{N}(\mu,\sigma^2)\)</span>. This is a <em>parametric family</em> where each distinct combination of parameters <span class="math inline">\((\mu,\, \sigma^2)\)</span> gives you a different distribution with different behavior:</p>
+<ul>
+<li>
+<span class="math inline">\(\text{Range}(X)=\mathbb{R}=(-\infty,\,\infty)\)</span>;</li>
+<li>
+<span class="math inline">\(E(X)=\text{median}(X)=\mu\in\mathbb{R}\)</span>: the center and axis of symmetry;</li>
+<li>
+<span class="math inline">\(\operatorname{var}(X)=\sigma^2&gt;0\)</span> and <span class="math inline">\(\operatorname{sd}(X)=\sigma\)</span>;</li>
+<li>The distribution is symmetric (zero skew) with <em>light</em>, well-behaved tails.</li>
+</ul></section><section id="normal-pdf-constant-times-kernel" class="slide level2 scrollable"><h2>Normal PDF = constant <span class="math inline">\(\times\)</span> kernel</h2>
 <p>As with <strong>every PMF or PDF</strong>, separate the formula into two pieces:</p>
 <p><span class="math display">\[
 f(x)=\underbrace{\frac{1}{\sqrt{2\pi\sigma^2}}}_{\text{normalizing constant}}
@@ -257,9 +259,8 @@ f(x)=\underbrace{\frac{1}{\sqrt{2\pi\sigma^2}}}_{\text{normalizing constant}}
 \underbrace{\exp\!\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)}_{\text{kernel}}.
 \]</span></p>
 <ul>
-<li>The <strong>kernel</strong> determines the shape as a function of <span class="math inline">\(x\)</span>;</li>
-<li>The <strong>normalizing constant</strong> rescales that shape so the total area is <strong>1</strong>;</li>
-<li>For fixed <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>, the constant does <strong>not</strong> depend on <span class="math inline">\(x\)</span>.</li>
+<li>The <strong>kernel</strong> determines the shape of the curve and the relative likelihoods of different regions of the number line;</li>
+<li>The <strong>normalizing constant</strong> doesn’t depend on <span class="math inline">\(x\)</span>. It just rescales the kernel the total area is <strong>1</strong>.</li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
@@ -278,7 +279,7 @@ f(x)=\underbrace{\frac{1}{\sqrt{2\pi\sigma^2}}}_{\text{normalizing constant}}
 \]</span></p>
 <p>It’s true <em>for any</em> <span class="math inline">\(\mu\in\mathbb{R}\)</span> and <span class="math inline">\(\sigma&gt;0\)</span>. If you are prepared to recognize this, it can simplify future calculations tremendously!</p>
 </section><section id="what-does-mu-do" class="slide level2 scrollable"><h2>What does <span class="math inline">\(\mu\)</span> do?</h2>
-<p>You can show that <span class="math inline">\(\mu\)</span> is the location of the peak (the <em>maximizer</em>). Changing <span class="math inline">\(\mu\)</span> slides the bell curve horizontally, without changing its shape.</p>
+<p>You can show that <span class="math inline">\(\mu\)</span> is the location of the peak (the <em>maximizer</em>). Changing <span class="math inline">\(\mu\)</span> slides the bell curve horizontally without changing its shape.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -301,7 +302,7 @@ Figure&nbsp;1
 </div>
 </div>
 </div>
-</section><section id="what-does-sigma-do-1" class="slide level2 scrollable"><h2>What does <span class="math inline">\(\sigma\)</span> do?</h2>
+</section><section id="what-does-sigma-do-1" class="slide level2 small scrollable"><h2>What does <span class="math inline">\(\sigma\)</span> do?</h2>
 <p>Changing <span class="math inline">\(\sigma\)</span> changes the <strong>spread</strong>. A smaller standard deviation means a narrower, taller bell curve. Changing the spread must simultaneously alter the height because total area 1 must be preserved at all times.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -311,8 +312,20 @@ Figure&nbsp;1
 </div>
 </div>
 </div>
-<p><strong>Watch out:</strong> <span class="math inline">\(\text{N}(10, 4)\)</span> has standard deviation <strong>2</strong>, not 4.</p>
-</section><section id="the-689599.7-rule" class="slide level2 scrollable"><h2>The 68–95–99.7 rule</h2>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Watch out</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(\text{N}(10, 4)\)</span> has standard deviation <strong>2</strong>, not 4.</p>
+</div>
+</div>
+</div>
+</section><section id="the-689599.7-rule" class="slide level2 small scrollable"><h2>The 68–95–99.7 rule</h2>
 <p>Approximately:</p>
 <ul>
 <li>68% of the probability lies within <strong>one</strong> standard deviation of the mean;</li>
@@ -328,10 +341,12 @@ Figure&nbsp;1
 </div>
 </div>
 </section><section id="havent-we-seen-this-shape-before" class="slide level2 medium scrollable"><h2>Haven’t we seen this shape before?</h2>
+<div class="fragment">
 <p>The normal distribution plays a <em>central</em> role in probability 😉:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure><p><img data-src="images/galton.gif" class="quarto-figure quarto-figure-center"></p>
 </figure>
+</div>
 </div>
 </section><section id="havent-we-seen-this-shape-before-1" class="slide level2 medium scrollable"><h2>Haven’t we seen this shape before?</h2>
 <p>The normal distribution plays a <em>central</em> role in probability 😉:</p>
@@ -535,7 +550,7 @@ Figure&nbsp;1
 <span id="cb2-94"><a></a></span>
 <span id="cb2-95"><a></a># Run the application </span>
 <span id="cb2-96"><a></a>shinyApp(ui = ui, server = server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section><section id="the-standard-normal-and-its-cdf" class="slide level2 scrollable"><h2>The standard normal and its CDF</h2>
+</section><section id="the-standard-normal-and-its-cdf" class="slide level2 small scrollable"><h2>The standard normal and its CDF</h2>
 <p>The special case <span class="math inline">\(Z\sim\text{N}(0,1)\)</span> is the <strong>standard normal</strong>.</p>
 <p>Its CDF is traditionally denoted by <span class="math inline">\(\Phi\)</span>:</p>
 <p><span class="math display">\[
@@ -604,7 +619,35 @@ Figure&nbsp;1
 <pre><code>[1] 86.44854</code></pre>
 </div>
 </div>
-</section><section id="a-warm-up-the-classs-new-grading-machine" class="slide level2 scrollable"><h2>A warm-up: the class’s new grading machine</h2>
+</section><section id="exercise-simulation-versus-theory" class="slide level2"><h2>Exercise: simulation versus theory</h2>
+<p>The primary goal of these labs is to run simulations and verify that they agree with what the theory says. To get a taste for that, do the following:</p>
+<ol type="1">
+<li>Generate and store 1000 draws from N(5.6, 22);</li>
+<li>Plot a histogram of these;</li>
+<li>Add on top of your histogram a line tracing the density of N(5.6, 22).</li>
+</ol>
+<p>If you did everything correctly, the histogram and density should match.</p>
+</section><section id="solution" class="slide level2"><h2>Solution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">set.seed</span>(<span class="dv">8675309</span>)</span>
+<span id="cb9-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="fl">5.6</span>, <span class="fu">sqrt</span>(<span class="dv">22</span>))</span>
+<span id="cb9-3"><a></a><span class="fu">hist</span>(x, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">breaks =</span> <span class="st">"Scott"</span>)</span>
+<span id="cb9-4"><a></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="fl">5.6</span>, <span class="fu">sqrt</span>(<span class="dv">22</span>)), <span class="at">from =</span> <span class="fu">min</span>(x), <span class="at">to =</span> <span class="fu">max</span>(x), </span>
+<span id="cb9-5"><a></a>      <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="notes-about-that" class="slide level2"><h2>Notes about that</h2>
+<ul>
+<li>set a seed so the random numbers are reproducible;</li>
+<li>Never forget that the pdqr functions for the normal take the <em>standard deviation</em>;</li>
+<li>if <code>freq = TRUE</code> the histogram bars are counts. if <code>freq = FALSE</code>, the bar heights are normalized so that the total area under the histogram is 1, which is the correct scale to compare with a density;</li>
+<li>We do <code>breaks = "Scott"</code> because David Scott was one of JZ’s professors in grad school, so we honor him.</li>
+</ul></section><section id="exercises-the-classs-new-grading-machine" class="slide level2 scrollable"><h2>Exercises: the class’s new grading machine</h2>
 <p>A malfunctioning grading machine produces scores that are approximately normal, with mean 75 and standard deviation 12. (For the purpose of this exercise, pretend scores can exceed 100.)</p>
 <p>Let <span class="math inline">\(X\sim\text{N}(75,12^2)\)</span>.</p>
 <p>Compute in R:</p>
@@ -620,26 +663,26 @@ Figure&nbsp;1
 <p>Try these before looking at the next slide.</p>
 </section><section id="grading-machine-solutions" class="slide level2 scrollable"><h2>Grading machine: solutions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">pnorm</span>(<span class="dv">60</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">pnorm</span>(<span class="dv">60</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1056498</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">pnorm</span>(<span class="dv">90</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">12</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">pnorm</span>(<span class="dv">90</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">12</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1056498</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">pnorm</span>(<span class="dv">85</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">12</span>) <span class="sc">-</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">pnorm</span>(<span class="dv">70</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">pnorm</span>(<span class="dv">85</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">12</span>) <span class="sc">-</span></span>
+<span id="cb14-2"><a></a>  <span class="fu">pnorm</span>(<span class="dv">70</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4592105</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">qnorm</span>(<span class="fl">0.9</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">qnorm</span>(<span class="fl">0.9</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 90.37862</code></pre>
 </div>
 </div>
 <p><strong>Question:</strong> How could the machine produce scores over 100? Is a normal model always sensible for bounded quantities?</p>
-</section><section id="your-turn-airport-securitys-suspiciously-precise-clock" class="slide level2 scrollable"><h2>Your turn: airport security’s suspiciously precise clock</h2>
+</section><section id="exercises-airport-securitys-suspiciously-precise-clock" class="slide level2 scrollable"><h2>Exercises: airport security’s suspiciously precise clock</h2>
 <p>According to an airline’s optimistic brochure, the time <span class="math inline">\(T\)</span> (minutes) spent in a security line follows</p>
 <p><span class="math display">\[T\sim\text{N}(24,6^2).\]</span></p>
 <ol type="1">
@@ -654,33 +697,33 @@ Figure&nbsp;1
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </section><section id="airport-solutions" class="slide level2 scrollable"><h2>Airport: solutions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">pnorm</span>(<span class="dv">15</span>, <span class="at">mean =</span> <span class="dv">24</span>, <span class="at">sd =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">pnorm</span>(<span class="dv">15</span>, <span class="at">mean =</span> <span class="dv">24</span>, <span class="at">sd =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0668072</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">pnorm</span>(<span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">24</span>, <span class="at">sd =</span> <span class="dv">6</span>) <span class="sc">-</span></span>
-<span id="cb19-2"><a></a>  <span class="fu">pnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">24</span>, <span class="at">sd =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">pnorm</span>(<span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">24</span>, <span class="at">sd =</span> <span class="dv">6</span>) <span class="sc">-</span></span>
+<span id="cb20-2"><a></a>  <span class="fu">pnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">24</span>, <span class="at">sd =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5888522</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>, <span class="at">mean =</span> <span class="dv">24</span>, <span class="at">sd =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>, <span class="at">mean =</span> <span class="dv">24</span>, <span class="at">sd =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 33.86912</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">set.seed</span>(<span class="dv">240</span>)</span>
-<span id="cb23-2"><a></a>times <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">24</span>, <span class="at">sd =</span> <span class="dv">6</span>)</span>
-<span id="cb23-3"><a></a><span class="fu">mean</span>(times <span class="sc">&lt;</span> <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">set.seed</span>(<span class="dv">240</span>)</span>
+<span id="cb24-2"><a></a>times <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">24</span>, <span class="at">sd =</span> <span class="dv">6</span>)</span>
+<span id="cb24-3"><a></a><span class="fu">mean</span>(times <span class="sc">&lt;</span> <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0682</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">sum</span>(times <span class="sc">&lt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">sum</span>(times <span class="sc">&lt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
@@ -700,81 +743,83 @@ Figure&nbsp;1
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The gamma family will give us many more shapes, while retaining positive support.</p>
-</section><section id="meet-the-gamma" class="slide level2 scrollable"><h2>Meet the gamma</h2>
-<p>For <span class="math inline">\(\alpha&gt;0\)</span> and <span class="math inline">\(\beta&gt;0\)</span>, a random variable has the gamma distribution if</p>
-<p><span class="math display">\[
-f_X(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x},\qquad x&gt;0,
-\]</span></p>
-<p>and <span class="math inline">\(f_X(x)=0\)</span> for <span class="math inline">\(x&lt;0\)</span>.</p>
-<p>We write <span class="math inline">\(X\sim\operatorname{Gamma}(\alpha,\beta)\)</span>.</p>
-<ul>
-<li>
-<span class="math inline">\(\alpha\)</span>: <strong>shape</strong> parameter.</li>
-<li>
-<span class="math inline">\(\beta\)</span>: <strong>rate</strong> parameter.</li>
-<li>
-<span class="math inline">\(E(X)=\alpha/\beta\)</span>, <span class="math inline">\(\operatorname{Var}(X)=\alpha/\beta^2\)</span> (derivations later).</li>
-</ul>
-<p><strong>Important:</strong> Some books use a <em>scale</em> parameter instead. Our <span class="math inline">\(\beta\)</span> is a <strong>rate</strong>.</p>
-</section><section id="gamma-pdf-constant-times-kernel" class="slide level2 scrollable"><h2>Gamma PDF = constant <span class="math inline">\(\times\)</span> kernel</h2>
-<p>Here is the same structure again:</p>
-<p><span class="math display">\[
-\underbrace{\frac{\beta^\alpha}{\Gamma(\alpha)}}_{\text{normalizing constant}}
-\;\times\;
-\underbrace{x^{\alpha-1}e^{-\beta x}}_{\text{kernel (unnormalized density)}},
-\qquad x&gt;0.
-\]</span></p>
-<ul>
-<li>For fixed <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, only the <strong>kernel</strong> depends on <span class="math inline">\(x\)</span>.</li>
-<li>The factor involving <span class="math inline">\(\Gamma(\alpha)\)</span> ensures that the total area is 1.</li>
-<li>This is the same organizational trick we’ve used for other PMFs and PDFs. <strong>Spot the constant; spot the kernel.</strong>
-</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div>
 <figure><p><img data-src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-</section><section id="whats-that-capital-gamma" class="slide level2 scrollable"><h2>What’s that capital gamma?</h2>
-<p>The gamma function is</p>
+<p>The gamma family will give us many more shapes, while retaining positive support.</p>
+</section><section id="second-recall-from-problem-set-0" class="slide level2 small scrollable"><h2>Second, recall from Problem Set 0</h2>
+<p>The gamma function is this silly thing:</p>
 <p><span class="math display">\[\Gamma(a)=\int_0^\infty t^{a-1}e^{-t}\,dt,\qquad a&gt;0.\]</span></p>
-<p>For positive integers, <span class="math inline">\(\Gamma(n)=(n-1)!\)</span>.</p>
+<p>Using integration by parts, you showed that <span class="math inline">\(\Gamma(a + 1)=a\Gamma(a)\)</span>, so for positive integers, <span class="math inline">\(\Gamma(n)=(n-1)!\)</span>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">gamma</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">gamma</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">gamma</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">gamma</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">factorial</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">factorial</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">gamma</span>(<span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">gamma</span>(<span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.32934</code></pre>
 </div>
 </div>
-<p>It supplies the normalizing constant that makes the gamma PDF integrate to 1. We will study the mathematical details elsewhere.</p>
-</section><section id="exponential-is-gamma-in-disguise" class="slide level2 scrollable"><h2>Exponential is gamma in disguise</h2>
-<p>When <span class="math inline">\(\alpha=1\)</span>, since <span class="math inline">\(\Gamma(1)=1\)</span>,</p>
-<p><span class="math display">\[\frac{\beta^1}{\Gamma(1)}x^{1-1}e^{-\beta x}=\beta e^{-\beta x}.\]</span></p>
-<p>So <strong><span class="math inline">\(\operatorname{Gamma}(1,\beta)=\operatorname{Exp}(\beta)\)</span></strong>.</p>
+</section><section id="third-meet-the-gamma-distribution" class="slide level2 scrollable"><h2>Third, meet the gamma distribution</h2>
+<p>A random variable has the gamma distribution if</p>
+<p><span class="math display">\[
+f(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x},\qquad x&gt;0.
+\]</span></p>
+<p>We write <span class="math inline">\(X\sim\operatorname{Gamma}(\alpha,\,\beta)\)</span>.</p>
+<ul>
+<li>
+<span class="math inline">\(\text{Range}(X)=[0,\,\infty)\)</span>;</li>
+<li>
+<span class="math inline">\(\alpha&gt;0\)</span> is the <strong>shape</strong> parameter;</li>
+<li>
+<span class="math inline">\(\beta&gt;0\)</span> is the <strong>rate</strong> parameter;</li>
+<li>
+<span class="math inline">\(E(X)=\alpha/\beta\)</span>, <span class="math inline">\(\operatorname{Var}(X)=\alpha/\beta^2\)</span> (derivations later).</li>
+</ul></section><section id="gamma-pdf-constant-times-kernel" class="slide level2 medium scrollable"><h2>Gamma PDF = constant <span class="math inline">\(\times\)</span> kernel</h2>
+<p>Here is that same structure again:</p>
+<p><span class="math display">\[
+f(x)=\underbrace{\frac{\beta^\alpha}{\Gamma(\alpha)}}_{\text{normalizing constant}}
+\;\times\;
+\underbrace{x^{\alpha-1}e^{-\beta x}}_{\text{kernel}},
+\qquad x&gt;0.
+\]</span></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure><p><img data-src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="free-integral-identity-1" class="slide level2"><h2>Free integral identity!</h2>
+<p>Beause PDFs must integrate to 1, the gamma density gives us a new integral identity for free:</p>
+<p><span class="math display">\[
+\int_0^\infty
+x^{\alpha-1}e^{-\beta x}
+\text{d}x
+=
+\frac{\Gamma(\alpha)}{\beta^\alpha}.
+\]</span></p>
+<p>Be prepared to use this to simplify your life!</p>
+</section><section id="exponential-is-gamma-in-disguise" class="slide level2 scrollable"><h2>Exponential is gamma in disguise</h2>
+<p>When <span class="math inline">\(\alpha=1\)</span>, <span class="math inline">\(\Gamma(1)=1\)</span>, and so:</p>
+<p><span class="math display">\[\frac{\beta^1}{\Gamma(1)}x^{1-1}e^{-\beta x}=\beta e^{-\beta x}.\]</span></p>
+<p>Therefore <strong><span class="math inline">\(\operatorname{Gamma}(1,\beta)=\operatorname{Exp}(\beta)\)</span></strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -784,81 +829,81 @@ f_X(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x},\qquad x&gt;0
 <li>Keep the rate <span class="math inline">\(\beta=1\)</span> fixed and change shape;</li>
 <li>Keep the shape <span class="math inline">\(\alpha=3\)</span> fixed and change rate.</li>
 </ul>
-<div class="sourceCode" id="cb35" data-engine="r"><pre class="sourceCode numberSource shinylive-r number-lines code-with-copy"><code class="sourceCode"><span id="cb35-1"><a></a>#| '!! shinylive warning !!': |</span>
-<span id="cb35-2"><a></a>#|   shinylive does not work in self-contained HTML documents.</span>
-<span id="cb35-3"><a></a>#|   Please set `embed-resources: false` in your metadata.</span>
-<span id="cb35-4"><a></a>#| standalone: true</span>
-<span id="cb35-5"><a></a>#| viewerHeight: 500</span>
-<span id="cb35-6"><a></a></span>
-<span id="cb35-7"><a></a>library(shiny)</span>
-<span id="cb35-8"><a></a></span>
-<span id="cb35-9"><a></a>ui &lt;- fluidPage(</span>
-<span id="cb35-10"><a></a>  titlePanel("Gamma distribution DF"),</span>
-<span id="cb35-11"><a></a>  </span>
-<span id="cb35-12"><a></a>  sidebarLayout(</span>
-<span id="cb35-13"><a></a>    sidebarPanel(</span>
-<span id="cb35-14"><a></a>      sliderInput("alpha", "Shape (α):",</span>
-<span id="cb35-15"><a></a>                  min = 0.5, max = 20, value = 2, step = 0.1),</span>
-<span id="cb35-16"><a></a>      sliderInput("beta", "Rate (β):",</span>
-<span id="cb35-17"><a></a>                  min = 0.2, max = 10, value = 0.5, step = 0.05),</span>
-<span id="cb35-18"><a></a>      hr(),</span>
-<span id="cb35-19"><a></a>      verbatimTextOutput("moments")</span>
-<span id="cb35-20"><a></a>    ),</span>
-<span id="cb35-21"><a></a>    </span>
-<span id="cb35-22"><a></a>    mainPanel(</span>
-<span id="cb35-23"><a></a>      plotOutput("gammaPlot", height = "600px")</span>
-<span id="cb35-24"><a></a>    )</span>
-<span id="cb35-25"><a></a>  )</span>
-<span id="cb35-26"><a></a>)</span>
-<span id="cb35-27"><a></a></span>
-<span id="cb35-28"><a></a>server &lt;- function(input, output) {</span>
-<span id="cb35-29"><a></a>  output$moments &lt;- renderText({</span>
-<span id="cb35-30"><a></a>    alpha &lt;- input$alpha</span>
-<span id="cb35-31"><a></a>    beta  &lt;- input$beta</span>
-<span id="cb35-32"><a></a>    mu &lt;- alpha / beta</span>
-<span id="cb35-33"><a></a>    sd &lt;- sqrt(alpha) / beta</span>
-<span id="cb35-34"><a></a>    paste0("E(X) = ", round(mu, 3),</span>
-<span id="cb35-35"><a></a>           "\nsd(X) = ", round(sd, 3))</span>
-<span id="cb35-36"><a></a>  })</span>
-<span id="cb35-37"><a></a>  </span>
-<span id="cb35-38"><a></a>  output$gammaPlot &lt;- renderPlot({</span>
-<span id="cb35-39"><a></a>    alpha &lt;- input$alpha</span>
-<span id="cb35-40"><a></a>    beta  &lt;- input$beta</span>
-<span id="cb35-41"><a></a>    </span>
-<span id="cb35-42"><a></a>    # Fixed plotting range</span>
-<span id="cb35-43"><a></a>    x_min &lt;- -2</span>
-<span id="cb35-44"><a></a>    x_max &lt;- 25</span>
-<span id="cb35-45"><a></a>    x &lt;- seq(x_min, x_max, length.out = 2000)</span>
-<span id="cb35-46"><a></a>    </span>
-<span id="cb35-47"><a></a>    # PDF and CDF</span>
-<span id="cb35-48"><a></a>    pdf_vals &lt;- ifelse(x &gt;= 0, dgamma(x, shape = alpha, rate = beta), 0)</span>
-<span id="cb35-49"><a></a>    cdf_vals &lt;- ifelse(x &gt;= 0, pgamma(x, shape = alpha, rate = beta), 0)</span>
-<span id="cb35-50"><a></a>    </span>
-<span id="cb35-51"><a></a>    mu &lt;- alpha / beta</span>
-<span id="cb35-52"><a></a>    </span>
-<span id="cb35-53"><a></a>    # Fixed y-limits</span>
-<span id="cb35-54"><a></a>    pdf_ylim &lt;- c(0, 0.8)</span>
-<span id="cb35-55"><a></a>    cdf_ylim &lt;- c(0, 1)</span>
-<span id="cb35-56"><a></a>    </span>
-<span id="cb35-57"><a></a></span>
-<span id="cb35-58"><a></a>    </span>
-<span id="cb35-59"><a></a>    # --- PDF ---</span>
-<span id="cb35-60"><a></a>    plot(x, pdf_vals, type = "l", lwd = 2, col = "darkred",</span>
-<span id="cb35-61"><a></a>         xlim = c(x_min, x_max), ylim = pdf_ylim,</span>
-<span id="cb35-62"><a></a>         main = "Probability Density Function (PDF)",</span>
-<span id="cb35-63"><a></a>         xlab = "x", ylab = "f(x)")</span>
-<span id="cb35-64"><a></a>    #abline(v = mu, col = "gray60", lty = 3)</span>
-<span id="cb35-65"><a></a>    </span>
-<span id="cb35-66"><a></a>    # Label E(X) with mtext along x-axis</span>
-<span id="cb35-67"><a></a>    if (mu &gt;= x_min &amp;&amp; mu &lt;= x_max) {</span>
-<span id="cb35-68"><a></a>      mtext("E(X)",</span>
-<span id="cb35-69"><a></a>            side = 1, line = 2.2, at = mu, cex = 1.0)</span>
-<span id="cb35-70"><a></a>    }</span>
-<span id="cb35-71"><a></a>  })</span>
-<span id="cb35-72"><a></a>}</span>
-<span id="cb35-73"><a></a></span>
-<span id="cb35-74"><a></a>shinyApp(ui = ui, server = server)</span>
-<span id="cb35-75"><a></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36" data-engine="r"><pre class="sourceCode numberSource shinylive-r number-lines code-with-copy"><code class="sourceCode"><span id="cb36-1"><a></a>#| '!! shinylive warning !!': |</span>
+<span id="cb36-2"><a></a>#|   shinylive does not work in self-contained HTML documents.</span>
+<span id="cb36-3"><a></a>#|   Please set `embed-resources: false` in your metadata.</span>
+<span id="cb36-4"><a></a>#| standalone: true</span>
+<span id="cb36-5"><a></a>#| viewerHeight: 500</span>
+<span id="cb36-6"><a></a></span>
+<span id="cb36-7"><a></a>library(shiny)</span>
+<span id="cb36-8"><a></a></span>
+<span id="cb36-9"><a></a>ui &lt;- fluidPage(</span>
+<span id="cb36-10"><a></a>  titlePanel("Gamma distribution PDF"),</span>
+<span id="cb36-11"><a></a>  </span>
+<span id="cb36-12"><a></a>  sidebarLayout(</span>
+<span id="cb36-13"><a></a>    sidebarPanel(</span>
+<span id="cb36-14"><a></a>      sliderInput("alpha", "Shape (α):",</span>
+<span id="cb36-15"><a></a>                  min = 0.5, max = 20, value = 2, step = 0.1),</span>
+<span id="cb36-16"><a></a>      sliderInput("beta", "Rate (β):",</span>
+<span id="cb36-17"><a></a>                  min = 0.2, max = 10, value = 0.5, step = 0.05),</span>
+<span id="cb36-18"><a></a>      hr(),</span>
+<span id="cb36-19"><a></a>      verbatimTextOutput("moments")</span>
+<span id="cb36-20"><a></a>    ),</span>
+<span id="cb36-21"><a></a>    </span>
+<span id="cb36-22"><a></a>    mainPanel(</span>
+<span id="cb36-23"><a></a>      plotOutput("gammaPlot", height = "400px")</span>
+<span id="cb36-24"><a></a>    )</span>
+<span id="cb36-25"><a></a>  )</span>
+<span id="cb36-26"><a></a>)</span>
+<span id="cb36-27"><a></a></span>
+<span id="cb36-28"><a></a>server &lt;- function(input, output) {</span>
+<span id="cb36-29"><a></a>  output$moments &lt;- renderText({</span>
+<span id="cb36-30"><a></a>    alpha &lt;- input$alpha</span>
+<span id="cb36-31"><a></a>    beta  &lt;- input$beta</span>
+<span id="cb36-32"><a></a>    mu &lt;- alpha / beta</span>
+<span id="cb36-33"><a></a>    sd &lt;- sqrt(alpha) / beta</span>
+<span id="cb36-34"><a></a>    paste0("E(X) = ", round(mu, 3),</span>
+<span id="cb36-35"><a></a>           "\nsd(X) = ", round(sd, 3))</span>
+<span id="cb36-36"><a></a>  })</span>
+<span id="cb36-37"><a></a>  </span>
+<span id="cb36-38"><a></a>  output$gammaPlot &lt;- renderPlot({</span>
+<span id="cb36-39"><a></a>    alpha &lt;- input$alpha</span>
+<span id="cb36-40"><a></a>    beta  &lt;- input$beta</span>
+<span id="cb36-41"><a></a>    </span>
+<span id="cb36-42"><a></a>    # Fixed plotting range</span>
+<span id="cb36-43"><a></a>    x_min &lt;- -2</span>
+<span id="cb36-44"><a></a>    x_max &lt;- 25</span>
+<span id="cb36-45"><a></a>    x &lt;- seq(x_min, x_max, length.out = 2000)</span>
+<span id="cb36-46"><a></a>    </span>
+<span id="cb36-47"><a></a>    # PDF and CDF</span>
+<span id="cb36-48"><a></a>    pdf_vals &lt;- ifelse(x &gt;= 0, dgamma(x, shape = alpha, rate = beta), 0)</span>
+<span id="cb36-49"><a></a>    cdf_vals &lt;- ifelse(x &gt;= 0, pgamma(x, shape = alpha, rate = beta), 0)</span>
+<span id="cb36-50"><a></a>    </span>
+<span id="cb36-51"><a></a>    mu &lt;- alpha / beta</span>
+<span id="cb36-52"><a></a>    </span>
+<span id="cb36-53"><a></a>    # Fixed y-limits</span>
+<span id="cb36-54"><a></a>    pdf_ylim &lt;- c(0, 0.8)</span>
+<span id="cb36-55"><a></a>    cdf_ylim &lt;- c(0, 1)</span>
+<span id="cb36-56"><a></a>    </span>
+<span id="cb36-57"><a></a></span>
+<span id="cb36-58"><a></a>    </span>
+<span id="cb36-59"><a></a>    # --- PDF ---</span>
+<span id="cb36-60"><a></a>    plot(x, pdf_vals, type = "l", lwd = 2, col = "darkred",</span>
+<span id="cb36-61"><a></a>         xlim = c(x_min, x_max), ylim = pdf_ylim,</span>
+<span id="cb36-62"><a></a>         main = "Probability Density Function (PDF)",</span>
+<span id="cb36-63"><a></a>         xlab = "x", ylab = "f(x)")</span>
+<span id="cb36-64"><a></a>    #abline(v = mu, col = "gray60", lty = 3)</span>
+<span id="cb36-65"><a></a>    </span>
+<span id="cb36-66"><a></a>    # Label E(X) with mtext along x-axis</span>
+<span id="cb36-67"><a></a>    if (mu &gt;= x_min &amp;&amp; mu &lt;= x_max) {</span>
+<span id="cb36-68"><a></a>      mtext("E(X)",</span>
+<span id="cb36-69"><a></a>            side = 1, line = 2.2, at = mu, cex = 1.0)</span>
+<span id="cb36-70"><a></a>    }</span>
+<span id="cb36-71"><a></a>  })</span>
+<span id="cb36-72"><a></a>}</span>
+<span id="cb36-73"><a></a></span>
+<span id="cb36-74"><a></a>shinyApp(ui = ui, server = server)</span>
+<span id="cb36-75"><a></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="a-gamma-from-familiar-exponential-variables" class="slide level2 scrollable"><h2>A gamma from familiar exponential variables</h2>
 <p>Suppose <span class="math inline">\(W_1,W_2,\ldots,W_k\)</span> are <strong>independent</strong> exponential random variables, all with rate <span class="math inline">\(\beta\)</span>.</p>
 <p>Then their sum has a gamma distribution:</p>
@@ -874,7 +919,7 @@ W_1+\cdots+W_k\sim\operatorname{Gamma}(k,\beta).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<figure><p><img data-src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -905,25 +950,46 @@ W_1+\cdots+W_k\sim\operatorname{Gamma}(k,\beta).
 </tbody>
 </table>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">dgamma</span>(<span class="dv">2</span>, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">dgamma</span>(<span class="dv">2</span>, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2706706</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">pgamma</span>(<span class="dv">2</span>, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">pgamma</span>(<span class="dv">2</span>, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3233236</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">qgamma</span>(<span class="fl">0.9</span>, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">qgamma</span>(<span class="fl">0.9</span>, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.32232</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">rgamma</span>(<span class="dv">5</span>, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">rgamma</span>(<span class="dv">5</span>, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.139866 1.302124 2.858878 1.099562 2.607368</code></pre>
 </div>
 </div>
-<p><strong>Warning:</strong> <code>scale = 1 / rate</code>. We will use <code>rate =</code> explicitly throughout.</p>
-</section><section id="the-campus-coffee-emergency" class="slide level2 scrollable"><h2>The campus coffee emergency</h2>
+</section><section id="exercise-simulation-versus-theory-1" class="slide level2"><h2>Exercise: simulation versus theory</h2>
+<p>On every lab from here to the end, you will do something like the following. So let’s practice again:</p>
+<ol type="1">
+<li>Generate and store 1000 draws from Gamma(2, 2);</li>
+<li>Plot a histogram of these;</li>
+<li>Add on top of your histogram a line tracing th density of Gamma(2, 2).</li>
+</ol>
+<p>If you did everything correctly, the histogram and density should match.</p>
+</section><section id="solution-1" class="slide level2"><h2>Solution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">set.seed</span>(<span class="dv">8675309</span>)</span>
+<span id="cb45-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(<span class="dv">1000</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb45-3"><a></a><span class="fu">hist</span>(x, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">breaks =</span> <span class="st">"Scott"</span>)</span>
+<span id="cb45-4"><a></a><span class="fu">curve</span>(<span class="fu">dgamma</span>(x, <span class="dv">2</span>, <span class="at">rate =</span> <span class="dv">2</span>), <span class="at">from =</span> <span class="fu">min</span>(x), <span class="at">to =</span> <span class="fu">max</span>(x), </span>
+<span id="cb45-5"><a></a>      <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="exercises-the-campus-coffee-emergency" class="slide level2 scrollable"><h2>Exercises: the campus coffee emergency</h2>
 <p>A terrifyingly elaborate coffee machine makes your latte in <strong>four successive stages</strong>: grinding, brewing, steaming, and “artisanal finishing.” Each stage takes an independent <span class="math inline">\(\operatorname{Exp}(0.5)\)</span> number of minutes.</p>
 <p>Let <span class="math inline">\(T\)</span> be the <strong>total</strong> time. Then</p>
 <p><span class="math display">\[T=W_1+W_2+W_3+W_4\sim\operatorname{Gamma}(4,0.5).\]</span></p>
@@ -936,46 +1002,8 @@ W_1+\cdots+W_k\sim\operatorname{Gamma}(k,\beta).
 <span class="math inline">\(P(T&gt;12)\)</span>: time to reconsider one’s life choices.</li>
 <li>
 <span class="math inline">\(P(4&lt;T&lt;10)\)</span>.</li>
-<li>The 90th percentile of <span class="math inline">\(T\)</span>.</li>
+<li>The 90% quantile of <span class="math inline">\(T\)</span>.</li>
 </ol></section><section id="coffee-emergency-picture" class="slide level2 scrollable"><h2>Coffee emergency: picture</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure><p><img data-src="2026-10-22-continuous_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</section><section id="coffee-emergency-solutions" class="slide level2 scrollable"><h2>Coffee emergency: solutions</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">pgamma</span>(<span class="dv">5</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2424239</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">pgamma</span>(<span class="dv">12</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="fl">0.5</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1512039</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">pgamma</span>(<span class="dv">10</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="fl">0.5</span>) <span class="sc">-</span></span>
-<span id="cb48-2"><a></a>  <span class="fu">pgamma</span>(<span class="dv">4</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5920975</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="fu">qgamma</span>(<span class="fl">0.9</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 13.36157</code></pre>
-</div>
-</div>
-</section><section id="your-turn-haunted-house-jump-scares" class="slide level2 scrollable"><h2>Your turn: haunted house jump scares</h2>
-<p>A haunted house contains <strong>five rooms</strong>, each with an independent, exponentially distributed amount of time before a jump scare. In each room, the waiting time has rate <strong>3 per hour</strong>. (Management refuses refunds.)</p>
-<p>Let <span class="math inline">\(T\)</span> be the <strong>total waiting time across all five rooms</strong>, measured in hours.</p>
-<ol type="1">
-<li>Identify the distribution of <span class="math inline">\(T\)</span>, including its parameters.</li>
-<li>Find <span class="math inline">\(P(T&lt;1)\)</span>.</li>
-<li>Find <span class="math inline">\(P(T&gt;2)\)</span>.</li>
-<li>Find the smallest <span class="math inline">\(t\)</span> such that <span class="math inline">\(P(T\le t)=0.75\)</span>.</li>
-<li>Generate 10,000 observations of <span class="math inline">\(T\)</span> and estimate <span class="math inline">\(P(T&gt;2)\)</span> using simulation.</li>
-</ol></section><section id="one-last-picture-simulation-versus-theory" class="slide level2 scrollable"><h2>One last picture: simulation versus theory</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -984,25 +1012,53 @@ W_1+\cdots+W_k\sim\operatorname{Gamma}(k,\beta).
 </div>
 </div>
 </div>
-<p>The histogram approximates a density, not a PMF. Why is <code>probability = TRUE</code> necessary here?</p>
-</section><section id="haunted-house-solutions" class="slide level2 scrollable"><h2>Haunted house: solutions</h2>
+</section><section id="coffee-emergency-solutions" class="slide level2 scrollable"><h2>Coffee emergency: solutions</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">pgamma</span>(<span class="dv">5</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2424239</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">pgamma</span>(<span class="dv">12</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="fl">0.5</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1512039</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="fu">pgamma</span>(<span class="dv">10</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="fl">0.5</span>) <span class="sc">-</span></span>
+<span id="cb50-2"><a></a>  <span class="fu">pgamma</span>(<span class="dv">4</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5920975</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a><span class="fu">qgamma</span>(<span class="fl">0.9</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13.36157</code></pre>
+</div>
+</div>
+</section><section id="exercises-haunted-house-jump-scares" class="slide level2 scrollable"><h2>Exercises: haunted house jump scares</h2>
+<p>A haunted house contains <strong>five rooms</strong>, each with an independent, exponentially distributed amount of time before a jump scare. In each room, the waiting time has rate <strong>3 per hour</strong>. (Management refuses refunds.)</p>
+<p>Let <span class="math inline">\(T\)</span> be the <strong>total waiting time across all five rooms</strong>, measured in hours.</p>
+<ol type="1">
+<li>Identify the distribution of <span class="math inline">\(T\)</span>, including its parameters.</li>
+<li>Find <span class="math inline">\(P(T&lt;1)\)</span>.</li>
+<li>Find <span class="math inline">\(P(T&gt;2)\)</span>.</li>
+<li>Find the smallest <span class="math inline">\(t\)</span> such that <span class="math inline">\(P(T\le t)=0.75\)</span>.</li>
+<li>Generate 10,000 observations of <span class="math inline">\(T\)</span> and estimate <span class="math inline">\(P(T&gt;2)\)</span> using simulation.</li>
+</ol></section><section id="haunted-house-solutions" class="slide level2 scrollable"><h2>Haunted house: solutions</h2>
 <p><span class="math inline">\(T\sim\operatorname{Gamma}(5,3)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a><span class="fu">pgamma</span>(<span class="dv">1</span>, <span class="at">shape =</span> <span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a><span class="fu">pgamma</span>(<span class="dv">1</span>, <span class="at">shape =</span> <span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1847368</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a><span class="fu">pgamma</span>(<span class="dv">2</span>, <span class="at">shape =</span> <span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">3</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a><span class="fu">pgamma</span>(<span class="dv">2</span>, <span class="at">shape =</span> <span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">3</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2850565</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a><span class="fu">qgamma</span>(<span class="fl">0.75</span>, <span class="at">shape =</span> <span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a><span class="fu">qgamma</span>(<span class="fl">0.75</span>, <span class="at">shape =</span> <span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.091477</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a><span class="fu">set.seed</span>(<span class="dv">240</span>)</span>
-<span id="cb58-2"><a></a>t <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(<span class="dv">10000</span>, <span class="at">shape =</span> <span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">3</span>)</span>
-<span id="cb58-3"><a></a><span class="fu">mean</span>(t <span class="sc">&gt;</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a><span class="fu">set.seed</span>(<span class="dv">240</span>)</span>
+<span id="cb60-2"><a></a>t <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(<span class="dv">10000</span>, <span class="at">shape =</span> <span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">3</span>)</span>
+<span id="cb60-3"><a></a><span class="fu">mean</span>(t <span class="sc">&gt;</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.281</code></pre>
 </div>

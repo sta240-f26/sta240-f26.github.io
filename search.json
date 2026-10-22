@@ -4774,14 +4774,21 @@
     "href": "slides/2026-10-22-continuous.html#meet-the-bell-curve",
     "title": "Continuous distributions",
     "section": "Meet the bell curve",
-    "text": "Meet the bell curve\nA random variable \\(X\\) has a normal (or Gaussian) distribution if its PDF is\n\\[\nf(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^2}}\\exp\\!\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right),\\qquad -\\infty&lt;x&lt;\\infty.\n\\]\nWe write \\(X\\sim\\text{N}(\\mu,\\sigma^2)\\), where \\(\\sigma&gt;0\\).\n\n\n\\(E(X)=\\mu\\): the center and axis of symmetry.\n\n\\(\\operatorname{Var}(X)=\\sigma^2\\): the variance; \\(\\sigma\\) is the standard deviation.\nThe total area under the curve is 1."
+    "text": "Meet the bell curve"
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous.html#meet-the-bell-curve-1",
+    "href": "slides/2026-10-22-continuous.html#meet-the-bell-curve-1",
+    "title": "Continuous distributions",
+    "section": "Meet the bell curve",
+    "text": "Meet the bell curve\nA random variable \\(X\\) has a normal (or Gaussian) distribution if its PDF is\n\\[\nf(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^2}}\\exp\\!\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right),\\qquad -\\infty&lt;x&lt;\\infty.\n\\]\nWe denote this \\(X\\sim\\text{N}(\\mu,\\sigma^2)\\). This is a parametric family where each distinct combination of parameters \\((\\mu,\\, \\sigma^2)\\) gives you a different distribution with different behavior:\n\n\n\\(\\text{Range}(X)=\\mathbb{R}=(-\\infty,\\,\\infty)\\);\n\n\\(E(X)=\\text{median}(X)=\\mu\\in\\mathbb{R}\\): the center and axis of symmetry;\n\n\\(\\operatorname{var}(X)=\\sigma^2&gt;0\\) and \\(\\operatorname{sd}(X)=\\sigma\\);\nThe distribution is symmetric (zero skew) with light, well-behaved tails."
   },
   {
     "objectID": "slides/2026-10-22-continuous.html#normal-pdf-constant-times-kernel",
     "href": "slides/2026-10-22-continuous.html#normal-pdf-constant-times-kernel",
     "title": "Continuous distributions",
     "section": "Normal PDF = constant \\(\\times\\) kernel",
-    "text": "Normal PDF = constant \\(\\times\\) kernel\nAs with every PMF or PDF, separate the formula into two pieces:\n\\[\nf(x)=\\underbrace{\\frac{1}{\\sqrt{2\\pi\\sigma^2}}}_{\\text{normalizing constant}}\n\\;\\times\\;\n\\underbrace{\\exp\\!\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right)}_{\\text{kernel}}.\n\\]\n\nThe kernel determines the shape as a function of \\(x\\);\nThe normalizing constant rescales that shape so the total area is 1;\nFor fixed \\(\\mu\\) and \\(\\sigma\\), the constant does not depend on \\(x\\)."
+    "text": "Normal PDF = constant \\(\\times\\) kernel\nAs with every PMF or PDF, separate the formula into two pieces:\n\\[\nf(x)=\\underbrace{\\frac{1}{\\sqrt{2\\pi\\sigma^2}}}_{\\text{normalizing constant}}\n\\;\\times\\;\n\\underbrace{\\exp\\!\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right)}_{\\text{kernel}}.\n\\]\n\nThe kernel determines the shape of the curve and the relative likelihoods of different regions of the number line;\nThe normalizing constant doesn’t depend on \\(x\\). It just rescales the kernel the total area is 1."
   },
   {
     "objectID": "slides/2026-10-22-continuous.html#free-integral-identity",
@@ -4795,7 +4802,7 @@
     "href": "slides/2026-10-22-continuous.html#what-does-mu-do",
     "title": "Continuous distributions",
     "section": "What does \\(\\mu\\) do?",
-    "text": "What does \\(\\mu\\) do?\nYou can show that \\(\\mu\\) is the location of the peak (the maximizer). Changing \\(\\mu\\) slides the bell curve horizontally, without changing its shape."
+    "text": "What does \\(\\mu\\) do?\nYou can show that \\(\\mu\\) is the location of the peak (the maximizer). Changing \\(\\mu\\) slides the bell curve horizontally without changing its shape."
   },
   {
     "objectID": "slides/2026-10-22-continuous.html#what-does-sigma-do",
@@ -4809,7 +4816,7 @@
     "href": "slides/2026-10-22-continuous.html#what-does-sigma-do-1",
     "title": "Continuous distributions",
     "section": "What does \\(\\sigma\\) do?",
-    "text": "What does \\(\\sigma\\) do?\nChanging \\(\\sigma\\) changes the spread. A smaller standard deviation means a narrower, taller bell curve. Changing the spread must simultaneously alter the height because total area 1 must be preserved at all times.\n\n\n\n\n\n\n\n\nWatch out: \\(\\text{N}(10, 4)\\) has standard deviation 2, not 4."
+    "text": "What does \\(\\sigma\\) do?\nChanging \\(\\sigma\\) changes the spread. A smaller standard deviation means a narrower, taller bell curve. Changing the spread must simultaneously alter the height because total area 1 must be preserved at all times.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWatch out\n\n\n\n\\(\\text{N}(10, 4)\\) has standard deviation 2, not 4."
   },
   {
     "objectID": "slides/2026-10-22-continuous.html#the-689599.7-rule",
@@ -4823,7 +4830,7 @@
     "href": "slides/2026-10-22-continuous.html#havent-we-seen-this-shape-before",
     "title": "Continuous distributions",
     "section": "Haven’t we seen this shape before?",
-    "text": "Haven’t we seen this shape before?\nThe normal distribution plays a central role in probability 😉:"
+    "text": "Haven’t we seen this shape before?\n. . .\nThe normal distribution plays a central role in probability 😉:"
   },
   {
     "objectID": "slides/2026-10-22-continuous.html#havent-we-seen-this-shape-before-1",
@@ -4861,11 +4868,32 @@
     "text": "R’s familiar pdqr family\n\n\nTask\nNormal distribution\n\n\n\nPDF height at \\(x\\)\n\ndnorm(x, mean, sd)\n\n\nCDF \\(P(X\\le x)\\)\n\npnorm(x, mean, sd)\n\n\nQuantile (probability \\(p\\))\nqnorm(p, mean, sd)\n\n\nGenerate \\(n\\) observations\nrnorm(n, mean, sd)\n\n\n\nR takes the standard deviation, not the variance.\n\ndnorm(70, mean = 70, sd = 10)\n\n[1] 0.03989423\n\npnorm(85, mean = 70, sd = 10) - pnorm(60, mean = 70, sd = 10)\n\n[1] 0.7745375\n\nqnorm(0.95, mean = 70, sd = 10)\n\n[1] 86.44854"
   },
   {
-    "objectID": "slides/2026-10-22-continuous.html#a-warm-up-the-classs-new-grading-machine",
-    "href": "slides/2026-10-22-continuous.html#a-warm-up-the-classs-new-grading-machine",
+    "objectID": "slides/2026-10-22-continuous.html#exercise-simulation-versus-theory",
+    "href": "slides/2026-10-22-continuous.html#exercise-simulation-versus-theory",
     "title": "Continuous distributions",
-    "section": "A warm-up: the class’s new grading machine",
-    "text": "A warm-up: the class’s new grading machine\nA malfunctioning grading machine produces scores that are approximately normal, with mean 75 and standard deviation 12. (For the purpose of this exercise, pretend scores can exceed 100.)\nLet \\(X\\sim\\text{N}(75,12^2)\\).\nCompute in R:\n\n\n\\(P(X&lt;60)\\): a decidedly unhappy student.\n\n\\(P(X\\ge90)\\): a very happy student.\n\n\\(P(70&lt;X&lt;85)\\): comfortably in the middle.\nThe score at the 90th percentile.\n\nTry these before looking at the next slide."
+    "section": "Exercise: simulation versus theory",
+    "text": "Exercise: simulation versus theory\nThe primary goal of these labs is to run simulations and verify that they agree with what the theory says. To get a taste for that, do the following:\n\nGenerate and store 1000 draws from N(5.6, 22);\nPlot a histogram of these;\nAdd on top of your histogram a line tracing the density of N(5.6, 22).\n\nIf you did everything correctly, the histogram and density should match."
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous.html#solution",
+    "href": "slides/2026-10-22-continuous.html#solution",
+    "title": "Continuous distributions",
+    "section": "Solution",
+    "text": "Solution\n\nset.seed(8675309)\nx &lt;- rnorm(1000, 5.6, sqrt(22))\nhist(x, freq = FALSE, breaks = \"Scott\")\ncurve(dnorm(x, 5.6, sqrt(22)), from = min(x), to = max(x), \n      col = \"red\", add = TRUE, lwd = 2)"
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous.html#notes-about-that",
+    "href": "slides/2026-10-22-continuous.html#notes-about-that",
+    "title": "Continuous distributions",
+    "section": "Notes about that",
+    "text": "Notes about that\n\nset a seed so the random numbers are reproducible;\nNever forget that the pdqr functions for the normal take the standard deviation;\nif freq = TRUE the histogram bars are counts. if freq = FALSE, the bar heights are normalized so that the total area under the histogram is 1, which is the correct scale to compare with a density;\nWe do breaks = \"Scott\" because David Scott was one of JZ’s professors in grad school, so we honor him."
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous.html#exercises-the-classs-new-grading-machine",
+    "href": "slides/2026-10-22-continuous.html#exercises-the-classs-new-grading-machine",
+    "title": "Continuous distributions",
+    "section": "Exercises: the class’s new grading machine",
+    "text": "Exercises: the class’s new grading machine\nA malfunctioning grading machine produces scores that are approximately normal, with mean 75 and standard deviation 12. (For the purpose of this exercise, pretend scores can exceed 100.)\nLet \\(X\\sim\\text{N}(75,12^2)\\).\nCompute in R:\n\n\n\\(P(X&lt;60)\\): a decidedly unhappy student.\n\n\\(P(X\\ge90)\\): a very happy student.\n\n\\(P(70&lt;X&lt;85)\\): comfortably in the middle.\nThe score at the 90th percentile.\n\nTry these before looking at the next slide."
   },
   {
     "objectID": "slides/2026-10-22-continuous.html#grading-machine-solutions",
@@ -4875,11 +4903,11 @@
     "text": "Grading machine: solutions\n\npnorm(60, mean = 75, sd = 12)\n\n[1] 0.1056498\n\npnorm(90, mean = 75, sd = 12, lower.tail = FALSE)\n\n[1] 0.1056498\n\npnorm(85, mean = 75, sd = 12) -\n  pnorm(70, mean = 75, sd = 12)\n\n[1] 0.4592105\n\nqnorm(0.9, mean = 75, sd = 12)\n\n[1] 90.37862\n\n\nQuestion: How could the machine produce scores over 100? Is a normal model always sensible for bounded quantities?"
   },
   {
-    "objectID": "slides/2026-10-22-continuous.html#your-turn-airport-securitys-suspiciously-precise-clock",
-    "href": "slides/2026-10-22-continuous.html#your-turn-airport-securitys-suspiciously-precise-clock",
+    "objectID": "slides/2026-10-22-continuous.html#exercises-airport-securitys-suspiciously-precise-clock",
+    "href": "slides/2026-10-22-continuous.html#exercises-airport-securitys-suspiciously-precise-clock",
     "title": "Continuous distributions",
-    "section": "Your turn: airport security’s suspiciously precise clock",
-    "text": "Your turn: airport security’s suspiciously precise clock\nAccording to an airline’s optimistic brochure, the time \\(T\\) (minutes) spent in a security line follows\n\\[T\\sim\\text{N}(24,6^2).\\]\n\nWhat is the probability of clearing security in under 15 minutes?\nWhat is the probability of waiting between 20 and 30 minutes?\nThe airline claims that 95% of passengers wait less than \\(t\\) minutes. Find \\(t\\).\nGenerate 10,000 hypothetical waiting times and approximate the answer to (1) by simulation.\nHow many simulated waiting times are negative? What does that tell you about this model?\n\nThe distribution is chosen for computing practice, not because airport queues really are Gaussian."
+    "section": "Exercises: airport security’s suspiciously precise clock",
+    "text": "Exercises: airport security’s suspiciously precise clock\nAccording to an airline’s optimistic brochure, the time \\(T\\) (minutes) spent in a security line follows\n\\[T\\sim\\text{N}(24,6^2).\\]\n\nWhat is the probability of clearing security in under 15 minutes?\nWhat is the probability of waiting between 20 and 30 minutes?\nThe airline claims that 95% of passengers wait less than \\(t\\) minutes. Find \\(t\\).\nGenerate 10,000 hypothetical waiting times and approximate the answer to (1) by simulation.\nHow many simulated waiting times are negative? What does that tell you about this model?\n\nThe distribution is chosen for computing practice, not because airport queues really are Gaussian."
   },
   {
     "objectID": "slides/2026-10-22-continuous.html#airport-a-visual-hint",
@@ -4903,39 +4931,46 @@
     "text": "First, remember the exponential\nThe exponential distribution models positive quantities, often waiting times.\n\\[X\\sim\\operatorname{Exp}(\\beta),\\qquad f_X(x)=\\beta e^{-\\beta x},\\quad x&gt;0.\\]\n\n\n\\(\\beta&gt;0\\) is the rate.\n\n\\(E(X)=1/\\beta\\).\nIts density decreases from its maximum at zero.\n\n\n\n\n\n\n\n\n\nThe gamma family will give us many more shapes, while retaining positive support."
   },
   {
-    "objectID": "slides/2026-10-22-continuous.html#meet-the-gamma",
-    "href": "slides/2026-10-22-continuous.html#meet-the-gamma",
+    "objectID": "slides/2026-10-22-continuous.html#second-recall-from-problem-set-0",
+    "href": "slides/2026-10-22-continuous.html#second-recall-from-problem-set-0",
     "title": "Continuous distributions",
-    "section": "Meet the gamma",
-    "text": "Meet the gamma\nFor \\(\\alpha&gt;0\\) and \\(\\beta&gt;0\\), a random variable has the gamma distribution if\n\\[\nf_X(x)=\\frac{\\beta^\\alpha}{\\Gamma(\\alpha)}x^{\\alpha-1}e^{-\\beta x},\\qquad x&gt;0,\n\\]\nand \\(f_X(x)=0\\) for \\(x&lt;0\\).\nWe write \\(X\\sim\\operatorname{Gamma}(\\alpha,\\beta)\\).\n\n\n\\(\\alpha\\): shape parameter.\n\n\\(\\beta\\): rate parameter.\n\n\\(E(X)=\\alpha/\\beta\\), \\(\\operatorname{Var}(X)=\\alpha/\\beta^2\\) (derivations later).\n\nImportant: Some books use a scale parameter instead. Our \\(\\beta\\) is a rate."
+    "section": "Second, recall from Problem Set 0",
+    "text": "Second, recall from Problem Set 0\nThe gamma function is this silly thing:\n\\[\\Gamma(a)=\\int_0^\\infty t^{a-1}e^{-t}\\,dt,\\qquad a&gt;0.\\]\nUsing integration by parts, you showed that \\(\\Gamma(a + 1)=a\\Gamma(a)\\), so for positive integers, \\(\\Gamma(n)=(n-1)!\\):\n\ngamma(1)\n\n[1] 1\n\ngamma(4)\n\n[1] 6\n\nfactorial(3)\n\n[1] 6\n\ngamma(2.5)\n\n[1] 1.32934"
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous.html#third-meet-the-gamma-distribution",
+    "href": "slides/2026-10-22-continuous.html#third-meet-the-gamma-distribution",
+    "title": "Continuous distributions",
+    "section": "Third, meet the gamma distribution",
+    "text": "Third, meet the gamma distribution\nA random variable has the gamma distribution if\n\\[\nf(x)=\\frac{\\beta^\\alpha}{\\Gamma(\\alpha)}x^{\\alpha-1}e^{-\\beta x},\\qquad x&gt;0.\n\\]\nWe write \\(X\\sim\\operatorname{Gamma}(\\alpha,\\,\\beta)\\).\n\n\n\\(\\text{Range}(X)=[0,\\,\\infty)\\);\n\n\\(\\alpha&gt;0\\) is the shape parameter;\n\n\\(\\beta&gt;0\\) is the rate parameter;\n\n\\(E(X)=\\alpha/\\beta\\), \\(\\operatorname{Var}(X)=\\alpha/\\beta^2\\) (derivations later)."
   },
   {
     "objectID": "slides/2026-10-22-continuous.html#gamma-pdf-constant-times-kernel",
     "href": "slides/2026-10-22-continuous.html#gamma-pdf-constant-times-kernel",
     "title": "Continuous distributions",
     "section": "Gamma PDF = constant \\(\\times\\) kernel",
-    "text": "Gamma PDF = constant \\(\\times\\) kernel\nHere is the same structure again:\n\\[\n\\underbrace{\\frac{\\beta^\\alpha}{\\Gamma(\\alpha)}}_{\\text{normalizing constant}}\n\\;\\times\\;\n\\underbrace{x^{\\alpha-1}e^{-\\beta x}}_{\\text{kernel (unnormalized density)}},\n\\qquad x&gt;0.\n\\]\n\nFor fixed \\(\\alpha\\) and \\(\\beta\\), only the kernel depends on \\(x\\).\nThe factor involving \\(\\Gamma(\\alpha)\\) ensures that the total area is 1.\nThis is the same organizational trick we’ve used for other PMFs and PDFs. Spot the constant; spot the kernel."
+    "text": "Gamma PDF = constant \\(\\times\\) kernel\nHere is that same structure again:\n\\[\nf(x)=\\underbrace{\\frac{\\beta^\\alpha}{\\Gamma(\\alpha)}}_{\\text{normalizing constant}}\n\\;\\times\\;\n\\underbrace{x^{\\alpha-1}e^{-\\beta x}}_{\\text{kernel}},\n\\qquad x&gt;0.\n\\]"
   },
   {
-    "objectID": "slides/2026-10-22-continuous.html#whats-that-capital-gamma",
-    "href": "slides/2026-10-22-continuous.html#whats-that-capital-gamma",
+    "objectID": "slides/2026-10-22-continuous.html#free-integral-identity-1",
+    "href": "slides/2026-10-22-continuous.html#free-integral-identity-1",
     "title": "Continuous distributions",
-    "section": "What’s that capital gamma?",
-    "text": "What’s that capital gamma?\nThe gamma function is\n\\[\\Gamma(a)=\\int_0^\\infty t^{a-1}e^{-t}\\,dt,\\qquad a&gt;0.\\]\nFor positive integers, \\(\\Gamma(n)=(n-1)!\\).\n\ngamma(1)\n\n[1] 1\n\ngamma(4)\n\n[1] 6\n\nfactorial(3)\n\n[1] 6\n\ngamma(2.5)\n\n[1] 1.32934\n\n\nIt supplies the normalizing constant that makes the gamma PDF integrate to 1. We will study the mathematical details elsewhere."
+    "section": "Free integral identity!",
+    "text": "Free integral identity!\nBeause PDFs must integrate to 1, the gamma density gives us a new integral identity for free:\n\\[\n\\int_0^\\infty\nx^{\\alpha-1}e^{-\\beta x}\n\\text{d}x\n=\n\\frac{\\Gamma(\\alpha)}{\\beta^\\alpha}.\n\\]\nBe prepared to use this to simplify your life!"
   },
   {
     "objectID": "slides/2026-10-22-continuous.html#exponential-is-gamma-in-disguise",
     "href": "slides/2026-10-22-continuous.html#exponential-is-gamma-in-disguise",
     "title": "Continuous distributions",
     "section": "Exponential is gamma in disguise",
-    "text": "Exponential is gamma in disguise\nWhen \\(\\alpha=1\\), since \\(\\Gamma(1)=1\\),\n\\[\\frac{\\beta^1}{\\Gamma(1)}x^{1-1}e^{-\\beta x}=\\beta e^{-\\beta x}.\\]\nSo \\(\\operatorname{Gamma}(1,\\beta)=\\operatorname{Exp}(\\beta)\\)."
+    "text": "Exponential is gamma in disguise\nWhen \\(\\alpha=1\\), \\(\\Gamma(1)=1\\), and so:\n\\[\\frac{\\beta^1}{\\Gamma(1)}x^{1-1}e^{-\\beta x}=\\beta e^{-\\beta x}.\\]\nTherefore \\(\\operatorname{Gamma}(1,\\beta)=\\operatorname{Exp}(\\beta)\\)."
   },
   {
     "objectID": "slides/2026-10-22-continuous.html#how-do-the-parameters-control-the-shape",
     "href": "slides/2026-10-22-continuous.html#how-do-the-parameters-control-the-shape",
     "title": "Continuous distributions",
     "section": "How do the parameters control the shape?",
-    "text": "How do the parameters control the shape?\n\nKeep the rate \\(\\beta=1\\) fixed and change shape;\nKeep the shape \\(\\alpha=3\\) fixed and change rate.\n\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 500\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  titlePanel(\"Gamma distribution DF\"),\n  \n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"alpha\", \"Shape (α):\",\n                  min = 0.5, max = 20, value = 2, step = 0.1),\n      sliderInput(\"beta\", \"Rate (β):\",\n                  min = 0.2, max = 10, value = 0.5, step = 0.05),\n      hr(),\n      verbatimTextOutput(\"moments\")\n    ),\n    \n    mainPanel(\n      plotOutput(\"gammaPlot\", height = \"600px\")\n    )\n  )\n)\n\nserver &lt;- function(input, output) {\n  output$moments &lt;- renderText({\n    alpha &lt;- input$alpha\n    beta  &lt;- input$beta\n    mu &lt;- alpha / beta\n    sd &lt;- sqrt(alpha) / beta\n    paste0(\"E(X) = \", round(mu, 3),\n           \"\\nsd(X) = \", round(sd, 3))\n  })\n  \n  output$gammaPlot &lt;- renderPlot({\n    alpha &lt;- input$alpha\n    beta  &lt;- input$beta\n    \n    # Fixed plotting range\n    x_min &lt;- -2\n    x_max &lt;- 25\n    x &lt;- seq(x_min, x_max, length.out = 2000)\n    \n    # PDF and CDF\n    pdf_vals &lt;- ifelse(x &gt;= 0, dgamma(x, shape = alpha, rate = beta), 0)\n    cdf_vals &lt;- ifelse(x &gt;= 0, pgamma(x, shape = alpha, rate = beta), 0)\n    \n    mu &lt;- alpha / beta\n    \n    # Fixed y-limits\n    pdf_ylim &lt;- c(0, 0.8)\n    cdf_ylim &lt;- c(0, 1)\n    \n\n    \n    # --- PDF ---\n    plot(x, pdf_vals, type = \"l\", lwd = 2, col = \"darkred\",\n         xlim = c(x_min, x_max), ylim = pdf_ylim,\n         main = \"Probability Density Function (PDF)\",\n         xlab = \"x\", ylab = \"f(x)\")\n    #abline(v = mu, col = \"gray60\", lty = 3)\n    \n    # Label E(X) with mtext along x-axis\n    if (mu &gt;= x_min && mu &lt;= x_max) {\n      mtext(\"E(X)\",\n            side = 1, line = 2.2, at = mu, cex = 1.0)\n    }\n  })\n}\n\nshinyApp(ui = ui, server = server)"
+    "text": "How do the parameters control the shape?\n\nKeep the rate \\(\\beta=1\\) fixed and change shape;\nKeep the shape \\(\\alpha=3\\) fixed and change rate.\n\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 500\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  titlePanel(\"Gamma distribution PDF\"),\n  \n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"alpha\", \"Shape (α):\",\n                  min = 0.5, max = 20, value = 2, step = 0.1),\n      sliderInput(\"beta\", \"Rate (β):\",\n                  min = 0.2, max = 10, value = 0.5, step = 0.05),\n      hr(),\n      verbatimTextOutput(\"moments\")\n    ),\n    \n    mainPanel(\n      plotOutput(\"gammaPlot\", height = \"400px\")\n    )\n  )\n)\n\nserver &lt;- function(input, output) {\n  output$moments &lt;- renderText({\n    alpha &lt;- input$alpha\n    beta  &lt;- input$beta\n    mu &lt;- alpha / beta\n    sd &lt;- sqrt(alpha) / beta\n    paste0(\"E(X) = \", round(mu, 3),\n           \"\\nsd(X) = \", round(sd, 3))\n  })\n  \n  output$gammaPlot &lt;- renderPlot({\n    alpha &lt;- input$alpha\n    beta  &lt;- input$beta\n    \n    # Fixed plotting range\n    x_min &lt;- -2\n    x_max &lt;- 25\n    x &lt;- seq(x_min, x_max, length.out = 2000)\n    \n    # PDF and CDF\n    pdf_vals &lt;- ifelse(x &gt;= 0, dgamma(x, shape = alpha, rate = beta), 0)\n    cdf_vals &lt;- ifelse(x &gt;= 0, pgamma(x, shape = alpha, rate = beta), 0)\n    \n    mu &lt;- alpha / beta\n    \n    # Fixed y-limits\n    pdf_ylim &lt;- c(0, 0.8)\n    cdf_ylim &lt;- c(0, 1)\n    \n\n    \n    # --- PDF ---\n    plot(x, pdf_vals, type = \"l\", lwd = 2, col = \"darkred\",\n         xlim = c(x_min, x_max), ylim = pdf_ylim,\n         main = \"Probability Density Function (PDF)\",\n         xlab = \"x\", ylab = \"f(x)\")\n    #abline(v = mu, col = \"gray60\", lty = 3)\n    \n    # Label E(X) with mtext along x-axis\n    if (mu &gt;= x_min && mu &lt;= x_max) {\n      mtext(\"E(X)\",\n            side = 1, line = 2.2, at = mu, cex = 1.0)\n    }\n  })\n}\n\nshinyApp(ui = ui, server = server)"
   },
   {
     "objectID": "slides/2026-10-22-continuous.html#a-gamma-from-familiar-exponential-variables",
@@ -4949,14 +4984,28 @@
     "href": "slides/2026-10-22-continuous.html#rs-gamma-commands",
     "title": "Continuous distributions",
     "section": "R’s gamma commands",
-    "text": "R’s gamma commands\n\n\nTask\nGamma distribution\n\n\n\nPDF height\ndgamma(x, shape, rate)\n\n\nCDF\npgamma(x, shape, rate)\n\n\nQuantile\nqgamma(p, shape, rate)\n\n\nSimulation\nrgamma(n, shape, rate)\n\n\n\n\ndgamma(2, shape = 3, rate = 1)\n\n[1] 0.2706706\n\npgamma(2, shape = 3, rate = 1)\n\n[1] 0.3233236\n\nqgamma(0.9, shape = 3, rate = 1)\n\n[1] 5.32232\n\nrgamma(5, shape = 3, rate = 1)\n\n[1] 2.139866 1.302124 2.858878 1.099562 2.607368\n\n\nWarning: scale = 1 / rate. We will use rate = explicitly throughout."
+    "text": "R’s gamma commands\n\n\nTask\nGamma distribution\n\n\n\nPDF height\ndgamma(x, shape, rate)\n\n\nCDF\npgamma(x, shape, rate)\n\n\nQuantile\nqgamma(p, shape, rate)\n\n\nSimulation\nrgamma(n, shape, rate)\n\n\n\n\ndgamma(2, shape = 3, rate = 1)\n\n[1] 0.2706706\n\npgamma(2, shape = 3, rate = 1)\n\n[1] 0.3233236\n\nqgamma(0.9, shape = 3, rate = 1)\n\n[1] 5.32232\n\nrgamma(5, shape = 3, rate = 1)\n\n[1] 2.139866 1.302124 2.858878 1.099562 2.607368"
   },
   {
-    "objectID": "slides/2026-10-22-continuous.html#the-campus-coffee-emergency",
-    "href": "slides/2026-10-22-continuous.html#the-campus-coffee-emergency",
+    "objectID": "slides/2026-10-22-continuous.html#exercise-simulation-versus-theory-1",
+    "href": "slides/2026-10-22-continuous.html#exercise-simulation-versus-theory-1",
     "title": "Continuous distributions",
-    "section": "The campus coffee emergency",
-    "text": "The campus coffee emergency\nA terrifyingly elaborate coffee machine makes your latte in four successive stages: grinding, brewing, steaming, and “artisanal finishing.” Each stage takes an independent \\(\\operatorname{Exp}(0.5)\\) number of minutes.\nLet \\(T\\) be the total time. Then\n\\[T=W_1+W_2+W_3+W_4\\sim\\operatorname{Gamma}(4,0.5).\\]\nWhy is the rate 0.5, rather than 2, when each stage takes 2 minutes on average?\nCompute:\n\n\n\\(P(T&lt;5)\\): the student might reach lecture on time.\n\n\\(P(T&gt;12)\\): time to reconsider one’s life choices.\n\n\\(P(4&lt;T&lt;10)\\).\nThe 90th percentile of \\(T\\)."
+    "section": "Exercise: simulation versus theory",
+    "text": "Exercise: simulation versus theory\nOn every lab from here to the end, you will do something like the following. So let’s practice again:\n\nGenerate and store 1000 draws from Gamma(2, 2);\nPlot a histogram of these;\nAdd on top of your histogram a line tracing th density of Gamma(2, 2).\n\nIf you did everything correctly, the histogram and density should match."
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous.html#solution-1",
+    "href": "slides/2026-10-22-continuous.html#solution-1",
+    "title": "Continuous distributions",
+    "section": "Solution",
+    "text": "Solution\n\nset.seed(8675309)\nx &lt;- rgamma(1000, 2, 2)\nhist(x, freq = FALSE, breaks = \"Scott\")\ncurve(dgamma(x, 2, rate = 2), from = min(x), to = max(x), \n      col = \"red\", add = TRUE, lwd = 2)"
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous.html#exercises-the-campus-coffee-emergency",
+    "href": "slides/2026-10-22-continuous.html#exercises-the-campus-coffee-emergency",
+    "title": "Continuous distributions",
+    "section": "Exercises: the campus coffee emergency",
+    "text": "Exercises: the campus coffee emergency\nA terrifyingly elaborate coffee machine makes your latte in four successive stages: grinding, brewing, steaming, and “artisanal finishing.” Each stage takes an independent \\(\\operatorname{Exp}(0.5)\\) number of minutes.\nLet \\(T\\) be the total time. Then\n\\[T=W_1+W_2+W_3+W_4\\sim\\operatorname{Gamma}(4,0.5).\\]\nWhy is the rate 0.5, rather than 2, when each stage takes 2 minutes on average?\nCompute:\n\n\n\\(P(T&lt;5)\\): the student might reach lecture on time.\n\n\\(P(T&gt;12)\\): time to reconsider one’s life choices.\n\n\\(P(4&lt;T&lt;10)\\).\nThe 90% quantile of \\(T\\)."
   },
   {
     "objectID": "slides/2026-10-22-continuous.html#coffee-emergency-picture",
@@ -4973,18 +5022,11 @@
     "text": "Coffee emergency: solutions\n\npgamma(5, shape = 4, rate = 0.5)\n\n[1] 0.2424239\n\npgamma(12, shape = 4, rate = 0.5, lower.tail = FALSE)\n\n[1] 0.1512039\n\npgamma(10, shape = 4, rate = 0.5) -\n  pgamma(4, shape = 4, rate = 0.5)\n\n[1] 0.5920975\n\nqgamma(0.9, shape = 4, rate = 0.5)\n\n[1] 13.36157"
   },
   {
-    "objectID": "slides/2026-10-22-continuous.html#your-turn-haunted-house-jump-scares",
-    "href": "slides/2026-10-22-continuous.html#your-turn-haunted-house-jump-scares",
+    "objectID": "slides/2026-10-22-continuous.html#exercises-haunted-house-jump-scares",
+    "href": "slides/2026-10-22-continuous.html#exercises-haunted-house-jump-scares",
     "title": "Continuous distributions",
-    "section": "Your turn: haunted house jump scares",
-    "text": "Your turn: haunted house jump scares\nA haunted house contains five rooms, each with an independent, exponentially distributed amount of time before a jump scare. In each room, the waiting time has rate 3 per hour. (Management refuses refunds.)\nLet \\(T\\) be the total waiting time across all five rooms, measured in hours.\n\nIdentify the distribution of \\(T\\), including its parameters.\nFind \\(P(T&lt;1)\\).\nFind \\(P(T&gt;2)\\).\nFind the smallest \\(t\\) such that \\(P(T\\le t)=0.75\\).\nGenerate 10,000 observations of \\(T\\) and estimate \\(P(T&gt;2)\\) using simulation."
-  },
-  {
-    "objectID": "slides/2026-10-22-continuous.html#one-last-picture-simulation-versus-theory",
-    "href": "slides/2026-10-22-continuous.html#one-last-picture-simulation-versus-theory",
-    "title": "Continuous distributions",
-    "section": "One last picture: simulation versus theory",
-    "text": "One last picture: simulation versus theory\n\n\n\n\n\n\n\n\nThe histogram approximates a density, not a PMF. Why is probability = TRUE necessary here?"
+    "section": "Exercises: haunted house jump scares",
+    "text": "Exercises: haunted house jump scares\nA haunted house contains five rooms, each with an independent, exponentially distributed amount of time before a jump scare. In each room, the waiting time has rate 3 per hour. (Management refuses refunds.)\nLet \\(T\\) be the total waiting time across all five rooms, measured in hours.\n\nIdentify the distribution of \\(T\\), including its parameters.\nFind \\(P(T&lt;1)\\).\nFind \\(P(T&gt;2)\\).\nFind the smallest \\(t\\) such that \\(P(T\\le t)=0.75\\).\nGenerate 10,000 observations of \\(T\\) and estimate \\(P(T&gt;2)\\) using simulation."
   },
   {
     "objectID": "slides/2026-10-22-continuous.html#haunted-house-solutions",
@@ -5005,14 +5047,21 @@
     "href": "slides/2026-10-22-continuous-slides.html#meet-the-bell-curve",
     "title": "Continuous distributions",
     "section": "Meet the bell curve",
-    "text": "Meet the bell curve\nA random variable \\(X\\) has a normal (or Gaussian) distribution if its PDF is\n\\[\nf(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^2}}\\exp\\!\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right),\\qquad -\\infty&lt;x&lt;\\infty.\n\\]\nWe write \\(X\\sim\\text{N}(\\mu,\\sigma^2)\\), where \\(\\sigma&gt;0\\).\n\n\n\\(E(X)=\\mu\\): the center and axis of symmetry.\n\n\\(\\operatorname{Var}(X)=\\sigma^2\\): the variance; \\(\\sigma\\) is the standard deviation.\nThe total area under the curve is 1."
+    "text": "Meet the bell curve"
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous-slides.html#meet-the-bell-curve-1",
+    "href": "slides/2026-10-22-continuous-slides.html#meet-the-bell-curve-1",
+    "title": "Continuous distributions",
+    "section": "Meet the bell curve",
+    "text": "Meet the bell curve\nA random variable \\(X\\) has a normal (or Gaussian) distribution if its PDF is\n\\[\nf(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^2}}\\exp\\!\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right),\\qquad -\\infty&lt;x&lt;\\infty.\n\\]\nWe denote this \\(X\\sim\\text{N}(\\mu,\\sigma^2)\\). This is a parametric family where each distinct combination of parameters \\((\\mu,\\, \\sigma^2)\\) gives you a different distribution with different behavior:\n\n\n\\(\\text{Range}(X)=\\mathbb{R}=(-\\infty,\\,\\infty)\\);\n\n\\(E(X)=\\text{median}(X)=\\mu\\in\\mathbb{R}\\): the center and axis of symmetry;\n\n\\(\\operatorname{var}(X)=\\sigma^2&gt;0\\) and \\(\\operatorname{sd}(X)=\\sigma\\);\nThe distribution is symmetric (zero skew) with light, well-behaved tails."
   },
   {
     "objectID": "slides/2026-10-22-continuous-slides.html#normal-pdf-constant-times-kernel",
     "href": "slides/2026-10-22-continuous-slides.html#normal-pdf-constant-times-kernel",
     "title": "Continuous distributions",
     "section": "Normal PDF = constant \\(\\times\\) kernel",
-    "text": "Normal PDF = constant \\(\\times\\) kernel\nAs with every PMF or PDF, separate the formula into two pieces:\n\\[\nf(x)=\\underbrace{\\frac{1}{\\sqrt{2\\pi\\sigma^2}}}_{\\text{normalizing constant}}\n\\;\\times\\;\n\\underbrace{\\exp\\!\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right)}_{\\text{kernel}}.\n\\]\n\nThe kernel determines the shape as a function of \\(x\\);\nThe normalizing constant rescales that shape so the total area is 1;\nFor fixed \\(\\mu\\) and \\(\\sigma\\), the constant does not depend on \\(x\\)."
+    "text": "Normal PDF = constant \\(\\times\\) kernel\nAs with every PMF or PDF, separate the formula into two pieces:\n\\[\nf(x)=\\underbrace{\\frac{1}{\\sqrt{2\\pi\\sigma^2}}}_{\\text{normalizing constant}}\n\\;\\times\\;\n\\underbrace{\\exp\\!\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right)}_{\\text{kernel}}.\n\\]\n\nThe kernel determines the shape of the curve and the relative likelihoods of different regions of the number line;\nThe normalizing constant doesn’t depend on \\(x\\). It just rescales the kernel the total area is 1."
   },
   {
     "objectID": "slides/2026-10-22-continuous-slides.html#free-integral-identity",
@@ -5026,7 +5075,7 @@
     "href": "slides/2026-10-22-continuous-slides.html#what-does-mu-do",
     "title": "Continuous distributions",
     "section": "What does \\(\\mu\\) do?",
-    "text": "What does \\(\\mu\\) do?\nYou can show that \\(\\mu\\) is the location of the peak (the maximizer). Changing \\(\\mu\\) slides the bell curve horizontally, without changing its shape."
+    "text": "What does \\(\\mu\\) do?\nYou can show that \\(\\mu\\) is the location of the peak (the maximizer). Changing \\(\\mu\\) slides the bell curve horizontally without changing its shape."
   },
   {
     "objectID": "slides/2026-10-22-continuous-slides.html#what-does-sigma-do",
@@ -5040,7 +5089,7 @@
     "href": "slides/2026-10-22-continuous-slides.html#what-does-sigma-do-1",
     "title": "Continuous distributions",
     "section": "What does \\(\\sigma\\) do?",
-    "text": "What does \\(\\sigma\\) do?\nChanging \\(\\sigma\\) changes the spread. A smaller standard deviation means a narrower, taller bell curve. Changing the spread must simultaneously alter the height because total area 1 must be preserved at all times.\n\n\n\n\n\n\n\n\nWatch out: \\(\\text{N}(10, 4)\\) has standard deviation 2, not 4."
+    "text": "What does \\(\\sigma\\) do?\nChanging \\(\\sigma\\) changes the spread. A smaller standard deviation means a narrower, taller bell curve. Changing the spread must simultaneously alter the height because total area 1 must be preserved at all times.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWatch out\n\n\n\\(\\text{N}(10, 4)\\) has standard deviation 2, not 4."
   },
   {
     "objectID": "slides/2026-10-22-continuous-slides.html#the-689599.7-rule",
@@ -5054,7 +5103,7 @@
     "href": "slides/2026-10-22-continuous-slides.html#havent-we-seen-this-shape-before",
     "title": "Continuous distributions",
     "section": "Haven’t we seen this shape before?",
-    "text": "Haven’t we seen this shape before?\nThe normal distribution plays a central role in probability 😉:"
+    "text": "Haven’t we seen this shape before?\n\nThe normal distribution plays a central role in probability 😉:"
   },
   {
     "objectID": "slides/2026-10-22-continuous-slides.html#havent-we-seen-this-shape-before-1",
@@ -5092,11 +5141,32 @@
     "text": "R’s familiar pdqr family\n\n\nTask\nNormal distribution\n\n\n\nPDF height at \\(x\\)\n\ndnorm(x, mean, sd)\n\n\nCDF \\(P(X\\le x)\\)\n\npnorm(x, mean, sd)\n\n\nQuantile (probability \\(p\\))\nqnorm(p, mean, sd)\n\n\nGenerate \\(n\\) observations\nrnorm(n, mean, sd)\n\n\n\nR takes the standard deviation, not the variance.\n\ndnorm(70, mean = 70, sd = 10)\n\n[1] 0.03989423\n\npnorm(85, mean = 70, sd = 10) - pnorm(60, mean = 70, sd = 10)\n\n[1] 0.7745375\n\nqnorm(0.95, mean = 70, sd = 10)\n\n[1] 86.44854"
   },
   {
-    "objectID": "slides/2026-10-22-continuous-slides.html#a-warm-up-the-classs-new-grading-machine",
-    "href": "slides/2026-10-22-continuous-slides.html#a-warm-up-the-classs-new-grading-machine",
+    "objectID": "slides/2026-10-22-continuous-slides.html#exercise-simulation-versus-theory",
+    "href": "slides/2026-10-22-continuous-slides.html#exercise-simulation-versus-theory",
     "title": "Continuous distributions",
-    "section": "A warm-up: the class’s new grading machine",
-    "text": "A warm-up: the class’s new grading machine\nA malfunctioning grading machine produces scores that are approximately normal, with mean 75 and standard deviation 12. (For the purpose of this exercise, pretend scores can exceed 100.)\nLet \\(X\\sim\\text{N}(75,12^2)\\).\nCompute in R:\n\n\n\\(P(X&lt;60)\\): a decidedly unhappy student.\n\n\\(P(X\\ge90)\\): a very happy student.\n\n\\(P(70&lt;X&lt;85)\\): comfortably in the middle.\nThe score at the 90th percentile.\n\nTry these before looking at the next slide."
+    "section": "Exercise: simulation versus theory",
+    "text": "Exercise: simulation versus theory\nThe primary goal of these labs is to run simulations and verify that they agree with what the theory says. To get a taste for that, do the following:\n\nGenerate and store 1000 draws from N(5.6, 22);\nPlot a histogram of these;\nAdd on top of your histogram a line tracing the density of N(5.6, 22).\n\nIf you did everything correctly, the histogram and density should match."
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous-slides.html#solution",
+    "href": "slides/2026-10-22-continuous-slides.html#solution",
+    "title": "Continuous distributions",
+    "section": "Solution",
+    "text": "Solution\n\nset.seed(8675309)\nx &lt;- rnorm(1000, 5.6, sqrt(22))\nhist(x, freq = FALSE, breaks = \"Scott\")\ncurve(dnorm(x, 5.6, sqrt(22)), from = min(x), to = max(x), \n      col = \"red\", add = TRUE, lwd = 2)"
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous-slides.html#notes-about-that",
+    "href": "slides/2026-10-22-continuous-slides.html#notes-about-that",
+    "title": "Continuous distributions",
+    "section": "Notes about that",
+    "text": "Notes about that\n\nset a seed so the random numbers are reproducible;\nNever forget that the pdqr functions for the normal take the standard deviation;\nif freq = TRUE the histogram bars are counts. if freq = FALSE, the bar heights are normalized so that the total area under the histogram is 1, which is the correct scale to compare with a density;\nWe do breaks = \"Scott\" because David Scott was one of JZ’s professors in grad school, so we honor him."
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous-slides.html#exercises-the-classs-new-grading-machine",
+    "href": "slides/2026-10-22-continuous-slides.html#exercises-the-classs-new-grading-machine",
+    "title": "Continuous distributions",
+    "section": "Exercises: the class’s new grading machine",
+    "text": "Exercises: the class’s new grading machine\nA malfunctioning grading machine produces scores that are approximately normal, with mean 75 and standard deviation 12. (For the purpose of this exercise, pretend scores can exceed 100.)\nLet \\(X\\sim\\text{N}(75,12^2)\\).\nCompute in R:\n\n\n\\(P(X&lt;60)\\): a decidedly unhappy student.\n\n\\(P(X\\ge90)\\): a very happy student.\n\n\\(P(70&lt;X&lt;85)\\): comfortably in the middle.\nThe score at the 90th percentile.\n\nTry these before looking at the next slide."
   },
   {
     "objectID": "slides/2026-10-22-continuous-slides.html#grading-machine-solutions",
@@ -5106,11 +5176,11 @@
     "text": "Grading machine: solutions\n\npnorm(60, mean = 75, sd = 12)\n\n[1] 0.1056498\n\npnorm(90, mean = 75, sd = 12, lower.tail = FALSE)\n\n[1] 0.1056498\n\npnorm(85, mean = 75, sd = 12) -\n  pnorm(70, mean = 75, sd = 12)\n\n[1] 0.4592105\n\nqnorm(0.9, mean = 75, sd = 12)\n\n[1] 90.37862\n\n\nQuestion: How could the machine produce scores over 100? Is a normal model always sensible for bounded quantities?"
   },
   {
-    "objectID": "slides/2026-10-22-continuous-slides.html#your-turn-airport-securitys-suspiciously-precise-clock",
-    "href": "slides/2026-10-22-continuous-slides.html#your-turn-airport-securitys-suspiciously-precise-clock",
+    "objectID": "slides/2026-10-22-continuous-slides.html#exercises-airport-securitys-suspiciously-precise-clock",
+    "href": "slides/2026-10-22-continuous-slides.html#exercises-airport-securitys-suspiciously-precise-clock",
     "title": "Continuous distributions",
-    "section": "Your turn: airport security’s suspiciously precise clock",
-    "text": "Your turn: airport security’s suspiciously precise clock\nAccording to an airline’s optimistic brochure, the time \\(T\\) (minutes) spent in a security line follows\n\\[T\\sim\\text{N}(24,6^2).\\]\n\nWhat is the probability of clearing security in under 15 minutes?\nWhat is the probability of waiting between 20 and 30 minutes?\nThe airline claims that 95% of passengers wait less than \\(t\\) minutes. Find \\(t\\).\nGenerate 10,000 hypothetical waiting times and approximate the answer to (1) by simulation.\nHow many simulated waiting times are negative? What does that tell you about this model?\n\nThe distribution is chosen for computing practice, not because airport queues really are Gaussian."
+    "section": "Exercises: airport security’s suspiciously precise clock",
+    "text": "Exercises: airport security’s suspiciously precise clock\nAccording to an airline’s optimistic brochure, the time \\(T\\) (minutes) spent in a security line follows\n\\[T\\sim\\text{N}(24,6^2).\\]\n\nWhat is the probability of clearing security in under 15 minutes?\nWhat is the probability of waiting between 20 and 30 minutes?\nThe airline claims that 95% of passengers wait less than \\(t\\) minutes. Find \\(t\\).\nGenerate 10,000 hypothetical waiting times and approximate the answer to (1) by simulation.\nHow many simulated waiting times are negative? What does that tell you about this model?\n\nThe distribution is chosen for computing practice, not because airport queues really are Gaussian."
   },
   {
     "objectID": "slides/2026-10-22-continuous-slides.html#airport-a-visual-hint",
@@ -5134,39 +5204,46 @@
     "text": "First, remember the exponential\nThe exponential distribution models positive quantities, often waiting times.\n\\[X\\sim\\operatorname{Exp}(\\beta),\\qquad f_X(x)=\\beta e^{-\\beta x},\\quad x&gt;0.\\]\n\n\n\\(\\beta&gt;0\\) is the rate.\n\n\\(E(X)=1/\\beta\\).\nIts density decreases from its maximum at zero.\n\n\n\n\n\n\n\n\n\nThe gamma family will give us many more shapes, while retaining positive support."
   },
   {
-    "objectID": "slides/2026-10-22-continuous-slides.html#meet-the-gamma",
-    "href": "slides/2026-10-22-continuous-slides.html#meet-the-gamma",
+    "objectID": "slides/2026-10-22-continuous-slides.html#second-recall-from-problem-set-0",
+    "href": "slides/2026-10-22-continuous-slides.html#second-recall-from-problem-set-0",
     "title": "Continuous distributions",
-    "section": "Meet the gamma",
-    "text": "Meet the gamma\nFor \\(\\alpha&gt;0\\) and \\(\\beta&gt;0\\), a random variable has the gamma distribution if\n\\[\nf_X(x)=\\frac{\\beta^\\alpha}{\\Gamma(\\alpha)}x^{\\alpha-1}e^{-\\beta x},\\qquad x&gt;0,\n\\]\nand \\(f_X(x)=0\\) for \\(x&lt;0\\).\nWe write \\(X\\sim\\operatorname{Gamma}(\\alpha,\\beta)\\).\n\n\n\\(\\alpha\\): shape parameter.\n\n\\(\\beta\\): rate parameter.\n\n\\(E(X)=\\alpha/\\beta\\), \\(\\operatorname{Var}(X)=\\alpha/\\beta^2\\) (derivations later).\n\nImportant: Some books use a scale parameter instead. Our \\(\\beta\\) is a rate."
+    "section": "Second, recall from Problem Set 0",
+    "text": "Second, recall from Problem Set 0\nThe gamma function is this silly thing:\n\\[\\Gamma(a)=\\int_0^\\infty t^{a-1}e^{-t}\\,dt,\\qquad a&gt;0.\\]\nUsing integration by parts, you showed that \\(\\Gamma(a + 1)=a\\Gamma(a)\\), so for positive integers, \\(\\Gamma(n)=(n-1)!\\):\n\ngamma(1)\n\n[1] 1\n\ngamma(4)\n\n[1] 6\n\nfactorial(3)\n\n[1] 6\n\ngamma(2.5)\n\n[1] 1.32934"
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous-slides.html#third-meet-the-gamma-distribution",
+    "href": "slides/2026-10-22-continuous-slides.html#third-meet-the-gamma-distribution",
+    "title": "Continuous distributions",
+    "section": "Third, meet the gamma distribution",
+    "text": "Third, meet the gamma distribution\nA random variable has the gamma distribution if\n\\[\nf(x)=\\frac{\\beta^\\alpha}{\\Gamma(\\alpha)}x^{\\alpha-1}e^{-\\beta x},\\qquad x&gt;0.\n\\]\nWe write \\(X\\sim\\operatorname{Gamma}(\\alpha,\\,\\beta)\\).\n\n\n\\(\\text{Range}(X)=[0,\\,\\infty)\\);\n\n\\(\\alpha&gt;0\\) is the shape parameter;\n\n\\(\\beta&gt;0\\) is the rate parameter;\n\n\\(E(X)=\\alpha/\\beta\\), \\(\\operatorname{Var}(X)=\\alpha/\\beta^2\\) (derivations later)."
   },
   {
     "objectID": "slides/2026-10-22-continuous-slides.html#gamma-pdf-constant-times-kernel",
     "href": "slides/2026-10-22-continuous-slides.html#gamma-pdf-constant-times-kernel",
     "title": "Continuous distributions",
     "section": "Gamma PDF = constant \\(\\times\\) kernel",
-    "text": "Gamma PDF = constant \\(\\times\\) kernel\nHere is the same structure again:\n\\[\n\\underbrace{\\frac{\\beta^\\alpha}{\\Gamma(\\alpha)}}_{\\text{normalizing constant}}\n\\;\\times\\;\n\\underbrace{x^{\\alpha-1}e^{-\\beta x}}_{\\text{kernel (unnormalized density)}},\n\\qquad x&gt;0.\n\\]\n\nFor fixed \\(\\alpha\\) and \\(\\beta\\), only the kernel depends on \\(x\\).\nThe factor involving \\(\\Gamma(\\alpha)\\) ensures that the total area is 1.\nThis is the same organizational trick we’ve used for other PMFs and PDFs. Spot the constant; spot the kernel."
+    "text": "Gamma PDF = constant \\(\\times\\) kernel\nHere is that same structure again:\n\\[\nf(x)=\\underbrace{\\frac{\\beta^\\alpha}{\\Gamma(\\alpha)}}_{\\text{normalizing constant}}\n\\;\\times\\;\n\\underbrace{x^{\\alpha-1}e^{-\\beta x}}_{\\text{kernel}},\n\\qquad x&gt;0.\n\\]"
   },
   {
-    "objectID": "slides/2026-10-22-continuous-slides.html#whats-that-capital-gamma",
-    "href": "slides/2026-10-22-continuous-slides.html#whats-that-capital-gamma",
+    "objectID": "slides/2026-10-22-continuous-slides.html#free-integral-identity-1",
+    "href": "slides/2026-10-22-continuous-slides.html#free-integral-identity-1",
     "title": "Continuous distributions",
-    "section": "What’s that capital gamma?",
-    "text": "What’s that capital gamma?\nThe gamma function is\n\\[\\Gamma(a)=\\int_0^\\infty t^{a-1}e^{-t}\\,dt,\\qquad a&gt;0.\\]\nFor positive integers, \\(\\Gamma(n)=(n-1)!\\).\n\ngamma(1)\n\n[1] 1\n\ngamma(4)\n\n[1] 6\n\nfactorial(3)\n\n[1] 6\n\ngamma(2.5)\n\n[1] 1.32934\n\n\nIt supplies the normalizing constant that makes the gamma PDF integrate to 1. We will study the mathematical details elsewhere."
+    "section": "Free integral identity!",
+    "text": "Free integral identity!\nBeause PDFs must integrate to 1, the gamma density gives us a new integral identity for free:\n\\[\n\\int_0^\\infty\nx^{\\alpha-1}e^{-\\beta x}\n\\text{d}x\n=\n\\frac{\\Gamma(\\alpha)}{\\beta^\\alpha}.\n\\]\nBe prepared to use this to simplify your life!"
   },
   {
     "objectID": "slides/2026-10-22-continuous-slides.html#exponential-is-gamma-in-disguise",
     "href": "slides/2026-10-22-continuous-slides.html#exponential-is-gamma-in-disguise",
     "title": "Continuous distributions",
     "section": "Exponential is gamma in disguise",
-    "text": "Exponential is gamma in disguise\nWhen \\(\\alpha=1\\), since \\(\\Gamma(1)=1\\),\n\\[\\frac{\\beta^1}{\\Gamma(1)}x^{1-1}e^{-\\beta x}=\\beta e^{-\\beta x}.\\]\nSo \\(\\operatorname{Gamma}(1,\\beta)=\\operatorname{Exp}(\\beta)\\)."
+    "text": "Exponential is gamma in disguise\nWhen \\(\\alpha=1\\), \\(\\Gamma(1)=1\\), and so:\n\\[\\frac{\\beta^1}{\\Gamma(1)}x^{1-1}e^{-\\beta x}=\\beta e^{-\\beta x}.\\]\nTherefore \\(\\operatorname{Gamma}(1,\\beta)=\\operatorname{Exp}(\\beta)\\)."
   },
   {
     "objectID": "slides/2026-10-22-continuous-slides.html#how-do-the-parameters-control-the-shape",
     "href": "slides/2026-10-22-continuous-slides.html#how-do-the-parameters-control-the-shape",
     "title": "Continuous distributions",
     "section": "How do the parameters control the shape?",
-    "text": "How do the parameters control the shape?\n\nKeep the rate \\(\\beta=1\\) fixed and change shape;\nKeep the shape \\(\\alpha=3\\) fixed and change rate.\n\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 500\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  titlePanel(\"Gamma distribution DF\"),\n  \n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"alpha\", \"Shape (α):\",\n                  min = 0.5, max = 20, value = 2, step = 0.1),\n      sliderInput(\"beta\", \"Rate (β):\",\n                  min = 0.2, max = 10, value = 0.5, step = 0.05),\n      hr(),\n      verbatimTextOutput(\"moments\")\n    ),\n    \n    mainPanel(\n      plotOutput(\"gammaPlot\", height = \"600px\")\n    )\n  )\n)\n\nserver &lt;- function(input, output) {\n  output$moments &lt;- renderText({\n    alpha &lt;- input$alpha\n    beta  &lt;- input$beta\n    mu &lt;- alpha / beta\n    sd &lt;- sqrt(alpha) / beta\n    paste0(\"E(X) = \", round(mu, 3),\n           \"\\nsd(X) = \", round(sd, 3))\n  })\n  \n  output$gammaPlot &lt;- renderPlot({\n    alpha &lt;- input$alpha\n    beta  &lt;- input$beta\n    \n    # Fixed plotting range\n    x_min &lt;- -2\n    x_max &lt;- 25\n    x &lt;- seq(x_min, x_max, length.out = 2000)\n    \n    # PDF and CDF\n    pdf_vals &lt;- ifelse(x &gt;= 0, dgamma(x, shape = alpha, rate = beta), 0)\n    cdf_vals &lt;- ifelse(x &gt;= 0, pgamma(x, shape = alpha, rate = beta), 0)\n    \n    mu &lt;- alpha / beta\n    \n    # Fixed y-limits\n    pdf_ylim &lt;- c(0, 0.8)\n    cdf_ylim &lt;- c(0, 1)\n    \n\n    \n    # --- PDF ---\n    plot(x, pdf_vals, type = \"l\", lwd = 2, col = \"darkred\",\n         xlim = c(x_min, x_max), ylim = pdf_ylim,\n         main = \"Probability Density Function (PDF)\",\n         xlab = \"x\", ylab = \"f(x)\")\n    #abline(v = mu, col = \"gray60\", lty = 3)\n    \n    # Label E(X) with mtext along x-axis\n    if (mu &gt;= x_min && mu &lt;= x_max) {\n      mtext(\"E(X)\",\n            side = 1, line = 2.2, at = mu, cex = 1.0)\n    }\n  })\n}\n\nshinyApp(ui = ui, server = server)"
+    "text": "How do the parameters control the shape?\n\nKeep the rate \\(\\beta=1\\) fixed and change shape;\nKeep the shape \\(\\alpha=3\\) fixed and change rate.\n\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 500\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  titlePanel(\"Gamma distribution PDF\"),\n  \n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"alpha\", \"Shape (α):\",\n                  min = 0.5, max = 20, value = 2, step = 0.1),\n      sliderInput(\"beta\", \"Rate (β):\",\n                  min = 0.2, max = 10, value = 0.5, step = 0.05),\n      hr(),\n      verbatimTextOutput(\"moments\")\n    ),\n    \n    mainPanel(\n      plotOutput(\"gammaPlot\", height = \"400px\")\n    )\n  )\n)\n\nserver &lt;- function(input, output) {\n  output$moments &lt;- renderText({\n    alpha &lt;- input$alpha\n    beta  &lt;- input$beta\n    mu &lt;- alpha / beta\n    sd &lt;- sqrt(alpha) / beta\n    paste0(\"E(X) = \", round(mu, 3),\n           \"\\nsd(X) = \", round(sd, 3))\n  })\n  \n  output$gammaPlot &lt;- renderPlot({\n    alpha &lt;- input$alpha\n    beta  &lt;- input$beta\n    \n    # Fixed plotting range\n    x_min &lt;- -2\n    x_max &lt;- 25\n    x &lt;- seq(x_min, x_max, length.out = 2000)\n    \n    # PDF and CDF\n    pdf_vals &lt;- ifelse(x &gt;= 0, dgamma(x, shape = alpha, rate = beta), 0)\n    cdf_vals &lt;- ifelse(x &gt;= 0, pgamma(x, shape = alpha, rate = beta), 0)\n    \n    mu &lt;- alpha / beta\n    \n    # Fixed y-limits\n    pdf_ylim &lt;- c(0, 0.8)\n    cdf_ylim &lt;- c(0, 1)\n    \n\n    \n    # --- PDF ---\n    plot(x, pdf_vals, type = \"l\", lwd = 2, col = \"darkred\",\n         xlim = c(x_min, x_max), ylim = pdf_ylim,\n         main = \"Probability Density Function (PDF)\",\n         xlab = \"x\", ylab = \"f(x)\")\n    #abline(v = mu, col = \"gray60\", lty = 3)\n    \n    # Label E(X) with mtext along x-axis\n    if (mu &gt;= x_min && mu &lt;= x_max) {\n      mtext(\"E(X)\",\n            side = 1, line = 2.2, at = mu, cex = 1.0)\n    }\n  })\n}\n\nshinyApp(ui = ui, server = server)"
   },
   {
     "objectID": "slides/2026-10-22-continuous-slides.html#a-gamma-from-familiar-exponential-variables",
@@ -5180,14 +5257,28 @@
     "href": "slides/2026-10-22-continuous-slides.html#rs-gamma-commands",
     "title": "Continuous distributions",
     "section": "R’s gamma commands",
-    "text": "R’s gamma commands\n\n\nTask\nGamma distribution\n\n\n\nPDF height\ndgamma(x, shape, rate)\n\n\nCDF\npgamma(x, shape, rate)\n\n\nQuantile\nqgamma(p, shape, rate)\n\n\nSimulation\nrgamma(n, shape, rate)\n\n\n\n\ndgamma(2, shape = 3, rate = 1)\n\n[1] 0.2706706\n\npgamma(2, shape = 3, rate = 1)\n\n[1] 0.3233236\n\nqgamma(0.9, shape = 3, rate = 1)\n\n[1] 5.32232\n\nrgamma(5, shape = 3, rate = 1)\n\n[1] 2.139866 1.302124 2.858878 1.099562 2.607368\n\n\nWarning: scale = 1 / rate. We will use rate = explicitly throughout."
+    "text": "R’s gamma commands\n\n\nTask\nGamma distribution\n\n\n\nPDF height\ndgamma(x, shape, rate)\n\n\nCDF\npgamma(x, shape, rate)\n\n\nQuantile\nqgamma(p, shape, rate)\n\n\nSimulation\nrgamma(n, shape, rate)\n\n\n\n\ndgamma(2, shape = 3, rate = 1)\n\n[1] 0.2706706\n\npgamma(2, shape = 3, rate = 1)\n\n[1] 0.3233236\n\nqgamma(0.9, shape = 3, rate = 1)\n\n[1] 5.32232\n\nrgamma(5, shape = 3, rate = 1)\n\n[1] 2.139866 1.302124 2.858878 1.099562 2.607368"
   },
   {
-    "objectID": "slides/2026-10-22-continuous-slides.html#the-campus-coffee-emergency",
-    "href": "slides/2026-10-22-continuous-slides.html#the-campus-coffee-emergency",
+    "objectID": "slides/2026-10-22-continuous-slides.html#exercise-simulation-versus-theory-1",
+    "href": "slides/2026-10-22-continuous-slides.html#exercise-simulation-versus-theory-1",
     "title": "Continuous distributions",
-    "section": "The campus coffee emergency",
-    "text": "The campus coffee emergency\nA terrifyingly elaborate coffee machine makes your latte in four successive stages: grinding, brewing, steaming, and “artisanal finishing.” Each stage takes an independent \\(\\operatorname{Exp}(0.5)\\) number of minutes.\nLet \\(T\\) be the total time. Then\n\\[T=W_1+W_2+W_3+W_4\\sim\\operatorname{Gamma}(4,0.5).\\]\nWhy is the rate 0.5, rather than 2, when each stage takes 2 minutes on average?\nCompute:\n\n\n\\(P(T&lt;5)\\): the student might reach lecture on time.\n\n\\(P(T&gt;12)\\): time to reconsider one’s life choices.\n\n\\(P(4&lt;T&lt;10)\\).\nThe 90th percentile of \\(T\\)."
+    "section": "Exercise: simulation versus theory",
+    "text": "Exercise: simulation versus theory\nOn every lab from here to the end, you will do something like the following. So let’s practice again:\n\nGenerate and store 1000 draws from Gamma(2, 2);\nPlot a histogram of these;\nAdd on top of your histogram a line tracing th density of Gamma(2, 2).\n\nIf you did everything correctly, the histogram and density should match."
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous-slides.html#solution-1",
+    "href": "slides/2026-10-22-continuous-slides.html#solution-1",
+    "title": "Continuous distributions",
+    "section": "Solution",
+    "text": "Solution\n\nset.seed(8675309)\nx &lt;- rgamma(1000, 2, 2)\nhist(x, freq = FALSE, breaks = \"Scott\")\ncurve(dgamma(x, 2, rate = 2), from = min(x), to = max(x), \n      col = \"red\", add = TRUE, lwd = 2)"
+  },
+  {
+    "objectID": "slides/2026-10-22-continuous-slides.html#exercises-the-campus-coffee-emergency",
+    "href": "slides/2026-10-22-continuous-slides.html#exercises-the-campus-coffee-emergency",
+    "title": "Continuous distributions",
+    "section": "Exercises: the campus coffee emergency",
+    "text": "Exercises: the campus coffee emergency\nA terrifyingly elaborate coffee machine makes your latte in four successive stages: grinding, brewing, steaming, and “artisanal finishing.” Each stage takes an independent \\(\\operatorname{Exp}(0.5)\\) number of minutes.\nLet \\(T\\) be the total time. Then\n\\[T=W_1+W_2+W_3+W_4\\sim\\operatorname{Gamma}(4,0.5).\\]\nWhy is the rate 0.5, rather than 2, when each stage takes 2 minutes on average?\nCompute:\n\n\n\\(P(T&lt;5)\\): the student might reach lecture on time.\n\n\\(P(T&gt;12)\\): time to reconsider one’s life choices.\n\n\\(P(4&lt;T&lt;10)\\).\nThe 90% quantile of \\(T\\)."
   },
   {
     "objectID": "slides/2026-10-22-continuous-slides.html#coffee-emergency-picture",
@@ -5204,18 +5295,11 @@
     "text": "Coffee emergency: solutions\n\npgamma(5, shape = 4, rate = 0.5)\n\n[1] 0.2424239\n\npgamma(12, shape = 4, rate = 0.5, lower.tail = FALSE)\n\n[1] 0.1512039\n\npgamma(10, shape = 4, rate = 0.5) -\n  pgamma(4, shape = 4, rate = 0.5)\n\n[1] 0.5920975\n\nqgamma(0.9, shape = 4, rate = 0.5)\n\n[1] 13.36157"
   },
   {
-    "objectID": "slides/2026-10-22-continuous-slides.html#your-turn-haunted-house-jump-scares",
-    "href": "slides/2026-10-22-continuous-slides.html#your-turn-haunted-house-jump-scares",
+    "objectID": "slides/2026-10-22-continuous-slides.html#exercises-haunted-house-jump-scares",
+    "href": "slides/2026-10-22-continuous-slides.html#exercises-haunted-house-jump-scares",
     "title": "Continuous distributions",
-    "section": "Your turn: haunted house jump scares",
-    "text": "Your turn: haunted house jump scares\nA haunted house contains five rooms, each with an independent, exponentially distributed amount of time before a jump scare. In each room, the waiting time has rate 3 per hour. (Management refuses refunds.)\nLet \\(T\\) be the total waiting time across all five rooms, measured in hours.\n\nIdentify the distribution of \\(T\\), including its parameters.\nFind \\(P(T&lt;1)\\).\nFind \\(P(T&gt;2)\\).\nFind the smallest \\(t\\) such that \\(P(T\\le t)=0.75\\).\nGenerate 10,000 observations of \\(T\\) and estimate \\(P(T&gt;2)\\) using simulation."
-  },
-  {
-    "objectID": "slides/2026-10-22-continuous-slides.html#one-last-picture-simulation-versus-theory",
-    "href": "slides/2026-10-22-continuous-slides.html#one-last-picture-simulation-versus-theory",
-    "title": "Continuous distributions",
-    "section": "One last picture: simulation versus theory",
-    "text": "One last picture: simulation versus theory\n\n\n\n\n\n\n\n\nThe histogram approximates a density, not a PMF. Why is probability = TRUE necessary here?"
+    "section": "Exercises: haunted house jump scares",
+    "text": "Exercises: haunted house jump scares\nA haunted house contains five rooms, each with an independent, exponentially distributed amount of time before a jump scare. In each room, the waiting time has rate 3 per hour. (Management refuses refunds.)\nLet \\(T\\) be the total waiting time across all five rooms, measured in hours.\n\nIdentify the distribution of \\(T\\), including its parameters.\nFind \\(P(T&lt;1)\\).\nFind \\(P(T&gt;2)\\).\nFind the smallest \\(t\\) such that \\(P(T\\le t)=0.75\\).\nGenerate 10,000 observations of \\(T\\) and estimate \\(P(T&gt;2)\\) using simulation."
   },
   {
     "objectID": "slides/2026-10-22-continuous-slides.html#haunted-house-solutions",
