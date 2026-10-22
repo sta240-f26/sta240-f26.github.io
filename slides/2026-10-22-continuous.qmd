@@ -1,0 +1,876 @@
+---
+title: "Continuous distributions"
+author: "Dwija Kakkad"
+format: 
+  revealjs: 
+    output-file: 2026-10-22-continuous-slides.html
+    footer: "[🔗 sta240-f26.github.io](https://sta240-f26.github.io/)"
+    theme: slides.scss
+    transition: fade
+    slide-number: true
+    toc: false
+  html: 
+    code-link: true
+auto-stretch: false
+editor: 
+  mode: source
+filters:
+  - shinylive
+---
+
+## Today {.scrollable}
+
+Two new families of continuous random variables:
+
+- **Normal:** the famous bell curve. It can take values anywhere on the real line;
+- **Gamma:** a flexible family for positive quantities (eg. waiting times) that generalizes the exponential distribution.
+
+Today we just enumerate basic facts. Derivations come later. We also continue to practice that basic skill:
+
+> event in words $\to$ probability statement $\to$ formula involving CDF $\to$ `R` commands
+
+# Part 1: The normal distribution
+
+## Meet the bell curve {.scrollable}
+
+A random variable $X$ has a **normal** (or **Gaussian**) distribution if its PDF is
+
+$$
+f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\!\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right),\qquad -\infty<x<\infty.
+$$
+
+We write $X\sim\text{N}(\mu,\sigma^2)$, where $\sigma>0$.
+
+- $E(X)=\mu$: the center and axis of symmetry.
+- $\operatorname{Var}(X)=\sigma^2$: the variance; $\sigma$ is the **standard deviation**.
+- The total area under the curve is 1.
+
+```{r}
+#| echo: false
+x <- seq(-4, 4, length.out = 600)
+plot(x, dnorm(x), type = "l", lwd = 3, col = "steelblue4",
+     xlab = "x", ylab = "Density", main = "The standard bell curve")
+abline(v = 0, lty = 2, col = "grey50")
+```
+
+## Normal PDF = constant $\times$ kernel {.scrollable}
+
+As with **every PMF or PDF**, separate the formula into two pieces:
+
+$$
+f(x)=\underbrace{\frac{1}{\sqrt{2\pi\sigma^2}}}_{\text{normalizing constant}}
+\;\times\;
+\underbrace{\exp\!\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)}_{\text{kernel}}.
+$$
+
+- The **kernel** determines the shape as a function of $x$;
+- The **normalizing constant** rescales that shape so the total area is **1**;
+- For fixed $\mu$ and $\sigma$, the constant does **not** depend on $x$.
+
+```{r}
+#| echo: false
+mu <- 0; sd <- 1.5
+x <- seq(-5, 5, length.out = 700)
+kernel <- exp(-(x - mu)^2 / (2 * sd^2))
+plot(x, kernel, type = "l", lwd = 3, col = "#D55E00",
+     ylim = c(0, 1.05), xlab = "x", ylab = "Height",
+     main = "Same shape; the constant fixes the area")
+lines(x, dnorm(x, mean = mu, sd = sd), lwd = 3, col = "#0072B2")
+legend("topright", c("Kernel", "Normalized PDF"),
+       col = c("#D55E00", "#0072B2"), lwd = 3, bty = "n")
+```
+
+## Free integral identity!
+
+Because PDFs must integrate to 1, the formula for the bell curve implies a free integral identity:
+
+$$
+\int_{-\infty}^\infty
+\exp\!\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)
+\,\text{d}x=\sqrt{2\pi\sigma^2}.
+$$
+
+It's true *for any* $\mu\in\mathbb{R}$ and $\sigma>0$. If you are prepared to recognize this, it can simplify future calculations tremendously!
+
+
+
+## What does $\mu$ do? {.scrollable}
+
+You can show that $\mu$ is the location of the peak (the *maximizer*). Changing $\mu$ slides the bell curve horizontally, without changing its shape.
+
+```{r}
+#| echo: false
+x <- seq(-8, 8, length.out = 600)
+plot(x, dnorm(x, -3, 1), type = "l", lwd = 3, col = "#0072B2",
+     ylim = c(0, 0.43), xlab = "x", ylab = "Density",
+     main = "Same spread, different centers")
+lines(x, dnorm(x, 0, 1), lwd = 3, col = "#D55E00")
+lines(x, dnorm(x, 3, 1), lwd = 3, col = "#009E73")
+legend("topright", c("mu = -3", "mu = 0", "mu = 3"),
+       col = c("#0072B2", "#D55E00", "#009E73"), lwd = 3, bty = "n")
+```
+
+## What does $\sigma$ do? {.scrollable}
+
+You showed on Problem Set 0 that $\sigma$ is the distance between the peak and the *inflection points*:
+
+```{r}
+#| echo: false
+#| label: fig-concavity
+#| fig-asp: 0.5
+
+mu <- 0
+sigma <- 1
+
+x <- seq(-3.5, 3.5, length.out = 1000)
+y <- dnorm(x, mu, sigma)
+
+par(mar = c(5, 1, 1, 1))
+
+plot(x, y, type = "n",
+     xlim = c(-3.75, 3.75), ylim = c(0, .5),
+     axes = FALSE,
+     xlab = "",
+     ylab = "",
+     yaxs = "i")
+
+## Background
+rect(-3.75, 0, mu - sigma, .5, col = "#FFF0E6", border = NA)
+rect(mu - sigma, 0, mu + sigma, .5, col = "#E5E5FF", border = NA)
+rect(mu + sigma, 0, 3.75, .5, col = "#FFF0E6", border = NA)
+
+## Density
+lines(x, y, col = "#FF160F", lwd = 3)
+
+## Axes
+axis(1,
+     at = c(10*min(x), mu - sigma, mu, mu + sigma, 10*max(x)),
+     labels = c(NA, expression(mu - sigma),
+                expression(mu),
+                expression(mu + sigma),
+                NA),
+     lwd = 1.5)
+
+#axis(1, at = c(mu - sigma, mu + sigma),
+#     labels = FALSE, tcl = 0.5, lwd = 1.5)
+
+## Concavity boundaries
+abline(v = c(mu - sigma, mu + sigma), lwd = 1.5)
+
+## Dashed line from x-axis to the peak
+segments(mu, 0, mu, dnorm(mu, mu, sigma),
+         lty = 2, lwd = 1.5)
+
+## Labels
+text(-2.75, .47, "concave up", col = "#FD9409", cex = 1.2)
+text(mu,    .47, "concave down", col = "blue", cex = 1.2)
+text( 2.75, .47, "concave up", col = "#FD9409", cex = 1.2)
+```
+
+## What does $\sigma$ do? {.scrollable}
+
+Changing $\sigma$ changes the **spread**. A smaller standard deviation means a narrower, taller bell curve. Changing the spread must simultaneously alter the height because total area 1 must be preserved at all times.
+
+```{r}
+#| echo: false
+x <- seq(-8, 8, length.out = 600)
+plot(x, dnorm(x, 0, 0.6), type = "l", lwd = 3, col = "#0072B2",
+     ylim = c(0, 0.7), xlab = "x", ylab = "Density",
+     main = "Same center, different spreads")
+lines(x, dnorm(x, 0, 1.2), lwd = 3, col = "#D55E00")
+lines(x, dnorm(x, 0, 2.4), lwd = 3, col = "#009E73")
+legend("topright", c("sd = 0.6", "sd = 1.2", "sd = 2.4"),
+       col = c("#0072B2", "#D55E00", "#009E73"), lwd = 3, bty = "n")
+```
+
+**Watch out:** $\text{N}(10, 4)$ has standard deviation **2**, not 4.
+
+## The 68–95–99.7 rule {.scrollable}
+
+Approximately:
+
+- 68% of the probability lies within **one** standard deviation of the mean;
+- 95% lies within **two**;
+- 99.7% lies within **three**.
+
+```{r}
+#| echo: false
+par(mfrow = c(1, 3), mar = c(3.3, 2.5, 2.2, 0.5))
+x <- seq(-4, 4, length.out = 801)
+for (k in 1:3) {
+  y <- dnorm(x)
+  plot(x, y, type = "l", lwd = 2, xlab = "", ylab = "",
+       main = paste0(k, " sd: ", round(100 * (pnorm(k) - pnorm(-k)), 1), "%"),
+       ylim = c(0, 0.43), axes = FALSE)
+  polygon(c(-k, x[x >= -k & x <= k], k),
+          c(0, y[x >= -k & x <= k], 0),
+          col = adjustcolor("steelblue", alpha.f = 0.5), border = NA)
+  lines(x, y, lwd = 2)
+  axis(1, at = c(-k, 0, k))
+  box()
+}
+par(mfrow = c(1, 1))
+```
+
+## Haven't we seen this shape before? {.medium .scrollable}
+
+The normal distribution plays a *central* role in probability 😉:
+
+![](images/galton.gif){fig-align="center"}
+
+## Haven't we seen this shape before? {.medium .scrollable}
+
+The normal distribution plays a *central* role in probability 😉:
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 500
+
+library(shiny)
+
+discrete_pmf <- function(x, p, xlim = c(min(x) - 1, max(x) + 1), label = "", add_mean = FALSE){
+  plot(x, p,
+       pch = 19,
+       cex = 1,
+       xlab = "",
+       ylab = "",
+       main = "",
+       ylim = c(0, 1.05 * max(p)),
+       yaxs = "i",
+       yaxt = "n",
+       xlim = xlim,
+       xaxt = "n",
+       bty = "n"
+  )
+  segments(x,
+           rep(0, length(x) + 1),
+           x1 = x,
+           y1 = p,
+           lwd = 3
+  )
+  axis(1, at = floor(xlim[1]):ceiling(xlim[2]), cex.axis = 1)
+  axis(2, at = seq(0, 1, length.out = 11), las = 1, cex.axis = 1.5)
+  legend("topright", label, bty = "n", cex = 3)
+  if(add_mean == TRUE){
+    mtext("E(X)", side = 1, at = sum(x * p), col = "red", line = 2)
+  }
+}
+
+discrete_cdf <- function(x, p, xlim = c(min(x) - 1, max(x) + 1), label = ""){
+  closeddot = cumsum(p)
+  opencircle = c(0, closeddot[1:length(x)-1])
+  plot(x, closeddot, pch = 19, cex = 1,
+       ylim = c(0, 1),
+       ylab = "", main = "", xlab = "",
+       yaxt = "n",
+       xlim = xlim,
+       xaxt = "n",
+       #yaxs = "i", 
+       bty = "n")
+  points(x, opencircle, cex = 1)
+  segments(c(xlim[1], x), c(0, closeddot), c(x, xlim[2]), c(0, closeddot), lwd = 1)
+  axis(1, at = floor(xlim[1]):ceiling(xlim[2]), cex.axis = 1)
+  axis(2, at = seq(0, 1, length.out = 11), las = 1, cex.axis = 1.5)
+  legend("bottomright", label, bty = "n", cex = 3)
+}
+
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel("Binomial distribution PMF"),
+  
+  # Sidebar with a slider input for number of bins 
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("p",
+                  "Probability of success (p):",
+                  min = 0,
+                  max = 1,
+                  value = 0.5,
+                  step = 0.01),
+      sliderInput("n",
+                  "Number of trials (n):",
+                  min = 1,
+                  max = 100,
+                  value = 5,
+                  step = 1)
+    ),
+    
+    # Show a plot of the generated distribution
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+  
+  output$distPlot <- renderPlot({
+    
+    p <- input$p
+    n <- input$n
+
+    #par(mfrow = c(2, 1), mar = c(4, 4, 2, 2))
+    
+    #discrete_cdf(0:n, dbinom(0:n, n, p))
+    discrete_pmf(0:n, dbinom(0:n, n, p), add_mean = TRUE)
+    
+  })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+## Haven't we seen this shape before? {.medium .scrollable}
+
+The normal distribution plays a *central* role in probability 😉:
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 500
+
+library(shiny)
+
+discrete_pmf <- function(x, p, xlim = c(min(x) - 1, max(x) + 1), label = "", add_mean = FALSE){
+  plot(x, p,
+       pch = 19,
+       cex = 0.5,
+       xlab = "",
+       ylab = "",
+       main = "",
+       ylim = c(0, 0.4),
+       yaxs = "i",
+       yaxt = "n",
+       xlim = xlim,
+       xaxt = "n",
+       bty = "n"
+  )
+  segments(x,
+           rep(0, length(x) + 1),
+           x1 = x,
+           y1 = p,
+           lwd = 3
+  )
+  axis(1, at = floor(xlim[1]):ceiling(xlim[2]), cex.axis = 1)
+  axis(2, at = seq(0, 1, length.out = 11), las = 1, cex.axis = 1.5)
+  legend("topright", label, bty = "n", cex = 3)
+  if(add_mean == TRUE){
+    mtext("E(X)", side = 1, at = sum(x * p), col = "red", line = 2)
+  }
+}
+
+discrete_cdf <- function(x, p, xlim = c(min(x) - 1, max(x) + 1), label = ""){
+  closeddot = cumsum(p)
+  opencircle = c(0, closeddot[1:length(x)-1])
+  plot(x, closeddot, pch = 19, cex = 0.5,
+       ylim = c(0, 1),
+       ylab = "", main = "", xlab = "",
+       yaxt = "n",
+       xlim = xlim,
+       xaxt = "n",
+       #yaxs = "i", 
+       bty = "n")
+  points(x, opencircle, cex = 0.5)
+  segments(c(xlim[1], x), c(0, closeddot), c(x, xlim[2]), c(0, closeddot), lwd = 1)
+  axis(1, at = floor(xlim[1]):ceiling(xlim[2]), cex.axis = 1)
+  axis(2, at = seq(0, 1, length.out = 11), las = 1, cex.axis = 1.5)
+  legend("bottomright", label, bty = "n", cex = 3)
+}
+
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel("Poisson distribution PMF"),
+  
+  # Sidebar with a slider input for number of bins 
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("lambda",
+                  "Rate (λ):",
+                  min = 0,
+                  max = 100,
+                  value = 1,
+                  step = 0.1)
+    ),
+    
+    # Show a plot of the generated distribution
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+  
+  output$distPlot <- renderPlot({
+    
+    lambda <- input$lambda
+    n <- 100
+
+    #par(mfrow = c(2, 1), mar = c(4, 4, 2, 2))
+    
+    #discrete_cdf(0:n, dpois(0:n, lambda))
+    discrete_pmf(0:n, dpois(0:n, lambda), add_mean = FALSE)
+    mtext("E(X)", side = 1, at = lambda, col = "red", line = 2)
+  })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+## The standard normal and its CDF {.scrollable}
+
+The special case $Z\sim\text{N}(0,1)$ is the **standard normal**.
+
+Its CDF is traditionally denoted by $\Phi$:
+
+$$
+\Phi(z)=P(Z\le z)=\int_{-\infty}^{z}\frac{1}{\sqrt{2\pi}}e^{-t^2/2}\,dt.
+$$
+
+Unlike the uniform or exponential CDF, this integral **cannot be expressed using elementary functions**. But computers evaluate it to high precision.
+
+```{r}
+#| echo: false
+x <- seq(-3.5, 3.5, length.out = 600)
+plot(x, pnorm(x), type = "l", lwd = 3, col = "steelblue4",
+     xlab = "z", ylab = "Phi(z)", main = "The standard normal CDF")
+abline(h = c(0, 0.5, 1), lty = 3, col = "grey65")
+abline(v = 0, lty = 3, col = "grey65")
+```
+
+## Probabilities are areas, not heights {.scrollable}
+
+For $X\sim\text{N}(70, 10^2)$, picture $P(60<X<85)$.
+
+```{r}
+#| echo: false
+x <- seq(30, 110, length.out = 900)
+y <- dnorm(x, 70, 10)
+plot(x, y, type = "l", lwd = 3, col = "steelblue4",
+     xlab = "Value", ylab = "Density", main = "P(60 < X < 85)")
+inside <- x >= 60 & x <= 85
+polygon(c(60, x[inside], 85), c(0, y[inside], 0),
+        col = adjustcolor("steelblue", alpha.f = 0.45), border = NA)
+lines(x, y, lwd = 3, col = "steelblue4")
+abline(v = c(60, 85), lty = 3)
+```
+
+$$P(60<X<85)=F(85)-F(60).$$
+
+Because $X$ is continuous, $P(X=60)=0$: including or excluding endpoints makes no difference.
+
+## R's familiar `pdqr` family {.scrollable}
+
+| Task | Normal distribution |
+|---|---|
+| PDF height at $x$ | `dnorm(x, mean, sd)` |
+| CDF $P(X\le x)$ | `pnorm(x, mean, sd)` |
+| Quantile (probability $p$) | `qnorm(p, mean, sd)` |
+| Generate $n$ observations | `rnorm(n, mean, sd)` |
+
+**R takes the standard deviation**, not the variance.
+
+```{r}
+dnorm(70, mean = 70, sd = 10)
+pnorm(85, mean = 70, sd = 10) - pnorm(60, mean = 70, sd = 10)
+qnorm(0.95, mean = 70, sd = 10)
+```
+
+## A warm-up: the class's new grading machine {.scrollable}
+
+A malfunctioning grading machine produces scores that are approximately normal, with mean 75 and standard deviation 12. (For the purpose of this exercise, pretend scores can exceed 100.)
+
+Let $X\sim\text{N}(75,12^2)$.
+
+Compute in R:
+
+1. $P(X<60)$: a decidedly unhappy student.
+2. $P(X\ge90)$: a very happy student.
+3. $P(70<X<85)$: comfortably in the middle.
+4. The score at the **90th percentile**.
+
+Try these before looking at the next slide.
+
+## Grading machine: solutions {.scrollable}
+
+```{r}
+pnorm(60, mean = 75, sd = 12)
+
+pnorm(90, mean = 75, sd = 12, lower.tail = FALSE)
+
+pnorm(85, mean = 75, sd = 12) -
+  pnorm(70, mean = 75, sd = 12)
+
+qnorm(0.9, mean = 75, sd = 12)
+```
+
+**Question:** How could the machine produce scores over 100? Is a normal model always sensible for bounded quantities?
+
+## Your turn: airport security's suspiciously precise clock {.scrollable}
+
+According to an airline's optimistic brochure, the time $T$ (minutes) spent in a security line follows
+
+$$T\sim\text{N}(24,6^2).$$
+
+1. What is the probability of clearing security in **under 15 minutes**?
+2. What is the probability of waiting **between 20 and 30 minutes**?
+3. The airline claims that **95% of passengers wait less than $t$ minutes**. Find $t$.
+4. Generate 10,000 hypothetical waiting times and approximate the answer to (1) by simulation.
+5. How many simulated waiting times are negative? What does that tell you about this model?
+
+*The distribution is chosen for computing practice, not because airport queues really are Gaussian.*
+
+## Airport: a visual hint {.scrollable}
+
+```{r}
+#| echo: false
+x <- seq(0, 50, length.out = 800)
+y <- dnorm(x, 24, 6)
+plot(x, y, type = "l", lwd = 3, col = "steelblue4",
+     xlab = "Minutes", ylab = "Density", main = "Less than 15 minutes")
+i <- x <= 15
+polygon(c(0, x[i], 15), c(0, y[i], 0),
+        col = adjustcolor("tomato3", alpha.f = 0.5), border = NA)
+lines(x, y, lwd = 3, col = "steelblue4")
+abline(v = 15, lty = 2)
+```
+
+## Airport: solutions {.scrollable}
+
+```{r}
+pnorm(15, mean = 24, sd = 6)
+
+pnorm(30, mean = 24, sd = 6) -
+  pnorm(20, mean = 24, sd = 6)
+
+qnorm(0.95, mean = 24, sd = 6)
+
+set.seed(240)
+times <- rnorm(10000, mean = 24, sd = 6)
+mean(times < 15)
+sum(times < 0)
+```
+
+# Part 2: The gamma distribution
+
+## First, remember the exponential {.scrollable}
+
+The exponential distribution models positive quantities, often **waiting times**.
+
+$$X\sim\operatorname{Exp}(\beta),\qquad f_X(x)=\beta e^{-\beta x},\quad x>0.$$
+
+- $\beta>0$ is the **rate**.
+- $E(X)=1/\beta$.
+- Its density decreases from its maximum at zero.
+
+```{r}
+#| echo: false
+x <- seq(0, 8, length.out = 600)
+plot(x, dexp(x, rate = 1), type = "l", col = "steelblue4", lwd = 3,
+     xlab = "Waiting time", ylab = "Density", main = "Exponential(rate = 1)")
+```
+
+The gamma family will give us many more shapes, while retaining positive support.
+
+## Meet the gamma {.scrollable}
+
+For $\alpha>0$ and $\beta>0$, a random variable has the gamma distribution if
+
+$$
+f_X(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x},\qquad x>0,
+$$
+
+and $f_X(x)=0$ for $x<0$.
+
+We write $X\sim\operatorname{Gamma}(\alpha,\beta)$.
+
+- $\alpha$: **shape** parameter.
+- $\beta$: **rate** parameter.
+- $E(X)=\alpha/\beta$, $\operatorname{Var}(X)=\alpha/\beta^2$ (derivations later).
+
+**Important:** Some books use a *scale* parameter instead. Our $\beta$ is a **rate**.
+
+## Gamma PDF = constant $\times$ kernel {.scrollable}
+
+Here is the same structure again:
+
+$$
+\underbrace{\frac{\beta^\alpha}{\Gamma(\alpha)}}_{\text{normalizing constant}}
+\;\times\;
+\underbrace{x^{\alpha-1}e^{-\beta x}}_{\text{kernel (unnormalized density)}},
+\qquad x>0.
+$$
+
+- For fixed $\alpha$ and $\beta$, only the **kernel** depends on $x$.
+- The factor involving $\Gamma(\alpha)$ ensures that the total area is 1.
+- This is the same organizational trick we've used for other PMFs and PDFs. **Spot the constant; spot the kernel.**
+
+```{r}
+#| echo: false
+alpha <- 3; beta <- 1
+x <- seq(0, 10, length.out = 700)
+kernel <- x^(alpha - 1) * exp(-beta * x)
+plot(x, kernel, type = "l", lwd = 3, col = "#D55E00",
+     xlab = "x", ylab = "Height",
+     main = "Gamma(shape = 3, rate = 1): kernel versus PDF")
+lines(x, dgamma(x, shape = alpha, rate = beta),
+      lwd = 3, col = "#0072B2")
+legend("topright", c("Kernel", "Normalized PDF"),
+       col = c("#D55E00", "#0072B2"), lwd = 3, bty = "n")
+```
+
+## What's that capital gamma? {.scrollable}
+
+The gamma function is
+
+$$\Gamma(a)=\int_0^\infty t^{a-1}e^{-t}\,dt,\qquad a>0.$$
+
+For positive integers, $\Gamma(n)=(n-1)!$.
+
+```{r}
+gamma(1)
+gamma(4)
+factorial(3)
+gamma(2.5)
+```
+
+It supplies the normalizing constant that makes the gamma PDF integrate to 1. We will study the mathematical details elsewhere.
+
+## Exponential is gamma in disguise {.scrollable}
+
+When $\alpha=1$, since $\Gamma(1)=1$,
+
+$$\frac{\beta^1}{\Gamma(1)}x^{1-1}e^{-\beta x}=\beta e^{-\beta x}.$$
+
+So **$\operatorname{Gamma}(1,\beta)=\operatorname{Exp}(\beta)$**.
+
+```{r}
+#| echo: false
+x <- seq(0, 7, length.out = 600)
+plot(x, dexp(x, rate = 1), type = "l", col = "#D55E00", lwd = 4,
+     xlab = "x", ylab = "Density", main = "Two names, the same distribution")
+lines(x, dgamma(x, shape = 1, rate = 1), col = "#0072B2", lwd = 2, lty = 2)
+legend("topright", c("Exponential(1)", "Gamma(shape=1, rate=1)"),
+       col = c("#D55E00", "#0072B2"), lwd = c(4, 2), lty = c(1, 2), bty = "n")
+```
+
+## How do the parameters control the shape? {.small .scrollable}
+
+- Keep the rate $\beta=1$ fixed and change shape;
+- Keep the shape $\alpha=3$ fixed and change rate.
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 500
+
+library(shiny)
+
+ui <- fluidPage(
+  titlePanel("Gamma distribution DF"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("alpha", "Shape (α):",
+                  min = 0.5, max = 20, value = 2, step = 0.1),
+      sliderInput("beta", "Rate (β):",
+                  min = 0.2, max = 10, value = 0.5, step = 0.05),
+      hr(),
+      verbatimTextOutput("moments")
+    ),
+    
+    mainPanel(
+      plotOutput("gammaPlot", height = "600px")
+    )
+  )
+)
+
+server <- function(input, output) {
+  output$moments <- renderText({
+    alpha <- input$alpha
+    beta  <- input$beta
+    mu <- alpha / beta
+    sd <- sqrt(alpha) / beta
+    paste0("E(X) = ", round(mu, 3),
+           "\nsd(X) = ", round(sd, 3))
+  })
+  
+  output$gammaPlot <- renderPlot({
+    alpha <- input$alpha
+    beta  <- input$beta
+    
+    # Fixed plotting range
+    x_min <- -2
+    x_max <- 25
+    x <- seq(x_min, x_max, length.out = 2000)
+    
+    # PDF and CDF
+    pdf_vals <- ifelse(x >= 0, dgamma(x, shape = alpha, rate = beta), 0)
+    cdf_vals <- ifelse(x >= 0, pgamma(x, shape = alpha, rate = beta), 0)
+    
+    mu <- alpha / beta
+    
+    # Fixed y-limits
+    pdf_ylim <- c(0, 0.8)
+    cdf_ylim <- c(0, 1)
+    
+
+    
+    # --- PDF ---
+    plot(x, pdf_vals, type = "l", lwd = 2, col = "darkred",
+         xlim = c(x_min, x_max), ylim = pdf_ylim,
+         main = "Probability Density Function (PDF)",
+         xlab = "x", ylab = "f(x)")
+    #abline(v = mu, col = "gray60", lty = 3)
+    
+    # Label E(X) with mtext along x-axis
+    if (mu >= x_min && mu <= x_max) {
+      mtext("E(X)",
+            side = 1, line = 2.2, at = mu, cex = 1.0)
+    }
+  })
+}
+
+shinyApp(ui = ui, server = server)
+
+
+```
+
+## A gamma from familiar exponential variables {.scrollable}
+
+Suppose $W_1,W_2,\ldots,W_k$ are **independent** exponential random variables, all with rate $\beta$.
+
+Then their sum has a gamma distribution:
+
+$$
+W_1+\cdots+W_k\sim\operatorname{Gamma}(k,\beta).
+$$
+
+- One exponential waiting time is $\operatorname{Gamma}(1,\beta)$.
+- The total of three independent exponential waiting times is $\operatorname{Gamma}(3,\beta)$.
+- This gives us a concrete interpretation when the shape $k$ is a positive integer. **No proof needed today.**
+
+```{r}
+#| echo: false
+x <- seq(0, 12, length.out = 600)
+plot(x, dgamma(x, 1, rate = 0.7), type = "l", lwd = 3, col = "#D55E00",
+     ylim = c(0, 0.72), xlab = "Total waiting time", ylab = "Density",
+     main = "Sum of 1, 3, or 5 independent exponential waits")
+lines(x, dgamma(x, 3, rate = 0.7), lwd = 3, col = "#0072B2")
+lines(x, dgamma(x, 5, rate = 0.7), lwd = 3, col = "#009E73")
+legend("topright", c("1 wait", "3 waits", "5 waits"),
+       col = c("#D55E00", "#0072B2", "#009E73"), lwd = 3, bty = "n")
+```
+
+## R's gamma commands {.scrollable}
+
+| Task | Gamma distribution |
+|---|---|
+| PDF height | `dgamma(x, shape, rate)` |
+| CDF | `pgamma(x, shape, rate)` |
+| Quantile | `qgamma(p, shape, rate)` |
+| Simulation | `rgamma(n, shape, rate)` |
+
+```{r}
+dgamma(2, shape = 3, rate = 1)
+pgamma(2, shape = 3, rate = 1)
+qgamma(0.9, shape = 3, rate = 1)
+rgamma(5, shape = 3, rate = 1)
+```
+
+**Warning:** `scale = 1 / rate`. We will use `rate =` explicitly throughout.
+
+## The campus coffee emergency {.scrollable}
+
+A terrifyingly elaborate coffee machine makes your latte in **four successive stages**: grinding, brewing, steaming, and "artisanal finishing." Each stage takes an independent $\operatorname{Exp}(0.5)$ number of minutes.
+
+Let $T$ be the **total** time. Then
+
+$$T=W_1+W_2+W_3+W_4\sim\operatorname{Gamma}(4,0.5).$$
+
+Why is the rate **0.5**, rather than 2, when each stage takes 2 minutes *on average*?
+
+Compute:
+
+1. $P(T<5)$: the student might reach lecture on time.
+2. $P(T>12)$: time to reconsider one's life choices.
+3. $P(4<T<10)$.
+4. The 90th percentile of $T$.
+
+## Coffee emergency: picture {.scrollable}
+
+```{r}
+#| echo: false
+x <- seq(0, 22, length.out = 900)
+y <- dgamma(x, shape = 4, rate = 0.5)
+plot(x, y, type = "l", lwd = 3, col = "steelblue4",
+     xlab = "Minutes", ylab = "Density", main = "Time until the fourth order")
+i <- x <= 5
+polygon(c(0, x[i], 5), c(0, y[i], 0),
+        col = adjustcolor("tomato3", alpha.f = 0.5), border = NA)
+lines(x, y, lwd = 3, col = "steelblue4")
+abline(v = 5, lty = 2)
+```
+
+## Coffee emergency: solutions {.scrollable}
+
+```{r}
+pgamma(5, shape = 4, rate = 0.5)
+
+pgamma(12, shape = 4, rate = 0.5, lower.tail = FALSE)
+
+pgamma(10, shape = 4, rate = 0.5) -
+  pgamma(4, shape = 4, rate = 0.5)
+
+qgamma(0.9, shape = 4, rate = 0.5)
+```
+
+## Your turn: haunted house jump scares {.scrollable}
+
+A haunted house contains **five rooms**, each with an independent, exponentially distributed amount of time before a jump scare. In each room, the waiting time has rate **3 per hour**. (Management refuses refunds.)
+
+Let $T$ be the **total waiting time across all five rooms**, measured in hours.
+
+1. Identify the distribution of $T$, including its parameters.
+2. Find $P(T<1)$.
+3. Find $P(T>2)$.
+4. Find the smallest $t$ such that $P(T\le t)=0.75$.
+5. Generate 10,000 observations of $T$ and estimate $P(T>2)$ using simulation.
+
+## One last picture: simulation versus theory {.scrollable}
+
+```{r}
+#| echo: false
+set.seed(240)
+t <- rgamma(10000, shape = 5, rate = 3)
+hist(t, breaks = 50, probability = TRUE, col = "grey85", border = "white",
+     xlab = "Total waiting time across five rooms", main = "10,000 simulated haunted-house visits")
+curve(dgamma(x, shape = 5, rate = 3), add = TRUE,
+      col = "#D55E00", lwd = 3)
+legend("topright", "Gamma(5, rate = 3) PDF", col = "#D55E00", lwd = 3, bty = "n")
+```
+
+The histogram approximates a density, not a PMF. Why is `probability = TRUE` necessary here?
+
+## Haunted house: solutions {.scrollable}
+
+$T\sim\operatorname{Gamma}(5,3)$.
+
+```{r}
+pgamma(1, shape = 5, rate = 3)
+
+pgamma(2, shape = 5, rate = 3, lower.tail = FALSE)
+
+qgamma(0.75, shape = 5, rate = 3)
+
+set.seed(240)
+t <- rgamma(10000, shape = 5, rate = 3)
+mean(t > 2)
+```
+
