@@ -130,6 +130,8 @@ website:
             text: Problem Set 4
           - href: problems/pset-5.qmd
             text: Problem Set 5
+          - href: problems/pset-6.qmd
+            text: Problem Set 6
       - section: "Labs"
         contents:
           - href: lab/lab-1.qmd
@@ -144,6 +146,8 @@ website:
             text: Lab 5
           - href: slides/2026-10-15-pdqr.qmd
             text: Lab 6
+          - href: slides/2026-10-22-continuous.qmd
+            text: Lab 7
       - section: "Exam Study Guides"
         contents:
           - href: problems/midterm-1-guide.qmd
