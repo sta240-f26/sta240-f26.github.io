@@ -9,128 +9,136 @@
     <lastmod>2026-10-02T10:30:19.973Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/distributions/continuous-gamma.html</loc>
-    <lastmod>2026-10-22T13:36:53.480Z</lastmod>
+    <loc>https://sta240-f26.github.io/distributions/continuous-uniform.html</loc>
+    <lastmod>2026-10-22T13:25:22.781Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/explainers/sample.html</loc>
+    <loc>https://sta240-f26.github.io/distributions/continuous-normal.html</loc>
+    <lastmod>2026-10-22T13:34:57.969Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/explainers/vectorization.html</loc>
+    <lastmod>2026-03-14T20:01:15.240Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/explainers/summary-statistics.html</loc>
     <lastmod>2026-03-09T19:40:31.968Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/explainers/setup.html</loc>
-    <lastmod>2026-03-09T19:51:12.696Z</lastmod>
+    <loc>https://sta240-f26.github.io/explainers/rng-seed.html</loc>
+    <lastmod>2026-03-09T19:40:31.968Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/explainers/math.html</loc>
-    <lastmod>2026-03-09T19:40:31.967Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/explainers/vectors.html</loc>
-    <lastmod>2026-03-09T19:40:31.969Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/explainers/plot.html</loc>
-    <lastmod>2026-03-14T19:59:48.001Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/explainers/lineplot.html</loc>
+    <loc>https://sta240-f26.github.io/explainers/latex.html</loc>
     <lastmod>2026-03-09T19:40:31.966Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/explainers/hello-rstudio.html</loc>
-    <lastmod>2026-03-14T19:58:27.614Z</lastmod>
+    <loc>https://sta240-f26.github.io/explainers/if-else.html</loc>
+    <lastmod>2026-03-09T19:40:31.961Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/explainers/probabilities.html</loc>
-    <lastmod>2026-03-14T20:00:24.417Z</lastmod>
+    <loc>https://sta240-f26.github.io/explainers/quarto.html</loc>
+    <lastmod>2026-03-14T20:00:38.181Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/syllabus-overview.html</loc>
-    <lastmod>2026-07-27T20:05:38.312Z</lastmod>
+    <loc>https://sta240-f26.github.io/explainers/loops.html</loc>
+    <lastmod>2026-08-23T11:32:43.044Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/syllabus-policies.html</loc>
-    <lastmod>2026-08-19T23:22:41.641Z</lastmod>
+    <loc>https://sta240-f26.github.io/explainers/histogram.html</loc>
+    <lastmod>2026-03-09T19:40:31.960Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/fall-vocal-showcase.html</loc>
-    <lastmod>2026-08-24T21:01:10.693Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements.html</loc>
+    <lastmod>2026-10-26T01:14:08.997Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/chamber-music.html</loc>
-    <lastmod>2026-09-11T22:32:24.171Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/rockapella.html</loc>
+    <lastmod>2026-09-26T00:33:38.757Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/muse-magazine.html</loc>
-    <lastmod>2026-08-16T03:03:36.326Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/chronicle.html</loc>
+    <lastmod>2026-10-26T15:20:57.173Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/deja-blue-single.html</loc>
-    <lastmod>2026-08-31T22:22:18.751Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/ssmu-dsci.html</loc>
+    <lastmod>2026-09-07T19:30:33.476Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/duke-symphony-2026-10-03.html</loc>
-    <lastmod>2026-09-30T22:56:37.938Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/nutcracker.html</loc>
+    <lastmod>2026-09-11T22:43:22.891Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/tazns-arch-sing.html</loc>
-    <lastmod>2026-09-07T19:10:40.489Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/fall-dance-showcase.html</loc>
+    <lastmod>2026-08-30T01:56:14.465Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/duke-music-day.html</loc>
-    <lastmod>2026-09-16T00:18:04.151Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/ssmu-challenge.html</loc>
+    <lastmod>2026-10-05T18:56:36.311Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/syllabus-team.html</loc>
-    <lastmod>2026-09-30T02:30:05.485Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/house-course.html</loc>
+    <lastmod>2026-08-19T14:45:40.847Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/syllabus-materials.html</loc>
-    <lastmod>2026-08-15T20:07:49.292Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/syllabus-resources.html</loc>
+    <lastmod>2026-03-09T19:40:32.160Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/slides/2026-08-24-welcome.html</loc>
-    <lastmod>2026-09-20T16:02:45.657Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/syllabus-assignments.html</loc>
+    <lastmod>2026-08-24T17:17:10.146Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/slides/2026-10-01-r-crash-course-slides.html</loc>
-    <lastmod>2026-10-15T14:28:10.619Z</lastmod>
+    <loc>https://sta240-f26.github.io/slides/2026-10-15-pdqr-slides.html</loc>
+    <lastmod>2026-10-15T14:28:28.615Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/slides/2026-10-01-r-crash-course.html</loc>
-    <lastmod>2026-10-15T14:28:10.619Z</lastmod>
+    <loc>https://sta240-f26.github.io/slides/2026-10-15-pdqr.html</loc>
+    <lastmod>2026-10-15T14:28:28.615Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/math/integration.html</loc>
-    <lastmod>2026-03-10T00:27:44.566Z</lastmod>
+    <loc>https://sta240-f26.github.io/slides/2026-10-22-continuous-slides.html</loc>
+    <lastmod>2026-10-22T15:38:16.230Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/math/limits.html</loc>
-    <lastmod>2026-03-09T19:40:31.976Z</lastmod>
+    <loc>https://sta240-f26.github.io/slides/2026-10-22-continuous.html</loc>
+    <lastmod>2026-10-22T15:38:16.230Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/math/gamma-function.html</loc>
-    <lastmod>2026-09-16T13:05:32.771Z</lastmod>
+    <loc>https://sta240-f26.github.io/math/binomial-theorem.html</loc>
+    <lastmod>2026-09-29T00:58:09.917Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/math/series.html</loc>
-    <lastmod>2026-08-28T23:12:20.278Z</lastmod>
+    <loc>https://sta240-f26.github.io/math/logexp.html</loc>
+    <lastmod>2026-09-23T02:20:42.945Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/index.html</loc>
-    <lastmod>2026-08-24T17:11:56.026Z</lastmod>
+    <loc>https://sta240-f26.github.io/math/differentiation.html</loc>
+    <lastmod>2026-08-19T22:46:38.298Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/pset-2.html</loc>
-    <lastmod>2026-09-14T17:59:54.520Z</lastmod>
+    <loc>https://sta240-f26.github.io/math/greeks.html</loc>
+    <lastmod>2026-04-28T23:44:15.309Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/pset-1.html</loc>
-    <lastmod>2026-09-07T17:33:47.257Z</lastmod>
+    <loc>https://sta240-f26.github.io/math/massage-and-squint.html</loc>
+    <lastmod>2026-09-29T00:28:27.602Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/pset-4.html</loc>
-    <lastmod>2026-10-02T09:02:42.109Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/pset-3.html</loc>
+    <lastmod>2026-09-24T09:10:56.211Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/pset-0.html</loc>
+    <lastmod>2026-08-16T02:33:23.299Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/pset-5.html</loc>
+    <lastmod>2026-10-21T18:22:20.940Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/pset-6.html</loc>
+    <lastmod>2026-10-26T20:47:05.140Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/random-variables-continuous/expectation-short-cuts.html</loc>
@@ -142,7 +150,7 @@
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/random-variables-continuous/pareto.html</loc>
-    <lastmod>2026-02-21T02:26:06.989Z</lastmod>
+    <lastmod>2026-10-26T01:04:38.021Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/random-variables-continuous/another-weibull.html</loc>
@@ -275,6 +283,34 @@
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/basic-rules/xor-2.html</loc>
     <lastmod>2026-09-22T12:43:53.700Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/transformations/twerkout.html</loc>
+    <lastmod>2026-10-26T16:38:04.692Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/transformations/twerkout-3.html</loc>
+    <lastmod>2026-02-21T02:26:06.992Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/moments/simple-mgf.html</loc>
+    <lastmod>2026-02-21T02:26:06.987Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/moments/binomial-mgf.html</loc>
+    <lastmod>2026-10-26T18:49:50.501Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/moments/normal-mgf.html</loc>
+    <lastmod>2026-02-21T02:26:06.987Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/moments/gumbel-mgf.html</loc>
+    <lastmod>2026-02-21T02:26:06.987Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/moments/compound-poisson.html</loc>
+    <lastmod>2026-02-21T02:26:06.987Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/math-review/pareto-ish.html</loc>
@@ -411,6 +447,34 @@
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/math-review/big-product-energy.html</loc>
     <lastmod>2026-05-08T00:11:09.912Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/moments/discrete-uniform.html</loc>
+    <lastmod>2026-02-21T02:26:06.987Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/moments/laplace.html</loc>
+    <lastmod>2026-02-21T02:26:06.987Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/moments/logarithmic.html</loc>
+    <lastmod>2026-10-26T18:55:09.925Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/moments/direct-mgf.html</loc>
+    <lastmod>2026-02-21T02:26:06.987Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/transformations/twerkout-2.html</loc>
+    <lastmod>2026-02-21T02:26:06.992Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/transformations/location-scale.html</loc>
+    <lastmod>2026-10-26T18:47:59.018Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/problems/bank/transformations/gamma-power.html</loc>
+    <lastmod>2026-02-21T02:26:06.992Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/problems/bank/basic-rules/disjoint-complements.html</loc>
@@ -557,132 +621,132 @@
     <lastmod>2026-02-21T02:26:06.989Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/pset-5.html</loc>
-    <lastmod>2026-10-21T18:22:20.940Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/pset-4.html</loc>
+    <lastmod>2026-10-02T09:02:42.109Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/pset-0.html</loc>
-    <lastmod>2026-08-16T02:33:23.299Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/pset-1.html</loc>
+    <lastmod>2026-09-07T17:33:47.257Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/problems/pset-3.html</loc>
-    <lastmod>2026-09-24T09:10:56.211Z</lastmod>
+    <loc>https://sta240-f26.github.io/problems/pset-2.html</loc>
+    <lastmod>2026-09-14T17:59:54.520Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/math/massage-and-squint.html</loc>
-    <lastmod>2026-09-29T00:28:27.602Z</lastmod>
+    <loc>https://sta240-f26.github.io/index.html</loc>
+    <lastmod>2026-08-24T17:11:56.026Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/math/greeks.html</loc>
-    <lastmod>2026-04-28T23:44:15.309Z</lastmod>
+    <loc>https://sta240-f26.github.io/math/series.html</loc>
+    <lastmod>2026-08-28T23:12:20.278Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/math/differentiation.html</loc>
-    <lastmod>2026-08-19T22:46:38.298Z</lastmod>
+    <loc>https://sta240-f26.github.io/math/gamma-function.html</loc>
+    <lastmod>2026-09-16T13:05:32.771Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/math/logexp.html</loc>
-    <lastmod>2026-09-23T02:20:42.945Z</lastmod>
+    <loc>https://sta240-f26.github.io/math/limits.html</loc>
+    <lastmod>2026-03-09T19:40:31.976Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/math/binomial-theorem.html</loc>
-    <lastmod>2026-09-29T00:58:09.917Z</lastmod>
+    <loc>https://sta240-f26.github.io/math/integration.html</loc>
+    <lastmod>2026-03-10T00:27:44.566Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/slides/2026-10-22-continuous.html</loc>
-    <lastmod>2026-10-22T15:38:16.230Z</lastmod>
+    <loc>https://sta240-f26.github.io/slides/2026-10-01-r-crash-course.html</loc>
+    <lastmod>2026-10-15T14:28:10.619Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/slides/2026-10-22-continuous-slides.html</loc>
-    <lastmod>2026-10-22T15:38:16.230Z</lastmod>
+    <loc>https://sta240-f26.github.io/slides/2026-10-01-r-crash-course-slides.html</loc>
+    <lastmod>2026-10-15T14:28:10.619Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/slides/2026-10-15-pdqr.html</loc>
-    <lastmod>2026-10-15T14:28:28.615Z</lastmod>
+    <loc>https://sta240-f26.github.io/slides/2026-08-24-welcome.html</loc>
+    <lastmod>2026-09-20T16:02:45.657Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/slides/2026-10-15-pdqr-slides.html</loc>
-    <lastmod>2026-10-15T14:28:28.615Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/syllabus-materials.html</loc>
+    <lastmod>2026-08-15T20:07:49.292Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/syllabus-assignments.html</loc>
-    <lastmod>2026-08-24T17:17:10.146Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/syllabus-team.html</loc>
+    <lastmod>2026-09-30T02:30:05.485Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/syllabus-resources.html</loc>
-    <lastmod>2026-03-09T19:40:32.160Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/duke-music-day.html</loc>
+    <lastmod>2026-09-16T00:18:04.151Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/house-course.html</loc>
-    <lastmod>2026-08-19T14:45:40.847Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/tazns-arch-sing.html</loc>
+    <lastmod>2026-09-07T19:10:40.489Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/ssmu-challenge.html</loc>
-    <lastmod>2026-10-05T18:56:36.311Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/duke-symphony-2026-10-03.html</loc>
+    <lastmod>2026-09-30T22:56:37.938Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/fall-dance-showcase.html</loc>
-    <lastmod>2026-08-30T01:56:14.465Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/deja-blue-single.html</loc>
+    <lastmod>2026-08-31T22:22:18.751Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/nutcracker.html</loc>
-    <lastmod>2026-09-11T22:43:22.891Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/muse-magazine.html</loc>
+    <lastmod>2026-08-16T03:03:36.326Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/ssmu-dsci.html</loc>
-    <lastmod>2026-09-07T19:30:33.476Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/chamber-music.html</loc>
+    <lastmod>2026-09-11T22:32:24.171Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/chronicle.html</loc>
-    <lastmod>2026-09-26T00:14:57.268Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/announcements/fall-vocal-showcase.html</loc>
+    <lastmod>2026-08-24T21:01:10.693Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements/rockapella.html</loc>
-    <lastmod>2026-09-26T00:33:38.757Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/syllabus-policies.html</loc>
+    <lastmod>2026-08-19T23:22:41.641Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/syllabus/announcements.html</loc>
-    <lastmod>2026-10-05T18:55:43.418Z</lastmod>
+    <loc>https://sta240-f26.github.io/syllabus/syllabus-overview.html</loc>
+    <lastmod>2026-07-27T20:05:38.312Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/explainers/histogram.html</loc>
-    <lastmod>2026-03-09T19:40:31.960Z</lastmod>
+    <loc>https://sta240-f26.github.io/explainers/probabilities.html</loc>
+    <lastmod>2026-03-14T20:00:24.417Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/explainers/loops.html</loc>
-    <lastmod>2026-08-23T11:32:43.044Z</lastmod>
+    <loc>https://sta240-f26.github.io/explainers/hello-rstudio.html</loc>
+    <lastmod>2026-03-14T19:58:27.614Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/explainers/quarto.html</loc>
-    <lastmod>2026-03-14T20:00:38.181Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/explainers/if-else.html</loc>
-    <lastmod>2026-03-09T19:40:31.961Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/explainers/latex.html</loc>
+    <loc>https://sta240-f26.github.io/explainers/lineplot.html</loc>
     <lastmod>2026-03-09T19:40:31.966Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/explainers/rng-seed.html</loc>
+    <loc>https://sta240-f26.github.io/explainers/plot.html</loc>
+    <lastmod>2026-03-14T19:59:48.001Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/explainers/vectors.html</loc>
+    <lastmod>2026-03-09T19:40:31.969Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/explainers/math.html</loc>
+    <lastmod>2026-03-09T19:40:31.967Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/explainers/setup.html</loc>
+    <lastmod>2026-03-09T19:51:12.696Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta240-f26.github.io/explainers/sample.html</loc>
     <lastmod>2026-03-09T19:40:31.968Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/explainers/summary-statistics.html</loc>
-    <lastmod>2026-03-09T19:40:31.968Z</lastmod>
+    <loc>https://sta240-f26.github.io/distributions/continuous-gamma.html</loc>
+    <lastmod>2026-10-22T13:36:53.480Z</lastmod>
   </url>
   <url>
-    <loc>https://sta240-f26.github.io/explainers/vectorization.html</loc>
-    <lastmod>2026-03-14T20:01:15.240Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/distributions/continuous-normal.html</loc>
-    <lastmod>2026-10-22T13:34:57.969Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sta240-f26.github.io/distributions/continuous-uniform.html</loc>
-    <lastmod>2026-10-22T13:25:22.781Z</lastmod>
+    <loc>https://sta240-f26.github.io/distributions/continuous-exponential.html</loc>
+    <lastmod>2026-10-23T07:54:48.398Z</lastmod>
   </url>
   <url>
     <loc>https://sta240-f26.github.io/distributions/discrete-geometric.html</loc>
