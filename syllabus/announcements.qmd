@@ -3,6 +3,8 @@ title: "Support your classmates!"
 format: html
 ---
 
+{{< include announcements/awaaz.qmd >}}
+
 {{< include announcements/chronicle.qmd >}}
 
 {{< include announcements/ssmu-challenge.qmd >}}
