@@ -556,7 +556,10 @@ window.Quarto = {
   
 
 
-</header><section id="problem-0" class="level2"><h2 class="anchored" data-anchor-id="problem-0">Problem 0</h2>
+</header><blockquote class="blockquote">
+<p><a href="https://en.wikiquote.org/wiki/Pierre-Simon_Laplace">Laplace</a>: “Nature laughs at the difficulties of integration.”</p>
+</blockquote>
+<section id="problem-0" class="level2"><h2 class="anchored" data-anchor-id="problem-0">Problem 0</h2>
 <p>Recommend some music for us to listen to while we grade this.</p>
 </section><section id="problem-1" class="level2"><h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
 <p>Recall the gamma function</p>
@@ -691,14 +694,41 @@ e^{-|x|},\quad x\in\mathbb{R}.
 <li>What is the mean?</li>
 <li>What is the variance?</li>
 </ol></section><section id="problem-9" class="level2"><h2 class="anchored" data-anchor-id="problem-9">Problem 9</h2>
-<p>On Lab 8, we learned how to derive the distribution of a transformation. This is an important technical skill that crops up often in mathematical probability, so let’s get our reps in:</p>
-<ol type="a">
-<li>Let <span class="math inline">\(X\sim\text{Unif}(0,\,1)\)</span>, and find the range and density of <span class="math inline">\(Y=e^X\)</span>;</li>
-<li>Let <span class="math inline">\(X\sim\textrm{Unif}(0,\,1)\)</span>, and find the range and density of <span class="math inline">\(Y=\sqrt{X}\)</span>;</li>
-<li>Let <span class="math inline">\(X\sim\text{Unif}(0,\,1)\)</span>, and find the range and density of <span class="math inline">\(Y=X^2\)</span>;</li>
-<li>Let <span class="math inline">\(X\sim\text{Gamma}(a,\,b)\)</span>, and find the range and density of <span class="math inline">\(Y=1/X\)</span>;</li>
-<li>Let <span class="math inline">\(Z\sim\text{N}(0,\,1)\)</span>, and find the range and density of <span class="math inline">\(Z^2\)</span>.</li>
-</ol></section><section id="problem-10" class="level2"><h2 class="anchored" data-anchor-id="problem-10">Problem 10</h2>
+<p>On Lab 8, we learned how to derive the distribution of a transformation. This is an important technical skill that crops up often in mathematical probability, so let’s get our reps in. For each of these, derive the range and density of the new random variable <span class="math inline">\(Y\)</span>. Verify that your density is correct by simulating the distribution of the new random variable, plotting a histogram of the simulations, and placing a line plot of the your derived density curve on top of the histogram. If all is well, they should match.</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Part</th>
+<th>Old random variable</th>
+<th>New random variable</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>a</td>
+<td><span class="math inline">\(X\sim\text{Unif}(0,\,1)\)</span></td>
+<td><span class="math inline">\(Y=e^X\)</span></td>
+</tr>
+<tr class="even">
+<td>b</td>
+<td><span class="math inline">\(X\sim\textrm{Unif}(0,\,1)\)</span></td>
+<td><span class="math inline">\(Y=\sqrt{X}\)</span></td>
+</tr>
+<tr class="odd">
+<td>c</td>
+<td><span class="math inline">\(X\sim\text{Unif}(0,\,1)\)</span></td>
+<td><span class="math inline">\(Y=X^2\)</span></td>
+</tr>
+<tr class="even">
+<td>d</td>
+<td><span class="math inline">\(X\sim\text{Gamma}(a,\,b)\)</span></td>
+<td><span class="math inline">\(Y=1/X\)</span></td>
+</tr>
+<tr class="odd">
+<td>e</td>
+<td><span class="math inline">\(Z\sim\text{N}(0,\,1)\)</span></td>
+<td><span class="math inline">\(X=Z^2\)</span></td>
+</tr>
+</tbody>
+</table></section><section id="problem-10" class="level2"><h2 class="anchored" data-anchor-id="problem-10">Problem 10</h2>
 <p>Let <span class="math inline">\(X\)</span> be an absolutely continuous random variable with pdf <span class="math inline">\(f_X\)</span>, let <span class="math inline">\(a,\,b\in\mathbb{R}\)</span> be non-zero constants, and consider the new random variable <span class="math inline">\(Y=aX+b\)</span>.</p>
 <ol type="a">
 <li>What is <span class="math inline">\(E(Y)\)</span>?</li>

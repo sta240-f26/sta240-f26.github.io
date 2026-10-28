@@ -739,6 +739,36 @@ shinyApp(ui = ui, server = server)
 
 </a></code></pre>
 </section><section id="derivations" class="level2"><h2 class="anchored" data-anchor-id="derivations">Derivations</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Moment-generating function
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is classic “massage and squint.” Let <span class="math inline">\(t\in(-\infty,\,\beta)\)</span>. Then</p>
+<p><span class="math display">\[
+      \begin{align*}
+          M_X(t)&amp;=E\left(e^{tX}\right)\\
+          &amp;=\int_0^\infty e^{tx}\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}\,\text{d} x &amp;&amp; \text{LOTUS}\\
+          &amp;=\frac{\beta^\alpha}{\Gamma(\alpha)}\int_0^\infty x^{\alpha-1}e^{tx}e^{-\beta x}\,\text{d} x &amp;&amp; \text{pull out constant}\\
+          &amp;=\frac{\beta^\alpha}{\Gamma(\alpha)}\int_0^\infty x^{\alpha-1}e^{tx-\beta x}\,\text{d} x&amp;&amp; \text{combine base-e terms}\\
+`         &amp;=\frac{\beta^\alpha}{\Gamma(\alpha)}\int_0^\infty x^{\alpha-1}e^{(t-\beta) x}\,\text{d} x&amp;&amp; \text{factor out }x\\
+`         &amp;=\frac{\beta^\alpha}{\Gamma(\alpha)}\int_0^\infty x^{\alpha-1}e^{-(\beta-t) x}\,\text{d} x&amp;&amp; \text{factor out -1}\\
+          &amp;=\frac{\beta^\alpha}{\Gamma(\alpha)}\int_0^\infty \underbrace{x^{\alpha-1}e^{-(\beta-t)x}}_{\text{kernel of Gamma}(\alpha,\,\beta-t)}\,\text{d} x &amp;&amp; \text{recognize}\\
+          &amp;=\frac{\beta^\alpha}{{\Gamma(\alpha)}}\frac{{\Gamma(\alpha)}}{(\beta-t)^\alpha}\\
+          &amp;=\left(\frac{\beta}{\beta-t}\right)^\alpha.
+      \end{align*}
+\]</span></p>
+<p>In order to invoke the gamma density kernel, we require that <span class="math inline">\(t&lt;\beta\)</span> so that the rate parameter of the implied gamma is positive.</p>
+</div>
+</div>
+</div>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

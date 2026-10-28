@@ -1066,6 +1066,60 @@ The variance (brute force)
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The moment-generating function
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Massage and squint until you recognize the Taylor series of <span class="math inline">\(e^x\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+M(t)&amp;=E[e^{tX}]\\
+&amp;=\sum\limits_{k=0}^\infty e^{tk}\frac{\lambda^k}{k!}e^{-\lambda}\\
+&amp;=\sum\limits_{k=0}^\infty \left(e^{t}\right)^k\frac{\lambda^k}{k!}e^{-\lambda}\\
+&amp;=\sum\limits_{k=0}^\infty \frac{\left(\lambda e^{t}\right)^k}{k!}e^{-\lambda}\\
+&amp;=e^{-\lambda}\sum\limits_{k=0}^\infty \frac{\left(\lambda e^{t}\right)^k}{k!}\\
+&amp;=e^{-\lambda}e^{\lambda e^t}\\
+&amp;=e^{\lambda e^t-\lambda}.
+\end{aligned}
+\]</span></p>
+<p>This works for any <span class="math inline">\(t\in\mathbb{R}\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The mean and variance (via the MGF)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use the chain rule, product rule, etc to compute the first two derivatives of the MGF, and then plug in zero:</p>
+<p><span class="math display">\[
+\begin{aligned}
+M'(t)&amp;=\lambda e^t\exp(\lambda e^t-\lambda)\\
+M''(t)&amp;=(\lambda e^t)^2\exp(\lambda e^t-\lambda)+\lambda e^t\exp(\lambda e^t-\lambda)\\
+\\
+E(X)=M'(0)&amp;=\lambda\\
+E(X^2)=M''(0)&amp;=\lambda^2+\lambda
+\end{aligned}
+\]</span></p>
+<p>So <span class="math inline">\(E(X) = \lambda\)</span> and <span class="math inline">\(\text{var}(X) = E(X^2) - E(X)^2 = \lambda^2 + \lambda - \lambda^2 = \lambda\)</span>.</p>
+</div>
+</div>
+</div>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

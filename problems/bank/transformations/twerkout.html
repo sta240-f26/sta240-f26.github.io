@@ -545,14 +545,43 @@ window.Quarto = {
 
 
 
-<p>On Lab 8, we learned how to derive the distribution of a transformation. This is an important technical skill that crops up often in mathematical probability, so let’s get our reps in:</p>
-<ol type="a">
-<li>Let <span class="math inline">\(X\sim\text{Unif}(0,\,1)\)</span>, and find the range and density of <span class="math inline">\(Y=e^X\)</span>;</li>
-<li>Let <span class="math inline">\(X\sim\textrm{Unif}(0,\,1)\)</span>, and find the range and density of <span class="math inline">\(Y=\sqrt{X}\)</span>;</li>
-<li>Let <span class="math inline">\(X\sim\text{Unif}(0,\,1)\)</span>, and find the range and density of <span class="math inline">\(Y=X^2\)</span>;</li>
-<li>Let <span class="math inline">\(X\sim\text{Gamma}(a,\,b)\)</span>, and find the range and density of <span class="math inline">\(Y=1/X\)</span>;</li>
-<li>Let <span class="math inline">\(Z\sim\text{N}(0,\,1)\)</span>, and find the range and density of <span class="math inline">\(Z^2\)</span>.</li>
-</ol>
+<p>On Lab 8, we learned how to derive the distribution of a transformation. This is an important technical skill that crops up often in mathematical probability, so let’s get our reps in. For each of these, derive the range and density of the new random variable <span class="math inline">\(Y\)</span>. Verify that your density is correct by simulating the distribution of the new random variable, plotting a histogram of the simulations, and placing a line plot of the your derived density curve on top of the histogram. If all is well, they should match.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Old random variable</th>
+<th>New random variable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a</td>
+<td><span class="math inline">\(X\sim\text{Unif}(0,\,1)\)</span></td>
+<td><span class="math inline">\(Y=e^X\)</span></td>
+</tr>
+<tr class="even">
+<td>b</td>
+<td><span class="math inline">\(X\sim\textrm{Unif}(0,\,1)\)</span></td>
+<td><span class="math inline">\(Y=\sqrt{X}\)</span></td>
+</tr>
+<tr class="odd">
+<td>c</td>
+<td><span class="math inline">\(X\sim\text{Unif}(0,\,1)\)</span></td>
+<td><span class="math inline">\(Y=X^2\)</span></td>
+</tr>
+<tr class="even">
+<td>d</td>
+<td><span class="math inline">\(X\sim\text{Gamma}(a,\,b)\)</span></td>
+<td><span class="math inline">\(Y=1/X\)</span></td>
+</tr>
+<tr class="odd">
+<td>e</td>
+<td><span class="math inline">\(Z\sim\text{N}(0,\,1)\)</span></td>
+<td><span class="math inline">\(X=Z^2\)</span></td>
+</tr>
+</tbody>
+</table>
 
 
 
