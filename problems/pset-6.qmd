@@ -5,6 +5,8 @@ editor:
   mode: source
 ---
 
+> [Laplace](https://en.wikiquote.org/wiki/Pierre-Simon_Laplace): "Nature laughs at the difficulties of integration."
+
 ```{r}
 #| echo: false
 q_no <- 0
