@@ -447,3 +447,41 @@ $$
 So $\text{var}(X)=E(X^2)-E(X)^2=\lambda^2+\lambda-\lambda^2=\lambda$, and strangely, the Poisson distribution has $E(X)=\text{var}(X)$. If you go to the app above and increase $\lambda$, you will see the PMF shift rightward *and* widen simultaneously for precisely this reason. This property renders the Poisson distribution less useful for modeling count-valued data than we might hope, because we cannot separately manipulate the center and the spread of the distribution. An entire literature has emerged in statistics that attempts to modify the Poisson so that it does not have this funky property.
 
 :::
+
+
+
+::: {.callout-note collapse="true"}
+## The moment-generating function
+Massage and squint until you recognize the Taylor series of $e^x$:
+
+$$
+\begin{aligned}
+M(t)&=E[e^{tX}]\\
+&=\sum\limits_{k=0}^\infty e^{tk}\frac{\lambda^k}{k!}e^{-\lambda}\\
+&=\sum\limits_{k=0}^\infty \left(e^{t}\right)^k\frac{\lambda^k}{k!}e^{-\lambda}\\
+&=\sum\limits_{k=0}^\infty \frac{\left(\lambda e^{t}\right)^k}{k!}e^{-\lambda}\\
+&=e^{-\lambda}\sum\limits_{k=0}^\infty \frac{\left(\lambda e^{t}\right)^k}{k!}\\
+&=e^{-\lambda}e^{\lambda e^t}\\
+&=e^{\lambda e^t-\lambda}.
+\end{aligned}
+$$
+
+This works for any $t\in\mathbb{R}$.
+:::
+
+::: {.callout-tip collapse="true"}
+## The mean and variance (via the MGF)
+Use the chain rule, product rule, etc to compute the first two derivatives of the MGF, and then plug in zero:
+
+$$
+\begin{aligned}
+M'(t)&=\lambda e^t\exp(\lambda e^t-\lambda)\\
+M''(t)&=(\lambda e^t)^2\exp(\lambda e^t-\lambda)+\lambda e^t\exp(\lambda e^t-\lambda)\\
+\\
+E(X)=M'(0)&=\lambda\\
+E(X^2)=M''(0)&=\lambda^2+\lambda
+\end{aligned}
+$$
+
+So $E(X) = \lambda$ and $\text{var}(X) = E(X^2) - E(X)^2 = \lambda^2 + \lambda - \lambda^2 = \lambda$.
+:::
