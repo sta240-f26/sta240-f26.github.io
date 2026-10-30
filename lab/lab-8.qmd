@@ -88,6 +88,58 @@ A scientist models the population of a bacterial colony using exponential growth
 a.  Derive the range and pdf of $Y$;
 b.  Simulate `n = 5000` draws of $Y$. Plot a histogram, and add a line plot of the density you derived in part b. They should match!
 
+::: {.callout-warning collapse="true"}
+## Solution
+We know that $\text{Range}(X)=\mathbb{R}$ and that 
+
+$$
+\begin{aligned}
+f_X(x)&=\frac{1}{\sqrt{2\pi}}e^{-x^2/2},&&x\in\mathbb{R}\\
+F_X(x)&=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^xe^{-t^2/2}\,\text{d}t,&&x\in\mathbb{R}.
+\end{aligned}
+$$
+
+Newsflash: the cdf of the normal distribution is unknown. We can approximate it arbitrarily well using numerical methods, but we don't actually have a clean formula for it. The integral above is simply intractable.
+
+Anyway, the transformations involved here are again the [exponential and the natural log](/math/logexp.html), which we already saw in Task 1. Both are strictly-increasing. The exponential takes any real number and maps it to something *strictly positive*, so we see then that $\text{Range}(Y)=(0,\,\infty)$. Fixing $y>0$, we compute:
+
+$$
+  \begin{align*}
+      F_Y(y)&=P(Y\leq y)\\
+      &=P(e^X\leq y)\\
+      &=P\left(X\leq \ln y\right)\\
+      &=F_X\left(\ln y\right).
+  \end{align*}
+$$
+
+As such, the pdf is:
+
+$$
+\begin{aligned}
+f_Y(y)
+=
+F'_Y(y)&=\frac{\text{d}}{\text{d} y}F_X(\ln y)\\
+&=F_X'(\ln y)\frac{\text{d}}{\text{d}y}\ln y\\
+&=f_X(\ln y)\frac{1}{y}\\
+&=\frac{1}{\sqrt{2\pi}}e^{-(\ln y)^2/2}\frac{1}{y},&&y>0.
+\end{aligned}
+$$
+
+This matches with a simulation:
+
+```{r}
+#| fig-align: center
+set.seed(20)
+X <- rnorm(5000)
+Y <- exp(X)
+hist(Y, breaks = "Scott", freq = FALSE)
+curve(dnorm(log(x)) / x, from = min(Y), to = max(Y), n = 1000, 
+      col = "red", lwd = 3, add = TRUE)
+```
+
+The distribution we derived here is an example of the [log-normal distribution](https://en.wikipedia.org/wiki/Log-normal_distribution).
+:::
+
 ## Task 3
 
 ![](images/shark.png){fig-align="center" width="50%"}
@@ -197,7 +249,93 @@ a.  What are the range and pdf of $Y$?
 a.  Simulate `n = 5000` draws of $Y$. Plot a histogram, and add a line plot of the density you derived in part b. Can you get them to match?
 
 
+::: {.callout-warning collapse="true"}
+## Solution
 
+By construction, $\text{Range}(X)=(-\pi/2,\,\pi/2)$. You can read more about the continuous uniform [here](/distributions/continuous-uniform.html), and we see that the cdf is 
+
+$$
+F_X(x)
+=
+\begin{cases}
+0 & x\leq -\frac{\pi}{2}\\
+\frac{x-\left(-\frac{\pi}{2}\right)}{\frac{\pi}{2}-\left(-\frac{\pi}{2}\right)} & -\frac{\pi}{2}<x<\frac{\pi}{2}\\
+1 & \frac{\pi}{2}\leq x.
+\end{cases}
+$$
+
+So when $-\frac{\pi}{2}<x<\frac{\pi}{2}$, we have 
+
+$$
+F_X(x)=\frac{x+\frac{\pi}{2}}{\pi}=\frac{x}{\pi}+\frac{1}{2}.
+$$
+
+
+The transformation is 
+
+```{r}
+#| echo: false
+#| fig-align: center
+curve(tan(x), from = -pi * 0.99/2, to = pi * 0.99/2, n = 1000, col = "red",
+      ylim = c(-10, 10), xaxt = "n", yaxt = "n", bty = "n", ylab = "Y", xlab = "X",
+      lwd = 2, main = "Y = tan X")
+axis(1, pos = 0)
+axis(2, pos = 0)
+```
+
+Again, strictly-increasing, and it maps to all real numbers. So $\text{Range}(Y)=\mathbb{R}$. Now let's fix arbitrary $y\in\mathbb{R}$ and find the cdf:
+
+$$
+\begin{aligned}
+    F_Y(y)&=P(Y\leq y)\\
+    &=P(\tan X\leq y)\\
+    &=P(X\leq \tan^{-1}y)\\
+    &=F_X(\tan^{-1}y)\\
+    &=\frac{\tan^{-1}y}{\pi}+\frac{1}{2}.
+\end{aligned}
+$$
+
+Take a derivative to get the pdf:
+
+$$
+f_Y(y)
+=
+F'_Y(y)
+=
+\frac{\textrm{d}}{\textrm{d}y}
+\left(
+\frac{\tan^{-1}y}{\pi}+\frac{1}{2}
+\right)
+=
+\frac{1}{\pi(1+y^2)},\quad y\in\mathbb{R}.
+$$
+
+Rest assured that we did the math right, but you'd have a hard time verifying it with a simulation:
+
+```{r}
+#| fig-align: center
+set.seed(20)
+X <- runif(5000, -pi / 2, pi / 2)
+Y <- tan(X)
+hist(Y, breaks = "Scott", freq = FALSE)
+```
+
+Here is the graph of the density we derived, and for reference I added the pdf of the standard normal distribution (bell curve):
+
+```{r}
+#| code-fold: true
+#| fig-align: center
+curve(dnorm(x), from = -7, to = 7, n = 1000, ylab = "", bty = "n")
+curve(dcauchy(x), from = -7, to = 7, n = 1000, add = TRUE, col = "red")
+legend("topright", c("N(0, 1) density", "Cauchy density"), bty = "n",
+       lty = 1, col = c("black", "red"))
+```
+
+Compared to the bell curve, this new density has *very* heavy tails. They are so heavy in fact that this distribution does not have a finite mean or variance or any other moment. It is very ill-behaved, and it frequently surprises with extreme values far out in the tails. That's why the histogram looks awful and always will. 
+
+This distribution we just derived is quite famous. It's called the [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution).
+
+:::
 
 
 ## Punchline
