@@ -684,7 +684,67 @@ f_Y(y)=F_Y'(y)=\frac{\text{d}}{\text{d} y}\left(1-e^{-e^y}\right)=0-(-e^y)e^{-e^
 <ol type="a">
 <li>Derive the range and pdf of <span class="math inline">\(Y\)</span>;</li>
 <li>Simulate <code>n = 5000</code> draws of <span class="math inline">\(Y\)</span>. Plot a histogram, and add a line plot of the density you derived in part b. They should match!</li>
-</ol></section><section id="task-3" class="level2"><h2 class="anchored" data-anchor-id="task-3">Task 3</h2>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We know that <span class="math inline">\(\text{Range}(X)=\mathbb{R}\)</span> and that</p>
+<p><span class="math display">\[
+\begin{aligned}
+f_X(x)&amp;=\frac{1}{\sqrt{2\pi}}e^{-x^2/2},&amp;&amp;x\in\mathbb{R}\\
+F_X(x)&amp;=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^xe^{-t^2/2}\,\text{d}t,&amp;&amp;x\in\mathbb{R}.
+\end{aligned}
+\]</span></p>
+<p>Newsflash: the cdf of the normal distribution is unknown. We can approximate it arbitrarily well using numerical methods, but we don’t actually have a clean formula for it. The integral above is simply intractable.</p>
+<p>Anyway, the transformations involved here are again the <a href="../math/logexp.html">exponential and the natural log</a>, which we already saw in Task 1. Both are strictly-increasing. The exponential takes any real number and maps it to something <em>strictly positive</em>, so we see then that <span class="math inline">\(\text{Range}(Y)=(0,\,\infty)\)</span>. Fixing <span class="math inline">\(y&gt;0\)</span>, we compute:</p>
+<p><span class="math display">\[
+  \begin{align*}
+      F_Y(y)&amp;=P(Y\leq y)\\
+      &amp;=P(e^X\leq y)\\
+      &amp;=P\left(X\leq \ln y\right)\\
+      &amp;=F_X\left(\ln y\right).
+  \end{align*}
+\]</span></p>
+<p>As such, the pdf is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+f_Y(y)
+=
+F'_Y(y)&amp;=\frac{\text{d}}{\text{d} y}F_X(\ln y)\\
+&amp;=F_X'(\ln y)\frac{\text{d}}{\text{d}y}\ln y\\
+&amp;=f_X(\ln y)\frac{1}{y}\\
+&amp;=\frac{1}{\sqrt{2\pi}}e^{-(\ln y)^2/2}\frac{1}{y},&amp;&amp;y&gt;0.
+\end{aligned}
+\]</span></p>
+<p>This matches with a simulation:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">5000</span><span class="op">)</span></span>
+<span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">Y</span>, breaks <span class="op">=</span> <span class="st">"Scott"</span>, freq <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="va">x</span>, from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">Y</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">Y</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">1000</span>, </span>
+<span>      col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">3</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="lab-8_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The distribution we derived here is an example of the <a href="https://en.wikipedia.org/wiki/Log-normal_distribution">log-normal distribution</a>.</p>
+</div>
+</div>
+</div>
+</section><section id="task-3" class="level2"><h2 class="anchored" data-anchor-id="task-3">Task 3</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="images/shark.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
@@ -789,7 +849,97 @@ shinyApp(ui, server)
 <li>Use geometry to express <span class="math inline">\(Y\)</span> as a function of <span class="math inline">\(X\)</span>;</li>
 <li>What are the range and pdf of <span class="math inline">\(Y\)</span>?</li>
 <li>Simulate <code>n = 5000</code> draws of <span class="math inline">\(Y\)</span>. Plot a histogram, and add a line plot of the density you derived in part b. Can you get them to match?</li>
-</ol></section><section id="punchline" class="level2"><h2 class="anchored" data-anchor-id="punchline">Punchline</h2>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>By construction, <span class="math inline">\(\text{Range}(X)=(-\pi/2,\,\pi/2)\)</span>. You can read more about the continuous uniform <a href="../distributions/continuous-uniform.html">here</a>, and we see that the cdf is</p>
+<p><span class="math display">\[
+F_X(x)
+=
+\begin{cases}
+0 &amp; x\leq -\frac{\pi}{2}\\
+\frac{x-\left(-\frac{\pi}{2}\right)}{\frac{\pi}{2}-\left(-\frac{\pi}{2}\right)} &amp; -\frac{\pi}{2}&lt;x&lt;\frac{\pi}{2}\\
+1 &amp; \frac{\pi}{2}\leq x.
+\end{cases}
+\]</span></p>
+<p>So when <span class="math inline">\(-\frac{\pi}{2}&lt;x&lt;\frac{\pi}{2}\)</span>, we have</p>
+<p><span class="math display">\[
+F_X(x)=\frac{x+\frac{\pi}{2}}{\pi}=\frac{x}{\pi}+\frac{1}{2}.
+\]</span></p>
+<p>The transformation is</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="lab-8_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Again, strictly-increasing, and it maps to all real numbers. So <span class="math inline">\(\text{Range}(Y)=\mathbb{R}\)</span>. Now let’s fix arbitrary <span class="math inline">\(y\in\mathbb{R}\)</span> and find the cdf:</p>
+<p><span class="math display">\[
+\begin{aligned}
+    F_Y(y)&amp;=P(Y\leq y)\\
+    &amp;=P(\tan X\leq y)\\
+    &amp;=P(X\leq \tan^{-1}y)\\
+    &amp;=F_X(\tan^{-1}y)\\
+    &amp;=\frac{\tan^{-1}y}{\pi}+\frac{1}{2}.
+\end{aligned}
+\]</span></p>
+<p>Take a derivative to get the pdf:</p>
+<p><span class="math display">\[
+f_Y(y)
+=
+F'_Y(y)
+=
+\frac{\textrm{d}}{\textrm{d}y}
+\left(
+\frac{\tan^{-1}y}{\pi}+\frac{1}{2}
+\right)
+=
+\frac{1}{\pi(1+y^2)},\quad y\in\mathbb{R}.
+\]</span></p>
+<p>Rest assured that we did the math right, but you’d have a hard time verifying it with a simulation:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">5000</span>, <span class="op">-</span><span class="va">pi</span> <span class="op">/</span> <span class="fl">2</span>, <span class="va">pi</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">tan</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">Y</span>, breaks <span class="op">=</span> <span class="st">"Scott"</span>, freq <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="lab-8_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here is the graph of the density we derived, and for reference I added the pdf of the standard normal distribution (bell curve):</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, from <span class="op">=</span> <span class="op">-</span><span class="fl">7</span>, to <span class="op">=</span> <span class="fl">7</span>, n <span class="op">=</span> <span class="fl">1000</span>, ylab <span class="op">=</span> <span class="st">""</span>, bty <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Cauchy.html">dcauchy</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, from <span class="op">=</span> <span class="op">-</span><span class="fl">7</span>, to <span class="op">=</span> <span class="fl">7</span>, n <span class="op">=</span> <span class="fl">1000</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"N(0, 1) density"</span>, <span class="st">"Cauchy density"</span><span class="op">)</span>, bty <span class="op">=</span> <span class="st">"n"</span>,</span>
+<span>       lty <span class="op">=</span> <span class="fl">1</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="lab-8_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Compared to the bell curve, this new density has <em>very</em> heavy tails. They are so heavy in fact that this distribution does not have a finite mean or variance or any other moment. It is very ill-behaved, and it frequently surprises with extreme values far out in the tails. That’s why the histogram looks awful and always will.</p>
+<p>This distribution we just derived is quite famous. It’s called the <a href="https://en.wikipedia.org/wiki/Cauchy_distribution">Cauchy distribution</a>.</p>
+</div>
+</div>
+</div>
+</section><section id="punchline" class="level2"><h2 class="anchored" data-anchor-id="punchline">Punchline</h2>
 <p>Given <span class="math inline">\(X\sim f_X\)</span>, we want the density of <span class="math inline">\(Y=g(X)\)</span>. In the three examples, you followed the same basic steps:</p>
 <ul>
 <li>write the generic cdf of <span class="math inline">\(Y\)</span>: <span class="math inline">\(F_Y(y)=P(Y\leq y)=P(g(X)\leq y)\)</span>;</li>
@@ -803,7 +953,7 @@ f_Y(y)=f_X\left(g^{-1}(y)\right)
     \left|\frac{\text{d}}{\text{d} y}g^{-1}(y)\right|,\quad y\in\text{Range}(Y).
 \]</span></p>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -812,7 +962,7 @@ Proof
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Assume…</p>
 <ul>

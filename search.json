@@ -2774,7 +2774,7 @@
     "href": "problems/bank/random-variables-continuous/all-moments-finite-no-mgf.html",
     "title": "STA 240 Fall 2026",
     "section": "",
-    "text": "Here is the cdf of an absolutely continuous random variable \\(X\\):\n\\[\nF(x)\n=\n\\begin{cases}\n1-\\exp\\left(-\\sqrt{x}\\right)&x\\geq 0\\\\\n0&\\text{else}.\n\\end{cases}\n\\]\n\nWhat is \\(P(4\\leq X &lt; 9)\\)?\nWhat is the pdf of \\(X\\)?\nCompute \\(E(X^n)\\) for any \\(n\\in\\mathbb{N}\\).\nWhat is the variance of \\(X\\)?\nWhat is the median of \\(X\\)?\n\n\n\n\n\n\n\nHint\n\n\n\nAll of the moments of this distribution are finite, but nevertheless, it doesn’t have a moment-generating function (MGF). So you’ll hit a dead-end if you try using that to compute the moments. Instead, use LOTUS. It’s a subtle calculation, but it actually works out pretty nice."
+    "text": "Here is the cdf of an absolutely continuous random variable \\(X\\):\n\\[\nF(x)\n=\n\\begin{cases}\n1-\\exp\\left(-\\sqrt{x}\\right)&x\\geq 0\\\\\n0&\\text{else}.\n\\end{cases}\n\\]\n\nWhat is \\(P(4\\leq X &lt; 9)\\)?\nWhat is the pdf of \\(X\\)?\nCompute \\(E(X^n)\\) for any \\(n\\in\\mathbb{N}\\).\nWhat is the variance of \\(X\\)?\nWhat is the median of \\(X\\)?\n\n\n\n\n\n\n\nHint\n\n\n\nUse LOTUS to compute the moments. It’s a subtle calculation, but it actually works out pretty nice."
   },
   {
     "objectID": "problems/bank/random-variables-continuous/basic-pdf-practice.html",
@@ -3558,6 +3558,188 @@
     "text": "Testing positive for a disease is not exactly good news, but how alarmed you should be ultimately depends on a few factors: the accuracy of the test and the overall rarity of the disease (the so-called base rate). Before you walk into the doctor’s office, the probability that you are sick is \\(P(D=+)\\), the prevalence. This is the unconditional (or marginal) probability that a random member of the population (ie you in that moment) is sick. After you test positive, the revised or conditional probability that you have the disease is given by Bayes’ theorem:\n\\[\n\\begin{aligned}\nP(D = +\\,|\\,T=+)\n&=\n\\frac{{\\color{blue}{P(T=+\\,|\\,D=+)}}{\\color{red}{P(D=+)}}}{P(T=+)}\n\\\\\n&=\n\\frac{{\\color{blue}{P(T=+\\,|\\,D=+)}}{\\color{red}{P(D=+)}}}{{\\color{blue}{P(T=+\\,|\\,D=+)}}{\\color{red}{P(D=+)}}+[1-{\\color{green}{P(T=-\\,|\\,D=-)}}][1-{\\color{red}{P(D=+)}}]}\n\\\\\n&=\n\\frac{{\\color{blue}{\\text{TPR}}}\\times{\\color{red}{\\text{PREV}}}}{{\\color{blue}{\\text{TPR}}}\\times{\\color{red}{\\text{PREV}}}+(1-{\\color{green}{\\text{TNR}}})(1-{\\color{red}{\\text{PREV}}})}.\n\\end{aligned}\n\\]\n\\(P(T=+\\,|\\,D=+)\\) is the true positive rate or sensitivity: the probability that a sick person is correctly diagnosed. \\(P(T=-\\,|\\,D=-)\\) is the true negative rate or specificity: the probability that a well person is correctly diagnosed. It is the nonlinear interaction of three numbers (prevalence, TPR, and TNR) that determines the revised likelihood that you have the disease. Two numbers interacting linearly is about all a regular human can handle off the dome, hence people are generally bad at reasoning about this stuff.\nThe application below visualizes the sample space for our simple model of disease testing. We have \\(D\\in\\{-,\\,+\\}\\) and \\(T\\in\\{-,\\,+\\}\\), and so there are four individual outcomes:\n\n\\(P(T = +\\cap D=+)=P(T=+\\,|\\,D=+)P(D=+)=\\text{TPR}\\times P(D=+)\\);\n\\(P(T = +\\cap D=-)=P(T=+\\,|\\,D=-)P(D=-)=\\text{FPR}\\times P(D=-)\\);\n\\(P(T = -\\cap D=-)=P(T=-\\,|\\,D=-)P(D=-)=\\text{TNR}\\times P(D=-)\\);\n\\(P(T = -\\cap D=+)=P(T=-\\,|\\,D=+)P(D=+)=\\text{FNR}\\times P(D=+)\\).\n\nThe application plots the \\([0,\\,1]\\times[0,\\,1]\\) unit square, partitioned into four rectangles representing the outcomes listed above. The area of each rectangle is equal to the probability of that outcome.\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 650\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  \n  # Application title\n  titlePanel(\"The sample space of a simple diagnostic test\"),\n  \n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"TPR\",\n                  \"Sensitivity (TPR):\",\n                  min = 0,\n                  max = 1,\n                  value = 0.5),\n      sliderInput(\"TNR\",\n                  \"Specificity (TNR):\",\n                  min = 0,\n                  max = 1,\n                  value = 0.5),\n      sliderInput(\"p\",\n                  \"Prevalence:\",\n                  min = 0,\n                  max = 1,\n                  value = 0.5)\n    ),\n    \n    mainPanel(\n      plotOutput(\"distPlot\"),\n      \n      # ---- Legend goes here ----\n      tags$div(\n        style = \"margin-top:20px;\",\n        tags$h4(\"Legend\"),\n        tags$div(style=\"display:flex; align-items:center; margin-bottom:5px;\",\n                 tags$div(style=\"width:20px; height:20px; background-color:rgba(255,0,0,0.25); margin-right:10px;\"),\n                 \"True Positive (T=+, D=+)\"\n        ),\n        tags$div(style=\"display:flex; align-items:center; margin-bottom:5px;\",\n                 tags$div(style=\"width:20px; height:20px; background-color:rgba(0,255,0,0.25); margin-right:10px;\"),\n                 \"False Negative (T=-, D=+)\"\n        ),\n        tags$div(style=\"display:flex; align-items:center; margin-bottom:5px;\",\n                 tags$div(style=\"width:20px; height:20px; background-color:rgba(0,0,255,0.25); margin-right:10px;\"),\n                 \"True Negative (T=-, D=-)\"\n        ),\n        tags$div(style=\"display:flex; align-items:center; margin-bottom:5px;\",\n                 tags$div(style=\"width:20px; height:20px; background-color:rgba(255,165,0,0.25); margin-right:10px;\"),\n                 \"False Positive (T=+, D=-)\"\n        )\n      )\n    )\n  )\n)\n\nserver &lt;- function(input, output) {\n  \n  output$distPlot &lt;- renderPlot({\n    \n    p &lt;- input$p\n    TNR &lt;-input$TNR\n    TPR &lt;- input$TPR\n    \n    FNR &lt;- 1 - TPR\n    FPR &lt;- 1 - TNR\n    \n    par(mar = c(8, 8, 1, 8))\n    \n    plot(0, col = \"white\", xlim = c(0, 1), ylim = c(0, 1),\n         xaxt = \"n\", yaxt = \"n\", bty = \"n\", xlab = \"\", ylab = \"\")\n    \n    polygon(c(0, p, p, 0), c(FNR, FNR, 1.0, 1.0), col = rgb(1, 0, 0, alpha = 0.25), border = NA)\n    polygon(c(0, p, p, 0), c(0, 0, FNR, FNR), col = rgb(0, 1, 0, alpha = 0.25), border = NA)\n    polygon(c(p, 1, 1, p), c(0, 0, TNR, TNR), col = rgb(0, 0, 1, alpha = 0.25), border = NA)\n    polygon(c(p, 1, 1, p), c(TNR, TNR, 1, 1), col = rgb(1, 0.647, 0, alpha = 0.25), border = NA)\n    \n    mtext(\"TNR\", side = 4, at = TNR / 2, las = 1)\n    mtext(\"FPR\", side = 4, at = (1 + TNR) / 2, las = 1)\n    \n    mtext(\"TPR\", side = 2, at = (1 + FNR) / 2, las = 1, line = 2)\n    mtext(\"FNR\", side = 2, at = FNR / 2, las = 1, line = 2)\n    \n    mtext(\"p(D = +)\", side = 1, at = p / 2, las = 1, line = 2)\n    mtext(\"p(D = -)\", side = 1, at = (1 + p) / 2, las = 1, line = 2)\n    \n    mtext(c(\"0\", \"1\"), side = 1, at = c(0, 1), las = 1)\n    mtext(c(\"0\", \"1\"), side = 2, at = c(0, 1), las = 1)\n  })\n}\n\nshinyApp(ui = ui, server = server)\n\n\nThe application below displays how testing positive shifts the probability of disease from \\(P(D=+)\\) to \\(P(D = +\\,|\\,T=+)\\). The size of the revision ultimately depends on how big \\(P(D=+)\\) was to begin with, and how good the test is (TPR and TNR). Play around with different values and see what happens:\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 500\n\nlibrary(shiny)\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"What can a diagnostic test teach you?\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n        sidebarPanel(\n            sliderInput(\"TPR\",\n                        \"Sensitivity (TPR):\",\n                        min = 0,\n                        max = 1,\n                        value = 0.5),\n            sliderInput(\"TNR\",\n                        \"Specificity (TNR):\",\n                        min = 0,\n                        max = 1,\n                        value = 0.5)\n        ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"distPlot\")\n        )\n    )\n)\n\n# Define server logic required to draw a histogram\nserver &lt;- function(input, output) {\n\n    output$distPlot &lt;- renderPlot({\n      TPR &lt;- input$TPR\n      TNR &lt;- input$TNR\n      P &lt;- seq(0, 1, length.out = 1000)\n      B &lt;- TPR * P / (TPR * P + (1 - TNR) * (1 - P))\n\n      # draw the histogram with the specified number of bins\n      par(mar = c(5, 5, 5, 0.5))\n      plot(P, B, type = \"l\", xlim = c(0, 1), ylim = c(0, 1),\n           xlab = \"P(D = +)\", ylab = \"P(D = + | T = +)\",\n           lwd = 2, cex.lab = 2,\n           panel.first = abline(a = 0, b = 1, lty = 2, lwd = 2, col = \"grey\"))\n    })\n}\n\n# Run the application \nshinyApp(ui = ui, server = server)"
   },
   {
+    "objectID": "lecture-notes/01-set2prob-slides.html#what-we-need",
+    "href": "lecture-notes/01-set2prob-slides.html#what-we-need",
+    "title": "From set theory to probability",
+    "section": "What we need",
+    "text": "What we need\n\nFirst and foremost, integration. Especially improper integration. Stuff like this will become our daily bread:\n\n\\[\n\\begin{aligned}\n\\int_0^\\infty F'(x)\\,\\text{d}x\n&=\n\\lim_{b\\to\\infty}\\int_{0}^bF'(x)\\,\\text{d}x\n\\\\\n&=\\lim_{b\\to\\infty}[F(x)]_0^b\\\\\n&=\\lim_{b\\to\\infty}F(b) - F(0);\n\\end{aligned}\n\\]\n\nIn order to antidifferentiate, you need to be able to differentiate, and in order to evaluate an improper integral, you need to be able to take limits. Hence, all of Calc I and II is on the table for us;\nOur use of infinite series will be relatively modest. You will mainly have to recognize the famous ones (eg. geometric series, Taylor series of \\(e^x\\), etc). However, sometimes these otherwise friendly faces will be very cleverly disguised (you’ve already seen that here), and so “recognition on steroids” is a new skill you must cultivate. JZ calls it “massage and squint,” but more on that later."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#what-we-wont-need",
+    "href": "lecture-notes/01-set2prob-slides.html#what-we-wont-need",
+    "title": "From set theory to probability",
+    "section": "What we won’t need",
+    "text": "What we won’t need\nIt’s not that these things are irrelevant in probability, but I already know they will not appear on any of the assignments, so let’s not waste our precious divine energy reviewing:\n\nvolumes of revolution (eg. washer method, etc);\nrelated rates;\nimplicit differentiation;\nthe method of partial fractions;\nconvergence tests for series;\ntrig identities and derivatives (only an itty bit)."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#the-math-helpers",
+    "href": "lecture-notes/01-set2prob-slides.html#the-math-helpers",
+    "title": "From set theory to probability",
+    "section": "The math helpers",
+    "text": "The math helpers\nThe inclusions and omissions were deliberate on my part:\n\nlog and exponent properties;\nderivatives;\nintegrals;\nlimits and continuity;\nsequences and series.\n\nIf it’s not mentioned there, you probably don’t need it this semester."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#calc-iii",
+    "href": "lecture-notes/01-set2prob-slides.html#calc-iii",
+    "title": "From set theory to probability",
+    "section": "Calc III?",
+    "text": "Calc III?\n\nNot a prerequisite for this class, but it is a prerequisite for STA 332 (the next class in the theory sequence);\nIn STA 240, we typically stick to one or two random quantities at a time. Univariate calculus is enough;\nIf you want to study large collections of interrelated random quantities, you need Calc III and Linear Algebra;\nIf you go all the way and break into high-dimensional probability, things get fun and funky and totally gorgeous. And more mathematical!"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#set-operations",
+    "href": "lecture-notes/01-set2prob-slides.html#set-operations",
+    "title": "From set theory to probability",
+    "section": "Set operations",
+    "text": "Set operations\n\n\n\n\n\n\n\n\nSet\nPicture\nLogic\n\n\n\n\n\\(A\\cup B\\)\n\n(inclusive) OR\n\n\n\\(A\\cap B\\)\n\nAND\n\n\n\\(A^c\\)\n\nNOT"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#algebraic-properties",
+    "href": "lecture-notes/01-set2prob-slides.html#algebraic-properties",
+    "title": "From set theory to probability",
+    "section": "Algebraic properties",
+    "text": "Algebraic properties\n\\[\n\\begin{matrix}\n    \\text{Commutative} & A\\cup B=B\\cup A\\\\\n    & A\\cap B=B\\cap A\\\\\n    &\\\\\n    \\text{Associative} & (A\\cup B)\\cup C = A\\cup (B\\cup C)\\\\\n    & (A\\cap B)\\cap C = A\\cap (B\\cap C)\\\\\n    &\\\\\n    \\text{Distributive} & (A\\cup B)\\cap C = (A\\cap C)\\cup (B\\cap C)\\\\\n    &(A\\cap B)\\cup C = (A\\cup C)\\cap (B\\cup C)\\\\\n    &\\\\\n    \\text{De Morgan's Laws} & (A\\cup B)^c=A^c\\cap B^c\\\\\n    & (A\\cap B)^c=A^c\\cup B^c.\n\\end{matrix}\n\\]"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#a-theorem-we-will-use-often",
+    "href": "lecture-notes/01-set2prob-slides.html#a-theorem-we-will-use-often",
+    "title": "From set theory to probability",
+    "section": "A theorem we will use often",
+    "text": "A theorem we will use often\nIf \\(A,\\,B\\subseteq S\\), then\n\n\\(A = (A\\cap B)\\cup (A\\cap B^c)\\);\n\\((A\\cap B)\\cap (A\\cap B^c)=\\varnothing\\).\n\nIn words\n\nA set can always be decomposed into the union of disjoint pieces by intersecting the set with the members of a partition."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#start-with-the-sample-space",
+    "href": "lecture-notes/01-set2prob-slides.html#start-with-the-sample-space",
+    "title": "From set theory to probability",
+    "section": "Start with the sample space",
+    "text": "Start with the sample space"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-b",
+    "href": "lecture-notes/01-set2prob-slides.html#introduce-b",
+    "title": "From set theory to probability",
+    "section": "Introduce \\(B\\)",
+    "text": "Introduce \\(B\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-bc",
+    "href": "lecture-notes/01-set2prob-slides.html#introduce-bc",
+    "title": "From set theory to probability",
+    "section": "Introduce \\(B^c\\)",
+    "text": "Introduce \\(B^c\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#b-and-bc-form-a-partition-of-s",
+    "href": "lecture-notes/01-set2prob-slides.html#b-and-bc-form-a-partition-of-s",
+    "title": "From set theory to probability",
+    "section": "\\(B\\) and \\(B^c\\) form a partition of \\(S\\)",
+    "text": "\\(B\\) and \\(B^c\\) form a partition of \\(S\\)\n\\(B\\) and \\(B^c\\) together form the simplest example of a partition of \\(S\\):\n\nThey cover everything: \\(B\\cup B^c=S\\);\nThey don’t overlap: \\(B\\cap B^c=\\varnothing\\)."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-a",
+    "href": "lecture-notes/01-set2prob-slides.html#introduce-a",
+    "title": "From set theory to probability",
+    "section": "Introduce \\(A\\)",
+    "text": "Introduce \\(A\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#notice-the-decomposition",
+    "href": "lecture-notes/01-set2prob-slides.html#notice-the-decomposition",
+    "title": "From set theory to probability",
+    "section": "Notice the decomposition",
+    "text": "Notice the decomposition"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#random-phenomena",
+    "href": "lecture-notes/01-set2prob-slides.html#random-phenomena",
+    "title": "From set theory to probability",
+    "section": "Random phenomena",
+    "text": "Random phenomena\nIn this course, we are studying random phenomena: things whose outcome cannot be known with certainty. Examples of random phenomenon include:\n\nthe outcome of a coin flip;\nthe outcome of a die roll;\nthe Poker hand dealt to you from a shuffled deck;\nthe outcome of a presidential election;\nwhether or not a basketball player makes a free throw shot;\nwhether or not my soufflé falls in the oven;\nwhether or not the opera singer hits the high note;\nthe next song in your Spotify shuffle;\nthe next word generated by ChatGPT;\nthe birth weight of a newborn child;\nthe number of costumers that will arrive at a store or restaurant on a given day;\nwhen and where a hurricane will make landfall;\nthe time until an unstable particle will decay;\nthe number of claims an insurance company receives in a month;\nthe bid-ask spread of Google stock at 2:37 pm ET next Wednesday.\n\nThese are all things that, for one reason or another (physical reality, lack of information, imperfect measurement), we do not believe we can perfectly predict.\n\n\n\n\n\n\nPhilosophy alert!\n\n\nThis is a course on the mathematics of probability, not the philosophy. As such, we will not quibble about what it means for a phenomenon to truly be random. We will simply take the pragmatic view that there exist phenomena that human beings find sufficiently surprising and unpredictable that it pays to model them as if they are random."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#our-main-object-of-study",
+    "href": "lecture-notes/01-set2prob-slides.html#our-main-object-of-study",
+    "title": "From set theory to probability",
+    "section": "Our main object of study",
+    "text": "Our main object of study\n\n\n\n\n\n\nDefinition: probability space\n\n\nA probability space is a triple \\((S,\\, A\\subseteq S,\\, P)\\):\n\n(sample space) A nonempty set \\(S\\) containing all of the possible outcomes of the phenomenon;\n(events) Subsets \\(A\\subseteq S\\) of the sample space – sets of possible outcomes;\n(probability measure) A function \\(P\\) that takes an event \\(A\\) and assigns to it a real number called \\(P(A)\\). This number is the probability that the ultimate outcome of the random phenomenon is an element of the subset \\(A\\)."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#the-simplest-example",
+    "href": "lecture-notes/01-set2prob-slides.html#the-simplest-example",
+    "title": "From set theory to probability",
+    "section": "The simplest example",
+    "text": "The simplest example\nImagine we are studying the outcome of a fair coin flip. Then:\n\nsample space: \\(S=\\{H,\\,T\\}\\);\nevents: \\(\\varnothing\\), \\(\\{H\\}\\), \\(\\{T\\}\\), \\(S\\);\nprobability measure:\n\n\\[\n\\begin{aligned}\nP(\\varnothing)&=0 && \\text{(chance nothing happens)}\\\\\nP(\\{H\\})&=1 / 2\\\\\nP(\\{T\\})&=1 / 2\\\\\nP(S)&=1.&& \\text{(chance something happens)}\\\\\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#that-word-space",
+    "href": "lecture-notes/01-set2prob-slides.html#that-word-space",
+    "title": "From set theory to probability",
+    "section": "That word “space”",
+    "text": "That word “space”\nIn mathematics, a space is a set together with some extra structure. Once you define the structure, you can spend a whole career proving theorems about the downstream consequences of that definition.\n\nmost of your mathematical career has focused on Euclidean space: the sets \\(\\mathbb{R}\\), \\(\\mathbb{R}^2\\), \\(\\mathbb{R}^3\\), etc together with the familiar geometry of lengths, distances, and angles;\nIf you’ve taken linear algebra, you saw vector spaces: a set together with addition and scalar multiplication.\n\nIf you keep going, you’ll see rings, fields, measure spaces, topological spaces, metric spaces, normed spaces, Banach spaces, inner product spaces, Hilbert spaces, function spaces, and many more."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#sample-spaces",
+    "href": "lecture-notes/01-set2prob-slides.html#sample-spaces",
+    "title": "From set theory to probability",
+    "section": "Sample spaces",
+    "text": "Sample spaces\nThe set of possible outcomes of a random phenomenon:\n\n\n\n\nPhenomenon\n\n\nSample space \\(S\\)\n\n\n\n\n\n\nFlip two coins in order\n\n\n\\(\\{HH,\\:HT,\\:TT,\\:TH\\}\\)\n\n\n\n\nRoll a single die\n\n\n\\(\\{1,\\:2,\\:3,\\:4,\\:5,\\:6\\}\\)\n\n\n\n\nCard dealt from a shuffled deck\n\n\n\\(\\{2\\clubsuit,\\,3\\clubsuit,\\,4\\clubsuit,\\,\\ldots\\}\\)\n\n\n\n\nWinning party in US election\n\n\n\\(\\{\\text{R}, \\text{D}, \\text{L}, \\text{G}, ..., \\text{DSA}\\}\\)\n\n\n\n\nYour blood sodium level in mEq/L\n\n\n\\(\\mathbb{R}_+=(0,\\infty)\\)\n\n\n\n\n# of insurance claims in a week?\n\n\n\\(\\mathbb{N}\\)\n\n\n\n\nReturn on a risky asset\n\n\n\\(\\mathbb{R}\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#events",
+    "href": "lecture-notes/01-set2prob-slides.html#events",
+    "title": "From set theory to probability",
+    "section": "Events",
+    "text": "Events\nAn event is a set of possible outcomes – a subset of the sample space. We assign probabilities to events. You may have thought that we would be assigning probabilities to individual outcomes, and we are doing that too. You can have an event \\(A = \\{s\\}\\) containing a single outcome. But we are going further than that.\nWhen talking informally about a “random event,” we usually describe it in words. But this qualitative description can always be written as a subset of the sample space:\n\n\n\n\nDescription\n\n\nEvent \\(A\\)\n\n\n\n\n\n\n“the first of two coin flips is a head”\n\n\n\\(\\{HH,\\:HT\\}\\)\n\n\n\n\n“the die is even”\n\n\n\\(\\{2,\\:4,\\:6\\}\\)\n\n\n\n\n“dealt a four”\n\n\n\\(\\{4\\clubsuit,\\,4\\heartsuit,\\,4\\spadesuit,\\,4\\diamondsuit\\}\\)\n\n\n\n\n“right-wing party wins”\n\n\n\\(\\{\\text{R},\\,\\text{L},\\,...\\}\\)\n\n\n\n\n“blood sodium in healthy range”\n\n\n\\([133,\\:145]\\)\n\n\n\n\n“over a thousand claims”\n\n\n\\(\\{1001,\\,1002,\\,1003,\\,\\ldots\\}\\)\n\n\n\n\n“your investment loses money”\n\n\n\\((-\\infty,\\:0)\\)\n\n\n\n\nUseful skill: translating the verbal description into the actual set."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#running-example-where-will-the-meteor-land",
+    "href": "lecture-notes/01-set2prob-slides.html#running-example-where-will-the-meteor-land",
+    "title": "From set theory to probability",
+    "section": "Running example: where will the meteor land?",
+    "text": "Running example: where will the meteor land?\nThe sample space is the set of all (long, lat) coordinates in this spatial region:"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#example-events",
+    "href": "lecture-notes/01-set2prob-slides.html#example-events",
+    "title": "From set theory to probability",
+    "section": "Example events",
+    "text": "Example events\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#or-events-union",
+    "href": "lecture-notes/01-set2prob-slides.html#or-events-union",
+    "title": "From set theory to probability",
+    "section": "“OR” events (union)",
+    "text": "“OR” events (union)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor lands in the US or Canada”\n→ \\(A \\cup B\\)\n“Meteor lands in Mexico or adjacent waters”\n→ \\(C \\cup D\\)\n“Meteor lands in the Rocky Mountains or Canada”\n→ \\(E \\cup B\\)\n“Meteor lands in North America”\n→ \\(A\\cup B\\cup C\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#and-events-intersection",
+    "href": "lecture-notes/01-set2prob-slides.html#and-events-intersection",
+    "title": "From set theory to probability",
+    "section": "“AND” events (intersection)",
+    "text": "“AND” events (intersection)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor lands in the Rocky Mountains and the US”\n→ \\(E \\cap A\\)\n“Meteor lands in the US and Mexico”\n→ \\(A \\cap C = \\varnothing\\)\n“Meteor lands in North America and adjacent waters”\n→ \\((A \\cup B \\cup C) \\cap D = \\varnothing\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#not-events-complement",
+    "href": "lecture-notes/01-set2prob-slides.html#not-events-complement",
+    "title": "From set theory to probability",
+    "section": "“NOT” events (complement)",
+    "text": "“NOT” events (complement)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor does not land in the US”\n→ \\(A^c\\)\n“Meteor does not land in the Rocky Mountains”\n→ \\(E^c\\)\n“Meteor does not land on land at all”\n→ \\((A \\cup B \\cup C)^c = D\\)"
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#implication",
+    "href": "lecture-notes/01-set2prob-slides.html#implication",
+    "title": "From set theory to probability",
+    "section": "Implication",
+    "text": "Implication\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(G\\)\n“Meteor lands in Georgia”\n\n\n\\(S\\)\n“Meteor lands in The South”\n\n\n\\(U\\)\n“Meteor lands in the United States”\n\n\n\\(N\\)\n“Meteor lands in North America”\n\n\n\nNotice:\n\\[\nG\\subseteq S\\subseteq U\\subseteq N.\n\\]\n\nIf we learn that the meteor landed in The South, that implies that it landed in the USA, which implies that it landed in North America;\nIt may or may not have landed in Georgia."
+  },
+  {
+    "objectID": "lecture-notes/01-set2prob-slides.html#summary",
+    "href": "lecture-notes/01-set2prob-slides.html#summary",
+    "title": "From set theory to probability",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\nProbability\nSet theory\n\n\n\n\n\\(A\\) or \\(B\\) occur\n\\(A\\cup B\\)\n\n\n\\(A\\) and \\(B\\) occur\n\\(A\\cap B\\)\n\n\n\\(A\\) does not occur\n\\(A^c\\), with \\(S\\) as the reference\n\n\n\\(A\\) occuring implies \\(B\\) also occurs\n\\(A\\subseteq B\\)\n\n\n\\(A\\) and \\(B\\) mutually exclusive\n\\(A\\cap B=\\varnothing\\)"
+  },
+  {
     "objectID": "lecture-notes/01-set2prob.html",
     "href": "lecture-notes/01-set2prob.html",
     "title": "From set theory to probability",
@@ -3747,186 +3929,25 @@
     "text": "Summary\n\n\n\n\n\n\n\nProbability\nSet theory\n\n\n\n\n\\(A\\) or \\(B\\) occur\n\\(A\\cup B\\)\n\n\n\\(A\\) and \\(B\\) occur\n\\(A\\cap B\\)\n\n\n\\(A\\) does not occur\n\\(A^c\\), with \\(S\\) as the reference\n\n\n\\(A\\) occuring implies \\(B\\) also occurs\n\\(A\\subseteq B\\)\n\n\n\\(A\\) and \\(B\\) mutually exclusive\n\\(A\\cap B=\\varnothing\\)"
   },
   {
-    "objectID": "lecture-notes/01-set2prob-slides.html#what-we-need",
-    "href": "lecture-notes/01-set2prob-slides.html#what-we-need",
-    "title": "From set theory to probability",
-    "section": "What we need",
-    "text": "What we need\n\nFirst and foremost, integration. Especially improper integration. Stuff like this will become our daily bread:\n\n\\[\n\\begin{aligned}\n\\int_0^\\infty F'(x)\\,\\text{d}x\n&=\n\\lim_{b\\to\\infty}\\int_{0}^bF'(x)\\,\\text{d}x\n\\\\\n&=\\lim_{b\\to\\infty}[F(x)]_0^b\\\\\n&=\\lim_{b\\to\\infty}F(b) - F(0);\n\\end{aligned}\n\\]\n\nIn order to antidifferentiate, you need to be able to differentiate, and in order to evaluate an improper integral, you need to be able to take limits. Hence, all of Calc I and II is on the table for us;\nOur use of infinite series will be relatively modest. You will mainly have to recognize the famous ones (eg. geometric series, Taylor series of \\(e^x\\), etc). However, sometimes these otherwise friendly faces will be very cleverly disguised (you’ve already seen that here), and so “recognition on steroids” is a new skill you must cultivate. JZ calls it “massage and squint,” but more on that later."
+    "objectID": "lecture-notes/14-joint-intro.html",
+    "href": "lecture-notes/14-joint-intro.html",
+    "title": "14-joint-intro",
+    "section": "",
+    "text": "Throat-clearing about my example.\nSo, it’s not enough to model X by itself and Y by itself. We need to model them together. So what we need to write down is a joint distribution.\ndefine that generically\nbecause these two quantities are continuous, we can do that by writing down a joint pdf. this is a surface in 3d space and volumes beneath the surface are probabilities. this is perfectly analogous to our treatment of univariate continuous, where the pdf was a curve in the plane, and areas beneath that curve were probabilities.\nI had an intuition that X and Y moved together. They were most likely to be high together or low together, and less likely to be apart. So I want to pick a surface that captures that:\nPLOT CONTOURS AND SURFACE. CAN I DO A ROTATEABLE 3D PLOT IN SHINYLIVE?\nfirst things first, let’s verify that this is a valid joint pdf: nonnegative and the total volume beneath it is 1.\nNow, let’s use this to answer some questions\nP(X &gt; 1/2 and Y &gt; 1/2), plus the other quadrants by symmetry\nP(Y &gt; X) make the point about getting the bounds correct\nP(X = Y), make the point about zero area and zero volume\nP(Y &gt; 1/2 | X &gt; 1/2). Start from the definition, but it requires P(X &gt; 1/2). Do that, and then introduce marginal distribution.\nP(Y &gt; 1/2 | X = 0.5189). If we start from the definition of conditional probability, we run into trouble because P(Y &gt; 1/2 AND X = 0.5189), but we should still be able to talk about conditional probability when you condition on a zero probability event. X = 0.5189 did literally happen!\nUse that discussion to motivate the definition of conditional density. Do the calculation. Include shiny app. Interpret.\nNotice that knowledge of X absolutely changes the probabilities for Y. So these things are dependent. If we had found that it didn’t matter, then they would be dependent"
   },
   {
-    "objectID": "lecture-notes/01-set2prob-slides.html#what-we-wont-need",
-    "href": "lecture-notes/01-set2prob-slides.html#what-we-wont-need",
-    "title": "From set theory to probability",
-    "section": "What we won’t need",
-    "text": "What we won’t need\nIt’s not that these things are irrelevant in probability, but I already know they will not appear on any of the assignments, so let’s not waste our precious divine energy reviewing:\n\nvolumes of revolution (eg. washer method, etc);\nrelated rates;\nimplicit differentiation;\nthe method of partial fractions;\nconvergence tests for series;\ntrig identities and derivatives (only an itty bit)."
+    "objectID": "lecture-notes/14-joint-intro.html#covariance-and-correlation",
+    "href": "lecture-notes/14-joint-intro.html#covariance-and-correlation",
+    "title": "14-joint-intro",
+    "section": "Covariance and correlation",
+    "text": "Covariance and correlation"
   },
   {
-    "objectID": "lecture-notes/01-set2prob-slides.html#the-math-helpers",
-    "href": "lecture-notes/01-set2prob-slides.html#the-math-helpers",
-    "title": "From set theory to probability",
-    "section": "The math helpers",
-    "text": "The math helpers\nThe inclusions and omissions were deliberate on my part:\n\nlog and exponent properties;\nderivatives;\nintegrals;\nlimits and continuity;\nsequences and series.\n\nIf it’s not mentioned there, you probably don’t need it this semester."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#calc-iii",
-    "href": "lecture-notes/01-set2prob-slides.html#calc-iii",
-    "title": "From set theory to probability",
-    "section": "Calc III?",
-    "text": "Calc III?\n\nNot a prerequisite for this class, but it is a prerequisite for STA 332 (the next class in the theory sequence);\nIn STA 240, we typically stick to one or two random quantities at a time. Univariate calculus is enough;\nIf you want to study large collections of interrelated random quantities, you need Calc III and Linear Algebra;\nIf you go all the way and break into high-dimensional probability, things get fun and funky and totally gorgeous. And more mathematical!"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#set-operations",
-    "href": "lecture-notes/01-set2prob-slides.html#set-operations",
-    "title": "From set theory to probability",
-    "section": "Set operations",
-    "text": "Set operations\n\n\n\n\n\n\n\n\nSet\nPicture\nLogic\n\n\n\n\n\\(A\\cup B\\)\n\n(inclusive) OR\n\n\n\\(A\\cap B\\)\n\nAND\n\n\n\\(A^c\\)\n\nNOT"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#algebraic-properties",
-    "href": "lecture-notes/01-set2prob-slides.html#algebraic-properties",
-    "title": "From set theory to probability",
-    "section": "Algebraic properties",
-    "text": "Algebraic properties\n\\[\n\\begin{matrix}\n    \\text{Commutative} & A\\cup B=B\\cup A\\\\\n    & A\\cap B=B\\cap A\\\\\n    &\\\\\n    \\text{Associative} & (A\\cup B)\\cup C = A\\cup (B\\cup C)\\\\\n    & (A\\cap B)\\cap C = A\\cap (B\\cap C)\\\\\n    &\\\\\n    \\text{Distributive} & (A\\cup B)\\cap C = (A\\cap C)\\cup (B\\cap C)\\\\\n    &(A\\cap B)\\cup C = (A\\cup C)\\cap (B\\cup C)\\\\\n    &\\\\\n    \\text{De Morgan's Laws} & (A\\cup B)^c=A^c\\cap B^c\\\\\n    & (A\\cap B)^c=A^c\\cup B^c.\n\\end{matrix}\n\\]"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#a-theorem-we-will-use-often",
-    "href": "lecture-notes/01-set2prob-slides.html#a-theorem-we-will-use-often",
-    "title": "From set theory to probability",
-    "section": "A theorem we will use often",
-    "text": "A theorem we will use often\nIf \\(A,\\,B\\subseteq S\\), then\n\n\\(A = (A\\cap B)\\cup (A\\cap B^c)\\);\n\\((A\\cap B)\\cap (A\\cap B^c)=\\varnothing\\).\n\nIn words\n\nA set can always be decomposed into the union of disjoint pieces by intersecting the set with the members of a partition."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#start-with-the-sample-space",
-    "href": "lecture-notes/01-set2prob-slides.html#start-with-the-sample-space",
-    "title": "From set theory to probability",
-    "section": "Start with the sample space",
-    "text": "Start with the sample space"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-b",
-    "href": "lecture-notes/01-set2prob-slides.html#introduce-b",
-    "title": "From set theory to probability",
-    "section": "Introduce \\(B\\)",
-    "text": "Introduce \\(B\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-bc",
-    "href": "lecture-notes/01-set2prob-slides.html#introduce-bc",
-    "title": "From set theory to probability",
-    "section": "Introduce \\(B^c\\)",
-    "text": "Introduce \\(B^c\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#b-and-bc-form-a-partition-of-s",
-    "href": "lecture-notes/01-set2prob-slides.html#b-and-bc-form-a-partition-of-s",
-    "title": "From set theory to probability",
-    "section": "\\(B\\) and \\(B^c\\) form a partition of \\(S\\)",
-    "text": "\\(B\\) and \\(B^c\\) form a partition of \\(S\\)\n\\(B\\) and \\(B^c\\) together form the simplest example of a partition of \\(S\\):\n\nThey cover everything: \\(B\\cup B^c=S\\);\nThey don’t overlap: \\(B\\cap B^c=\\varnothing\\)."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#introduce-a",
-    "href": "lecture-notes/01-set2prob-slides.html#introduce-a",
-    "title": "From set theory to probability",
-    "section": "Introduce \\(A\\)",
-    "text": "Introduce \\(A\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#notice-the-decomposition",
-    "href": "lecture-notes/01-set2prob-slides.html#notice-the-decomposition",
-    "title": "From set theory to probability",
-    "section": "Notice the decomposition",
-    "text": "Notice the decomposition"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#random-phenomena",
-    "href": "lecture-notes/01-set2prob-slides.html#random-phenomena",
-    "title": "From set theory to probability",
-    "section": "Random phenomena",
-    "text": "Random phenomena\nIn this course, we are studying random phenomena: things whose outcome cannot be known with certainty. Examples of random phenomenon include:\n\nthe outcome of a coin flip;\nthe outcome of a die roll;\nthe Poker hand dealt to you from a shuffled deck;\nthe outcome of a presidential election;\nwhether or not a basketball player makes a free throw shot;\nwhether or not my soufflé falls in the oven;\nwhether or not the opera singer hits the high note;\nthe next song in your Spotify shuffle;\nthe next word generated by ChatGPT;\nthe birth weight of a newborn child;\nthe number of costumers that will arrive at a store or restaurant on a given day;\nwhen and where a hurricane will make landfall;\nthe time until an unstable particle will decay;\nthe number of claims an insurance company receives in a month;\nthe bid-ask spread of Google stock at 2:37 pm ET next Wednesday.\n\nThese are all things that, for one reason or another (physical reality, lack of information, imperfect measurement), we do not believe we can perfectly predict.\n\n\n\n\n\n\nPhilosophy alert!\n\n\nThis is a course on the mathematics of probability, not the philosophy. As such, we will not quibble about what it means for a phenomenon to truly be random. We will simply take the pragmatic view that there exist phenomena that human beings find sufficiently surprising and unpredictable that it pays to model them as if they are random."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#our-main-object-of-study",
-    "href": "lecture-notes/01-set2prob-slides.html#our-main-object-of-study",
-    "title": "From set theory to probability",
-    "section": "Our main object of study",
-    "text": "Our main object of study\n\n\n\n\n\n\nDefinition: probability space\n\n\nA probability space is a triple \\((S,\\, A\\subseteq S,\\, P)\\):\n\n(sample space) A nonempty set \\(S\\) containing all of the possible outcomes of the phenomenon;\n(events) Subsets \\(A\\subseteq S\\) of the sample space – sets of possible outcomes;\n(probability measure) A function \\(P\\) that takes an event \\(A\\) and assigns to it a real number called \\(P(A)\\). This number is the probability that the ultimate outcome of the random phenomenon is an element of the subset \\(A\\)."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#the-simplest-example",
-    "href": "lecture-notes/01-set2prob-slides.html#the-simplest-example",
-    "title": "From set theory to probability",
-    "section": "The simplest example",
-    "text": "The simplest example\nImagine we are studying the outcome of a fair coin flip. Then:\n\nsample space: \\(S=\\{H,\\,T\\}\\);\nevents: \\(\\varnothing\\), \\(\\{H\\}\\), \\(\\{T\\}\\), \\(S\\);\nprobability measure:\n\n\\[\n\\begin{aligned}\nP(\\varnothing)&=0 && \\text{(chance nothing happens)}\\\\\nP(\\{H\\})&=1 / 2\\\\\nP(\\{T\\})&=1 / 2\\\\\nP(S)&=1.&& \\text{(chance something happens)}\\\\\n\\end{aligned}\n\\]"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#that-word-space",
-    "href": "lecture-notes/01-set2prob-slides.html#that-word-space",
-    "title": "From set theory to probability",
-    "section": "That word “space”",
-    "text": "That word “space”\nIn mathematics, a space is a set together with some extra structure. Once you define the structure, you can spend a whole career proving theorems about the downstream consequences of that definition.\n\nmost of your mathematical career has focused on Euclidean space: the sets \\(\\mathbb{R}\\), \\(\\mathbb{R}^2\\), \\(\\mathbb{R}^3\\), etc together with the familiar geometry of lengths, distances, and angles;\nIf you’ve taken linear algebra, you saw vector spaces: a set together with addition and scalar multiplication.\n\nIf you keep going, you’ll see rings, fields, measure spaces, topological spaces, metric spaces, normed spaces, Banach spaces, inner product spaces, Hilbert spaces, function spaces, and many more."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#sample-spaces",
-    "href": "lecture-notes/01-set2prob-slides.html#sample-spaces",
-    "title": "From set theory to probability",
-    "section": "Sample spaces",
-    "text": "Sample spaces\nThe set of possible outcomes of a random phenomenon:\n\n\n\n\nPhenomenon\n\n\nSample space \\(S\\)\n\n\n\n\n\n\nFlip two coins in order\n\n\n\\(\\{HH,\\:HT,\\:TT,\\:TH\\}\\)\n\n\n\n\nRoll a single die\n\n\n\\(\\{1,\\:2,\\:3,\\:4,\\:5,\\:6\\}\\)\n\n\n\n\nCard dealt from a shuffled deck\n\n\n\\(\\{2\\clubsuit,\\,3\\clubsuit,\\,4\\clubsuit,\\,\\ldots\\}\\)\n\n\n\n\nWinning party in US election\n\n\n\\(\\{\\text{R}, \\text{D}, \\text{L}, \\text{G}, ..., \\text{DSA}\\}\\)\n\n\n\n\nYour blood sodium level in mEq/L\n\n\n\\(\\mathbb{R}_+=(0,\\infty)\\)\n\n\n\n\n# of insurance claims in a week?\n\n\n\\(\\mathbb{N}\\)\n\n\n\n\nReturn on a risky asset\n\n\n\\(\\mathbb{R}\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#events",
-    "href": "lecture-notes/01-set2prob-slides.html#events",
-    "title": "From set theory to probability",
-    "section": "Events",
-    "text": "Events\nAn event is a set of possible outcomes – a subset of the sample space. We assign probabilities to events. You may have thought that we would be assigning probabilities to individual outcomes, and we are doing that too. You can have an event \\(A = \\{s\\}\\) containing a single outcome. But we are going further than that.\nWhen talking informally about a “random event,” we usually describe it in words. But this qualitative description can always be written as a subset of the sample space:\n\n\n\n\nDescription\n\n\nEvent \\(A\\)\n\n\n\n\n\n\n“the first of two coin flips is a head”\n\n\n\\(\\{HH,\\:HT\\}\\)\n\n\n\n\n“the die is even”\n\n\n\\(\\{2,\\:4,\\:6\\}\\)\n\n\n\n\n“dealt a four”\n\n\n\\(\\{4\\clubsuit,\\,4\\heartsuit,\\,4\\spadesuit,\\,4\\diamondsuit\\}\\)\n\n\n\n\n“right-wing party wins”\n\n\n\\(\\{\\text{R},\\,\\text{L},\\,...\\}\\)\n\n\n\n\n“blood sodium in healthy range”\n\n\n\\([133,\\:145]\\)\n\n\n\n\n“over a thousand claims”\n\n\n\\(\\{1001,\\,1002,\\,1003,\\,\\ldots\\}\\)\n\n\n\n\n“your investment loses money”\n\n\n\\((-\\infty,\\:0)\\)\n\n\n\n\nUseful skill: translating the verbal description into the actual set."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#running-example-where-will-the-meteor-land",
-    "href": "lecture-notes/01-set2prob-slides.html#running-example-where-will-the-meteor-land",
-    "title": "From set theory to probability",
-    "section": "Running example: where will the meteor land?",
-    "text": "Running example: where will the meteor land?\nThe sample space is the set of all (long, lat) coordinates in this spatial region:"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#example-events",
-    "href": "lecture-notes/01-set2prob-slides.html#example-events",
-    "title": "From set theory to probability",
-    "section": "Example events",
-    "text": "Example events\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#or-events-union",
-    "href": "lecture-notes/01-set2prob-slides.html#or-events-union",
-    "title": "From set theory to probability",
-    "section": "“OR” events (union)",
-    "text": "“OR” events (union)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor lands in the US or Canada”\n→ \\(A \\cup B\\)\n“Meteor lands in Mexico or adjacent waters”\n→ \\(C \\cup D\\)\n“Meteor lands in the Rocky Mountains or Canada”\n→ \\(E \\cup B\\)\n“Meteor lands in North America”\n→ \\(A\\cup B\\cup C\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#and-events-intersection",
-    "href": "lecture-notes/01-set2prob-slides.html#and-events-intersection",
-    "title": "From set theory to probability",
-    "section": "“AND” events (intersection)",
-    "text": "“AND” events (intersection)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor lands in the Rocky Mountains and the US”\n→ \\(E \\cap A\\)\n“Meteor lands in the US and Mexico”\n→ \\(A \\cap C = \\varnothing\\)\n“Meteor lands in North America and adjacent waters”\n→ \\((A \\cup B \\cup C) \\cap D = \\varnothing\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#not-events-complement",
-    "href": "lecture-notes/01-set2prob-slides.html#not-events-complement",
-    "title": "From set theory to probability",
-    "section": "“NOT” events (complement)",
-    "text": "“NOT” events (complement)\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(A\\)\n“Meteor lands in the United States”\n\n\n\\(B\\)\n“Meteor lands in Canada”\n\n\n\\(C\\)\n“Meteor lands in Mexico”\n\n\n\\(D\\)\n“Meteor lands in adjacent waters”\n\n\n\\(E\\)\n“Meteor lands in the Rocky Mountains”\n\n\n\n\n“Meteor does not land in the US”\n→ \\(A^c\\)\n“Meteor does not land in the Rocky Mountains”\n→ \\(E^c\\)\n“Meteor does not land on land at all”\n→ \\((A \\cup B \\cup C)^c = D\\)"
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#implication",
-    "href": "lecture-notes/01-set2prob-slides.html#implication",
-    "title": "From set theory to probability",
-    "section": "Implication",
-    "text": "Implication\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(G\\)\n“Meteor lands in Georgia”\n\n\n\\(S\\)\n“Meteor lands in The South”\n\n\n\\(U\\)\n“Meteor lands in the United States”\n\n\n\\(N\\)\n“Meteor lands in North America”\n\n\n\nNotice:\n\\[\nG\\subseteq S\\subseteq U\\subseteq N.\n\\]\n\nIf we learn that the meteor landed in The South, that implies that it landed in the USA, which implies that it landed in North America;\nIt may or may not have landed in Georgia."
-  },
-  {
-    "objectID": "lecture-notes/01-set2prob-slides.html#summary",
-    "href": "lecture-notes/01-set2prob-slides.html#summary",
-    "title": "From set theory to probability",
+    "objectID": "lecture-notes/14-joint-intro.html#summary",
+    "href": "lecture-notes/14-joint-intro.html#summary",
+    "title": "14-joint-intro",
     "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\n\nProbability\nSet theory\n\n\n\n\n\\(A\\) or \\(B\\) occur\n\\(A\\cup B\\)\n\n\n\\(A\\) and \\(B\\) occur\n\\(A\\cap B\\)\n\n\n\\(A\\) does not occur\n\\(A^c\\), with \\(S\\) as the reference\n\n\n\\(A\\) occuring implies \\(B\\) also occurs\n\\(A\\subseteq B\\)\n\n\n\\(A\\) and \\(B\\) mutually exclusive\n\\(A\\cap B=\\varnothing\\)"
+    "text": "Summary\nTo model the relationship between two random variables, you need a joint distribution. A probability measure on R^2.\nIn the jointly continuous case, you can do this with the joint pdf, which is a surface in 3d space, and volumes beneath this surface are joint probabilities. You compute these volumes by double integrating.\nThe joint distribution is a petri dish for other distributions, marginals and conditionals\ndefinition of independence\nsummarize with covariance and correlation\nClear about the joint range, sensitive to the bounds, careful about what is constant and what is a dummy, and"
   },
   {
     "objectID": "lab/lab-8.html",
@@ -3955,7 +3976,7 @@
     "href": "lab/lab-8.html#task-2",
     "title": "Lab 8",
     "section": "Task 2",
-    "text": "Task 2\nA scientist models the population of a bacterial colony using exponential growth. So the population today is equal to the population yesterday times an exponential scale factor: \\(\\text{pop today}=\\text{pop yesterday}\\times e^X\\). In this model the random variable \\(X\\) is the per capita growth rate, and we assume \\(X\\sim\\text{N}(0,\\,1)\\). We want to know the distribution of the growth factor \\(Y=e^X\\).\n\nDerive the range and pdf of \\(Y\\);\nSimulate n = 5000 draws of \\(Y\\). Plot a histogram, and add a line plot of the density you derived in part b. They should match!",
+    "text": "Task 2\nA scientist models the population of a bacterial colony using exponential growth. So the population today is equal to the population yesterday times an exponential scale factor: \\(\\text{pop today}=\\text{pop yesterday}\\times e^X\\). In this model the random variable \\(X\\) is the per capita growth rate, and we assume \\(X\\sim\\text{N}(0,\\,1)\\). We want to know the distribution of the growth factor \\(Y=e^X\\).\n\nDerive the range and pdf of \\(Y\\);\nSimulate n = 5000 draws of \\(Y\\). Plot a histogram, and add a line plot of the density you derived in part b. They should match!\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nWe know that \\(\\text{Range}(X)=\\mathbb{R}\\) and that\n\\[\n\\begin{aligned}\nf_X(x)&=\\frac{1}{\\sqrt{2\\pi}}e^{-x^2/2},&&x\\in\\mathbb{R}\\\\\nF_X(x)&=\\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^xe^{-t^2/2}\\,\\text{d}t,&&x\\in\\mathbb{R}.\n\\end{aligned}\n\\]\nNewsflash: the cdf of the normal distribution is unknown. We can approximate it arbitrarily well using numerical methods, but we don’t actually have a clean formula for it. The integral above is simply intractable.\nAnyway, the transformations involved here are again the exponential and the natural log, which we already saw in Task 1. Both are strictly-increasing. The exponential takes any real number and maps it to something strictly positive, so we see then that \\(\\text{Range}(Y)=(0,\\,\\infty)\\). Fixing \\(y&gt;0\\), we compute:\n\\[\n  \\begin{align*}\n      F_Y(y)&=P(Y\\leq y)\\\\\n      &=P(e^X\\leq y)\\\\\n      &=P\\left(X\\leq \\ln y\\right)\\\\\n      &=F_X\\left(\\ln y\\right).\n  \\end{align*}\n\\]\nAs such, the pdf is:\n\\[\n\\begin{aligned}\nf_Y(y)\n=\nF'_Y(y)&=\\frac{\\text{d}}{\\text{d} y}F_X(\\ln y)\\\\\n&=F_X'(\\ln y)\\frac{\\text{d}}{\\text{d}y}\\ln y\\\\\n&=f_X(\\ln y)\\frac{1}{y}\\\\\n&=\\frac{1}{\\sqrt{2\\pi}}e^{-(\\ln y)^2/2}\\frac{1}{y},&&y&gt;0.\n\\end{aligned}\n\\]\nThis matches with a simulation:\n\nset.seed(20)\nX &lt;- rnorm(5000)\nY &lt;- exp(X)\nhist(Y, breaks = \"Scott\", freq = FALSE)\ncurve(dnorm(log(x)) / x, from = min(Y), to = max(Y), n = 1000, \n      col = \"red\", lwd = 3, add = TRUE)\n\n\n\n\n\n\n\nThe distribution we derived here is an example of the log-normal distribution.",
     "crumbs": [
       "Labs",
       "Lab 8"
@@ -3966,7 +3987,7 @@
     "href": "lab/lab-8.html#task-3",
     "title": "Lab 8",
     "section": "Task 3",
-    "text": "Task 3\n\n\n\n\nBent on world domination, Dr. Evil has placed a frickin’ shark with a frickin’ laser beam on its frickin’ head at the point (-1, 0) in the plane. The shark points its laser toward the \\(y\\)-axis, but its aim is completely random: the angle \\(X\\) between the laser beam and the horizontal axis is uniformly distributed between \\(-\\pi/2\\) and \\(\\pi/2\\). When we randomly swivel the shark around and fire the beam, it strikes the \\(y\\)-axis at some point \\((0,\\,Y)\\):\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 650\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  titlePanel(\"Swiveling the laser beam around\"),\n  \n  sliderInput(\n    \"angle\",\n    \"Angle X in degrees\",\n    min = -89,\n    max = 89,\n    value = 30,\n    step = 1\n  ),\n  \n  plotOutput(\"laser_plot\", height = \"550px\")\n)\n\nserver &lt;- function(input, output, session) {\n  \n  output$laser_plot &lt;- renderPlot({\n    \n    # Angle in radians\n    theta &lt;- input$angle * pi / 180\n    \n    # Where the laser strikes the y-axis\n    y_hit &lt;- tan(theta)\n    \n    # Fixed plotting window\n    plot(\n      NA,\n      xlim = c(-1, 1),\n      ylim = c(-3, 3),\n      asp = 1,\n      xlab = \"x\",\n      ylab = \"y\",\n      axes = FALSE\n    )\n    \n    # Coordinate axes\n    abline(h = 0, v = 0, col = \"gray40\")\n    #axis(1, at = -2:2)\n    #axis(2, at = -3:3, las = 1)\n    \n    # Laser beam\n    segments(\n      x0 = -1, y0 = 0,\n      x1 = 0, y1 = y_hit,\n      col = \"red\",\n      lwd = 3\n    )\n    \n    # Angle arc\n    a &lt;- seq(0, theta, length.out = 100)\n    lines(\n      -1 + 0.3 * cos(a),\n      0.3 * sin(a),\n      col = \"steelblue\",\n      lwd = 2\n    )\n    \n    # Shark location\n    points(-1, 0, pch = 19, cex = 1.3)\n    text(-1.25, -0.35, \"(-1, 0)\", cex = 1.1)\n    \n    # Impact point and label\n    if (abs(y_hit) &lt;= 3) {\n      points(0, y_hit, pch = 19, col = \"red\", cex = 1.3)\n      text(\n        0.15, y_hit,\n        \"(0, Y)\",\n        pos = 4,\n        cex = 1.1\n      )\n    }\n    \n    # Angle label\n    text(\n      -1 + 0.48 * cos(theta / 2),\n      0.48 * sin(theta / 2),\n      \"X\",\n      col = \"steelblue\",\n      cex = 1.4\n    )\n    \n  })\n}\n\nshinyApp(ui, server)\n\n\nUse geometry to express \\(Y\\) as a function of \\(X\\);\nWhat are the range and pdf of \\(Y\\)?\nSimulate n = 5000 draws of \\(Y\\). Plot a histogram, and add a line plot of the density you derived in part b. Can you get them to match?",
+    "text": "Task 3\n\n\n\n\nBent on world domination, Dr. Evil has placed a frickin’ shark with a frickin’ laser beam on its frickin’ head at the point (-1, 0) in the plane. The shark points its laser toward the \\(y\\)-axis, but its aim is completely random: the angle \\(X\\) between the laser beam and the horizontal axis is uniformly distributed between \\(-\\pi/2\\) and \\(\\pi/2\\). When we randomly swivel the shark around and fire the beam, it strikes the \\(y\\)-axis at some point \\((0,\\,Y)\\):\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 650\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  titlePanel(\"Swiveling the laser beam around\"),\n  \n  sliderInput(\n    \"angle\",\n    \"Angle X in degrees\",\n    min = -89,\n    max = 89,\n    value = 30,\n    step = 1\n  ),\n  \n  plotOutput(\"laser_plot\", height = \"550px\")\n)\n\nserver &lt;- function(input, output, session) {\n  \n  output$laser_plot &lt;- renderPlot({\n    \n    # Angle in radians\n    theta &lt;- input$angle * pi / 180\n    \n    # Where the laser strikes the y-axis\n    y_hit &lt;- tan(theta)\n    \n    # Fixed plotting window\n    plot(\n      NA,\n      xlim = c(-1, 1),\n      ylim = c(-3, 3),\n      asp = 1,\n      xlab = \"x\",\n      ylab = \"y\",\n      axes = FALSE\n    )\n    \n    # Coordinate axes\n    abline(h = 0, v = 0, col = \"gray40\")\n    #axis(1, at = -2:2)\n    #axis(2, at = -3:3, las = 1)\n    \n    # Laser beam\n    segments(\n      x0 = -1, y0 = 0,\n      x1 = 0, y1 = y_hit,\n      col = \"red\",\n      lwd = 3\n    )\n    \n    # Angle arc\n    a &lt;- seq(0, theta, length.out = 100)\n    lines(\n      -1 + 0.3 * cos(a),\n      0.3 * sin(a),\n      col = \"steelblue\",\n      lwd = 2\n    )\n    \n    # Shark location\n    points(-1, 0, pch = 19, cex = 1.3)\n    text(-1.25, -0.35, \"(-1, 0)\", cex = 1.1)\n    \n    # Impact point and label\n    if (abs(y_hit) &lt;= 3) {\n      points(0, y_hit, pch = 19, col = \"red\", cex = 1.3)\n      text(\n        0.15, y_hit,\n        \"(0, Y)\",\n        pos = 4,\n        cex = 1.1\n      )\n    }\n    \n    # Angle label\n    text(\n      -1 + 0.48 * cos(theta / 2),\n      0.48 * sin(theta / 2),\n      \"X\",\n      col = \"steelblue\",\n      cex = 1.4\n    )\n    \n  })\n}\n\nshinyApp(ui, server)\n\n\nUse geometry to express \\(Y\\) as a function of \\(X\\);\nWhat are the range and pdf of \\(Y\\)?\nSimulate n = 5000 draws of \\(Y\\). Plot a histogram, and add a line plot of the density you derived in part b. Can you get them to match?\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nBy construction, \\(\\text{Range}(X)=(-\\pi/2,\\,\\pi/2)\\). You can read more about the continuous uniform here, and we see that the cdf is\n\\[\nF_X(x)\n=\n\\begin{cases}\n0 & x\\leq -\\frac{\\pi}{2}\\\\\n\\frac{x-\\left(-\\frac{\\pi}{2}\\right)}{\\frac{\\pi}{2}-\\left(-\\frac{\\pi}{2}\\right)} & -\\frac{\\pi}{2}&lt;x&lt;\\frac{\\pi}{2}\\\\\n1 & \\frac{\\pi}{2}\\leq x.\n\\end{cases}\n\\]\nSo when \\(-\\frac{\\pi}{2}&lt;x&lt;\\frac{\\pi}{2}\\), we have\n\\[\nF_X(x)=\\frac{x+\\frac{\\pi}{2}}{\\pi}=\\frac{x}{\\pi}+\\frac{1}{2}.\n\\]\nThe transformation is\n\n\n\n\n\n\n\n\nAgain, strictly-increasing, and it maps to all real numbers. So \\(\\text{Range}(Y)=\\mathbb{R}\\). Now let’s fix arbitrary \\(y\\in\\mathbb{R}\\) and find the cdf:\n\\[\n\\begin{aligned}\n    F_Y(y)&=P(Y\\leq y)\\\\\n    &=P(\\tan X\\leq y)\\\\\n    &=P(X\\leq \\tan^{-1}y)\\\\\n    &=F_X(\\tan^{-1}y)\\\\\n    &=\\frac{\\tan^{-1}y}{\\pi}+\\frac{1}{2}.\n\\end{aligned}\n\\]\nTake a derivative to get the pdf:\n\\[\nf_Y(y)\n=\nF'_Y(y)\n=\n\\frac{\\textrm{d}}{\\textrm{d}y}\n\\left(\n\\frac{\\tan^{-1}y}{\\pi}+\\frac{1}{2}\n\\right)\n=\n\\frac{1}{\\pi(1+y^2)},\\quad y\\in\\mathbb{R}.\n\\]\nRest assured that we did the math right, but you’d have a hard time verifying it with a simulation:\n\nset.seed(20)\nX &lt;- runif(5000, -pi / 2, pi / 2)\nY &lt;- tan(X)\nhist(Y, breaks = \"Scott\", freq = FALSE)\n\n\n\n\n\n\n\nHere is the graph of the density we derived, and for reference I added the pdf of the standard normal distribution (bell curve):\n\nCodecurve(dnorm(x), from = -7, to = 7, n = 1000, ylab = \"\", bty = \"n\")\ncurve(dcauchy(x), from = -7, to = 7, n = 1000, add = TRUE, col = \"red\")\nlegend(\"topright\", c(\"N(0, 1) density\", \"Cauchy density\"), bty = \"n\",\n       lty = 1, col = c(\"black\", \"red\"))\n\n\n\n\n\n\n\nCompared to the bell curve, this new density has very heavy tails. They are so heavy in fact that this distribution does not have a finite mean or variance or any other moment. It is very ill-behaved, and it frequently surprises with extreme values far out in the tails. That’s why the histogram looks awful and always will.\nThis distribution we just derived is quite famous. It’s called the Cauchy distribution.",
     "crumbs": [
       "Labs",
       "Lab 8"
