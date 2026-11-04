@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.34">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>14-joint-intro – STA 240 Fall 2026</title>
+<title>Joint distributions – STA 240 Fall 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,7 +18,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -39,7 +35,11 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-ab2af8015911caaedd078aba9a047385.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<meta name="shinylive:serviceworker_dir" content="..">
+<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -65,40 +65,58 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
-<meta property="og:title" content="14-joint-intro – STA 240 Fall 2026">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+<meta property="og:title" content="Joint distributions – STA 240 Fall 2026">
 <meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
+<meta property="og:image" content="https://sta240-f26.github.io/lecture-notes/images/cartoon.png">
 <meta property="og:site_name" content="STA 240 Fall 2026">
+<meta property="og:image:height" content="1493">
+<meta property="og:image:width" content="1641">
 </head>
-
 <body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">14-joint-intro</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Joint distributions</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+      <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://cmgr.oit.duke.edu/containers" title="RStudio Containers" class="quarto-navigation-tool px-1" aria-label="RStudio Containers"><i class="bi bi-code-square"></i></a>
     <a href="https://canvas.duke.edu/courses/84105" title="Canvas" class="quarto-navigation-tool px-1" aria-label="Canvas"><i class="bi bi-megaphone"></i></a>
@@ -113,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../syllabus/announcements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Check it out!</span></a>
@@ -127,8 +145,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../syllabus/syllabus-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -171,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -180,8 +198,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../math/greeks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Greek alphabet</span></a>
@@ -224,7 +242,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
@@ -233,8 +251,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../explainers/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting started</span></a>
@@ -331,7 +349,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
@@ -340,8 +358,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../distributions/discrete-binomial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Binomial</span></a>
@@ -378,7 +396,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
@@ -387,8 +405,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../problems/pset-0.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Problem Set 0</span></a>
@@ -430,8 +448,14 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Problem Set 6</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/pset-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 7</span></a>
+  </div>
+</li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
@@ -440,8 +464,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lab/lab-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 1</span></a>
@@ -490,7 +514,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
@@ -499,36 +523,41 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../problems/midterm-1-guide.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Midterm 1</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#covariance-and-correlation" id="toc-covariance-and-correlation" class="nav-link active" data-scroll-target="#covariance-and-correlation">Covariance and correlation</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+<li><a href="#dependent-random-variables-and-their-joint-distributions" id="toc-dependent-random-variables-and-their-joint-distributions" class="nav-link active" data-scroll-target="#dependent-random-variables-and-their-joint-distributions">Dependent random variables and their joint distributions</a></li>
+  <li><a href="#computing-joint-probabilities-using-double-integration" id="toc-computing-joint-probabilities-using-double-integration" class="nav-link" data-scroll-target="#computing-joint-probabilities-using-double-integration">Computing joint probabilities using double integration</a></li>
+  <li>
+<a href="#marginal-and-conditional-distributions" id="toc-marginal-and-conditional-distributions" class="nav-link" data-scroll-target="#marginal-and-conditional-distributions">Marginal and conditional distributions</a>
+  <ul class="collapse">
+<li><a href="#marginal-distributions" id="toc-marginal-distributions" class="nav-link" data-scroll-target="#marginal-distributions">Marginal distributions</a></li>
+  <li><a href="#conditional-distributions" id="toc-conditional-distributions" class="nav-link" data-scroll-target="#conditional-distributions">Conditional distributions</a></li>
+  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence">Independence</a></li>
   </ul>
-</nav>
+</li>
+  <li><a href="#covariance-and-correlation" id="toc-covariance-and-correlation" class="nav-link" data-scroll-target="#covariance-and-correlation">Covariance and correlation</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#scraps" id="toc-scraps" class="nav-link" data-scroll-target="#scraps">Scraps</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">14-joint-intro</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Joint distributions</h1>
 </div>
 
 
@@ -542,9 +571,433 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
+</header><p>I can easily time my life by the American political cycle. I was born in 1993, the first year of Bill Clinton’s presidency. I was in first grade during 2000-2001 when George Bush was elected. I was a freshman in high school during 2008-2009 when Barack Obama was elected. I was a freshman in college 2012 - 2013 when Obama was re-elected, and then I graduated college May 2016. So, the brief history of me: eight years of Clinton, eight years of Bush, eight years of Obama, and then the real fun began.</p>
+<p>My first hint that the second two decades of my life were likely to be different from the first two came on June 23 2016. I was in a hotel room in Cambridge MA watching CNN, and it was announced that the UK had voted to leave the European Union (so-called Brexit). To be sure, many surprising things had happened in my lifetime up to that point: the Monica Lewinsky scandal, 9/11, Hurricane Katrina, the 2008 financial crisis, and so on. But in that hotel room that day, Brexit did feel different, and it felt like a harbinger of things to come: “if that can happen there, what’s about to happen in our own election?”</p>
+<p>In other words, learning something about the outcome of one election forced me to reconsider my beliefs about the likely outcome of another. Let’s model this!</p>
+<section id="dependent-random-variables-and-their-joint-distributions" class="level2"><h2 class="anchored" data-anchor-id="dependent-random-variables-and-their-joint-distributions">Dependent random variables and their joint distributions</h2>
+<p>Pretend it is May 2016. The future is uncertain, and we are contemplating two quantities: <span class="math inline">\(X\in[0,\,1]\)</span> is the eventual proportion of votes for “Leave” in the <a href="https://en.wikipedia.org/wiki/2016_United_Kingdom_European_Union_membership_referendum">Brexit referendum</a>, and <span class="math inline">\(Y\in[0,\,1]\)</span> is the eventual proportion of electoral college votes for Donald Trump in the <a href="https://en.wikipedia.org/wiki/2016_United_States_presidential_election">2016 presidential election</a>. It eventually came to pass that</p>
+<p><span class="math display">\[
+\begin{aligned}
+X&amp;=\frac{17,410,742}{33,551,983}\approx 0.5189\\
+Y&amp;=\frac{304}{538}\approx 0.5651.
+\end{aligned}
+\]</span></p>
+<p>But in May 2016 we didn’t know that yet, so let’s think about the pair <span class="math inline">\((X,\,Y)\)</span> from that vantage point:</p>
+<ul>
+<li>The value of the pair <span class="math inline">\((X,\,Y)\)</span> was genuinely uncertain, so we can treat it as random.</li>
+<li>
+</li><li>
+</li><li>
+</li></ul>
+<p>The political scientists can tell you that both of these votes ended up being expressions of similar trends and forces. So my instincts that</p>
+<p>However, they do not perfectly coincide. There are idiosyncratic, UK specific forces bearing on X and idiosyncratic US specific forces bearing on Y.</p>
+<p>So, our goal is to model the joint behavior of two dependent random quantities. How do we do that? At a high level, the answer is the same as it ever was: write down a probability measure, just like in week 2.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: joint distribution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are <strong>jointly distributed</strong> random variables, then their <strong>joint range</strong> is the set of values <span class="math inline">\(\text{Range}(X,\, Y)\subseteq \mathbb{R}^2\)</span> they can take on, and their <strong>joint distribution</strong> is a probability measure on <span class="math inline">\(\mathbb{R}^2\)</span>:</p>
+<p><span class="math display">\[
+A\mapsto P\left((X,\, Y)\in A\right),\quad A\subseteq \mathbb{R}^2.
+\]</span></p>
+</div>
+</div>
+<p>How do you write down such a measure? Like in the univariate case, it depends on the type: discrete, continuous, mixed, etc. In our case, we have two continuous random variables. We can specifiy a joint distribution for them by writing down a joint probability density function (PDF)</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: joint probability density function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\((X,\, Y)\)</span> are jointly (absolutely) continuous, then their joint distribution can be described by a <strong>joint probability density function</strong> (<strong>joint pdf</strong>). This is a bivariate function <span class="math inline">\(f_{XY}:\mathbb{R}^2\to\mathbb{R}\)</span> with the following properties:</p>
+<ul>
+<li><p><span class="math inline">\(f_{XY}(x,\, y)\geq 0\)</span>;</p></li>
+<li><p><span class="math inline">\(\int_{-\infty}^\infty\int_{-\infty}^\infty f_{XY}(x,\, y)\,\text{d} x\text{d} y=1\)</span>.</p></li>
+</ul>
+<p>Given the joint pdf, we can compute the joint distribution by integrating:</p>
+<p><span class="math display">\[
+P\left((X,\, Y)\in C\right)=\underset{C}{\int\int}f_{XY}(x,\, y)\,\text{d} x\text{d} y,\quad C\subseteq\mathbb{R}^2
+.
+\]</span></p>
+<p>In the univariate case, probability corresponds to area under the density curve. In the bivariate case, probability corresponds to <em>volume</em> under the density <em>surface</em>, like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/cartoon.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+f_{XY}(x,\,y)
+=
+\begin{cases}
+1+(2x-1)(2y-1) &amp; 0\leq x,y\leq 1\\
+0 &amp; \text{else}.
+\end{cases}
+\]</span></p>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="14-joint-intro_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="14-joint-intro_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Verify: the joint PDF integrates to 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{aligned}
+\int_{-\infty}^\infty\int_{-\infty}^\infty f_{XY}(x,\,y)\,\text{d}y\,\text{d}x
+&amp;=
+\int_{0}^1\int_{0}^1 [1+(2x-1)(2y-1)]\text{d}y\,\text{d}x
+\\
+&amp;=
+\int_{0}^1 \left[y+(2x-1)(y^2-y)\right]_0^1\text{d}x
+\\
+&amp;=
+\int_{0}^1 \left[1+(2x-1)(1^2-1)-0-(2x-1)(0^2-0)\right]\text{d}x
+\\
+&amp;=
+\int_{0}^1 1\,\text{d}x
+\\
+&amp;=
+[x]_0^1
+\\
+&amp;=
+1.
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+<p>Now that that’s settled, let’s use our model to answer some questions about the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>:</p>
+<ul>
+<li>what is the probability that “Leave” and Trump both win?</li>
+<li>what is the probability that Trump’s vote share is larger than the “Leave” vote share?</li>
+<li>what is the probability that the “Leave” vote share is exactly equal to Trump’s vote share?</li>
+<li>if we learn that “Leave” won, what is the probability that Trump wins?</li>
+<li>if we learn, as we we did in June 2016, that “Leave” got exactly 0.5189, what is the probability that Trump wins?</li>
+</ul>
+<p>All of these verbal descriptions can be translated into precise probability statements that involve the <em>joint</em> distribution of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> together, and we will evaluate them by doing a ton of integrating. Let’s see that in action.</p>
+</section><section id="computing-joint-probabilities-using-double-integration" class="level2"><h2 class="anchored" data-anchor-id="computing-joint-probabilities-using-double-integration">Computing joint probabilities using double integration</h2>
+<blockquote class="blockquote">
+<p>What is the probability that “Leave” and Trump both win?</p>
+</blockquote>
+<p>P(X &gt; 1/2 and Y &gt; 1/2)</p>
+<p>PIC</p>
+<p><span class="math display">\[
+\begin{aligned}
+P\left(X&gt;\frac{1}{2}\cap Y&gt;\frac{1}{2}\right)
+&amp;=
+\int_{1/2}^1\int_{1/2}^1
+f_{XY}(x,\,y)
+\,\text{d}y\,\text{d}x
+\\
+&amp;=
+\int_{1/2}^1\int_{1/2}^1
+[1+(2x-1)(2y-1)]
+\text{d}y\,\text{d}x
+\\
+&amp;=
+\int_{1/2}^1
+[y+(2x-1)(y^2-y)]_{1/2}^1\text{d}x
+\\
+&amp;=
+\int_{1/2}^1
+\left[1+(2x-1)(1^2-1)-\frac{1}{2}-(2x-1)\left(\left(\frac{1}{2}\right)^2-\frac{1}{2}\right)\right]\text{d}x
+\\
+&amp;=
+\int_{1/2}^1
+\left[\frac{1}{2}+\frac{1}{4}(2x-1)\right]\text{d}x
+\\
+&amp;=
+\left[\frac{1}{2}x+\frac{1}{4}(x^2-x)\right]_{1/2}^1
+\\
+&amp;=
+\frac{1}{2}\cdot 1+\frac{1}{4}(1^2-1)-\frac{1}{2}\frac{1}{2}-\frac{1}{4}\left(\left(\frac{1}{2}\right)^2-\frac{1}{2}\right)
+\\
+&amp;=
+\frac{1}{2}-\frac{1}{4}+\frac{1}{4}\frac{1}{4}
+\\
+&amp;=
+5/16
+\\
+&amp;=
+0.3125.
+\end{aligned}
+\]</span></p>
+<p>Before we launch into the calculation, make note of a few things:</p>
+<ul>
+<li>we know the joint PDF integrates to 1 over the entire unit square;</li>
+<li>we know that the region of integration here takes up <em>half</em> of the overall sample space;</li>
+<li>we know from the contour plot that the joint PDF has reflection symmetry over the line <span class="math inline">\(y=x\)</span>, so the <span class="math inline">\(y&gt;x\)</span> region is the mirror image of the <span class="math inline">\(y&lt;x\)</span> region.</li>
+</ul>
+<p>Taken together, we might intuit our way to the conjecture that <span class="math inline">\(P(Y&gt;X)=1/2\)</span>. Behold:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P\left(Y&gt;X\right)
+&amp;=
+\int_{0}^1\int_{x}^1
+f_{XY}(x,\,y)
+\,\text{d}y\,\text{d}x
+\\
+&amp;=
+\int_{0}^1\int_{x}^1
+[1+(2x-1)(2y-1)]
+\,\text{d}y\,\text{d}x
+\\
+&amp;=
+\int_{0}^1
+[y+(2x-1)(y^2-y)]_x^1\,\text{d}x
+\\
+&amp;=
+\int_{0}^1
+[1+(2x-1)(1^2-1)-x-(2x-1)(x^2-x)]\,\text{d}x
+\\
+&amp;=
+\int_{0}^1
+[1-x-2x^3+2x^2+x^2-x]\,\text{d}x
+\\
+&amp;=
+\int_{0}^1
+[1-2x-2x^3+3x^2]\,\text{d}x
+\\
+&amp;=
+\left[x-x^2-\frac{1}{2}x^4+x^3\right]_0^1
+\\
+&amp;=
+1-1^2-\frac{1}{2}+1
+\\
+&amp;=
+1/2.
+\end{aligned}
+\]</span></p>
+<p>P(X = Y)</p>
+<p><span class="math display">\[
+P(X=Y)=\int_0^1\int_y^y f_{XY}(x,\,y)\,\text{d}x\,\text{d}y=\int_0^10\,\text{d}y=0.
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 
+</div>
+</div>
+</section><section id="marginal-and-conditional-distributions" class="level2"><h2 class="anchored" data-anchor-id="marginal-and-conditional-distributions">Marginal and conditional distributions</h2>
+<section id="marginal-distributions" class="level3"><h3 class="anchored" data-anchor-id="marginal-distributions">Marginal distributions</h3>
+<p>Next, let’s consider this event:</p>
+<blockquote class="blockquote">
+<p>If we learn that “Leave” won the Brexit vote, what is the probability that Trump wins?</p>
+</blockquote>
+<p>The answer is the <em>conditional</em> probability <span class="math inline">\(P(Y &gt; 1/2 \mid X &gt; 1/2)\)</span>, which we can compute directly from the definition:</p>
+<p><span class="math display">\[
+P(Y &gt; 1/2 \mid X &gt; 1/2)=\frac{P(Y &gt; 1/2 \cap X &gt; 1/2)}{P(X&gt;1/2)}=\frac{5/16}{P(X&gt;1/2)}.
+\]</span></p>
+<p>Having already computed the numerator, we are done if we can compute the denominator. This is an example of a <em>marginal probability</em></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: marginal densities
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\((X,\, Y)\)</span> are jointly absolutely continuous, then each random variable <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> has a <strong>marginal probability density function</strong> (<strong>marginal pdf</strong>) that describes the distribution of that random variable on its own:</p>
+<p><span class="math display">\[
+\begin{aligned}
+    f_X(x)
+    &amp;=
+    \int_{-\infty}^\infty f_{XY}(x,\, y)\,\text{d} y
+    \\
+    f_Y(y)
+    &amp;=
+        \int_{-\infty}^\infty f_{XY}(x,\, y)\,\text{d} x.
+\end{aligned}
+\]</span></p>
+<p>To compute <span class="math inline">\(f_X\)</span>, for example, we say that we “integrate <span class="math inline">\(y\)</span> out” of the joint density.</p>
+</div>
+</div>
+<p><span class="math display">\[
+\begin{aligned}
+    F_X(x)
+    =
+    P(X\leq x)
+    =
+    \int_{-\infty}^x\int_{-\infty}^\infty f_{XY}(t,\, y)\,\text{d} y\,\text{d} t.
+\end{aligned}
+\]</span></p>
+<p>The marginal PDF is just the derivative, so the fundamental theorem of calculus tells us that</p>
+<p><span class="math display">\[
+f_X(x)=F'_X(x)=\frac{\text{d}}{\text{d} x}
+\int_{-\infty}^x\int_{-\infty}^\infty f_{XY}(t,\, y)\,\text{d} y\,\text{d} t
+=
+\int_{-\infty}^\infty f_{XY}(x,\, y)\,\text{d} y.
+\]</span></p>
+</section><section id="conditional-distributions" class="level3"><h3 class="anchored" data-anchor-id="conditional-distributions">Conditional distributions</h3>
+<p>P(Y &gt; 1/2 | X = 0.5189)</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: conditional densities
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>conditional probability density function</strong> (<strong>conditional pdf</strong>) of <span class="math inline">\(X\)</span> or <span class="math inline">\(Y\)</span> describes its revised behavior on the event <span class="math inline">\(Y=y\)</span> or <span class="math inline">\(X=x\)</span>, respectively. They are defined to be <span class="math display">\[
+\begin{aligned}
+    f_{X|Y}(x\mid y)
+    &amp;=\frac{f_{XY}(x,\, y)}{f_Y(y)}
+    \\
+        f_{Y|X}(y\mid x)
+    &amp;=\frac{f_{XY}(x,\, y)}{f_X(x)}.
+\end{aligned}
+\]</span> So <span class="math inline">\(f_{X|Y}(x\mid y)\)</span>, for example, is the cross-section of <span class="math inline">\(f_{XY}\)</span> that holds the second argument fixed at <span class="math inline">\(y\)</span> but lets <span class="math inline">\(x\)</span> vary. The denominator renormalizes to ensure that the new <em>conditional</em> density integrates to 1 in <span class="math inline">\(x\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/conditional-cartoon.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<pre class="shinylive-r" data-engine="r"><code><a href="https://shiny.posit.co/">#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 650
 
+library(shiny)
+
+ui &lt;- fluidPage(
+  titlePanel("Conditional density of Trump vote share"),
+  
+  sliderInput(
+    inputId = "x",
+    label = "\"Leave\" vote share (x)",
+    min = 0,
+    max = 1,
+    value = 0.75,
+    step = 0.01
+  ),
+  
+  plotOutput("density_plot", height = "400px")
+)
+
+server &lt;- function(input, output, session) {
+  
+  output$density_plot &lt;- renderPlot({
+    
+    x &lt;- input$x
+    
+    df &lt;- data.frame(
+      y = seq(0, 1, length.out = 501)
+    )
+    
+    df$density &lt;- 1 + (2*x - 1)*(2*df$y - 1)
+    
+    plot(
+      df$y, df$density,
+      type = "n",
+      xlim = c(0, 1),
+      ylim = c(0, 2),
+      xaxs = "i",
+      yaxs = "i",
+      xlab = "Trump vote share (y)",
+      ylab = "f(y | x)",
+      main = paste0("Conditional density of Y given X = ",
+                    sprintf("%.2f", x)),
+      xaxt = "n",
+      yaxt = "n"
+    )
+    
+    axis(1, at = seq(0, 1, 0.25))
+    axis(2, at = seq(0, 2, 0.5), las = 1)
+    
+    #polygon(
+    #  c(df$y, rev(df$y)),
+    #  c(df$density, rep(0, nrow(df))),
+    #  col = adjustcolor("steelblue", alpha.f = 0.2),
+    #  border = NA
+    #)
+    
+    lines(df$y, df$density, col = "red", lwd = 4)
+    abline(h = 1, lty = 2, col = "gray50")
+  })
+}
+
+shinyApp(ui = ui, server = server)
+</a></code></pre>
+</section><section id="independence" class="level3"><h3 class="anchored" data-anchor-id="independence">Independence</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: independent random variables
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A jointly (absolutely) continuous pair <span class="math inline">\((X,\, Y)\)</span> are <strong>independent</strong> if</p>
+<p><span class="math display">\[
+    f_{XY}(x,\, y)=f_X(x)f_Y(y)\quad \text{for all }(x,\, y)\in\mathbb{R}^2.
+\]</span></p>
+<p>Alternatively but equivalently, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent if</p>
+<p><span class="math display">\[
+\begin{aligned}
+    f_{X|Y}(x\mid y)&amp;=f_X(x)\quad \text{for all }(x,\, y)\in\mathbb{R}^2
+    \\
+    f_{Y|X}(y\mid x)&amp;=f_Y(y)\quad \text{for all }(x,\, y)\in\mathbb{R}^2.
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</section></section><section id="covariance-and-correlation" class="level2"><h2 class="anchored" data-anchor-id="covariance-and-correlation">Covariance and correlation</h2>
+</section><section id="summary" class="level2"><h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>To model the relationship between two random variables, you need a joint distribution. A probability measure on R^2.</p>
+<p>In the jointly continuous case, you can do this with the joint pdf, which is a surface in 3d space, and volumes beneath this surface are joint probabilities. You compute these volumes by double integrating.</p>
+<p>The joint distribution is a petri dish for other distributions, marginals and conditionals</p>
+<p>definition of independence</p>
+<p>summarize with covariance and correlation</p>
+<p>Clear about the joint range, sensitive to the bounds, careful about what is constant and what is a dummy, and</p>
+</section><section id="scraps" class="level2"><h2 class="anchored" data-anchor-id="scraps">Scraps</h2>
 <p>Throat-clearing about my example.</p>
 <p>So, it’s not enough to model X by itself and Y by itself. We need to model them together. So what we need to write down is a joint distribution.</p>
 <p>define that generically</p>
@@ -560,23 +1013,9 @@ ul.task-list li input[type="checkbox"] {
 <p>P(Y &gt; 1/2 | X = 0.5189). If we start from the definition of conditional probability, we run into trouble because P(Y &gt; 1/2 AND X = 0.5189), but we should still be able to talk about conditional probability when you condition on a zero probability event. X = 0.5189 did literally happen!</p>
 <p>Use that discussion to motivate the definition of conditional density. Do the calculation. Include shiny app. Interpret.</p>
 <p>Notice that knowledge of X absolutely changes the probabilities for Y. So these things are dependent. If we had found that it didn’t matter, then they would be dependent</p>
-<section id="covariance-and-correlation" class="level2">
-<h2 class="anchored" data-anchor-id="covariance-and-correlation">Covariance and correlation</h2>
-</section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>To model the relationship between two random variables, you need a joint distribution. A probability measure on R^2.</p>
-<p>In the jointly continuous case, you can do this with the joint pdf, which is a surface in 3d space, and volumes beneath this surface are joint probabilities. You compute these volumes by double integrating.</p>
-<p>The joint distribution is a petri dish for other distributions, marginals and conditionals</p>
-<p>definition of independence</p>
-<p>summarize with covariance and correlation</p>
-<p>Clear about the joint range, sensitive to the bounds, careful about what is constant and what is a dummy, and</p>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -976,8 +1415,7 @@ ul.task-list li input[type="checkbox"] {
   });
   </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2026 John Zito</p>
 </div>   
@@ -989,8 +1427,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

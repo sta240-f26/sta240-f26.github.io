@@ -67,8 +67,38 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="STA 240 Fall 2026">
+<meta property="og:description" content="Homepage for STA 240 Probability for Statistical Inference at Duke University (Fall 2026)">
 <meta property="og:site_name" content="STA 240 Fall 2026">
 </head>
 
@@ -429,6 +459,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Problem Set 6</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../problems/pset-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 7</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -521,6 +557,22 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p>Let <span class="math inline">\(Z\)</span> be a discrete random variable with <span class="math inline">\(\text{Range}(Z)=\{1,\, 2,\, 3,\, 4,\, ...\}\)</span> and probability mass function</p>
+<p><span class="math display">\[
+P(Z=k)
+=
+-\frac{1}{\ln(1-p)}\frac{p^k}{k},\quad k\in\{1,\, 2,\, 3,\, ...\}.
+\]</span></p>
+<p>The constant <span class="math inline">\(0&lt;p&lt;1\)</span> is a parameter.</p>
+<p><strong>Note</strong>: this distribution is new to you, and it is valid. Take my word for it.</p>
+<ol type="a">
+<li>Use what you know about probability to find the value of this infinite series: <span class="math display">\[
+   \sum\limits_{k=1}^\infty\frac{p^k}{k}.
+   \]</span></li>
+<li>What is the moment-generating function of <span class="math inline">\(Z\)</span>, and what is its radius of convergence?</li>
+<li>Use the definition of expected value to compute the mean of <span class="math inline">\(Z\)</span>.</li>
+<li>Use the MGF to compute the mean of <span class="math inline">\(Z\)</span> and verify that you get the same answer.</li>
+</ol>
 
 
 
