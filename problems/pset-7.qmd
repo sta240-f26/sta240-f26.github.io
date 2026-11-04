@@ -1,0 +1,70 @@
+---
+title: "Problem Set 7"
+subtitle: Due Monday November 9 at 3PM
+editor: 
+  mode: source
+---
+
+
+> [Ursula K. Le Guin](https://en.wikipedia.org/wiki/The_Left_Hand_of_Darkness): "The only thing that makes life possible is permanent, intolerable uncertainty: not knowing what comes next."
+
+```{r}
+#| echo: false
+q_no <- 0
+```
+
+## Problem `{r} q_no` (new!)
+
+{{< include bank/_doodle.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no` ★
+
+{{< include bank/moments/logarithmic.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no` ★
+
+{{< include bank/transformations/twerkout-2-alt.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no` ★
+
+{{< include bank/joint-distributions/bdj-joint.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no` ★
+
+{{< include bank/joint-distributions/gamma-exponential-hierarchy.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/joint-distributions/uniform-on-the-disc.qmd >}}
+
+
+
+## Submission
+
+{{< include bank/_submission.qmd >}}
+

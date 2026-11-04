@@ -1,0 +1,11 @@
+On [Lab 8](/lab/lab-8.html), we learned how to derive the distribution of a transformation. This is an important technical skill that crops up often in mathematical probability, so let's get our reps in. For each of these, derive the range and density of the new random variable $Y$. Verify that your density is correct by simulating the distribution of the new random variable, plotting a histogram of the simulations, and placing a line plot of your derived density curve on top of the histogram. If all is well, they should match.
+
+| Part | Old random variable | New random variable | 
+| --- | --- | --- | 
+| a | $X\sim\text{Unif}(0,\,1)$ | $Y=e^X$ |
+| b | $X\sim\textrm{Unif}(0,\,1)$ | $Y=\sqrt{X}$ |
+| c | $X\sim\text{Unif}(0,\,1)$ | $Y=X^2$ |
+| d | $X\sim\text{Gamma}(a,\,b)$ | $Y=1/X$ |
+| e | $Z\sim\text{N}(0,\,1)$ | $X=Z^2$ |
+
+

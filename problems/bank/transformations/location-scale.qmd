@@ -1,0 +1,6 @@
+Let $X$ be an absolutely continuous random variable with pdf $f_X$, let $a,\,b\in\mathbb{R}$ be non-zero constants, and consider the new random variable $Y=aX+b$.
+
+a.  What is $E(Y)$?
+a.  What is $\text{var}(Y)$?
+a.  Use the change-of-variables formula to find the density of $Y$?
+a.  In the special case where $X\sim\text{N}(0,\,1)$, what are $E(Y)$, $\text{var}(Y)$, and the density of $Y$? There's no need to re-derive anything here. Just plug what you know about N(0, 1) into the formulas from parts a, b, and c.

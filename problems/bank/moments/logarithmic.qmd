@@ -1,0 +1,19 @@
+Let $Z$ be a discrete random variable with $\text{Range}(Z)=\{1,\, 2,\, 3,\, 4,\, ...\}$ and probability mass function 
+
+$$
+P(Z=k)
+=
+-\frac{1}{\ln(1-p)}\frac{p^k}{k},\quad k\in\{1,\, 2,\, 3,\, ...\}.
+$$
+
+The constant $0<p<1$ is a parameter. 
+
+**Note**: this distribution is new to you, and it is valid. Take my word for it.
+
+a. Use what you know about probability to find the value of this infinite series:
+      $$
+      \sum\limits_{k=1}^\infty\frac{p^k}{k}.
+      $$
+a. What is the moment-generating function of $Z$, and what is its radius of convergence?
+a. Use the definition of expected value to compute the mean of $Z$.
+a. Use the MGF to compute the mean of $Z$ and verify that you get the same answer.
