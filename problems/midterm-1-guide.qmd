@@ -58,7 +58,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 {{< include bank/basic-rules/set-minus.qmd >}}
 
@@ -67,7 +67,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 {{< include bank/basic-rules/bonferroni-1.qmd >}}
 
@@ -178,7 +178,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 {{< include bank/conditional-probability/bdj-white-balls.qmd >}}
 
@@ -196,7 +196,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 {{< include bank/conditional-probability/independent-complements-2.qmd >}}
 
@@ -205,7 +205,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 {{< include bank/conditional-probability/anya-lightbulb-factory.qmd >}}
 
@@ -223,7 +223,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 {{< include bank/conditional-probability/first-ace.qmd >}}
 
@@ -253,7 +253,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 {{< include bank/random-variables-discrete/memoryless-geometric.qmd >}}
 
@@ -262,7 +262,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 {{< include bank/random-variables-discrete/anya-rv.qmd >}}
 
@@ -271,7 +271,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 {{< include bank/random-variables-discrete/anya-printing-office.qmd >}}
 

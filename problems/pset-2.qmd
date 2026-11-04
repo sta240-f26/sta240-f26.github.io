@@ -54,7 +54,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 {{< include bank/counting/poker-dice.qmd >}}
 
@@ -99,7 +99,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 
 {{< include bank/conditional-probability/target-practice.qmd >}}
@@ -111,7 +111,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 
 {{< include bank/conditional-probability/independent-complements.qmd >}}

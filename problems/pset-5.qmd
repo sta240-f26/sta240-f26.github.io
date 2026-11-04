@@ -49,7 +49,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 {{< include bank/random-variables-continuous/all-moments-finite-no-mgf.qmd >}}
 

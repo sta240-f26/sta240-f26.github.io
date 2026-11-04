@@ -33,7 +33,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 
 
@@ -74,7 +74,7 @@ q_no <- q_no + 1
 q_no <- q_no + 1
 ```
 
-## Problem `{r} q_no`
+## Problem `{r} q_no` ★
 
 {{< include bank/conditional-probability/testing-symptoms.qmd >}}
 
