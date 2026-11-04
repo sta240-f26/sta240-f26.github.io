@@ -3223,7 +3223,7 @@
     "href": "problems/bank/joint-distributions/uniform-on-the-disc.html",
     "title": "STA 240 Fall 2026",
     "section": "",
-    "text": "Let \\(X\\) and \\(Y\\) be jointly absolutely continuous with density\n\\[\nf_{XY}(x,\\, y)=\\frac{1}{\\pi},\\quad x^2+y^2\\leq 1.\n\\]\nSo \\(X\\) and \\(Y\\) jointly possess the uniform distribution on the unit disc.\n\nThe joint density is a surface in three-dimensional space. Sketch what the joint density looks like.\nCompute the marginal densities of \\(X\\) and \\(Y\\).\nAre \\(X\\) and \\(Y\\) independent?"
+    "text": "Let \\(X\\) and \\(Y\\) be jointly absolutely continuous with density\n\\[\nf_{XY}(x,\\, y)=\\frac{1}{\\pi},\\quad x^2+y^2\\leq 1.\n\\]\nSo \\(X\\) and \\(Y\\) jointly possess the uniform distribution on the unit disc.\n\nThe joint density is a surface in three-dimensional space. Sketch what the joint density looks like.\nCompute the marginal densities of \\(X\\) and \\(Y\\).\nAre \\(X\\) and \\(Y\\) independent?\nWhat is \\(\\text{cov}(X,\\,Y)\\)?"
   },
   {
     "objectID": "problems/bank/counting/basic-counting.html",
@@ -4325,7 +4325,7 @@
     "href": "problems/pset-7.html#problem-2",
     "title": "Problem Set 7",
     "section": "Problem 2 ★",
-    "text": "Problem 2 ★\nThis is an important technical skill, so let’s drill it. For each of these, plot the transformation and then derive the range and the density of the new distribution:\n\nLet \\(X\\sim\\text{Unif}(0,\\,1)\\) and consider \\(Y=1/X\\);\nLet \\(X\\) have density \\(f_X(x)=42x^5(1-x)\\) for \\(0&lt;x&lt;1\\) and consider \\(Y=X^3\\);\nLet \\(X\\sim\\text{Exponential}(\\lambda)\\) and consider \\(Y=4X+3\\);\nLet \\(X\\) have density \\(f_X(x)=\\frac{1}{\\theta}x^{\\frac{1}{\\theta}-1}\\) for \\(0&lt;x&lt;1\\) and some parameter \\(\\theta&gt;0\\), and consider \\(Y=-\\ln(X)\\);\nLet \\(X\\sim\\text{N}(0,\\,1)\\) and consider \\(Y=|X|\\).",
+    "text": "Problem 2 ★\nThis is an important technical skill, so let’s drill it. For each of these, sketch a plot of the transformation and then derive the range and the density of the new distribution:\n\nLet \\(X\\sim\\text{Unif}(0,\\,1)\\) and consider \\(Y=1/X\\);\nLet \\(X\\) have density \\(f_X(x)=42x^5(1-x)\\) for \\(0&lt;x&lt;1\\) and consider \\(Y=X^3\\);\nLet \\(X\\sim\\text{Exponential}(\\lambda)\\) and consider \\(Y=4X+3\\);\nLet \\(X\\) have density \\(f_X(x)=\\frac{1}{\\theta}x^{\\frac{1}{\\theta}-1}\\) for \\(0&lt;x&lt;1\\) and some parameter \\(\\theta&gt;0\\), and consider \\(Y=-\\ln(X)\\);\nLet \\(X\\sim\\text{N}(0,\\,1)\\) and consider \\(Y=|X|\\).",
     "crumbs": [
       "Problem Sets",
       "Problem Set 7"
@@ -4358,7 +4358,7 @@
     "href": "problems/pset-7.html#problem-5",
     "title": "Problem Set 7",
     "section": "Problem 5",
-    "text": "Problem 5\nLet \\(X\\) and \\(Y\\) be jointly absolutely continuous with density\n\\[\nf_{XY}(x,\\, y)=\\frac{1}{\\pi},\\quad x^2+y^2\\leq 1.\n\\]\nSo \\(X\\) and \\(Y\\) jointly possess the uniform distribution on the unit disc.\n\nThe joint density is a surface in three-dimensional space. Sketch what the joint density looks like.\nCompute the marginal densities of \\(X\\) and \\(Y\\).\nAre \\(X\\) and \\(Y\\) independent?",
+    "text": "Problem 5\nLet \\(X\\) and \\(Y\\) be jointly absolutely continuous with density\n\\[\nf_{XY}(x,\\, y)=\\frac{1}{\\pi},\\quad x^2+y^2\\leq 1.\n\\]\nSo \\(X\\) and \\(Y\\) jointly possess the uniform distribution on the unit disc.\n\nThe joint density is a surface in three-dimensional space. Sketch what the joint density looks like.\nCompute the marginal densities of \\(X\\) and \\(Y\\).\nAre \\(X\\) and \\(Y\\) independent?\nWhat is \\(\\text{cov}(X,\\,Y)\\)?",
     "crumbs": [
       "Problem Sets",
       "Problem Set 7"
