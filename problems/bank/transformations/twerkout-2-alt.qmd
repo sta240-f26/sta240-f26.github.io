@@ -1,4 +1,4 @@
-This is an important technical skill, so let's drill it. For each of these, sketch a plot of the transformation and then derive the range and the density of the new distribution:
+This is an important technical skill, so let's drill it. For each of these, sketch a plot of the transformation and then derive the range and the density of the new random variable:
 
 a. Let $X\sim\text{Unif}(0,\,1)$ and consider $Y=1/X$;
 a. Let $X$ have density $f_X(x)=42x^5(1-x)$ for $0<x<1$ and consider $Y=X^3$;

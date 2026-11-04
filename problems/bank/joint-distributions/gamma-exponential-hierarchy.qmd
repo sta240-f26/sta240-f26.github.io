@@ -1,14 +1,14 @@
-Consider this joint distribution for random variables $X$ and $Y$, written in hierarchical form:
+Consider this joint distribution for random variables $U$ and $V$, written in hierarchical form:
 
 $$
 \begin{aligned}
-X&\sim\text{Gamma}\left(\alpha,\,\beta\right)\\
-Y\mid X=x&\sim \text{Exponential}(x).
+U&\sim\text{Gamma}\left(\alpha,\,\beta\right)\\
+V\mid U=u&\sim \text{Exponential}(u).
 \end{aligned}
 $$
 
 
-a. Sketch the joint range of $(X,\, Y)$.
-a. What is the joint density of the random pair $(X,\, Y)$?
-a. What is the marginal density of $Y$?
-a. What is the density of $X$ conditional on the event $Y=y$? Is it recognizable?
+a. Sketch the joint range of $(U,\, V)$.
+a. What is the joint density of the random pair $(U,\, V)$?
+a. What is the marginal density of $V$?
+a. What is the density of $U$ conditional on the event $V=v$? Is it recognizable?
