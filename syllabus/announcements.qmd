@@ -5,6 +5,8 @@ format: html
 
 {{< include announcements/awaaz.qmd >}}
 
+{{< include announcements/ssmu-stuff.qmd >}}
+
 {{< include announcements/chronicle.qmd >}}
 
 {{< include announcements/ssmu-challenge.qmd >}}
