@@ -3202,7 +3202,7 @@
     "href": "problems/bank/joint-distributions/gamma-exponential-hierarchy.html",
     "title": "STA 240 Fall 2026",
     "section": "",
-    "text": "Consider this joint distribution for random variables \\(X\\) and \\(Y\\), written in hierarchical form:\n\\[\n\\begin{aligned}\nX&\\sim\\text{Gamma}\\left(\\alpha,\\,\\beta\\right)\\\\\nY\\mid X=x&\\sim \\text{Exponential}(x).\n\\end{aligned}\n\\]\n\nSketch the joint range of \\((X,\\, Y)\\).\nWhat is the joint density of the random pair \\((X,\\, Y)\\)?\nWhat is the marginal density of \\(Y\\)?\nWhat is the density of \\(X\\) conditional on the event \\(Y=y\\)? Is it recognizable?"
+    "text": "Consider this joint distribution for random variables \\(U\\) and \\(V\\), written in hierarchical form:\n\\[\n\\begin{aligned}\nU&\\sim\\text{Gamma}\\left(\\alpha,\\,\\beta\\right)\\\\\nV\\mid U=u&\\sim \\text{Exponential}(u).\n\\end{aligned}\n\\]\n\nSketch the joint range of \\((U,\\, V)\\).\nWhat is the joint density of the random pair \\((U,\\, V)\\)?\nWhat is the marginal density of \\(V\\)?\nWhat is the density of \\(U\\) conditional on the event \\(V=v\\)? Is it recognizable?"
   },
   {
     "objectID": "problems/bank/joint-distributions/gamma-weibull-hierarchy.html",
@@ -4347,7 +4347,7 @@
     "href": "problems/pset-7.html#problem-4",
     "title": "Problem Set 7",
     "section": "Problem 4 ★",
-    "text": "Problem 4 ★\nConsider this joint distribution for random variables \\(X\\) and \\(Y\\), written in hierarchical form:\n\\[\n\\begin{aligned}\nX&\\sim\\text{Gamma}\\left(\\alpha,\\,\\beta\\right)\\\\\nY\\mid X=x&\\sim \\text{Exponential}(x).\n\\end{aligned}\n\\]\n\nSketch the joint range of \\((X,\\, Y)\\).\nWhat is the joint density of the random pair \\((X,\\, Y)\\)?\nWhat is the marginal density of \\(Y\\)?\nWhat is the density of \\(X\\) conditional on the event \\(Y=y\\)? Is it recognizable?",
+    "text": "Problem 4 ★\nConsider this joint distribution for random variables \\(U\\) and \\(V\\), written in hierarchical form:\n\\[\n\\begin{aligned}\nU&\\sim\\text{Gamma}\\left(\\alpha,\\,\\beta\\right)\\\\\nV\\mid U=u&\\sim \\text{Exponential}(u).\n\\end{aligned}\n\\]\n\nSketch the joint range of \\((U,\\, V)\\).\nWhat is the joint density of the random pair \\((U,\\, V)\\)?\nWhat is the marginal density of \\(V\\)?\nWhat is the density of \\(U\\) conditional on the event \\(V=v\\)? Is it recognizable?",
     "crumbs": [
       "Problem Sets",
       "Problem Set 7"
@@ -4548,7 +4548,7 @@
     "href": "problems/bank/transformations/twerkout-2-alt.html",
     "title": "STA 240 Fall 2026",
     "section": "",
-    "text": "This is an important technical skill, so let’s drill it. For each of these, sketch a plot of the transformation and then derive the range and the density of the new distribution:\n\nLet \\(X\\sim\\text{Unif}(0,\\,1)\\) and consider \\(Y=1/X\\);\nLet \\(X\\) have density \\(f_X(x)=42x^5(1-x)\\) for \\(0&lt;x&lt;1\\) and consider \\(Y=X^3\\);\nLet \\(X\\sim\\text{Exponential}(\\lambda)\\) and consider \\(Y=4X+3\\);\nLet \\(X\\) have density \\(f_X(x)=\\frac{1}{\\theta}x^{\\frac{1}{\\theta}-1}\\) for \\(0&lt;x&lt;1\\) and some parameter \\(\\theta&gt;0\\), and consider \\(Y=-\\ln(X)\\);\nLet \\(X\\sim\\text{N}(0,\\,1)\\) and consider \\(Y=|X|\\)."
+    "text": "This is an important technical skill, so let’s drill it. For each of these, sketch a plot of the transformation and then derive the range and the density of the new random variable:\n\nLet \\(X\\sim\\text{Unif}(0,\\,1)\\) and consider \\(Y=1/X\\);\nLet \\(X\\) have density \\(f_X(x)=42x^5(1-x)\\) for \\(0&lt;x&lt;1\\) and consider \\(Y=X^3\\);\nLet \\(X\\sim\\text{Exponential}(\\lambda)\\) and consider \\(Y=4X+3\\);\nLet \\(X\\) have density \\(f_X(x)=\\frac{1}{\\theta}x^{\\frac{1}{\\theta}-1}\\) for \\(0&lt;x&lt;1\\) and some parameter \\(\\theta&gt;0\\), and consider \\(Y=-\\ln(X)\\);\nLet \\(X\\sim\\text{N}(0,\\,1)\\) and consider \\(Y=|X|\\)."
   },
   {
     "objectID": "problems/bank/basic-rules/xor-2.html",
