@@ -3,6 +3,12 @@ title: "Support your classmates!"
 format: html
 ---
 
+{{< include announcements/nutcracker.qmd >}}
+
+{{< include announcements/duke-symphony-december.qmd >}}
+
+{{< include announcements/chamber.qmd >}}
+
 {{< include announcements/awaaz.qmd >}}
 
 {{< include announcements/ssmu-stuff.qmd >}}
