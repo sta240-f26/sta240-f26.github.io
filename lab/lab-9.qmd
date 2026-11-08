@@ -234,7 +234,73 @@ a. Compute the cdf;
 a. Compute the inverse cdf;
 a. Use inverse transform sampling to generate `n = 5000` random numbers from this distribution. Plot a histogram of the random numbers, and overlay a line plot of the original density function we gave you. If you did everything correctly, the histogram and the density should agree.
 
+::: {.callout-warning collapse="true"}
+## Solution
 
+This is the Rayleigh distribution.
+
+$$
+\begin{aligned}
+F(x)
+&=
+\int_{-\infty}^x
+f(t)
+dt
+\\
+&=
+\int_{0}^x
+te^{-\frac{1}{2}t^2}
+dt
+\\
+&=
+\int_{0}^{-x^2/2}
+-e^u\,du
+&&
+\begin{matrix}
+u=-t^2/2\\
+du=-t\,dt
+\end{matrix}
+\\
+&=
+\int_{-x^2/2}^0
+e^u\,du
+\\
+&=
+[e^u]_{-x^2/2}^0
+\\
+&=
+1-e^{-x^2/2},&&x\geq 0.
+\end{aligned}
+$$
+
+Invert it:
+
+$$
+\begin{aligned}
+u &= 1-e^{-x^2/2}\\
+e^{-x^2/2} &= 1 - u\\
+-x^2/2&=\ln(1-u)\\
+x^2&=-2\ln(1-u)\\
+x&=\sqrt{-2\ln(1-u)}
+\end{aligned}
+$$
+
+So 
+
+$$
+F^{-1}(u)=\sqrt{-2\ln(1-u)}, \quad 0<u<1.
+$$
+
+```{r}
+set.seed(152638)
+U <- runif(5000)
+X <- sqrt(-2*log(1-U))
+hist(X, breaks = "Scott", freq = FALSE)
+curve(x * exp(-0.5 * x^2), from = min(X), to = max(X), n = 1000, 
+      col = "red", lwd = 2, add = TRUE)
+```
+
+:::
 
 ## Task 3
 
@@ -248,7 +314,76 @@ a. Compute the cdf;
 a. Compute the inverse cdf;
 a. Use inverse transform sampling to generate `n = 5000` random numbers from this distribution. Plot a histogram of the random numbers, and overlay a line plot of the original density function we gave you. If you did everything correctly, the histogram and the density should agree.
 
+::: {.callout-warning collapse="true"}
+## Solution
 
+This is the standard Gumbel distribution.
+
+$$
+\begin{aligned}
+F(x)
+&=
+\int_{-\infty}^x
+f(t)
+dt
+\\
+&=
+\int_{-\infty}^x
+e^{-(t+e^{-t})}
+dt
+\\
+&=
+\int_{\infty}^{e^{-x}}
+-e^{-(-\ln u+u)}
+\frac{du}{u}
+&&
+\begin{matrix}
+u=e^{-t}\\
+du=-e^{-t}\,dt
+\end{matrix}
+\\
+&=
+\int_{e^{-x}}^\infty e^{-u}du
+\\
+&=
+[-e^{-u}]_{e^{-x}}^\infty
+\\
+&=
+0-(-e^{-e^{-x}})
+\\
+&=
+e^{-e^{-x}},&& x\in\mathbb{R}.
+\end{aligned}
+$$
+
+Invert it:
+
+$$
+\begin{aligned}
+u &= e^{-e^{-x}}\\
+\ln u&=-e^{-x}\\
+-\ln u &=e^{-x}\\
+\ln(-\ln u)&=-x\\
+-\ln(-\ln u)&=x.
+\end{aligned}
+$$
+
+So 
+
+$$
+F^{-1}(u)=-\ln(-\ln u),\quad 0<u<1.
+$$
+
+```{r}
+set.seed(152638)
+U <- runif(5000)
+X <- -log(-log(U))
+hist(X, breaks = "Scott", freq = FALSE)
+curve(exp(-x-exp(-x)), from = min(X), to = max(X), n = 1000, 
+      col = "red", lwd = 2, add = TRUE)
+```
+
+:::
 
 
 ## Task 4
@@ -264,7 +399,91 @@ a. Compute the inverse cdf;
 a. Use inverse transform sampling to generate `n = 5000` random numbers from this distribution. Plot a histogram of the random numbers, and overlay a line plot of the original density function we gave you. If you did everything correctly, the histogram and the density should agree.
 
 
+::: {.callout-warning collapse="true"}
+## Solution
 
+This is the standard Laplace distribution. For $x<0$, 
+
+$$
+\begin{aligned}
+F(x)
+&=
+\int_{-\infty}^x
+\frac{1}{2}e^{-|t|}\,\text{d}t
+\\
+&=
+\frac{1}{2}
+\int_{-\infty}^x
+e^{-(-t)}\,\text{d}t
+\\
+&=
+\frac{1}{2}
+\int_{-\infty}^x
+e^{t}\,\text{d}t
+\\
+&=
+\frac{1}{2}
+[e^t]_{-\infty}^x
+\\
+&=
+\frac{1}{2} e^x.
+\end{aligned}
+$$
+
+For $x\geq 0$, 
+
+$$
+\begin{aligned}
+F(x)&=P(X\leq x)
+\\
+&=1-P(X>x)
+\\
+&=1-\int_x^\infty
+\frac{1}{2}e^{-|t|}\,\text{d}t
+\\
+&=
+1-\frac{1}{2}\int_x^\infty
+e^{-t}\,\text{d}t
+\\
+&=
+1-\frac{1}{2}[-e^{-t}]_x^\infty
+\\
+&=
+1-\frac{1}{2}e^{-x}.
+\end{aligned}
+$$
+
+So
+
+$$
+\begin{aligned}
+F(x)
+&=
+\begin{cases}
+\frac{1}{2} e^x & x<0\\
+1-\frac{1}{2} e^{-x} & x\geq 0.
+\end{cases}
+\end{aligned}
+$$
+
+If you invert that darn thing, you get:
+
+$$
+\begin{aligned}
+F^{-1}(u)=\text{sign}(u-0.5)\ln(1-2|u-0.5|),\quad 0<u<1.
+\end{aligned}
+$$
+
+```{r}
+set.seed(152638)
+U <- runif(5000)
+X <- sign(U - 0.5) * log(1 - 2 * abs(U - 0.5))
+hist(X, breaks = "Scott", freq = FALSE)
+curve(0.5 * exp(-abs(x)), from = min(X), to = max(X), n = 1000, 
+      col = "red", lwd = 2, add = TRUE)
+```
+
+:::
 
 ## Further reading
 
