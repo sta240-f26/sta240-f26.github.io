@@ -1,0 +1,139 @@
+---
+title: "Midterm 2 Study Guide"
+format: html
+editor: 
+  mode: source
+draft: false
+---
+
+Midterm Exam 2 will take place on **Thursday November 12** during your lab section. There will be 6 problems, and they will break down as follows:
+
+1. (undisclosed check on your visual intuition)
+1. (undisclosed check on your conceptual understanding)
+1. continuous random variables
+1. the moment-generating function
+1. transformations
+1. joint distributions
+
+Below are new practice problems for each topic, as well as guidance about what course materials to refer to if you want more review.
+
+::: callout-important
+## Give your cheat sheet some TLC!
+
+On the exam you are allowed both sides of one 8.5" x 11" sheet of notes, prepared by you and you alone. You can create it however you wish: handwritten, on a computer, etc.
+
+Do not skimp on the cheat sheet! Students in past semesters have neglected their cheat sheets to their detriment. Get an early start, and give it some elbow grease.
+
+:::
+
+# Continuous random variables
+
+```{r}
+#| echo: false
+q_no <- 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-continuous/random-point-on-line.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/random-variables-continuous/a-in-terms-of-b.qmd >}}
+
+
+## Want more review?
+
+- [Problem Set 5](/problems/pset-5.html);
+- [Problem Set 6](/problems/pset-6.html): problems 1 - 3;
+- Odd-numbered exercises in DeGroot & Schervish Chapters 3.2, 5.6, 5.7.
+
+# The moment-generating function
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/moments/discrete-uniform.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/moments/gumbel-mgf.qmd >}}
+
+
+## Want more review?
+
+- [Lecture notes](/lecture-notes/13-mgf.pdf);
+- [Problem Set 6](/problems/pset-6.html): problems 4 - 8;
+- [Problem Set 7](/problems/pset-7.html): problem 1;
+- Odd-numbered exercises in DeGroot & Schervish Chapter 4.4.
+
+
+
+# Transformations
+
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+
+{{< include bank/transformations/gamma-power.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no` ★
+
+{{< include bank/transformations/zohn-jito.qmd >}}
+
+## Want more review?
+
+- [Lab 8](/lab/lab-8.html);
+- [Problem Set 6](/problems/pset-6.html): problem 9 - 10;
+- [Problem Set 7](/problems/pset-7.html): problem 2;
+- Read DeGroot & Schervish Chapter 3.8 and do the odd-numbered exercises.
+
+# Joint distributions
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no` ★
+
+{{< include bank/joint-distributions/gamma-pareto-hierarchy.qmd >}}
+
+```{r}
+#| echo: false
+q_no <- q_no + 1
+```
+
+## Problem `{r} q_no`
+
+{{< include bank/joint-distributions/beta-gamma-hierarchy.qmd >}}
+
+## Want more review?
+
+- [Problem Set 7](/problems/pset-7.html): problems 3 - 5;
+- Odd-numbered exercises in DeGroot & Schervish Chapters 3.4 - 3.6.
+
