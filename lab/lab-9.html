@@ -568,6 +568,12 @@ window.Quarto = {
  <span class="menu-text">Midterm 1</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../problems/midterm-2-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm 2</span></a>
+  </div>
+</li>
       </ul>
 </li>
     </ul>
@@ -607,15 +613,15 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html">rgamma</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5025022 0.7724609 0.3563358 0.2283265 4.0864342</code></pre>
+<pre><code>[1] 0.9468951 0.3277821 0.8105187 0.5531176 0.6274678</code></pre>
 </div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.089175296 -0.503630901 -1.572377881  0.001570843 -0.719799780</code></pre>
+<pre><code>[1] -0.04175563  1.94170550  1.33276282  0.06975008  1.27156753</code></pre>
 </div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0 0 1 0 3</code></pre>
+<pre><code>[1] 1 0 0 0 0</code></pre>
 </div>
 </div>
 <p>How do these…work? What is the computer actually doing? How do we program a computer to generate random numbers that behave according to some specified distribution?</p>
@@ -830,7 +836,85 @@ f(x) = xe^{-\frac{1}{2}x^2},\quad x\geq 0.
 <li>Compute the cdf;</li>
 <li>Compute the inverse cdf;</li>
 <li>Use inverse transform sampling to generate <code>n = 5000</code> random numbers from this distribution. Plot a histogram of the random numbers, and overlay a line plot of the original density function we gave you. If you did everything correctly, the histogram and the density should agree.</li>
-</ol></section><section id="task-3" class="level2"><h2 class="anchored" data-anchor-id="task-3">Task 3</h2>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is the Rayleigh distribution.</p>
+<p><span class="math display">\[
+\begin{aligned}
+F(x)
+&amp;=
+\int_{-\infty}^x
+f(t)
+dt
+\\
+&amp;=
+\int_{0}^x
+te^{-\frac{1}{2}t^2}
+dt
+\\
+&amp;=
+\int_{0}^{-x^2/2}
+-e^u\,du
+&amp;&amp;
+\begin{matrix}
+u=-t^2/2\\
+du=-t\,dt
+\end{matrix}
+\\
+&amp;=
+\int_{-x^2/2}^0
+e^u\,du
+\\
+&amp;=
+[e^u]_{-x^2/2}^0
+\\
+&amp;=
+1-e^{-x^2/2},&amp;&amp;x\geq 0.
+\end{aligned}
+\]</span></p>
+<p>Invert it:</p>
+<p><span class="math display">\[
+\begin{aligned}
+u &amp;= 1-e^{-x^2/2}\\
+e^{-x^2/2} &amp;= 1 - u\\
+-x^2/2&amp;=\ln(1-u)\\
+x^2&amp;=-2\ln(1-u)\\
+x&amp;=\sqrt{-2\ln(1-u)}
+\end{aligned}
+\]</span></p>
+<p>So</p>
+<p><span class="math display">\[
+F^{-1}(u)=\sqrt{-2\ln(1-u)}, \quad 0&lt;u&lt;1.
+\]</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">152638</span><span class="op">)</span></span>
+<span><span class="va">U</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">5000</span><span class="op">)</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">U</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">X</span>, breaks <span class="op">=</span> <span class="st">"Scott"</span>, freq <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="va">x</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.5</span> <span class="op">*</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>, from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">1000</span>, </span>
+<span>      col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="lab-9_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="task-3" class="level2"><h2 class="anchored" data-anchor-id="task-3">Task 3</h2>
 <p>Consider a random variable <span class="math inline">\(X\)</span> with this density:</p>
 <p><span class="math display">\[
 f(x) = e^{-(x+e^{-x})},\quad x\in\mathbb{R}.
@@ -839,7 +923,88 @@ f(x) = e^{-(x+e^{-x})},\quad x\in\mathbb{R}.
 <li>Compute the cdf;</li>
 <li>Compute the inverse cdf;</li>
 <li>Use inverse transform sampling to generate <code>n = 5000</code> random numbers from this distribution. Plot a histogram of the random numbers, and overlay a line plot of the original density function we gave you. If you did everything correctly, the histogram and the density should agree.</li>
-</ol></section><section id="task-4" class="level2"><h2 class="anchored" data-anchor-id="task-4">Task 4</h2>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is the standard Gumbel distribution.</p>
+<p><span class="math display">\[
+\begin{aligned}
+F(x)
+&amp;=
+\int_{-\infty}^x
+f(t)
+dt
+\\
+&amp;=
+\int_{-\infty}^x
+e^{-(t+e^{-t})}
+dt
+\\
+&amp;=
+\int_{\infty}^{e^{-x}}
+-e^{-(-\ln u+u)}
+\frac{du}{u}
+&amp;&amp;
+\begin{matrix}
+u=e^{-t}\\
+du=-e^{-t}\,dt
+\end{matrix}
+\\
+&amp;=
+\int_{e^{-x}}^\infty e^{-u}du
+\\
+&amp;=
+[-e^{-u}]_{e^{-x}}^\infty
+\\
+&amp;=
+0-(-e^{-e^{-x}})
+\\
+&amp;=
+e^{-e^{-x}},&amp;&amp; x\in\mathbb{R}.
+\end{aligned}
+\]</span></p>
+<p>Invert it:</p>
+<p><span class="math display">\[
+\begin{aligned}
+u &amp;= e^{-e^{-x}}\\
+\ln u&amp;=-e^{-x}\\
+-\ln u &amp;=e^{-x}\\
+\ln(-\ln u)&amp;=-x\\
+-\ln(-\ln u)&amp;=x.
+\end{aligned}
+\]</span></p>
+<p>So</p>
+<p><span class="math display">\[
+F^{-1}(u)=-\ln(-\ln u),\quad 0&lt;u&lt;1.
+\]</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">152638</span><span class="op">)</span></span>
+<span><span class="va">U</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">5000</span><span class="op">)</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">U</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">X</span>, breaks <span class="op">=</span> <span class="st">"Scott"</span>, freq <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">x</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>, from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">1000</span>, </span>
+<span>      col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="lab-9_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="task-4" class="level2"><h2 class="anchored" data-anchor-id="task-4">Task 4</h2>
 <p>Consider a random variable <span class="math inline">\(X\)</span> with this density:</p>
 <p><span class="math display">\[
 f(x) = \frac{1}{2}e^{-|x|},\quad x\in\mathbb{R}.
@@ -848,7 +1013,101 @@ f(x) = \frac{1}{2}e^{-|x|},\quad x\in\mathbb{R}.
 <li>Compute the cdf;</li>
 <li>Compute the inverse cdf;</li>
 <li>Use inverse transform sampling to generate <code>n = 5000</code> random numbers from this distribution. Plot a histogram of the random numbers, and overlay a line plot of the original density function we gave you. If you did everything correctly, the histogram and the density should agree.</li>
-</ol></section><section id="further-reading" class="level2"><h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is the standard Laplace distribution. For <span class="math inline">\(x&lt;0\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+F(x)
+&amp;=
+\int_{-\infty}^x
+\frac{1}{2}e^{-|t|}\,\text{d}t
+\\
+&amp;=
+\frac{1}{2}
+\int_{-\infty}^x
+e^{-(-t)}\,\text{d}t
+\\
+&amp;=
+\frac{1}{2}
+\int_{-\infty}^x
+e^{t}\,\text{d}t
+\\
+&amp;=
+\frac{1}{2}
+[e^t]_{-\infty}^x
+\\
+&amp;=
+\frac{1}{2} e^x.
+\end{aligned}
+\]</span></p>
+<p>For <span class="math inline">\(x\geq 0\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+F(x)&amp;=P(X\leq x)
+\\
+&amp;=1-P(X&gt;x)
+\\
+&amp;=1-\int_x^\infty
+\frac{1}{2}e^{-|t|}\,\text{d}t
+\\
+&amp;=
+1-\frac{1}{2}\int_x^\infty
+e^{-t}\,\text{d}t
+\\
+&amp;=
+1-\frac{1}{2}[-e^{-t}]_x^\infty
+\\
+&amp;=
+1-\frac{1}{2}e^{-x}.
+\end{aligned}
+\]</span></p>
+<p>So</p>
+<p><span class="math display">\[
+\begin{aligned}
+F(x)
+&amp;=
+\begin{cases}
+\frac{1}{2} e^x &amp; x&lt;0\\
+1-\frac{1}{2} e^{-x} &amp; x\geq 0.
+\end{cases}
+\end{aligned}
+\]</span></p>
+<p>If you invert that darn thing, you get:</p>
+<p><span class="math display">\[
+\begin{aligned}
+F^{-1}(u)=\text{sign}(u-0.5)\ln(1-2|u-0.5|),\quad 0&lt;u&lt;1.
+\end{aligned}
+\]</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">152638</span><span class="op">)</span></span>
+<span><span class="va">U</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">5000</span><span class="op">)</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sign.html">sign</a></span><span class="op">(</span><span class="va">U</span> <span class="op">-</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">U</span> <span class="op">-</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">X</span>, breaks <span class="op">=</span> <span class="st">"Scott"</span>, freq <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fl">0.5</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>, from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">1000</span>, </span>
+<span>      col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="lab-9_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="further-reading" class="level2"><h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
 <p>I love computer simulation. It’s gorgeous. Here are two great books:</p>
 <ul>
 <li>Devroye, Luc (1986): <em>Non-uniform Random Variate Generation</em> (<a href="https://luc.devroye.org/rnbookindex.html">free pdf</a> from the author);</li>
