@@ -385,6 +385,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../distributions/continuous-exponential.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exponential</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../distributions/continuous-gamma.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Gamma</span></a>
   </div>
@@ -596,13 +602,11 @@ Y&amp;=\frac{304}{538}\approx 0.5651.
 \]</span></p>
 <p>But in May 2016 we didn’t know that yet, so let’s think about the pair <span class="math inline">\((X,\,Y)\)</span> from that vantage point:</p>
 <ul>
-<li>The value of the pair <span class="math inline">\((X,\,Y)\)</span> was genuinely uncertain, so we can treat it as random.</li>
-<li>
-</li><li>
-</li><li>
-</li></ul>
-<p>The political scientists can tell you that both of these votes ended up being expressions of similar trends and forces. So my instincts that</p>
-<p>However, they do not perfectly coincide. There are idiosyncratic, UK specific forces bearing on X and idiosyncratic US specific forces bearing on Y.</p>
+<li>(<strong>random</strong>) the value of the pair <span class="math inline">\((X,\,Y)\)</span> was genuinely uncertain, so we can treat it as random;</li>
+<li>(<strong>continuous</strong>) any decimal value between zero and one is possible, so these are continuous random variables;</li>
+<li>(<strong>related…</strong>) pundits will tell you that both of these votes ended up being expressions of similar trends and forces, and so their values are intertwined. If I learn <span class="math inline">\(X\)</span> (as I did in June 2016), it should teach me something about <span class="math inline">\(Y\)</span>;</li>
+<li>(<strong>…but distinct</strong>) however, they do not perfectly coincide. There are idiosyncratic, UK-specific forces bearing on X and idiosyncratic US-specific forces bearing on Y. That should be part of the story as well.</li>
+</ul>
 <p>So, our goal is to model the joint behavior of two dependent random quantities. How do we do that? At a high level, the answer is the same as it ever was: write down a probability measure, just like in week 2.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -620,7 +624,7 @@ A\mapsto P\left((X,\, Y)\in A\right),\quad A\subseteq \mathbb{R}^2.
 \]</span></p>
 </div>
 </div>
-<p>How do you write down such a measure? Like in the univariate case, it depends on the type: discrete, continuous, mixed, etc. In our case, we have two continuous random variables. We can specifiy a joint distribution for them by writing down a joint probability density function (PDF)</p>
+<p>How do you write down such a measure? Like in the univariate case, it depends on the type: discrete, continuous, mixed, etc. In our case, we have two continuous random variables. We can specify a joint distribution for them by writing down a <em>joint</em> probability density function:</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -648,6 +652,7 @@ P\left((X,\, Y)\in C\right)=\underset{C}{\int\int}f_{XY}(x,\, y)\,\text{d} x\tex
 </div>
 </div>
 </div>
+<p>For our example, let’s imagine that this is the joint PDF of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>:</p>
 <p><span class="math display">\[
 f_{XY}(x,\,y)
 =
@@ -656,6 +661,7 @@ f_{XY}(x,\,y)
 0 &amp; \text{else}.
 \end{cases}
 \]</span></p>
+<p>This is the formula for a surface in three-dimensional space. Here is the contour plot and the 3D plot of this surface:</p>
 <div class="columns">
 <div class="column">
 <div class="cell">
@@ -677,6 +683,7 @@ f_{XY}(x,\,y)
 </div>
 </div>
 </div>
+<p>We see that in this simple mathematical model, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are more likely to either be high together or low together, and less likely to be apart. So this model captures <em>positive association</em> between these two related quantities, which matches my intuition.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -724,8 +731,7 @@ Verify: the joint PDF integrates to 1
 <blockquote class="blockquote">
 <p>What is the probability that “Leave” and Trump both win?</p>
 </blockquote>
-<p>P(X &gt; 1/2 and Y &gt; 1/2)</p>
-<p>PIC</p>
+<p>CONTOUR PLOT WITH UPPER RIGHT SHADED AND THEN 3D PLOT</p>
 <p><span class="math display">\[
 \begin{aligned}
 P\left(X&gt;\frac{1}{2}\cap Y&gt;\frac{1}{2}\right)
@@ -767,6 +773,13 @@ f_{XY}(x,\,y)
 0.3125.
 \end{aligned}
 \]</span></p>
+<p>By symmetry</p>
+<p><span class="math display">\[
+P\left(X\leq \frac{1}{2}\cap Y\leq \frac{1}{2}\right)=5/16.
+\]</span></p>
+<blockquote class="blockquote">
+<p>what is the probability that Trump’s vote share is larger than the “Leave” vote share?</p>
+</blockquote>
 <p>Before we launch into the calculation, make note of a few things:</p>
 <ul>
 <li>we know the joint PDF integrates to 1 over the entire unit square;</li>
@@ -813,6 +826,9 @@ f_{XY}(x,\,y)
 1/2.
 \end{aligned}
 \]</span></p>
+<blockquote class="blockquote">
+<p>what is the probability that the “Leave” vote share is exactly equal to Trump’s vote share?</p>
+</blockquote>
 <p>P(X = Y)</p>
 <p><span class="math display">\[
 P(X=Y)=\int_0^1\int_y^y f_{XY}(x,\,y)\,\text{d}x\,\text{d}y=\int_0^10\,\text{d}y=0.
@@ -883,7 +899,10 @@ f_X(x)=F'_X(x)=\frac{\text{d}}{\text{d} x}
 \int_{-\infty}^\infty f_{XY}(x,\, y)\,\text{d} y.
 \]</span></p>
 </section><section id="conditional-distributions" class="level3"><h3 class="anchored" data-anchor-id="conditional-distributions">Conditional distributions</h3>
-<p>P(Y &gt; 1/2 | X = 0.5189)</p>
+<blockquote class="blockquote">
+<p>if we learn, as we we did in June 2016, that “Leave” got exactly 0.5189, what is the probability that Trump wins?</p>
+</blockquote>
+<p>In other words, we want <span class="math inline">\(P(Y &gt; 1/2 \mid X = 0.5189)\)</span>. We can attempt to compute this by using the definition, but it won’t quite work:</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

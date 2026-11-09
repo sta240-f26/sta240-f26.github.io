@@ -60,6 +60,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../distributions/continuous-gamma.html" rel="next">
+<link href="../distributions/continuous-uniform.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -137,7 +139,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Exponential distribution</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../distributions/discrete-binomial.html">Distributions</a></li><li class="breadcrumb-item"><a href="../distributions/continuous-exponential.html">Exponential</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -384,13 +386,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Distributions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../distributions/discrete-binomial.html" class="sidebar-item-text sidebar-link">
@@ -413,6 +415,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../distributions/continuous-uniform.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Continuous uniform</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../distributions/continuous-exponential.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Exponential</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -591,7 +599,7 @@ window.Quarto = {
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../distributions/discrete-binomial.html">Distributions</a></li><li class="breadcrumb-item"><a href="../distributions/continuous-exponential.html">Exponential</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Exponential distribution</h1>
 </div>
 
@@ -765,7 +773,20 @@ Verify PDF integrates to 1
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p><span class="math display">\[
+\begin{aligned}
+\int_{-\infty}^{\infty} f(x)\,\text{d}x
+&amp;= \int_0^\infty \lambda e^{-\lambda x}\,\text{d}x \\
+&amp;= \lambda \int_0^\infty e^{-\lambda x}\,\text{d}x \\
+&amp;= \lambda \lim_{b\to\infty} \int_0^b e^{-\lambda x}\,\text{d}x \\
+&amp;= \lambda \lim_{b\to\infty}
+   \left[-\frac{1}{\lambda}e^{-\lambda x}\right]_0^b \\
+&amp;= -\lim_{b\to\infty}
+   \left(e^{-\lambda b}-e^0\right) \\
+&amp;= -\left(0-1\right) \\
+&amp;= 1.
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 </div>
@@ -781,7 +802,18 @@ From PDF to CDF
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p><span class="math display">\[
+\begin{aligned}
+F(x)
+&amp;= P(X \leq x) \\
+&amp;= \int_0^x f(t)\,\text{d}t \\
+&amp;= \int_0^x \lambda e^{-\lambda t}\,\text{d}t \\
+&amp;= \lambda \int_0^x e^{-\lambda t}\,\text{d}t \\
+&amp;= \lambda \left[-\frac{1}{\lambda}e^{-\lambda t}\right]_0^x \\
+&amp;= -\left(e^{-\lambda x}-e^0\right) \\
+&amp;= 1-e^{-\lambda x}.
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 </div>
@@ -797,7 +829,15 @@ From CDF to PDF
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p><span class="math display">\[
+\begin{aligned}
+f(x)
+&amp;= \frac{\text{d}}{\text{d}x}F(x) \\
+&amp;= \frac{\text{d}}{\text{d}x}\left(1-e^{-\lambda x}\right) \\
+&amp;= 0-\left(-\lambda e^{-\lambda x}\right) \\
+&amp;= \lambda e^{-\lambda x}.
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 </div>
@@ -813,7 +853,14 @@ Quantile function (inverse CDF)
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p><span class="math display">\[
+\begin{aligned}
+y&amp;= 1-e^{-\lambda x} \\
+1-y &amp;= e^{-\lambda x} \\
+\log(1-y) &amp;= -\lambda x \\
+x &amp;= -\frac{1}{\lambda}\log(1-y).
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 </div>
@@ -829,7 +876,39 @@ Compute mean (via definition)
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>Setup:</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[X]
+&amp;= \int_{-\infty}^{\infty} x f(x)\,\text{d}x \\
+&amp;= \int_0^\infty x\lambda e^{-\lambda x}\,\text{d}x.
+\end{aligned}
+\]</span></p>
+<p>Integration by parts:</p>
+<p><span class="math display">\[
+\begin{aligned}
+u &amp;= x,
+&amp; \text{d}u &amp;= \text{d}x, \\
+\text{d}v &amp;= \lambda e^{-\lambda x}\,\text{d}x,
+&amp; v &amp;= -e^{-\lambda x}.
+\end{aligned}
+\]</span></p>
+<p>Follow through:</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[X]
+&amp;= \left[-xe^{-\lambda x}\right]_0^\infty
+   + \int_0^\infty e^{-\lambda x}\,\text{d}x \\
+&amp;= -\lim_{b\to\infty}\frac{b}{e^{\lambda b}}
+   + \frac{1}{\lambda}
+   \int_0^\infty \lambda e^{-\lambda x}\,\text{d}x \\
+&amp;= -\lim_{b\to\infty}\frac{1}{\lambda e^{\lambda b}}
+   + \frac{1}{\lambda}\cdot 1
+   \qquad \text{(L'Hôpital's rule)} \\
+&amp;= 0+\frac{1}{\lambda} \\
+&amp;= \frac{1}{\lambda}.
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 </div>
@@ -845,7 +924,52 @@ Compute variance (via LOTUS)
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>Setup:</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[X^2]
+&amp;= \int_{-\infty}^{\infty} x^2 f(x)\,\text{d}x \\
+&amp;= \int_0^\infty x^2\lambda e^{-\lambda x}\,\text{d}x.
+\end{aligned}
+\]</span></p>
+<p>IBP:</p>
+<p><span class="math display">\[
+\begin{aligned}
+u &amp;= x^2,
+&amp; \text{d}u &amp;= 2x\,\text{d}x, \\
+\text{d}v &amp;= \lambda e^{-\lambda x}\,\text{d}x,
+&amp; v &amp;= -e^{-\lambda x}.
+\end{aligned}
+\]</span></p>
+<p>Follow through:</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[X^2]
+&amp;= \left[-x^2e^{-\lambda x}\right]_0^\infty
+   + 2\int_0^\infty xe^{-\lambda x}\,\text{d}x \\
+&amp;= -\lim_{b\to\infty}\frac{b^2}{e^{\lambda b}}
+   + \frac{2}{\lambda}
+     \int_0^\infty x\lambda e^{-\lambda x}\,\text{d}x \\
+&amp;= -\lim_{b\to\infty}\frac{2b}{\lambda e^{\lambda b}}
+   + \frac{2}{\lambda}E[X]
+   \qquad \text{(L'Hôpital's rule)} \\
+&amp;= -\lim_{b\to\infty}\frac{2}{\lambda^2 e^{\lambda b}}
+   + \frac{2}{\lambda}\cdot\frac{1}{\lambda}
+   \qquad \text{(L'Hôpital's rule again)} \\
+&amp;= 0+\frac{2}{\lambda^2} \\
+&amp;= \frac{2}{\lambda^2}.
+\end{aligned}
+\]</span></p>
+<p>So:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{var}(X)
+&amp;= E[X^2] - (E[X])^2 \\
+&amp;= \frac{2}{\lambda^2} - \left(\frac{1}{\lambda}\right)^2 \\
+&amp;= \frac{2}{\lambda^2} - \frac{1}{\lambda^2} \\
+&amp;= \frac{1}{\lambda^2}.
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 </div>
@@ -864,38 +988,6 @@ Compute median
 <p><span class="math display">\[
 F^{-1}(1/2)=-\frac{\ln(1-1/2)}{\lambda}=-\frac{\ln(1/2)}{\lambda}=\frac{\ln((1/2)^{-1})}{\lambda}=\frac{\ln 2}{\lambda}\approx\frac{0.6931}{\lambda}.
 \]</span> Since <span class="math inline">\(E(X)=1/\lambda\)</span> and <span class="math inline">\(\ln 2&lt;1\)</span>, we always have <span class="math inline">\(\text{median}(X)&lt;E(X)\)</span>.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Compute moment-generating function
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Compute mean and variance (via MGF)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-
 </div>
 </div>
 </div>
@@ -1299,7 +1391,17 @@ Compute mean and variance (via MGF)
       }
     }
   });
-  </script>
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../distributions/continuous-uniform.html" class="pagination-link" aria-label="Continuous uniform">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Continuous uniform</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../distributions/continuous-gamma.html" class="pagination-link" aria-label="Gamma">
+        <span class="nav-page-text">Gamma</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
