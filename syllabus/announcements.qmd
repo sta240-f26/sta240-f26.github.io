@@ -9,6 +9,8 @@ format: html
 
 {{< include announcements/chamber.qmd >}}
 
+{{< include announcements/ddmf.qmd >}}
+
 {{< include announcements/awaaz.qmd >}}
 
 {{< include announcements/ssmu-stuff.qmd >}}
