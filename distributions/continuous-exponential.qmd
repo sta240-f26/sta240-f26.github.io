@@ -1,0 +1,303 @@
+---
+title: "Exponential distribution"
+format: html
+filters:
+  - shinylive
+---
+
+The exponential distribution is a classic choice for modeling continuous quantities such as the waiting time between events. It has one parameter $\lambda>0$ called the **rate**.
+
+## Basic properties
+
+|  |        |
+|------|--------------------|
+| **Notation** | $X\sim\text{Exponential}(\lambda)$  |
+| **Range** | $[0,\,\infty)$ |
+| **Parameter space** | $\lambda>0$ |
+| **CDF** | $F(x)=\begin{cases}0 & x<0 \\1-e^{-\lambda x}&x\geq 0\end{cases}$ |
+| **PDF** | $f(x)=\begin{cases}0 & x<0\\\lambda e^{-\lambda x} &x\geq 0.\end{cases}$ |
+| **Inverse CDF** | $F^{-1}(y)=-\frac{\ln(1-y)}{\lambda},0<y<1$ |
+| **MGF** | $M(t)=\frac{\lambda}{\lambda-t}$, $t<\lambda$ |
+| **Expectation** | $1/\lambda$ |
+| **Median** | $(\ln 2)/\lambda$ |
+| **Variance** | $1/\lambda^2$ |
+| **Moments** | $E(X^n)=\frac{n!}{\lambda^n}$ |
+
+## `R` commands
+
+[Here](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Exponential.html) is the documentation for the suite of commands that let you work with the exponential distribution in `R`:
+
+```{r}
+#| eval: false
+dexp(x, rate = 1) # PDF
+pexp(q, rate = 1) # CDF: P(X <= q)
+qexp(p, rate = 1) # quantile function (inverse CDF)
+rexp(n, rate = 1) # random numbers
+```
+
+## Play around!
+
+The parameter $\lambda>0$ literally controls the $y$-intercept of the density curve: $f(0)=\lambda$. If you increase $\lambda$, values closer to zero become more likely. If you decrease $\lambda$, values farther from zero become more likely. This is summarized by measures of central tendency like the mean and median, which are *inversely* related to $\lambda$. Furthermore, because this is a unimodal distribution that is *right-skewed*, the skew pulls the mean *above* the median.
+
+You can see all of that below:
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 700
+
+library(shiny)
+
+ui <- fluidPage(
+  titlePanel("Exponential distribution CDF and PDF"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("beta", "Rate (λ):",
+                  min = 0.01, max = 2, value = 1, step = 0.01),
+      hr(),
+      verbatimTextOutput("moments")
+    ),
+    
+    mainPanel(
+      plotOutput("gammaPlot", height = "600px")
+    )
+  )
+)
+
+server <- function(input, output) {
+  output$moments <- renderText({
+    alpha <- 1
+    beta  <- input$beta
+    mu <- alpha / beta
+    sd <- sqrt(alpha) / beta
+    paste0("E(X) = ", round(mu, 4),
+           "\nmedian(X) = ", round(log(2) / beta, 4),
+           "\nsd(X) = ", round(sd, 4))
+  })
+  
+  output$gammaPlot <- renderPlot({
+    alpha <- 1
+    beta  <- input$beta
+    
+    # Fixed plotting range
+    x_min <- 0
+    x_max <- 30
+    x <- seq(x_min, x_max, length.out = 2000)
+    
+    # PDF and CDF
+    pdf_vals <- dgamma(x, shape = alpha, rate = beta)
+    cdf_vals <- pgamma(x, shape = alpha, rate = beta)
+    
+    mu <- alpha / beta
+    
+    # Fixed y-limits
+    pdf_ylim <- c(0, 2)
+    cdf_ylim <- c(0, 1)
+    
+    par(mfrow = c(2, 1), mar = c(4, 4, 2, 1))
+    
+    # --- CDF ---
+    plot(c(-3, x), c(0, cdf_vals), type = "l", lwd = 2, col = "blue",
+         xlim = c(-2, 25), ylim = cdf_ylim,
+         main = "Cumulative Distribution Function (CDF)",
+         xlab = "", ylab = "F(x)")
+    abline(h = c(0, 1), col = "gray80", lty = 2)
+    
+    # --- PDF ---
+    plot(x, pdf_vals, type = "l", lwd = 2, col = "darkred",
+         xlim = c(-2, 25), ylim = pdf_ylim,
+         main = "Probability Density Function (PDF)",
+         xlab = "x", ylab = "f(x)")
+    lines(c(-3, 0), c(0, 0), lwd = 2, col = "darkred")
+    text(x = -1, y = beta, labels = expression(lambda))
+    
+    mtext("E(X)", side = 1, line = 2.2, at = mu, cex = 1.0)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+
+
+```
+
+## Derivations
+
+::: {.callout-tip collapse="true"}
+## Verify PDF integrates to 1
+
+$$
+\begin{aligned}
+\int_{-\infty}^{\infty} f(x)\,\text{d}x
+&= \int_0^\infty \lambda e^{-\lambda x}\,\text{d}x \\
+&= \lambda \int_0^\infty e^{-\lambda x}\,\text{d}x \\
+&= \lambda \lim_{b\to\infty} \int_0^b e^{-\lambda x}\,\text{d}x \\
+&= \lambda \lim_{b\to\infty}
+   \left[-\frac{1}{\lambda}e^{-\lambda x}\right]_0^b \\
+&= -\lim_{b\to\infty}
+   \left(e^{-\lambda b}-e^0\right) \\
+&= -\left(0-1\right) \\
+&= 1.
+\end{aligned}
+$$
+
+:::
+
+::: {.callout-note collapse="true"}
+## From PDF to CDF
+
+$$
+\begin{aligned}
+F(x)
+&= P(X \leq x) \\
+&= \int_0^x f(t)\,\text{d}t \\
+&= \int_0^x \lambda e^{-\lambda t}\,\text{d}t \\
+&= \lambda \int_0^x e^{-\lambda t}\,\text{d}t \\
+&= \lambda \left[-\frac{1}{\lambda}e^{-\lambda t}\right]_0^x \\
+&= -\left(e^{-\lambda x}-e^0\right) \\
+&= 1-e^{-\lambda x}.
+\end{aligned}
+$$
+:::
+
+::: {.callout-tip collapse="true"}
+## From CDF to PDF
+
+$$
+\begin{aligned}
+f(x)
+&= \frac{\text{d}}{\text{d}x}F(x) \\
+&= \frac{\text{d}}{\text{d}x}\left(1-e^{-\lambda x}\right) \\
+&= 0-\left(-\lambda e^{-\lambda x}\right) \\
+&= \lambda e^{-\lambda x}.
+\end{aligned}
+$$
+
+:::
+
+::: {.callout-note collapse="true"}
+## Quantile function (inverse CDF)
+
+$$
+\begin{aligned}
+y&= 1-e^{-\lambda x} \\
+1-y &= e^{-\lambda x} \\
+\log(1-y) &= -\lambda x \\
+x &= -\frac{1}{\lambda}\log(1-y).
+\end{aligned}
+$$
+:::
+
+::: {.callout-tip collapse="true"}
+## Compute mean (via definition)
+
+Setup:
+
+$$
+\begin{aligned}
+E[X]
+&= \int_{-\infty}^{\infty} x f(x)\,\text{d}x \\
+&= \int_0^\infty x\lambda e^{-\lambda x}\,\text{d}x.
+\end{aligned}
+$$
+
+Integration by parts:
+
+$$
+\begin{aligned}
+u &= x,
+& \text{d}u &= \text{d}x, \\
+\text{d}v &= \lambda e^{-\lambda x}\,\text{d}x,
+& v &= -e^{-\lambda x}.
+\end{aligned}
+$$
+
+Follow through:
+
+$$
+\begin{aligned}
+E[X]
+&= \left[-xe^{-\lambda x}\right]_0^\infty
+   + \int_0^\infty e^{-\lambda x}\,\text{d}x \\
+&= -\lim_{b\to\infty}\frac{b}{e^{\lambda b}}
+   + \frac{1}{\lambda}
+   \int_0^\infty \lambda e^{-\lambda x}\,\text{d}x \\
+&= -\lim_{b\to\infty}\frac{1}{\lambda e^{\lambda b}}
+   + \frac{1}{\lambda}\cdot 1
+   \qquad \text{(L'Hôpital's rule)} \\
+&= 0+\frac{1}{\lambda} \\
+&= \frac{1}{\lambda}.
+\end{aligned}
+$$
+
+:::
+
+::: {.callout-note collapse="true"}
+## Compute variance (via LOTUS)
+
+Setup:
+
+$$
+\begin{aligned}
+E[X^2]
+&= \int_{-\infty}^{\infty} x^2 f(x)\,\text{d}x \\
+&= \int_0^\infty x^2\lambda e^{-\lambda x}\,\text{d}x.
+\end{aligned}
+$$
+
+IBP: 
+
+$$
+\begin{aligned}
+u &= x^2,
+& \text{d}u &= 2x\,\text{d}x, \\
+\text{d}v &= \lambda e^{-\lambda x}\,\text{d}x,
+& v &= -e^{-\lambda x}.
+\end{aligned}
+$$
+
+Follow through: 
+
+$$
+\begin{aligned}
+E[X^2]
+&= \left[-x^2e^{-\lambda x}\right]_0^\infty
+   + 2\int_0^\infty xe^{-\lambda x}\,\text{d}x \\
+&= -\lim_{b\to\infty}\frac{b^2}{e^{\lambda b}}
+   + \frac{2}{\lambda}
+     \int_0^\infty x\lambda e^{-\lambda x}\,\text{d}x \\
+&= -\lim_{b\to\infty}\frac{2b}{\lambda e^{\lambda b}}
+   + \frac{2}{\lambda}E[X]
+   \qquad \text{(L'Hôpital's rule)} \\
+&= -\lim_{b\to\infty}\frac{2}{\lambda^2 e^{\lambda b}}
+   + \frac{2}{\lambda}\cdot\frac{1}{\lambda}
+   \qquad \text{(L'Hôpital's rule again)} \\
+&= 0+\frac{2}{\lambda^2} \\
+&= \frac{2}{\lambda^2}.
+\end{aligned}
+$$
+
+So:
+
+$$
+\begin{aligned}
+\operatorname{var}(X)
+&= E[X^2] - (E[X])^2 \\
+&= \frac{2}{\lambda^2} - \left(\frac{1}{\lambda}\right)^2 \\
+&= \frac{2}{\lambda^2} - \frac{1}{\lambda^2} \\
+&= \frac{1}{\lambda^2}.
+\end{aligned}
+$$
+
+:::
+
+::: {.callout-tip collapse="true"}
+## Compute median
+
+
+
+$$
+F^{-1}(1/2)=-\frac{\ln(1-1/2)}{\lambda}=-\frac{\ln(1/2)}{\lambda}=\frac{\ln((1/2)^{-1})}{\lambda}=\frac{\ln 2}{\lambda}\approx\frac{0.6931}{\lambda}.
+$$
+Since $E(X)=1/\lambda$ and $\ln 2<1$, we always have $\text{median}(X)<E(X)$.
+
+:::
