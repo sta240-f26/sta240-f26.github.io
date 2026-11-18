@@ -7,7 +7,7 @@ filters:
 
 # Recap: sums and averages of iid random variables
 
-In the [last lecture](https://sta240-f25.github.io/lecture-notes/sta240-notes-14-sums-and-averages.pdf), we studied iid collections of several random variables:
+In the [last lecture](/lecture-notes/15-sums-and-averages.pdf), we studied iid collections of several random variables:
 
 $$
 X_1,\,X_2,\,X_3,\,X_4,\,...\overset{\text{iid}}{\sim}P.
@@ -263,9 +263,9 @@ shinyApp(ui = ui, server = server)
 :::
 
 ::: callout-warning
-## Example: position of a particle (PSET 6 #2)
+## Example: position of a particle (PSET 6 #3)
 
-On [Problem Set 6](https://sta240-f25.github.io/problems/pset-6.html#problem-2), you studied the position $X_n$ of a one-dimensional subatomic particle in energy state $n$ on the interval $[0,\,L]$. It had cumulative distribution function
+On [Problem Set 6](/problems/pset-6.html#problem-3), you studied the position $X_n$ of a one-dimensional subatomic particle in energy state $n$ on the interval $[0,\,L]$. It had cumulative distribution function
 
 $$
 F_n(x)=P(X_n\leq x)=\frac{x}{L}-\frac{\sin(2n\pi x / L)}{2n\pi},\quad 0\leq x\leq L.
@@ -554,5 +554,5 @@ Done!
 ::: callout-important
 ## Problem Set 0 strikes again!
 
-The limit we took to finish the proof is basically the same limit you took on [Problem Set 0 problem 6](https://sta240-f25.github.io/problems/pset-0.html#problem-6). Just take $x=n$ and $f=\ln M$.
+The limit we took to finish the proof is basically the same limit you took on [Problem Set 0 problem 5](/problems/pset-0.html#problem-5). Just take $x=n$ and $f=\ln M$.
 :::
