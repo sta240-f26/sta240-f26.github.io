@@ -9,13 +9,13 @@ format: html
 
 {{< include announcements/chamber.qmd >}}
 
+{{< include announcements/chronicle.qmd >}}
+
 {{< include announcements/ddmf.qmd >}}
 
 {{< include announcements/awaaz.qmd >}}
 
 {{< include announcements/ssmu-stuff.qmd >}}
-
-{{< include announcements/chronicle.qmd >}}
 
 {{< include announcements/ssmu-challenge.qmd >}}
 
